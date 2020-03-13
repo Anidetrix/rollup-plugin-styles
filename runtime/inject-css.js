@@ -13,6 +13,9 @@ const styleTags = [];
  */
 export default (css, options = {}) => {
   if (!css || typeof document === "undefined") return;
+  const singleTag = typeof options.singeTag !== "undefined" ? options.singleTag : false;
+  const container = typeof options.container !== "undefined" ? options.container : document.head;
+  const position = options.prepend === true ? "prepend" : "append";
 
   const createStyleTag = () => {
     const styleTag = document.createElement("style");
@@ -24,10 +27,6 @@ export default (css, options = {}) => {
     }
     return styleTag;
   };
-
-  const singleTag = typeof options.singeTag !== "undefined" ? options.singleTag : false;
-  const container = typeof options.container !== "undefined" ? options.container : document.head;
-  const position = options.prepend === true ? "prepend" : "append";
 
   /** @type {HTMLStyleElement} */
   let styleTag;

@@ -195,7 +195,9 @@ const loader: Loader<PostCSSLoaderOptions> = {
         const injectorName = safeId("injector");
         const injectorPath = normalizePath(
           await resolveAsync("./inject-css", {
-            basedir: path.join(__dirname, "..", "..", "runtime"),
+            basedir: process.env.ROLLUP_POSTCSS_TEST
+              ? path.join(process.cwd(), "runtime")
+              : path.join(__dirname, "runtime"),
           }),
         );
         const injectorData =
