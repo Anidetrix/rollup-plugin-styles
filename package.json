@@ -62,6 +62,7 @@
     "husky": "^4",
     "jest": "^25",
     "less": "^3",
+    "lint-staged": "^10",
     "node-sass": "^4",
     "postcss-custom-properties": "^9",
     "postcss-import": "^12",
@@ -101,12 +102,6 @@
   },
   "peerDependencies": {
     "rollup": ">=1.20 <3"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run docgen && npm run test",
-      "pre-push": "npm run docgen && npm run test"
-    }
   },
   "release": {
     "branches": [
