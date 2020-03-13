@@ -27,7 +27,7 @@ After that you can import CSS files in your code:
 import "./style.css";
 ```
 
-Note that, by default, generated CSS will be injected into `<head>` using [insert-css](https://github.com/substack/insert-css#api), with CSS also available as default export unless `extract: true`:
+Note that, by default, generated CSS will be injected into `<head>`, with CSS also available as default export unless `extract: true`:
 
 ```js
 // Inject into `<head>`, also available as `style` object in this example

@@ -96,7 +96,6 @@
     "hash.js": "^1",
     "icss-utils": "^4",
     "import-cwd": "^3",
-    "insert-css": "^2",
     "p-queue": "^6",
     "postcss": "^7",
     "postcss-load-config": "^2",

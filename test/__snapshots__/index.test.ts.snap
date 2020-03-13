@@ -3,134 +3,140 @@
 exports[`basic postcss-config: js 1`] = `
 "'use strict';
 
-var containers = []; // will store container HTMLElement references
-var styleElements = []; // will store {prepend: HTMLElement, append: HTMLElement}
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
 
-var usage = 'insert-css: You need to provide a CSS string. Usage: insertCss(cssString[, options]).';
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_14187a73 = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
 
-function insertCss(css, options) {
-    options = options || {};
-
-    if (css === undefined) {
-        throw new Error(usage);
-    }
-
-    var position = options.prepend === true ? 'prepend' : 'append';
-    var container = options.container !== undefined ? options.container : document.querySelector('head');
-    var containerId = containers.indexOf(container);
-
-    // first time we see this container, create the necessary entries
-    if (containerId === -1) {
-        containerId = containers.push(container) - 1;
-        styleElements[containerId] = {};
-    }
-
-    // try to get the correponding container + position styleElement, create it otherwise
-    var styleElement;
-
-    if (styleElements[containerId] !== undefined && styleElements[containerId][position] !== undefined) {
-        styleElement = styleElements[containerId][position];
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
     } else {
-        styleElement = styleElements[containerId][position] = createStyleElement();
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
 
-        if (position === 'prepend') {
-            container.insertBefore(styleElement, container.childNodes[0]);
-        } else {
-            container.appendChild(styleElement);
-        }
+  const singleTag = typeof options.singeTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+  let id = containers.indexOf(container);
+
+  if (singleTag) {
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
     }
 
-    // strip potential UTF-8 BOM if css was read from a file
-    if (css.charCodeAt(0) === 0xFEFF) { css = css.substr(1, css.length); }
-
-    // actually add the stylesheet
-    if (styleElement.styleSheet) {
-        styleElement.styleSheet.cssText += css;
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
     } else {
-        styleElement.textContent += css;
+      styleTag = styleTags[id][position] = createStyleTag();
     }
+  } else {
+    styleTag = createStyleTag();
+  }
 
-    return styleElement;
-}
-function createStyleElement() {
-    var styleElement = document.createElement('style');
-    styleElement.setAttribute('type', 'text/css');
-    return styleElement;
-}
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) {
+    css = css.slice(1, 1 + css.length);
+  }
 
-var insertCss_1 = insertCss;
-var insertCss_2 = insertCss;
-insertCss_1.insertCss = insertCss_2;
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
 
 var css_2f84417a = \\"a {\\\\n  width: 30%;\\\\n  color: red\\\\n}\\\\n\\\\n.multiline,\\\\n.selector {\\\\n  box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000\\\\n}\\\\n\\";
-insertCss_1(css_2f84417a);
+injector_14187a73(css_2f84417a);
 "
 `;
 
 exports[`basic postcss-options: js 1`] = `
 "'use strict';
 
-var containers = []; // will store container HTMLElement references
-var styleElements = []; // will store {prepend: HTMLElement, append: HTMLElement}
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
 
-var usage = 'insert-css: You need to provide a CSS string. Usage: insertCss(cssString[, options]).';
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_14187a73 = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
 
-function insertCss(css, options) {
-    options = options || {};
-
-    if (css === undefined) {
-        throw new Error(usage);
-    }
-
-    var position = options.prepend === true ? 'prepend' : 'append';
-    var container = options.container !== undefined ? options.container : document.querySelector('head');
-    var containerId = containers.indexOf(container);
-
-    // first time we see this container, create the necessary entries
-    if (containerId === -1) {
-        containerId = containers.push(container) - 1;
-        styleElements[containerId] = {};
-    }
-
-    // try to get the correponding container + position styleElement, create it otherwise
-    var styleElement;
-
-    if (styleElements[containerId] !== undefined && styleElements[containerId][position] !== undefined) {
-        styleElement = styleElements[containerId][position];
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
     } else {
-        styleElement = styleElements[containerId][position] = createStyleElement();
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
 
-        if (position === 'prepend') {
-            container.insertBefore(styleElement, container.childNodes[0]);
-        } else {
-            container.appendChild(styleElement);
-        }
+  const singleTag = typeof options.singeTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+  let id = containers.indexOf(container);
+
+  if (singleTag) {
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
     }
 
-    // strip potential UTF-8 BOM if css was read from a file
-    if (css.charCodeAt(0) === 0xFEFF) { css = css.substr(1, css.length); }
-
-    // actually add the stylesheet
-    if (styleElement.styleSheet) {
-        styleElement.styleSheet.cssText += css;
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
     } else {
-        styleElement.textContent += css;
+      styleTag = styleTags[id][position] = createStyleTag();
     }
+  } else {
+    styleTag = createStyleTag();
+  }
 
-    return styleElement;
-}
-function createStyleElement() {
-    var styleElement = document.createElement('style');
-    styleElement.setAttribute('type', 'text/css');
-    return styleElement;
-}
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) {
+    css = css.slice(1, 1 + css.length);
+  }
 
-var insertCss_1 = insertCss;
-var insertCss_2 = insertCss;
-insertCss_1.insertCss = insertCss_2;
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
 
 var css_2f84417a = \\".prefixed {\\\\n  display: -webkit-box;\\\\n  display: -webkit-flex;\\\\n  display: -moz-box;\\\\n  display: -ms-flexbox;\\\\n  display: flex;\\\\n}\\\\n\\";
-insertCss_1(css_2f84417a);
+injector_14187a73(css_2f84417a);
 "
 `;
 
@@ -158,82 +164,85 @@ exports[`basic postcss-resolvers: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\
 exports[`basic simple: js 1`] = `
 "'use strict';
 
-var containers = []; // will store container HTMLElement references
-var styleElements = []; // will store {prepend: HTMLElement, append: HTMLElement}
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
 
-var usage = 'insert-css: You need to provide a CSS string. Usage: insertCss(cssString[, options]).';
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_14187a73 = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
 
-function insertCss(css, options) {
-    options = options || {};
-
-    if (css === undefined) {
-        throw new Error(usage);
-    }
-
-    var position = options.prepend === true ? 'prepend' : 'append';
-    var container = options.container !== undefined ? options.container : document.querySelector('head');
-    var containerId = containers.indexOf(container);
-
-    // first time we see this container, create the necessary entries
-    if (containerId === -1) {
-        containerId = containers.push(container) - 1;
-        styleElements[containerId] = {};
-    }
-
-    // try to get the correponding container + position styleElement, create it otherwise
-    var styleElement;
-
-    if (styleElements[containerId] !== undefined && styleElements[containerId][position] !== undefined) {
-        styleElement = styleElements[containerId][position];
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
     } else {
-        styleElement = styleElements[containerId][position] = createStyleElement();
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
 
-        if (position === 'prepend') {
-            container.insertBefore(styleElement, container.childNodes[0]);
-        } else {
-            container.appendChild(styleElement);
-        }
+  const singleTag = typeof options.singeTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+  let id = containers.indexOf(container);
+
+  if (singleTag) {
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
     }
 
-    // strip potential UTF-8 BOM if css was read from a file
-    if (css.charCodeAt(0) === 0xFEFF) { css = css.substr(1, css.length); }
-
-    // actually add the stylesheet
-    if (styleElement.styleSheet) {
-        styleElement.styleSheet.cssText += css;
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
     } else {
-        styleElement.textContent += css;
+      styleTag = styleTags[id][position] = createStyleTag();
     }
+  } else {
+    styleTag = createStyleTag();
+  }
 
-    return styleElement;
-}
-function createStyleElement() {
-    var styleElement = document.createElement('style');
-    styleElement.setAttribute('type', 'text/css');
-    return styleElement;
-}
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) {
+    css = css.slice(1, 1 + css.length);
+  }
 
-var insertCss_1 = insertCss;
-var insertCss_2 = insertCss;
-insertCss_1.insertCss = insertCss_2;
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
 
 var css_2f84417a = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
-insertCss_1(css_2f84417a);
+injector_14187a73(css_2f84417a);
 
 var css_2f84417a$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
-insertCss_1(css_2f84417a$1);
+injector_14187a73(css_2f84417a$1);
 
 var css_2f84417a$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
-insertCss_1(css_2f84417a$2);
+injector_14187a73(css_2f84417a$2);
 
 var css_2f84417a$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
-insertCss_1(css_2f84417a$3);
+injector_14187a73(css_2f84417a$3);
 
 var css_2f84417a$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
-insertCss_1(css_2f84417a$4);
+injector_14187a73(css_2f84417a$4);
 
 var css_2f84417a$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
-insertCss_1(css_2f84417a$5);
+injector_14187a73(css_2f84417a$5);
 
 console.log(css_2f84417a, css_2f84417a$1);
 "
@@ -242,67 +251,70 @@ console.log(css_2f84417a, css_2f84417a$1);
 exports[`basic skip-loader: js 1`] = `
 "'use strict';
 
-var containers = []; // will store container HTMLElement references
-var styleElements = []; // will store {prepend: HTMLElement, append: HTMLElement}
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
 
-var usage = 'insert-css: You need to provide a CSS string. Usage: insertCss(cssString[, options]).';
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_14187a73 = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
 
-function insertCss(css, options) {
-    options = options || {};
-
-    if (css === undefined) {
-        throw new Error(usage);
-    }
-
-    var position = options.prepend === true ? 'prepend' : 'append';
-    var container = options.container !== undefined ? options.container : document.querySelector('head');
-    var containerId = containers.indexOf(container);
-
-    // first time we see this container, create the necessary entries
-    if (containerId === -1) {
-        containerId = containers.push(container) - 1;
-        styleElements[containerId] = {};
-    }
-
-    // try to get the correponding container + position styleElement, create it otherwise
-    var styleElement;
-
-    if (styleElements[containerId] !== undefined && styleElements[containerId][position] !== undefined) {
-        styleElement = styleElements[containerId][position];
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
     } else {
-        styleElement = styleElements[containerId][position] = createStyleElement();
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
 
-        if (position === 'prepend') {
-            container.insertBefore(styleElement, container.childNodes[0]);
-        } else {
-            container.appendChild(styleElement);
-        }
+  const singleTag = typeof options.singeTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+  let id = containers.indexOf(container);
+
+  if (singleTag) {
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
     }
 
-    // strip potential UTF-8 BOM if css was read from a file
-    if (css.charCodeAt(0) === 0xFEFF) { css = css.substr(1, css.length); }
-
-    // actually add the stylesheet
-    if (styleElement.styleSheet) {
-        styleElement.styleSheet.cssText += css;
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
     } else {
-        styleElement.textContent += css;
+      styleTag = styleTags[id][position] = createStyleTag();
     }
+  } else {
+    styleTag = createStyleTag();
+  }
 
-    return styleElement;
-}
-function createStyleElement() {
-    var styleElement = document.createElement('style');
-    styleElement.setAttribute('type', 'text/css');
-    return styleElement;
-}
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) {
+    css = css.slice(1, 1 + css.length);
+  }
 
-var insertCss_1 = insertCss;
-var insertCss_2 = insertCss;
-insertCss_1.insertCss = insertCss_2;
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
 
 var css_2f84417a = \\".style {\\\\n  color: red;\\\\n}\\\\n\\";
-insertCss_1(css_2f84417a);
+injector_14187a73(css_2f84417a);
 "
 `;
 
@@ -492,82 +504,85 @@ console.log(css_2f84417a, css_2f84417a$1);
 exports[`inject top: js 1`] = `
 "'use strict';
 
-var containers = []; // will store container HTMLElement references
-var styleElements = []; // will store {prepend: HTMLElement, append: HTMLElement}
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
 
-var usage = 'insert-css: You need to provide a CSS string. Usage: insertCss(cssString[, options]).';
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_14187a73 = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
 
-function insertCss(css, options) {
-    options = options || {};
-
-    if (css === undefined) {
-        throw new Error(usage);
-    }
-
-    var position = options.prepend === true ? 'prepend' : 'append';
-    var container = options.container !== undefined ? options.container : document.querySelector('head');
-    var containerId = containers.indexOf(container);
-
-    // first time we see this container, create the necessary entries
-    if (containerId === -1) {
-        containerId = containers.push(container) - 1;
-        styleElements[containerId] = {};
-    }
-
-    // try to get the correponding container + position styleElement, create it otherwise
-    var styleElement;
-
-    if (styleElements[containerId] !== undefined && styleElements[containerId][position] !== undefined) {
-        styleElement = styleElements[containerId][position];
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
     } else {
-        styleElement = styleElements[containerId][position] = createStyleElement();
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
 
-        if (position === 'prepend') {
-            container.insertBefore(styleElement, container.childNodes[0]);
-        } else {
-            container.appendChild(styleElement);
-        }
+  const singleTag = typeof options.singeTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+  let id = containers.indexOf(container);
+
+  if (singleTag) {
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
     }
 
-    // strip potential UTF-8 BOM if css was read from a file
-    if (css.charCodeAt(0) === 0xFEFF) { css = css.substr(1, css.length); }
-
-    // actually add the stylesheet
-    if (styleElement.styleSheet) {
-        styleElement.styleSheet.cssText += css;
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
     } else {
-        styleElement.textContent += css;
+      styleTag = styleTags[id][position] = createStyleTag();
     }
+  } else {
+    styleTag = createStyleTag();
+  }
 
-    return styleElement;
-}
-function createStyleElement() {
-    var styleElement = document.createElement('style');
-    styleElement.setAttribute('type', 'text/css');
-    return styleElement;
-}
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) {
+    css = css.slice(1, 1 + css.length);
+  }
 
-var insertCss_1 = insertCss;
-var insertCss_2 = insertCss;
-insertCss_1.insertCss = insertCss_2;
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
 
 var css_2f84417a = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
-insertCss_1(css_2f84417a,{\\"prepend\\":true});
+injector_14187a73(css_2f84417a,{\\"prepend\\":true});
 
 var css_2f84417a$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
-insertCss_1(css_2f84417a$1,{\\"prepend\\":true});
+injector_14187a73(css_2f84417a$1,{\\"prepend\\":true});
 
 var css_2f84417a$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
-insertCss_1(css_2f84417a$2,{\\"prepend\\":true});
+injector_14187a73(css_2f84417a$2,{\\"prepend\\":true});
 
 var css_2f84417a$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
-insertCss_1(css_2f84417a$3,{\\"prepend\\":true});
+injector_14187a73(css_2f84417a$3,{\\"prepend\\":true});
 
 var css_2f84417a$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
-insertCss_1(css_2f84417a$4,{\\"prepend\\":true});
+injector_14187a73(css_2f84417a$4,{\\"prepend\\":true});
 
 var css_2f84417a$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
-insertCss_1(css_2f84417a$5,{\\"prepend\\":true});
+injector_14187a73(css_2f84417a$5,{\\"prepend\\":true});
 
 console.log(css_2f84417a, css_2f84417a$1);
 "
@@ -611,82 +626,85 @@ exports[`minimize extract-sourcemap-true: map 1`] = `"{\\"version\\":3,\\"source
 exports[`minimize inject: js 1`] = `
 "'use strict';
 
-var containers = []; // will store container HTMLElement references
-var styleElements = []; // will store {prepend: HTMLElement, append: HTMLElement}
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
 
-var usage = 'insert-css: You need to provide a CSS string. Usage: insertCss(cssString[, options]).';
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_14187a73 = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
 
-function insertCss(css, options) {
-    options = options || {};
-
-    if (css === undefined) {
-        throw new Error(usage);
-    }
-
-    var position = options.prepend === true ? 'prepend' : 'append';
-    var container = options.container !== undefined ? options.container : document.querySelector('head');
-    var containerId = containers.indexOf(container);
-
-    // first time we see this container, create the necessary entries
-    if (containerId === -1) {
-        containerId = containers.push(container) - 1;
-        styleElements[containerId] = {};
-    }
-
-    // try to get the correponding container + position styleElement, create it otherwise
-    var styleElement;
-
-    if (styleElements[containerId] !== undefined && styleElements[containerId][position] !== undefined) {
-        styleElement = styleElements[containerId][position];
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
     } else {
-        styleElement = styleElements[containerId][position] = createStyleElement();
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
 
-        if (position === 'prepend') {
-            container.insertBefore(styleElement, container.childNodes[0]);
-        } else {
-            container.appendChild(styleElement);
-        }
+  const singleTag = typeof options.singeTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+  let id = containers.indexOf(container);
+
+  if (singleTag) {
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
     }
 
-    // strip potential UTF-8 BOM if css was read from a file
-    if (css.charCodeAt(0) === 0xFEFF) { css = css.substr(1, css.length); }
-
-    // actually add the stylesheet
-    if (styleElement.styleSheet) {
-        styleElement.styleSheet.cssText += css;
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
     } else {
-        styleElement.textContent += css;
+      styleTag = styleTags[id][position] = createStyleTag();
     }
+  } else {
+    styleTag = createStyleTag();
+  }
 
-    return styleElement;
-}
-function createStyleElement() {
-    var styleElement = document.createElement('style');
-    styleElement.setAttribute('type', 'text/css');
-    return styleElement;
-}
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) {
+    css = css.slice(1, 1 + css.length);
+  }
 
-var insertCss_1 = insertCss;
-var insertCss_2 = insertCss;
-insertCss_1.insertCss = insertCss_2;
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
 
 var css_2f84417a = \\".foo{color:red}\\";
-insertCss_1(css_2f84417a);
+injector_14187a73(css_2f84417a);
 
 var css_2f84417a$1 = \\".bar{color:red}\\";
-insertCss_1(css_2f84417a$1);
+injector_14187a73(css_2f84417a$1);
 
 var css_2f84417a$2 = \\".stylus{color:red;background:red}\\";
-insertCss_1(css_2f84417a$2);
+injector_14187a73(css_2f84417a$2);
 
 var css_2f84417a$3 = \\".pcss{color:red}\\";
-insertCss_1(css_2f84417a$3);
+injector_14187a73(css_2f84417a$3);
 
 var css_2f84417a$4 = \\".sass{width:30%;color:red}\\";
-insertCss_1(css_2f84417a$4);
+injector_14187a73(css_2f84417a$4);
 
 var css_2f84417a$5 = \\".less{color:#6c94be}\\";
-insertCss_1(css_2f84417a$5);
+injector_14187a73(css_2f84417a$5);
 
 console.log(css_2f84417a, css_2f84417a$1);
 "
@@ -695,83 +713,86 @@ console.log(css_2f84417a, css_2f84417a$1);
 exports[`modules auto-modules: js 1`] = `
 "'use strict';
 
-var containers = []; // will store container HTMLElement references
-var styleElements = []; // will store {prepend: HTMLElement, append: HTMLElement}
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
 
-var usage = 'insert-css: You need to provide a CSS string. Usage: insertCss(cssString[, options]).';
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_14187a73 = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
 
-function insertCss(css, options) {
-    options = options || {};
-
-    if (css === undefined) {
-        throw new Error(usage);
-    }
-
-    var position = options.prepend === true ? 'prepend' : 'append';
-    var container = options.container !== undefined ? options.container : document.querySelector('head');
-    var containerId = containers.indexOf(container);
-
-    // first time we see this container, create the necessary entries
-    if (containerId === -1) {
-        containerId = containers.push(container) - 1;
-        styleElements[containerId] = {};
-    }
-
-    // try to get the correponding container + position styleElement, create it otherwise
-    var styleElement;
-
-    if (styleElements[containerId] !== undefined && styleElements[containerId][position] !== undefined) {
-        styleElement = styleElements[containerId][position];
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
     } else {
-        styleElement = styleElements[containerId][position] = createStyleElement();
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
 
-        if (position === 'prepend') {
-            container.insertBefore(styleElement, container.childNodes[0]);
-        } else {
-            container.appendChild(styleElement);
-        }
+  const singleTag = typeof options.singeTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+  let id = containers.indexOf(container);
+
+  if (singleTag) {
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
     }
 
-    // strip potential UTF-8 BOM if css was read from a file
-    if (css.charCodeAt(0) === 0xFEFF) { css = css.substr(1, css.length); }
-
-    // actually add the stylesheet
-    if (styleElement.styleSheet) {
-        styleElement.styleSheet.cssText += css;
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
     } else {
-        styleElement.textContent += css;
+      styleTag = styleTags[id][position] = createStyleTag();
     }
+  } else {
+    styleTag = createStyleTag();
+  }
 
-    return styleElement;
-}
-function createStyleElement() {
-    var styleElement = document.createElement('style');
-    styleElement.setAttribute('type', 'text/css');
-    return styleElement;
-}
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) {
+    css = css.slice(1, 1 + css.length);
+  }
 
-var insertCss_1 = insertCss;
-var insertCss_2 = insertCss;
-insertCss_1.insertCss = insertCss_2;
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
 
 var css_2f84417a = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
-insertCss_1(css_2f84417a);
+injector_14187a73(css_2f84417a);
 
 var css_2f84417a$1 = \\".a_module_a {\\\\n  color: red;\\\\n}\\\\n\\";
 var a = {\\"a\\":\\"a_module_a\\"};
-insertCss_1(css_2f84417a$1);
+injector_14187a73(css_2f84417a$1);
 
 var css_2f84417a$2 = \\".b_module_b {\\\\n  color: red; }\\\\n\\";
 var b = {\\"b\\":\\"b_module_b\\"};
-insertCss_1(css_2f84417a$2);
+injector_14187a73(css_2f84417a$2);
 
 var css_2f84417a$3 = \\".c_module_c {\\\\n  color: red;\\\\n}\\\\n\\";
 var c = {\\"c\\":\\"c_module_c\\"};
-insertCss_1(css_2f84417a$3);
+injector_14187a73(css_2f84417a$3);
 
 var css_2f84417a$4 = \\".d_module_d {\\\\n  color: #f00;\\\\n}\\\\n\\";
 var d = {\\"d\\":\\"d_module_d\\"};
-insertCss_1(css_2f84417a$4);
+injector_14187a73(css_2f84417a$4);
 
 console.log(a, b, c, d);
 "
@@ -930,76 +951,79 @@ exports[`modules extract-sourcemap-true: map 1`] = `"{\\"version\\":3,\\"sources
 exports[`modules inject: js 1`] = `
 "'use strict';
 
-var containers = []; // will store container HTMLElement references
-var styleElements = []; // will store {prepend: HTMLElement, append: HTMLElement}
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
 
-var usage = 'insert-css: You need to provide a CSS string. Usage: insertCss(cssString[, options]).';
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_14187a73 = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
 
-function insertCss(css, options) {
-    options = options || {};
-
-    if (css === undefined) {
-        throw new Error(usage);
-    }
-
-    var position = options.prepend === true ? 'prepend' : 'append';
-    var container = options.container !== undefined ? options.container : document.querySelector('head');
-    var containerId = containers.indexOf(container);
-
-    // first time we see this container, create the necessary entries
-    if (containerId === -1) {
-        containerId = containers.push(container) - 1;
-        styleElements[containerId] = {};
-    }
-
-    // try to get the correponding container + position styleElement, create it otherwise
-    var styleElement;
-
-    if (styleElements[containerId] !== undefined && styleElements[containerId][position] !== undefined) {
-        styleElement = styleElements[containerId][position];
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
     } else {
-        styleElement = styleElements[containerId][position] = createStyleElement();
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
 
-        if (position === 'prepend') {
-            container.insertBefore(styleElement, container.childNodes[0]);
-        } else {
-            container.appendChild(styleElement);
-        }
+  const singleTag = typeof options.singeTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+  let id = containers.indexOf(container);
+
+  if (singleTag) {
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
     }
 
-    // strip potential UTF-8 BOM if css was read from a file
-    if (css.charCodeAt(0) === 0xFEFF) { css = css.substr(1, css.length); }
-
-    // actually add the stylesheet
-    if (styleElement.styleSheet) {
-        styleElement.styleSheet.cssText += css;
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
     } else {
-        styleElement.textContent += css;
+      styleTag = styleTags[id][position] = createStyleTag();
     }
+  } else {
+    styleTag = createStyleTag();
+  }
 
-    return styleElement;
-}
-function createStyleElement() {
-    var styleElement = document.createElement('style');
-    styleElement.setAttribute('type', 'text/css');
-    return styleElement;
-}
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) {
+    css = css.slice(1, 1 + css.length);
+  }
 
-var insertCss_1 = insertCss;
-var insertCss_2 = insertCss;
-insertCss_1.insertCss = insertCss_2;
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
 
 var css_2f84417a = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
 var style = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
-insertCss_1(css_2f84417a);
+injector_14187a73(css_2f84417a);
 
 var css_2f84417a$1 = \\"@media screen and (min-width: 900px) {\\\\n  .composed_composition {\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composed_composition {\\\\n  background-color: #BF4040;\\\\n}\\\\n\\";
 var composed = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
-insertCss_1(css_2f84417a$1);
+injector_14187a73(css_2f84417a$1);
 
 var css_2f84417a$2 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
 var composition2 = {\\"compositioned\\":\\"composition2_compositioned\\"};
-insertCss_1(css_2f84417a$2);
+injector_14187a73(css_2f84417a$2);
 
 console.log(style.module, composed.composition, composition2.compositioned);
 "
@@ -1008,76 +1032,79 @@ console.log(style.module, composed.composition, composition2.compositioned);
 exports[`modules inject-object: js 1`] = `
 "'use strict';
 
-var containers = []; // will store container HTMLElement references
-var styleElements = []; // will store {prepend: HTMLElement, append: HTMLElement}
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
 
-var usage = 'insert-css: You need to provide a CSS string. Usage: insertCss(cssString[, options]).';
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_14187a73 = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
 
-function insertCss(css, options) {
-    options = options || {};
-
-    if (css === undefined) {
-        throw new Error(usage);
-    }
-
-    var position = options.prepend === true ? 'prepend' : 'append';
-    var container = options.container !== undefined ? options.container : document.querySelector('head');
-    var containerId = containers.indexOf(container);
-
-    // first time we see this container, create the necessary entries
-    if (containerId === -1) {
-        containerId = containers.push(container) - 1;
-        styleElements[containerId] = {};
-    }
-
-    // try to get the correponding container + position styleElement, create it otherwise
-    var styleElement;
-
-    if (styleElements[containerId] !== undefined && styleElements[containerId][position] !== undefined) {
-        styleElement = styleElements[containerId][position];
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
     } else {
-        styleElement = styleElements[containerId][position] = createStyleElement();
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
 
-        if (position === 'prepend') {
-            container.insertBefore(styleElement, container.childNodes[0]);
-        } else {
-            container.appendChild(styleElement);
-        }
+  const singleTag = typeof options.singeTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+  let id = containers.indexOf(container);
+
+  if (singleTag) {
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
     }
 
-    // strip potential UTF-8 BOM if css was read from a file
-    if (css.charCodeAt(0) === 0xFEFF) { css = css.substr(1, css.length); }
-
-    // actually add the stylesheet
-    if (styleElement.styleSheet) {
-        styleElement.styleSheet.cssText += css;
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
     } else {
-        styleElement.textContent += css;
+      styleTag = styleTags[id][position] = createStyleTag();
     }
+  } else {
+    styleTag = createStyleTag();
+  }
 
-    return styleElement;
-}
-function createStyleElement() {
-    var styleElement = document.createElement('style');
-    styleElement.setAttribute('type', 'text/css');
-    return styleElement;
-}
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) {
+    css = css.slice(1, 1 + css.length);
+  }
 
-var insertCss_1 = insertCss;
-var insertCss_2 = insertCss;
-insertCss_1.insertCss = insertCss_2;
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
 
 var css_2f84417a = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
 var style = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
-insertCss_1(css_2f84417a);
+injector_14187a73(css_2f84417a);
 
 var css_2f84417a$1 = \\"@media screen and (min-width: 900px) {\\\\n  .composed_composition {\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composed_composition {\\\\n  background-color: #BF4040;\\\\n}\\\\n\\";
 var composed = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
-insertCss_1(css_2f84417a$1);
+injector_14187a73(css_2f84417a$1);
 
 var css_2f84417a$2 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
 var composition2 = {\\"compositioned\\":\\"composition2_compositioned\\"};
-insertCss_1(css_2f84417a$2);
+injector_14187a73(css_2f84417a$2);
 
 console.log(style.module, composed.composition, composition2.compositioned);
 "
@@ -1086,78 +1113,81 @@ console.log(style.module, composed.composition, composition2.compositioned);
 exports[`modules named-exports: js 1`] = `
 "'use strict';
 
-var containers = []; // will store container HTMLElement references
-var styleElements = []; // will store {prepend: HTMLElement, append: HTMLElement}
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
 
-var usage = 'insert-css: You need to provide a CSS string. Usage: insertCss(cssString[, options]).';
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_14187a73 = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
 
-function insertCss(css, options) {
-    options = options || {};
-
-    if (css === undefined) {
-        throw new Error(usage);
-    }
-
-    var position = options.prepend === true ? 'prepend' : 'append';
-    var container = options.container !== undefined ? options.container : document.querySelector('head');
-    var containerId = containers.indexOf(container);
-
-    // first time we see this container, create the necessary entries
-    if (containerId === -1) {
-        containerId = containers.push(container) - 1;
-        styleElements[containerId] = {};
-    }
-
-    // try to get the correponding container + position styleElement, create it otherwise
-    var styleElement;
-
-    if (styleElements[containerId] !== undefined && styleElements[containerId][position] !== undefined) {
-        styleElement = styleElements[containerId][position];
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
     } else {
-        styleElement = styleElements[containerId][position] = createStyleElement();
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
 
-        if (position === 'prepend') {
-            container.insertBefore(styleElement, container.childNodes[0]);
-        } else {
-            container.appendChild(styleElement);
-        }
+  const singleTag = typeof options.singeTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+  let id = containers.indexOf(container);
+
+  if (singleTag) {
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
     }
 
-    // strip potential UTF-8 BOM if css was read from a file
-    if (css.charCodeAt(0) === 0xFEFF) { css = css.substr(1, css.length); }
-
-    // actually add the stylesheet
-    if (styleElement.styleSheet) {
-        styleElement.styleSheet.cssText += css;
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
     } else {
-        styleElement.textContent += css;
+      styleTag = styleTags[id][position] = createStyleTag();
     }
+  } else {
+    styleTag = createStyleTag();
+  }
 
-    return styleElement;
-}
-function createStyleElement() {
-    var styleElement = document.createElement('style');
-    styleElement.setAttribute('type', 'text/css');
-    return styleElement;
-}
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) {
+    css = css.slice(1, 1 + css.length);
+  }
 
-var insertCss_1 = insertCss;
-var insertCss_2 = insertCss;
-insertCss_1.insertCss = insertCss_2;
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
 
 const valid = \\"style_valid\\";
 const _new = \\"style_new\\";
 var css_2f84417a = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\";
 const stylesheet = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\";
 var style = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"_new\\":\\"style_new\\"};
-insertCss_1(css_2f84417a);
+injector_14187a73(css_2f84417a);
 
 var style$1 = /*#__PURE__*/Object.freeze({
-    __proto__: null,
-    valid: valid,
-    _new: _new,
-    stylesheet: stylesheet,
-    'default': style
+  __proto__: null,
+  valid: valid,
+  _new: _new,
+  stylesheet: stylesheet,
+  'default': style
 });
 
 console.log(style$1);
@@ -1167,78 +1197,81 @@ console.log(style$1);
 exports[`modules named-exports-custom-class-name: js 1`] = `
 "'use strict';
 
-var containers = []; // will store container HTMLElement references
-var styleElements = []; // will store {prepend: HTMLElement, append: HTMLElement}
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
 
-var usage = 'insert-css: You need to provide a CSS string. Usage: insertCss(cssString[, options]).';
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_14187a73 = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
 
-function insertCss(css, options) {
-    options = options || {};
-
-    if (css === undefined) {
-        throw new Error(usage);
-    }
-
-    var position = options.prepend === true ? 'prepend' : 'append';
-    var container = options.container !== undefined ? options.container : document.querySelector('head');
-    var containerId = containers.indexOf(container);
-
-    // first time we see this container, create the necessary entries
-    if (containerId === -1) {
-        containerId = containers.push(container) - 1;
-        styleElements[containerId] = {};
-    }
-
-    // try to get the correponding container + position styleElement, create it otherwise
-    var styleElement;
-
-    if (styleElements[containerId] !== undefined && styleElements[containerId][position] !== undefined) {
-        styleElement = styleElements[containerId][position];
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
     } else {
-        styleElement = styleElements[containerId][position] = createStyleElement();
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
 
-        if (position === 'prepend') {
-            container.insertBefore(styleElement, container.childNodes[0]);
-        } else {
-            container.appendChild(styleElement);
-        }
+  const singleTag = typeof options.singeTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+  let id = containers.indexOf(container);
+
+  if (singleTag) {
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
     }
 
-    // strip potential UTF-8 BOM if css was read from a file
-    if (css.charCodeAt(0) === 0xFEFF) { css = css.substr(1, css.length); }
-
-    // actually add the stylesheet
-    if (styleElement.styleSheet) {
-        styleElement.styleSheet.cssText += css;
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
     } else {
-        styleElement.textContent += css;
+      styleTag = styleTags[id][position] = createStyleTag();
     }
+  } else {
+    styleTag = createStyleTag();
+  }
 
-    return styleElement;
-}
-function createStyleElement() {
-    var styleElement = document.createElement('style');
-    styleElement.setAttribute('type', 'text/css');
-    return styleElement;
-}
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) {
+    css = css.slice(1, 1 + css.length);
+  }
 
-var insertCss_1 = insertCss;
-var insertCss_2 = insertCss;
-insertCss_1.insertCss = insertCss_2;
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
 
 const validhacked = \\"style_valid\\";
 const newhacked = \\"style_new\\";
 var css_2f84417a = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\";
 const stylesheet = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\";
 var style = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"validhacked\\":\\"style_valid\\",\\"newhacked\\":\\"style_new\\"};
-insertCss_1(css_2f84417a);
+injector_14187a73(css_2f84417a);
 
 var style$1 = /*#__PURE__*/Object.freeze({
-    __proto__: null,
-    validhacked: validhacked,
-    newhacked: newhacked,
-    stylesheet: stylesheet,
-    'default': style
+  __proto__: null,
+  validhacked: validhacked,
+  newhacked: newhacked,
+  stylesheet: stylesheet,
+  'default': style
 });
 
 console.log(style$1);
@@ -1255,269 +1288,281 @@ console.log(undefined, undefined);
 exports[`sass data: js 1`] = `
 "'use strict';
 
-var containers = []; // will store container HTMLElement references
-var styleElements = []; // will store {prepend: HTMLElement, append: HTMLElement}
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
 
-var usage = 'insert-css: You need to provide a CSS string. Usage: insertCss(cssString[, options]).';
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_14187a73 = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
 
-function insertCss(css, options) {
-    options = options || {};
-
-    if (css === undefined) {
-        throw new Error(usage);
-    }
-
-    var position = options.prepend === true ? 'prepend' : 'append';
-    var container = options.container !== undefined ? options.container : document.querySelector('head');
-    var containerId = containers.indexOf(container);
-
-    // first time we see this container, create the necessary entries
-    if (containerId === -1) {
-        containerId = containers.push(container) - 1;
-        styleElements[containerId] = {};
-    }
-
-    // try to get the correponding container + position styleElement, create it otherwise
-    var styleElement;
-
-    if (styleElements[containerId] !== undefined && styleElements[containerId][position] !== undefined) {
-        styleElement = styleElements[containerId][position];
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
     } else {
-        styleElement = styleElements[containerId][position] = createStyleElement();
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
 
-        if (position === 'prepend') {
-            container.insertBefore(styleElement, container.childNodes[0]);
-        } else {
-            container.appendChild(styleElement);
-        }
+  const singleTag = typeof options.singeTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+  let id = containers.indexOf(container);
+
+  if (singleTag) {
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
     }
 
-    // strip potential UTF-8 BOM if css was read from a file
-    if (css.charCodeAt(0) === 0xFEFF) { css = css.substr(1, css.length); }
-
-    // actually add the stylesheet
-    if (styleElement.styleSheet) {
-        styleElement.styleSheet.cssText += css;
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
     } else {
-        styleElement.textContent += css;
+      styleTag = styleTags[id][position] = createStyleTag();
     }
+  } else {
+    styleTag = createStyleTag();
+  }
 
-    return styleElement;
-}
-function createStyleElement() {
-    var styleElement = document.createElement('style');
-    styleElement.setAttribute('type', 'text/css');
-    return styleElement;
-}
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) {
+    css = css.slice(1, 1 + css.length);
+  }
 
-var insertCss_1 = insertCss;
-var insertCss_2 = insertCss;
-insertCss_1.insertCss = insertCss_2;
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
 
 var css_2f84417a = \\".data {\\\\n  color: red; }\\\\n\\";
-insertCss_1(css_2f84417a);
+injector_14187a73(css_2f84417a);
 "
 `;
 
 exports[`sass default: js 1`] = `
 "'use strict';
 
-var containers = []; // will store container HTMLElement references
-var styleElements = []; // will store {prepend: HTMLElement, append: HTMLElement}
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
 
-var usage = 'insert-css: You need to provide a CSS string. Usage: insertCss(cssString[, options]).';
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_14187a73 = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
 
-function insertCss(css, options) {
-    options = options || {};
-
-    if (css === undefined) {
-        throw new Error(usage);
-    }
-
-    var position = options.prepend === true ? 'prepend' : 'append';
-    var container = options.container !== undefined ? options.container : document.querySelector('head');
-    var containerId = containers.indexOf(container);
-
-    // first time we see this container, create the necessary entries
-    if (containerId === -1) {
-        containerId = containers.push(container) - 1;
-        styleElements[containerId] = {};
-    }
-
-    // try to get the correponding container + position styleElement, create it otherwise
-    var styleElement;
-
-    if (styleElements[containerId] !== undefined && styleElements[containerId][position] !== undefined) {
-        styleElement = styleElements[containerId][position];
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
     } else {
-        styleElement = styleElements[containerId][position] = createStyleElement();
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
 
-        if (position === 'prepend') {
-            container.insertBefore(styleElement, container.childNodes[0]);
-        } else {
-            container.appendChild(styleElement);
-        }
+  const singleTag = typeof options.singeTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+  let id = containers.indexOf(container);
+
+  if (singleTag) {
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
     }
 
-    // strip potential UTF-8 BOM if css was read from a file
-    if (css.charCodeAt(0) === 0xFEFF) { css = css.substr(1, css.length); }
-
-    // actually add the stylesheet
-    if (styleElement.styleSheet) {
-        styleElement.styleSheet.cssText += css;
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
     } else {
-        styleElement.textContent += css;
+      styleTag = styleTags[id][position] = createStyleTag();
     }
+  } else {
+    styleTag = createStyleTag();
+  }
 
-    return styleElement;
-}
-function createStyleElement() {
-    var styleElement = document.createElement('style');
-    styleElement.setAttribute('type', 'text/css');
-    return styleElement;
-}
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) {
+    css = css.slice(1, 1 + css.length);
+  }
 
-var insertCss_1 = insertCss;
-var insertCss_2 = insertCss;
-insertCss_1.insertCss = insertCss_2;
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
 
 var css_2f84417a = \\".style {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
-insertCss_1(css_2f84417a);
+injector_14187a73(css_2f84417a);
 "
 `;
 
 exports[`sass import: js 1`] = `
 "'use strict';
 
-var containers = []; // will store container HTMLElement references
-var styleElements = []; // will store {prepend: HTMLElement, append: HTMLElement}
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
 
-var usage = 'insert-css: You need to provide a CSS string. Usage: insertCss(cssString[, options]).';
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_14187a73 = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
 
-function insertCss(css, options) {
-    options = options || {};
-
-    if (css === undefined) {
-        throw new Error(usage);
-    }
-
-    var position = options.prepend === true ? 'prepend' : 'append';
-    var container = options.container !== undefined ? options.container : document.querySelector('head');
-    var containerId = containers.indexOf(container);
-
-    // first time we see this container, create the necessary entries
-    if (containerId === -1) {
-        containerId = containers.push(container) - 1;
-        styleElements[containerId] = {};
-    }
-
-    // try to get the correponding container + position styleElement, create it otherwise
-    var styleElement;
-
-    if (styleElements[containerId] !== undefined && styleElements[containerId][position] !== undefined) {
-        styleElement = styleElements[containerId][position];
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
     } else {
-        styleElement = styleElements[containerId][position] = createStyleElement();
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
 
-        if (position === 'prepend') {
-            container.insertBefore(styleElement, container.childNodes[0]);
-        } else {
-            container.appendChild(styleElement);
-        }
+  const singleTag = typeof options.singeTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+  let id = containers.indexOf(container);
+
+  if (singleTag) {
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
     }
 
-    // strip potential UTF-8 BOM if css was read from a file
-    if (css.charCodeAt(0) === 0xFEFF) { css = css.substr(1, css.length); }
-
-    // actually add the stylesheet
-    if (styleElement.styleSheet) {
-        styleElement.styleSheet.cssText += css;
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
     } else {
-        styleElement.textContent += css;
+      styleTag = styleTags[id][position] = createStyleTag();
     }
+  } else {
+    styleTag = createStyleTag();
+  }
 
-    return styleElement;
-}
-function createStyleElement() {
-    var styleElement = document.createElement('style');
-    styleElement.setAttribute('type', 'text/css');
-    return styleElement;
-}
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) {
+    css = css.slice(1, 1 + css.length);
+  }
 
-var insertCss_1 = insertCss;
-var insertCss_2 = insertCss;
-insertCss_1.insertCss = insertCss_2;
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
 
 var css_2f84417a = \\".a {\\\\n  color: red; }\\\\n\\\\n.b {\\\\n  color: red; }\\\\n\\\\n.c {\\\\n  color: red; }\\\\n\\\\n.foo {\\\\n  color: red; }\\\\n\\";
-insertCss_1(css_2f84417a);
+injector_14187a73(css_2f84417a);
 "
 `;
 
 exports[`sass modules: js 1`] = `
 "'use strict';
 
-var containers = []; // will store container HTMLElement references
-var styleElements = []; // will store {prepend: HTMLElement, append: HTMLElement}
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
 
-var usage = 'insert-css: You need to provide a CSS string. Usage: insertCss(cssString[, options]).';
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_14187a73 = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
 
-function insertCss(css, options) {
-    options = options || {};
-
-    if (css === undefined) {
-        throw new Error(usage);
-    }
-
-    var position = options.prepend === true ? 'prepend' : 'append';
-    var container = options.container !== undefined ? options.container : document.querySelector('head');
-    var containerId = containers.indexOf(container);
-
-    // first time we see this container, create the necessary entries
-    if (containerId === -1) {
-        containerId = containers.push(container) - 1;
-        styleElements[containerId] = {};
-    }
-
-    // try to get the correponding container + position styleElement, create it otherwise
-    var styleElement;
-
-    if (styleElements[containerId] !== undefined && styleElements[containerId][position] !== undefined) {
-        styleElement = styleElements[containerId][position];
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
     } else {
-        styleElement = styleElements[containerId][position] = createStyleElement();
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
 
-        if (position === 'prepend') {
-            container.insertBefore(styleElement, container.childNodes[0]);
-        } else {
-            container.appendChild(styleElement);
-        }
+  const singleTag = typeof options.singeTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+  let id = containers.indexOf(container);
+
+  if (singleTag) {
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
     }
 
-    // strip potential UTF-8 BOM if css was read from a file
-    if (css.charCodeAt(0) === 0xFEFF) { css = css.substr(1, css.length); }
-
-    // actually add the stylesheet
-    if (styleElement.styleSheet) {
-        styleElement.styleSheet.cssText += css;
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
     } else {
-        styleElement.textContent += css;
+      styleTag = styleTags[id][position] = createStyleTag();
     }
+  } else {
+    styleTag = createStyleTag();
+  }
 
-    return styleElement;
-}
-function createStyleElement() {
-    var styleElement = document.createElement('style');
-    styleElement.setAttribute('type', 'text/css');
-    return styleElement;
-}
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) {
+    css = css.slice(1, 1 + css.length);
+  }
 
-var insertCss_1 = insertCss;
-var insertCss_2 = insertCss;
-insertCss_1.insertCss = insertCss_2;
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
 
 var css_2f84417a = \\".style_someStyle {\\\\n  color: red; }\\\\n\\";
 var style = {\\"some-style\\":\\"style_someStyle\\"};
-insertCss_1(css_2f84417a);
+injector_14187a73(css_2f84417a);
 
 console.log(style);
 "
@@ -1526,149 +1571,155 @@ console.log(style);
 exports[`sass sourcemap: js 1`] = `
 "'use strict';
 
-var containers = []; // will store container HTMLElement references
-var styleElements = []; // will store {prepend: HTMLElement, append: HTMLElement}
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
 
-var usage = 'insert-css: You need to provide a CSS string. Usage: insertCss(cssString[, options]).';
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_14187a73 = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
 
-function insertCss(css, options) {
-    options = options || {};
-
-    if (css === undefined) {
-        throw new Error(usage);
-    }
-
-    var position = options.prepend === true ? 'prepend' : 'append';
-    var container = options.container !== undefined ? options.container : document.querySelector('head');
-    var containerId = containers.indexOf(container);
-
-    // first time we see this container, create the necessary entries
-    if (containerId === -1) {
-        containerId = containers.push(container) - 1;
-        styleElements[containerId] = {};
-    }
-
-    // try to get the correponding container + position styleElement, create it otherwise
-    var styleElement;
-
-    if (styleElements[containerId] !== undefined && styleElements[containerId][position] !== undefined) {
-        styleElement = styleElements[containerId][position];
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
     } else {
-        styleElement = styleElements[containerId][position] = createStyleElement();
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
 
-        if (position === 'prepend') {
-            container.insertBefore(styleElement, container.childNodes[0]);
-        } else {
-            container.appendChild(styleElement);
-        }
+  const singleTag = typeof options.singeTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+  let id = containers.indexOf(container);
+
+  if (singleTag) {
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
     }
 
-    // strip potential UTF-8 BOM if css was read from a file
-    if (css.charCodeAt(0) === 0xFEFF) { css = css.substr(1, css.length); }
-
-    // actually add the stylesheet
-    if (styleElement.styleSheet) {
-        styleElement.styleSheet.cssText += css;
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
     } else {
-        styleElement.textContent += css;
+      styleTag = styleTags[id][position] = createStyleTag();
     }
+  } else {
+    styleTag = createStyleTag();
+  }
 
-    return styleElement;
-}
-function createStyleElement() {
-    var styleElement = document.createElement('style');
-    styleElement.setAttribute('type', 'text/css');
-    return styleElement;
-}
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) {
+    css = css.slice(1, 1 + css.length);
+  }
 
-var insertCss_1 = insertCss;
-var insertCss_2 = insertCss;
-insertCss_1.insertCss = insertCss_2;
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
 
 var css_2f84417a = \\".style {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2Fzcy9zdHlsZS5zYXNzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsVUFBVTtFQUNWLFVBQVUsRUFBQSIsInNvdXJjZXNDb250ZW50IjpbIi5zdHlsZSB7XG4gIHdpZHRoOiAzMCU7XG4gIGNvbG9yOiByZWQ7IH1cbiJdfQ== */\\";
-insertCss_1(css_2f84417a);
+injector_14187a73(css_2f84417a);
 "
 `;
 
 exports[`sourcemap inline: js 1`] = `
 "'use strict';
 
-var containers = []; // will store container HTMLElement references
-var styleElements = []; // will store {prepend: HTMLElement, append: HTMLElement}
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
 
-var usage = 'insert-css: You need to provide a CSS string. Usage: insertCss(cssString[, options]).';
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_14187a73 = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
 
-function insertCss(css, options) {
-    options = options || {};
-
-    if (css === undefined) {
-        throw new Error(usage);
-    }
-
-    var position = options.prepend === true ? 'prepend' : 'append';
-    var container = options.container !== undefined ? options.container : document.querySelector('head');
-    var containerId = containers.indexOf(container);
-
-    // first time we see this container, create the necessary entries
-    if (containerId === -1) {
-        containerId = containers.push(container) - 1;
-        styleElements[containerId] = {};
-    }
-
-    // try to get the correponding container + position styleElement, create it otherwise
-    var styleElement;
-
-    if (styleElements[containerId] !== undefined && styleElements[containerId][position] !== undefined) {
-        styleElement = styleElements[containerId][position];
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
     } else {
-        styleElement = styleElements[containerId][position] = createStyleElement();
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
 
-        if (position === 'prepend') {
-            container.insertBefore(styleElement, container.childNodes[0]);
-        } else {
-            container.appendChild(styleElement);
-        }
+  const singleTag = typeof options.singeTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+  let id = containers.indexOf(container);
+
+  if (singleTag) {
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
     }
 
-    // strip potential UTF-8 BOM if css was read from a file
-    if (css.charCodeAt(0) === 0xFEFF) { css = css.substr(1, css.length); }
-
-    // actually add the stylesheet
-    if (styleElement.styleSheet) {
-        styleElement.styleSheet.cssText += css;
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
     } else {
-        styleElement.textContent += css;
+      styleTag = styleTags[id][position] = createStyleTag();
     }
+  } else {
+    styleTag = createStyleTag();
+  }
 
-    return styleElement;
-}
-function createStyleElement() {
-    var styleElement = document.createElement('style');
-    styleElement.setAttribute('type', 'text/css');
-    return styleElement;
-}
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) {
+    css = css.slice(1, 1 + css.length);
+  }
 
-var insertCss_1 = insertCss;
-var insertCss_2 = insertCss;
-insertCss_1.insertCss = insertCss_2;
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
 
 var css_2f84417a = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL2Zvby5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIuZm9vIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
-insertCss_1(css_2f84417a);
+injector_14187a73(css_2f84417a);
 
 var css_2f84417a$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL2Jhci5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIuYmFyIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
-insertCss_1(css_2f84417a$1);
+injector_14187a73(css_2f84417a$1);
 
 var css_2f84417a$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL3N0eWxlLnN0eWwiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxXQUFPO0VBQ1AsZ0JBQVk7QUFDZCIsInNvdXJjZXNDb250ZW50IjpbIi5zdHlsdXMge1xuICBjb2xvcjogI2YwMDtcbiAgYmFja2dyb3VuZDogI2YwMDtcbn1cbiJdfQ== */\\";
-insertCss_1(css_2f84417a$2);
+injector_14187a73(css_2f84417a$2);
 
 var css_2f84417a$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL3N0eWxlLnBjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIucGNzcyB7XG4gIGNvbG9yOiByZWQ7XG59XG4iXX0= */\\";
-insertCss_1(css_2f84417a$3);
+injector_14187a73(css_2f84417a$3);
 
 var css_2f84417a$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL3N0eWxlLnNhc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0VBQ1YsVUFBVSxFQUFBIiwic291cmNlc0NvbnRlbnQiOlsiLnNhc3Mge1xuICB3aWR0aDogMzAlO1xuICBjb2xvcjogcmVkOyB9XG4iXX0= */\\";
-insertCss_1(css_2f84417a$4);
+injector_14187a73(css_2f84417a$4);
 
 var css_2f84417a$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL3N0eWxlLmxlc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBR0E7RUFDRSxjQUFBO0FBRkYiLCJzb3VyY2VzQ29udGVudCI6WyJAbmljZS1ibHVlOiAjNWI4M2FkO1xuQGxpZ2h0LWJsdWU6IEBuaWNlLWJsdWUgKyAjMTExO1xuXG4ubGVzcyB7XG4gIGNvbG9yOiBAbGlnaHQtYmx1ZTtcbn1cbiJdfQ== */\\";
-insertCss_1(css_2f84417a$5);
+injector_14187a73(css_2f84417a$5);
 
 console.log(css_2f84417a, css_2f84417a$1);
 "
@@ -1677,82 +1728,85 @@ console.log(css_2f84417a, css_2f84417a$1);
 exports[`sourcemap true: js 1`] = `
 "'use strict';
 
-var containers = []; // will store container HTMLElement references
-var styleElements = []; // will store {prepend: HTMLElement, append: HTMLElement}
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
 
-var usage = 'insert-css: You need to provide a CSS string. Usage: insertCss(cssString[, options]).';
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_14187a73 = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
 
-function insertCss(css, options) {
-    options = options || {};
-
-    if (css === undefined) {
-        throw new Error(usage);
-    }
-
-    var position = options.prepend === true ? 'prepend' : 'append';
-    var container = options.container !== undefined ? options.container : document.querySelector('head');
-    var containerId = containers.indexOf(container);
-
-    // first time we see this container, create the necessary entries
-    if (containerId === -1) {
-        containerId = containers.push(container) - 1;
-        styleElements[containerId] = {};
-    }
-
-    // try to get the correponding container + position styleElement, create it otherwise
-    var styleElement;
-
-    if (styleElements[containerId] !== undefined && styleElements[containerId][position] !== undefined) {
-        styleElement = styleElements[containerId][position];
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
     } else {
-        styleElement = styleElements[containerId][position] = createStyleElement();
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
 
-        if (position === 'prepend') {
-            container.insertBefore(styleElement, container.childNodes[0]);
-        } else {
-            container.appendChild(styleElement);
-        }
+  const singleTag = typeof options.singeTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+  let id = containers.indexOf(container);
+
+  if (singleTag) {
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
     }
 
-    // strip potential UTF-8 BOM if css was read from a file
-    if (css.charCodeAt(0) === 0xFEFF) { css = css.substr(1, css.length); }
-
-    // actually add the stylesheet
-    if (styleElement.styleSheet) {
-        styleElement.styleSheet.cssText += css;
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
     } else {
-        styleElement.textContent += css;
+      styleTag = styleTags[id][position] = createStyleTag();
     }
+  } else {
+    styleTag = createStyleTag();
+  }
 
-    return styleElement;
-}
-function createStyleElement() {
-    var styleElement = document.createElement('style');
-    styleElement.setAttribute('type', 'text/css');
-    return styleElement;
-}
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) {
+    css = css.slice(1, 1 + css.length);
+  }
 
-var insertCss_1 = insertCss;
-var insertCss_2 = insertCss;
-insertCss_1.insertCss = insertCss_2;
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
 
 var css_2f84417a = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL2Zvby5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIuZm9vIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
-insertCss_1(css_2f84417a);
+injector_14187a73(css_2f84417a);
 
 var css_2f84417a$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL2Jhci5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIuYmFyIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
-insertCss_1(css_2f84417a$1);
+injector_14187a73(css_2f84417a$1);
 
 var css_2f84417a$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL3N0eWxlLnN0eWwiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxXQUFPO0VBQ1AsZ0JBQVk7QUFDZCIsInNvdXJjZXNDb250ZW50IjpbIi5zdHlsdXMge1xuICBjb2xvcjogI2YwMDtcbiAgYmFja2dyb3VuZDogI2YwMDtcbn1cbiJdfQ== */\\";
-insertCss_1(css_2f84417a$2);
+injector_14187a73(css_2f84417a$2);
 
 var css_2f84417a$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL3N0eWxlLnBjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIucGNzcyB7XG4gIGNvbG9yOiByZWQ7XG59XG4iXX0= */\\";
-insertCss_1(css_2f84417a$3);
+injector_14187a73(css_2f84417a$3);
 
 var css_2f84417a$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL3N0eWxlLnNhc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0VBQ1YsVUFBVSxFQUFBIiwic291cmNlc0NvbnRlbnQiOlsiLnNhc3Mge1xuICB3aWR0aDogMzAlO1xuICBjb2xvcjogcmVkOyB9XG4iXX0= */\\";
-insertCss_1(css_2f84417a$4);
+injector_14187a73(css_2f84417a$4);
 
 var css_2f84417a$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL3N0eWxlLmxlc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBR0E7RUFDRSxjQUFBO0FBRkYiLCJzb3VyY2VzQ29udGVudCI6WyJAbmljZS1ibHVlOiAjNWI4M2FkO1xuQGxpZ2h0LWJsdWU6IEBuaWNlLWJsdWUgKyAjMTExO1xuXG4ubGVzcyB7XG4gIGNvbG9yOiBAbGlnaHQtYmx1ZTtcbn1cbiJdfQ== */\\";
-insertCss_1(css_2f84417a$5);
+injector_14187a73(css_2f84417a$5);
 
 console.log(css_2f84417a, css_2f84417a$1);
 "

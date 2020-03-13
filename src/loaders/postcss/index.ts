@@ -193,7 +193,11 @@ const loader: Loader<PostCSSLoaderOptions> = {
         output += options.inject(cssVarName, this.id);
       } else {
         const injectorName = safeId("injector");
-        const injectorPath = normalizePath(await resolveAsync("insert-css"));
+        const injectorPath = normalizePath(
+          await resolveAsync("./inject-css", {
+            basedir: path.join(__dirname, "..", "..", "runtime"),
+          }),
+        );
         const injectorData =
           typeof options.inject === "object" ? `,${JSON.stringify(options.inject)}` : "";
         output += `\n${[
