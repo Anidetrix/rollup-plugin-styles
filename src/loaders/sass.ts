@@ -87,7 +87,7 @@ const loader: Loader<SASSLoaderOptions> = {
 
     let fiber: FiberConstructor | undefined;
     // Disable `fibers` for testing, it doesn't work
-    if (sassType == "sass" && !process.env.ROLLUP_POSTCSS_TEST) fiber = loadModule("fibers");
+    if (sassType == "sass" && !process.env.STYLES_TEST) fiber = loadModule("fibers");
 
     return workQueue.add<Payload>(
       async (): Promise<Payload> => {

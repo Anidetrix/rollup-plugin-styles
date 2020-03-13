@@ -112,7 +112,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
         ...postcssModules({
           // Skip hash while testing since CSS content would differ on Windows and Linux
           // due to different line endings.
-          generateScopedName: process.env.ROLLUP_POSTCSS_TEST
+          generateScopedName: process.env.STYLES_TEST
             ? "[name]_[local]"
             : "[name]_[local]__[hash:8]",
           failOnWrongOrder: true,
@@ -195,9 +195,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
         const injectorName = safeId("injector");
         const injectorPath = normalizePath(
           await resolveAsync("./inject-css", {
-            basedir: process.env.ROLLUP_POSTCSS_TEST
-              ? path.join(process.cwd(), "runtime")
-              : path.join(__dirname, "runtime"),
+            basedir: path.join(process.env.STYLES_TEST ? process.cwd() : __dirname, "runtime"),
           }),
         );
         const injectorData =

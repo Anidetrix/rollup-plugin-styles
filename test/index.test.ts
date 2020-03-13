@@ -5,7 +5,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import postcss from "../src";
 import { Options } from "../src/types";
 
-process.env.ROLLUP_POSTCSS_TEST = "true";
+process.env.STYLES_TEST = "true";
 
 // Types
 interface WriteData {

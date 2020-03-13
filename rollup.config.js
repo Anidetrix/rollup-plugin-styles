@@ -17,7 +17,7 @@ export default {
   ],
   plugins: [
     json(),
-    replace({ "process.env.ROLLUP_POSTCSS_TEST": false }),
+    replace({ "process.env.STYLES_TEST": false }),
     resolve({
       preferBuiltins: true,
       extensions: [".ts", ".mjs", ".js", ".json"],
