@@ -2,5 +2,6 @@
   "inputFiles": ["./src"],
   "out": "docs",
   "mode": "file",
-  "theme": "minimal"
+  "theme": "minimal",
+  "gitRevision": "master"
 }
