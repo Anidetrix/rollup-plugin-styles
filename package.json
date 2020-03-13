@@ -1,6 +1,6 @@
 {
   "name": "rollup-plugin-styles",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Universal plugin for styles in Rollup: PostCSS, Sass, Less, Stylus and more",
   "main": "dist/rollup-plugin-styles.js",
   "module": "dist/rollup-plugin-styles.es.js",
@@ -16,7 +16,7 @@
     "lint:fix": "npm run format && eslint --fix .",
     "test": "npm run lint:fix && jest",
     "test:cov": "npm run lint:fix && jest --coverage",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "rimraf dist && npm run build"
   },
   "repository": {
     "type": "git",
@@ -69,6 +69,7 @@
     "postcss-import": "^12",
     "postcss-url": "^8",
     "prettier": "^1",
+    "rimraf": "^3",
     "rollup": "^2",
     "rollup-plugin-auto-external": "^2",
     "rollup-plugin-terser": "^5",
