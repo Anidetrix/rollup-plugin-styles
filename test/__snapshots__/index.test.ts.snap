@@ -137,7 +137,7 @@ insertCss_1(css_2f84417a);
 exports[`basic postcss-resolvers: css 1`] = `
 ".style_partial {
   color: red;
-  background-image: url(\\"images/a28b0ab6.png\\");
+  background-image: url(\\"images/placeholder.png\\");
 }
 
 .style_style {
@@ -153,7 +153,7 @@ exports[`basic postcss-resolvers: js 1`] = `
 "
 `;
 
-exports[`basic postcss-resolvers: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../postcss-resolvers/partial.css\\",\\"../../../postcss-resolvers/style.css\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;EACV,4CAA0C;AAC5C;;ACDA;EACE,UAAU;AACZ\\",\\"file\\":\\"bundle.css\\",\\"sourcesContent\\":[\\".partial {\\\\r\\\\n  color: red;\\\\r\\\\n  background-image: url(\\\\\\"./placeholder.png\\\\\\");\\\\r\\\\n}\\\\r\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\r\\\\n\\\\r\\\\n.style {\\\\r\\\\n  color: red;\\\\r\\\\n}\\\\r\\\\n\\"]}"`;
+exports[`basic postcss-resolvers: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../postcss-resolvers/partial.css\\",\\"../../../postcss-resolvers/style.css\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;EACV,+CAA0C;AAC5C;;ACDA;EACE,UAAU;AACZ\\",\\"file\\":\\"bundle.css\\",\\"sourcesContent\\":[\\".partial {\\\\r\\\\n  color: red;\\\\r\\\\n  background-image: url(\\\\\\"./placeholder.png\\\\\\");\\\\r\\\\n}\\\\r\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\r\\\\n\\\\r\\\\n.style {\\\\r\\\\n  color: red;\\\\r\\\\n}\\\\r\\\\n\\"]}"`;
 
 exports[`basic simple: js 1`] = `
 "'use strict';
