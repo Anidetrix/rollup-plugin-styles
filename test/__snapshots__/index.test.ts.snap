@@ -153,7 +153,7 @@ exports[`basic postcss-resolvers: js 1`] = `
 "
 `;
 
-exports[`basic postcss-resolvers: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../postcss-resolvers/partial.css\\",\\"../../../postcss-resolvers/style.css\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;EACV,+CAA0C;AAC5C;;ACDA;EACE,UAAU;AACZ\\",\\"file\\":\\"bundle.css\\",\\"sourcesContent\\":[\\".partial {\\\\r\\\\n  color: red;\\\\r\\\\n  background-image: url(\\\\\\"./placeholder.png\\\\\\");\\\\r\\\\n}\\\\r\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\r\\\\n\\\\r\\\\n.style {\\\\r\\\\n  color: red;\\\\r\\\\n}\\\\r\\\\n\\"]}"`;
+exports[`basic postcss-resolvers: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../postcss-resolvers/partial.css\\",\\"../../../postcss-resolvers/style.css\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;EACV,+CAA0C;AAC5C;;ACDA;EACE,UAAU;AACZ\\",\\"file\\":\\"bundle.css\\",\\"sourcesContent\\":[\\".partial {\\\\n  color: red;\\\\n  background-image: url(\\\\\\"./placeholder.png\\\\\\");\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.style {\\\\n  color: red;\\\\n}\\\\n\\"]}"`;
 
 exports[`basic simple: js 1`] = `
 "'use strict';
@@ -754,7 +754,7 @@ var insertCss_1 = insertCss;
 var insertCss_2 = insertCss;
 insertCss_1.insertCss = insertCss_2;
 
-var css_2f84417a = \\".global {\\\\r\\\\n  color: red;\\\\r\\\\n}\\\\r\\\\n\\";
+var css_2f84417a = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
 insertCss_1(css_2f84417a);
 
 var css_2f84417a$1 = \\".a_module_a {\\\\n  color: red;\\\\n}\\\\n\\";
@@ -871,7 +871,7 @@ exports[`modules extract-sourcemap-inline: css 1`] = `
   width: 30%;
 }
 
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL21vZHVsZXMvc3R5bGUuY3NzIiwiLi4vLi4vLi4vbW9kdWxlcy9jb21wb3NlZC5jc3MiLCIuLi8uLi8uLi9tb2R1bGVzL3N1YmRpci9jb21wb3NpdGlvbjIuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBO0VBQ0UsY0FBZ0I7QUFDbEI7O0FBRUE7QUFFQTs7QUNOQTtFQUNFO0lBRUUsc0JBQXNCO0VBQ3hCO0FBQ0Y7O0FBRUE7RUFDRSx5QkFBeUI7QUFDM0I7O0FDWEE7RUFDRSxVQUFVO0FBQ1oiLCJmaWxlIjoiYnVuZGxlLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIkB2YWx1ZSBwcmltYXJ5LCBzZWNvbmRhcnkgZnJvbSBjb2xvcnM7XG5cbi5tb2R1bGUge1xuICBjb2xvcjogc2Vjb25kYXJ5O1xufVxuXG4ubW9kdWxlMiB7XG4gIGNvbXBvc2VzOiBjb21wb3NpdGlvbiBmcm9tIFwiLi9jb21wb3NlZC5jc3NcIjtcbn1cbiIsIkB2YWx1ZSBwcmltYXJ5IGZyb20gY29sb3JzO1xyXG5cclxuQG1lZGlhIHNjcmVlbiBhbmQgKG1pbi13aWR0aDogOTAwcHgpIHtcclxuICAuY29tcG9zaXRpb24ge1xyXG4gICAgY29tcG9zZXM6IGNvbXBvc2l0aW9uZWQgZnJvbSBcIi4vc3ViZGlyL2NvbXBvc2l0aW9uMi5jc3NcIjtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IGFxdWE7XHJcbiAgfVxyXG59XHJcblxyXG4uY29tcG9zaXRpb24ge1xyXG4gIGJhY2tncm91bmQtY29sb3I6IHByaW1hcnk7XHJcbn1cclxuIiwiLmNvbXBvc2l0aW9uZWQge1xyXG4gIHdpZHRoOiAzMCU7XHJcbn1cclxuIl19 */"
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL21vZHVsZXMvc3R5bGUuY3NzIiwiLi4vLi4vLi4vbW9kdWxlcy9jb21wb3NlZC5jc3MiLCIuLi8uLi8uLi9tb2R1bGVzL3N1YmRpci9jb21wb3NpdGlvbjIuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBO0VBQ0UsY0FBZ0I7QUFDbEI7O0FBRUE7QUFFQTs7QUNOQTtFQUNFO0lBRUUsc0JBQXNCO0VBQ3hCO0FBQ0Y7O0FBRUE7RUFDRSx5QkFBeUI7QUFDM0I7O0FDWEE7RUFDRSxVQUFVO0FBQ1oiLCJmaWxlIjoiYnVuZGxlLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIkB2YWx1ZSBwcmltYXJ5LCBzZWNvbmRhcnkgZnJvbSBjb2xvcnM7XG5cbi5tb2R1bGUge1xuICBjb2xvcjogc2Vjb25kYXJ5O1xufVxuXG4ubW9kdWxlMiB7XG4gIGNvbXBvc2VzOiBjb21wb3NpdGlvbiBmcm9tIFwiLi9jb21wb3NlZC5jc3NcIjtcbn1cbiIsIkB2YWx1ZSBwcmltYXJ5IGZyb20gY29sb3JzO1xuXG5AbWVkaWEgc2NyZWVuIGFuZCAobWluLXdpZHRoOiA5MDBweCkge1xuICAuY29tcG9zaXRpb24ge1xuICAgIGNvbXBvc2VzOiBjb21wb3NpdGlvbmVkIGZyb20gXCIuL3N1YmRpci9jb21wb3NpdGlvbjIuY3NzXCI7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogYXF1YTtcbiAgfVxufVxuXG4uY29tcG9zaXRpb24ge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiBwcmltYXJ5O1xufVxuIiwiLmNvbXBvc2l0aW9uZWQge1xuICB3aWR0aDogMzAlO1xufVxuIl19 */"
 `;
 
 exports[`modules extract-sourcemap-inline: js 1`] = `
@@ -925,7 +925,7 @@ console.log(style.module, composed.composition, composition2.compositioned);
 "
 `;
 
-exports[`modules extract-sourcemap-true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../modules/style.css\\",\\"../../../modules/composed.css\\",\\"../../../modules/subdir/composition2.css\\"],\\"names\\":[],\\"mappings\\":\\"AAEA;EACE,cAAgB;AAClB;;AAEA;AAEA;;ACNA;EACE;IAEE,sBAAsB;EACxB;AACF;;AAEA;EACE,yBAAyB;AAC3B;;ACXA;EACE,UAAU;AACZ\\",\\"file\\":\\"bundle.css\\",\\"sourcesContent\\":[\\"@value primary, secondary from colors;\\\\n\\\\n.module {\\\\n  color: secondary;\\\\n}\\\\n\\\\n.module2 {\\\\n  composes: composition from \\\\\\"./composed.css\\\\\\";\\\\n}\\\\n\\",\\"@value primary from colors;\\\\r\\\\n\\\\r\\\\n@media screen and (min-width: 900px) {\\\\r\\\\n  .composition {\\\\r\\\\n    composes: compositioned from \\\\\\"./subdir/composition2.css\\\\\\";\\\\r\\\\n    background-color: aqua;\\\\r\\\\n  }\\\\r\\\\n}\\\\r\\\\n\\\\r\\\\n.composition {\\\\r\\\\n  background-color: primary;\\\\r\\\\n}\\\\r\\\\n\\",\\".compositioned {\\\\r\\\\n  width: 30%;\\\\r\\\\n}\\\\r\\\\n\\"]}"`;
+exports[`modules extract-sourcemap-true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../modules/style.css\\",\\"../../../modules/composed.css\\",\\"../../../modules/subdir/composition2.css\\"],\\"names\\":[],\\"mappings\\":\\"AAEA;EACE,cAAgB;AAClB;;AAEA;AAEA;;ACNA;EACE;IAEE,sBAAsB;EACxB;AACF;;AAEA;EACE,yBAAyB;AAC3B;;ACXA;EACE,UAAU;AACZ\\",\\"file\\":\\"bundle.css\\",\\"sourcesContent\\":[\\"@value primary, secondary from colors;\\\\n\\\\n.module {\\\\n  color: secondary;\\\\n}\\\\n\\\\n.module2 {\\\\n  composes: composition from \\\\\\"./composed.css\\\\\\";\\\\n}\\\\n\\",\\"@value primary from colors;\\\\n\\\\n@media screen and (min-width: 900px) {\\\\n  .composition {\\\\n    composes: compositioned from \\\\\\"./subdir/composition2.css\\\\\\";\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composition {\\\\n  background-color: primary;\\\\n}\\\\n\\",\\".compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\"]}"`;
 
 exports[`modules inject: js 1`] = `
 "'use strict';
@@ -993,11 +993,11 @@ var css_2f84417a = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.styl
 var style = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
 insertCss_1(css_2f84417a);
 
-var css_2f84417a$1 = \\"@media screen and (min-width: 900px) {\\\\r\\\\n  .composed_composition {\\\\r\\\\n    background-color: aqua;\\\\r\\\\n  }\\\\r\\\\n}\\\\r\\\\n\\\\r\\\\n.composed_composition {\\\\r\\\\n  background-color: #BF4040;\\\\r\\\\n}\\\\r\\\\n\\";
+var css_2f84417a$1 = \\"@media screen and (min-width: 900px) {\\\\n  .composed_composition {\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composed_composition {\\\\n  background-color: #BF4040;\\\\n}\\\\n\\";
 var composed = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
 insertCss_1(css_2f84417a$1);
 
-var css_2f84417a$2 = \\".composition2_compositioned {\\\\r\\\\n  width: 30%;\\\\r\\\\n}\\\\r\\\\n\\";
+var css_2f84417a$2 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
 var composition2 = {\\"compositioned\\":\\"composition2_compositioned\\"};
 insertCss_1(css_2f84417a$2);
 
@@ -1071,11 +1071,11 @@ var css_2f84417a = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.styl
 var style = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
 insertCss_1(css_2f84417a);
 
-var css_2f84417a$1 = \\"@media screen and (min-width: 900px) {\\\\r\\\\n  .composed_composition {\\\\r\\\\n    background-color: aqua;\\\\r\\\\n  }\\\\r\\\\n}\\\\r\\\\n\\\\r\\\\n.composed_composition {\\\\r\\\\n  background-color: #BF4040;\\\\r\\\\n}\\\\r\\\\n\\";
+var css_2f84417a$1 = \\"@media screen and (min-width: 900px) {\\\\n  .composed_composition {\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composed_composition {\\\\n  background-color: #BF4040;\\\\n}\\\\n\\";
 var composed = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
 insertCss_1(css_2f84417a$1);
 
-var css_2f84417a$2 = \\".composition2_compositioned {\\\\r\\\\n  width: 30%;\\\\r\\\\n}\\\\r\\\\n\\";
+var css_2f84417a$2 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
 var composition2 = {\\"compositioned\\":\\"composition2_compositioned\\"};
 insertCss_1(css_2f84417a$2);
 
