@@ -31,9 +31,10 @@ export default (css, options = {}) => {
 
   /** @type {HTMLStyleElement} */
   let styleTag;
-  let id = containers.indexOf(container);
 
   if (singleTag) {
+    let id = containers.indexOf(container);
+
     if (id === -1) {
       id = containers.push(container) - 1;
       styleTags[id] = {};
