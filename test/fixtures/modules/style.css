@@ -1,0 +1,9 @@
+@value primary, secondary from colors;
+
+.module {
+  color: secondary;
+}
+
+.module2 {
+  composes: composition from "./composed.css";
+}

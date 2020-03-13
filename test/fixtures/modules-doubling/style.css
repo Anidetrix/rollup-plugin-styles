@@ -1,0 +1,7 @@
+html {
+  --color-primary: green;
+}
+
+.primary {
+  color: var(--color-primary);
+}

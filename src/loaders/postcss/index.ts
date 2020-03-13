@@ -1,0 +1,210 @@
+import { makeLegalIdentifier } from "@rollup/pluginutils";
+
+import path from "path";
+import postcss, {
+  Plugin as PostCSSPlugin,
+  Transformer as PostCSSTransformer,
+  Processor as PostCSSProcessor,
+  ProcessOptions as PostCSSProcessOptions,
+} from "postcss";
+import findPostcssConfig from "postcss-load-config";
+import cssnano from "cssnano";
+
+import { Loader, PostCSSLoaderOptions, Payload } from "../../types";
+import postcssModules from "./modules";
+import ensurePostCSSOption from "../../utils/ensure-postcss-option";
+import { humanlizePath, normalizePath } from "../../utils/path-utils";
+import {
+  makeMapDataComment,
+  relativeMap,
+  resolveMap,
+  modifyMap,
+} from "../../utils/sourcemap-utils";
+import resolveAsync from "../../utils/resolve-async";
+import safeId from "../../utils/safe-id";
+
+import postcssImportExport from "./import-export";
+import postcssNoop from "./noop";
+
+type LoadedConfig = {
+  file?: string;
+  options?: PostCSSProcessOptions;
+  plugins?: (PostCSSPlugin<unknown> | PostCSSTransformer | PostCSSProcessor)[];
+};
+
+/**
+ * @param {string} id File path
+ * @param {object} config `postcss-load-config`'s options
+ * @returns {Promise<object>} Loaded PostCSS config
+ */
+function loadConfig(id: string, config: PostCSSLoaderOptions["config"]): Promise<LoadedConfig> {
+  const configPath =
+    typeof config === "object" && config.path ? path.resolve(config.path) : path.dirname(id);
+
+  const context: { [prop: string]: object | string } = {
+    file: {
+      extname: path.extname(id),
+      dirname: path.dirname(id),
+      basename: path.basename(id),
+    },
+    options: (typeof config === "object" && config.ctx) || {},
+  };
+
+  return findPostcssConfig(context, configPath).catch(error => {
+    if (!error.message.toLowerCase().includes("no postcss config found")) throw error;
+    return {};
+  });
+}
+
+/**
+ * @param {string} file Filename
+ * @returns {boolean} `true` if `file` matches `[name].module.[ext]` format, otherwise `false`
+ */
+function isModuleFile(file: string): boolean {
+  return /\.module\.[a-z]+$/i.test(file);
+}
+
+const loader: Loader<PostCSSLoaderOptions> = {
+  name: "postcss",
+  alwaysProcess: true,
+  // `test` option is dynamically set in `Loaders` class
+  async process(payload) {
+    const { options } = this;
+
+    const config = await loadConfig(this.id, options.config);
+
+    const plugins = [
+      ...((options.postcss && options.postcss.plugins) || []),
+      ...(config.plugins || []),
+    ];
+
+    const shouldExtract = Boolean(options.extract);
+    const shouldInject = Boolean(options.inject);
+    const autoModules = options.autoModules && isModuleFile(this.id);
+    const supportModules = Boolean(options.modules || autoModules);
+    const modulesExports: { [filepath: string]: { [prop: string]: string } } = {};
+
+    const postcssOpts: PostCSSLoaderOptions["postcss"] & {
+      from: string;
+      to: string;
+      map: PostCSSProcessOptions["map"];
+    } = {
+      ...options.postcss,
+      ...config.options,
+      from: this.id,
+      // Set `to` to extract location, required for some plugins
+      to: typeof options.extract === "string" ? options.extract : this.id,
+      // Annotation are still enabled if you have set {inline: true} in PostCSS `map` option
+      map: Boolean(this.sourceMap) && { inline: false, annotation: false, sourcesContent: true },
+    };
+
+    delete postcssOpts.plugins;
+    postcssOpts.parser = ensurePostCSSOption(postcssOpts.parser);
+    postcssOpts.syntax = ensurePostCSSOption(postcssOpts.syntax);
+    postcssOpts.stringifier = ensurePostCSSOption(postcssOpts.stringifier);
+
+    if (typeof postcssOpts.map === "object" && payload.map)
+      postcssOpts.map.prev = await relativeMap(payload.map, path.dirname(postcssOpts.from));
+
+    if (supportModules) {
+      const modulesOptions = typeof options.modules === "object" ? options.modules : {};
+      plugins.push(
+        ...postcssModules({
+          // Skip hash while testing since CSS content would differ on Windows and Linux
+          // due to different line endings.
+          generateScopedName: process.env.ROLLUP_POSTCSS_TEST
+            ? "[name]_[local]"
+            : "[name]_[local]__[hash:8]",
+          failOnWrongOrder: true,
+          ...modulesOptions,
+        }),
+        postcssImportExport({
+          extensions: options.extensions,
+          getJSON(file, json, out) {
+            modulesExports[file] = json;
+            if (
+              typeof options.modules === "object" &&
+              typeof options.modules.getJSON === "function"
+            ) {
+              return options.modules.getJSON(file, json, out);
+            }
+          },
+        }),
+      );
+    }
+
+    // If shouldExtract, minimize is done after all CSS are extracted to a file
+    if (!shouldExtract && options.minimize)
+      plugins.push(cssnano(typeof options.minimize === "object" ? options.minimize : {}));
+
+    if (plugins.length === 0) plugins.push(postcssNoop);
+    const res = await postcss(plugins).process(payload.code, postcssOpts);
+
+    const deps = res.messages.filter(msg => msg.type === "dependency");
+    for (const dep of deps) this.dependencies.add(dep.file);
+
+    for (const warning of res.warnings())
+      this.warn(warning.text, { column: warning.column, line: warning.line });
+
+    const map: Payload["map"] =
+      res.map && JSON.stringify(await resolveMap(res.map.toString(), path.dirname(postcssOpts.to)));
+
+    if (!shouldExtract && this.sourceMap && map)
+      res.css += makeMapDataComment(
+        JSON.stringify(await modifyMap(await relativeMap(map), map => void delete map.file)),
+      );
+
+    let output = "";
+    if (options.namedExports) {
+      const json = modulesExports[this.id];
+
+      const getClassName =
+        typeof options.namedExports === "function" ? options.namedExports : makeLegalIdentifier;
+
+      for (const name in json) {
+        const newName = getClassName(name);
+
+        // Skip logging when namedExports is a function since user can log that manually
+        if (name !== newName && typeof options.namedExports !== "function")
+          this.warn(`Exported "${name}" as "${newName}" in ${humanlizePath(this.id)}`);
+
+        if (!json[newName]) json[newName] = json[name];
+
+        output += `\nexport const ${newName} = ${JSON.stringify(json[name])};`;
+      }
+    }
+
+    const cssVarName = safeId("css");
+    let extracted: Payload["extracted"];
+    if (shouldExtract) {
+      output += `\nexport default ${JSON.stringify(modulesExports[this.id])};`;
+      extracted = { id: this.id, code: res.css, map };
+    } else {
+      const defaultExport = supportModules ? JSON.stringify(modulesExports[this.id]) : cssVarName;
+      output += `\n${[
+        `var ${cssVarName} = ${JSON.stringify(res.css)};`,
+        `export const stylesheet = ${JSON.stringify(res.css)};`,
+        `export default ${defaultExport};`,
+      ].join("\n")}`;
+    }
+
+    if (!shouldExtract && shouldInject) {
+      if (typeof options.inject === "function") {
+        output += options.inject(cssVarName, this.id);
+      } else {
+        const injectorName = safeId("injector");
+        const injectorPath = normalizePath(await resolveAsync("insert-css"));
+        const injectorData =
+          typeof options.inject === "object" ? `,${JSON.stringify(options.inject)}` : "";
+        output += `\n${[
+          `import ${injectorName} from '${injectorPath}';`,
+          `${injectorName}(${cssVarName}${injectorData});`,
+        ].join("\n")}`;
+      }
+    }
+
+    return { code: output, map, extracted };
+  },
+};
+
+export default loader;

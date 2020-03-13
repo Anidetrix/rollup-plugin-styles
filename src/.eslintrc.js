@@ -1,0 +1,37 @@
+const path = require("path");
+module.exports = {
+  root: true,
+  extends: [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:unicorn/recommended",
+    "plugin:node/recommended",
+    "prettier",
+    "prettier/@typescript-eslint",
+    "prettier/unicorn",
+  ],
+  env: { node: true, browser: false, es6: true },
+  parser: "@typescript-eslint/parser",
+  parserOptions: {
+    sourceType: "module",
+    project: path.resolve(__dirname, "..", "tsconfig.json"),
+    tsconfigRootDir: path.resolve(__dirname, ".."),
+  },
+  plugins: ["unicorn", "@typescript-eslint", "node"],
+  rules: {
+    "no-var": "error",
+    "prefer-template": "error",
+    "unicorn/prevent-abbreviations": "off",
+    "@typescript-eslint/no-floating-promises": "error",
+    "@typescript-eslint/return-await": "error",
+    "node/no-missing-import": "off",
+    "node/file-extension-in-import": "off",
+    "node/no-unsupported-features/es-syntax": "off",
+  },
+  settings: { "import/resolver": { node: { extensions: [".js", ".ts"] } } },
+};

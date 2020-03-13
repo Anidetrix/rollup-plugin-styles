@@ -1,0 +1,8 @@
+/dist
+/tmp
+/.cache
+/.vscode
+/node_modules
+/test/fixtures
+/coverage
+/docs

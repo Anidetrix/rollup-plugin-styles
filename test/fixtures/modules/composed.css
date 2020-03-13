@@ -1,0 +1,12 @@
+@value primary from colors;
+
+@media screen and (min-width: 900px) {
+  .composition {
+    composes: compositioned from "./subdir/composition2.css";
+    background-color: aqua;
+  }
+}
+
+.composition {
+  background-color: primary;
+}

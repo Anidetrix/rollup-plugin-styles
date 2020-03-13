@@ -1,0 +1,7 @@
+/**/dist/
+/.idea/
+/coverage/
+/node_modules/
+/.cache
+/.vscode
+/*.log

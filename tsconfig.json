@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    /* Basic Options */
+    "target": "es6",
+    "module": "esnext",
+    /* Compile Options */
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "importHelpers": true,
+    "esModuleInterop": true,
+    /* Compile Checks */
+    "isolatedModules": true,
+    "noEmitOnError": true,
+    /* Output Options */
+    "declaration": true,
+    "sourceMap": true,
+    /* Strict Type-Checking Options */
+    "strict": true,
+    /* Additional Checks */
+    "forceConsistentCasingInFileNames": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "noFallthroughCasesInSwitch": true,
+    /* Paths */
+    "baseUrl": "."
+  },
+  "include": ["src/**/*.ts", "test/**/*.ts"]
+}

@@ -1,0 +1,116 @@
+{
+  "name": "rollup-plugin-styles",
+  "version": "1.0.0",
+  "description": "Universal plugin for styles in Rollup: PostCSS, Sass, Less, Stylus and more",
+  "main": "dist/rollup-plugin-styles.js",
+  "types": "dist/rollup-plugin-styles.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "docgen": "typedoc",
+    "format": "prettier -l --write \"**/*.{ts,js,json,yml,md}\"",
+    "lint": "npm run format && eslint .",
+    "lint:fix": "npm run format && eslint --fix .",
+    "test": "npm run lint:fix && jest",
+    "test:cov": "npm run lint:fix && jest --coverage",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Anidetrix/rollup-plugin-styles.git"
+  },
+  "keywords": [
+    "rollup",
+    "rollup-plugin",
+    "postcss"
+  ],
+  "author": "Anton Kudryavtsev <boblobl4@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Anidetrix/rollup-plugin-styles/issues"
+  },
+  "engines": {
+    "node": ">=8.3.0"
+  },
+  "homepage": "https://github.com/Anidetrix/rollup-plugin-styles#readme",
+  "devDependencies": {
+    "@babel/core": "^7",
+    "@babel/preset-env": "^7",
+    "@rollup/plugin-commonjs": "^11",
+    "@rollup/plugin-json": "^4",
+    "@rollup/plugin-node-resolve": "^7",
+    "@types/fs-extra": "^8",
+    "@types/jest": "^25",
+    "@types/less": "^3",
+    "@types/node": "^8",
+    "@typescript-eslint/eslint-plugin": "^2",
+    "@typescript-eslint/parser": "^2",
+    "@wessberg/rollup-plugin-ts": "^1",
+    "autoprefixer": "^9",
+    "babel-jest": "^25",
+    "eslint": "^6",
+    "eslint-config-prettier": "^6",
+    "eslint-import-resolver-node": "^0.3",
+    "eslint-plugin-import": "^2",
+    "eslint-plugin-jest": "^23",
+    "eslint-plugin-node": "^11",
+    "eslint-plugin-unicorn": "^17",
+    "fibers": "^4",
+    "fs-extra": "^8",
+    "husky": "^4",
+    "jest": "^25",
+    "less": "^3",
+    "node-sass": "^4",
+    "postcss-custom-properties": "^9",
+    "postcss-import": "^12",
+    "postcss-url": "^8",
+    "prettier": "^1",
+    "rollup": "^2",
+    "rollup-plugin-auto-external": "^2",
+    "rollup-plugin-terser": "^5",
+    "sass": "^1",
+    "stylus": "^0.54",
+    "sugarss": "^2",
+    "ts-jest": "^25",
+    "tslib": "^1",
+    "typedoc": "^0.16",
+    "typescript": "^3"
+  },
+  "dependencies": {
+    "@rollup/pluginutils": "^3",
+    "@types/cssnano": "^4",
+    "@types/icss-utils": "^4",
+    "@types/postcss-load-config": "^2",
+    "@types/resolve": "^1",
+    "concat-with-sourcemaps": "^1",
+    "cssnano": "^4",
+    "hash.js": "^1",
+    "icss-utils": "^4",
+    "import-cwd": "^3",
+    "insert-css": "^2",
+    "p-queue": "^6",
+    "postcss": "^7",
+    "postcss-load-config": "^2",
+    "postcss-modules-extract-imports": "^2",
+    "postcss-modules-local-by-default": "^3",
+    "postcss-modules-scope": "^2",
+    "postcss-modules-values": "^3",
+    "resolve": "^1"
+  },
+  "peerDependencies": {
+    "rollup": ">=1.20 <3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run docgen && npm run test",
+      "pre-push": "npm run docgen && npm run test"
+    }
+  },
+  "release": {
+    "branches": [
+      "master"
+    ]
+  }
+}
