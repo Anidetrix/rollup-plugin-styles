@@ -1,8 +1,8 @@
 {
   "name": "rollup-plugin-styles",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Universal plugin for styles in Rollup: PostCSS, Sass, Less, Stylus and more",
-  "main": "dist/rollup-plugin-styles.js",
+  "module": "dist/rollup-plugin-styles.js",
   "types": "dist/rollup-plugin-styles.d.ts",
   "files": [
     "dist"
