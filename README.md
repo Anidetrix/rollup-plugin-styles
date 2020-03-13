@@ -88,7 +88,7 @@ Similar to how webpack's [sass-loader](https://github.com/webpack-contrib/sass-l
 
 ## Options
 
-See [Options](./interfaces/options.html) for full list of available options.
+See [Options](https://anidetrix.github.io/rollup-plugin-styles/interfaces/options.html) for full list of available options.
 
 ## Differences from [rollup-plugin-postcss](https://github.com/egoist/rollup-plugin-postcss)
 
