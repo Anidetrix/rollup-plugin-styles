@@ -27,6 +27,8 @@ jobs:
         run: |
           npm install -g yarn
           yarn --frozen-lockfile --non-interactive
+        env:
+          HUSKY_SKIP_INSTALL: 1
       - name: Test
         run: yarn test
       - name: Lint

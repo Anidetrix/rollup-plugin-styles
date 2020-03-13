@@ -23,6 +23,8 @@ jobs:
         run: |
           npm install -g yarn
           yarn --frozen-lockfile --non-interactive
+        env:
+          HUSKY_SKIP_INSTALL: 1
       - uses: actions/checkout@v2
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v2
