@@ -16,6 +16,7 @@
     "lint:fix": "npm run format && eslint --fix .",
     "test": "npm run lint:fix && jest",
     "test:cov": "npm run lint:fix && jest --coverage",
+    "commit": "commit",
     "prepublishOnly": "rimraf dist && npm run build"
   },
   "repository": {
@@ -39,6 +40,9 @@
   "devDependencies": {
     "@babel/core": "^7",
     "@babel/preset-env": "^7",
+    "@commitlint/cli": "^8",
+    "@commitlint/config-conventional": "^8",
+    "@commitlint/prompt-cli": "^8",
     "@rollup/plugin-commonjs": "^11",
     "@rollup/plugin-json": "^4",
     "@rollup/plugin-node-resolve": "^7",
