@@ -211,14 +211,33 @@ export interface Options {
   plugins?: PostCSSPlugin<unknown>[];
   /**
    * Inject CSS into `<head>`, it's always false when `extract: true`.
-   * You can also use it as options for [insert-css](https://github.com/substack/insert-css#api).
+   * You can also use it as options for CSS injection.
    * It can also be a `function`, returning a `string` with js code.
    *
    * @default true
    * */
   inject?:
     | boolean
-    | { prepend?: boolean; container?: HTMLElement }
+    | {
+        /**
+         * Insert `<style>` tag into container as a first child
+         *
+         * @default false
+         * */
+        prepend?: boolean;
+        /**
+         * Inject CSS into single `<style>` tag only
+         *
+         * @default false
+         * */
+        singleTag?: boolean;
+        /**
+         * Container for `<style>` tag(s) injection
+         *
+         * @default document.head
+         */
+        container?: HTMLElement;
+      }
     | ((varname: string, id: string) => string);
   /**
    * Extract CSS to the same location where JS file is generated but with .css extension.

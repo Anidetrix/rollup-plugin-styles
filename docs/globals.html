@@ -2585,7 +2585,7 @@ img {
 };</code></pre>
 			<p>After that you can import CSS files in your code:</p>
 			<pre><code class="language-js"><span class="hljs-keyword">import</span> <span class="hljs-string">"./style.css"</span>;</code></pre>
-			<p>Note that, by default, generated CSS will be injected into <code>&lt;head&gt;</code> using <a href="https://github.com/substack/insert-css#api">insert-css</a>, with CSS also available as default export unless <code>extract: true</code>:</p>
+			<p>Note that, by default, generated CSS will be injected into <code>&lt;head&gt;</code>, with CSS also available as default export unless <code>extract: true</code>:</p>
 			<pre><code class="language-js"><span class="hljs-comment">// Inject into `&lt;head&gt;`, also available as `style` object in this example</span>
 <span class="hljs-keyword">import</span> style <span class="hljs-keyword">from</span> <span class="hljs-string">"./style.css"</span>;</code></pre>
 			<p>This plugin will also automatically detect and use local PostCSS config files.</p>
