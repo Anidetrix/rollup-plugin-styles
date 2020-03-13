@@ -211,7 +211,7 @@ export interface Options {
   plugins?: PostCSSPlugin<unknown>[];
   /**
    * Inject CSS into `<head>`, it's always false when `extract: true`.
-   * You can also use it as options for CSS insertion.
+   * You can also use it as options for CSS injection.
    * It can also be a `function`, returning a `string` with js code.
    *
    * @default true
