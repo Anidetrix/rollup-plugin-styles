@@ -10,7 +10,10 @@ import pkg from "./package.json";
 export default {
   external: ["postcss"],
   input: "src/index.ts",
-  output: { file: pkg.module, format: "es", sourcemap: true },
+  output: [
+    { format: "cjs", file: pkg.main },
+    { format: "esm", file: pkg.module },
+  ],
   plugins: [
     json(),
     resolve({
