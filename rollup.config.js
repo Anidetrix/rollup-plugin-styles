@@ -3,8 +3,6 @@ import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import autoExternal from "rollup-plugin-auto-external";
 import ts from "@wessberg/rollup-plugin-ts";
-import { terser } from "rollup-plugin-terser";
-
 import pkg from "./package.json";
 
 export default {
@@ -23,6 +21,5 @@ export default {
     commonjs(),
     autoExternal(),
     ts({ transpiler: "babel" }),
-    terser(),
   ],
 };
