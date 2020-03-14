@@ -1,14 +1,13 @@
-name: CI
+name: Code Coverage
 
 on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
         node: ["12", "8"]
 
     steps:
@@ -27,12 +26,13 @@ jobs:
         env:
           HUSKY_SKIP_INSTALL: 1
 
-      - name: Lint
-        run: yarn lint
+      - name: Test Coverage
+        run: yarn test:cov
         env:
           CI: true
 
-      - name: Test
-        run: yarn test
-        env:
-          CI: true
+      - name: Submit Coverage to codecov.io
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true

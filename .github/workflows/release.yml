@@ -1,30 +1,31 @@
 name: Release
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node: ["12", "8"]
+
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js LTS
+      - name: Code Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
         uses: actions/setup-node@v1
         with:
-          # alias support: https://github.com/actions/setup-node/issues/26
-          node-version: "12"
-      - name: Cache NPM dependencies
-        uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: ${{ runner.OS }}-npm-cache-${{ matrix.os }}
-          restore-keys: |
-            ${{ runner.OS }}-npm-cache-${{ matrix.os }}
+          node-version: ${{ matrix.node }}
+
       - name: Install Dependencies
         run: |
           npm install -g yarn
           yarn --frozen-lockfile --non-interactive
         env:
           HUSKY_SKIP_INSTALL: 1
+
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v2
         with:
