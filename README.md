@@ -1,6 +1,9 @@
 # rollup-plugin-styles
 
-[![NPM version](https://img.shields.io/npm/v/rollup-plugin-styles.svg?style=flat)](https://npmjs.com/package/rollup-plugin-styles) <!-- [![NPM downloads](https://img.shields.io/npm/dm/rollup-plugin-styles.svg?style=flat)](https://npmjs.com/package/rollup-plugin-styles)  -->[![codecov](https://codecov.io/gh/Anidetrix/rollup-plugin-styles/branch/master/graph/badge.svg)](https://codecov.io/gh/Anidetrix/rollup-plugin-styles)
+<a href="https://www.npmjs.com/package/rollup-plugin-styles"><img src="https://img.shields.io/npm/v/rollup-plugin-styles"/></a>
+<a href="https://www.npmjs.com/package/rollup-plugin-styles"><img src="https://img.shields.io/npm/dt/rollup-plugin-styles"/></a>
+<a href="https://codecov.io/gh/Anidetrix/rollup-plugin-styles"><img src="https://codecov.io/gh/Anidetrix/rollup-plugin-styles/branch/master/graph/badge.svg"/></a>
+<a href="./LICENSE"><img src="https://img.shields.io/github/license/Anidetrix/rollup-plugin-styles"/></a>
 
 🎨 Universal plugin for styles in [Rollup](https://github.com/rollup/rollup): [PostCSS](https://github.com/postcss/postcss), [Sass](github.com/sass/dart-sass), [Less](github.com/less/less.js), [Stylus](github.com/stylus/stylus) and more.
 
