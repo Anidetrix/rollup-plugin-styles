@@ -26,7 +26,13 @@
   "keywords": [
     "rollup",
     "rollup-plugin",
-    "postcss"
+    "css",
+    "css-modules",
+    "postcss",
+    "sass",
+    "scss",
+    "less",
+    "stylus"
   ],
   "author": "Anton Kudryavtsev <boblobl4@gmail.com>",
   "license": "MIT",
