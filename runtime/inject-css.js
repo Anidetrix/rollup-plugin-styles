@@ -13,7 +13,7 @@ const styleTags = [];
  */
 export default (css, options = {}) => {
   if (!css || typeof document === "undefined") return;
-  const singleTag = typeof options.singeTag !== "undefined" ? options.singleTag : false;
+  const singleTag = typeof options.singleTag !== "undefined" ? options.singleTag : false;
   const container = typeof options.container !== "undefined" ? options.container : document.head;
   const position = options.prepend === true ? "prepend" : "append";
 
