@@ -7,17 +7,16 @@ import postcss, {
   Processor as PostCSSProcessor,
   ProcessOptions as PostCSSProcessOptions,
 } from "postcss";
-import findPostcssConfig from "postcss-load-config";
+import findPostCSSConfig from "postcss-load-config";
 import cssnano from "cssnano";
 
 import { Loader, PostCSSLoaderOptions, Payload } from "../../types";
-import postcssModules from "./modules";
-import ensurePostCSSOption from "../../utils/ensure-postcss-option";
 import { humanlizePath, normalizePath } from "../../utils/path-utils";
 import { MapModifier } from "../../utils/sourcemap-utils";
 import resolveAsync from "../../utils/resolve-async";
 import safeId from "../../utils/safe-id";
 
+import postcssModules from "./modules";
 import postcssImportExport from "./import-export";
 import postcssNoop from "./noop";
 
@@ -45,7 +44,7 @@ function loadConfig(id: string, config: PostCSSLoaderOptions["config"]): Promise
     options: (typeof config === "object" && config.ctx) || {},
   };
 
-  return findPostcssConfig(context, configPath).catch(error => {
+  return findPostCSSConfig(context, configPath).catch(error => {
     if (!error.message.toLowerCase().includes("no postcss config found")) throw error;
     return {};
   });
@@ -94,9 +93,6 @@ const loader: Loader<PostCSSLoaderOptions> = {
     };
 
     delete postcssOpts.plugins;
-    postcssOpts.parser = ensurePostCSSOption(postcssOpts.parser);
-    postcssOpts.syntax = ensurePostCSSOption(postcssOpts.syntax);
-    postcssOpts.stringifier = ensurePostCSSOption(postcssOpts.stringifier);
 
     if (typeof postcssOpts.map === "object" && payload.map)
       postcssOpts.map.prev = new MapModifier(payload.map)

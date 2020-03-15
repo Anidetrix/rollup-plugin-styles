@@ -14,7 +14,6 @@ import {
   ExtractedData,
   ObjectWithUnknownProps,
 } from "./types";
-import ensurePostCSSOption from "./utils/ensure-postcss-option";
 import Loaders from "./loaders";
 import { relativePath, normalizePath } from "./utils/path-utils";
 import { MapModifier } from "./utils/sourcemap-utils";
@@ -39,6 +38,17 @@ function inferOption<T extends boolean | object>(option: T | undefined, defaultV
  */
 function ensureOption<T>(option: T | undefined, defaultValue: T): T {
   return typeof option !== "undefined" ? option : defaultValue;
+}
+
+/**
+ * Make sure PostCSS option is resolved
+ * @param option Option
+ * @returns resolved `option`
+ */
+function ensurePostCSSOption<T extends postcss.Parser | postcss.Syntax | postcss.Stringifier>(
+  option: string | T | undefined,
+): T | undefined {
+  return typeof option === "string" ? (require(option) as T) : option;
 }
 
 export default (options: Options = {}): Plugin => {

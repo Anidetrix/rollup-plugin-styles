@@ -2479,6 +2479,9 @@ img {
 		<li class=" tsd-kind-function tsd-has-type-parameter">
 			<a href="globals.html#ensureoption" class="tsd-kind-icon">ensure<wbr>Option</a>
 		</li>
+		<li class=" tsd-kind-function tsd-has-type-parameter">
+			<a href="globals.html#ensurepostcssoption" class="tsd-kind-icon">ensure<wbr>PostCSSOption</a>
+		</li>
 		<li class=" tsd-kind-function">
 			<a href="globals.html#fixture" class="tsd-kind-icon">fixture</a>
 		</li>
@@ -2736,6 +2739,7 @@ img {
 							<li class="tsd-kind-function"><a href="globals.html#defaultimporter" class="tsd-kind-icon">default<wbr>Importer</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#defaultload" class="tsd-kind-icon">default<wbr>Load</a></li>
 							<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#ensureoption" class="tsd-kind-icon">ensure<wbr>Option</a></li>
+							<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#ensurepostcssoption" class="tsd-kind-icon">ensure<wbr>PostCSSOption</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#fixture" class="tsd-kind-icon">fixture</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#getextractedmap" class="tsd-kind-icon">get<wbr>Extracted<wbr>Map</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#getgenerator" class="tsd-kind-icon">get<wbr>Generator</a></li>
@@ -2875,7 +2879,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Loaded<wbr>Config<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>file<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>options<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">PostCSSProcessOptions</span><span class="tsd-signature-symbol">; </span>plugins<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">Plugin</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Transformer</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Processor</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/postcss/index.ts#L24">src/loaders/postcss/index.ts:24</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/postcss/index.ts#L23">src/loaders/postcss/index.ts:23</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-type-declaration">
@@ -3373,7 +3377,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/index.ts#L40">src/index.ts:40</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/index.ts#L39">src/index.ts:39</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3404,6 +3408,44 @@ img {
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span></h4>
 						<p><code>option</code> if option is defined, or <code>defaultValue</code></p>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function tsd-has-type-parameter">
+				<a name="ensurepostcssoption" class="tsd-anchor"></a>
+				<h3>ensure<wbr>PostCSSOption</h3>
+				<ul class="tsd-signatures tsd-kind-function tsd-has-type-parameter">
+					<li class="tsd-signature tsd-kind-icon">ensure<wbr>PostCSSOption&lt;T&gt;<span class="tsd-signature-symbol">(</span>option<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/index.ts#L48">src/index.ts:48</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+							<div class="lead">
+								<p>Make sure PostCSS option is resolved</p>
+							</div>
+						</div>
+						<h4 class="tsd-type-parameters-title">Type parameters</h4>
+						<ul class="tsd-type-parameters">
+							<li>
+								<h4>T<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Parser</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Syntax</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Stringifier</span></h4>
+							</li>
+						</ul>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5>option: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Option</p>
+								</div>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">T</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span></h4>
+						<p>resolved <code>option</code></p>
 					</li>
 				</ul>
 			</section>
@@ -3658,7 +3700,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/index.ts#L28">src/index.ts:28</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/index.ts#L27">src/index.ts:27</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3731,7 +3773,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/postcss/index.ts#L58">src/loaders/postcss/index.ts:58</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/postcss/index.ts#L57">src/loaders/postcss/index.ts:57</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3789,7 +3831,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/postcss/index.ts#L35">src/loaders/postcss/index.ts:35</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/postcss/index.ts#L34">src/loaders/postcss/index.ts:34</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -4133,7 +4175,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">loader<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/postcss/index.ts#L62">src/loaders/postcss/index.ts:62</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/postcss/index.ts#L61">src/loaders/postcss/index.ts:61</a></li>
 						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sourcemap.ts#L4">src/loaders/sourcemap.ts:4</a></li>
 						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass.ts#L76">src/loaders/sass.ts:76</a></li>
 						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/stylus.ts#L7">src/loaders/stylus.ts:7</a></li>
@@ -4146,7 +4188,7 @@ img {
 					<div class="tsd-signature tsd-kind-icon">always<wbr>Process<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> = true</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/postcss/index.ts#L64">src/loaders/postcss/index.ts:64</a></li>
+							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/postcss/index.ts#L63">src/loaders/postcss/index.ts:63</a></li>
 							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sourcemap.ts#L6">src/loaders/sourcemap.ts:6</a></li>
 						</ul>
 					</aside>
@@ -4157,7 +4199,7 @@ img {
 					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;less&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/postcss/index.ts#L63">src/loaders/postcss/index.ts:63</a></li>
+							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/postcss/index.ts#L62">src/loaders/postcss/index.ts:62</a></li>
 							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sourcemap.ts#L5">src/loaders/sourcemap.ts:5</a></li>
 							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass.ts#L77">src/loaders/sass.ts:77</a></li>
 							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/stylus.ts#L8">src/loaders/stylus.ts:8</a></li>
@@ -4187,7 +4229,7 @@ img {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/postcss/index.ts#L66">src/loaders/postcss/index.ts:66</a></li>
+									<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/postcss/index.ts#L65">src/loaders/postcss/index.ts:65</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
