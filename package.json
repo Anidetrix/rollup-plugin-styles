@@ -93,7 +93,7 @@
     "sugarss": "^2",
     "ts-jest": "^25",
     "tslib": "^1",
-    "typedoc": "^0.16",
+    "typedoc": "^0.17",
     "typescript": "^3"
   },
   "dependencies": {
