@@ -165,19 +165,19 @@ export default (options: Options = {}): Plugin => {
         }
 
         let code = concat.content.toString();
-        const map = concat.sourceMap;
+        const map = concat.sourceMap && new MapModifier(concat.sourceMap);
 
         if (map) {
           if (options.sourceMap === "inline") {
-            code += new MapModifier(map).toCommentData();
+            code += map.toCommentData();
           } else if (options.sourceMap === true) {
-            code += new MapModifier(map).toCommentFile(fileName);
+            code += map.toCommentFile(fileName);
           }
         }
 
         return {
           code,
-          map: options.sourceMap === true ? map : undefined,
+          map: options.sourceMap === true && map ? map.toString() : undefined,
           codeFileName: fileName,
           mapFileName: `${fileName}.map`,
         };
