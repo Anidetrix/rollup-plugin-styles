@@ -15,16 +15,19 @@ const hashRe = /\[hash(?::(\d+))?]/;
 
 type HashData = { name: string; filename: string; css: string };
 /**
- * @param {object} data Hash Data
- * @returns {string} Hash
+ * @param data hashable data
+ * @param data.name local name
+ * @param data.filename full file name
+ * @param data.css CSS string
+ * @returns hash
  */
-function getHash({ name, filename, css }: HashData): string {
-  return hash(`${humanlizePath(filename)};${name};${css}`);
+function getHash(data: HashData): string {
+  return hash(`${humanlizePath(data.filename)};${data.name};${data.css}`);
 }
 
 /**
- * @param {string|undefined} placeholder string with placeholders
- * @returns {Function} function for generating scoped name
+ * @param placeholder string with placeholders
+ * @returns function for generating scoped name
  */
 function getGenerator(placeholder?: string): NonNullable<ScopeOptions["generateScopedName"]> {
   if (placeholder) {

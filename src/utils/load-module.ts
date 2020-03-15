@@ -18,11 +18,11 @@ interface ModuleImportMap {
 export default <K extends keyof ModuleImportMap>(moduleId: K): ModuleImportMap[K] | undefined => {
   // Trying to load module normally (relative to plugin directory)
   try {
-    return require(`${moduleId}`);
+    return require(moduleId);
   } catch (error) {
     // Ignore error
   }
 
   // Then, trying to load it relative to CWD
-  return importCwd.silent(`${moduleId}`) as ModuleImportMap[K] | undefined;
+  return importCwd.silent(moduleId) as ModuleImportMap[K] | undefined;
 };

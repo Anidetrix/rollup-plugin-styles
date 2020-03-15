@@ -135,7 +135,7 @@ var injector_14187a73 = (css, options = {}) => {
   }
 };
 
-var css_2f84417a = \\".prefixed {\\\\n  display: -webkit-box;\\\\n  display: -webkit-flex;\\\\n  display: -moz-box;\\\\n  display: -ms-flexbox;\\\\n  display: flex;\\\\n}\\\\n\\";
+var css_2f84417a = \\".prefixed {\\\\n  display: -webkit-box;\\\\n  display: -webkit-flex;\\\\n  display: -moz-box;\\\\n  display: -ms-flexbox;\\\\n  display: flex\\\\n}\\\\n\\";
 injector_14187a73(css_2f84417a);
 "
 `;

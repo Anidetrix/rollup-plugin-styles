@@ -17,14 +17,13 @@ import {
 import ensurePostCSSOption from "./utils/ensure-postcss-option";
 import Loaders from "./loaders";
 import { relativePath, normalizePath } from "./utils/path-utils";
-import { makeMapDataComment, makeMapFileComment, relativeMap } from "./utils/sourcemap-utils";
+import { MapModifier } from "./utils/sourcemap-utils";
 
 /**
  * Infer options from `boolean` or `object`
- *
- * @param {boolean|object|undefined} option Option
- * @param {boolean|object} defaultValue Default value
- * @returns {boolean|object} `object` if `option` is truthy, `false` if `option` is `false`, otherwise `defaultValue`
+ * @param option Option
+ * @param defaultValue Default value
+ * @returns `object` if `option` is truthy, `false` if `option` is `false`, otherwise `defaultValue`
  */
 function inferOption<T extends boolean | object>(option: T | undefined, defaultValue: T): T | {} {
   if (typeof option === "boolean") return option === false ? false : {};
@@ -34,10 +33,9 @@ function inferOption<T extends boolean | object>(option: T | undefined, defaultV
 
 /**
  * Make sure option is defined
- *
- * @param {any|undefined} option Option
- * @param {any} defaultValue Default value
- * @returns {any} `option` if option is defined, or `defaultValue`
+ * @param option Option
+ * @param defaultValue Default value
+ * @returns `option` if option is defined, or `defaultValue`
  */
 function ensureOption<T>(option: T | undefined, defaultValue: T): T {
   return typeof option !== "undefined" ? option : defaultValue;
@@ -147,7 +145,7 @@ export default (options: Options = {}): Plugin => {
           }) || "",
         );
 
-      const getExtracted = async (): Promise<ExtractedData> => {
+      const getExtracted = (): ExtractedData => {
         const fileName =
           typeof postcssLoaderOptions.extract === "string"
             ? relativePath(dir, postcssLoaderOptions.extract)
@@ -162,15 +160,20 @@ export default (options: Options = {}): Plugin => {
         const concat = new Concat(true, path.basename(fileName), "\n");
         for (const res of entries) {
           const relative = relativePath(dir, res.id);
-          const map = res.map && JSON.stringify(await relativeMap(res.map, fileDir));
+          const map = res.map && new MapModifier(res.map).relative(fileDir).toObject();
           concat.add(relative, res.code, map);
         }
 
         let code = concat.content.toString();
-        const map = concat.sourceMap && concat.sourceMap.toString();
+        const map = concat.sourceMap;
 
-        if (options.sourceMap === "inline" && map) code += makeMapDataComment(map);
-        else if (options.sourceMap === true) code += makeMapFileComment(fileName);
+        if (map) {
+          if (options.sourceMap === "inline") {
+            code += new MapModifier(map).toCommentData();
+          } else if (options.sourceMap === true) {
+            code += new MapModifier(map).toCommentFile(fileName);
+          }
+        }
 
         return {
           code,
@@ -185,7 +188,7 @@ export default (options: Options = {}): Plugin => {
         if (shouldExtract === false) return;
       }
 
-      const res = await getExtracted();
+      const res = getExtracted();
 
       // Perform cssnano on the extracted file
       if (postcssLoaderOptions.minimize) {

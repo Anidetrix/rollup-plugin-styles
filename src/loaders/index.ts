@@ -1,6 +1,4 @@
 import { Loader, Payload, LoaderContext, ObjectWithUnknownProps, LoadersOptions } from "../types";
-import asyncSeries from "../utils/async-series";
-
 import postcssLoader from "./postcss";
 import sourcemapLoader from "./sourcemap";
 import sassLoader from "./sass";
@@ -8,9 +6,9 @@ import stylusLoader from "./stylus";
 import lessLoader from "./less";
 
 /**
- * @param {string} filepath File path
- * @param {RegExp|Function} condition Condition to check againts
- * @returns {boolean} `true` if `filepath` matches `condition`, otherwise `false`
+ * @param filepath File path
+ * @param condition Condition to check againts
+ * @returns `true` if `filepath` matches `condition`, otherwise `false`
  */
 function matchFile(filepath: string, condition: Loader["test"]): boolean {
   if (typeof condition === "function") return condition(filepath);
@@ -60,24 +58,22 @@ export default class Loaders {
   }
 
   process(payload: Payload, context: LoaderContext): Promise<Payload> {
-    return asyncSeries(
-      this.use
-        .slice()
-        .reverse()
-        .map(([name, options]) => {
-          const loader = this.getLoader(name);
-          const loaderContext: LoaderContext = { ...context, options: options || {} };
+    return this.use
+      .slice()
+      .reverse()
+      .map(([name, options]) => {
+        const loader = this.getLoader(name);
+        const loaderContext: LoaderContext = { ...context, options: options || {} };
 
-          return async (payload: Payload): Promise<Payload> => {
-            if (loader && (loader.alwaysProcess || matchFile(loaderContext.id, loader.test))) {
-              return loader.process.call(loaderContext, payload);
-            }
+        return async (payload: Payload): Promise<Payload> => {
+          if (loader && (loader.alwaysProcess || matchFile(loaderContext.id, loader.test))) {
+            return loader.process.call(loaderContext, payload);
+          }
 
-            // Otherwise directly return input value
-            return payload;
-          };
-        }),
-      { code: payload.code, map: payload.map },
-    );
+          // Otherwise directly return input value
+          return payload;
+        };
+      })
+      .reduce((current, next) => current.then(next), Promise.resolve({ ...payload }));
   }
 }

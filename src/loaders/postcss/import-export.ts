@@ -6,23 +6,22 @@ import { extractICSS, replaceSymbols, replaceValueSymbols, CSSImports } from "ic
 
 import resolveAsync from "../../utils/resolve-async";
 import { normalizePath } from "../../utils/path-utils";
-import { mapValueAsync } from "../../utils/object-utils";
 
 const name = "postcss-import-export-plugin";
 
-/**
- * Function for loading ICSS from composed files
- */
+type Json = { [k: string]: string };
+
+/** Type of function for loading ICSS from composed files */
 export type Load = (
   url: string,
   file: string,
   extensions: string[],
   processor: postcss.Processor,
-) => Promise<{ [k: string]: string }>;
+) => Promise<Json>;
 
 export interface ImportExportOptions {
   load?: Load;
-  getJSON?: (file: string, json: { [k: string]: string }, out?: string) => void;
+  getJSON?: (file: string, json: Json, out?: string) => void;
   extensions?: string[];
 }
 
@@ -39,17 +38,17 @@ const defaultLoad: Load = async (url, file, extensions, processor) => {
   const { messages } = await processor.process(source, { from });
   return messages
     .filter(msg => msg.plugin === name && msg.type === "export")
-    .map(msg => msg.json as { [k: string]: string })
+    .map(msg => msg.json as Json)
     .reduce((prev, current) => ({ ...prev, ...current }));
 };
 
 /**
- * @param {object} icssImports ICSS Imports
- * @param {Function} load Dependency loader
- * @param {string} file Input file
- * @param {string[]} extensions File extensions
- * @param {object} processor PostCSS Processor
- * @returns {Promise<object>} Resolved imported values
+ * @param icssImports ICSS Imports
+ * @param load Dependency loader
+ * @param file Input file
+ * @param extensions File extensions
+ * @param processor PostCSS Processor
+ * @returns Resolved imported values
  */
 function resolveImportedValues(
   icssImports: CSSImports,
@@ -57,12 +56,16 @@ function resolveImportedValues(
   file: string,
   extensions: string[],
   processor: postcss.Processor,
-): Promise<{ [k: string]: string }> {
+): Promise<Json> {
   return Object.entries(icssImports).reduce(async (result, [url, values]) => {
     const exports = await load(url, file, extensions, processor);
+    const mappedValues = Object.entries(values).reduce((acc, [k, v]) => {
+      acc[k] = exports[v];
+      return acc;
+    }, {} as Json);
     return {
       ...(await result),
-      ...(await mapValueAsync(values, x => exports[x])),
+      ...mappedValues,
     };
   }, Promise.resolve({}));
 }
@@ -89,7 +92,7 @@ const plugin: postcss.Plugin<ImportExportOptions> = postcss.plugin(
 
     replaceSymbols(css, importedValues);
 
-    const json: { [k: string]: string } = {};
+    const json: Json = {};
     Object.entries(icssExports).forEach(([k, v]) => {
       json[k] = replaceValueSymbols(v, importedValues);
     });

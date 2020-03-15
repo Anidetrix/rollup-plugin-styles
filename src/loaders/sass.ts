@@ -54,8 +54,7 @@ const defaultImporter: SASSImporter = (url, importer, done) => {
 
 /**
  * Loads Sass module or throws an error
- *
- * @returns {[object, string]} A tuple in format [`loaded sass module`, `id`],
+ * @returns A tuple in format [`loaded sass module`, `id`],
  */
 function loadSassOrThrow(): [Sass, AllowedSassID] {
   // Loading one of the supported modules

@@ -1,7 +1,8 @@
 import path from "path";
 
-import { Loader, Payload } from "../types";
+import { Loader } from "../types";
 import loadModule from "../utils/load-module";
+import { MapModifier } from "../utils/sourcemap-utils";
 
 const loader: Loader = {
   name: "stylus",
@@ -23,17 +24,19 @@ const loader: Loader = {
         style.render((err, css) => (err ? reject(err) : resolve(css)));
       });
 
-    const code: Payload["code"] = await render();
+    const code = await render();
 
     const deps = style.deps();
     for (const dep of deps) this.dependencies.add(dep);
 
-    let map: Payload["map"];
-    if (style.sourcemap) {
-      // We have to manually modify the sourcesContent field since stylus compiler doesn't support it yet
-      if (!style.sourcemap.sourcesContent) style.sourcemap.sourcesContent = [code];
-      map = JSON.stringify(style.sourcemap);
-    }
+    const map =
+      style.sourcemap &&
+      new MapModifier(style.sourcemap)
+        .modify(map => {
+          // We have to manually modify the sourcesContent field since stylus compiler doesn't support it yet
+          if (!map.sourcesContent) map.sourcesContent = [code];
+        })
+        .toString();
 
     return { code, map };
   },

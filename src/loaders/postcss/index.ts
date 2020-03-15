@@ -14,12 +14,7 @@ import { Loader, PostCSSLoaderOptions, Payload } from "../../types";
 import postcssModules from "./modules";
 import ensurePostCSSOption from "../../utils/ensure-postcss-option";
 import { humanlizePath, normalizePath } from "../../utils/path-utils";
-import {
-  makeMapDataComment,
-  relativeMap,
-  resolveMap,
-  modifyMap,
-} from "../../utils/sourcemap-utils";
+import { MapModifier } from "../../utils/sourcemap-utils";
 import resolveAsync from "../../utils/resolve-async";
 import safeId from "../../utils/safe-id";
 
@@ -33,9 +28,9 @@ type LoadedConfig = {
 };
 
 /**
- * @param {string} id File path
- * @param {object} config `postcss-load-config`'s options
- * @returns {Promise<object>} Loaded PostCSS config
+ * @param id File path
+ * @param config `postcss-load-config`'s options
+ * @returns Loaded PostCSS config
  */
 function loadConfig(id: string, config: PostCSSLoaderOptions["config"]): Promise<LoadedConfig> {
   const configPath =
@@ -57,8 +52,8 @@ function loadConfig(id: string, config: PostCSSLoaderOptions["config"]): Promise
 }
 
 /**
- * @param {string} file Filename
- * @returns {boolean} `true` if `file` matches `[name].module.[ext]` format, otherwise `false`
+ * @param file Filename
+ * @returns `true` if `file` matches `[name].module.[ext]` format, otherwise `false`
  */
 function isModuleFile(file: string): boolean {
   return /\.module\.[a-z]+$/i.test(file);
@@ -104,7 +99,9 @@ const loader: Loader<PostCSSLoaderOptions> = {
     postcssOpts.stringifier = ensurePostCSSOption(postcssOpts.stringifier);
 
     if (typeof postcssOpts.map === "object" && payload.map)
-      postcssOpts.map.prev = await relativeMap(payload.map, path.dirname(postcssOpts.from));
+      postcssOpts.map.prev = new MapModifier(payload.map)
+        .relative(path.dirname(postcssOpts.from))
+        .toObject();
 
     if (supportModules) {
       const modulesOptions = typeof options.modules === "object" ? options.modules : {};
@@ -137,7 +134,10 @@ const loader: Loader<PostCSSLoaderOptions> = {
     if (!shouldExtract && options.minimize)
       plugins.push(cssnano(typeof options.minimize === "object" ? options.minimize : {}));
 
+    // Prevent from postcss warning:
+    // You did not set any plugins, parser, or stringifier. Right now, PostCSS does nothing. Pick plugins for your case on https://www.postcss.parts/ and use them in postcss.config.js
     if (plugins.length === 0) plugins.push(postcssNoop);
+
     const res = await postcss(plugins).process(payload.code, postcssOpts);
 
     const deps = res.messages.filter(msg => msg.type === "dependency");
@@ -146,13 +146,14 @@ const loader: Loader<PostCSSLoaderOptions> = {
     for (const warning of res.warnings())
       this.warn(warning.text, { column: warning.column, line: warning.line });
 
-    const map: Payload["map"] =
-      res.map && JSON.stringify(await resolveMap(res.map.toString(), path.dirname(postcssOpts.to)));
+    const map =
+      res.map && new MapModifier(res.map.toJSON()).resolve(path.dirname(postcssOpts.to)).toString();
 
     if (!shouldExtract && this.sourceMap && map)
-      res.css += makeMapDataComment(
-        JSON.stringify(await modifyMap(await relativeMap(map), map => void delete map.file)),
-      );
+      res.css += new MapModifier(map)
+        .modify(map => void delete map.file)
+        .relative()
+        .toCommentData();
 
     let output = "";
     if (options.namedExports) {

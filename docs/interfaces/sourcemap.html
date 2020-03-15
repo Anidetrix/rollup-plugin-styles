@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>LoadersOptions | rollup-plugin-styles</title>
+	<title>SourceMap | rollup-plugin-styles</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -2366,16 +2366,28 @@ img {
 <nav class="tsd-navigation secondary">
 	<ul>
 		<li class="current tsd-kind-interface">
-			<a href="loadersoptions.html" class="tsd-kind-icon">Loaders<wbr>Options</a>
+			<a href="sourcemap.html" class="tsd-kind-icon">Source<wbr>Map</a>
 			<ul>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="loadersoptions.html#extensions" class="tsd-kind-icon">extensions</a>
+					<a href="sourcemap.html#file" class="tsd-kind-icon">file</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="loadersoptions.html#loaders" class="tsd-kind-icon">loaders</a>
+					<a href="sourcemap.html#mappings" class="tsd-kind-icon">mappings</a>
 				</li>
 				<li class=" tsd-kind-property tsd-parent-kind-interface">
-					<a href="loadersoptions.html#use" class="tsd-kind-icon">use</a>
+					<a href="sourcemap.html#names" class="tsd-kind-icon">names</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-interface">
+					<a href="sourcemap.html#sourceroot" class="tsd-kind-icon">source<wbr>Root</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-interface">
+					<a href="sourcemap.html#sources" class="tsd-kind-icon">sources</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-interface">
+					<a href="sourcemap.html#sourcescontent" class="tsd-kind-icon">sources<wbr>Content</a>
+				</li>
+				<li class=" tsd-kind-property tsd-parent-kind-interface">
+					<a href="sourcemap.html#version" class="tsd-kind-icon">version</a>
 				</li>
 			</ul>
 		</li>
@@ -2386,7 +2398,7 @@ img {
 		<section class="tsd-panel tsd-comment">
 			<div class="tsd-comment tsd-typography">
 				<div class="lead">
-					<p>Options for <a href="../classes/loaders.html">Loaders</a> class</p>
+					<p>Sourcemap</p>
 				</div>
 			</div>
 		</section>
@@ -2394,7 +2406,7 @@ img {
 			<h3>Hierarchy</h3>
 			<ul class="tsd-hierarchy">
 				<li>
-					<span class="target">LoadersOptions</span>
+					<span class="target">SourceMap</span>
 				</li>
 			</ul>
 		</section>
@@ -2405,9 +2417,13 @@ img {
 					<section class="tsd-index-section ">
 						<h3>Properties</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="loadersoptions.html#extensions" class="tsd-kind-icon">extensions</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="loadersoptions.html#loaders" class="tsd-kind-icon">loaders</a></li>
-							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="loadersoptions.html#use" class="tsd-kind-icon">use</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="sourcemap.html#file" class="tsd-kind-icon">file</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="sourcemap.html#mappings" class="tsd-kind-icon">mappings</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="sourcemap.html#names" class="tsd-kind-icon">names</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="sourcemap.html#sourceroot" class="tsd-kind-icon">source<wbr>Root</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="sourcemap.html#sources" class="tsd-kind-icon">sources</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="sourcemap.html#sourcescontent" class="tsd-kind-icon">sources<wbr>Content</a></li>
+							<li class="tsd-kind-property tsd-parent-kind-interface"><a href="sourcemap.html#version" class="tsd-kind-icon">version</a></li>
 						</ul>
 					</section>
 				</div>
@@ -2416,55 +2432,74 @@ img {
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Properties</h2>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="extensions" class="tsd-anchor"></a>
-				<h3>extensions</h3>
-				<div class="tsd-signature tsd-kind-icon">extensions<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+				<a name="file" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> file</h3>
+				<div class="tsd-signature tsd-kind-icon">file<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/types.ts#L102">src/types.ts:102</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/types.ts#L21">src/types.ts:21</a></li>
 					</ul>
 				</aside>
-				<div class="tsd-comment tsd-typography">
-					<dl class="tsd-comment-tags">
-						<dt>see</dt>
-						<dd><p><a href="options.html#extensions">Options.extensions</a></p>
-						</dd>
-					</dl>
-				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="loaders" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagOptional">Optional</span> loaders</h3>
-				<div class="tsd-signature tsd-kind-icon">loaders<span class="tsd-signature-symbol">:</span> <a href="loader.html" class="tsd-signature-type">Loader</a><span class="tsd-signature-symbol">[]</span></div>
+				<a name="mappings" class="tsd-anchor"></a>
+				<h3>mappings</h3>
+				<div class="tsd-signature tsd-kind-icon">mappings<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/types.ts#L100">src/types.ts:100</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/types.ts#L20">src/types.ts:20</a></li>
 					</ul>
 				</aside>
-				<div class="tsd-comment tsd-typography">
-					<dl class="tsd-comment-tags">
-						<dt>see</dt>
-						<dd><p><a href="options.html#loaders">Options.loaders</a></p>
-						</dd>
-					</dl>
-				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-				<a name="use" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagOptional">Optional</span> use</h3>
-				<div class="tsd-signature tsd-kind-icon">use<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-symbol">{}</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></div>
+				<a name="names" class="tsd-anchor"></a>
+				<h3>names</h3>
+				<div class="tsd-signature tsd-kind-icon">names<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/types.ts#L98">src/types.ts:98</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/types.ts#L18">src/types.ts:18</a></li>
 					</ul>
 				</aside>
-				<div class="tsd-comment tsd-typography">
-					<dl class="tsd-comment-tags">
-						<dt>see</dt>
-						<dd><p><a href="options.html#use">Options.use</a></p>
-						</dd>
-					</dl>
-				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<a name="sourceroot" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> source<wbr>Root</h3>
+				<div class="tsd-signature tsd-kind-icon">source<wbr>Root<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/types.ts#L22">src/types.ts:22</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<a name="sources" class="tsd-anchor"></a>
+				<h3>sources</h3>
+				<div class="tsd-signature tsd-kind-icon">sources<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/types.ts#L17">src/types.ts:17</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<a name="sourcescontent" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagOptional">Optional</span> sources<wbr>Content</h3>
+				<div class="tsd-signature tsd-kind-icon">sources<wbr>Content<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/types.ts#L19">src/types.ts:19</a></li>
+					</ul>
+				</aside>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+				<a name="version" class="tsd-anchor"></a>
+				<h3>version</h3>
+				<div class="tsd-signature tsd-kind-icon">version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/types.ts#L16">src/types.ts:16</a></li>
+					</ul>
+				</aside>
 			</section>
 		</section>
 		<footer class="with-border-bottom">
