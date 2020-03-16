@@ -87,7 +87,7 @@ To install `fibers`: `yarn add fibers --dev`
 
 #### imports (**Sass/Scss only**)
 
-Similar to how webpack's [sass-loader](https://github.com/webpack-contrib/sass-loader#imports) works, you can prepend the import path with `~` to tell this plugin to resolve in `node_modules`:
+Similar to how webpack's [sass-loader](https://github.com/webpack-contrib/sass-loader#resolving-import-at-rules) works, you can prepend the import path with `~` to tell this plugin to resolve in `node_modules`:
 
 ```scss
 @import "~bulma/css/bulma";
