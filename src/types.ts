@@ -29,7 +29,7 @@ export interface SourceMap {
   sourceRoot?: string;
 }
 
-/** Object, which properies are unknown */
+/** Object, which properties are unknown */
 export type ObjectWithUnknownProps = { [prop: string]: unknown };
 
 /** `postcss-load-config`'s options */
