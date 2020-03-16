@@ -101,7 +101,10 @@ export interface LoadersOptions {
   extensions: string[];
 }
 
-/** Loader */
+/**
+ * Loader
+ * @param LoaderOptionsType type of loader's options
+ * */
 export interface Loader<LoaderOptionsType = ObjectWithUnknownProps> {
   /** Name */
   name: string;
@@ -118,7 +121,8 @@ export interface Loader<LoaderOptionsType = ObjectWithUnknownProps> {
 
 /**
  * Loader's context
- */
+ * @param LoaderOptionsType type of loader's options
+ * */
 export interface LoaderContext<LoaderOptionsType = ObjectWithUnknownProps> {
   /**
    * Loader's options
@@ -139,9 +143,7 @@ export interface LoaderContext<LoaderOptionsType = ObjectWithUnknownProps> {
   plugin: PluginContext;
 }
 
-/**
- * Loader's payload
- */
+/** Loader's payload */
 export interface Payload {
   /** File content */
   code: string;
