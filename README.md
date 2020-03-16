@@ -7,7 +7,7 @@
 <a href="https://codecov.io/gh/Anidetrix/rollup-plugin-styles"><img src="https://codecov.io/gh/Anidetrix/rollup-plugin-styles/branch/master/graph/badge.svg"/></a>
 <a href="./LICENSE"><img src="https://img.shields.io/github/license/Anidetrix/rollup-plugin-styles"/></a>
 
-🎨 Universal plugin for styles in [Rollup](https://github.com/rollup/rollup): [PostCSS](https://github.com/postcss/postcss), [Sass](https://github.com/sass/dart-sass), [Less](https://github.com/less/less.js), [Stylus](https://github.com/stylus/stylus) and more.
+🎨 Universal [Rollup](https://github.com/rollup/rollup) plugin for styles: [PostCSS](https://github.com/postcss/postcss), [Sass](https://github.com/sass/dart-sass), [Less](https://github.com/less/less.js), [Stylus](https://github.com/stylus/stylus) and more.
 
 ## Install
 
