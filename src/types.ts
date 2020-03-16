@@ -13,23 +13,26 @@ import { CssNanoOptions } from "cssnano";
 
 /** Sourcemap */
 export interface SourceMap {
+  /** Version */
   version: string;
+  /** Sources */
   sources: string[];
+  /** Names */
   names: string[];
+  /** Sources content */
   sourcesContent?: string[];
+  /** Mappings */
   mappings: string;
+  /** File */
   file?: string;
+  /** Source root */
   sourceRoot?: string;
 }
 
-/**
- * Object, which properies are unknown
- */
+/** Object, which properies are unknown */
 export type ObjectWithUnknownProps = { [prop: string]: unknown };
 
-/**
- * `postcss-load-config`'s options
- */
+/** `postcss-load-config`'s options */
 export interface PostCSSLoadConfigOptions {
   /**
    * Path to PostCSS config file directory
@@ -43,9 +46,7 @@ export interface PostCSSLoadConfigOptions {
   ctx?: ObjectWithUnknownProps;
 }
 
-/**
- * Options for PostCSS Loader
- */
+/** Options for PostCSS Loader */
 export type PostCSSLoaderOptions = {
   /** @see {@link Options.inject} */
   inject: NonNullable<Options["inject"]>;
@@ -63,9 +64,7 @@ export type PostCSSLoaderOptions = {
   config: NonNullable<Options["config"]>;
   /** @see {@link Options.extensions} */
   extensions: NonNullable<Options["extensions"]>;
-  /**
-   * Options for PostCSS processor
-   */
+  /** Options for PostCSS processor */
   postcss: {
     /** @see {@link Options.parser} */
     parser?: NonNullable<Exclude<Options["parser"], string>>;
@@ -78,21 +77,21 @@ export type PostCSSLoaderOptions = {
   };
 };
 
-/**
- * Options for Sass Loader
- */
+/** Options for Sass Loader */
 export type SASSLoaderOptions = {
   /**
    * Sass importer, or array of such
    * @default undefined
    */
   importer?: SASSImporter | SASSImporter[];
+  /**
+   * Data to prepend to every Sass file
+   * @default undefined
+   */
   data?: string;
 };
 
-/**
- * Options for {@link Loaders} class
- */
+/** Options for {@link Loaders} class */
 export interface LoadersOptions {
   /** @see {@link Options.use} */
   use?: (string | [string, ObjectWithUnknownProps])[];
@@ -102,13 +101,18 @@ export interface LoadersOptions {
   extensions: string[];
 }
 
-/**
- * Loader
- */
+/** Loader */
 export interface Loader<LoaderOptionsType = ObjectWithUnknownProps> {
+  /** Name */
   name: string;
+  /**
+   * Test to decide if file should be processed.
+   * Also used for plugin's supported files test.
+   * */
   test?: RegExp | ((filepath: string) => boolean);
+  /** Skip testing, always process the file */
   alwaysProcess?: boolean;
+  /** Function for processing */
   process: (this: LoaderContext<LoaderOptionsType>, input: Payload) => Promise<Payload> | Payload;
 }
 
@@ -154,9 +158,7 @@ export interface Payload {
   };
 }
 
-/**
- * CSS data, extracted from JS
- */
+/** CSS data, extracted from JS */
 export interface ExtractedData {
   /** CSS */
   code: string;
@@ -168,9 +170,7 @@ export interface ExtractedData {
   mapFileName: string;
 }
 
-/**
- * Options for [CSS Modules](https://github.com/css-modules/css-modules)
- */
+/** Options for [CSS Modules](https://github.com/css-modules/css-modules) */
 export type ModulesOptions = {
   /**
    * Default mode for classes
@@ -187,9 +187,7 @@ export type ModulesOptions = {
   getJSON?: (file: string, json: { [k: string]: string }, out?: string) => void;
 };
 
-/**
- * `rollup-plugin-styles`'s full option list
- */
+/** `rollup-plugin-styles`'s full option list */
 export interface Options {
   /**
    * Files to include for processing.
