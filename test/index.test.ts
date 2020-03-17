@@ -65,31 +65,35 @@ async function write(data: WriteData): Promise<TestData> {
 }
 
 function validate({ title, input, outDir, options = {} }: Test): void {
-  test(title, async () => {
-    let res;
-    try {
-      res = await write({ input, outDir, options });
-    } catch (error) {
-      const frame = error.codeFrame || error.snippet;
-      if (frame) throw new Error(`${frame} ${error.message}`);
-      throw error;
-    }
+  test(
+    title,
+    async () => {
+      let res;
+      try {
+        res = await write({ input, outDir, options });
+      } catch (error) {
+        const frame = error.codeFrame || error.snippet;
+        if (frame) throw new Error(`${frame} ${error.message}`);
+        throw error;
+      }
 
-    expect(await res.js()).toMatchSnapshot("js");
+      expect(await res.js()).toMatchSnapshot("js");
 
-    if (options.extract) {
-      expect(await res.isCss()).toBeTruthy();
-      expect(await res.css()).toMatchSnapshot("css");
-    }
+      if (options.extract) {
+        expect(await res.isCss()).toBeTruthy();
+        expect(await res.css()).toMatchSnapshot("css");
+      }
 
-    const sourceMap = options && options.sourceMap;
-    if (sourceMap === "inline") {
-      expect(await res.isMap()).toBeFalsy();
-    } else if (sourceMap === true) {
-      expect(await res.isMap()).toBe(Boolean(options.extract));
-      if (options.extract) expect(await res.map()).toMatchSnapshot("map");
-    }
-  });
+      const sourceMap = options && options.sourceMap;
+      if (sourceMap === "inline") {
+        expect(await res.isMap()).toBeFalsy();
+      } else if (sourceMap === true) {
+        expect(await res.isMap()).toBe(Boolean(options.extract));
+        if (options.extract) expect(await res.map()).toMatchSnapshot("map");
+      }
+    },
+    30000,
+  );
 }
 
 function validateMany(groupName: string, tests: Test[]): void {
@@ -104,7 +108,7 @@ function validateMany(groupName: string, tests: Test[]): void {
 }
 
 // Tests
-beforeAll(() => fs.remove(fixture("dist")));
+beforeAll(() => fs.remove(fixture("dist")), 30000);
 
 validateMany("basic", [
   {
@@ -363,7 +367,7 @@ test("on-extract-fn", async () => {
   expect(await res.js()).toMatchSnapshot();
   expect(await res.isCss()).toBeFalsy();
   expect(await res.isMap()).toBeFalsy();
-});
+}, 30000);
 
 test("augment-chunk-hash", async () => {
   const outDir = fixture("dist", "augment-chunk-hash");
@@ -401,4 +405,4 @@ test("augment-chunk-hash", async () => {
   // Verify that foo and bar does not hash to the same
   expect(barHash).not.toEqual(fooOneHash);
   expect(barHash).not.toEqual(fooTwoHash);
-});
+}, 30000);
