@@ -23,8 +23,8 @@ export default class Loaders {
     if (options.use) {
       this.use = options.use.map(rule => {
         if (typeof rule === "string") return [rule, {}];
-        if (Array.isArray(rule) && rule.length === 2) return rule;
-        throw new TypeError("The rule in `use` option must be string or Array with 2 members!");
+        if (Array.isArray(rule)) return rule.length === 1 ? [rule[0], {}] : rule;
+        throw new TypeError("The rule in `use` option must be string or array!");
       });
     }
 

@@ -1,15 +1,10 @@
+import postcss from "postcss";
+import cssnano from "cssnano";
 import { PluginContext } from "rollup";
 import { Importer as SASSImporter } from "sass";
-import {
-  Plugin as PostCSSPlugin,
-  Parser as PostCSSParser,
-  Syntax as PostCSSSyntax,
-  Stringifier as PostCSSStringifier,
-} from "postcss";
 import { LocalByDefaultOptions } from "postcss-modules-local-by-default";
 import { ExtractImportsOptions } from "postcss-modules-extract-imports";
 import { ScopeOptions } from "postcss-modules-scope";
-import { CssNanoOptions } from "cssnano";
 
 /** Sourcemap */
 export interface SourceMap {
@@ -67,13 +62,13 @@ export type PostCSSLoaderOptions = {
   /** Options for PostCSS processor */
   postcss: {
     /** @see {@link Options.parser} */
-    parser?: NonNullable<Exclude<Options["parser"], string>>;
+    parser?: postcss.Parser;
     /** @see {@link Options.syntax} */
-    syntax?: NonNullable<Exclude<Options["syntax"], string>>;
+    syntax?: postcss.Syntax;
     /** @see {@link Options.stringifier} */
-    stringifier?: NonNullable<Exclude<Options["stringifier"], string>>;
+    stringifier?: postcss.Stringifier;
     /** @see {@link Options.plugins} */
-    plugins?: NonNullable<Options["plugins"]>;
+    plugins?: postcss.Transformer[];
   };
 };
 
@@ -94,7 +89,7 @@ export type SASSLoaderOptions = {
 /** Options for {@link Loaders} class */
 export interface LoadersOptions {
   /** @see {@link Options.use} */
-  use?: (string | [string, ObjectWithUnknownProps])[];
+  use?: (string | [string] | [string, ObjectWithUnknownProps])[];
   /** @see {@link Options.loaders} */
   loaders?: Loader[];
   /** @see {@link Options.extensions} */
@@ -210,7 +205,14 @@ export interface Options {
    * A list of plugins for PostCSS.
    * @default undefined
    */
-  plugins?: PostCSSPlugin<unknown>[];
+  plugins?: (
+    | postcss.Transformer
+    | string
+    | [string]
+    | [string, ObjectWithUnknownProps]
+    | null
+    | undefined
+  )[];
   /**
    * Inject CSS into `<head>`, it's always false when `extract: true`.
    * You can also use it as options for CSS injection.
@@ -267,7 +269,7 @@ export interface Options {
    * Enable CSS minification and optionally pass additional configuration for
    * [cssnano](https://github.com/cssnano/cssnano)
    * @default false */
-  minimize?: boolean | CssNanoOptions;
+  minimize?: boolean | cssnano.CssNanoOptions;
   /**
    * Enable sourceMap.
    * @default false
@@ -277,17 +279,17 @@ export interface Options {
    * Set PostCSS parser, like `sugarss`.
    * @default undefined
    * */
-  parser?: string | PostCSSParser;
+  parser?: string | postcss.Parser;
   /**
    * Set PostCSS stringifier.
    * @default undefined
    * */
-  stringifier?: string | PostCSSStringifier;
+  stringifier?: string | postcss.Stringifier;
   /**
    * Set PostCSS syntax.
    * @default undefined
    * */
-  syntax?: string | PostCSSSyntax;
+  syntax?: string | postcss.Syntax;
   /**
    * Enable loading PostCSS config file.
    * @default true

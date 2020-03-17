@@ -1,7 +1,7 @@
 import { makeLegalIdentifier } from "@rollup/pluginutils";
 
 import path from "path";
-import { Plugin as PostCSSPlugin } from "postcss";
+import postcss from "postcss";
 import modulesValues from "postcss-modules-values";
 import localByDefault from "postcss-modules-local-by-default";
 import extractImports from "postcss-modules-extract-imports";
@@ -30,7 +30,7 @@ function getHash(data: HashData): string {
  * @returns function for generating scoped name
  */
 function getGenerator(placeholder?: string): NonNullable<ScopeOptions["generateScopedName"]> {
-  if (placeholder) {
+  if (typeof placeholder === "string") {
     return (name: string, filename: string, css: string): string => {
       const hash = getHash({ name, filename, css });
       const match = hashRe.exec(placeholder);
@@ -52,7 +52,7 @@ function getGenerator(placeholder?: string): NonNullable<ScopeOptions["generateS
   };
 }
 
-export default (options: ModulesOptions): PostCSSPlugin<unknown>[] => {
+export default (options: ModulesOptions): postcss.Transformer[] => {
   const opts = {
     mode: "local" as "local",
     ...options,

@@ -147,8 +147,7 @@ validateMany("basic", [
     input: "postcss-options/index.js",
     options: {
       parser: "sugarss",
-      // eslint-disable-next-line @typescript-eslint/no-var-requires
-      plugins: [require("autoprefixer")({ overrideBrowserslist: ["> 0%"] })],
+      plugins: ["postcss-import", ["autoprefixer", { overrideBrowserslist: ["> 0%"] }]],
     },
   },
 ]);

@@ -3,8 +3,8 @@ import { createFilter } from "@rollup/pluginutils";
 import path from "path";
 import Concat from "concat-with-sourcemaps";
 import { Plugin } from "rollup";
-import cssnano, { CssNanoOptions } from "cssnano";
 import postcss from "postcss";
+import cssnano from "cssnano";
 
 import {
   Options,
@@ -45,17 +45,20 @@ function ensureOption<T>(option: T | undefined, defaultValue: T): T {
  * @param option Option
  * @returns resolved `option`
  */
-function ensurePostCSSOption<T extends postcss.Parser | postcss.Syntax | postcss.Stringifier>(
-  option: string | T | undefined,
-): T | undefined {
+function ensurePostCSSOption<
+  T extends
+    | postcss.Parser
+    | postcss.Syntax
+    | postcss.Stringifier
+    | postcss.Transformer
+    | null
+    | undefined
+>(option: string | T): T {
   return typeof option === "string" ? (require(option) as T) : option;
 }
 
 export default (options: Options = {}): Plugin => {
   const filter = createFilter(options.include, options.exclude);
-  const postcssPlugins = Array.isArray(options.plugins)
-    ? options.plugins.filter(Boolean)
-    : options.plugins;
 
   const postcssLoaderOptions: PostCSSLoaderOptions = {
     inject:
@@ -71,7 +74,16 @@ export default (options: Options = {}): Plugin => {
       parser: ensurePostCSSOption(options.parser),
       syntax: ensurePostCSSOption(options.syntax),
       stringifier: ensurePostCSSOption(options.stringifier),
-      plugins: postcssPlugins,
+      plugins: Array.isArray(options.plugins)
+        ? options.plugins
+            // https://github.com/microsoft/TypeScript/issues/24063
+            .filter(<T>(p: T): p is Exclude<T, false | null | undefined | 0 | ""> => !!p)
+            .map(plugin =>
+              Array.isArray(plugin)
+                ? ensurePostCSSOption<postcss.PluginInitializer<unknown>>(plugin[0])(plugin[1])
+                : ensurePostCSSOption(plugin),
+            )
+        : options.plugins,
     },
   };
 
@@ -202,7 +214,7 @@ export default (options: Options = {}): Plugin => {
 
       // Perform cssnano on the extracted file
       if (postcssLoaderOptions.minimize) {
-        const cssOpts: CssNanoOptions & postcss.ProcessOptions =
+        const cssOpts: cssnano.CssNanoOptions & postcss.ProcessOptions =
           typeof postcssLoaderOptions.minimize === "object" ? postcssLoaderOptions.minimize : {};
 
         cssOpts.from = res.codeFileName;

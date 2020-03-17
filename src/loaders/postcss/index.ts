@@ -1,12 +1,7 @@
 import { makeLegalIdentifier } from "@rollup/pluginutils";
 
 import path from "path";
-import postcss, {
-  Plugin as PostCSSPlugin,
-  Transformer as PostCSSTransformer,
-  Processor as PostCSSProcessor,
-  ProcessOptions as PostCSSProcessOptions,
-} from "postcss";
+import postcss from "postcss";
 import findPostCSSConfig from "postcss-load-config";
 import cssnano from "cssnano";
 
@@ -22,8 +17,8 @@ import postcssNoop from "./noop";
 
 type LoadedConfig = {
   file?: string;
-  options?: PostCSSProcessOptions;
-  plugins?: (PostCSSPlugin<unknown> | PostCSSTransformer | PostCSSProcessor)[];
+  options?: postcss.ProcessOptions;
+  plugins?: (postcss.Transformer | postcss.Processor)[];
 };
 
 /**
@@ -81,7 +76,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
     const postcssOpts: PostCSSLoaderOptions["postcss"] & {
       from: string;
       to: string;
-      map: PostCSSProcessOptions["map"];
+      map: postcss.ProcessOptions["map"];
     } = {
       ...options.postcss,
       ...config.options,
