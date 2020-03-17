@@ -172,7 +172,7 @@ export type ModulesOptions = {
   /**
    * Default mode for classes
    * @default "local"
-   */
+   * */
   mode?: LocalByDefaultOptions["mode"];
   /** Fail on wrong order of composition */
   failOnWrongOrder?: ExtractImportsOptions["failOnWrongOrder"];
@@ -204,7 +204,7 @@ export interface Options {
   /**
    * A list of plugins for PostCSS.
    * @default undefined
-   */
+   * */
   plugins?: (
     | postcss.Transformer
     | string
@@ -235,7 +235,7 @@ export interface Options {
         /**
          * Container for `<style>` tag(s) injection
          * @default document.head
-         */
+         * */
         container?: HTMLElement;
       }
     | ((varname: string, id: string) => string);
@@ -249,7 +249,7 @@ export interface Options {
    * Enable and optionally pass additional configuration for
    * [CSS Modules](https://github.com/css-modules/css-modules)
    * @default false
-   */
+   * */
   modules?: boolean | ModulesOptions;
   /**
    * Automatically enable
@@ -268,7 +268,8 @@ export interface Options {
   /**
    * Enable CSS minification and optionally pass additional configuration for
    * [cssnano](https://github.com/cssnano/cssnano)
-   * @default false */
+   * @default false
+   * */
   minimize?: boolean | cssnano.CssNanoOptions;
   /**
    * Enable sourceMap.
@@ -304,7 +305,7 @@ export interface Options {
    * @default ["sass", "stylus", "less"]
    * */
   use?:
-    | (string | [string, ObjectWithUnknownProps])[]
+    | (string | [string] | [string, ObjectWithUnknownProps])[]
     | {
         sass?: SASSLoaderOptions & ObjectWithUnknownProps;
         stylus?: ObjectWithUnknownProps;

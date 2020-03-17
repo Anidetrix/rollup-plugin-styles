@@ -12,7 +12,7 @@ import {
   LoaderContext,
   Payload,
   ExtractedData,
-  ObjectWithUnknownProps,
+  LoadersOptions,
 } from "./types";
 import Loaders from "./loaders";
 import { relativePath, normalizePath } from "./utils/path-utils";
@@ -87,7 +87,7 @@ export default (options: Options = {}): Plugin => {
     },
   };
 
-  let use: (string | [string, ObjectWithUnknownProps])[] = ["sass", "stylus", "less"];
+  let use: NonNullable<LoadersOptions["use"]> = ["sass", "stylus", "less"];
 
   if (Array.isArray(options.use)) {
     use = options.use;
