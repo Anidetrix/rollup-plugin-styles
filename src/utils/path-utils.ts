@@ -46,5 +46,5 @@ export function isAbsolutePath(path: string): boolean {
  * @returns `true` if `path` is relative, otherwise `false`
  */
 export function isRelativePath(path: string): boolean {
-  return /^\.?\.\//.test(path);
+  return /^\.?\.[/\\]/.test(path);
 }

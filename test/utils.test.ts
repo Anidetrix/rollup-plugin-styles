@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import loadModule from "../src/utils/load-module";
-import { normalizePath } from "../src/utils/path-utils";
 import { getInlineMap, getExtractedMap, stripMap, MapModifier } from "../src/utils/sourcemap-utils";
 import path from "path";
 
@@ -33,12 +32,7 @@ test("strip map", () => {
 });
 
 test("map modifier", () => {
-  const map = JSON.stringify({
-    sources: [
-      normalizePath(path.join(process.cwd(), "..", "foo")),
-      normalizePath(path.join(process.cwd(), "..", "bar")),
-    ],
-  });
+  const map = JSON.stringify({ sources: ["../a/b/../foo/bar.css", "../b/a/../bar/foo.css"] });
   const relativeSrc = JSON.stringify(new MapModifier(map).relative().toObject().sources);
-  expect(relativeSrc).toBe(JSON.stringify(["../foo", "../bar"]));
+  expect(relativeSrc).toBe(JSON.stringify(["../a/foo/bar.css", "../b/bar/foo.css"]));
 });

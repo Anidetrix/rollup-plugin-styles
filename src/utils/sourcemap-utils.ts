@@ -109,13 +109,9 @@ export class MapModifier {
   relative(dir: string = process.cwd()): this {
     if (this.map.sources) {
       this.map.sources = this.map.sources.map(source => {
-        if (isAbsolutePath(source)) {
-          return relativePath(dir, source);
-        } else if (isRelativePath(source)) {
-          return relativePath(path.dirname(path.join(dir, source)), source);
-        } else {
-          return normalizePath(source);
-        }
+        if (isAbsolutePath(source)) return relativePath(dir, source);
+        else if (isRelativePath(source)) return relativePath(dir, path.join(dir, source));
+        else return normalizePath(source);
       });
     }
     return this;
