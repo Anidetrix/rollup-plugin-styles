@@ -17,7 +17,7 @@
     "test": "npm run lint:fix && jest",
     "test:cov": "npm run lint:fix && jest --coverage",
     "commit": "commit",
-    "prepublishOnly": "del-cli dist && npm run build && del-cli \"dist/**/.eslintrc*\" \"dist/*.es.d.ts\""
+    "prepublishOnly": "shx rm -rf dist && npm run build && shx cp -r runtime dist && shx rm -rf \"dist/**/.eslintrc*\" \"dist/*.es.d.ts\""
   },
   "repository": {
     "type": "git",
@@ -66,7 +66,6 @@
     "@wessberg/rollup-plugin-ts": "^1.2.21",
     "autoprefixer": "^9.7.4",
     "babel-jest": "^25.1.0",
-    "del-cli": "^3.0.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",
     "eslint-import-resolver-node": "^0.3.3",
@@ -85,10 +84,10 @@
     "postcss-import": "^12.0.1",
     "postcss-url": "^8.0.0",
     "prettier": "^1.19.1",
-    "rollup": "^2.0.0",
+    "rollup": "^2.1.0",
     "rollup-plugin-auto-external": "^2.0.0",
-    "rollup-plugin-copy": "^3.3.0",
     "sass": "^1.26.3",
+    "shx": "^0.3.2",
     "stylus": "^0.54.7",
     "sugarss": "^2.0.0",
     "ts-jest": "^25.2.1",
