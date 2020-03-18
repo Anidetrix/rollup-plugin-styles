@@ -3,6 +3,8 @@ import loadModule from "../src/utils/load-module";
 import { getInlineMap, getExtractedMap, stripMap, MapModifier } from "../src/utils/sourcemap-utils";
 import path from "path";
 
+process.env.STYLES_TEST = "true";
+
 test("wrong util path", () => {
   const wrong = loadModule("totallyWRONGPATH/here" as any);
   expect(wrong).toBeUndefined();
