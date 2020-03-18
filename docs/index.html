@@ -2957,6 +2957,9 @@ img {
 			</a>
 			<pre><code class="language-js">styles({
   <span class="hljs-attr">extract</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-comment">// ...or with absolute/relative to current working directory path</span>
+  <span class="hljs-comment">// Note: also acts as `to` for PostCSS</span>
+  <span class="hljs-attr">extract</span>: <span class="hljs-string">"dist/awesome-bundle.css"</span>,
 });</code></pre>
 			<a href="#a-hrefhttpsgithubcomcss-modulescss-modulescss-modulesa" id="a-hrefhttpsgithubcomcss-modulescss-modulescss-modulesa" style="color: inherit; text-decoration: none;">
 				<h3><a href="https://github.com/css-modules/css-modules">CSS Modules</a></h3>
@@ -4047,7 +4050,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/path-utils.ts#L33">src/utils/path-utils.ts:33</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/path-utils.ts#L32">src/utils/path-utils.ts:32</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -4120,7 +4123,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/path-utils.ts#L41">src/utils/path-utils.ts:41</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/path-utils.ts#L40">src/utils/path-utils.ts:40</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -4178,7 +4181,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/path-utils.ts#L49">src/utils/path-utils.ts:49</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/path-utils.ts#L48">src/utils/path-utils.ts:48</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -4346,7 +4349,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/path-utils.ts#L25">src/utils/path-utils.ts:25</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/path-utils.ts#L24">src/utils/path-utils.ts:24</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -4434,7 +4437,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/path-utils.ts#L16">src/utils/path-utils.ts:16</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/path-utils.ts#L15">src/utils/path-utils.ts:15</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -4443,10 +4446,13 @@ img {
 						<ul class="tsd-parameters">
 							<li>
 								<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>paths: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+								<div class="tsd-comment tsd-typography">
+									<p>Array of paths</p>
+								</div>
 							</li>
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-						<p>Normalized path, relative to <code>dir</code></p>
+						<p>Normalized absolute path</p>
 					</li>
 				</ul>
 			</section>
