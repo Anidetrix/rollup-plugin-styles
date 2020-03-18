@@ -2901,6 +2901,9 @@ img {
 			<a href="globals.html#resolveimportedvalues" class="tsd-kind-icon">resolve<wbr>Imported<wbr>Values</a>
 		</li>
 		<li class=" tsd-kind-function">
+			<a href="globals.html#resolvepath" class="tsd-kind-icon">resolve<wbr>Path</a>
+		</li>
+		<li class=" tsd-kind-function">
 			<a href="globals.html#stripmap" class="tsd-kind-icon">strip<wbr>Map</a>
 		</li>
 		<li class=" tsd-kind-function">
@@ -3120,6 +3123,7 @@ img {
 							<li class="tsd-kind-function"><a href="globals.html#normalizepath" class="tsd-kind-icon">normalize<wbr>Path</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#relativepath" class="tsd-kind-icon">relative<wbr>Path</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#resolveimportedvalues" class="tsd-kind-icon">resolve<wbr>Imported<wbr>Values</a></li>
+							<li class="tsd-kind-function"><a href="globals.html#resolvepath" class="tsd-kind-icon">resolve<wbr>Path</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#stripmap" class="tsd-kind-icon">strip<wbr>Map</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#validate" class="tsd-kind-icon">validate</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#validatemany" class="tsd-kind-icon">validate<wbr>Many</a></li>
@@ -3551,7 +3555,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">dataURIRe<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /data:[^\n\r;]+?(?:;charset&#x3D;[^\n\r;]+?)?;base64,([\d+/A-Za-z]+&#x3D;{0,2})/</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L6">src/utils/sourcemap-utils.ts:6</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L12">src/utils/sourcemap-utils.ts:12</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -3571,7 +3575,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">map<wbr>Block<wbr>Re<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /\/\*[#*@]+?\s*?sourceMappingURL\s*?&#x3D;\s*?(\S+)\s*?\*+?\//</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L7">src/utils/sourcemap-utils.ts:7</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L13">src/utils/sourcemap-utils.ts:13</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -3581,7 +3585,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">map<wbr>Inline<wbr>Re<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /\/\/[#@]+?\s*?sourceMappingURL\s*?&#x3D;\s*?(\S+)\s*?(?:$|\n|\r\n)/</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L8">src/utils/sourcemap-utils.ts:8</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L14">src/utils/sourcemap-utils.ts:14</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -3591,7 +3595,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">map<wbr>Re<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = new RegExp([mapBlockRe, mapInlineRe].map(re &#x3D;&gt; re.source).join(&quot;|&quot;))</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L9">src/utils/sourcemap-utils.ts:9</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L15">src/utils/sourcemap-utils.ts:15</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -3853,7 +3857,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L29">src/utils/sourcemap-utils.ts:29</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L35">src/utils/sourcemap-utils.ts:35</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3949,7 +3953,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L16">src/utils/sourcemap-utils.ts:16</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L22">src/utils/sourcemap-utils.ts:22</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -3981,7 +3985,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L47">src/utils/sourcemap-utils.ts:47</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L53">src/utils/sourcemap-utils.ts:53</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -4042,7 +4046,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/path-utils.ts#L24">src/utils/path-utils.ts:24</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/path-utils.ts#L33">src/utils/path-utils.ts:33</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -4115,7 +4119,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/path-utils.ts#L32">src/utils/path-utils.ts:32</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/path-utils.ts#L41">src/utils/path-utils.ts:41</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -4173,7 +4177,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/path-utils.ts#L40">src/utils/path-utils.ts:40</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/path-utils.ts#L49">src/utils/path-utils.ts:49</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -4341,7 +4345,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/path-utils.ts#L16">src/utils/path-utils.ts:16</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/path-utils.ts#L25">src/utils/path-utils.ts:25</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -4420,6 +4424,32 @@ img {
 				</ul>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-function">
+				<a name="resolvepath" class="tsd-anchor"></a>
+				<h3>resolve<wbr>Path</h3>
+				<ul class="tsd-signatures tsd-kind-function">
+					<li class="tsd-signature tsd-kind-icon">resolve<wbr>Path<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">...</span>paths<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/path-utils.ts#L16">src/utils/path-utils.ts:16</a></li>
+							</ul>
+						</aside>
+						<div class="tsd-comment tsd-typography">
+						</div>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>paths: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						<p>Normalized path, relative to <code>dir</code></p>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function">
 				<a name="stripmap" class="tsd-anchor"></a>
 				<h3>strip<wbr>Map</h3>
 				<ul class="tsd-signatures tsd-kind-function">
@@ -4429,7 +4459,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L58">src/utils/sourcemap-utils.ts:58</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L64">src/utils/sourcemap-utils.ts:64</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">

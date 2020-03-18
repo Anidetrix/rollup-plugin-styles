@@ -15,7 +15,7 @@ import {
   LoadersOptions,
 } from "./types";
 import Loaders from "./loaders";
-import { relativePath, normalizePath } from "./utils/path-utils";
+import { relativePath } from "./utils/path-utils";
 import { MapModifier } from "./utils/sourcemap-utils";
 
 /**
@@ -172,7 +172,7 @@ export default (options: Options = {}): Plugin => {
           typeof postcssLoaderOptions.extract === "string"
             ? relativePath(dir, postcssLoaderOptions.extract)
             : `${path.basename(file, path.extname(file))}.css`;
-        const fileDir = normalizePath(path.dirname(path.resolve(dir, fileName)));
+        const fileDir = path.dirname(path.resolve(dir, fileName));
 
         const modules = [...this.moduleIds];
         const entries = [...extracted.values()].sort(
