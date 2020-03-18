@@ -6,7 +6,7 @@ import loadModule from "../utils/load-module";
 const loader: Loader = {
   name: "less",
   test: /\.less$/i,
-  async process(payload) {
+  async process({ code, map }) {
     const less = loadModule("less");
     if (!less) this.error("You need to install `less` package in order to process Less files");
 
@@ -15,7 +15,7 @@ const loader: Loader = {
         less.render(code, options, (err, css) => (err ? reject(err) : resolve(css))),
       );
 
-    const res = await render(payload.code, {
+    const res = await render(code, {
       ...this.options,
       filename: this.id,
       sourceMap: this.sourceMap
@@ -26,7 +26,7 @@ const loader: Loader = {
     const deps = res.imports;
     for (const dep of deps) this.dependencies.add(dep);
 
-    return { code: res.css, map: res.map };
+    return { code: res.css, map: res.map || map };
   },
 };
 

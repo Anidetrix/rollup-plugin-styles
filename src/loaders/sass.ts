@@ -76,7 +76,7 @@ function loadSassOrThrow(): [Sass, AllowedSassID] {
 const loader: Loader<SASSLoaderOptions> = {
   name: "sass",
   test: /\.(sass|scss)$/i,
-  process(payload) {
+  process({ code, map }) {
     const [sass, sassType] = loadSassOrThrow();
 
     const render = (options: SASSOptions): Promise<SASSResult> =>
@@ -97,7 +97,7 @@ const loader: Loader<SASSLoaderOptions> = {
         const res = await render({
           ...this.options,
           file: this.id,
-          data: (this.options.data || "") + payload.code,
+          data: (this.options.data || "") + code,
           indentedSyntax: /\.sass$/i.test(this.id),
           sourceMap: Boolean(this.sourceMap) && this.id,
           omitSourceMapUrl: true,
@@ -109,7 +109,7 @@ const loader: Loader<SASSLoaderOptions> = {
         const deps = res.stats.includedFiles;
         for (const dep of deps) this.dependencies.add(dep);
 
-        return { code: res.css.toString(), map: res.map && res.map.toString() };
+        return { code: res.css.toString(), map: (res.map && res.map.toString()) || map };
       },
     );
   },

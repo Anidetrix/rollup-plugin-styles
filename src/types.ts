@@ -6,24 +6,6 @@ import { LocalByDefaultOptions } from "postcss-modules-local-by-default";
 import { ExtractImportsOptions } from "postcss-modules-extract-imports";
 import { ScopeOptions } from "postcss-modules-scope";
 
-/** Sourcemap */
-export interface SourceMap {
-  /** Version */
-  version: string;
-  /** Sources */
-  sources: string[];
-  /** Names */
-  names: string[];
-  /** Sources content */
-  sourcesContent?: string[];
-  /** Mappings */
-  mappings: string;
-  /** File */
-  file?: string;
-  /** Source root */
-  sourceRoot?: string;
-}
-
 /** Object, which properties are unknown */
 export type ObjectWithUnknownProps = { [prop: string]: unknown };
 

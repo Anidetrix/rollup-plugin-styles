@@ -5,7 +5,7 @@ import postcss from "postcss";
 import findPostCSSConfig from "postcss-load-config";
 import cssnano from "cssnano";
 
-import { Loader, PostCSSLoaderOptions, Payload } from "../../types";
+import { Loader, PostCSSLoaderOptions } from "../../types";
 import { humanlizePath, normalizePath } from "../../utils/path-utils";
 import { MapModifier } from "../../utils/sourcemap-utils";
 import resolveAsync from "../../utils/resolve-async";
@@ -57,7 +57,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
   name: "postcss",
   alwaysProcess: true,
   // `test` option is dynamically set in `Loaders` class
-  async process(payload) {
+  async process({ code, map, extracted }) {
     const { options } = this;
 
     const config = await loadConfig(this.id, options.config);
@@ -89,8 +89,8 @@ const loader: Loader<PostCSSLoaderOptions> = {
 
     delete postcssOpts.plugins;
 
-    if (typeof postcssOpts.map === "object" && payload.map)
-      postcssOpts.map.prev = new MapModifier(payload.map)
+    if (typeof postcssOpts.map === "object" && map)
+      postcssOpts.map.prev = new MapModifier(map)
         .relative(path.dirname(postcssOpts.from))
         .toObject();
 
@@ -129,7 +129,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
     // You did not set any plugins, parser, or stringifier. Right now, PostCSS does nothing. Pick plugins for your case on https://www.postcss.parts/ and use them in postcss.config.js
     if (plugins.length === 0) plugins.push(postcssNoop);
 
-    const res = await postcss(plugins).process(payload.code, postcssOpts);
+    const res = await postcss(plugins).process(code, postcssOpts);
 
     const deps = res.messages.filter(msg => msg.type === "dependency");
     for (const dep of deps) this.dependencies.add(dep.file);
@@ -137,8 +137,12 @@ const loader: Loader<PostCSSLoaderOptions> = {
     for (const warning of res.warnings())
       this.warn(warning.text, { column: warning.column, line: warning.line });
 
-    const map =
-      res.map && new MapModifier(res.map.toJSON()).resolve(path.dirname(postcssOpts.to)).toString();
+    if (res.map) {
+      map =
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        new MapModifier(res.map.toJSON() as any).resolve(path.dirname(postcssOpts.to)).toString() ||
+        map;
+    }
 
     if (!shouldExtract && this.sourceMap && map)
       res.css += new MapModifier(map)
@@ -156,7 +160,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
       for (const name in json) {
         const newName = getClassName(name);
 
-        // Skip logging when namedExports is a function since user can log that manually
+        // Skip logging when namedExports is a function since user can do that manually
         if (name !== newName && typeof options.namedExports !== "function")
           this.warn(`Exported "${name}" as "${newName}" in ${humanlizePath(this.id)}`);
 
@@ -167,7 +171,6 @@ const loader: Loader<PostCSSLoaderOptions> = {
     }
 
     const cssVarName = safeId("css");
-    let extracted: Payload["extracted"];
     if (shouldExtract) {
       output += `\nexport default ${JSON.stringify(modulesExports[this.id])};`;
       extracted = { id: this.id, code: res.css, map };

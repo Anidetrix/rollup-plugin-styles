@@ -1,13 +1,5 @@
 declare module "stylus" {
-  interface SourceMap {
-    version: string;
-    sources: string[];
-    names: string[];
-    sourcesContent?: string[];
-    mappings: string;
-    file?: string;
-    sourceRoot?: string;
-  }
+  import { ExistingRawSourceMap } from "rollup";
 
   export interface Stylus {
     (str: string): Renderer;
@@ -19,7 +11,7 @@ declare module "stylus" {
   export class Renderer {
     constructor(str: string);
     constructor(str: string, options: RenderOptions);
-    sourcemap?: SourceMap;
+    sourcemap?: ExistingRawSourceMap;
     render(callback: RenderCallback): void;
     render(): string;
     deps(): string[];

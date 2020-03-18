@@ -1,5 +1,6 @@
 import path from "path";
 import fs from "fs-extra";
+import { ExistingRawSourceMap } from "rollup";
 import {
   relativePath,
   isAbsolutePath,
@@ -7,7 +8,6 @@ import {
   isRelativePath,
   resolvePath,
 } from "./path-utils";
-import { SourceMap } from "../types";
 
 export const dataURIRe = /data:[^\n\r;]+?(?:;charset=[^\n\r;]+?)?;base64,([\d+/A-Za-z]+={0,2})/;
 export const mapBlockRe = /\/\*[#*@]+?\s*?sourceMappingURL\s*?=\s*?(\S+)\s*?\*+?\//;
@@ -70,10 +70,10 @@ export function stripMap(code: string): string {
  * Class for working with sourcemaps, supports chaining
  */
 export class MapModifier {
-  private map: SourceMap;
+  private map: ExistingRawSourceMap;
 
   /** @param map sourcemap */
-  constructor(map: string | SourceMap) {
+  constructor(map: string | ExistingRawSourceMap) {
     if (!map) throw new TypeError("Sourcemap must be an object or a string");
     this.map = typeof map === "string" ? JSON.parse(map) : map;
   }
@@ -83,7 +83,7 @@ export class MapModifier {
    * @param f function used to modify the sourcemap
    * @returns itself for chaining
    */
-  modify(f: (m: SourceMap) => void): this {
+  modify(f: (m: ExistingRawSourceMap) => void): this {
     f(this.map);
     return this;
   }
@@ -121,7 +121,7 @@ export class MapModifier {
    * Returns sourcemap
    * @returns sourcemap object
    */
-  toObject(): SourceMap {
+  toObject(): ExistingRawSourceMap {
     return this.map;
   }
 

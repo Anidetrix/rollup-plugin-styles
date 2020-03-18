@@ -128,7 +128,7 @@ export default (options: Options = {}): Plugin => {
       };
 
       const res = await loaders.process(
-        { code, map: this.getCombinedSourcemap().toString() },
+        { code, map: options.sourceMap ? this.getCombinedSourcemap().toString() : undefined },
         loaderContext,
       );
 
@@ -183,7 +183,8 @@ export default (options: Options = {}): Plugin => {
         for (const res of entries) {
           const relative = relativePath(dir, res.id);
           const map = res.map && new MapModifier(res.map).relative(fileDir).toObject();
-          concat.add(relative, res.code, map);
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          concat.add(relative, res.code, map as any);
         }
 
         let code = concat.content.toString();
