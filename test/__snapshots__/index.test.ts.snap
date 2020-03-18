@@ -318,7 +318,7 @@ injector_14187a73(css_2f84417a);
 "
 `;
 
-exports[`extract custom-path: css 1`] = `
+exports[`extract custom-path-absolute: css 1`] = `
 ".foo {
   color: red;
 }
@@ -347,14 +347,52 @@ exports[`extract custom-path: css 1`] = `
 /*# sourceMappingURL=extracted.css.map */"
 `;
 
-exports[`extract custom-path: js 1`] = `
+exports[`extract custom-path-absolute: js 1`] = `
 "'use strict';
 
 console.log(undefined, undefined);
 "
 `;
 
-exports[`extract custom-path: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../../simple/foo.css\\",\\"../../../../../simple/bar.css\\",\\"../../../../../simple/style.styl\\",\\"../../../../../simple/style.pcss\\",\\"../../../../../simple/style.sass\\",\\"../../../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;AACZ;;ACFA;EACE,WAAO;EACP,gBAAY;AACd;;ACHA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;EACV,UAAU,EAAA;;ACCZ;EACE,cAAA;AAFF\\",\\"file\\":\\"extracted.css\\",\\"sourcesContent\\":[\\".foo {\\\\n  color: red;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
+exports[`extract custom-path-absolute: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../../simple/foo.css\\",\\"../../../../../simple/bar.css\\",\\"../../../../../simple/style.styl\\",\\"../../../../../simple/style.pcss\\",\\"../../../../../simple/style.sass\\",\\"../../../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;AACZ;;ACFA;EACE,WAAO;EACP,gBAAY;AACd;;ACHA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;EACV,UAAU,EAAA;;ACCZ;EACE,cAAA;AAFF\\",\\"file\\":\\"extracted.css\\",\\"sourcesContent\\":[\\".foo {\\\\n  color: red;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
+
+exports[`extract custom-path-relative: css 1`] = `
+".foo {
+  color: red;
+}
+
+.bar {
+  color: red;
+}
+
+.stylus {
+  color: #f00;
+  background: #f00;
+}
+
+.pcss {
+  color: red;
+}
+
+.sass {
+  width: 30%;
+  color: red; }
+
+.less {
+  color: #6c94be;
+}
+
+/*# sourceMappingURL=extracted.css.map */"
+`;
+
+exports[`extract custom-path-relative: js 1`] = `
+"'use strict';
+
+console.log(undefined, undefined);
+"
+`;
+
+exports[`extract custom-path-relative: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../../../simple/foo.css\\",\\"../../../../../../simple/bar.css\\",\\"../../../../../../simple/style.styl\\",\\"../../../../../../simple/style.pcss\\",\\"../../../../../../simple/style.sass\\",\\"../../../../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;AACZ;;ACFA;EACE,WAAO;EACP,gBAAY;AACd;;ACHA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;EACV,UAAU,EAAA;;ACCZ;EACE,cAAA;AAFF\\",\\"file\\":\\"extracted.css\\",\\"sourcesContent\\":[\\".foo {\\\\n  color: red;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
 
 exports[`extract sourcemap-inline: css 1`] = `
 ".foo {

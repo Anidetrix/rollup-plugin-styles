@@ -82,7 +82,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
       ...config.options,
       from: this.id,
       // Set `to` to extract location, required for some plugins
-      to: typeof options.extract === "string" ? options.extract : this.id,
+      to: typeof options.extract === "string" ? path.resolve(options.extract) : this.id,
       // Annotation are still enabled if you have set {inline: true} in PostCSS `map` option
       map: Boolean(this.sourceMap) && { inline: false, annotation: false, sourcesContent: true },
     };

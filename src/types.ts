@@ -241,7 +241,7 @@ export interface Options {
     | ((varname: string, id: string) => string);
   /**
    * Extract CSS to the same location where JS file is generated but with .css extension.
-   * You can also set it to an absolute path, which will also act as `to` option for PostCSS
+   * You can also set it to an absolute or relative to current working directory path, which will also act as `to` option for PostCSS
    * @default false
    * */
   extract?: boolean | string;

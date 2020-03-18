@@ -46,6 +46,9 @@ This plugin will also automatically detect and use local PostCSS config files.
 ```js
 styles({
   extract: true,
+  // ...or with absolute/relative to current working directory path
+  // Note: also acts as `to` for PostCSS
+  extract: "dist/awesome-bundle.css",
 });
 ```
 

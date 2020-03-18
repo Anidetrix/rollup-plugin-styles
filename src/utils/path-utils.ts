@@ -9,6 +9,14 @@ export function normalizePath(file: string): string {
 }
 
 /**
+ * @param paths Array of paths
+ * @returns Normalized absolute path
+ */
+export function resolvePath(...paths: string[]): string {
+  return normalizePath(path.resolve(...paths));
+}
+
+/**
  * @param dir Directory path
  * @param file File path
  * @returns Normalized path, relative to `dir`

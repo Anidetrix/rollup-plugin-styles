@@ -1,6 +1,12 @@
 import path from "path";
 import fs from "fs-extra";
-import { relativePath, isAbsolutePath, normalizePath, isRelativePath } from "./path-utils";
+import {
+  relativePath,
+  isAbsolutePath,
+  normalizePath,
+  isRelativePath,
+  resolvePath,
+} from "./path-utils";
 import { SourceMap } from "../types";
 
 export const dataURIRe = /data:[^\n\r;]+?(?:;charset=[^\n\r;]+?)?;base64,([\d+/A-Za-z]+={0,2})/;
@@ -89,9 +95,7 @@ export class MapModifier {
    */
   resolve(dir: string): this {
     if (this.map.sources) {
-      this.map.sources = this.map.sources.map(source =>
-        normalizePath(path.resolve(path.join(dir, source))),
-      );
+      this.map.sources = this.map.sources.map(source => resolvePath(dir, source));
     }
     return this;
   }

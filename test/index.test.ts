@@ -275,10 +275,18 @@ validateMany("extract", [
     options: { extract: true },
   },
   {
-    title: "custom-path",
+    title: "custom-path-absolute",
     input: "simple/index.js",
     options: {
-      extract: fixture("dist/extract/custom-path/this/is/extracted.css"),
+      extract: fixture("dist/extract/custom-path-absolute/this/is/extracted.css"),
+      sourceMap: true,
+    },
+  },
+  {
+    title: "custom-path-relative",
+    input: "simple/index.js",
+    options: {
+      extract: "test/fixtures/dist/extract/custom-path-relative/this/is/too/extracted.css",
       sourceMap: true,
     },
   },
