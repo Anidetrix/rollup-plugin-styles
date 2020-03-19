@@ -1,8 +1,9 @@
-import importCwd from "import-cwd";
 import { Sass } from "sass";
 import { Sass as NodeSass } from "node-sass";
 import { FiberConstructor } from "fibers";
 import { Stylus } from "stylus";
+
+import resolveAsync from "./resolve-async";
 
 /**
  * Interface for mapping module's name to it's type
@@ -13,9 +14,15 @@ interface ModuleImportMap {
   fibers: FiberConstructor;
   less: LessStatic;
   stylus: Stylus;
+  [k: string]: unknown;
 }
 
-export default <K extends keyof ModuleImportMap>(moduleId: K): ModuleImportMap[K] | undefined => {
+export default async <K extends keyof ModuleImportMap>(
+  moduleId: K,
+  basedir = process.cwd(),
+): Promise<ModuleImportMap[K] | undefined> => {
+  if (typeof moduleId !== "string") return;
+
   // Trying to load module normally (relative to plugin directory)
   try {
     return require(moduleId);
@@ -23,6 +30,16 @@ export default <K extends keyof ModuleImportMap>(moduleId: K): ModuleImportMap[K
     // Ignore error
   }
 
-  // Then, trying to load it relative to CWD
-  return importCwd.silent(moduleId) as ModuleImportMap[K] | undefined;
+  // Then, trying to load it relative to provided dir or CWD
+  try {
+    return require(await resolveAsync(moduleId, { basedir }));
+  } catch (error) {
+    // Ignore error
+  }
+
+  try {
+    return require(await resolveAsync(`./${moduleId}`, { basedir }));
+  } catch (error) {
+    return;
+  }
 };

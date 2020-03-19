@@ -7,7 +7,7 @@ const loader: Loader = {
   name: "less",
   test: /\.less$/i,
   async process({ code, map }) {
-    const less = loadModule("less");
+    const less = await loadModule("less");
     if (!less) this.error("You need to install `less` package in order to process Less files");
 
     const render = (code: string, options: Less.Options): Promise<Less.RenderOutput> =>

@@ -101,7 +101,6 @@
     "cssnano": "^4.1.10",
     "hash.js": "^1.1.7",
     "icss-utils": "^4.1.1",
-    "import-cwd": "^3.0.0",
     "p-queue": "^6.3.0",
     "postcss": "^7.0.27",
     "postcss-load-config": "^2.1.0",

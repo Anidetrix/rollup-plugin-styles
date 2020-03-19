@@ -40,11 +40,3 @@ export function humanlizePath(file: string): string {
 export function isAbsolutePath(path: string): boolean {
   return /^(?:\/|(?:[A-Za-z]:)?[/\\|])/.test(path);
 }
-
-/**
- * @param path Path
- * @returns `true` if `path` is relative, otherwise `false`
- */
-export function isRelativePath(path: string): boolean {
-  return /^\.?\.[/\\]/.test(path);
-}

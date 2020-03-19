@@ -8,7 +8,7 @@ const loader: Loader = {
   name: "stylus",
   test: /\.(styl|stylus)$/i,
   async process({ code, map }) {
-    const stylus = loadModule("stylus");
+    const stylus = await loadModule("stylus");
     if (!stylus)
       this.error("You need to install `stylus` package in order to process Stylus files");
 

@@ -56,10 +56,10 @@ const defaultImporter: SASSImporter = (url, importer, done) => {
  * Loads Sass module or throws an error
  * @returns A tuple in format [`loaded sass module`, `id`],
  */
-function loadSassOrThrow(): [Sass, AllowedSassID] {
+async function loadSassOrThrow(): Promise<[Sass, AllowedSassID]> {
   // Loading one of the supported modules
   for (const id of possibleSassIDs) {
-    const module = loadModule(id);
+    const module = await loadModule(id);
     if (module) return [module, id];
   }
 
@@ -76,8 +76,8 @@ function loadSassOrThrow(): [Sass, AllowedSassID] {
 const loader: Loader<SASSLoaderOptions> = {
   name: "sass",
   test: /\.(sass|scss)$/i,
-  process({ code, map }) {
-    const [sass, sassType] = loadSassOrThrow();
+  async process({ code, map }) {
+    const [sass, sassType] = await loadSassOrThrow();
 
     const render = (options: SASSOptions): Promise<SASSResult> =>
       new Promise((resolve, reject) => {
@@ -86,7 +86,7 @@ const loader: Loader<SASSLoaderOptions> = {
 
     let fiber: FiberConstructor | undefined;
     // Disable `fibers` for testing, it doesn't work
-    if (sassType == "sass" && !process.env.STYLES_TEST) fiber = loadModule("fibers");
+    if (sassType == "sass" && !process.env.STYLES_TEST) fiber = await loadModule("fibers");
 
     return workQueue.add<Payload>(
       async (): Promise<Payload> => {

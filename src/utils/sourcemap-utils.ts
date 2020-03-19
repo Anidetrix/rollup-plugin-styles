@@ -1,13 +1,7 @@
 import path from "path";
 import fs from "fs-extra";
 import { ExistingRawSourceMap } from "rollup";
-import {
-  relativePath,
-  isAbsolutePath,
-  normalizePath,
-  isRelativePath,
-  resolvePath,
-} from "./path-utils";
+import { relativePath, isAbsolutePath, resolvePath } from "./path-utils";
 
 export const dataURIRe = /data:[^\n\r;]+?(?:;charset=[^\n\r;]+?)?;base64,([\d+/A-Za-z]+={0,2})/;
 export const mapBlockRe = /\/\*[#*@]+?\s*?sourceMappingURL\s*?=\s*?(\S+)\s*?\*+?\//;
@@ -106,12 +100,11 @@ export class MapModifier {
    * @param dir path to resolve sourcemap sources relative to
    * @returns itself for chaining
    */
-  relative(dir: string = process.cwd()): this {
+  relative(dir = process.cwd()): this {
     if (this.map.sources) {
       this.map.sources = this.map.sources.map(source => {
         if (isAbsolutePath(source)) return relativePath(dir, source);
-        else if (isRelativePath(source)) return relativePath(dir, path.join(dir, source));
-        else return normalizePath(source);
+        else return relativePath(dir, path.join(dir, source));
       });
     }
     return this;
