@@ -106,7 +106,7 @@
     "postcss-load-config": "^2.1.0",
     "postcss-modules-extract-imports": "^2.0.0",
     "postcss-modules-local-by-default": "^3.0.2",
-    "postcss-modules-scope": "^2.1.1",
+    "postcss-modules-scope": "^2.2.0",
     "postcss-modules-values": "^3.0.0",
     "resolve": "^1.15.1"
   },
