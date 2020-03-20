@@ -3,9 +3,8 @@ import { LoadedFile, Plugin, FileManagerInterface, Less } from "less";
 import resolveAsync from "../../utils/resolve-async";
 import { moduleRe, getUrlOfPartial } from "../../utils/resolve-utils";
 
-const getStylesFileManager = (): FileManagerInterface => {
-  const less = require("less") as Less;
-  return new (class extends less.AbstractFileManager implements FileManagerInterface {
+const getStylesFileManager = (less: Less): FileManagerInterface =>
+  new (class extends less.AbstractFileManager implements FileManagerInterface {
     supports(): boolean {
       return true;
     }
@@ -50,11 +49,10 @@ const getStylesFileManager = (): FileManagerInterface => {
       return { filename: id, contents: await fs.readFile(id, "utf8") };
     }
   })();
-};
 
 const importPlugin: Plugin = {
-  install(_, pluginManager) {
-    pluginManager.addFileManager(getStylesFileManager());
+  install(less, pluginManager) {
+    pluginManager.addFileManager(getStylesFileManager(less));
   },
 };
 
