@@ -4,7 +4,7 @@ declare module "less" {
     filename: string;
     relativeUrls: boolean;
     rootpath: string;
-    currentDir: string;
+    currentDirectory: string;
     entryPath: string;
     rootFilename: string;
     reference: boolean;
