@@ -104,6 +104,7 @@ See [Options](https://anidetrix.github.io/rollup-plugin-styles/interfaces/option
 
 - Written completely in TypeScript
 - [CSS Modules](https://github.com/css-modules/css-modules) implementation compatible with plugins like [postcss-import](https://github.com/postcss/postcss-import) and [postcss-custom-properties](https://github.com/postcss/postcss-custom-properties)
+- Support for partials and ~ in Less files
 - Proper sourcemap generation for all loaders
 - Proper order of imported CSS chunks
 - Sourcemaps include source content
