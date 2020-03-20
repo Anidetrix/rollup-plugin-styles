@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>MapModifier | rollup-plugin-styles</title>
+	<title>StylesFileManager | rollup-plugin-styles</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<style type="text/css">/*! normalize.css v1.1.3 | MIT License | git.io/normalize */
@@ -2727,34 +2727,19 @@ img {
 <nav class="tsd-navigation secondary">
 	<ul>
 		<li class="current tsd-kind-class">
-			<a href="mapmodifier.html" class="tsd-kind-icon">Map<wbr>Modifier</a>
+			<a href="stylesfilemanager.html" class="tsd-kind-icon">Styles<wbr>File<wbr>Manager</a>
 			<ul>
-				<li class=" tsd-kind-constructor tsd-parent-kind-class">
-					<a href="mapmodifier.html#constructor" class="tsd-kind-icon">constructor</a>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<a href="stylesfilemanager.html#loadfile" class="tsd-kind-icon">load<wbr>File</a>
 				</li>
-				<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a href="mapmodifier.html#map" class="tsd-kind-icon">map</a>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<a href="stylesfilemanager.html#loadfilesync" class="tsd-kind-icon">load<wbr>File<wbr>Sync</a>
 				</li>
-				<li class=" tsd-kind-method tsd-parent-kind-class">
-					<a href="mapmodifier.html#modify" class="tsd-kind-icon">modify</a>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<a href="stylesfilemanager.html#supports" class="tsd-kind-icon">supports</a>
 				</li>
-				<li class=" tsd-kind-method tsd-parent-kind-class">
-					<a href="mapmodifier.html#relative" class="tsd-kind-icon">relative</a>
-				</li>
-				<li class=" tsd-kind-method tsd-parent-kind-class">
-					<a href="mapmodifier.html#resolve" class="tsd-kind-icon">resolve</a>
-				</li>
-				<li class=" tsd-kind-method tsd-parent-kind-class">
-					<a href="mapmodifier.html#tocommentdata" class="tsd-kind-icon">to<wbr>Comment<wbr>Data</a>
-				</li>
-				<li class=" tsd-kind-method tsd-parent-kind-class">
-					<a href="mapmodifier.html#tocommentfile" class="tsd-kind-icon">to<wbr>Comment<wbr>File</a>
-				</li>
-				<li class=" tsd-kind-method tsd-parent-kind-class">
-					<a href="mapmodifier.html#toobject" class="tsd-kind-icon">to<wbr>Object</a>
-				</li>
-				<li class=" tsd-kind-method tsd-parent-kind-class">
-					<a href="mapmodifier.html#tostring" class="tsd-kind-icon">to<wbr>String</a>
+				<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<a href="stylesfilemanager.html#supportssync" class="tsd-kind-icon">supports<wbr>Sync</a>
 				</li>
 			</ul>
 		</li>
@@ -2762,18 +2747,16 @@ img {
 </nav>
 <div class="container container-main">
 	<div class="content-wrap">
-		<section class="tsd-panel tsd-comment">
-			<div class="tsd-comment tsd-typography">
-				<div class="lead">
-					<p>Class for working with sourcemaps, supports chaining</p>
-				</div>
-			</div>
-		</section>
 		<section class="tsd-panel tsd-hierarchy">
 			<h3>Hierarchy</h3>
 			<ul class="tsd-hierarchy">
 				<li>
-					<span class="target">MapModifier</span>
+					<span class="tsd-signature-type">FileManager</span>
+					<ul class="tsd-hierarchy">
+						<li>
+							<span class="target">StylesFileManager</span>
+						</li>
+					</ul>
 				</li>
 			</ul>
 		</section>
@@ -2782,293 +2765,109 @@ img {
 			<section class="tsd-panel tsd-index-panel">
 				<div class="tsd-index-content">
 					<section class="tsd-index-section ">
-						<h3>Constructors</h3>
-						<ul class="tsd-index-list">
-							<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="mapmodifier.html#constructor" class="tsd-kind-icon">constructor</a></li>
-						</ul>
-					</section>
-					<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
-						<h3>Properties</h3>
-						<ul class="tsd-index-list">
-							<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="mapmodifier.html#map" class="tsd-kind-icon">map</a></li>
-						</ul>
-					</section>
-					<section class="tsd-index-section ">
 						<h3>Methods</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-method tsd-parent-kind-class"><a href="mapmodifier.html#modify" class="tsd-kind-icon">modify</a></li>
-							<li class="tsd-kind-method tsd-parent-kind-class"><a href="mapmodifier.html#relative" class="tsd-kind-icon">relative</a></li>
-							<li class="tsd-kind-method tsd-parent-kind-class"><a href="mapmodifier.html#resolve" class="tsd-kind-icon">resolve</a></li>
-							<li class="tsd-kind-method tsd-parent-kind-class"><a href="mapmodifier.html#tocommentdata" class="tsd-kind-icon">to<wbr>Comment<wbr>Data</a></li>
-							<li class="tsd-kind-method tsd-parent-kind-class"><a href="mapmodifier.html#tocommentfile" class="tsd-kind-icon">to<wbr>Comment<wbr>File</a></li>
-							<li class="tsd-kind-method tsd-parent-kind-class"><a href="mapmodifier.html#toobject" class="tsd-kind-icon">to<wbr>Object</a></li>
-							<li class="tsd-kind-method tsd-parent-kind-class"><a href="mapmodifier.html#tostring" class="tsd-kind-icon">to<wbr>String</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="stylesfilemanager.html#loadfile" class="tsd-kind-icon">load<wbr>File</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><a href="stylesfilemanager.html#loadfilesync" class="tsd-kind-icon">load<wbr>File<wbr>Sync</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="stylesfilemanager.html#supports" class="tsd-kind-icon">supports</a></li>
+							<li class="tsd-kind-method tsd-parent-kind-class tsd-is-overwrite"><a href="stylesfilemanager.html#supportssync" class="tsd-kind-icon">supports<wbr>Sync</a></li>
 						</ul>
 					</section>
 				</div>
 			</section>
 		</section>
 		<section class="tsd-panel-group tsd-member-group ">
-			<h2>Constructors</h2>
-			<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
-				<a name="constructor" class="tsd-anchor"></a>
-				<h3>constructor</h3>
-				<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">new <wbr>Map<wbr>Modifier<span class="tsd-signature-symbol">(</span>map<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ExistingRawSourceMap</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="mapmodifier.html" class="tsd-signature-type">MapModifier</a></li>
-				</ul>
-				<ul class="tsd-descriptions">
-					<li class="tsd-description">
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L67">src/utils/sourcemap-utils.ts:67</a></li>
-							</ul>
-						</aside>
-						<div class="tsd-comment tsd-typography">
-						</div>
-						<h4 class="tsd-parameters-title">Parameters</h4>
-						<ul class="tsd-parameters">
-							<li>
-								<h5>map: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ExistingRawSourceMap</span></h5>
-								<div class="tsd-comment tsd-typography">
-									<div class="lead">
-										<p>sourcemap</p>
-									</div>
-								</div>
-							</li>
-						</ul>
-						<h4 class="tsd-returns-title">Returns <a href="mapmodifier.html" class="tsd-signature-type">MapModifier</a></h4>
-					</li>
-				</ul>
-			</section>
-		</section>
-		<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
-			<h2>Properties</h2>
-			<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-				<a name="map" class="tsd-anchor"></a>
-				<h3><span class="tsd-flag ts-flagPrivate">Private</span> map</h3>
-				<div class="tsd-signature tsd-kind-icon">map<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ExistingRawSourceMap</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L67">src/utils/sourcemap-utils.ts:67</a></li>
-					</ul>
-				</aside>
-			</section>
-		</section>
-		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Methods</h2>
-			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-				<a name="modify" class="tsd-anchor"></a>
-				<h3>modify</h3>
-				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">modify<span class="tsd-signature-symbol">(</span>f<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span>m<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ExistingRawSourceMap</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+				<a name="loadfile" class="tsd-anchor"></a>
+				<h3>load<wbr>File</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<li class="tsd-signature tsd-kind-icon">load<wbr>File<span class="tsd-signature-symbol">(</span>filename<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, currentDirectory<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">LoadedFile</span><span class="tsd-signature-symbol">&gt;</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
+							<p>Overrides FileManager.loadFile</p>
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L80">src/utils/sourcemap-utils.ts:80</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/less/import-plugin.ts#L15">src/loaders/less/import-plugin.ts:15</a></li>
 							</ul>
 						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>Modify map using the provided function</p>
-							</div>
-						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5>f: <span class="tsd-signature-symbol">(</span>m<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ExistingRawSourceMap</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></h5>
-								<div class="tsd-comment tsd-typography">
-									<p>function used to modify the sourcemap</p>
-								</div>
-								<ul class="tsd-parameters">
-									<li class="tsd-parameter-signature">
-										<ul class="tsd-signatures tsd-kind-type-literal">
-											<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>m<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ExistingRawSourceMap</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
-										</ul>
-										<ul class="tsd-descriptions">
-											<li class="tsd-description">
-												<h4 class="tsd-parameters-title">Parameters</h4>
-												<ul class="tsd-parameters">
-													<li>
-														<h5>m: <span class="tsd-signature-type">ExistingRawSourceMap</span></h5>
-													</li>
-												</ul>
-												<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
-											</li>
-										</ul>
-									</li>
-								</ul>
+								<h5>filename: <span class="tsd-signature-type">string</span></h5>
+							</li>
+							<li>
+								<h5>currentDirectory: <span class="tsd-signature-type">string</span></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
-						<p>itself for chaining</p>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">LoadedFile</span><span class="tsd-signature-symbol">&gt;</span></h4>
 					</li>
 				</ul>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-				<a name="relative" class="tsd-anchor"></a>
-				<h3>relative</h3>
-				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">relative<span class="tsd-signature-symbol">(</span>dir<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+				<a name="loadfilesync" class="tsd-anchor"></a>
+				<h3>load<wbr>File<wbr>Sync</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-inherited">
+					<li class="tsd-signature tsd-kind-icon">load<wbr>File<wbr>Sync<span class="tsd-signature-symbol">(</span>filename<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, currentDirectory<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, options<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">LoadOptions</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">LoadedFileSync</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
+							<p>Inherited from <a href="stylesfilemanager.html">StylesFileManager</a>.<a href="stylesfilemanager.html#loadfilesync">loadFileSync</a></p>
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L103">src/utils/sourcemap-utils.ts:103</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/typings/less.d.ts#L41">src/typings/less.d.ts:41</a></li>
 							</ul>
 						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>Resolve map sources relative to the provided directory path
-								or to current working directory</p>
-							</div>
-						</div>
 						<h4 class="tsd-parameters-title">Parameters</h4>
 						<ul class="tsd-parameters">
 							<li>
-								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> dir: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = process.cwd()</span></h5>
-								<div class="tsd-comment tsd-typography">
-									<p>path to resolve sourcemap sources relative to</p>
-								</div>
+								<h5>filename: <span class="tsd-signature-type">string</span></h5>
 							</li>
-						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
-						<p>itself for chaining</p>
-					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-				<a name="resolve" class="tsd-anchor"></a>
-				<h3>resolve</h3>
-				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">resolve<span class="tsd-signature-symbol">(</span>dir<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">this</span></li>
-				</ul>
-				<ul class="tsd-descriptions">
-					<li class="tsd-description">
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L90">src/utils/sourcemap-utils.ts:90</a></li>
-							</ul>
-						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>Resolve map sources to absolute path</p>
-							</div>
-						</div>
-						<h4 class="tsd-parameters-title">Parameters</h4>
-						<ul class="tsd-parameters">
 							<li>
-								<h5>dir: <span class="tsd-signature-type">string</span></h5>
-								<div class="tsd-comment tsd-typography">
-									<p>path which is joined with sourcemap sources</p>
-								</div>
+								<h5>currentDirectory: <span class="tsd-signature-type">string</span></h5>
 							</li>
-						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">this</span></h4>
-						<p>itself for chaining</p>
-					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-				<a name="tocommentdata" class="tsd-anchor"></a>
-				<h3>to<wbr>Comment<wbr>Data</h3>
-				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">to<wbr>Comment<wbr>Data<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-				</ul>
-				<ul class="tsd-descriptions">
-					<li class="tsd-description">
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L133">src/utils/sourcemap-utils.ts:133</a></li>
-							</ul>
-						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>Make sourceMappingURL comment with inlined sourcemap</p>
-							</div>
-						</div>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-						<p>sourceMappingURL block comment with inlined sourcemap</p>
-					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-				<a name="tocommentfile" class="tsd-anchor"></a>
-				<h3>to<wbr>Comment<wbr>File</h3>
-				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">to<wbr>Comment<wbr>File<span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-				</ul>
-				<ul class="tsd-descriptions">
-					<li class="tsd-description">
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L143">src/utils/sourcemap-utils.ts:143</a></li>
-							</ul>
-						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>Make sourceMappingURL comment with with path to sourcemap file</p>
-							</div>
-						</div>
-						<h4 class="tsd-parameters-title">Parameters</h4>
-						<ul class="tsd-parameters">
 							<li>
-								<h5>file: <span class="tsd-signature-type">string</span></h5>
-								<div class="tsd-comment tsd-typography">
-									<p>file for comment generation</p>
-								</div>
+								<h5>options: <span class="tsd-signature-type">LoadOptions</span></h5>
 							</li>
 						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-						<p>sourceMappingURL block comment with path to sourcemap file</p>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">LoadedFileSync</span></h4>
 					</li>
 				</ul>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-				<a name="toobject" class="tsd-anchor"></a>
-				<h3>to<wbr>Object</h3>
-				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">to<wbr>Object<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ExistingRawSourceMap</span></li>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+				<a name="supports" class="tsd-anchor"></a>
+				<h3>supports</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<li class="tsd-signature tsd-kind-icon">supports<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
+							<p>Overrides FileManager.supports</p>
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L117">src/utils/sourcemap-utils.ts:117</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/less/import-plugin.ts#L7">src/loaders/less/import-plugin.ts:7</a></li>
 							</ul>
 						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>Returns sourcemap</p>
-							</div>
-						</div>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ExistingRawSourceMap</span></h4>
-						<p>sourcemap object</p>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 					</li>
 				</ul>
 			</section>
-			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-				<a name="tostring" class="tsd-anchor"></a>
-				<h3>to<wbr>String</h3>
-				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-					<li class="tsd-signature tsd-kind-icon">to<wbr>String<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+			<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+				<a name="supportssync" class="tsd-anchor"></a>
+				<h3>supports<wbr>Sync</h3>
+				<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-overwrite">
+					<li class="tsd-signature tsd-kind-icon">supports<wbr>Sync<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">boolean</span></li>
 				</ul>
 				<ul class="tsd-descriptions">
 					<li class="tsd-description">
 						<aside class="tsd-sources">
+							<p>Overrides FileManager.supportsSync</p>
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/sourcemap-utils.ts#L125">src/utils/sourcemap-utils.ts:125</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/less/import-plugin.ts#L11">src/loaders/less/import-plugin.ts:11</a></li>
 							</ul>
 						</aside>
-						<div class="tsd-comment tsd-typography">
-							<div class="lead">
-								<p>Converts sourcemap to string</p>
-							</div>
-						</div>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-						<p>stringified sourcemap</p>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">boolean</span></h4>
 					</li>
 				</ul>
 			</section>

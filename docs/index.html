@@ -2732,6 +2732,9 @@ img {
 		<li class=" tsd-kind-class">
 			<a href="classes/mapmodifier.html" class="tsd-kind-icon">Map<wbr>Modifier</a>
 		</li>
+		<li class=" tsd-kind-class">
+			<a href="classes/stylesfilemanager.html" class="tsd-kind-icon">Styles<wbr>File<wbr>Manager</a>
+		</li>
 		<li class=" tsd-kind-interface">
 			<a href="interfaces/extracteddata.html" class="tsd-kind-icon">Extracted<wbr>Data</a>
 		</li>
@@ -2910,6 +2913,9 @@ img {
 			<a href="globals.html#write" class="tsd-kind-icon">write</a>
 		</li>
 		<li class=" tsd-kind-object-literal">
+			<a href="globals.html#importplugin" class="tsd-kind-icon">import<wbr>Plugin</a>
+		</li>
+		<li class=" tsd-kind-object-literal">
 			<a href="globals.html#loader" class="tsd-kind-icon">loader</a>
 		</li>
 	</ul>
@@ -2989,8 +2995,8 @@ img {
 				<p><a href="https://github.com/sass/dart-sass/blob/master/README.md#javascript-api">Source</a></p>
 			</blockquote>
 			<p>To install <code>fibers</code>: <code>yarn add fibers --dev</code></p>
-			<a href="#imports-strongsassscss-onlystrong" id="imports-strongsassscss-onlystrong" style="color: inherit; text-decoration: none;">
-				<h4>imports (<strong>Sass/Scss only</strong>)</h4>
+			<a href="#imports-strongsassscsslessstrong" id="imports-strongsassscsslessstrong" style="color: inherit; text-decoration: none;">
+				<h4>imports (<strong>Sass/Scss/Less</strong>)</h4>
 			</a>
 			<p>Similar to how webpack&#39;s <a href="https://github.com/webpack-contrib/sass-loader#resolving-import-at-rules">sass-loader</a> works, you can prepend the import path with <code>~</code> to tell this plugin to resolve in <code>node_modules</code>:</p>
 			<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">"~bulma/css/bulma"</span>;</code></pre>
@@ -3045,6 +3051,7 @@ img {
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-class"><a href="classes/loaders.html" class="tsd-kind-icon">Loaders</a></li>
 							<li class="tsd-kind-class"><a href="classes/mapmodifier.html" class="tsd-kind-icon">Map<wbr>Modifier</a></li>
+							<li class="tsd-kind-class"><a href="classes/stylesfilemanager.html" class="tsd-kind-icon">Styles<wbr>File<wbr>Manager</a></li>
 						</ul>
 					</section>
 					<section class="tsd-index-section ">
@@ -3129,6 +3136,7 @@ img {
 					<section class="tsd-index-section ">
 						<h3>Object literals</h3>
 						<ul class="tsd-index-list">
+							<li class="tsd-kind-object-literal"><a href="globals.html#importplugin" class="tsd-kind-icon">import<wbr>Plugin</a></li>
 							<li class="tsd-kind-object-literal"><a href="globals.html#loader" class="tsd-kind-icon">loader</a></li>
 						</ul>
 					</section>
@@ -3143,7 +3151,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Allowed<wbr>SassID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"sass"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"node-sass"</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass.ts#L16">src/loaders/sass.ts:16</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass/index.ts#L15">src/loaders/sass/index.ts:15</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -3601,7 +3609,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">module<wbr>Re<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /^~([\da-z]|@).+/i</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass.ts#L14">src/loaders/sass.ts:14</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/resolve-utils.ts#L3">src/utils/resolve-utils.ts:3</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -3632,7 +3640,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">possible<wbr>SassIDs<span class="tsd-signature-symbol">:</span> <a href="globals.html#allowedsassid" class="tsd-signature-type">AllowedSassID</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [&quot;node-sass&quot;, &quot;sass&quot;]</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass.ts#L17">src/loaders/sass.ts:17</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass/index.ts#L16">src/loaders/sass/index.ts:16</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -3642,7 +3650,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">thread<wbr>Pool<wbr>Size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = parseInt(process.env.UV_THREADPOOL_SIZE || &quot;4&quot;)</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass.ts#L12">src/loaders/sass.ts:12</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass/index.ts#L12">src/loaders/sass/index.ts:12</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -3652,7 +3660,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">work<wbr>Queue<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">PQueue</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">PriorityQueue</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">DefaultAddOptions</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = new PQueue({ concurrency: threadPoolSize - 1 })</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass.ts#L13">src/loaders/sass.ts:13</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass/index.ts#L13">src/loaders/sass/index.ts:13</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -3669,7 +3677,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass.ts#L24">src/loaders/sass.ts:24</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass/default-importer.ts#L6">src/loaders/sass/default-importer.ts:6</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -4019,7 +4027,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass.ts#L19">src/loaders/sass.ts:19</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/utils/resolve-utils.ts#L5">src/utils/resolve-utils.ts:5</a></li>
 							</ul>
 						</aside>
 						<h4 class="tsd-parameters-title">Parameters</h4>
@@ -4208,7 +4216,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass.ts#L59">src/loaders/sass.ts:59</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass/index.ts#L22">src/loaders/sass/index.ts:22</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -4541,6 +4549,42 @@ img {
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Object literals</h2>
 			<section class="tsd-panel tsd-member tsd-kind-object-literal">
+				<a name="importplugin" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagConst">Const</span> import<wbr>Plugin</h3>
+				<div class="tsd-signature tsd-kind-icon">import<wbr>Plugin<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/less/import-plugin.ts#L53">src/loaders/less/import-plugin.ts:53</a></li>
+					</ul>
+				</aside>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
+					<a name="importplugin.install" class="tsd-anchor"></a>
+					<h3>install</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-object-literal">
+						<li class="tsd-signature tsd-kind-icon">install<span class="tsd-signature-symbol">(</span>_<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Less</span>, pluginManager<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">PluginManager</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/less/import-plugin.ts#L54">src/loaders/less/import-plugin.ts:54</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>_: <span class="tsd-signature-type">Less</span></h5>
+								</li>
+								<li>
+									<h5>pluginManager: <span class="tsd-signature-type">PluginManager</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-object-literal">
 				<a name="loader" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> loader</h3>
 				<div class="tsd-signature tsd-kind-icon">loader<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
@@ -4548,9 +4592,9 @@ img {
 					<ul>
 						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/postcss/index.ts#L56">src/loaders/postcss/index.ts:56</a></li>
 						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sourcemap.ts#L4">src/loaders/sourcemap.ts:4</a></li>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass.ts#L76">src/loaders/sass.ts:76</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass/index.ts#L39">src/loaders/sass/index.ts:39</a></li>
 						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/stylus.ts#L7">src/loaders/stylus.ts:7</a></li>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/less.ts#L6">src/loaders/less.ts:6</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/less/index.ts#L8">src/loaders/less/index.ts:8</a></li>
 					</ul>
 				</aside>
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-object-literal">
@@ -4572,9 +4616,9 @@ img {
 						<ul>
 							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/postcss/index.ts#L57">src/loaders/postcss/index.ts:57</a></li>
 							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sourcemap.ts#L5">src/loaders/sourcemap.ts:5</a></li>
-							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass.ts#L77">src/loaders/sass.ts:77</a></li>
+							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass/index.ts#L40">src/loaders/sass/index.ts:40</a></li>
 							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/stylus.ts#L8">src/loaders/stylus.ts:8</a></li>
-							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/less.ts#L7">src/loaders/less.ts:7</a></li>
+							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/less/index.ts#L9">src/loaders/less/index.ts:9</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -4584,9 +4628,9 @@ img {
 					<div class="tsd-signature tsd-kind-icon">test<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /\.less$/i</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass.ts#L78">src/loaders/sass.ts:78</a></li>
+							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass/index.ts#L41">src/loaders/sass/index.ts:41</a></li>
 							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/stylus.ts#L9">src/loaders/stylus.ts:9</a></li>
-							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/less.ts#L8">src/loaders/less.ts:8</a></li>
+							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/less/index.ts#L10">src/loaders/less/index.ts:10</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -4637,6 +4681,9 @@ img {
 					</ul>
 					<ul class="tsd-legend">
 						<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+					</ul>
+					<ul class="tsd-legend">
+						<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
 					</ul>
 					<ul class="tsd-legend">
 						<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
