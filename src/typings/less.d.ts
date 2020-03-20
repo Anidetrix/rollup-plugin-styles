@@ -34,7 +34,8 @@ declare module "less" {
 
   export type LoadOptions = { [k: string]: unknown };
 
-  class FileManager {
+  class AbstractFileManager {}
+  class FileManager extends AbstractFileManager {
     supports(filename: string, currentDirectory: string, options: LoadOptions): boolean;
     supportsSync(filename: string, currentDirectory: string, options: LoadOptions): boolean;
     loadFile(filename: string, currentDirectory: string, options: LoadOptions): Promise<LoadedFile>;
