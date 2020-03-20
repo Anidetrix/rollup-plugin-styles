@@ -1,9 +1,9 @@
 import fs from "fs-extra";
-import { FileManager, LoadedFile, Plugin } from "less";
+import less, { LoadedFile, Plugin } from "less";
 import resolveAsync from "../../utils/resolve-async";
 import { moduleRe, getUrlOfPartial } from "../../utils/resolve-utils";
 
-class StylesFileManager extends FileManager {
+class StylesFileManager extends less.FileManager {
   supports(): boolean {
     return true;
   }

@@ -34,14 +34,14 @@ declare module "less" {
 
   export type LoadOptions = { [k: string]: unknown };
 
-  export class FileManager {
+  class FileManager {
     supports(filename: string, currentDirectory: string, options: LoadOptions): boolean;
     supportsSync(filename: string, currentDirectory: string, options: LoadOptions): boolean;
     loadFile(filename: string, currentDirectory: string, options: LoadOptions): Promise<LoadedFile>;
     loadFileSync(filename: string, currentDirectory: string, options: LoadOptions): LoadedFileSync;
   }
 
-  export class PluginManager {
+  class PluginManager {
     constructor(less: Less);
     addPreProcessor(preProcessor: PreProcessor, priority?: number): void;
     addFileManager(fileManager: FileManager): void;
@@ -112,7 +112,7 @@ declare module "less" {
     sheets: HTMLLinkElement[];
     version: number[];
 
-    FileManager: FileManager;
+    FileManager: typeof FileManager;
 
     render(input: string, callback: RenderCallback): void;
     render(input: string, options: Options, callback: RenderCallback): void;

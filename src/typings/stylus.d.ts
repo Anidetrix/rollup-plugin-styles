@@ -8,7 +8,7 @@ declare module "stylus" {
     render(str: string, options: RenderOptions, callback: RenderCallback): void;
   }
 
-  export class Renderer {
+  class Renderer {
     constructor(str: string);
     constructor(str: string, options: RenderOptions);
     sourcemap?: ExistingRawSourceMap;
