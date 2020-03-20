@@ -4,7 +4,7 @@ declare module "less" {
     filename: string;
     relativeUrls: boolean;
     rootpath: string;
-    currentDirectory: string;
+    currentDir: string;
     entryPath: string;
     rootFilename: string;
     reference: boolean;
@@ -34,18 +34,30 @@ declare module "less" {
 
   export type LoadOptions = { [k: string]: unknown };
 
-  class AbstractFileManager {}
-  class FileManager extends AbstractFileManager {
-    supports(filename: string, currentDirectory: string, options: LoadOptions): boolean;
-    supportsSync(filename: string, currentDirectory: string, options: LoadOptions): boolean;
-    loadFile(filename: string, currentDirectory: string, options: LoadOptions): Promise<LoadedFile>;
-    loadFileSync(filename: string, currentDirectory: string, options: LoadOptions): LoadedFileSync;
+  export interface AbstractFileManagerInterface {
+    supportsSync(filename: string, currentDir: string, options: LoadOptions): boolean;
+  }
+
+  export interface FileManagerInterface extends AbstractFileManagerInterface {
+    supports(filename: string, currentDir: string, options: LoadOptions): boolean;
+    loadFile(filename: string, currentDir: string, options: LoadOptions): Promise<LoadedFile>;
+    loadFileSync?(filename: string, currentDir: string, options: LoadOptions): LoadedFileSync;
+  }
+
+  class AbstractFileManager implements AbstractFileManagerInterface {
+    supportsSync(filename: string, currentDir: string, options: LoadOptions): boolean;
+  }
+
+  class FileManager extends AbstractFileManager implements FileManagerInterface {
+    supports(filename: string, currentDir: string, options: LoadOptions): boolean;
+    loadFile(filename: string, currentDir: string, options: LoadOptions): Promise<LoadedFile>;
+    loadFileSync?(filename: string, currentDir: string, options: LoadOptions): LoadedFileSync;
   }
 
   class PluginManager {
     constructor(less: Less);
     addPreProcessor(preProcessor: PreProcessor, priority?: number): void;
-    addFileManager(fileManager: FileManager): void;
+    addFileManager(fileManager: FileManagerInterface): void;
   }
 
   export interface Plugin {
@@ -113,6 +125,7 @@ declare module "less" {
     sheets: HTMLLinkElement[];
     version: number[];
 
+    AbstractFileManager: typeof AbstractFileManager;
     FileManager: typeof FileManager;
 
     render(input: string, callback: RenderCallback): void;

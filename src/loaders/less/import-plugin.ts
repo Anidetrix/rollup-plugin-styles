@@ -1,13 +1,11 @@
 import fs from "fs-extra";
-import { LoadedFile, Plugin, Less } from "less";
+import { LoadedFile, Plugin, FileManagerInterface, Less } from "less";
 import resolveAsync from "../../utils/resolve-async";
 import { moduleRe, getUrlOfPartial } from "../../utils/resolve-utils";
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-const getManager = () => {
+const getStylesFileManager = (): FileManagerInterface => {
   const less = require("less") as Less;
-
-  class StylesFileManager extends less.FileManager {
+  return new (class extends less.AbstractFileManager implements FileManagerInterface {
     supports(): boolean {
       return true;
     }
@@ -16,50 +14,47 @@ const getManager = () => {
       return false;
     }
 
-    async loadFile(filename: string, currentDirectory: string): Promise<LoadedFile> {
-      const options = { basedir: currentDirectory, extensions: [".less", ".css"] };
+    async loadFile(filename: string, basedir: string): Promise<LoadedFile> {
+      const options = { basedir, extensions: [".less", ".css"] };
+      let id: string;
 
       if (!moduleRe.test(filename)) {
-        let resolved: string;
         try {
           // Give precedence to importing a partial
           try {
-            resolved = await resolveAsync(getUrlOfPartial(filename), options);
+            id = await resolveAsync(getUrlOfPartial(filename), options);
           } catch (error) {
-            resolved = await resolveAsync(filename, options);
+            id = await resolveAsync(filename, options);
           }
         } catch (error) {
           // Give precedence to importing a partial
           try {
-            resolved = await resolveAsync(`./${getUrlOfPartial(filename)}`, options);
+            id = await resolveAsync(`./${getUrlOfPartial(filename)}`, options);
           } catch (error) {
-            resolved = await resolveAsync(`./${filename}`, options);
+            id = await resolveAsync(`./${filename}`, options);
           }
         }
-        return { filename: resolved, contents: await fs.readFile(resolved, "utf8") };
+        return { filename: id, contents: await fs.readFile(id, "utf8") };
       }
 
       const moduleUrl = filename.slice(1);
       const partialUrl = getUrlOfPartial(moduleUrl);
 
       // Give precedence to importing a partial
-      let resolved: string;
       try {
-        resolved = await resolveAsync(partialUrl, options);
+        id = await resolveAsync(partialUrl, options);
       } catch (error) {
-        resolved = await resolveAsync(moduleUrl, options);
+        id = await resolveAsync(moduleUrl, options);
       }
 
-      return { filename: resolved, contents: await fs.readFile(resolved, "utf8") };
+      return { filename: id, contents: await fs.readFile(id, "utf8") };
     }
-  }
-
-  return new StylesFileManager();
+  })();
 };
 
 const importPlugin: Plugin = {
   install(_, pluginManager) {
-    pluginManager.addFileManager(getManager());
+    pluginManager.addFileManager(getStylesFileManager());
   },
 };
 
