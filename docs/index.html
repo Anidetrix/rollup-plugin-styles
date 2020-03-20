@@ -2732,9 +2732,6 @@ img {
 		<li class=" tsd-kind-class">
 			<a href="classes/mapmodifier.html" class="tsd-kind-icon">Map<wbr>Modifier</a>
 		</li>
-		<li class=" tsd-kind-class">
-			<a href="classes/stylesfilemanager.html" class="tsd-kind-icon">Styles<wbr>File<wbr>Manager</a>
-		</li>
 		<li class=" tsd-kind-interface">
 			<a href="interfaces/extracteddata.html" class="tsd-kind-icon">Extracted<wbr>Data</a>
 		</li>
@@ -2857,6 +2854,9 @@ img {
 		</li>
 		<li class=" tsd-kind-function">
 			<a href="globals.html#getinlinemap" class="tsd-kind-icon">get<wbr>Inline<wbr>Map</a>
+		</li>
+		<li class=" tsd-kind-function">
+			<a href="globals.html#getmanager" class="tsd-kind-icon">get<wbr>Manager</a>
 		</li>
 		<li class=" tsd-kind-function">
 			<a href="globals.html#getmap" class="tsd-kind-icon">get<wbr>Map</a>
@@ -3052,7 +3052,6 @@ img {
 						<ul class="tsd-index-list">
 							<li class="tsd-kind-class"><a href="classes/loaders.html" class="tsd-kind-icon">Loaders</a></li>
 							<li class="tsd-kind-class"><a href="classes/mapmodifier.html" class="tsd-kind-icon">Map<wbr>Modifier</a></li>
-							<li class="tsd-kind-class"><a href="classes/stylesfilemanager.html" class="tsd-kind-icon">Styles<wbr>File<wbr>Manager</a></li>
 						</ul>
 					</section>
 					<section class="tsd-index-section ">
@@ -3114,6 +3113,7 @@ img {
 							<li class="tsd-kind-function"><a href="globals.html#getgenerator" class="tsd-kind-icon">get<wbr>Generator</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#gethash" class="tsd-kind-icon">get<wbr>Hash</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#getinlinemap" class="tsd-kind-icon">get<wbr>Inline<wbr>Map</a></li>
+							<li class="tsd-kind-function"><a href="globals.html#getmanager" class="tsd-kind-icon">get<wbr>Manager</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#getmap" class="tsd-kind-icon">get<wbr>Map</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#geturlofpartial" class="tsd-kind-icon">get<wbr>Url<wbr>OfPartial</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#humanlizepath" class="tsd-kind-icon">humanlize<wbr>Path</a></li>
@@ -3981,6 +3981,23 @@ img {
 				</ul>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-function">
+				<a name="getmanager" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagConst">Const</span> get<wbr>Manager</h3>
+				<ul class="tsd-signatures tsd-kind-function">
+					<li class="tsd-signature tsd-kind-icon">get<wbr>Manager<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">StylesFileManager</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/less/import-plugin.ts#L7">src/loaders/less/import-plugin.ts:7</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">StylesFileManager</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function">
 				<a name="getmap" class="tsd-anchor"></a>
 				<h3>get<wbr>Map</h3>
 				<ul class="tsd-signatures tsd-kind-function">
@@ -4555,7 +4572,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">import<wbr>Plugin<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">object</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/less/import-plugin.ts#L53">src/loaders/less/import-plugin.ts:53</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/less/import-plugin.ts#L60">src/loaders/less/import-plugin.ts:60</a></li>
 					</ul>
 				</aside>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-object-literal">
@@ -4568,7 +4585,7 @@ img {
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/less/import-plugin.ts#L54">src/loaders/less/import-plugin.ts:54</a></li>
+									<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/less/import-plugin.ts#L61">src/loaders/less/import-plugin.ts:61</a></li>
 								</ul>
 							</aside>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -4682,9 +4699,6 @@ img {
 					</ul>
 					<ul class="tsd-legend">
 						<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-					</ul>
-					<ul class="tsd-legend">
-						<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
 					</ul>
 					<ul class="tsd-legend">
 						<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
