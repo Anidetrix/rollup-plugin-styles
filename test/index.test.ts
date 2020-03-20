@@ -360,6 +360,13 @@ validateMany("sass", [
   },
 ]);
 
+validateMany("less", [
+  {
+    title: "import",
+    input: "less-import/index.js",
+  },
+]);
+
 test("on-extract-fn", async () => {
   const res = await write({
     input: "simple/index.js",

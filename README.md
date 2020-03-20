@@ -88,7 +88,7 @@ This plugin will auto detect `fibers` package when using `sass` implementation
 
 To install `fibers`: `yarn add fibers --dev`
 
-#### imports (**Sass/Scss only**)
+#### imports (**Sass/Scss/Less**)
 
 Similar to how webpack's [sass-loader](https://github.com/webpack-contrib/sass-loader#resolving-import-at-rules) works, you can prepend the import path with `~` to tell this plugin to resolve in `node_modules`:
 

@@ -1,7 +1,9 @@
 import path from "path";
 
-import { Loader } from "../types";
-import loadModule from "../utils/load-module";
+import { Loader } from "../../types";
+import loadModule from "../../utils/load-module";
+
+import importPlugin from "./import-plugin";
 
 const loader: Loader = {
   name: "less",
@@ -10,13 +12,11 @@ const loader: Loader = {
     const less = await loadModule("less");
     if (!less) this.error("You need to install `less` package in order to process Less files");
 
-    const render = (code: string, options: Less.Options): Promise<Less.RenderOutput> =>
-      new Promise((resolve, reject) =>
-        less.render(code, options, (err, css) => (err ? reject(err) : resolve(css))),
-      );
-
-    const res = await render(code, {
+    const res = await less.render(code, {
       ...this.options,
+      plugins: [importPlugin].concat(
+        Array.isArray(this.options.plugins) ? this.options.plugins : [],
+      ),
       filename: this.id,
       sourceMap: this.sourceMap
         ? { outputSourceFiles: true, sourceMapBasepath: path.dirname(this.id) }

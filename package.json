@@ -57,7 +57,6 @@
     "@types/fs-extra": "^8.1.0",
     "@types/icss-utils": "^4.1.0",
     "@types/jest": "^25.1.4",
-    "@types/less": "^3.0.1",
     "@types/node": "*",
     "@types/postcss-load-config": "^2.0.1",
     "@types/resolve": "^1.14.0",

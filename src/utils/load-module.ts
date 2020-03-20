@@ -1,6 +1,7 @@
 import { Sass } from "sass";
 import { Sass as NodeSass } from "node-sass";
 import { FiberConstructor } from "fibers";
+import { Less } from "less";
 import { Stylus } from "stylus";
 
 import resolveAsync from "./resolve-async";
@@ -12,7 +13,7 @@ interface ModuleImportMap {
   sass: Sass;
   "node-sass": NodeSass;
   fibers: FiberConstructor;
-  less: LessStatic;
+  less: Less;
   stylus: Stylus;
   [k: string]: unknown;
 }

@@ -1,56 +1,19 @@
-import path from "path";
 import PQueue from "p-queue";
-import { Options as SASSOptions, Result as SASSResult, Importer as SASSImporter, Sass } from "sass";
+import { Options as SASSOptions, Result as SASSResult, Sass } from "sass";
 import { FiberConstructor } from "fibers";
 
-import { Loader, Payload, SASSLoaderOptions } from "../types";
-import loadModule from "../utils/load-module";
-import resolveAsync from "../utils/resolve-async";
+import { Loader, Payload, SASSLoaderOptions } from "../../types";
+import loadModule from "../../utils/load-module";
+
+import defaultImporter from "./default-importer";
 
 // This queue makes sure node-sass leaves one thread available for executing fs tasks
 // See: https://github.com/sass/node-sass/issues/857
 const threadPoolSize = parseInt(process.env.UV_THREADPOOL_SIZE || "4");
 const workQueue = new PQueue({ concurrency: threadPoolSize - 1 });
-const moduleRe = /^~([\da-z]|@).+/i;
 
 type AllowedSassID = "sass" | "node-sass";
 const possibleSassIDs: AllowedSassID[] = ["node-sass", "sass"];
-
-const getUrlOfPartial = (url: string): string => {
-  const parsedUrl = path.parse(url);
-  return `${parsedUrl.dir}${path.sep}_${parsedUrl.base}`;
-};
-
-const defaultImporter: SASSImporter = (url, importer, done) => {
-  if (!moduleRe.test(url)) return done({ file: url });
-
-  const moduleUrl = url.slice(1);
-  const partialUrl = getUrlOfPartial(moduleUrl);
-
-  const options = {
-    basedir: path.dirname(importer),
-    extensions: [".scss", ".sass", ".css"],
-  };
-
-  const finishImport = (id: string): void =>
-    // Do not add `.css` extension in order to inline the file
-    done({ file: id.replace(/\.css$/i, "") });
-
-  const next = (): void =>
-    // Pass responsibility back to other custom importers
-    done(null);
-
-  // Give precedence to importing a partial
-  resolveAsync(partialUrl, options)
-    .then(finishImport)
-    .catch(error => {
-      if (error.code === "MODULE_NOT_FOUND" || error.code === "ENOENT")
-        resolveAsync(moduleUrl, options)
-          .then(finishImport)
-          .catch(next);
-      else next();
-    });
-};
 
 /**
  * Loads Sass module or throws an error

@@ -626,6 +626,76 @@ console.log(css_2f84417a, css_2f84417a$1);
 "
 `;
 
+exports[`less import: js 1`] = `
+"'use strict';
+
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
+
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_14187a73 = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
+  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
+    } else {
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+
+  if (singleTag) {
+    let id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) {
+    css = css.slice(1, 1 + css.length);
+  }
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
+
+var css_2f84417a = \\".a {\\\\n  color: royalblue;\\\\n}\\\\n.b {\\\\n  color: red;\\\\n}\\\\n.c {\\\\n  color: red;\\\\n}\\\\n.foo {\\\\n  color: royalblue;\\\\n}\\\\n\\";
+injector_14187a73(css_2f84417a);
+"
+`;
+
 exports[`minimize extract: css 1`] = `".bar,.foo,.stylus{color:red}.stylus{background:red}.pcss,.sass{color:red}.sass{width:30%}.less{color:#6c94be}"`;
 
 exports[`minimize extract: js 1`] = `
@@ -1528,7 +1598,7 @@ var injector_14187a73 = (css, options = {}) => {
   }
 };
 
-var css_2f84417a = \\".a {\\\\n  color: red; }\\\\n\\\\n.b {\\\\n  color: red; }\\\\n\\\\n.c {\\\\n  color: red; }\\\\n\\\\n.foo {\\\\n  color: red; }\\\\n\\";
+var css_2f84417a = \\".a {\\\\n  color: magenta; }\\\\n\\\\n.b {\\\\n  color: red; }\\\\n\\\\n.c {\\\\n  color: red; }\\\\n\\\\n.foo {\\\\n  color: royalblue; }\\\\n\\";
 injector_14187a73(css_2f84417a);
 "
 `;
