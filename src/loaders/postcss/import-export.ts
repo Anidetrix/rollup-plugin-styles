@@ -92,10 +92,10 @@ const plugin: postcss.Plugin<ImportExportOptions> = postcss.plugin(
 
     replaceSymbols(css, importedValues);
 
-    const json: Json = {};
-    Object.entries(icssExports).forEach(([k, v]) => {
-      json[k] = replaceValueSymbols(v, importedValues);
-    });
+    const json = Object.entries(icssExports).reduce((acc, [k, v]) => {
+      acc[k] = replaceValueSymbols(v, importedValues);
+      return acc;
+    }, {} as Json);
 
     // Needed mainly for the plugin itself, for recursion
     res.messages.push({ plugin: name, type: "export", json });
