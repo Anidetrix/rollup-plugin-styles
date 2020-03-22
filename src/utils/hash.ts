@@ -5,7 +5,4 @@ import { sha1 } from "hash.js";
  * @param data hashable data
  * @returns hash
  */
-export default (data: string): string =>
-  sha1()
-    .update(data)
-    .digest("hex");
+export default (data: string): string => sha1().update(data).digest("hex");

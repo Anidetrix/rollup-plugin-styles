@@ -86,7 +86,11 @@ This plugin will auto detect `fibers` package when using `sass` implementation
 >
 > [Source](https://github.com/sass/dart-sass/blob/master/README.md#javascript-api)
 
-To install `fibers`: `yarn add fibers --dev`
+To install `fibers`:
+
+```bash
+yarn add fibers --dev
+```
 
 #### imports (**Sass/Scss/Less**)
 

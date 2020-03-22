@@ -27,9 +27,7 @@ const defaultImporter: SASSImporter = (url, importer, done) => {
     .then(finishImport)
     .catch(error => {
       if (error.code === "MODULE_NOT_FOUND" || error.code === "ENOENT")
-        resolveAsync(moduleUrl, options)
-          .then(finishImport)
-          .catch(next);
+        resolveAsync(moduleUrl, options).then(finishImport).catch(next);
       else next();
     });
 };

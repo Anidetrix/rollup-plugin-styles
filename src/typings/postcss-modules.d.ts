@@ -6,7 +6,7 @@ declare module "postcss-modules-values" {
     createImportedName?: (name: string, path: string) => string;
   }
 
-  export default function(options?: ValuesOptions): Plugin<unknown>;
+  export default function (options?: ValuesOptions): Plugin<unknown>;
 }
 
 declare module "postcss-modules-local-by-default" {
@@ -17,7 +17,7 @@ declare module "postcss-modules-local-by-default" {
     rewriteUrl?: (global: boolean, value: string) => string;
   }
 
-  export default function(options?: LocalByDefaultOptions): Plugin<unknown>;
+  export default function (options?: LocalByDefaultOptions): Plugin<unknown>;
 }
 
 declare module "postcss-modules-extract-imports" {
@@ -28,7 +28,7 @@ declare module "postcss-modules-extract-imports" {
     createImportedName?: (name: string, path: string) => string;
   }
 
-  export default function(options?: ExtractImportsOptions): Plugin<unknown>;
+  export default function (options?: ExtractImportsOptions): Plugin<unknown>;
 }
 
 declare module "postcss-modules-scope" {
@@ -40,5 +40,5 @@ declare module "postcss-modules-scope" {
     generateExportEntry?: (name: string, scopedName: string, path: string, css: string) => string;
   }
 
-  export default function(options?: ScopeOptions): Plugin<unknown>;
+  export default function (options?: ScopeOptions): Plugin<unknown>;
 }
