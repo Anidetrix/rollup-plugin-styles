@@ -2,6 +2,7 @@ import postcss from "postcss";
 import cssnano from "cssnano";
 import { PluginContext } from "rollup";
 import { Importer as SASSImporter } from "sass";
+import { Plugin as LESSPlugin } from "less";
 import { LocalByDefaultOptions } from "postcss-modules-local-by-default";
 import { ExtractImportsOptions } from "postcss-modules-extract-imports";
 import { ScopeOptions } from "postcss-modules-scope";
@@ -66,6 +67,15 @@ export type SASSLoaderOptions = {
    * @default undefined
    */
   data?: string;
+};
+
+/** Options for Less Loader */
+export type LESSLoaderOptions = {
+  /**
+   * Array of Less plugins
+   * @default undefined
+   */
+  plugins?: LESSPlugin[];
 };
 
 /** Options for {@link Loaders} class */
@@ -291,7 +301,7 @@ export interface Options {
     | {
         sass?: SASSLoaderOptions & ObjectWithUnknownProps;
         stylus?: ObjectWithUnknownProps;
-        less?: ObjectWithUnknownProps;
+        less?: LESSLoaderOptions & ObjectWithUnknownProps;
       };
   /**
    * Array of custom loaders.

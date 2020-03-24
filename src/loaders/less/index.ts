@@ -1,11 +1,11 @@
 import path from "path";
 
-import { Loader } from "../../types";
+import { Loader, LESSLoaderOptions } from "../../types";
 import loadModule from "../../utils/load-module";
 
 import importPlugin from "./import-plugin";
 
-const loader: Loader = {
+const loader: Loader<LESSLoaderOptions> = {
   name: "less",
   test: /\.less$/i,
   async process({ code, map }) {
@@ -14,9 +14,7 @@ const loader: Loader = {
 
     const res = await less.render(code, {
       ...this.options,
-      plugins: [importPlugin].concat(
-        Array.isArray(this.options.plugins) ? this.options.plugins : [],
-      ),
+      plugins: [importPlugin].concat(this.options.plugins || []),
       filename: this.id,
       sourceMap: this.sourceMap
         ? { outputSourceFiles: true, sourceMapBasepath: path.dirname(this.id) }
