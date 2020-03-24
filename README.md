@@ -85,7 +85,7 @@ Install corresponding dependency:
   yarn add less --dev
   ```
 
-That's it, now you can import `.scss` `.sass` `.styl` `.stylus` `.less` files in your library.
+That's it, now you can import `.scss` `.sass` `.styl` `.stylus` `.less` files in your code.
 
 #### `fibers` (**Sass/Scss only**)
 
