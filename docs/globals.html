@@ -2773,6 +2773,9 @@ img {
 			<a href="globals.html#json" class="tsd-kind-icon">Json</a>
 		</li>
 		<li class=" tsd-kind-type-alias">
+			<a href="globals.html#lessloaderoptions" class="tsd-kind-icon">LESSLoader<wbr>Options</a>
+		</li>
+		<li class=" tsd-kind-type-alias">
 			<a href="globals.html#load" class="tsd-kind-icon">Load</a>
 		</li>
 		<li class=" tsd-kind-type-alias">
@@ -3075,6 +3078,7 @@ img {
 							<li class="tsd-kind-type-alias"><a href="globals.html#allowedsassid" class="tsd-kind-icon">Allowed<wbr>SassID</a></li>
 							<li class="tsd-kind-type-alias"><a href="globals.html#hashdata" class="tsd-kind-icon">Hash<wbr>Data</a></li>
 							<li class="tsd-kind-type-alias"><a href="globals.html#json" class="tsd-kind-icon">Json</a></li>
+							<li class="tsd-kind-type-alias"><a href="globals.html#lessloaderoptions" class="tsd-kind-icon">LESSLoader<wbr>Options</a></li>
 							<li class="tsd-kind-type-alias"><a href="globals.html#load" class="tsd-kind-icon">Load</a></li>
 							<li class="tsd-kind-type-alias"><a href="globals.html#loadedconfig" class="tsd-kind-icon">Loaded<wbr>Config</a></li>
 							<li class="tsd-kind-type-alias"><a href="globals.html#modulesoptions" class="tsd-kind-icon">Modules<wbr>Options</a></li>
@@ -3197,6 +3201,39 @@ img {
 				</div>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-type-alias">
+				<a name="lessloaderoptions" class="tsd-anchor"></a>
+				<h3>LESSLoader<wbr>Options</h3>
+				<div class="tsd-signature tsd-kind-icon">LESSLoader<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>plugins<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">LESSPlugin</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span></div>
+				<aside class="tsd-sources">
+					<ul>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/types.ts#L73">src/types.ts:73</a></li>
+					</ul>
+				</aside>
+				<div class="tsd-comment tsd-typography">
+					<div class="lead">
+						<p>Options for Less Loader</p>
+					</div>
+				</div>
+				<div class="tsd-type-declaration">
+					<h4>Type declaration</h4>
+					<ul class="tsd-parameters">
+						<li class="tsd-parameter">
+							<h5><span class="tsd-flag ts-flagOptional">Optional</span> plugins<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">LESSPlugin</span><span class="tsd-signature-symbol">[]</span></h5>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Array of Less plugins</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>default</dt>
+									<dd><p>undefined</p>
+									</dd>
+								</dl>
+							</div>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-type-alias">
 				<a name="load" class="tsd-anchor"></a>
 				<h3>Load</h3>
 				<div class="tsd-signature tsd-kind-icon">Load<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>url<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, file<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, extensions<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, processor<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Processor</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="globals.html#json" class="tsd-signature-type">Json</a><span class="tsd-signature-symbol">&gt;</span></div>
@@ -3271,7 +3308,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Modules<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>exportGlobals<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">ScopeOptions</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"exportGlobals"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">; </span>failOnWrongOrder<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">ExtractImportsOptions</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"failOnWrongOrder"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">; </span>generateScopedName<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">ScopeOptions</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"generateScopedName"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">; </span>getJSON<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">(</span>file<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, json<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{}</span>, out<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">; </span>mode<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">LocalByDefaultOptions</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"mode"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol"> }</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/types.ts#L153">src/types.ts:153</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/types.ts#L163">src/types.ts:163</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -3336,7 +3373,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Object<wbr>With<wbr>Unknown<wbr>Props<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{}</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/types.ts#L10">src/types.ts:10</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/types.ts#L11">src/types.ts:11</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -3359,7 +3396,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">PostCSSLoader<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>autoModules<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">NonNullable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Options</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"autoModules"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>config<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">NonNullable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Options</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"config"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>extensions<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">NonNullable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Options</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"extensions"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>extract<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">NonNullable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Options</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"extract"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>inject<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">NonNullable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Options</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"inject"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>minimize<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">NonNullable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Options</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"minimize"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>modules<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">NonNullable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Options</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"modules"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>namedExports<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">NonNullable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Options</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"namedExports"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">; </span>postcss<span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">{ </span>parser<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">postcss.Parser</span><span class="tsd-signature-symbol">; </span>plugins<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Transformer</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">; </span>stringifier<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">postcss.Stringifier</span><span class="tsd-signature-symbol">; </span>syntax<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">postcss.Syntax</span><span class="tsd-signature-symbol"> }</span><span class="tsd-signature-symbol"> }</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/types.ts#L27">src/types.ts:27</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/types.ts#L28">src/types.ts:28</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
@@ -3509,7 +3546,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">SASSLoader<wbr>Options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>data<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>importer<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">SASSImporter</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">SASSImporter</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> }</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/types.ts#L58">src/types.ts:58</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/types.ts#L59">src/types.ts:59</a></li>
 					</ul>
 				</aside>
 				<div class="tsd-comment tsd-typography">
