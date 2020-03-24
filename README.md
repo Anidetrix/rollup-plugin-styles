@@ -69,18 +69,25 @@ styles({
 Install corresponding dependency:
 
 - For `Sass` support install `node-sass`:
+
   ```bash
   yarn add node-sass --dev
   ```
+
   - ...or `sass`:
+
   ```bash
   yarn add sass --dev
   ```
+
 - For `Stylus` support install `stylus`:
+
   ```bash
   yarn add stylus --dev
   ```
+
 - For `Less` support install `less`:
+
   ```bash
   yarn add less --dev
   ```
