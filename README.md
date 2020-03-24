@@ -68,13 +68,11 @@ styles({
 
 Install corresponding dependency:
 
-- For `Sass` support install `node-sass`:
+- For `Sass` support install `node-sass` or `sass`:
 
   ```bash
   yarn add node-sass --dev
   ```
-
-  - ...or `sass`:
 
   ```bash
   yarn add sass --dev
