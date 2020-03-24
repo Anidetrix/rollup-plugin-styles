@@ -49,9 +49,7 @@ export default (css, options = {}) => {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) {
-    css = css.slice(1, 1 + css.length);
-  }
+  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
