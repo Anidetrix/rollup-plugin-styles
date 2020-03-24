@@ -68,13 +68,24 @@ styles({
 
 Install corresponding dependency:
 
-- For `Sass` install `node-sass` or `sass`:
-  - `yarn add node-sass --dev`
-  - `yarn add sass --dev`
-- For `Stylus` Install `stylus`: `yarn add stylus --dev`
-- For `Less` Install `less`: `yarn add less --dev`
+- For `Sass` support install `node-sass`:
+  ```bash
+  yarn add node-sass --dev
+  ```
+  - ...or `sass`:
+  ```bash
+  yarn add sass --dev
+  ```
+- For `Stylus` support install `stylus`:
+  ```bash
+  yarn add stylus --dev
+  ```
+- For `Less` support install `less`:
+  ```bash
+  yarn add less --dev
+  ```
 
-That's it, you can now import `.styl` `.stylus` `.scss` `.sass` `.less` files in your library.
+That's it, now you can import `.scss` `.sass` `.styl` `.stylus` `.less` files in your library.
 
 #### `fibers` (**Sass/Scss only**)
 
