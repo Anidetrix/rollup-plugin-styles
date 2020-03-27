@@ -34,7 +34,7 @@ function getGenerator(placeholder?: string): NonNullable<ScopeOptions["generateS
     return (name: string, filename: string, css: string): string => {
       const hash = getHash({ name, filename, css });
       const match = hashRe.exec(placeholder);
-      const hashLen = match && parseInt(match[1]);
+      const hashLen = match && Number.parseInt(match[1]);
       return makeLegalIdentifier(
         placeholder
           .replace("[name]", path.basename(filename, path.extname(filename)))

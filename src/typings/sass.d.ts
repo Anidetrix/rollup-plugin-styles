@@ -1,3 +1,5 @@
+/// <reference types="./fibers" />
+
 declare module "sass" {
   import { FiberConstructor } from "fibers";
 

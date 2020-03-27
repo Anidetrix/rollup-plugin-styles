@@ -12,7 +12,6 @@
     "isolatedModules": true,
     "noEmitOnError": true,
     /* Output Options */
-    "declaration": true,
     "sourceMap": true,
     /* Strict Type-Checking Options */
     "strict": true,

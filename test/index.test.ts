@@ -192,17 +192,7 @@ validateMany("modules", [
   {
     title: "inject",
     input: "modules/index.js",
-    options: {
-      modules: true,
-    },
-  },
-  {
-    title: "doubling",
-    input: "modules-doubling/index.js",
-    options: {
-      modules: true,
-      extract: true,
-    },
+    options: { modules: true },
   },
   {
     title: "inject-object",
@@ -218,10 +208,7 @@ validateMany("modules", [
   {
     title: "named-exports",
     input: "named-exports/index.js",
-    options: {
-      modules: true,
-      namedExports: true,
-    },
+    options: { modules: true, namedExports: true },
   },
   {
     title: "named-exports-custom-class-name",
@@ -252,6 +239,11 @@ validateMany("modules", [
     title: "auto-modules",
     input: "auto-modules/index.js",
     options: { autoModules: true },
+  },
+  {
+    title: "doubling",
+    input: "modules-doubling/index.js",
+    options: { modules: true, extract: true },
   },
 ]);
 

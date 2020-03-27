@@ -1,3 +1,9 @@
+/// <reference types="./typings/fibers" />
+/// <reference types="./typings/less" />
+/// <reference types="./typings/postcss-modules" />
+/// <reference types="./typings/sass" />
+/// <reference types="./typings/stylus" />
+
 import { createFilter } from "@rollup/pluginutils";
 
 import path from "path";

@@ -9,7 +9,7 @@ import defaultImporter from "./default-importer";
 
 // This queue makes sure node-sass leaves one thread available for executing fs tasks
 // See: https://github.com/sass/node-sass/issues/857
-const threadPoolSize = parseInt(process.env.UV_THREADPOOL_SIZE || "4");
+const threadPoolSize = Number.parseInt(process.env.UV_THREADPOOL_SIZE || "4");
 const workQueue = new PQueue({ concurrency: threadPoolSize - 1 });
 
 type AllowedSassID = "sass" | "node-sass";
