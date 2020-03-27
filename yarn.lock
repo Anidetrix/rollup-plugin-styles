@@ -2950,9 +2950,9 @@ eslint-plugin-node@^11.0.0:
     semver "^6.1.0"
 
 eslint-plugin-unicorn@^18.0.0:
-  version "18.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-unicorn/-/eslint-plugin-unicorn-18.0.0.tgz#94a8477d47f4d25fc931a27658dff44c0fcbc192"
-  integrity sha512-2mk3Cz6H2LCsKSEmJ7Wmqm/XbMAQ55+PjSBFM2Yh1/A7uk2gryNNhdfbFDycsjs/ylqk0m7LJ4qPpK9OlP8f9A==
+  version "18.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-unicorn/-/eslint-plugin-unicorn-18.0.1.tgz#8d3285ffa57b2f6b07550b94e62228d93bf61813"
+  integrity sha512-Y4bgygek4x4ogeMcSHr6MZi3frBPZ80eIpMOsxew7jAblb53OYflpRh0an62Z6jv/fw7D3TkXauqLOBWbT9adg==
   dependencies:
     ci-info "^2.0.0"
     clean-regexp "^1.0.0"
