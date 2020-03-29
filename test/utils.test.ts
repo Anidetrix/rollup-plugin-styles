@@ -3,8 +3,6 @@ import path from "path";
 import loadModule from "../src/utils/load-module";
 import { getInlineMap, getExtractedMap, stripMap, MapModifier } from "../src/utils/sourcemap-utils";
 
-process.env.STYLES_TEST = "true";
-
 describe("load-module", () => {
   test("wrong path", async () => {
     const wrong = await loadModule("totallyWRONGPATH/here");

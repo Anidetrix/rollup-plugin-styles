@@ -9,7 +9,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c --environment NODE_ENV:development",
+    "build:prod": "rollup -c --environment NODE_ENV:production",
     "docgen": "typedoc",
     "format": "prettier -l --write .",
     "lint": "npm run format && eslint --ext .ts,.js .",
@@ -17,7 +18,7 @@
     "test": "npm run lint:fix && jest",
     "test:cov": "npm run lint:fix && jest --coverage",
     "commit": "commit",
-    "prepublishOnly": "shx rm -rf dist && npm run build && shx cp -r src/typings runtime dist && shx rm -rf \"dist/**/.eslintrc*\""
+    "prepublishOnly": "shx rm -rf dist && npm run build:prod && shx cp -r src/typings runtime dist && shx rm -rf \"dist/**/.eslintrc*\""
   },
   "repository": {
     "type": "git",

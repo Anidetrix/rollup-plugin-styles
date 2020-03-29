@@ -9,6 +9,7 @@ import { terser } from "rollup-plugin-terser";
 
 import pkg from "./package.json";
 
+const prod = process.env.NODE_ENV === "production";
 export default [
   // Bundle
   {
@@ -20,14 +21,14 @@ export default [
     plugins: [
       autoExternal(),
       json(),
-      replace({ "process.env.STYLES_TEST": false }),
+      replace({ "process.env.NODE_ENV": JSON.stringify(prod ? "production" : "development") }),
       resolve({
         preferBuiltins: true,
         extensions: [".ts", ".mjs", ".js", ".json"],
       }),
       commonjs(),
       ts({ transpiler: "babel" }),
-      terser(),
+      prod && terser(),
     ],
   },
   // Declaration

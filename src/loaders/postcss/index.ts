@@ -100,9 +100,8 @@ const loader: Loader<PostCSSLoaderOptions> = {
         ...postcssModules({
           // Skip hash while testing since CSS content would differ on Windows and Linux
           // due to different line endings.
-          generateScopedName: process.env.STYLES_TEST
-            ? "[name]_[local]"
-            : "[name]_[local]__[hash:8]",
+          generateScopedName:
+            process.env.NODE_ENV === "test" ? "[name]_[local]" : "[name]_[local]__[hash:8]",
           failOnWrongOrder: true,
           ...modulesOptions,
         }),
@@ -190,7 +189,10 @@ const loader: Loader<PostCSSLoaderOptions> = {
         const injectorName = safeId("injector");
         const injectorPath = normalizePath(
           await resolveAsync("./inject-css", {
-            basedir: path.join(process.env.STYLES_TEST ? process.cwd() : __dirname, "runtime"),
+            basedir: path.join(
+              process.env.NODE_ENV === "test" ? process.cwd() : __dirname,
+              "runtime",
+            ),
           }),
         );
         const injectorData =
