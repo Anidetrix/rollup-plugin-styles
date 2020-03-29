@@ -5,6 +5,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import autoExternal from "rollup-plugin-auto-external";
 import ts from "@wessberg/rollup-plugin-ts";
 import dts from "rollup-plugin-dts";
+import { terser } from "rollup-plugin-terser";
 
 import pkg from "./package.json";
 
@@ -26,6 +27,7 @@ export default [
       }),
       commonjs(),
       ts({ transpiler: "babel" }),
+      terser(),
     ],
   },
   // Declaration
