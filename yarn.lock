@@ -1138,14 +1138,6 @@
     is-module "^1.0.0"
     resolve "^1.14.2"
 
-"@rollup/plugin-replace@^2.3.1":
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/@rollup/plugin-replace/-/plugin-replace-2.3.1.tgz#16fb0563628f9e6c6ef9e05d48d3608916d466f5"
-  integrity sha512-qDcXj2VOa5+j0iudjb+LiwZHvBRRgWbHPhRmo1qde2KItTjuxDVQO21rp9/jOlzKR5YO0EsgRQoyox7fnL7y/A==
-  dependencies:
-    "@rollup/pluginutils" "^3.0.4"
-    magic-string "^0.25.5"
-
 "@rollup/pluginutils@^3.0.0", "@rollup/pluginutils@^3.0.4", "@rollup/pluginutils@^3.0.6", "@rollup/pluginutils@^3.0.8":
   version "3.0.8"
   resolved "https://registry.yarnpkg.com/@rollup/pluginutils/-/pluginutils-3.0.8.tgz#4e94d128d94b90699e517ef045422960d18c8fde"
@@ -1772,6 +1764,11 @@ babel-plugin-jest-hoist@^25.2.1:
   integrity sha512-HysbCQfJhxLlyxDbKcB2ucGYV0LjqK4h6dBoI3RtFuOxTiTWK6XGZMsHb0tGh8iJdV4hC6Z2GCHzVvDeh9i0lQ==
   dependencies:
     "@types/babel__traverse" "^7.0.6"
+
+babel-plugin-transform-node-env-inline@^0.4.3:
+  version "0.4.3"
+  resolved "https://registry.yarnpkg.com/babel-plugin-transform-node-env-inline/-/babel-plugin-transform-node-env-inline-0.4.3.tgz#8c84cd74d58f17b0fdf76144a3589f610c3c2497"
+  integrity sha1-jITNdNWPF7D992FEo1ifYQw8JJc=
 
 babel-polyfill@6.26.0, babel-polyfill@^6.3.14:
   version "6.26.0"
@@ -5111,7 +5108,7 @@ lunr@^2.3.8:
   resolved "https://registry.yarnpkg.com/lunr/-/lunr-2.3.8.tgz#a8b89c31f30b5a044b97d2d28e2da191b6ba2072"
   integrity sha512-oxMeX/Y35PNFuZoHp+jUj5OSEmLCaIH4KTFJh7a93cHBoFmpw2IoPs22VIz7vyO2YUnx2Tn9dzIwO2P/4quIRg==
 
-magic-string@^0.25.2, magic-string@^0.25.5, magic-string@^0.25.7:
+magic-string@^0.25.2, magic-string@^0.25.7:
   version "0.25.7"
   resolved "https://registry.yarnpkg.com/magic-string/-/magic-string-0.25.7.tgz#3f497d6fd34c669c6798dcb821f2ef31f5445051"
   integrity sha512-4CrMT5DOHTDk4HYDlzmwu4FVCcIYI8gauveasrdCu2IKIFOJ3f0v/8MDGJCDL9oD2ppz/Av1b0Nj345H9M+XIA==

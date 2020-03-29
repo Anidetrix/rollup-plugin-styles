@@ -1,5 +1,4 @@
 import json from "@rollup/plugin-json";
-import replace from "@rollup/plugin-replace";
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import autoExternal from "rollup-plugin-auto-external";
@@ -21,7 +20,6 @@ export default [
     plugins: [
       autoExternal(),
       json(),
-      replace({ "process.env.NODE_ENV": JSON.stringify(prod ? "production" : "development") }),
       resolve({
         preferBuiltins: true,
         extensions: [".ts", ".mjs", ".js", ".json"],
