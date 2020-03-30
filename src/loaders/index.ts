@@ -1,4 +1,3 @@
-import { cpus } from "os";
 import PQueue from "p-queue";
 
 import { Loader, Payload, LoaderContext, ObjectWithUnknownProps, LoadersOptions } from "../types";
@@ -23,7 +22,7 @@ function matchFile(filepath: string, condition: Loader["test"]): boolean {
 // ex.: https://github.com/sass/node-sass/issues/857
 const threadPoolSize = process.env.UV_THREADPOOL_SIZE
   ? Number.parseInt(process.env.UV_THREADPOOL_SIZE)
-  : cpus().length;
+  : 4; // default `libuv` threadpool size
 const workQueue = new PQueue({ concurrency: threadPoolSize - 1 });
 
 export default class Loaders {
