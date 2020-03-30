@@ -1401,9 +1401,9 @@
     ua-parser-js "^0.7.21"
 
 "@wessberg/rollup-plugin-ts@^1.2.22":
-  version "1.2.22"
-  resolved "https://registry.yarnpkg.com/@wessberg/rollup-plugin-ts/-/rollup-plugin-ts-1.2.22.tgz#beb060be0322e64650f4499c303d9751f97443f3"
-  integrity sha512-l+IU9X0Xj6Tu+d+027Q9mFmD5nTV9BX+qGI++yftQQJ8yQxDPpbKIYRN6yqUifQdig9uufk2Q+ed3WcSlKW3Sg==
+  version "1.2.23"
+  resolved "https://registry.yarnpkg.com/@wessberg/rollup-plugin-ts/-/rollup-plugin-ts-1.2.23.tgz#1018d476ea327c23b033fded7ea197200e5b4552"
+  integrity sha512-qNrtleYV/kcYSoxbN7shlegfM5vSUjpYxp8QH4g2mwy9m4nbX46MXYP9bGfse7XYPxt/g/RRKgn3u2al1ACosQ==
   dependencies:
     "@babel/core" "^7.9.0"
     "@babel/plugin-proposal-async-generator-functions" "^7.8.3"
@@ -1419,7 +1419,7 @@
     "@types/babel__core" "^7.1.6"
     "@wessberg/browserslist-generator" "^1.0.34"
     "@wessberg/stringutil" "^1.0.19"
-    "@wessberg/ts-clone-node" "^0.3.4"
+    "@wessberg/ts-clone-node" "^0.3.8"
     browserslist "^4.11.0"
     chalk "^3.0.0"
     magic-string "^0.25.7"
@@ -1431,10 +1431,10 @@
   resolved "https://registry.yarnpkg.com/@wessberg/stringutil/-/stringutil-1.0.19.tgz#baadcb6f4471fe2d46462a7d7a8294e4b45b29ad"
   integrity sha512-9AZHVXWlpN8Cn9k5BC/O0Dzb9E9xfEMXzYrNunwvkUTvuK7xgQPVRZpLo+jWCOZ5r8oBa8NIrHuPEu1hzbb6bg==
 
-"@wessberg/ts-clone-node@^0.3.4":
-  version "0.3.4"
-  resolved "https://registry.yarnpkg.com/@wessberg/ts-clone-node/-/ts-clone-node-0.3.4.tgz#4375b5f2ab187c7cf49e1031affc217e97fb8bc1"
-  integrity sha512-/JWk3eBbE/Og/42DNdwiWX7YhPPiPvoI5ZxW9xXsy9poRNH55gd4bwsJTNZSkgjmkv5xzq39JNZWQ2+MqfskkA==
+"@wessberg/ts-clone-node@^0.3.8":
+  version "0.3.8"
+  resolved "https://registry.yarnpkg.com/@wessberg/ts-clone-node/-/ts-clone-node-0.3.8.tgz#25bf1e0625a4b4b836324427894ab138ebd7fb00"
+  integrity sha512-m/+1ox7e2K/KwWFe1K7OpiqTHZnraCG6urhCt4Y5Dxw8dr1NMcV52Q8qvJd0lGfhGhZiVD/SWbUj9i2wKzdK6w==
 
 JSONStream@^1.0.4:
   version "1.3.5"
