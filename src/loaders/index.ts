@@ -1,3 +1,6 @@
+import { cpus } from "os";
+import PQueue from "p-queue";
+
 import { Loader, Payload, LoaderContext, ObjectWithUnknownProps, LoadersOptions } from "../types";
 import postcssLoader from "./postcss";
 import sourcemapLoader from "./sourcemap";
@@ -14,6 +17,14 @@ function matchFile(filepath: string, condition: Loader["test"]): boolean {
   if (typeof condition === "function") return condition(filepath);
   return !!condition && condition.test(filepath);
 }
+
+// This queue makes sure one thread is always available,
+// which is necessary for some cases
+// ex.: https://github.com/sass/node-sass/issues/857
+const threadPoolSize = process.env.UV_THREADPOOL_SIZE
+  ? Number.parseInt(process.env.UV_THREADPOOL_SIZE)
+  : cpus().length;
+const workQueue = new PQueue({ concurrency: threadPoolSize - 1 });
 
 export default class Loaders {
   use: [string, ObjectWithUnknownProps][] = [];
@@ -67,7 +78,7 @@ export default class Loaders {
 
         return async (payload: Payload): Promise<Payload> => {
           if (loader && (loader.alwaysProcess || matchFile(loaderContext.id, loader.test))) {
-            return loader.process.call(loaderContext, payload);
+            return workQueue.add(loader.process.bind(loaderContext, payload));
           }
 
           // Otherwise directly return input value

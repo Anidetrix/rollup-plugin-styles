@@ -3155,7 +3155,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">Allowed<wbr>SassID<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"sass"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"node-sass"</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass/index.ts#L15">src/loaders/sass/index.ts:15</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass/index.ts#L9">src/loaders/sass/index.ts:9</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -3677,17 +3677,17 @@ img {
 				<div class="tsd-signature tsd-kind-icon">possible<wbr>SassIDs<span class="tsd-signature-symbol">:</span> <a href="globals.html#allowedsassid" class="tsd-signature-type">AllowedSassID</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = [&quot;node-sass&quot;, &quot;sass&quot;]</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass/index.ts#L16">src/loaders/sass/index.ts:16</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass/index.ts#L10">src/loaders/sass/index.ts:10</a></li>
 					</ul>
 				</aside>
 			</section>
 			<section class="tsd-panel tsd-member tsd-kind-variable">
 				<a name="threadpoolsize" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> thread<wbr>Pool<wbr>Size</h3>
-				<div class="tsd-signature tsd-kind-icon">thread<wbr>Pool<wbr>Size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = Number.parseInt(process.env.UV_THREADPOOL_SIZE || &quot;4&quot;)</span></div>
+				<div class="tsd-signature tsd-kind-icon">thread<wbr>Pool<wbr>Size<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = process.env.UV_THREADPOOL_SIZE? Number.parseInt(process.env.UV_THREADPOOL_SIZE): cpus().length</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass/index.ts#L12">src/loaders/sass/index.ts:12</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/index.ts#L24">src/loaders/index.ts:24</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -3697,7 +3697,7 @@ img {
 				<div class="tsd-signature tsd-kind-icon">work<wbr>Queue<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">PQueue</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">PriorityQueue</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">DefaultAddOptions</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = new PQueue({ concurrency: threadPoolSize - 1 })</span></div>
 				<aside class="tsd-sources">
 					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass/index.ts#L13">src/loaders/sass/index.ts:13</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/index.ts#L27">src/loaders/index.ts:27</a></li>
 					</ul>
 				</aside>
 			</section>
@@ -4276,7 +4276,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass/index.ts#L22">src/loaders/sass/index.ts:22</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass/index.ts#L16">src/loaders/sass/index.ts:16</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -4299,7 +4299,7 @@ img {
 					<li class="tsd-description">
 						<aside class="tsd-sources">
 							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/index.ts#L13">src/loaders/index.ts:13</a></li>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/index.ts#L16">src/loaders/index.ts:16</a></li>
 							</ul>
 						</aside>
 						<div class="tsd-comment tsd-typography">
@@ -4652,7 +4652,7 @@ img {
 					<ul>
 						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/postcss/index.ts#L56">src/loaders/postcss/index.ts:56</a></li>
 						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sourcemap.ts#L4">src/loaders/sourcemap.ts:4</a></li>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass/index.ts#L39">src/loaders/sass/index.ts:39</a></li>
+						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass/index.ts#L33">src/loaders/sass/index.ts:33</a></li>
 						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/stylus.ts#L7">src/loaders/stylus.ts:7</a></li>
 						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/less/index.ts#L8">src/loaders/less/index.ts:8</a></li>
 					</ul>
@@ -4676,7 +4676,7 @@ img {
 						<ul>
 							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/postcss/index.ts#L57">src/loaders/postcss/index.ts:57</a></li>
 							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sourcemap.ts#L5">src/loaders/sourcemap.ts:5</a></li>
-							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass/index.ts#L40">src/loaders/sass/index.ts:40</a></li>
+							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass/index.ts#L34">src/loaders/sass/index.ts:34</a></li>
 							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/stylus.ts#L8">src/loaders/stylus.ts:8</a></li>
 							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/less/index.ts#L9">src/loaders/less/index.ts:9</a></li>
 						</ul>
@@ -4688,7 +4688,7 @@ img {
 					<div class="tsd-signature tsd-kind-icon">test<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RegExp</span><span class="tsd-signature-symbol"> = /\.less$/i</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass/index.ts#L41">src/loaders/sass/index.ts:41</a></li>
+							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/sass/index.ts#L35">src/loaders/sass/index.ts:35</a></li>
 							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/stylus.ts#L9">src/loaders/stylus.ts:9</a></li>
 							<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/less/index.ts#L10">src/loaders/less/index.ts:10</a></li>
 						</ul>
