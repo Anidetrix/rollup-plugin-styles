@@ -890,7 +890,7 @@ console.log(a, b, c, d);
 "
 `;
 
-exports[`modules doubling: css 1`] = `
+exports[`modules duplication: css 1`] = `
 "html {
   --color-primary: green;
 }
@@ -912,7 +912,7 @@ exports[`modules doubling: css 1`] = `
 "
 `;
 
-exports[`modules doubling: js 1`] = `
+exports[`modules duplication: js 1`] = `
 "'use strict';
 
 var shared = {\\"test\\":\\"shared_test\\"};

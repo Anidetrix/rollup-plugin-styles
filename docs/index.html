@@ -2986,6 +2986,11 @@ img {
 				</li>
 			</ul>
 			<p>That&#39;s it, now you can import <code>.scss</code> <code>.sass</code> <code>.styl</code> <code>.stylus</code> <code>.less</code> files in your code.</p>
+			<a href="#imports-strongsassscsslessstrong" id="imports-strongsassscsslessstrong" style="color: inherit; text-decoration: none;">
+				<h4>imports (<strong>Sass/Scss/Less</strong>)</h4>
+			</a>
+			<p>Similar to how webpack&#39;s <a href="https://github.com/webpack-contrib/sass-loader#resolving-import-at-rules">sass-loader</a> works, you can prepend the import path with <code>~</code> to tell this plugin to resolve in <code>node_modules</code>:</p>
+			<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">"~bulma/css/bulma"</span>;</code></pre>
 			<a href="#codefiberscode-strongsassscss-onlystrong" id="codefiberscode-strongsassscss-onlystrong" style="color: inherit; text-decoration: none;">
 				<h4><code>fibers</code> (<strong>Sass/Scss only</strong>)</h4>
 			</a>
@@ -2997,22 +3002,21 @@ img {
 			</blockquote>
 			<p>To install <code>fibers</code>:</p>
 			<pre><code class="language-bash">yarn add fibers --dev</code></pre>
-			<a href="#imports-strongsassscsslessstrong" id="imports-strongsassscsslessstrong" style="color: inherit; text-decoration: none;">
-				<h4>imports (<strong>Sass/Scss/Less</strong>)</h4>
+			<a href="#configuration" id="configuration" style="color: inherit; text-decoration: none;">
+				<h2>Configuration</h2>
 			</a>
-			<p>Similar to how webpack&#39;s <a href="https://github.com/webpack-contrib/sass-loader#resolving-import-at-rules">sass-loader</a> works, you can prepend the import path with <code>~</code> to tell this plugin to resolve in <code>node_modules</code>:</p>
-			<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">"~bulma/css/bulma"</span>;</code></pre>
-			<a href="#options" id="options" style="color: inherit; text-decoration: none;">
-				<h2>Options</h2>
-			</a>
-			<p>See <a href="https://anidetrix.github.io/rollup-plugin-styles/interfaces/options.html">Options</a> for full list of available options.</p>
+			<p>See <a href="https://anidetrix.github.io/rollup-plugin-styles/interfaces/options.html">API Reference for <code>Options</code></a> for full list of available options.</p>
 			<a href="#differences-from-a-hrefhttpsgithubcomegoistrollup-plugin-postcssrollup-plugin-postcssa" id="differences-from-a-hrefhttpsgithubcomegoistrollup-plugin-postcssrollup-plugin-postcssa" style="color: inherit; text-decoration: none;">
 				<h2>Differences from <a href="https://github.com/egoist/rollup-plugin-postcss">rollup-plugin-postcss</a></h2>
 			</a>
 			<ul>
 				<li>Written completely in TypeScript</li>
-				<li><a href="https://github.com/css-modules/css-modules">CSS Modules</a> implementation compatible with plugins like <a href="https://github.com/postcss/postcss-import">postcss-import</a> and <a href="https://github.com/postcss/postcss-custom-properties">postcss-custom-properties</a></li>
-				<li>Support for partials and ~ in Less files</li>
+				<li><a href="https://github.com/css-modules/css-modules">CSS Modules</a> implementation which:<ul>
+						<li>Processes files imported with plugins like <a href="https://github.com/postcss/postcss-import">postcss-import</a></li>
+						<li>Causes no duplication with plugins like <a href="https://github.com/postcss/postcss-custom-properties">postcss-custom-properties</a></li>
+					</ul>
+				</li>
+				<li>Support for partials and <code>~</code> in Less import statements</li>
 				<li>Proper sourcemap generation for all loaders</li>
 				<li>Proper order of imported CSS chunks</li>
 				<li>Sourcemaps include source content</li>
@@ -3020,7 +3024,7 @@ img {
 				<li>Correct relative source paths in extracted sourcemaps</li>
 				<li>Can accept sourcemaps from previous plugins</li>
 				<li>Extracts sourcemaps from loaded files</li>
-				<li>More bug fixes here and there</li>
+				<li>More smaller things that I forgot</li>
 			</ul>
 			<a href="#contribute" id="contribute" style="color: inherit; text-decoration: none;">
 				<h2>Contribute</h2>
@@ -3029,7 +3033,7 @@ img {
 			<ul>
 				<li><strong>QA</strong>: file bug reports, the more details you can give the better</li>
 				<li><strong>Code</strong>: take a look at the <a href="https://github.com/Anidetrix/rollup-plugin-styles/issues">open issues</a>, even if you can&#39;t write code showing that you care about a given issue matters</li>
-				<li><strong>Ideas</strong>: feature requests are welcome</li>
+				<li><strong>Ideas</strong>: feature requests are welcome, no matter how ambitions they are</li>
 			</ul>
 			<p>Your First Contribution? You can learn how from this <em>free</em> series, <a href="https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github">How to Contribute to an Open Source Project on GitHub</a>.</p>
 			<a href="#license" id="license" style="color: inherit; text-decoration: none;">

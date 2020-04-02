@@ -239,8 +239,8 @@ validateMany("modules", [
     options: { autoModules: true },
   },
   {
-    title: "doubling",
-    input: "modules-doubling/index.js",
+    title: "duplication",
+    input: "modules-duplication/index.js",
     options: { modules: true, extract: true },
   },
 ]);

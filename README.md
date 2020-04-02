@@ -92,6 +92,14 @@ Install corresponding dependency:
 
 That's it, now you can import `.scss` `.sass` `.styl` `.stylus` `.less` files in your code.
 
+#### imports (**Sass/Scss/Less**)
+
+Similar to how webpack's [sass-loader](https://github.com/webpack-contrib/sass-loader#resolving-import-at-rules) works, you can prepend the import path with `~` to tell this plugin to resolve in `node_modules`:
+
+```scss
+@import "~bulma/css/bulma";
+```
+
 #### `fibers` (**Sass/Scss only**)
 
 This plugin will auto detect `fibers` package when using `sass` implementation
@@ -108,23 +116,17 @@ To install `fibers`:
 yarn add fibers --dev
 ```
 
-#### imports (**Sass/Scss/Less**)
+## Configuration
 
-Similar to how webpack's [sass-loader](https://github.com/webpack-contrib/sass-loader#resolving-import-at-rules) works, you can prepend the import path with `~` to tell this plugin to resolve in `node_modules`:
-
-```scss
-@import "~bulma/css/bulma";
-```
-
-## Options
-
-See [Options](https://anidetrix.github.io/rollup-plugin-styles/interfaces/options.html) for full list of available options.
+See [API Reference for `Options`](https://anidetrix.github.io/rollup-plugin-styles/interfaces/options.html) for full list of available options.
 
 ## Differences from [rollup-plugin-postcss](https://github.com/egoist/rollup-plugin-postcss)
 
 - Written completely in TypeScript
-- [CSS Modules](https://github.com/css-modules/css-modules) implementation compatible with plugins like [postcss-import](https://github.com/postcss/postcss-import) and [postcss-custom-properties](https://github.com/postcss/postcss-custom-properties)
-- Support for partials and ~ in Less files
+- [CSS Modules](https://github.com/css-modules/css-modules) implementation which:
+  - Processes files imported with plugins like [postcss-import](https://github.com/postcss/postcss-import)
+  - Causes no duplication with plugins like [postcss-custom-properties](https://github.com/postcss/postcss-custom-properties)
+- Support for partials and `~` in Less import statements
 - Proper sourcemap generation for all loaders
 - Proper order of imported CSS chunks
 - Sourcemaps include source content
@@ -132,7 +134,7 @@ See [Options](https://anidetrix.github.io/rollup-plugin-styles/interfaces/option
 - Correct relative source paths in extracted sourcemaps
 - Can accept sourcemaps from previous plugins
 - Extracts sourcemaps from loaded files
-- More bug fixes here and there
+- More smaller things that I forgot
 
 ## Contribute
 
@@ -140,7 +142,7 @@ Any contributions are always welcome, not only Pull Requests! 😀
 
 - **QA**: file bug reports, the more details you can give the better
 - **Code**: take a look at the [open issues](https://github.com/Anidetrix/rollup-plugin-styles/issues), even if you can't write code showing that you care about a given issue matters
-- **Ideas**: feature requests are welcome
+- **Ideas**: feature requests are welcome, no matter how ambitions they are
 
 Your First Contribution? You can learn how from this _free_ series, [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
 
