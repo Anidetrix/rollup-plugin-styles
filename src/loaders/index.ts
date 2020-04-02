@@ -27,7 +27,7 @@ const workQueue = new PQueue({ concurrency: threadPoolSize - 1 });
 
 export default class Loaders {
   use: [string, ObjectWithUnknownProps][] = [];
-  loaders: Loader<any>[] = []; // eslint-disable-line @typescript-eslint/no-explicit-any
+  loaders: Loader[] = [];
 
   constructor(options: LoadersOptions) {
     if (options.use) {
@@ -53,10 +53,10 @@ export default class Loaders {
     return this.loaders.find(loader => loader.name === name);
   }
 
-  listLoader<T>(loader: Loader<T>): void {
+  listLoader<T extends ObjectWithUnknownProps>(loader: Loader<T>): void {
     const existing = this.getLoader(loader.name);
     if (existing) this.unlistLoader(loader.name);
-    this.loaders.push(loader);
+    this.loaders.push(loader as Loader);
   }
 
   unlistLoader(name: string): void {

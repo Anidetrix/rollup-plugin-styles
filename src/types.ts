@@ -103,7 +103,7 @@ export interface Loader<LoaderOptionsType = ObjectWithUnknownProps> {
   /** Skip testing, always process the file */
   alwaysProcess?: boolean;
   /** Function for processing */
-  process: (this: LoaderContext<LoaderOptionsType>, input: Payload) => Promise<Payload> | Payload;
+  process: (this: LoaderContext<LoaderOptionsType>, payload: Payload) => Promise<Payload> | Payload;
 }
 
 /**
