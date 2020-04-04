@@ -29,26 +29,20 @@ function getHash(data: HashData): string {
  * @param placeholder string with placeholders
  * @returns function for generating scoped name
  */
-function getGenerator(placeholder?: string): NonNullable<ScopeOptions["generateScopedName"]> {
-  if (typeof placeholder === "string") {
-    return (name: string, filename: string, css: string): string => {
-      const hash = getHash({ name, filename, css });
-      const match = hashRe.exec(placeholder);
-      const hashLen = match && Number.parseInt(match[1]);
-      return makeLegalIdentifier(
-        placeholder
-          .replace("[name]", path.basename(filename, path.extname(filename)))
-          .replace("[local]", name)
-          .replace(hashRe, hashLen ? hash.slice(0, hashLen) : hash),
-      );
-    };
-  }
-
+function getGenerator(
+  placeholder = "[dir]_[name]_[local]__[hash:8]",
+): NonNullable<ScopeOptions["generateScopedName"]> {
   return (name: string, filename: string, css: string): string => {
-    const i = css.indexOf(`.${name}`);
-    const lineNumber = css.slice(0, i).split(/[\n\r]/).length;
-    const hash = getHash({ name, filename, css }).slice(0, 8);
-    return makeLegalIdentifier(`${name}_${hash}_${lineNumber}`);
+    const hash = getHash({ name, filename, css });
+    const match = hashRe.exec(placeholder);
+    const hashLen = match && Number.parseInt(match[1]);
+    return makeLegalIdentifier(
+      placeholder
+        .replace("[dir]", path.basename(path.dirname(filename)))
+        .replace("[name]", path.basename(filename, path.extname(filename)))
+        .replace("[local]", name)
+        .replace(hashRe, hashLen ? hash.slice(0, hashLen) : hash),
+    );
   };
 }
 

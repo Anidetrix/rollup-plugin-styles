@@ -99,8 +99,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
         ...postcssModules({
           // Skip hash while testing since CSS content would differ on Windows and Linux
           // due to different line endings.
-          generateScopedName:
-            process.env.NODE_ENV === "test" ? "[name]_[local]" : "[name]_[local]__[hash:8]",
+          generateScopedName: process.env.NODE_ENV === "test" ? "[name]_[local]" : undefined,
           failOnWrongOrder: true,
           ...modulesOptions,
         }),
