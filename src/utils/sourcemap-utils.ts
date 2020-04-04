@@ -3,10 +3,10 @@ import fs from "fs-extra";
 import { ExistingRawSourceMap } from "rollup";
 import { relativePath, isAbsolutePath, resolvePath } from "./path-utils";
 
-export const dataURIRe = /data:[^\n\r;]+?(?:;charset=[^\n\r;]+?)?;base64,([\d+/A-Za-z]+={0,2})/;
-export const mapBlockRe = /\/\*[#*@]+?\s*?sourceMappingURL\s*?=\s*?(\S+)\s*?\*+?\//;
-export const mapInlineRe = /\/\/[#@]+?\s*?sourceMappingURL\s*?=\s*?(\S+)\s*?(?:$|\n|\r\n)/;
-export const mapRe = new RegExp([mapBlockRe, mapInlineRe].map(re => re.source).join("|"));
+const dataURIRe = /data:[^\n\r;]+?(?:;charset=[^\n\r;]+?)?;base64,([\d+/A-Za-z]+={0,2})/;
+const mapBlockRe = /\/\*[#*@]+?\s*?sourceMappingURL\s*?=\s*?(\S+)\s*?\*+?\//;
+const mapInlineRe = /\/\/[#@]+?\s*?sourceMappingURL\s*?=\s*?(\S+)\s*?(?:$|\n|\r\n)/;
+const mapRe = new RegExp([mapBlockRe, mapInlineRe].map(re => re.source).join("|"));
 
 /**
  * Get the map from inlined data
@@ -68,7 +68,7 @@ export class MapModifier {
 
   /** @param map sourcemap */
   constructor(map: string | ExistingRawSourceMap) {
-    if (!map) throw new TypeError("Sourcemap must be an object or a string");
+    if (!map) throw new TypeError("`map` must be an object or a string");
     this.map = typeof map === "string" ? JSON.parse(map) : map;
   }
 
