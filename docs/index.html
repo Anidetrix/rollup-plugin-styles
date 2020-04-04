@@ -2764,9 +2764,6 @@ img {
 			<a href="interfaces/writedata.html" class="tsd-kind-icon">Write<wbr>Data</a>
 		</li>
 		<li class=" tsd-kind-type-alias">
-			<a href="globals.html#hashdata" class="tsd-kind-icon">Hash<wbr>Data</a>
-		</li>
-		<li class=" tsd-kind-type-alias">
 			<a href="globals.html#json" class="tsd-kind-icon">Json</a>
 		</li>
 		<li class=" tsd-kind-type-alias">
@@ -2824,6 +2821,9 @@ img {
 			<a href="globals.html#workqueue" class="tsd-kind-icon">work<wbr>Queue</a>
 		</li>
 		<li class=" tsd-kind-function">
+			<a href="globals.html#defaultgeneratescopedname" class="tsd-kind-icon">default<wbr>Generate<wbr>Scoped<wbr>Name</a>
+		</li>
+		<li class=" tsd-kind-function">
 			<a href="globals.html#defaultimporter" class="tsd-kind-icon">default<wbr>Importer</a>
 		</li>
 		<li class=" tsd-kind-function">
@@ -2846,12 +2846,6 @@ img {
 		</li>
 		<li class=" tsd-kind-function">
 			<a href="globals.html#getextractedmap" class="tsd-kind-icon">get<wbr>Extracted<wbr>Map</a>
-		</li>
-		<li class=" tsd-kind-function">
-			<a href="globals.html#getgenerator" class="tsd-kind-icon">get<wbr>Generator</a>
-		</li>
-		<li class=" tsd-kind-function">
-			<a href="globals.html#gethash" class="tsd-kind-icon">get<wbr>Hash</a>
 		</li>
 		<li class=" tsd-kind-function">
 			<a href="globals.html#getinlinemap" class="tsd-kind-icon">get<wbr>Inline<wbr>Map</a>
@@ -3083,7 +3077,6 @@ img {
 					<section class="tsd-index-section ">
 						<h3>Type aliases</h3>
 						<ul class="tsd-index-list">
-							<li class="tsd-kind-type-alias"><a href="globals.html#hashdata" class="tsd-kind-icon">Hash<wbr>Data</a></li>
 							<li class="tsd-kind-type-alias"><a href="globals.html#json" class="tsd-kind-icon">Json</a></li>
 							<li class="tsd-kind-type-alias"><a href="globals.html#lessloaderoptions" class="tsd-kind-icon">LESSLoader<wbr>Options</a></li>
 							<li class="tsd-kind-type-alias"><a href="globals.html#load" class="tsd-kind-icon">Load</a></li>
@@ -3113,6 +3106,7 @@ img {
 					<section class="tsd-index-section ">
 						<h3>Functions</h3>
 						<ul class="tsd-index-list">
+							<li class="tsd-kind-function"><a href="globals.html#defaultgeneratescopedname" class="tsd-kind-icon">default<wbr>Generate<wbr>Scoped<wbr>Name</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#defaultimporter" class="tsd-kind-icon">default<wbr>Importer</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#defaultload" class="tsd-kind-icon">default<wbr>Load</a></li>
 							<li class="tsd-kind-function tsd-has-type-parameter"><a href="globals.html#ensureoption" class="tsd-kind-icon">ensure<wbr>Option</a></li>
@@ -3121,8 +3115,6 @@ img {
 							<li class="tsd-kind-function"><a href="globals.html#ensureuseoption" class="tsd-kind-icon">ensure<wbr>Use<wbr>Option</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#fixture" class="tsd-kind-icon">fixture</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#getextractedmap" class="tsd-kind-icon">get<wbr>Extracted<wbr>Map</a></li>
-							<li class="tsd-kind-function"><a href="globals.html#getgenerator" class="tsd-kind-icon">get<wbr>Generator</a></li>
-							<li class="tsd-kind-function"><a href="globals.html#gethash" class="tsd-kind-icon">get<wbr>Hash</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#getinlinemap" class="tsd-kind-icon">get<wbr>Inline<wbr>Map</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#getmap" class="tsd-kind-icon">get<wbr>Map</a></li>
 							<li class="tsd-kind-function"><a href="globals.html#getstylesfilemanager" class="tsd-kind-icon">get<wbr>Styles<wbr>File<wbr>Manager</a></li>
@@ -3157,30 +3149,6 @@ img {
 		</section>
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Type aliases</h2>
-			<section class="tsd-panel tsd-member tsd-kind-type-alias">
-				<a name="hashdata" class="tsd-anchor"></a>
-				<h3>Hash<wbr>Data</h3>
-				<div class="tsd-signature tsd-kind-icon">Hash<wbr>Data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">{ </span>css<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>filename<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">; </span>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> }</span></div>
-				<aside class="tsd-sources">
-					<ul>
-						<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/postcss/modules.ts#L16">src/loaders/postcss/modules.ts:16</a></li>
-					</ul>
-				</aside>
-				<div class="tsd-type-declaration">
-					<h4>Type declaration</h4>
-					<ul class="tsd-parameters">
-						<li class="tsd-parameter">
-							<h5>css<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
-						</li>
-						<li class="tsd-parameter">
-							<h5>filename<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
-						</li>
-						<li class="tsd-parameter">
-							<h5>name<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></h5>
-						</li>
-					</ul>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-member tsd-kind-type-alias">
 				<a name="json" class="tsd-anchor"></a>
 				<h3>Json</h3>
@@ -3703,6 +3671,29 @@ img {
 		<section class="tsd-panel-group tsd-member-group ">
 			<h2>Functions</h2>
 			<section class="tsd-panel tsd-member tsd-kind-function">
+				<a name="defaultgeneratescopedname" class="tsd-anchor"></a>
+				<h3><span class="tsd-flag ts-flagConst">Const</span> default<wbr>Generate<wbr>Scoped<wbr>Name</h3>
+				<ul class="tsd-signatures tsd-kind-function">
+					<li class="tsd-signature tsd-kind-icon">default<wbr>Generate<wbr>Scoped<wbr>Name<span class="tsd-signature-symbol">(</span>placeholder<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">(Anonymous function)</span></li>
+				</ul>
+				<ul class="tsd-descriptions">
+					<li class="tsd-description">
+						<aside class="tsd-sources">
+							<ul>
+								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/postcss/modules.ts#L16">src/loaders/postcss/modules.ts:16</a></li>
+							</ul>
+						</aside>
+						<h4 class="tsd-parameters-title">Parameters</h4>
+						<ul class="tsd-parameters">
+							<li>
+								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> placeholder: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;[dir]_[name]_[local]__[hash:8]&quot;</span></h5>
+							</li>
+						</ul>
+						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">(Anonymous function)</span></h4>
+					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel tsd-member tsd-kind-function">
 				<a name="defaultimporter" class="tsd-anchor"></a>
 				<h3><span class="tsd-flag ts-flagConst">Const</span> default<wbr>Importer</h3>
 				<ul class="tsd-signatures tsd-kind-function">
@@ -3949,64 +3940,6 @@ img {
 						</ul>
 						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						<p>stringified sourcemap object extracted from <code>code</code></p>
-					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-function">
-				<a name="getgenerator" class="tsd-anchor"></a>
-				<h3>get<wbr>Generator</h3>
-				<ul class="tsd-signatures tsd-kind-function">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Generator<span class="tsd-signature-symbol">(</span>placeholder<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">NonNullable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ScopeOptions</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"generateScopedName"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></li>
-				</ul>
-				<ul class="tsd-descriptions">
-					<li class="tsd-description">
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/postcss/modules.ts#L32">src/loaders/postcss/modules.ts:32</a></li>
-							</ul>
-						</aside>
-						<div class="tsd-comment tsd-typography">
-						</div>
-						<h4 class="tsd-parameters-title">Parameters</h4>
-						<ul class="tsd-parameters">
-							<li>
-								<h5><span class="tsd-flag ts-flagDefault value">Default value</span> placeholder: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;[dir]_[name]_[local]__[hash:8]&quot;</span></h5>
-								<div class="tsd-comment tsd-typography">
-									<p>string with placeholders</p>
-								</div>
-							</li>
-						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">NonNullable</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ScopeOptions</span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">"generateScopedName"</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						<p>function for generating scoped name</p>
-					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel tsd-member tsd-kind-function">
-				<a name="gethash" class="tsd-anchor"></a>
-				<h3>get<wbr>Hash</h3>
-				<ul class="tsd-signatures tsd-kind-function">
-					<li class="tsd-signature tsd-kind-icon">get<wbr>Hash<span class="tsd-signature-symbol">(</span>data<span class="tsd-signature-symbol">: </span><a href="globals.html#hashdata" class="tsd-signature-type">HashData</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-				</ul>
-				<ul class="tsd-descriptions">
-					<li class="tsd-description">
-						<aside class="tsd-sources">
-							<ul>
-								<li>Defined in <a href="https://github.com/Anidetrix/rollup-plugin-styles/blob/master/src/loaders/postcss/modules.ts#L24">src/loaders/postcss/modules.ts:24</a></li>
-							</ul>
-						</aside>
-						<div class="tsd-comment tsd-typography">
-						</div>
-						<h4 class="tsd-parameters-title">Parameters</h4>
-						<ul class="tsd-parameters">
-							<li>
-								<h5>data: <a href="globals.html#hashdata" class="tsd-signature-type">HashData</a></h5>
-								<div class="tsd-comment tsd-typography">
-									<p>hashable data</p>
-								</div>
-							</li>
-						</ul>
-						<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-						<p>hash</p>
 					</li>
 				</ul>
 			</section>
