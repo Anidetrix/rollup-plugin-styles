@@ -3,6 +3,8 @@
 exports[`basic postcss-config: js 1`] = `
 "'use strict';
 
+/* eslint-env browser */
+
 /** @type {HTMLElement[]} */
 const containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
@@ -70,6 +72,8 @@ injector_14187a73(css_2f84417a);
 
 exports[`basic postcss-options: js 1`] = `
 "'use strict';
+
+/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];
@@ -160,6 +164,8 @@ exports[`basic postcss-resolvers: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\
 exports[`basic simple: js 1`] = `
 "'use strict';
 
+/* eslint-env browser */
+
 /** @type {HTMLElement[]} */
 const containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
@@ -244,6 +250,8 @@ console.log(css_2f84417a, css_2f84417a$1);
 
 exports[`basic skip-loader: js 1`] = `
 "'use strict';
+
+/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];
@@ -534,6 +542,8 @@ console.log(css_2f84417a, css_2f84417a$1);
 exports[`inject top: js 1`] = `
 "'use strict';
 
+/* eslint-env browser */
+
 /** @type {HTMLElement[]} */
 const containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
@@ -618,6 +628,8 @@ console.log(css_2f84417a, css_2f84417a$1);
 
 exports[`less import: js 1`] = `
 "'use strict';
+
+/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];
@@ -722,6 +734,8 @@ exports[`minimize extract-sourcemap-true: map 1`] = `"{\\"version\\":3,\\"source
 exports[`minimize inject: js 1`] = `
 "'use strict';
 
+/* eslint-env browser */
+
 /** @type {HTMLElement[]} */
 const containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
@@ -806,6 +820,8 @@ console.log(css_2f84417a, css_2f84417a$1);
 
 exports[`modules auto-modules: js 1`] = `
 "'use strict';
+
+/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];
@@ -1043,6 +1059,8 @@ exports[`modules extract-sourcemap-true: map 1`] = `"{\\"version\\":3,\\"sources
 exports[`modules inject: js 1`] = `
 "'use strict';
 
+/* eslint-env browser */
+
 /** @type {HTMLElement[]} */
 const containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
@@ -1122,6 +1140,8 @@ console.log(style.module, composed.composition, composition2.compositioned);
 exports[`modules inject-object: js 1`] = `
 "'use strict';
 
+/* eslint-env browser */
+
 /** @type {HTMLElement[]} */
 const containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
@@ -1200,6 +1220,8 @@ console.log(style.module, composed.composition, composition2.compositioned);
 
 exports[`modules named-exports: js 1`] = `
 "'use strict';
+
+/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];
@@ -1282,6 +1304,8 @@ console.log(style$1);
 
 exports[`modules named-exports-custom-class-name: js 1`] = `
 "'use strict';
+
+/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];
@@ -1372,6 +1396,8 @@ console.log(undefined, undefined);
 exports[`sass data: js 1`] = `
 "'use strict';
 
+/* eslint-env browser */
+
 /** @type {HTMLElement[]} */
 const containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
@@ -1439,6 +1465,8 @@ injector_14187a73(css_2f84417a);
 
 exports[`sass default: js 1`] = `
 "'use strict';
+
+/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];
@@ -1508,6 +1536,8 @@ injector_14187a73(css_2f84417a);
 exports[`sass import: js 1`] = `
 "'use strict';
 
+/* eslint-env browser */
+
 /** @type {HTMLElement[]} */
 const containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
@@ -1575,6 +1605,8 @@ injector_14187a73(css_2f84417a);
 
 exports[`sass modules: js 1`] = `
 "'use strict';
+
+/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];
@@ -1647,6 +1679,8 @@ console.log(style);
 exports[`sass sourcemap: js 1`] = `
 "'use strict';
 
+/* eslint-env browser */
+
 /** @type {HTMLElement[]} */
 const containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
@@ -1714,6 +1748,8 @@ injector_14187a73(css_2f84417a);
 
 exports[`sourcemap inline: js 1`] = `
 "'use strict';
+
+/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];
@@ -1799,6 +1835,8 @@ console.log(css_2f84417a, css_2f84417a$1);
 
 exports[`sourcemap true: js 1`] = `
 "'use strict';
+
+/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];

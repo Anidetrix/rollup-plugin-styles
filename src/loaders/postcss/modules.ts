@@ -54,7 +54,7 @@ function getGenerator(placeholder?: string): NonNullable<ScopeOptions["generateS
 
 export default (options: ModulesOptions): postcss.Transformer[] => {
   const opts = {
-    mode: "local" as "local",
+    mode: "local" as const,
     ...options,
     generateScopedName:
       typeof options.generateScopedName === "function"

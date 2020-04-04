@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import path from "path";
 import loadModule from "../src/utils/load-module";
 import { getInlineMap, getExtractedMap, stripMap, MapModifier } from "../src/utils/sourcemap-utils";

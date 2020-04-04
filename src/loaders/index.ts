@@ -30,13 +30,11 @@ export default class Loaders {
   loaders: Loader[] = [];
 
   constructor(options: LoadersOptions) {
-    if (options.use) {
-      this.use = options.use.map(rule => {
-        if (typeof rule === "string") return [rule, {}];
-        if (Array.isArray(rule)) return rule.length === 1 ? [rule[0], {}] : rule;
-        throw new TypeError("The rule in `use` option must be string or array!");
-      });
-    }
+    this.use = options.use.map(rule => {
+      if (typeof rule === "string") return [rule, {}];
+      if (Array.isArray(rule)) return rule.length === 1 ? [rule[0], {}] : rule;
+      throw new TypeError("The rule in `use` option must be string or array!");
+    });
 
     postcssLoader.test = (filepath): boolean =>
       options.extensions.some(ext => filepath.toLowerCase().endsWith(ext));
@@ -46,7 +44,7 @@ export default class Loaders {
     this.listLoader(sassLoader);
     this.listLoader(stylusLoader);
     this.listLoader(lessLoader);
-    if (options.loaders) options.loaders.forEach(loader => this.listLoader(loader));
+    options.loaders.forEach(loader => this.listLoader(loader));
   }
 
   getLoader(name: string): Loader | undefined {

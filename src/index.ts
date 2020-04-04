@@ -12,104 +12,43 @@ import { Plugin } from "rollup";
 import postcss from "postcss";
 import cssnano from "cssnano";
 
-import {
-  Options,
-  PostCSSLoaderOptions,
-  LoaderContext,
-  Payload,
-  ExtractedData,
-  LoadersOptions,
-} from "./types";
+import { Options, PostCSSLoaderOptions, LoaderContext, Payload, ExtractedData } from "./types";
 import Loaders from "./loaders";
 import { relativePath } from "./utils/path-utils";
 import { MapModifier } from "./utils/sourcemap-utils";
-
-/**
- * Infer options from `boolean` or `object`
- * @param option Option
- * @param defaultValue Default value
- * @returns `object` if `option` is truthy, `false` if `option` is `false`, otherwise `defaultValue`
- */
-function inferOption<T extends boolean | object>(option: T | undefined, defaultValue: T): T | {} {
-  if (typeof option === "boolean") return option === false ? false : {};
-  if (typeof option === "object") return option;
-  return defaultValue;
-}
-
-/**
- * Make sure option is defined
- * @param option Option
- * @param defaultValue Default value
- * @returns `option` if option is defined, or `defaultValue`
- */
-function ensureOption<T>(option: T | undefined, defaultValue: T): T {
-  return typeof option !== "undefined" ? option : defaultValue;
-}
-
-/**
- * Make sure PostCSS option is resolved
- * @param option Option
- * @returns resolved `option`
- */
-function ensurePostCSSOption<
-  T extends
-    | postcss.Parser
-    | postcss.Syntax
-    | postcss.Stringifier
-    | postcss.Transformer
-    | null
-    | undefined
->(option: string | T): T {
-  return typeof option === "string" ? (require(option) as T) : option;
-}
+import {
+  inferOption,
+  ensureOption,
+  ensureUseOption,
+  ensurePCSSOption,
+  ensurePCSSPlugins,
+} from "./utils/options-utils";
 
 export default (options: Options = {}): Plugin => {
   const filter = createFilter(options.include, options.exclude);
 
   const postcssLoaderOptions: PostCSSLoaderOptions = {
-    inject:
-      typeof options.inject === "function" ? options.inject : inferOption(options.inject, true),
-    extract: ensureOption(options.extract, false),
-    modules: inferOption(options.modules, false),
-    namedExports: ensureOption(options.namedExports, false),
-    autoModules: ensureOption(options.autoModules, false),
     minimize: inferOption(options.minimize, false),
     config: inferOption(options.config, {}),
+    modules: inferOption(options.modules, false),
+
+    inject: ensureOption(options.inject, true),
+    extract: ensureOption(options.extract, false),
+    namedExports: ensureOption(options.namedExports, false),
+    autoModules: ensureOption(options.autoModules, false),
     extensions: ensureOption(options.extensions, [".css", ".sss", ".pcss"]),
+
     postcss: {
-      parser: ensurePostCSSOption(options.parser),
-      syntax: ensurePostCSSOption(options.syntax),
-      stringifier: ensurePostCSSOption(options.stringifier),
-      plugins: Array.isArray(options.plugins)
-        ? options.plugins
-            // https://github.com/microsoft/TypeScript/issues/24063
-            .filter(<T>(p: T): p is Exclude<T, false | null | undefined | 0 | ""> => !!p)
-            .map(plugin =>
-              Array.isArray(plugin)
-                ? ensurePostCSSOption<postcss.PluginInitializer<unknown>>(plugin[0])(plugin[1])
-                : ensurePostCSSOption(plugin),
-            )
-        : options.plugins,
+      parser: ensurePCSSOption(options.parser),
+      syntax: ensurePCSSOption(options.syntax),
+      stringifier: ensurePCSSOption(options.stringifier),
+      plugins: ensurePCSSPlugins(options.plugins),
     },
   };
 
-  let use: NonNullable<LoadersOptions["use"]> = ["sass", "stylus", "less"];
-
-  if (Array.isArray(options.use)) {
-    use = options.use;
-  } else if (typeof options.use === "object") {
-    use = [
-      ["sass", options.use.sass || {}],
-      ["stylus", options.use.stylus || {}],
-      ["less", options.use.less || {}],
-    ];
-  }
-
-  use.unshift(["postcss", postcssLoaderOptions], "sourcemap");
-
   const loaders = new Loaders({
-    use,
-    loaders: options.loaders,
+    use: [["postcss", postcssLoaderOptions], "sourcemap", ...ensureUseOption(options.use)],
+    loaders: ensureOption(options.loaders, []),
     extensions: postcssLoaderOptions.extensions,
   });
 
@@ -144,13 +83,13 @@ export default (options: Options = {}): Plugin => {
         res.extracted && extracted.set(id, res.extracted);
         return {
           code: res.code,
-          map: { mappings: "" as "" },
+          map: { mappings: "" as const },
         };
       }
 
       return {
         code: res.code,
-        map: res.map || { mappings: "" as "" },
+        map: res.map || { mappings: "" as const },
       };
     },
 
@@ -189,8 +128,8 @@ export default (options: Options = {}): Plugin => {
         for (const res of entries) {
           const relative = relativePath(dir, res.id);
           const map = res.map && new MapModifier(res.map).relative(fileDir).toObject();
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          concat.add(relative, res.code, map as any);
+          type ConcatSourceMap = Exclude<Parameters<typeof concat.add>[2], string | undefined>;
+          concat.add(relative, res.code, (map as unknown) as ConcatSourceMap);
         }
 
         let code = concat.content.toString();
@@ -232,9 +171,9 @@ export default (options: Options = {}): Plugin => {
           cssOpts.to = res.codeFileName;
         }
 
-        const result = await cssnano.process(res.code, cssOpts);
-        res.code = result.css;
-        if (options.sourceMap === true) res.map = result.map && result.map.toString();
+        const resMin = await cssnano.process(res.code, cssOpts);
+        res.code = resMin.css;
+        if (options.sourceMap === true) res.map = resMin.map && resMin.map.toString();
       }
 
       this.emitFile({

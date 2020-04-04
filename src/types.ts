@@ -26,22 +26,24 @@ export interface PostCSSLoadConfigOptions {
 
 /** Options for PostCSS Loader */
 export type PostCSSLoaderOptions = {
+  /** @see {@link Options.minimize} */
+  minimize: Exclude<Options["minimize"], true | undefined>;
+  /** @see {@link Options.config} */
+  config: Exclude<Options["config"], true | undefined>;
+  /** @see {@link Options.modules} */
+  modules: Exclude<Options["modules"], true | undefined>;
+
   /** @see {@link Options.inject} */
   inject: NonNullable<Options["inject"]>;
   /** @see {@link Options.extract} */
   extract: NonNullable<Options["extract"]>;
-  /** @see {@link Options.modules} */
-  modules: NonNullable<Options["modules"]>;
   /** @see {@link Options.namedExports} */
   namedExports: NonNullable<Options["namedExports"]>;
   /** @see {@link Options.autoModules} */
   autoModules: NonNullable<Options["autoModules"]>;
-  /** @see {@link Options.minimize} */
-  minimize: NonNullable<Options["minimize"]>;
-  /** @see {@link Options.config} */
-  config: NonNullable<Options["config"]>;
   /** @see {@link Options.extensions} */
   extensions: NonNullable<Options["extensions"]>;
+
   /** Options for PostCSS processor */
   postcss: {
     /** @see {@link Options.parser} */
@@ -81,9 +83,9 @@ export type LESSLoaderOptions = {
 /** Options for {@link Loaders} class */
 export interface LoadersOptions {
   /** @see {@link Options.use} */
-  use?: (string | [string] | [string, ObjectWithUnknownProps])[];
+  use: (string | [string] | [string, ObjectWithUnknownProps])[];
   /** @see {@link Options.loaders} */
-  loaders?: Loader[];
+  loaders: Loader[];
   /** @see {@link Options.extensions} */
   extensions: string[];
 }

@@ -18,7 +18,7 @@
     "test": "npm run lint:fix && jest",
     "test:cov": "npm run lint:fix && jest --coverage",
     "commit": "commit",
-    "prepublishOnly": "shx rm -rf dist && npm run build:prod && shx cp -r src/typings runtime dist && shx rm -rf \"dist/**/.eslintrc*\""
+    "prepublishOnly": "shx rm -rf dist && npm run build:prod && shx cp -r src/typings runtime dist"
   },
   "repository": {
     "type": "git",
@@ -57,7 +57,7 @@
     "@types/cssnano": "^4.0.0",
     "@types/fs-extra": "^8.1.0",
     "@types/icss-utils": "^4.1.0",
-    "@types/jest": "^25.1.5",
+    "@types/jest": "^25.2.1",
     "@types/node": "*",
     "@types/postcss-load-config": "^2.0.1",
     "@types/resolve": "^1.14.0",
@@ -77,7 +77,7 @@
     "fibers": "^4.0.2",
     "fs-extra": "^9.0.0",
     "husky": "^4.2.3",
-    "jest": "^25.2.6",
+    "jest": "^25.2.7",
     "less": "^3.11.1",
     "lint-staged": "^10.1.1",
     "node-sass": "^4.13.1",
@@ -93,7 +93,7 @@
     "shx": "^0.3.2",
     "stylus": "^0.54.7",
     "sugarss": "^2.0.0",
-    "ts-jest": "^25.3.0",
+    "ts-jest": "^25.3.1",
     "tslib": "^1.11.1",
     "typedoc": "^0.17.3",
     "typescript": "^3.8.3"

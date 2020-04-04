@@ -14,11 +14,12 @@ module.exports = {
   plugins: ["unicorn", "node"],
   rules: {
     "no-var": "error",
+    "node/file-extension-in-import": "off",
+    "node/no-missing-import": "off",
+    "node/no-unsupported-features/es-syntax": "off",
+    "prefer-const": "error",
     "prefer-template": "error",
     "unicorn/prevent-abbreviations": "off",
-    "node/no-missing-import": "off",
-    "node/file-extension-in-import": "off",
-    "node/no-unsupported-features/es-syntax": "off",
   },
   settings: { "import/resolver": { node: { extensions: [".js", ".ts"] } } },
 };

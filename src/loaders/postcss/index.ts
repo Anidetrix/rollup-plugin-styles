@@ -1,6 +1,6 @@
-import { makeLegalIdentifier } from "@rollup/pluginutils";
-
 import path from "path";
+import { ExistingRawSourceMap } from "rollup";
+import { makeLegalIdentifier } from "@rollup/pluginutils";
 import postcss from "postcss";
 import findPostCSSConfig from "postcss-load-config";
 import cssnano from "cssnano";
@@ -67,10 +67,9 @@ const loader: Loader<PostCSSLoaderOptions> = {
       ...(config.plugins || []),
     ];
 
-    const shouldExtract = Boolean(options.extract);
-    const shouldInject = Boolean(options.inject);
     const autoModules = options.autoModules && isModuleFile(this.id);
     const supportModules = Boolean(options.modules || autoModules);
+
     const modulesExports: { [filepath: string]: { [prop: string]: string } } = {};
 
     const postcssOpts: PostCSSLoaderOptions["postcss"] & {
@@ -120,12 +119,11 @@ const loader: Loader<PostCSSLoaderOptions> = {
       );
     }
 
-    // If shouldExtract, minimize is done after all CSS are extracted to a file
-    if (!shouldExtract && options.minimize)
+    // If extracting, minimization is performed afterwards
+    if (!options.extract && options.minimize)
       plugins.push(cssnano(typeof options.minimize === "object" ? options.minimize : {}));
 
-    // Prevent from postcss warning:
-    // You did not set any plugins, parser, or stringifier. Right now, PostCSS does nothing. Pick plugins for your case on https://www.postcss.parts/ and use them in postcss.config.js
+    // Prevent from PostCSS warning about no plugins
     if (plugins.length === 0) plugins.push(postcssNoop);
 
     const res = await postcss(plugins).process(code, postcssOpts);
@@ -138,12 +136,12 @@ const loader: Loader<PostCSSLoaderOptions> = {
 
     if (res.map) {
       map =
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        new MapModifier(res.map.toJSON() as any).resolve(path.dirname(postcssOpts.to)).toString() ||
-        map;
+        new MapModifier((res.map.toJSON() as unknown) as ExistingRawSourceMap)
+          .resolve(path.dirname(postcssOpts.to))
+          .toString() || map;
     }
 
-    if (!shouldExtract && this.sourceMap && map)
+    if (!options.extract && this.sourceMap && map)
       res.css += new MapModifier(map)
         .modify(map => void delete map.file)
         .relative()
@@ -170,7 +168,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
     }
 
     const cssVarName = safeId("css");
-    if (shouldExtract) {
+    if (options.extract) {
       output += `\nexport default ${JSON.stringify(modulesExports[this.id])};`;
       extracted = { id: this.id, code: res.css, map };
     } else {
@@ -182,7 +180,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
       ].join("\n")}`;
     }
 
-    if (!shouldExtract && shouldInject) {
+    if (!options.extract && options.inject) {
       if (typeof options.inject === "function") {
         output += options.inject(cssVarName, this.id);
       } else {

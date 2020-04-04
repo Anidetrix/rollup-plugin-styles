@@ -1,3 +1,5 @@
+/* eslint-env browser */
+
 /** @type {HTMLElement[]} */
 const containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */

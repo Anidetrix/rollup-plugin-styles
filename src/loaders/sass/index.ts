@@ -6,16 +6,15 @@ import loadModule from "../../utils/load-module";
 
 import defaultImporter from "./default-importer";
 
-type AllowedSassID = "sass" | "node-sass";
-const possibleSassIDs: AllowedSassID[] = ["node-sass", "sass"];
+const sassIDs = ["node-sass", "sass"] as const;
 
 /**
  * Loads Sass module or throws an error
  * @returns A tuple in format [`loaded sass module`, `id`],
  */
-async function loadSassOrThrow(): Promise<[Sass, AllowedSassID]> {
+async function loadSassOrThrow(): Promise<[Sass, typeof sassIDs[number]]> {
   // Loading one of the supported modules
-  for (const id of possibleSassIDs) {
+  for (const id of sassIDs) {
     const module = await loadModule(id);
     if (module) return [module, id];
   }
@@ -24,7 +23,7 @@ async function loadSassOrThrow(): Promise<[Sass, AllowedSassID]> {
   throw new Error(
     [
       "You need to install one of the following packages:",
-      possibleSassIDs.map(id => `\`${id}\``).join(", "),
+      sassIDs.map(id => `\`${id}\``).join(", "),
       "in order to process Sass files",
     ].join("\n"),
   );
