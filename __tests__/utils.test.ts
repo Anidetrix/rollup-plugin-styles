@@ -1,4 +1,3 @@
-import path from "path";
 import loadModule from "../src/utils/load-module";
 import { fixture } from "./helpers";
 import { getInlineMap, getExtractedMap, stripMap, MapModifier } from "../src/utils/sourcemap-utils";
@@ -33,9 +32,9 @@ describe("sourcemap-utils", () => {
 
   test("file map", async () => {
     const code = ".foo {color: red;}/*# sourceMappingURL=fixture.css.map */";
-    const wrongMap = await getExtractedMap(code, path.resolve("this/is/nonexistant/path.css"));
+    const wrongMap = await getExtractedMap(code, "this/is/nonexistant/path.css");
     expect(wrongMap).toBeUndefined();
-    const correctMap = await getExtractedMap(code, path.resolve(fixture("utils", "pointless.css")));
+    const correctMap = await getExtractedMap(code, fixture("utils", "pointless.css"));
     expect(correctMap).toBe("{THIS:ISASOURCEMAPSIMULATION}");
   });
 
