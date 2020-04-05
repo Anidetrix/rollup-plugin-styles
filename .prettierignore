@@ -3,6 +3,6 @@
 /.cache
 /.vscode
 /node_modules
-/test/fixtures/dist
+/__tests__/fixtures/dist
 /coverage
 /docs

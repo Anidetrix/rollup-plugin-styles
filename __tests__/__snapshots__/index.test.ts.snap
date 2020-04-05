@@ -392,7 +392,7 @@ console.log(undefined, undefined);
 "
 `;
 
-exports[`extract custom-path-relative: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../../../simple/foo.css\\",\\"../../../../../../simple/bar.css\\",\\"../../../../../../simple/style.styl\\",\\"../../../../../../simple/style.pcss\\",\\"../../../../../../simple/style.sass\\",\\"../../../../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;AACZ;;ACFA;EACE,WAAO;EACP,gBAAY;AACd;;ACHA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;EACV,UAAU,EAAA;;ACCZ;EACE,cAAA;AAFF\\",\\"file\\":\\"extracted.css\\",\\"sourcesContent\\":[\\".foo {\\\\n  color: red;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
+exports[`extract custom-path-relative: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../../simple/foo.css\\",\\"../../../../../simple/bar.css\\",\\"../../../../../simple/style.styl\\",\\"../../../../../simple/style.pcss\\",\\"../../../../../simple/style.sass\\",\\"../../../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;AACZ;;ACFA;EACE,WAAO;EACP,gBAAY;AACd;;ACHA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;EACV,UAAU,EAAA;;ACCZ;EACE,cAAA;AAFF\\",\\"file\\":\\"extracted.css\\",\\"sourcesContent\\":[\\".foo {\\\\n  color: red;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
 
 exports[`extract sourcemap-inline: css 1`] = `
 ".foo {
@@ -1741,7 +1741,7 @@ var injector_14187a73 = (css, options = {}) => {
   }
 };
 
-var css_2f84417a = \\".style {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2Fzcy9zdHlsZS5zYXNzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0UsVUFBVTtFQUNWLFVBQVUsRUFBQSIsInNvdXJjZXNDb250ZW50IjpbIi5zdHlsZSB7XG4gIHdpZHRoOiAzMCU7XG4gIGNvbG9yOiByZWQ7IH1cbiJdfQ== */\\";
+var css_2f84417a = \\".style {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zYXNzL3N0eWxlLnNhc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0VBQ1YsVUFBVSxFQUFBIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWxlIHtcbiAgd2lkdGg6IDMwJTtcbiAgY29sb3I6IHJlZDsgfVxuIl19 */\\";
 injector_14187a73(css_2f84417a);
 "
 `;
@@ -1811,22 +1811,22 @@ var injector_14187a73 = (css, options = {}) => {
   }
 };
 
-var css_2f84417a = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL2Zvby5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIuZm9vIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
+var css_2f84417a = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
 injector_14187a73(css_2f84417a);
 
-var css_2f84417a$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL2Jhci5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIuYmFyIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
+var css_2f84417a$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
 injector_14187a73(css_2f84417a$1);
 
-var css_2f84417a$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL3N0eWxlLnN0eWwiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxXQUFPO0VBQ1AsZ0JBQVk7QUFDZCIsInNvdXJjZXNDb250ZW50IjpbIi5zdHlsdXMge1xuICBjb2xvcjogI2YwMDtcbiAgYmFja2dyb3VuZDogI2YwMDtcbn1cbiJdfQ== */\\";
+var css_2f84417a$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1cyB7XG4gIGNvbG9yOiAjZjAwO1xuICBiYWNrZ3JvdW5kOiAjZjAwO1xufVxuIl19 */\\";
 injector_14187a73(css_2f84417a$2);
 
-var css_2f84417a$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL3N0eWxlLnBjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIucGNzcyB7XG4gIGNvbG9yOiByZWQ7XG59XG4iXX0= */\\";
+var css_2f84417a$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
 injector_14187a73(css_2f84417a$3);
 
-var css_2f84417a$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL3N0eWxlLnNhc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0VBQ1YsVUFBVSxFQUFBIiwic291cmNlc0NvbnRlbnQiOlsiLnNhc3Mge1xuICB3aWR0aDogMzAlO1xuICBjb2xvcjogcmVkOyB9XG4iXX0= */\\";
+var css_2f84417a$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIuc2FzcyB7XG4gIHdpZHRoOiAzMCU7XG4gIGNvbG9yOiByZWQ7IH1cbiJdfQ== */\\";
 injector_14187a73(css_2f84417a$4);
 
-var css_2f84417a$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL3N0eWxlLmxlc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBR0E7RUFDRSxjQUFBO0FBRkYiLCJzb3VyY2VzQ29udGVudCI6WyJAbmljZS1ibHVlOiAjNWI4M2FkO1xuQGxpZ2h0LWJsdWU6IEBuaWNlLWJsdWUgKyAjMTExO1xuXG4ubGVzcyB7XG4gIGNvbG9yOiBAbGlnaHQtYmx1ZTtcbn1cbiJdfQ== */\\";
+var css_2f84417a$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiIsInNvdXJjZXNDb250ZW50IjpbIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */\\";
 injector_14187a73(css_2f84417a$5);
 
 console.log(css_2f84417a, css_2f84417a$1);
@@ -1898,22 +1898,22 @@ var injector_14187a73 = (css, options = {}) => {
   }
 };
 
-var css_2f84417a = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL2Zvby5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIuZm9vIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
+var css_2f84417a = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
 injector_14187a73(css_2f84417a);
 
-var css_2f84417a$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL2Jhci5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIuYmFyIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
+var css_2f84417a$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
 injector_14187a73(css_2f84417a$1);
 
-var css_2f84417a$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL3N0eWxlLnN0eWwiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxXQUFPO0VBQ1AsZ0JBQVk7QUFDZCIsInNvdXJjZXNDb250ZW50IjpbIi5zdHlsdXMge1xuICBjb2xvcjogI2YwMDtcbiAgYmFja2dyb3VuZDogI2YwMDtcbn1cbiJdfQ== */\\";
+var css_2f84417a$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1cyB7XG4gIGNvbG9yOiAjZjAwO1xuICBiYWNrZ3JvdW5kOiAjZjAwO1xufVxuIl19 */\\";
 injector_14187a73(css_2f84417a$2);
 
-var css_2f84417a$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL3N0eWxlLnBjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIucGNzcyB7XG4gIGNvbG9yOiByZWQ7XG59XG4iXX0= */\\";
+var css_2f84417a$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
 injector_14187a73(css_2f84417a$3);
 
-var css_2f84417a$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL3N0eWxlLnNhc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0VBQ1YsVUFBVSxFQUFBIiwic291cmNlc0NvbnRlbnQiOlsiLnNhc3Mge1xuICB3aWR0aDogMzAlO1xuICBjb2xvcjogcmVkOyB9XG4iXX0= */\\";
+var css_2f84417a$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIuc2FzcyB7XG4gIHdpZHRoOiAzMCU7XG4gIGNvbG9yOiByZWQ7IH1cbiJdfQ== */\\";
 injector_14187a73(css_2f84417a$4);
 
-var css_2f84417a$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInRlc3QvZml4dHVyZXMvc2ltcGxlL3N0eWxlLmxlc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBR0E7RUFDRSxjQUFBO0FBRkYiLCJzb3VyY2VzQ29udGVudCI6WyJAbmljZS1ibHVlOiAjNWI4M2FkO1xuQGxpZ2h0LWJsdWU6IEBuaWNlLWJsdWUgKyAjMTExO1xuXG4ubGVzcyB7XG4gIGNvbG9yOiBAbGlnaHQtYmx1ZTtcbn1cbiJdfQ== */\\";
+var css_2f84417a$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiIsInNvdXJjZXNDb250ZW50IjpbIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */\\";
 injector_14187a73(css_2f84417a$5);
 
 console.log(css_2f84417a, css_2f84417a$1);

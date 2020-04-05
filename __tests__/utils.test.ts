@@ -1,5 +1,6 @@
 import path from "path";
 import loadModule from "../src/utils/load-module";
+import { fixture } from "./helpers";
 import { getInlineMap, getExtractedMap, stripMap, MapModifier } from "../src/utils/sourcemap-utils";
 
 describe("load-module", () => {
@@ -9,12 +10,12 @@ describe("load-module", () => {
   });
 
   test("correct cwd path", async () => {
-    const correct = await loadModule("test/fixtures/utils/fixture");
+    const correct = await loadModule(fixture("utils", "fixture"));
     expect(correct).toBe("this is fixture");
   });
 
   test("correct path with custom basepath", async () => {
-    const correct = await loadModule("fixture", path.join(__dirname, "fixtures", "utils"));
+    const correct = await loadModule("fixture", fixture("utils"));
     expect(correct).toBe("this is fixture");
   });
 });
@@ -34,10 +35,7 @@ describe("sourcemap-utils", () => {
     const code = ".foo {color: red;}/*# sourceMappingURL=fixture.css.map */";
     const wrongMap = await getExtractedMap(code, path.resolve("this/is/nonexistant/path.css"));
     expect(wrongMap).toBeUndefined();
-    const correctMap = await getExtractedMap(
-      code,
-      path.resolve("test/fixtures/utils/pointless.css"),
-    );
+    const correctMap = await getExtractedMap(code, path.resolve(fixture("utils", "pointless.css")));
     expect(correctMap).toBe("{THIS:ISASOURCEMAPSIMULATION}");
   });
 
