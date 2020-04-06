@@ -55,10 +55,19 @@ export default (options: Options = {}): Plugin => {
   const extracted = new Map<string, NonNullable<Payload["extracted"]>>();
 
   const plugin: Plugin = {
-    name: "postcss",
+    name: "styles",
 
     async transform(code, id) {
       if (!filter(id) || !loaders.isSupported(id)) return null;
+
+      // Check if file was already processed into JS
+      // by other instance(s) of this or other plugin(s)
+      try {
+        this.parse(code, {});
+        return null; // Was already processed, skipping
+      } catch {
+        // Was not already processed, continuing
+      }
 
       if (typeof options.onImport === "function") options.onImport(code, id);
 

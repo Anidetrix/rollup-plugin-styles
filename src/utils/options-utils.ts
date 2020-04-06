@@ -35,6 +35,9 @@ export function ensurePCSSPlugins(plugins: Options["plugins"]): postcss.Transfor
   if (!Array.isArray(plugins)) return plugins;
   return plugins.filter(bool).map(p => {
     if (!Array.isArray(p)) return ensurePCSSOption(p);
-    return ensurePCSSOption<postcss.PluginInitializer<unknown>>(p[0])(p[1]);
+
+    const [plug, opts] = p;
+    if (!opts) return ensurePCSSOption<postcss.Transformer>(plug);
+    return ensurePCSSOption<postcss.PluginInitializer<unknown>>(plug)(opts);
   });
 }

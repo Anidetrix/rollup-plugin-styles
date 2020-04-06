@@ -56,16 +56,12 @@ function isModuleFile(file: string): boolean {
 const loader: Loader<PostCSSLoaderOptions> = {
   name: "postcss",
   alwaysProcess: true,
-  // `test` option is dynamically set in `Loaders` class
   async process({ code, map, extracted }) {
     const { options } = this;
 
     const config = await loadConfig(this.id, options.config);
 
-    const plugins = [
-      ...((options.postcss && options.postcss.plugins) || []),
-      ...(config.plugins || []),
-    ];
+    const plugins = [...(options.postcss.plugins || []), ...(config.plugins || [])];
 
     const autoModules = options.autoModules && isModuleFile(this.id);
     const supportModules = Boolean(options.modules || autoModules);
@@ -174,7 +170,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
       const defaultExport = supportModules ? JSON.stringify(modulesExports[this.id]) : cssVarName;
       output += `\n${[
         `var ${cssVarName} = ${JSON.stringify(res.css)};`,
-        `export const stylesheet = ${JSON.stringify(res.css)};`,
+        `export const stylesheet = ${cssVarName};`,
         `export default ${defaultExport};`,
       ].join("\n")}`;
     }

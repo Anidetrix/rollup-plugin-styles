@@ -20,6 +20,7 @@ module.exports = {
     "prefer-const": "error",
     "prefer-template": "error",
     "unicorn/prevent-abbreviations": "off",
+    yoda: ["error", "never", { exceptRange: true }],
   },
   settings: { "import/resolver": { node: { extensions: [".js", ".ts"] } } },
 };

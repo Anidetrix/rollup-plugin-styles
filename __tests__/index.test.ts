@@ -1,12 +1,13 @@
+import path from "path";
 import fs from "fs-extra";
 import { rollup } from "rollup";
 
-import postcss from "../src";
+import styles from "../src";
 
 import { fixture, validateMany, write } from "./helpers";
 import { humanlizePath } from "../src/utils/path-utils";
 
-beforeAll(() => fs.remove(fixture("dist")), 30000);
+beforeAll(() => fs.remove(fixture("dist")));
 
 validateMany("basic", [
   {
@@ -113,9 +114,7 @@ validateMany("modules", [
     input: "named-exports/index.js",
     options: {
       modules: true,
-      namedExports: (name): string => {
-        return `${name}hacked`;
-      },
+      namedExports: (name): string => `${name}hacked`,
     },
   },
   {
@@ -273,17 +272,17 @@ test("on-extract-fn", async () => {
   expect(await res.js()).toMatchSnapshot();
   expect(await res.isCss()).toBeFalsy();
   expect(await res.isMap()).toBeFalsy();
-}, 30000);
+});
 
 test("augment-chunk-hash", async () => {
   const outDir = fixture("dist", "augment-chunk-hash");
   const cssFiles = ["simple/foo.css", "simple/foo.css", "simple/bar.css"];
 
   const outputFiles: string[] = [];
-  for (const file of cssFiles) {
+  for await (const file of cssFiles) {
     const bundle = await rollup({
       input: fixture(file),
-      plugins: [postcss({ extract: true, sourceMap: "inline" })],
+      plugins: [styles({ extract: true, sourceMap: "inline" })],
     });
     const entryFileName = file.split(".")[0];
     const { output } = await bundle.write({
@@ -311,4 +310,27 @@ test("augment-chunk-hash", async () => {
   // Verify that foo and bar does not hash to the same
   expect(barHash).not.toEqual(fooOneHash);
   expect(barHash).not.toEqual(fooTwoHash);
-}, 30000);
+});
+
+test("multiple-instances", async () => {
+  const bundle = await rollup({
+    input: fixture("multiple-instances/index.js"),
+    plugins: [
+      styles({ extensions: [".css"], use: [] }),
+      styles({ extensions: [], use: ["less"] }),
+      styles({
+        extensions: [".mcss"],
+        use: [],
+        modules: true,
+        namedExports: name => `${name}alt`,
+      }),
+    ],
+  });
+
+  const outDir = fixture("dist", "multiple-instances");
+  const { output } = await bundle.write({ dir: outDir });
+  const outfile = path.join(outDir, output[0].fileName);
+
+  await expect(fs.pathExists(outfile)).resolves.toBeTruthy();
+  await expect(fs.readFile(outfile, "utf8")).resolves.toMatchSnapshot("js");
+});

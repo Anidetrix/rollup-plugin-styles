@@ -4,7 +4,7 @@ import fs from "fs-extra";
 import { rollup } from "rollup";
 import commonjs from "@rollup/plugin-commonjs";
 
-import postcss from "../../src";
+import styles from "../../src";
 import { Options } from "../../src/types";
 
 export interface WriteData {
@@ -34,7 +34,7 @@ export async function write(data: WriteData): Promise<TestData> {
 
   const bundle = await rollup({
     input: fixture(data.input),
-    plugins: [commonjs(), postcss(data.options)],
+    plugins: [commonjs(), styles(data.options)],
   });
 
   await bundle.write({

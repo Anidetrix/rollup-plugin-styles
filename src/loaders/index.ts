@@ -28,6 +28,7 @@ const workQueue = new PQueue({ concurrency: threadPoolSize - 1 });
 export default class Loaders {
   use: [string, ObjectWithUnknownProps][] = [];
   loaders: Loader[] = [];
+  test: (filepath: string) => boolean;
 
   constructor(options: LoadersOptions) {
     this.use = options.use.map(rule => {
@@ -36,7 +37,7 @@ export default class Loaders {
       throw new TypeError("The rule in `use` option must be string or array!");
     });
 
-    postcssLoader.test = (filepath): boolean =>
+    this.test = (filepath: string): boolean =>
       options.extensions.some(ext => filepath.toLowerCase().endsWith(ext));
 
     this.listLoader(postcssLoader);
@@ -52,8 +53,8 @@ export default class Loaders {
   }
 
   listLoader<T extends ObjectWithUnknownProps>(loader: Loader<T>): void {
-    const existing = this.getLoader(loader.name);
-    if (existing) this.unlistLoader(loader.name);
+    if (!this.use.some(rule => rule[0] === loader.name)) return;
+    if (this.getLoader(loader.name)) this.unlistLoader(loader.name);
     this.loaders.push(loader as Loader);
   }
 
@@ -62,7 +63,7 @@ export default class Loaders {
   }
 
   isSupported(filepath: string): boolean {
-    return this.loaders.some(loader => matchFile(filepath, loader.test));
+    return this.test(filepath) || this.loaders.some(loader => matchFile(filepath, loader.test));
   }
 
   process(payload: Payload, context: LoaderContext): Promise<Payload> {
