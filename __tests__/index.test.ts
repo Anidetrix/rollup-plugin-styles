@@ -1,13 +1,9 @@
-import path from "path";
-import fs from "fs-extra";
 import { rollup } from "rollup";
 
 import styles from "../src";
 
 import { fixture, validateMany, write } from "./helpers";
 import { humanlizePath } from "../src/utils/path-utils";
-
-beforeAll(() => fs.remove(fixture("dist")));
 
 validateMany("basic", [
   {
@@ -258,6 +254,23 @@ validateMany("less", [
   },
 ]);
 
+validateMany("multiple-instances", [
+  {
+    title: "default",
+    input: "multiple-instances/index.js",
+    plugins: [
+      styles({ extensions: [".css"], use: [] }),
+      styles({ extensions: [], use: ["less"] }),
+      styles({ extensions: [".mcss"], use: [], modules: true, namedExports: true }),
+    ],
+  },
+  {
+    title: "already-processed",
+    input: "multiple-instances/bar.less",
+    plugins: [styles(), styles()],
+  },
+]);
+
 test("on-extract-fn", async () => {
   const res = await write({
     input: "simple/index.js",
@@ -310,41 +323,4 @@ test("augment-chunk-hash", async () => {
   // Verify that foo and bar does not hash to the same
   expect(barHash).not.toEqual(fooOneHash);
   expect(barHash).not.toEqual(fooTwoHash);
-});
-
-test("already-processed", async () => {
-  const bundle = await rollup({
-    input: fixture("simple/foo.css"),
-    plugins: [styles(), styles()],
-  });
-
-  const outDir = fixture("dist", "already-processed");
-  const { output } = await bundle.write({ dir: outDir });
-  const outfile = path.join(outDir, output[0].fileName);
-
-  await expect(fs.pathExists(outfile)).resolves.toBeTruthy();
-  await expect(fs.readFile(outfile, "utf8")).resolves.toMatchSnapshot("js");
-});
-
-test("multiple-instances", async () => {
-  const bundle = await rollup({
-    input: fixture("multiple-instances/index.js"),
-    plugins: [
-      styles({ extensions: [".css"], use: [] }),
-      styles({ extensions: [], use: ["less"] }),
-      styles({
-        extensions: [".mcss"],
-        use: [],
-        modules: true,
-        namedExports: name => `${name}alt`,
-      }),
-    ],
-  });
-
-  const outDir = fixture("dist", "multiple-instances");
-  const { output } = await bundle.write({ dir: outDir });
-  const outfile = path.join(outDir, output[0].fileName);
-
-  await expect(fs.pathExists(outfile)).resolves.toBeTruthy();
-  await expect(fs.readFile(outfile, "utf8")).resolves.toMatchSnapshot("js");
 });

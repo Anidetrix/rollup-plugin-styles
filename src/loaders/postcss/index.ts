@@ -142,7 +142,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
         .relative()
         .toCommentData();
 
-    let output = "";
+    let output = "\n";
     if (options.namedExports) {
       const json = modulesExports[this.id];
 
@@ -158,21 +158,21 @@ const loader: Loader<PostCSSLoaderOptions> = {
 
         if (!json[newName]) json[newName] = json[name];
 
-        output += `\nexport const ${newName} = ${JSON.stringify(json[name])};`;
+        output += `export const ${newName} = ${JSON.stringify(json[name])};\n`;
       }
     }
 
     const cssVarName = safeId("css");
     if (options.extract) {
-      output += `\nexport default ${JSON.stringify(modulesExports[this.id])};`;
+      output += `export default ${JSON.stringify(modulesExports[this.id])};\n`;
       extracted = { id: this.id, code: res.css, map };
     } else {
       const defaultExport = supportModules ? JSON.stringify(modulesExports[this.id]) : cssVarName;
-      output += `\n${[
+      output += `${[
         `var ${cssVarName} = ${JSON.stringify(res.css)};`,
         `export const stylesheet = ${cssVarName};`,
         `export default ${defaultExport};`,
-      ].join("\n")}`;
+      ].join("\n")}\n`;
     }
 
     if (!options.extract && options.inject) {
@@ -190,10 +190,10 @@ const loader: Loader<PostCSSLoaderOptions> = {
         );
         const injectorData =
           typeof options.inject === "object" ? `,${JSON.stringify(options.inject)}` : "";
-        output += `\n${[
+        output += `${[
           `import ${injectorName} from '${injectorPath}';`,
           `${injectorName}(${cssVarName}${injectorData});`,
-        ].join("\n")}`;
+        ].join("\n")}\n`;
       }
     }
 

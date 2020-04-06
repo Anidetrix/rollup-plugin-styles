@@ -1,8 +1,7 @@
 /* eslint-disable jest/no-export */
 import path from "path";
 import fs from "fs-extra";
-import { rollup } from "rollup";
-import commonjs from "@rollup/plugin-commonjs";
+import { rollup, Plugin } from "rollup";
 
 import styles from "../../src";
 import { Options } from "../../src/types";
@@ -11,13 +10,10 @@ export interface WriteData {
   input: string;
   outDir?: string;
   options?: Options;
+  plugins?: Plugin[];
 }
 
-export interface Test extends WriteData {
-  title: string;
-}
-
-export interface TestData {
+export interface WriteResult {
   js: () => Promise<string>;
   css: () => Promise<string>;
   map: () => Promise<string>;
@@ -29,18 +25,8 @@ export interface TestData {
 export const fixture = (...args: string[]): string =>
   path.normalize(path.join(__dirname, "..", "fixtures", ...args));
 
-export async function write(data: WriteData): Promise<TestData> {
+export async function write(data: WriteData): Promise<WriteResult> {
   const outDir = fixture("dist", data.outDir || "");
-
-  const bundle = await rollup({
-    input: fixture(data.input),
-    plugins: [commonjs(), styles(data.options)],
-  });
-
-  await bundle.write({
-    format: "cjs",
-    file: path.join(outDir, "bundle.js"),
-  });
 
   const js = path.join(outDir, "bundle.js");
   const css =
@@ -49,57 +35,62 @@ export async function write(data: WriteData): Promise<TestData> {
       : path.join(outDir, "bundle.css");
   const map = `${css}.map`;
 
-  const resData: TestData = {
+  const bundle = await rollup({
+    input: fixture(data.input),
+    plugins: data.plugins || [styles(data.options)],
+  });
+
+  await bundle.write({ format: "cjs", file: js });
+
+  const res: WriteResult = {
     js: () => fs.readFile(js, "utf8"),
     css: () => fs.readFile(css, "utf8"),
     map: () => fs.readFile(map, "utf8"),
     isCss: () => fs.pathExists(css),
     isMap: () => fs.pathExists(map),
-    isFile: (file: string) => fs.pathExists(path.join(outDir, file)),
+    isFile: file => fs.pathExists(path.join(outDir, file)),
   };
 
-  return resData;
+  return res;
 }
 
-export function validate({ title, input, outDir, options = {} }: Test): void {
-  test(
-    title,
-    async () => {
-      let res;
-      try {
-        res = await write({ input, outDir, options });
-      } catch (error) {
-        const frame = error.codeFrame || error.snippet;
-        if (frame) throw new Error(`${frame} ${error.message}`);
-        throw error;
-      }
-
-      await expect(res.js()).resolves.toMatchSnapshot("js");
-
-      if (options.extract) {
-        await expect(res.isCss()).resolves.toBeTruthy();
-        await expect(res.css()).resolves.toMatchSnapshot("css");
-      }
-
-      const sourceMap = options && options.sourceMap;
-      if (sourceMap === "inline") {
-        await expect(res.isMap()).resolves.toBeFalsy();
-      } else if (sourceMap === true) {
-        await expect(res.isMap()).resolves.toBe(Boolean(options.extract));
-        if (options.extract) await expect(res.map()).resolves.toMatchSnapshot("map");
-      }
-    },
-    30000,
-  );
+export interface TestData extends WriteData {
+  title: string;
 }
 
-export function validateMany(groupName: string, tests: Test[]): void {
+export function validate(data: TestData): void {
+  const options = data.options || {};
+  test(data.title, async () => {
+    let res;
+    try {
+      res = await write(data);
+    } catch (error) {
+      const frame = error.codeFrame || error.snippet;
+      if (frame) throw new Error(`${frame} ${error.message}`);
+      throw error;
+    }
+
+    await expect(res.js()).resolves.toMatchSnapshot("js");
+
+    if (options.extract) {
+      await expect(res.isCss()).resolves.toBeTruthy();
+      await expect(res.css()).resolves.toMatchSnapshot("css");
+    }
+
+    const sourceMap = options && options.sourceMap;
+    if (sourceMap === "inline") {
+      await expect(res.isMap()).resolves.toBeFalsy();
+    } else if (sourceMap === true) {
+      await expect(res.isMap()).resolves.toBe(Boolean(options.extract));
+      if (options.extract) await expect(res.map()).resolves.toMatchSnapshot("map");
+    }
+  });
+}
+
+export function validateMany(groupName: string, testDatas: TestData[]): void {
   describe(groupName, () => {
-    for (const test of tests) {
-      validate({
-        ...test,
-        outDir: path.join(groupName, test.title),
-      });
+    for (const testData of testDatas) {
+      validate({ ...testData, outDir: path.join(groupName, testData.title) });
     }
   });
 }
