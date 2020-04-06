@@ -37,7 +37,7 @@ export default class Loaders {
       throw new TypeError("The rule in `use` option must be string or array!");
     });
 
-    this.test = (filepath: string): boolean =>
+    this.test = (filepath): boolean =>
       options.extensions.some(ext => filepath.toLowerCase().endsWith(ext));
 
     this.listLoader(postcssLoader);

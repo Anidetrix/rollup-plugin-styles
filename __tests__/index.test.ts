@@ -269,9 +269,9 @@ test("on-extract-fn", async () => {
       },
     },
   });
-  expect(await res.js()).toMatchSnapshot();
-  expect(await res.isCss()).toBeFalsy();
-  expect(await res.isMap()).toBeFalsy();
+  await expect(res.js()).resolves.toMatchSnapshot();
+  await expect(res.isCss()).resolves.toBeFalsy();
+  await expect(res.isMap()).resolves.toBeFalsy();
 });
 
 test("augment-chunk-hash", async () => {
@@ -310,6 +310,20 @@ test("augment-chunk-hash", async () => {
   // Verify that foo and bar does not hash to the same
   expect(barHash).not.toEqual(fooOneHash);
   expect(barHash).not.toEqual(fooTwoHash);
+});
+
+test("already-processed", async () => {
+  const bundle = await rollup({
+    input: fixture("simple/foo.css"),
+    plugins: [styles(), styles()],
+  });
+
+  const outDir = fixture("dist", "already-processed");
+  const { output } = await bundle.write({ dir: outDir });
+  const outfile = path.join(outDir, output[0].fileName);
+
+  await expect(fs.pathExists(outfile)).resolves.toBeTruthy();
+  await expect(fs.readFile(outfile, "utf8")).resolves.toMatchSnapshot("js");
 });
 
 test("multiple-instances", async () => {

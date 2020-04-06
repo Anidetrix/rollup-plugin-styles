@@ -14,7 +14,7 @@ import cssnano from "cssnano";
 
 import { Options, PostCSSLoaderOptions, LoaderContext, Payload, ExtractedData } from "./types";
 import Loaders from "./loaders";
-import { relativePath } from "./utils/path-utils";
+import { relativePath, humanlizePath } from "./utils/path-utils";
 import { MapModifier } from "./utils/sourcemap-utils";
 import {
   inferOption,
@@ -63,8 +63,9 @@ export default (options: Options = {}): Plugin => {
       // Check if file was already processed into JS
       // by other instance(s) of this or other plugin(s)
       try {
-        this.parse(code, {});
-        return null; // Was already processed, skipping
+        this.parse(code, undefined); // If it doesn't throw...
+        this.warn(`Skipping processed file ${humanlizePath(id)}`);
+        return null;
       } catch {
         // Was not already processed, continuing
       }

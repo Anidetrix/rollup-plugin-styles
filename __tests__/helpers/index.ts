@@ -74,19 +74,19 @@ export function validate({ title, input, outDir, options = {} }: Test): void {
         throw error;
       }
 
-      expect(await res.js()).toMatchSnapshot("js");
+      await expect(res.js()).resolves.toMatchSnapshot("js");
 
       if (options.extract) {
-        expect(await res.isCss()).toBeTruthy();
-        expect(await res.css()).toMatchSnapshot("css");
+        await expect(res.isCss()).resolves.toBeTruthy();
+        await expect(res.css()).resolves.toMatchSnapshot("css");
       }
 
       const sourceMap = options && options.sourceMap;
       if (sourceMap === "inline") {
-        expect(await res.isMap()).toBeFalsy();
+        await expect(res.isMap()).resolves.toBeFalsy();
       } else if (sourceMap === true) {
-        expect(await res.isMap()).toBe(Boolean(options.extract));
-        if (options.extract) expect(await res.map()).toMatchSnapshot("map");
+        await expect(res.isMap()).resolves.toBe(Boolean(options.extract));
+        if (options.extract) await expect(res.map()).resolves.toMatchSnapshot("map");
       }
     },
     30000,
