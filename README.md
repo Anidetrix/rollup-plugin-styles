@@ -13,7 +13,9 @@
 
 ```bash
 npm install -D rollup-plugin-styles # npm
+
 yarn add rollup-plugin-styles --dev # yarn
+
 pnpm add -D rollup-plugin-styles # pnpm
 ```
 
@@ -74,13 +76,17 @@ Install corresponding dependency:
 
   ```bash
   npm install -D node-sass # npm
+
   yarn add node-sass --dev # yarn
+
   pnpm add -D node-sass # pnpm
   ```
 
   ```bash
   npm install -D sass # npm
+
   yarn add sass --dev # yarn
+
   pnpm add -D sass # pnpm
   ```
 
@@ -88,7 +94,9 @@ Install corresponding dependency:
 
   ```bash
   npm install -D stylus # npm
+
   yarn add stylus --dev # yarn
+
   pnpm add -D stylus # pnpm
   ```
 
@@ -96,7 +104,9 @@ Install corresponding dependency:
 
   ```bash
   npm install -D less # npm
+
   yarn add less --dev # yarn
+
   pnpm add -D less # pnpm
   ```
 
@@ -124,7 +134,9 @@ To install `fibers`:
 
 ```bash
 npm install -D fibers # npm
+
 yarn add fibers --dev # yarn
+
 pnpm add -D fibers # pnpm
 ```
 
