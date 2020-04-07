@@ -12,7 +12,9 @@
 ## Install
 
 ```bash
-yarn add rollup-plugin-styles --dev
+npm install -D rollup-plugin-styles # npm
+yarn add rollup-plugin-styles --dev # yarn
+pnpm add -D rollup-plugin-styles # pnpm
 ```
 
 ## Usage
@@ -71,23 +73,31 @@ Install corresponding dependency:
 - For `Sass` support install `node-sass` or `sass`:
 
   ```bash
-  yarn add node-sass --dev
+  npm install -D node-sass # npm
+  yarn add node-sass --dev # yarn
+  pnpm add -D node-sass # pnpm
   ```
 
   ```bash
-  yarn add sass --dev
+  npm install -D sass # npm
+  yarn add sass --dev # yarn
+  pnpm add -D sass # pnpm
   ```
 
 - For `Stylus` support install `stylus`:
 
   ```bash
-  yarn add stylus --dev
+  npm install -D stylus # npm
+  yarn add stylus --dev # yarn
+  pnpm add -D stylus # pnpm
   ```
 
 - For `Less` support install `less`:
 
   ```bash
-  yarn add less --dev
+  npm install -D less # npm
+  yarn add less --dev # yarn
+  pnpm add -D less # pnpm
   ```
 
 That's it, now you can import `.scss` `.sass` `.styl` `.stylus` `.less` files in your code.
@@ -113,7 +123,9 @@ This plugin will auto detect `fibers` package when using `sass` implementation
 To install `fibers`:
 
 ```bash
-yarn add fibers --dev
+npm install -D fibers # npm
+yarn add fibers --dev # yarn
+pnpm add -D fibers # pnpm
 ```
 
 ## Configuration
