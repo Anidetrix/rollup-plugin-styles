@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.0.1...v2.0.2) (2020-05-01)
+
+
+### Bug Fixes
+
+* avoid postcss warning about no plugins ([dbd72b7](https://github.com/Anidetrix/rollup-plugin-styles/commit/dbd72b7792ec109c1efbf052af88149e45fda204))
+
 ## [2.0.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.0.0...v2.0.1) (2020-05-01)
 
 
