@@ -1,4 +1,4 @@
-const path = require("path");
+const { join } = require("path");
 module.exports = {
   root: true,
   extends: [
@@ -19,19 +19,35 @@ module.exports = {
   parser: "@typescript-eslint/parser",
   parserOptions: {
     sourceType: "module",
-    project: path.resolve(__dirname, "..", "tsconfig.json"),
-    tsconfigRootDir: path.resolve(__dirname, ".."),
+    project: join(__dirname, "..", "tsconfig.json"),
+    tsconfigRootDir: join(__dirname, ".."),
   },
   plugins: ["unicorn", "@typescript-eslint", "node"],
   rules: {
+    "@typescript-eslint/default-param-last": "error",
+    "@typescript-eslint/generic-type-naming": "error",
     "@typescript-eslint/no-floating-promises": "error",
+    "@typescript-eslint/no-unsafe-assignment": "error",
+    "@typescript-eslint/prefer-as-const": "error",
+    "@typescript-eslint/prefer-for-of": "error",
+    "@typescript-eslint/prefer-nullish-coalescing": "error",
+    "@typescript-eslint/prefer-optional-chain": "error",
+    "@typescript-eslint/prefer-readonly": "error",
+    "@typescript-eslint/prefer-reduce-type-parameter": "error",
+    "@typescript-eslint/prefer-ts-expect-error": "error",
+    "@typescript-eslint/promise-function-async": "error",
     "@typescript-eslint/return-await": "error",
+    "@typescript-eslint/unbound-method": "error",
+    "@typescript-eslint/unified-signatures": "error",
+    "no-await-in-loop": "error",
     "no-var": "error",
     "node/file-extension-in-import": "off",
     "node/no-missing-import": "off",
     "node/no-unsupported-features/es-syntax": "off",
     "prefer-const": "error",
     "prefer-template": "error",
+    "sort-vars": "error",
+    "unicorn/no-fn-reference-in-iterator": "off",
     "unicorn/prevent-abbreviations": "off",
     yoda: ["error", "never", { exceptRange: true }],
   },

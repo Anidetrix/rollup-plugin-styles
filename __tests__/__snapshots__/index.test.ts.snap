@@ -1,9 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`basic postcss-config: js 1`] = `
-"'use strict';
-
-/* eslint-env browser */
+"/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];
@@ -18,7 +16,7 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_14187a73 = (css, options = {}) => {
+var injector_7aa87f99 = (css, options = {}) => {
   if (!css || typeof document === \\"undefined\\") return;
   const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
   const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
@@ -65,15 +63,13 @@ var injector_14187a73 = (css, options = {}) => {
   }
 };
 
-var css_2f84417a = \\"a {\\\\n  width: 30%;\\\\n  color: red\\\\n}\\\\n\\\\n.multiline,\\\\n.selector {\\\\n  box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000\\\\n}\\\\n\\";
-injector_14187a73(css_2f84417a);
+const css_075560ec = \\"a {\\\\n  width: 30%;\\\\n  color: red\\\\n}\\\\n\\\\n.multiline,\\\\n.selector {\\\\n  box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000\\\\n}\\\\n\\";
+injector_7aa87f99(css_075560ec);
 "
 `;
 
 exports[`basic postcss-options: js 1`] = `
-"'use strict';
-
-/* eslint-env browser */
+"/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];
@@ -88,7 +84,7 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_14187a73 = (css, options = {}) => {
+var injector_5856ff83 = (css, options = {}) => {
   if (!css || typeof document === \\"undefined\\") return;
   const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
   const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
@@ -135,36 +131,75 @@ var injector_14187a73 = (css, options = {}) => {
   }
 };
 
-var css_2f84417a = \\".partial {\\\\n  color: red\\\\n}\\\\n\\\\n.prefixed {\\\\n  display: -webkit-box;\\\\n  display: -webkit-flex;\\\\n  display: -moz-box;\\\\n  display: -ms-flexbox;\\\\n  display: flex\\\\n}\\\\n\\";
-injector_14187a73(css_2f84417a);
+const css_71701082 = \\".subpartial {\\\\n  -webkit-box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000;\\\\n     -moz-box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000;\\\\n          box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000\\\\n}\\\\n\\\\n.partial {\\\\n    color: red\\\\n}\\\\n\\\\n.prefixed {\\\\n  display: -webkit-box;\\\\n  display: -webkit-flex;\\\\n  display: -moz-box;\\\\n  display: -ms-flexbox;\\\\n  display: flex\\\\n}\\\\n\\";
+injector_5856ff83(css_71701082);
 "
 `;
 
-exports[`basic postcss-resolvers: css 1`] = `
-".style_partial {
-  color: red;
-  background-image: url(\\"images/placeholder.png\\");
+exports[`basic resolvers: css 1`] = `
+".subfoo {
+  background-image: url(\\"/pubpath/assets/bg.png\\");
+  background-image: url(\\"/pubpath/assets/bg.testing.regex.png\\");
 }
 
-.style_style {
-  color: red;
+.foo {
+  background-image: url(\\"/pubpath/assets/bg.png\\"), url(\\"/pubpath/assets/bg1.testing.regex.png\\"), url(\\"/pubpath/assets/bg2.testing.regex.png\\");
 }
 
-/*# sourceMappingURL=bundle.css.map */"
-`;
+.foo2 {
+  background-image: image-set(\\"/pubpath/assets/cat.png\\" 1x, \\"/pubpath/assets/cat-2x.png\\" 2x, \\"/pubpath/assets/cat-print.png\\" 600dpi);
+}
+.bar {
+  background-image: url(\\"/pubpath/assets/bg1.png\\");
+  background-image: url(\\"/pubpath/assets/bg2.testing.regex.png\\"); }
 
-exports[`basic postcss-resolvers: js 1`] = `
-"'use strict';
+.bar2 {
+  color: magenta;
+  background-image: url(\\"https://via.placeholder.com/1920x1080\\"); }
 
+.ignore-data-uri {
+  background-image: url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkBAMAAACCzIhnAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiklEQVRYhe3QMQ6EIBAF0C+GSInF9mYTs+1ewRsQbmBlayysKefYO2asXbbYxvxHQj6ECQMAEREREf2NQ/fCtp5Zky6vtRMkSJEzhyISynWJnzH6Z8oQlzS7lEc/fLmmQUSvc16OrCPqRl1JePxQYo1ZSWVj9nxrrOb5esw+eXdvzTWfTERERHRXH4tWFZGswQ2yAAAAAElFTkSuQmCC\\"); }
 "
 `;
 
-exports[`basic postcss-resolvers: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../postcss-resolvers/partial.css\\",\\"../../../postcss-resolvers/style.css\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;EACV,+CAA0C;AAC5C;;ACDA;EACE,UAAU;AACZ\\",\\"file\\":\\"bundle.css\\",\\"sourcesContent\\":[\\".partial {\\\\n  color: red;\\\\n  background-image: url(\\\\\\"./placeholder.png\\\\\\");\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.style {\\\\n  color: red;\\\\n}\\\\n\\"]}"`;
+exports[`basic resolvers: js 1`] = `
+"
+"
+`;
+
+exports[`basic resolvers-url-inline: css 1`] = `
+".subfoo {
+  background-image: url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAABmBAMAAADL8flRAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAArUlEQVRYhe3QIQ+CUBTF8cPTB8RHsKMTqQQ/gMqmVRkj4+ZmZQRnNBD42F7Afp3N7fxIN/zH2wGIiIiI6J8ZBKk95NMRo23KdaYksz36oKtv47F14et59HdKY69I7AoX9PMMlTPnIrZOe5sHJ18Hc5fDeXKH2n+mpmzgLz6NPWmJNIlNNkA4NvK2ov6ikQ1kqWKYYdggVxNpgtREER6ygTyzbZaRugERERER/eYNUMwTiwsgIHkAAAAASUVORK5CYII=\\");
+  background-image: url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAABoBAMAAADvMqiSAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAn0lEQVRYhe3QoQ7CMBSF4XNHSidvBcEOkg2L4AFG9gKDEDQz6AIGORSvTbs9QCsR51PX/GlzACIiIiKilApPj9N8F7A7GE02By39G4/pXhzxtaNNR1ct+vNyQDl2MANqU93TEVQgFwEaDwgUqzYzeoVo6Odovc+Jwvc2TvGZotpsncuI4hAC07QxCkMg56U4ucDeuhiFyXMiIiIiIvpXP7QVEbg2Dt6kAAAAAElFTkSuQmCC\\");
+}
+
+.foo {
+  background-image: url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAABmBAMAAADL8flRAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAArUlEQVRYhe3QIQ+CUBTF8cPTB8RHsKMTqQQ/gMqmVRkj4+ZmZQRnNBD42F7Afp3N7fxIN/zH2wGIiIiI6J8ZBKk95NMRo23KdaYksz36oKtv47F14et59HdKY69I7AoX9PMMlTPnIrZOe5sHJ18Hc5fDeXKH2n+mpmzgLz6NPWmJNIlNNkA4NvK2ov6ikQ1kqWKYYdggVxNpgtREER6ygTyzbZaRugERERER/eYNUMwTiwsgIHkAAAAASUVORK5CYII=\\"), url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGcAAABnBAMAAADvb0HKAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAArElEQVRYhe3QsQrCMBSF4dvWNBkDvkBoSV2LFOcUwTmKOrfiA5ROjrUi9LFNxD2ZnM43neWHyyUCAAAAAAhRNA6i6L47Jb6huQo2jRTT45wpv7OWFv4222B0lak9XXIlpj2xnjTT9hY+TyaUUFtTNZAbkuRqHRkJRb39RTRHRO68HZP0rH2kWdkdIyL3iCY3rDQ+WvjL3CMi93JeWN4dfORePupwBAAAAAB/8AHBTxW2Bfq/hQAAAABJRU5ErkJggg==\\"), url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAABlBAMAAACmUjD8AAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAi0lEQVRYhe3QoQ7CMBRG4b/bGipr8DMNFsEL7A2WifkpLEGgl2D62NwRmG2RJOcT7a04SXMlAAAA/LNGh5Mdn1n3m/pS0g7K4Tl857DmSyw1flHyaZFyN9rcjNNcbOQUFZ00XbfZvd+1TTj+0iTf7439rarJYd3/ZjuoamzX1jy683bZrssNAAAApBeYlQ7gQL3QgQAAAABJRU5ErkJggg==\\");
+}
+
+.foo2 {
+  background-image: image-set(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGkAAABpBAMAAADLrBAJAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAnElEQVRYhe3PsQrCMBSF4VMlXscUBVdFa1dxcqxKnSs4dLTgA+QRIijtYytEoVvuKHK+7R8ONwGIiIiIiH7DAJIjnfUiSV1sNNyjFe/6IfFTpkFmMg+M/THEvFa8MIHFZFECaxfCbqeVbvV8AE31We3qQrF6Pwpn4L75hrGKVSudv8EsixC+G2luSW4OJeR6CoHLKv4vIiIiIvoXL2T2FCChkjByAAAAAElFTkSuQmCC\\" 1x, \\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGoAAABqBAMAAACmD9mkAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAApElEQVRYhe3QMQvCMBQE4JeQpBkDKjg6KDh26A8oivuziDg6FFxDB+mooOjPNthAx2QUvG87yMHlEQEAAAAA/IgFdb5Y8hio2yVLlbO+v1g/BuNfydbRSW62xPRW5RBUqdMLnSCxnjLJNgZ5Ty/8PpyfajKzGMTzkdEKo1bakZ3EIHmf0QoH6E1NTRVDcWszWuHYh3D5qzoPQW8y/gUAAAAAf+0DO24Zj6Rrj5AAAAAASUVORK5CYII=\\" 2x, \\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGsAAABrBAMAAACCkWE/AAAAG1BMVEXMzMyWlpacnJy+vr6jo6O3t7eqqqqxsbHFxcVN2lQOAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAkElEQVRYhe3QvQrCMBiF4bf/jgkujr0GqXoLjh3EOQpFRzfXkCvXQIpujbPnGQLvcOAjICIiIiLyb3qu7mLNJ1prl1eD6dyNyn0F++XZzpQ+0Hqe9ZiCe8aRpqDgAOVpjuqROztCs5mj9jmz912rHrp1CkLGivgLjYOwTcE5axb/fIQpPjGYcmYiIiIiIj94Ac0gFNmWs7ZeAAAAAElFTkSuQmCC\\" 600dpi);
+}
+.bar {
+  background-image: url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkBAMAAACCzIhnAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiklEQVRYhe3QMQ6EIBAF0C+GSInF9mYTs+1ewRsQbmBlayysKefYO2asXbbYxvxHQj6ECQMAEREREf2NQ/fCtp5Zky6vtRMkSJEzhyISynWJnzH6Z8oQlzS7lEc/fLmmQUSvc16OrCPqRl1JePxQYo1ZSWVj9nxrrOb5esw+eXdvzTWfTERERHRXH4tWFZGswQ2yAAAAAElFTkSuQmCC\\");
+  background-image: url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAABlBAMAAACmUjD8AAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAi0lEQVRYhe3QoQ7CMBRG4b/bGipr8DMNFsEL7A2WifkpLEGgl2D62NwRmG2RJOcT7a04SXMlAAAA/LNGh5Mdn1n3m/pS0g7K4Tl857DmSyw1flHyaZFyN9rcjNNcbOQUFZ00XbfZvd+1TTj+0iTf7439rarJYd3/ZjuoamzX1jy683bZrssNAAAApBeYlQ7gQL3QgQAAAABJRU5ErkJggg==\\"); }
+
+.bar2 {
+  color: magenta;
+  background-image: url(\\"https://via.placeholder.com/1920x1080\\"); }
+
+.ignore-data-uri {
+  background-image: url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkBAMAAACCzIhnAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiklEQVRYhe3QMQ6EIBAF0C+GSInF9mYTs+1ewRsQbmBlayysKefYO2asXbbYxvxHQj6ECQMAEREREf2NQ/fCtp5Zky6vtRMkSJEzhyISynWJnzH6Z8oQlzS7lEc/fLmmQUSvc16OrCPqRl1JePxQYo1ZSWVj9nxrrOb5esw+eXdvzTWfTERERHRXH4tWFZGswQ2yAAAAAElFTkSuQmCC\\"); }
+"
+`;
+
+exports[`basic resolvers-url-inline: js 1`] = `
+"
+"
+`;
 
 exports[`basic simple: js 1`] = `
-"'use strict';
-
-/* eslint-env browser */
+"/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];
@@ -179,7 +214,7 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_14187a73 = (css, options = {}) => {
+var injector_9d0ece4d = (css, options = {}) => {
   if (!css || typeof document === \\"undefined\\") return;
   const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
   const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
@@ -226,32 +261,30 @@ var injector_14187a73 = (css, options = {}) => {
   }
 };
 
-var css_2f84417a = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_14187a73(css_2f84417a);
+const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_9d0ece4d(css_4fc87a7b);
 
-var css_2f84417a$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_14187a73(css_2f84417a$1);
+const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_9d0ece4d(css_8b7409a7);
 
-var css_2f84417a$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
-injector_14187a73(css_2f84417a$2);
+const css_9724c78b = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
+injector_9d0ece4d(css_9724c78b);
 
-var css_2f84417a$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_14187a73(css_2f84417a$3);
+const css_c0bf9526 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_9d0ece4d(css_c0bf9526);
 
-var css_2f84417a$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
-injector_14187a73(css_2f84417a$4);
+const css_2aa6e98a = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
+injector_9d0ece4d(css_2aa6e98a);
 
-var css_2f84417a$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
-injector_14187a73(css_2f84417a$5);
+const css_9a558625 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
+injector_9d0ece4d(css_9a558625);
 
-console.log(css_2f84417a, css_2f84417a$1);
+console.log(css_4fc87a7b, css_8b7409a7);
 "
 `;
 
 exports[`basic skip-loader: js 1`] = `
-"'use strict';
-
-/* eslint-env browser */
+"/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];
@@ -266,7 +299,7 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_14187a73 = (css, options = {}) => {
+var injector_b33bb41a = (css, options = {}) => {
   if (!css || typeof document === \\"undefined\\") return;
   const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
   const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
@@ -313,10 +346,210 @@ var injector_14187a73 = (css, options = {}) => {
   }
 };
 
-var css_2f84417a = \\".style {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_14187a73(css_2f84417a);
+const css_8712fdeb = \\".style {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_b33bb41a(css_8712fdeb);
 "
 `;
+
+exports[`code-splitting single: css 1`] = `
+".third_third {
+  color: maroon; }
+
+.fourth_fourth {
+  color: magenta; }
+
+.first_partial {
+  color: rosybrown;
+}
+.first_first {
+  color: red; }
+
+.second_second {
+  color: royalblue; }
+
+.otherScript_otherScript {
+  color: wheat; }
+
+.nestedScript_nestedScript {
+  color: rebeccapurple; }
+
+.nondynamic_nondynamic {
+  color: deepskyblue; }
+
+.nondynamic2_nondynamic2 {
+  color: deeppink; }
+
+/*# sourceMappingURL=extracted.css.map */"
+`;
+
+exports[`code-splitting single: js 1`] = `
+"const css_8fb221f0 = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+const modules_051b4c3f = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
+const css = css_8fb221f0;
+
+export default modules_051b4c3f;
+export { css };
+"
+`;
+
+exports[`code-splitting single: js 2`] = `
+"const modules_963121b4 = {\\"fourth\\":\\"fourth_fourth\\"};
+
+(async () => {
+  const first = await import('./first.362849fe.js');
+  const second = await import('./second.94a7efef.js');
+  const otherScript = await import('./other-script.2bf5eba9.js');
+  console.log(first, second, otherScript);
+})();
+
+console.log(modules_963121b4);
+"
+`;
+
+exports[`code-splitting single: js 3`] = `
+"const modules_79e4a77e = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+
+console.log(modules_79e4a77e);
+"
+`;
+
+exports[`code-splitting single: js 4`] = `
+"console.log(\\"noncss\\");
+"
+`;
+
+exports[`code-splitting single: js 5`] = `
+"(async () => {
+  await import('./noncss.ff82f22e.js');
+  const nestedScript = await import('./nested-script.46723574.js');
+  console.log(nestedScript);
+})();
+"
+`;
+
+exports[`code-splitting single: js 6`] = `
+"const css_a1bc2d4c = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+const modules_169ad3fe = {\\"second\\":\\"second_second\\"};
+const css = css_a1bc2d4c;
+
+export default modules_169ad3fe;
+export { css };
+"
+`;
+
+exports[`code-splitting single: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../code-splitting/third.scss\\",\\"../../../code-splitting/fourth.scss\\",\\"../../../code-splitting/partial.css\\",\\"../../../code-splitting/first.scss\\",\\"../../../code-splitting/second.scss\\",\\"../../../code-splitting/other-script.scss\\",\\"../../../code-splitting/nested-script.scss\\",\\"../../../code-splitting/nondynamic.scss\\",\\"../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA;;ACDhB;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA;;ACHZ;EACE,gBAAgB,EAAA;;ACDlB;EACE,YAAY,EAAA;;ACDd;EACE,oBAAoB,EAAA;;ACDtB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"extracted.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\",\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\",\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\",\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+
+exports[`code-splitting true: css 1`] = `
+".first_partial {
+  color: rosybrown;
+}
+.first_first {
+  color: red; }
+
+/*# sourceMappingURL=first.d1cc633f.css.map */"
+`;
+
+exports[`code-splitting true: css 2`] = `
+".third_third {
+  color: maroon; }
+
+.fourth_fourth {
+  color: magenta; }
+
+/*# sourceMappingURL=index.fae1b360.css.map */"
+`;
+
+exports[`code-splitting true: css 3`] = `
+".nestedScript_nestedScript {
+  color: rebeccapurple; }
+
+.nondynamic_nondynamic {
+  color: deepskyblue; }
+
+.nondynamic2_nondynamic2 {
+  color: deeppink; }
+
+/*# sourceMappingURL=nested-script.24698cc5.css.map */"
+`;
+
+exports[`code-splitting true: css 4`] = `
+".otherScript_otherScript {
+  color: wheat; }
+
+/*# sourceMappingURL=other-script.7d98b97f.css.map */"
+`;
+
+exports[`code-splitting true: css 5`] = `
+".second_second {
+  color: royalblue; }
+
+/*# sourceMappingURL=second.dd9ddbb2.css.map */"
+`;
+
+exports[`code-splitting true: js 1`] = `
+"const css_8fb221f0 = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+const modules_051b4c3f = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
+const css = css_8fb221f0;
+
+export default modules_051b4c3f;
+export { css };
+"
+`;
+
+exports[`code-splitting true: js 2`] = `
+"const modules_963121b4 = {\\"fourth\\":\\"fourth_fourth\\"};
+
+(async () => {
+  const first = await import('./first.d1cc633f.js');
+  const second = await import('./second.dd9ddbb2.js');
+  const otherScript = await import('./other-script.7d98b97f.js');
+  console.log(first, second, otherScript);
+})();
+
+console.log(modules_963121b4);
+"
+`;
+
+exports[`code-splitting true: js 3`] = `
+"const modules_79e4a77e = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+
+console.log(modules_79e4a77e);
+"
+`;
+
+exports[`code-splitting true: js 4`] = `
+"console.log(\\"noncss\\");
+"
+`;
+
+exports[`code-splitting true: js 5`] = `
+"(async () => {
+  await import('./noncss.ff82f22e.js');
+  const nestedScript = await import('./nested-script.24698cc5.js');
+  console.log(nestedScript);
+})();
+"
+`;
+
+exports[`code-splitting true: js 6`] = `
+"const css_a1bc2d4c = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+const modules_169ad3fe = {\\"second\\":\\"second_second\\"};
+const css = css_a1bc2d4c;
+
+export default modules_169ad3fe;
+export { css };
+"
+`;
+
+exports[`code-splitting true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../code-splitting/partial.css\\",\\"../../../code-splitting/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA\\",\\"file\\":\\"first.d1cc633f.css\\",\\"sourcesContent\\":[\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\"]}"`;
+
+exports[`code-splitting true: map 2`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../code-splitting/third.scss\\",\\"../../../code-splitting/fourth.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA\\",\\"file\\":\\"index.fae1b360.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\"]}"`;
+
+exports[`code-splitting true: map 3`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../code-splitting/nested-script.scss\\",\\"../../../code-splitting/nondynamic.scss\\",\\"../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,oBAAoB,EAAA;;ACDtB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"nested-script.24698cc5.css\\",\\"sourcesContent\\":[\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+
+exports[`code-splitting true: map 4`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../code-splitting/other-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAY,EAAA\\",\\"file\\":\\"other-script.7d98b97f.css\\",\\"sourcesContent\\":[\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\"]}"`;
+
+exports[`code-splitting true: map 5`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../code-splitting/second.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB,EAAA\\",\\"file\\":\\"second.dd9ddbb2.css\\",\\"sourcesContent\\":[\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\"]}"`;
 
 exports[`extract custom-path-absolute: css 1`] = `
 ".foo {
@@ -348,9 +581,11 @@ exports[`extract custom-path-absolute: css 1`] = `
 `;
 
 exports[`extract custom-path-absolute: js 1`] = `
-"'use strict';
+"const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(undefined, undefined);
+const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+
+console.log(css_4fc87a7b, css_8b7409a7);
 "
 `;
 
@@ -386,9 +621,11 @@ exports[`extract custom-path-relative: css 1`] = `
 `;
 
 exports[`extract custom-path-relative: js 1`] = `
-"'use strict';
+"const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(undefined, undefined);
+const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+
+console.log(css_4fc87a7b, css_8b7409a7);
 "
 `;
 
@@ -420,13 +657,15 @@ exports[`extract sourcemap-inline: css 1`] = `
   color: #6c94be;
 }
 
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NpbXBsZS9mb28uY3NzIiwiLi4vLi4vLi4vc2ltcGxlL2Jhci5jc3MiLCIuLi8uLi8uLi9zaW1wbGUvc3R5bGUuc3R5bCIsIi4uLy4uLy4uL3NpbXBsZS9zdHlsZS5wY3NzIiwiLi4vLi4vLi4vc2ltcGxlL3N0eWxlLnNhc3MiLCIuLi8uLi8uLi9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWjs7QUNGQTtFQUNFLFVBQVU7QUFDWjs7QUNGQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkOztBQ0hBO0VBQ0UsVUFBVTtBQUNaOztBQ0ZBO0VBQ0UsVUFBVTtFQUNWLFVBQVUsRUFBQTs7QUNDWjtFQUNFLGNBQUE7QUFGRiIsImZpbGUiOiJidW5kbGUuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmZvbyB7XG4gIGNvbG9yOiByZWQ7XG59XG4iLCIuYmFyIHtcbiAgY29sb3I6IHJlZDtcbn1cbiIsIi5zdHlsdXMge1xuICBjb2xvcjogI2YwMDtcbiAgYmFja2dyb3VuZDogI2YwMDtcbn1cbiIsIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiIsIi5zYXNzIHtcbiAgd2lkdGg6IDMwJTtcbiAgY29sb3I6IHJlZDsgfVxuIiwiQG5pY2UtYmx1ZTogIzViODNhZDtcbkBsaWdodC1ibHVlOiBAbmljZS1ibHVlICsgIzExMTtcblxuLmxlc3Mge1xuICBjb2xvcjogQGxpZ2h0LWJsdWU7XG59XG4iXX0= */"
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NpbXBsZS9mb28uY3NzIiwiLi4vLi4vLi4vc2ltcGxlL2Jhci5jc3MiLCIuLi8uLi8uLi9zaW1wbGUvc3R5bGUuc3R5bCIsIi4uLy4uLy4uL3NpbXBsZS9zdHlsZS5wY3NzIiwiLi4vLi4vLi4vc2ltcGxlL3N0eWxlLnNhc3MiLCIuLi8uLi8uLi9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWjs7QUNGQTtFQUNFLFVBQVU7QUFDWjs7QUNGQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkOztBQ0hBO0VBQ0UsVUFBVTtBQUNaOztBQ0ZBO0VBQ0UsVUFBVTtFQUNWLFVBQVUsRUFBQTs7QUNDWjtFQUNFLGNBQUE7QUFGRiIsImZpbGUiOiJpbmRleC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZm9vIHtcbiAgY29sb3I6IHJlZDtcbn1cbiIsIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIiwiLnN0eWx1cyB7XG4gIGNvbG9yOiAjZjAwO1xuICBiYWNrZ3JvdW5kOiAjZjAwO1xufVxuIiwiLnBjc3Mge1xuICBjb2xvcjogcmVkO1xufVxuIiwiLnNhc3Mge1xuICB3aWR0aDogMzAlO1xuICBjb2xvcjogcmVkOyB9XG4iLCJAbmljZS1ibHVlOiAjNWI4M2FkO1xuQGxpZ2h0LWJsdWU6IEBuaWNlLWJsdWUgKyAjMTExO1xuXG4ubGVzcyB7XG4gIGNvbG9yOiBAbGlnaHQtYmx1ZTtcbn1cbiJdfQ== */"
 `;
 
 exports[`extract sourcemap-inline: js 1`] = `
-"'use strict';
+"const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(undefined, undefined);
+const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+
+console.log(css_4fc87a7b, css_8b7409a7);
 "
 `;
 
@@ -456,17 +695,19 @@ exports[`extract sourcemap-true: css 1`] = `
   color: #6c94be;
 }
 
-/*# sourceMappingURL=bundle.css.map */"
+/*# sourceMappingURL=index.css.map */"
 `;
 
 exports[`extract sourcemap-true: js 1`] = `
-"'use strict';
+"const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(undefined, undefined);
+const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+
+console.log(css_4fc87a7b, css_8b7409a7);
 "
 `;
 
-exports[`extract sourcemap-true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../simple/foo.css\\",\\"../../../simple/bar.css\\",\\"../../../simple/style.styl\\",\\"../../../simple/style.pcss\\",\\"../../../simple/style.sass\\",\\"../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;AACZ;;ACFA;EACE,WAAO;EACP,gBAAY;AACd;;ACHA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;EACV,UAAU,EAAA;;ACCZ;EACE,cAAA;AAFF\\",\\"file\\":\\"bundle.css\\",\\"sourcesContent\\":[\\".foo {\\\\n  color: red;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
+exports[`extract sourcemap-true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../simple/foo.css\\",\\"../../../simple/bar.css\\",\\"../../../simple/style.styl\\",\\"../../../simple/style.pcss\\",\\"../../../simple/style.sass\\",\\"../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;AACZ;;ACFA;EACE,WAAO;EACP,gBAAY;AACd;;ACHA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;EACV,UAAU,EAAA;;ACCZ;EACE,cAAA;AAFF\\",\\"file\\":\\"index.css\\",\\"sourcesContent\\":[\\".foo {\\\\n  color: red;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
 
 exports[`extract true: css 1`] = `
 ".foo {
@@ -497,52 +738,39 @@ exports[`extract true: css 1`] = `
 `;
 
 exports[`extract true: js 1`] = `
-"'use strict';
+"const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(undefined, undefined);
-"
-`;
+const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-exports[`inject false: js 1`] = `
-"'use strict';
-
-var css_2f84417a = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
-
-var css_2f84417a$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
-
-console.log(css_2f84417a, css_2f84417a$1);
+console.log(css_4fc87a7b, css_8b7409a7);
 "
 `;
 
 exports[`inject function: js 1`] = `
-"'use strict';
+"const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+console.log(css_4fc87a7b);
 
-var css_2f84417a = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
-console.log(css_2f84417a);
+const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+console.log(css_8b7409a7);
 
-var css_2f84417a$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
-console.log(css_2f84417a$1);
+const css_9724c78b = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
+console.log(css_9724c78b);
 
-var css_2f84417a$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
-console.log(css_2f84417a$2);
+const css_c0bf9526 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
+console.log(css_c0bf9526);
 
-var css_2f84417a$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
-console.log(css_2f84417a$3);
+const css_2aa6e98a = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
+console.log(css_2aa6e98a);
 
-var css_2f84417a$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
-console.log(css_2f84417a$4);
+const css_9a558625 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
+console.log(css_9a558625);
 
-var css_2f84417a$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
-console.log(css_2f84417a$5);
-
-console.log(css_2f84417a, css_2f84417a$1);
+console.log(css_4fc87a7b, css_8b7409a7);
 "
 `;
 
 exports[`inject top: js 1`] = `
-"'use strict';
-
-/* eslint-env browser */
+"/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];
@@ -557,7 +785,7 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_14187a73 = (css, options = {}) => {
+var injector_9d0ece4d = (css, options = {}) => {
   if (!css || typeof document === \\"undefined\\") return;
   const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
   const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
@@ -604,32 +832,30 @@ var injector_14187a73 = (css, options = {}) => {
   }
 };
 
-var css_2f84417a = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_14187a73(css_2f84417a,{\\"prepend\\":true});
+const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_9d0ece4d(css_4fc87a7b,{\\"prepend\\":true});
 
-var css_2f84417a$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_14187a73(css_2f84417a$1,{\\"prepend\\":true});
+const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_9d0ece4d(css_8b7409a7,{\\"prepend\\":true});
 
-var css_2f84417a$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
-injector_14187a73(css_2f84417a$2,{\\"prepend\\":true});
+const css_9724c78b = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
+injector_9d0ece4d(css_9724c78b,{\\"prepend\\":true});
 
-var css_2f84417a$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_14187a73(css_2f84417a$3,{\\"prepend\\":true});
+const css_c0bf9526 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_9d0ece4d(css_c0bf9526,{\\"prepend\\":true});
 
-var css_2f84417a$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
-injector_14187a73(css_2f84417a$4,{\\"prepend\\":true});
+const css_2aa6e98a = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
+injector_9d0ece4d(css_2aa6e98a,{\\"prepend\\":true});
 
-var css_2f84417a$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
-injector_14187a73(css_2f84417a$5,{\\"prepend\\":true});
+const css_9a558625 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
+injector_9d0ece4d(css_9a558625,{\\"prepend\\":true});
 
-console.log(css_2f84417a, css_2f84417a$1);
+console.log(css_4fc87a7b, css_8b7409a7);
 "
 `;
 
 exports[`less import: js 1`] = `
-"'use strict';
-
-/* eslint-env browser */
+"/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];
@@ -644,7 +870,7 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_14187a73 = (css, options = {}) => {
+var injector_c27d7fc7 = (css, options = {}) => {
   if (!css || typeof document === \\"undefined\\") return;
   const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
   const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
@@ -691,50 +917,54 @@ var injector_14187a73 = (css, options = {}) => {
   }
 };
 
-var css_2f84417a = \\".a {\\\\n  color: royalblue;\\\\n}\\\\n.b {\\\\n  color: red;\\\\n}\\\\n.c {\\\\n  color: red;\\\\n}\\\\n.foo {\\\\n  color: royalblue;\\\\n}\\\\n\\";
-injector_14187a73(css_2f84417a);
+const css_ebbdb980 = \\".d {\\\\n  color: red;\\\\n}\\\\n.a {\\\\n  color: royalblue;\\\\n}\\\\n.b {\\\\n  color: red;\\\\n}\\\\n.c {\\\\n  color: red;\\\\n}\\\\n.foo {\\\\n  color: royalblue;\\\\n}\\\\n\\";
+injector_c27d7fc7(css_ebbdb980);
 "
 `;
 
 exports[`minimize extract: css 1`] = `".bar,.foo,.stylus{color:red}.stylus{background:red}.pcss,.sass{color:red}.sass{width:30%}.less{color:#6c94be}"`;
 
 exports[`minimize extract: js 1`] = `
-"'use strict';
+"const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(undefined, undefined);
+const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+
+console.log(css_4fc87a7b, css_8b7409a7);
 "
 `;
 
 exports[`minimize extract-sourcemap-inline: css 1`] = `
 ".bar,.foo,.stylus{color:red}.stylus{background:red}.pcss,.sass{color:red}.sass{width:30%}.less{color:#6c94be}
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NpbXBsZS9zdHlsZS5zdHlsIiwiLi4vLi4vLi4vc2ltcGxlL2Jhci5jc3MiLCIuLi8uLi8uLi9zaW1wbGUvc3R5bGUuc2FzcyIsIi4uLy4uLy4uL3NpbXBsZS9zdHlsZS5wY3NzIiwiLi4vLi4vLi4vc2ltcGxlL3N0eWxlLmxlc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsa0JDQ0UsU0RFRixDQUhBLFFBRUUsY0FDRixDRUhBLFlDQ0UsU0RDVSxDQUZaLE1BQ0UsU0FDVSxDRUNaLE1BQ0UsYUFGRiIsImZpbGUiOiJidW5kbGUuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1cyB7XG4gIGNvbG9yOiAjZjAwO1xuICBiYWNrZ3JvdW5kOiAjZjAwO1xufVxuIiwiLmJhciB7XG4gIGNvbG9yOiByZWQ7XG59XG4iLCIuc2FzcyB7XG4gIHdpZHRoOiAzMCU7XG4gIGNvbG9yOiByZWQ7IH1cbiIsIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiIsIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */"
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3NpbXBsZS9zdHlsZS5zdHlsIiwiLi4vLi4vLi4vc2ltcGxlL2Jhci5jc3MiLCIuLi8uLi8uLi9zaW1wbGUvc3R5bGUuc2FzcyIsIi4uLy4uLy4uL3NpbXBsZS9zdHlsZS5wY3NzIiwiLi4vLi4vLi4vc2ltcGxlL3N0eWxlLmxlc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsa0JDQ0UsU0RFRixDQUhBLFFBRUUsY0FDRixDRUhBLFlDQ0UsU0RDVSxDQUZaLE1BQ0UsU0FDVSxDRUNaLE1BQ0UsYUFGRiIsImZpbGUiOiJpbmRleC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc3R5bHVzIHtcbiAgY29sb3I6ICNmMDA7XG4gIGJhY2tncm91bmQ6ICNmMDA7XG59XG4iLCIuYmFyIHtcbiAgY29sb3I6IHJlZDtcbn1cbiIsIi5zYXNzIHtcbiAgd2lkdGg6IDMwJTtcbiAgY29sb3I6IHJlZDsgfVxuIiwiLnBjc3Mge1xuICBjb2xvcjogcmVkO1xufVxuIiwiQG5pY2UtYmx1ZTogIzViODNhZDtcbkBsaWdodC1ibHVlOiBAbmljZS1ibHVlICsgIzExMTtcblxuLmxlc3Mge1xuICBjb2xvcjogQGxpZ2h0LWJsdWU7XG59XG4iXX0= */"
 `;
 
 exports[`minimize extract-sourcemap-inline: js 1`] = `
-"'use strict';
+"const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(undefined, undefined);
+const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+
+console.log(css_4fc87a7b, css_8b7409a7);
 "
 `;
 
 exports[`minimize extract-sourcemap-true: css 1`] = `
 ".bar,.foo,.stylus{color:red}.stylus{background:red}.pcss,.sass{color:red}.sass{width:30%}.less{color:#6c94be}
-/*# sourceMappingURL=bundle.css.map */"
+/*# sourceMappingURL=index.css.map */"
 `;
 
 exports[`minimize extract-sourcemap-true: js 1`] = `
-"'use strict';
+"const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(undefined, undefined);
+const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+
+console.log(css_4fc87a7b, css_8b7409a7);
 "
 `;
 
-exports[`minimize extract-sourcemap-true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../simple/style.styl\\",\\"../../../simple/bar.css\\",\\"../../../simple/style.sass\\",\\"../../../simple/style.pcss\\",\\"../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA,kBCCE,SDEF,CAHA,QAEE,cACF,CEHA,YCCE,SDCU,CAFZ,MACE,SACU,CECZ,MACE,aAFF\\",\\"file\\":\\"bundle.css\\",\\"sourcesContent\\":[\\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
+exports[`minimize extract-sourcemap-true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../simple/style.styl\\",\\"../../../simple/bar.css\\",\\"../../../simple/style.sass\\",\\"../../../simple/style.pcss\\",\\"../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA,kBCCE,SDEF,CAHA,QAEE,cACF,CEHA,YCCE,SDCU,CAFZ,MACE,SACU,CECZ,MACE,aAFF\\",\\"file\\":\\"index.css\\",\\"sourcesContent\\":[\\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
 
 exports[`minimize inject: js 1`] = `
-"'use strict';
-
-/* eslint-env browser */
+"/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];
@@ -749,7 +979,7 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_14187a73 = (css, options = {}) => {
+var injector_9d0ece4d = (css, options = {}) => {
   if (!css || typeof document === \\"undefined\\") return;
   const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
   const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
@@ -796,32 +1026,30 @@ var injector_14187a73 = (css, options = {}) => {
   }
 };
 
-var css_2f84417a = \\".foo{color:red}\\";
-injector_14187a73(css_2f84417a);
+const css_4fc87a7b = \\".foo{color:red}\\";
+injector_9d0ece4d(css_4fc87a7b);
 
-var css_2f84417a$1 = \\".bar{color:red}\\";
-injector_14187a73(css_2f84417a$1);
+const css_8b7409a7 = \\".bar{color:red}\\";
+injector_9d0ece4d(css_8b7409a7);
 
-var css_2f84417a$2 = \\".stylus{color:red;background:red}\\";
-injector_14187a73(css_2f84417a$2);
+const css_9724c78b = \\".stylus{color:red;background:red}\\";
+injector_9d0ece4d(css_9724c78b);
 
-var css_2f84417a$3 = \\".pcss{color:red}\\";
-injector_14187a73(css_2f84417a$3);
+const css_c0bf9526 = \\".pcss{color:red}\\";
+injector_9d0ece4d(css_c0bf9526);
 
-var css_2f84417a$4 = \\".sass{width:30%;color:red}\\";
-injector_14187a73(css_2f84417a$4);
+const css_2aa6e98a = \\".sass{width:30%;color:red}\\";
+injector_9d0ece4d(css_2aa6e98a);
 
-var css_2f84417a$5 = \\".less{color:#6c94be}\\";
-injector_14187a73(css_2f84417a$5);
+const css_9a558625 = \\".less{color:#6c94be}\\";
+injector_9d0ece4d(css_9a558625);
 
-console.log(css_2f84417a, css_2f84417a$1);
+console.log(css_4fc87a7b, css_8b7409a7);
 "
 `;
 
 exports[`modules auto-modules: js 1`] = `
-"'use strict';
-
-/* eslint-env browser */
+"/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];
@@ -836,7 +1064,7 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_14187a73 = (css, options = {}) => {
+var injector_f247f96b = (css, options = {}) => {
   if (!css || typeof document === \\"undefined\\") return;
   const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
   const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
@@ -883,26 +1111,26 @@ var injector_14187a73 = (css, options = {}) => {
   }
 };
 
-var css_2f84417a = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_14187a73(css_2f84417a);
+const css_04a4c3e4 = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_f247f96b(css_04a4c3e4);
 
-var css_2f84417a$1 = \\".a_module_a {\\\\n  color: red;\\\\n}\\\\n\\";
-var a = {\\"a\\":\\"a_module_a\\"};
-injector_14187a73(css_2f84417a$1);
+const css_6c66bb9c = \\".a_module_a {\\\\n  color: red;\\\\n}\\\\n\\";
+const modules_0d0b6254 = {\\"a\\":\\"a_module_a\\"};
+injector_f247f96b(css_6c66bb9c);
 
-var css_2f84417a$2 = \\".b_module_b {\\\\n  color: red; }\\\\n\\";
-var b = {\\"b\\":\\"b_module_b\\"};
-injector_14187a73(css_2f84417a$2);
+const css_27de4cbf = \\".b_module_b {\\\\n  color: red; }\\\\n\\";
+const modules_6130213c = {\\"b\\":\\"b_module_b\\"};
+injector_f247f96b(css_27de4cbf);
 
-var css_2f84417a$3 = \\".c_module_c {\\\\n  color: red;\\\\n}\\\\n\\";
-var c = {\\"c\\":\\"c_module_c\\"};
-injector_14187a73(css_2f84417a$3);
+const css_12b0d2db = \\".c_module_c {\\\\n  color: red;\\\\n}\\\\n\\";
+const modules_ff4908e7 = {\\"c\\":\\"c_module_c\\"};
+injector_f247f96b(css_12b0d2db);
 
-var css_2f84417a$4 = \\".d_module_d {\\\\n  color: #f00;\\\\n}\\\\n\\";
-var d = {\\"d\\":\\"d_module_d\\"};
-injector_14187a73(css_2f84417a$4);
+const css_dfd0fcc3 = \\".d_module_d {\\\\n  color: #f00;\\\\n}\\\\n\\";
+const modules_5718608d = {\\"d\\":\\"d_module_d\\"};
+injector_f247f96b(css_dfd0fcc3);
 
-console.log(a, b, c, d);
+console.log(modules_0d0b6254, modules_6130213c, modules_ff4908e7, modules_5718608d);
 "
 `;
 
@@ -929,15 +1157,13 @@ exports[`modules duplication: css 1`] = `
 `;
 
 exports[`modules duplication: js 1`] = `
-"'use strict';
+"const modules_46f188fa = {\\"test\\":\\"shared_test\\"};
 
-var shared = {\\"test\\":\\"shared_test\\"};
+const modules_f85a7596 = {\\"foo\\":\\"foo_foo shared_test\\"};
 
-var foo = {\\"foo\\":\\"foo_foo shared_test\\"};
+const modules_a9adff68 = {\\"bar\\":\\"bar_bar shared_test\\"};
 
-var bar = {\\"bar\\":\\"bar_bar shared_test\\"};
-
-console.log(shared, foo, bar);
+console.log(modules_46f188fa, modules_f85a7596, modules_a9adff68);
 "
 `;
 
@@ -966,15 +1192,13 @@ exports[`modules extract: css 1`] = `
 `;
 
 exports[`modules extract: js 1`] = `
-"'use strict';
+"const modules_66a8b034 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
 
-var style = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
+const modules_b4425b4f = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
 
-var composed = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
+const modules_75007da7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
 
-var composition2 = {\\"compositioned\\":\\"composition2_compositioned\\"};
-
-console.log(style.module, composed.composition, composition2.compositioned);
+console.log(modules_66a8b034.module, modules_b4425b4f.composition, modules_75007da7.compositioned);
 "
 `;
 
@@ -1000,19 +1224,17 @@ exports[`modules extract-sourcemap-inline: css 1`] = `
   width: 30%;
 }
 
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL21vZHVsZXMvc3R5bGUuY3NzIiwiLi4vLi4vLi4vbW9kdWxlcy9jb21wb3NlZC5jc3MiLCIuLi8uLi8uLi9tb2R1bGVzL3N1YmRpci9jb21wb3NpdGlvbjIuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBO0VBQ0UsY0FBZ0I7QUFDbEI7O0FBRUE7QUFFQTs7QUNOQTtFQUNFO0lBRUUsc0JBQXNCO0VBQ3hCO0FBQ0Y7O0FBRUE7RUFDRSx5QkFBeUI7QUFDM0I7O0FDWEE7RUFDRSxVQUFVO0FBQ1oiLCJmaWxlIjoiYnVuZGxlLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIkB2YWx1ZSBwcmltYXJ5LCBzZWNvbmRhcnkgZnJvbSBjb2xvcnM7XG5cbi5tb2R1bGUge1xuICBjb2xvcjogc2Vjb25kYXJ5O1xufVxuXG4ubW9kdWxlMiB7XG4gIGNvbXBvc2VzOiBjb21wb3NpdGlvbiBmcm9tIFwiLi9jb21wb3NlZC5jc3NcIjtcbn1cbiIsIkB2YWx1ZSBwcmltYXJ5IGZyb20gY29sb3JzO1xuXG5AbWVkaWEgc2NyZWVuIGFuZCAobWluLXdpZHRoOiA5MDBweCkge1xuICAuY29tcG9zaXRpb24ge1xuICAgIGNvbXBvc2VzOiBjb21wb3NpdGlvbmVkIGZyb20gXCIuL3N1YmRpci9jb21wb3NpdGlvbjIuY3NzXCI7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogYXF1YTtcbiAgfVxufVxuXG4uY29tcG9zaXRpb24ge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiBwcmltYXJ5O1xufVxuIiwiLmNvbXBvc2l0aW9uZWQge1xuICB3aWR0aDogMzAlO1xufVxuIl19 */"
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uL21vZHVsZXMvc3R5bGUuY3NzIiwiLi4vLi4vLi4vbW9kdWxlcy9jb21wb3NlZC5jc3MiLCIuLi8uLi8uLi9tb2R1bGVzL3N1YmRpci9jb21wb3NpdGlvbjIuY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBO0VBQ0UsY0FBZ0I7QUFDbEI7O0FBRUE7QUFFQTs7QUNOQTtFQUNFO0lBRUUsc0JBQXNCO0VBQ3hCO0FBQ0Y7O0FBRUE7RUFDRSx5QkFBeUI7QUFDM0I7O0FDWEE7RUFDRSxVQUFVO0FBQ1oiLCJmaWxlIjoiaW5kZXguY3NzIiwic291cmNlc0NvbnRlbnQiOlsiQHZhbHVlIHByaW1hcnksIHNlY29uZGFyeSBmcm9tIGNvbG9ycztcblxuLm1vZHVsZSB7XG4gIGNvbG9yOiBzZWNvbmRhcnk7XG59XG5cbi5tb2R1bGUyIHtcbiAgY29tcG9zZXM6IGNvbXBvc2l0aW9uIGZyb20gXCIuL2NvbXBvc2VkLmNzc1wiO1xufVxuIiwiQHZhbHVlIHByaW1hcnkgZnJvbSBjb2xvcnM7XG5cbkBtZWRpYSBzY3JlZW4gYW5kIChtaW4td2lkdGg6IDkwMHB4KSB7XG4gIC5jb21wb3NpdGlvbiB7XG4gICAgY29tcG9zZXM6IGNvbXBvc2l0aW9uZWQgZnJvbSBcIi4vc3ViZGlyL2NvbXBvc2l0aW9uMi5jc3NcIjtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBhcXVhO1xuICB9XG59XG5cbi5jb21wb3NpdGlvbiB7XG4gIGJhY2tncm91bmQtY29sb3I6IHByaW1hcnk7XG59XG4iLCIuY29tcG9zaXRpb25lZCB7XG4gIHdpZHRoOiAzMCU7XG59XG4iXX0= */"
 `;
 
 exports[`modules extract-sourcemap-inline: js 1`] = `
-"'use strict';
+"const modules_66a8b034 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
 
-var style = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
+const modules_b4425b4f = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
 
-var composed = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
+const modules_75007da7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
 
-var composition2 = {\\"compositioned\\":\\"composition2_compositioned\\"};
-
-console.log(style.module, composed.composition, composition2.compositioned);
+console.log(modules_66a8b034.module, modules_b4425b4f.composition, modules_75007da7.compositioned);
 "
 `;
 
@@ -1038,28 +1260,24 @@ exports[`modules extract-sourcemap-true: css 1`] = `
   width: 30%;
 }
 
-/*# sourceMappingURL=bundle.css.map */"
+/*# sourceMappingURL=index.css.map */"
 `;
 
 exports[`modules extract-sourcemap-true: js 1`] = `
-"'use strict';
+"const modules_66a8b034 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
 
-var style = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
+const modules_b4425b4f = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
 
-var composed = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
+const modules_75007da7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
 
-var composition2 = {\\"compositioned\\":\\"composition2_compositioned\\"};
-
-console.log(style.module, composed.composition, composition2.compositioned);
+console.log(modules_66a8b034.module, modules_b4425b4f.composition, modules_75007da7.compositioned);
 "
 `;
 
-exports[`modules extract-sourcemap-true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../modules/style.css\\",\\"../../../modules/composed.css\\",\\"../../../modules/subdir/composition2.css\\"],\\"names\\":[],\\"mappings\\":\\"AAEA;EACE,cAAgB;AAClB;;AAEA;AAEA;;ACNA;EACE;IAEE,sBAAsB;EACxB;AACF;;AAEA;EACE,yBAAyB;AAC3B;;ACXA;EACE,UAAU;AACZ\\",\\"file\\":\\"bundle.css\\",\\"sourcesContent\\":[\\"@value primary, secondary from colors;\\\\n\\\\n.module {\\\\n  color: secondary;\\\\n}\\\\n\\\\n.module2 {\\\\n  composes: composition from \\\\\\"./composed.css\\\\\\";\\\\n}\\\\n\\",\\"@value primary from colors;\\\\n\\\\n@media screen and (min-width: 900px) {\\\\n  .composition {\\\\n    composes: compositioned from \\\\\\"./subdir/composition2.css\\\\\\";\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composition {\\\\n  background-color: primary;\\\\n}\\\\n\\",\\".compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\"]}"`;
+exports[`modules extract-sourcemap-true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../modules/style.css\\",\\"../../../modules/composed.css\\",\\"../../../modules/subdir/composition2.css\\"],\\"names\\":[],\\"mappings\\":\\"AAEA;EACE,cAAgB;AAClB;;AAEA;AAEA;;ACNA;EACE;IAEE,sBAAsB;EACxB;AACF;;AAEA;EACE,yBAAyB;AAC3B;;ACXA;EACE,UAAU;AACZ\\",\\"file\\":\\"index.css\\",\\"sourcesContent\\":[\\"@value primary, secondary from colors;\\\\n\\\\n.module {\\\\n  color: secondary;\\\\n}\\\\n\\\\n.module2 {\\\\n  composes: composition from \\\\\\"./composed.css\\\\\\";\\\\n}\\\\n\\",\\"@value primary from colors;\\\\n\\\\n@media screen and (min-width: 900px) {\\\\n  .composition {\\\\n    composes: compositioned from \\\\\\"./subdir/composition2.css\\\\\\";\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composition {\\\\n  background-color: primary;\\\\n}\\\\n\\",\\".compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\"]}"`;
 
 exports[`modules inject: js 1`] = `
-"'use strict';
-
-/* eslint-env browser */
+"/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];
@@ -1074,7 +1292,7 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_14187a73 = (css, options = {}) => {
+var injector_2ae7f8dc = (css, options = {}) => {
   if (!css || typeof document === \\"undefined\\") return;
   const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
   const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
@@ -1121,26 +1339,24 @@ var injector_14187a73 = (css, options = {}) => {
   }
 };
 
-var css_2f84417a = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
-var style = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
-injector_14187a73(css_2f84417a);
+const css_3a3193e0 = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
+const modules_66a8b034 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
+injector_2ae7f8dc(css_3a3193e0);
 
-var css_2f84417a$1 = \\"@media screen and (min-width: 900px) {\\\\n  .composed_composition {\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composed_composition {\\\\n  background-color: #BF4040;\\\\n}\\\\n\\";
-var composed = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
-injector_14187a73(css_2f84417a$1);
+const css_fe17c453 = \\"@media screen and (min-width: 900px) {\\\\n  .composed_composition {\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composed_composition {\\\\n  background-color: #BF4040;\\\\n}\\\\n\\";
+const modules_b4425b4f = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
+injector_2ae7f8dc(css_fe17c453);
 
-var css_2f84417a$2 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
-var composition2 = {\\"compositioned\\":\\"composition2_compositioned\\"};
-injector_14187a73(css_2f84417a$2);
+const css_970ba438 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
+const modules_75007da7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
+injector_2ae7f8dc(css_970ba438);
 
-console.log(style.module, composed.composition, composition2.compositioned);
+console.log(modules_66a8b034.module, modules_b4425b4f.composition, modules_75007da7.compositioned);
 "
 `;
 
 exports[`modules inject-object: js 1`] = `
-"'use strict';
-
-/* eslint-env browser */
+"/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];
@@ -1155,7 +1371,7 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_14187a73 = (css, options = {}) => {
+var injector_2ae7f8dc = (css, options = {}) => {
   if (!css || typeof document === \\"undefined\\") return;
   const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
   const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
@@ -1202,26 +1418,24 @@ var injector_14187a73 = (css, options = {}) => {
   }
 };
 
-var css_2f84417a = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
-var style = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
-injector_14187a73(css_2f84417a);
+const css_3a3193e0 = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
+const modules_66a8b034 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
+injector_2ae7f8dc(css_3a3193e0);
 
-var css_2f84417a$1 = \\"@media screen and (min-width: 900px) {\\\\n  .composed_composition {\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composed_composition {\\\\n  background-color: #BF4040;\\\\n}\\\\n\\";
-var composed = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
-injector_14187a73(css_2f84417a$1);
+const css_fe17c453 = \\"@media screen and (min-width: 900px) {\\\\n  .composed_composition {\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composed_composition {\\\\n  background-color: #BF4040;\\\\n}\\\\n\\";
+const modules_b4425b4f = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
+injector_2ae7f8dc(css_fe17c453);
 
-var css_2f84417a$2 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
-var composition2 = {\\"compositioned\\":\\"composition2_compositioned\\"};
-injector_14187a73(css_2f84417a$2);
+const css_970ba438 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
+const modules_75007da7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
+injector_2ae7f8dc(css_970ba438);
 
-console.log(style.module, composed.composition, composition2.compositioned);
+console.log(modules_66a8b034.module, modules_b4425b4f.composition, modules_75007da7.compositioned);
 "
 `;
 
 exports[`modules named-exports: js 1`] = `
-"'use strict';
-
-/* eslint-env browser */
+"/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];
@@ -1236,7 +1450,7 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_14187a73 = (css, options = {}) => {
+var injector_b11e0f66 = (css, options = {}) => {
   if (!css || typeof document === \\"undefined\\") return;
   const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
   const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
@@ -1283,558 +1497,29 @@ var injector_14187a73 = (css, options = {}) => {
   }
 };
 
+const css_9e45ec64 = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\\\n.style_css {\\\\n  color: green;\\\\n}\\\\n\\";
+const modules_65f89cf3 = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"css\\":\\"style_css\\"};
+const css = css_9e45ec64;
 const valid = \\"style_valid\\";
 const _new = \\"style_new\\";
-var css_2f84417a = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\";
-const stylesheet = css_2f84417a;
-var style = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"_new\\":\\"style_new\\"};
-injector_14187a73(css_2f84417a);
+const _css = \\"style_css\\";
+injector_b11e0f66(css_9e45ec64);
 
-var style$1 = /*#__PURE__*/Object.freeze({
+var style = /*#__PURE__*/Object.freeze({
   __proto__: null,
+  css: css,
+  'default': modules_65f89cf3,
   valid: valid,
   _new: _new,
-  stylesheet: stylesheet,
-  'default': style
+  _css: _css
 });
-
-console.log(style$1);
-"
-`;
-
-exports[`modules named-exports-custom-class-name: js 1`] = `
-"'use strict';
-
-/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
-/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
-
-/**
- * @param {string|undefined} css
- * @param {object} [options={}]
- * @param {boolean} [options.prepend]
- * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
- * @returns {void}
- */
-var injector_14187a73 = (css, options = {}) => {
-  if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
-    return styleTag;
-  };
-
-  /** @type {HTMLStyleElement} */
-  let styleTag;
-
-  if (singleTag) {
-    let id = containers.indexOf(container);
-
-    if (id === -1) {
-      id = containers.push(container) - 1;
-      styleTags[id] = {};
-    }
-
-    if (styleTags[id] && styleTags[id][position]) {
-      styleTag = styleTags[id][position];
-    } else {
-      styleTag = styleTags[id][position] = createStyleTag();
-    }
-  } else {
-    styleTag = createStyleTag();
-  }
-
-  // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
-
-  if (styleTag.styleSheet) {
-    styleTag.styleSheet.cssText += css;
-  } else {
-    styleTag.textContent += css;
-  }
-};
-
-const validhacked = \\"style_valid\\";
-const newhacked = \\"style_new\\";
-var css_2f84417a = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\";
-const stylesheet = css_2f84417a;
-var style = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"validhacked\\":\\"style_valid\\",\\"newhacked\\":\\"style_new\\"};
-injector_14187a73(css_2f84417a);
-
-var style$1 = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  validhacked: validhacked,
-  newhacked: newhacked,
-  stylesheet: stylesheet,
-  'default': style
-});
-
-console.log(style$1);
-"
-`;
-
-exports[`multiple-instances already-processed: js 1`] = `
-"'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
-/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
-
-/**
- * @param {string|undefined} css
- * @param {object} [options={}]
- * @param {boolean} [options.prepend]
- * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
- * @returns {void}
- */
-var injector_14187a73 = (css, options = {}) => {
-  if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
-    return styleTag;
-  };
-
-  /** @type {HTMLStyleElement} */
-  let styleTag;
-
-  if (singleTag) {
-    let id = containers.indexOf(container);
-
-    if (id === -1) {
-      id = containers.push(container) - 1;
-      styleTags[id] = {};
-    }
-
-    if (styleTags[id] && styleTags[id][position]) {
-      styleTag = styleTags[id][position];
-    } else {
-      styleTag = styleTags[id][position] = createStyleTag();
-    }
-  } else {
-    styleTag = createStyleTag();
-  }
-
-  // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
-
-  if (styleTag.styleSheet) {
-    styleTag.styleSheet.cssText += css;
-  } else {
-    styleTag.textContent += css;
-  }
-};
-
-var css_2f84417a = \\".less {\\\\n  color: magenta;\\\\n}\\\\n\\";
-const stylesheet = css_2f84417a;
-injector_14187a73(css_2f84417a);
-
-exports.default = css_2f84417a;
-exports.stylesheet = stylesheet;
-"
-`;
-
-exports[`multiple-instances default: js 1`] = `
-"'use strict';
-
-/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
-/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
-
-/**
- * @param {string|undefined} css
- * @param {object} [options={}]
- * @param {boolean} [options.prepend]
- * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
- * @returns {void}
- */
-var injector_14187a73 = (css, options = {}) => {
-  if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
-    return styleTag;
-  };
-
-  /** @type {HTMLStyleElement} */
-  let styleTag;
-
-  if (singleTag) {
-    let id = containers.indexOf(container);
-
-    if (id === -1) {
-      id = containers.push(container) - 1;
-      styleTags[id] = {};
-    }
-
-    if (styleTags[id] && styleTags[id][position]) {
-      styleTag = styleTags[id][position];
-    } else {
-      styleTag = styleTags[id][position] = createStyleTag();
-    }
-  } else {
-    styleTag = createStyleTag();
-  }
-
-  // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
-
-  if (styleTag.styleSheet) {
-    styleTag.styleSheet.cssText += css;
-  } else {
-    styleTag.textContent += css;
-  }
-};
-
-var css_2f84417a = \\".style {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_14187a73(css_2f84417a);
-
-var css_2f84417a$1 = \\".less {\\\\n  color: magenta;\\\\n}\\\\n\\";
-injector_14187a73(css_2f84417a$1);
-
-var css_2f84417a$2 = \\".mod_mod {\\\\n  color: royalblue;\\\\n}\\\\n\\";
-var mod = {\\"mod\\":\\"mod_mod\\"};
-injector_14187a73(css_2f84417a$2);
-
-console.log(mod);
-"
-`;
-
-exports[`on-extract-fn 1`] = `
-"'use strict';
-
-console.log(undefined, undefined);
-"
-`;
-
-exports[`sass data: js 1`] = `
-"'use strict';
-
-/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
-/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
-
-/**
- * @param {string|undefined} css
- * @param {object} [options={}]
- * @param {boolean} [options.prepend]
- * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
- * @returns {void}
- */
-var injector_14187a73 = (css, options = {}) => {
-  if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
-    return styleTag;
-  };
-
-  /** @type {HTMLStyleElement} */
-  let styleTag;
-
-  if (singleTag) {
-    let id = containers.indexOf(container);
-
-    if (id === -1) {
-      id = containers.push(container) - 1;
-      styleTags[id] = {};
-    }
-
-    if (styleTags[id] && styleTags[id][position]) {
-      styleTag = styleTags[id][position];
-    } else {
-      styleTag = styleTags[id][position] = createStyleTag();
-    }
-  } else {
-    styleTag = createStyleTag();
-  }
-
-  // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
-
-  if (styleTag.styleSheet) {
-    styleTag.styleSheet.cssText += css;
-  } else {
-    styleTag.textContent += css;
-  }
-};
-
-var css_2f84417a = \\".data {\\\\n  color: red; }\\\\n\\";
-injector_14187a73(css_2f84417a);
-"
-`;
-
-exports[`sass default: js 1`] = `
-"'use strict';
-
-/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
-/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
-
-/**
- * @param {string|undefined} css
- * @param {object} [options={}]
- * @param {boolean} [options.prepend]
- * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
- * @returns {void}
- */
-var injector_14187a73 = (css, options = {}) => {
-  if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
-    return styleTag;
-  };
-
-  /** @type {HTMLStyleElement} */
-  let styleTag;
-
-  if (singleTag) {
-    let id = containers.indexOf(container);
-
-    if (id === -1) {
-      id = containers.push(container) - 1;
-      styleTags[id] = {};
-    }
-
-    if (styleTags[id] && styleTags[id][position]) {
-      styleTag = styleTags[id][position];
-    } else {
-      styleTag = styleTags[id][position] = createStyleTag();
-    }
-  } else {
-    styleTag = createStyleTag();
-  }
-
-  // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
-
-  if (styleTag.styleSheet) {
-    styleTag.styleSheet.cssText += css;
-  } else {
-    styleTag.textContent += css;
-  }
-};
-
-var css_2f84417a = \\".style {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
-injector_14187a73(css_2f84417a);
-"
-`;
-
-exports[`sass import: js 1`] = `
-"'use strict';
-
-/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
-/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
-
-/**
- * @param {string|undefined} css
- * @param {object} [options={}]
- * @param {boolean} [options.prepend]
- * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
- * @returns {void}
- */
-var injector_14187a73 = (css, options = {}) => {
-  if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
-    return styleTag;
-  };
-
-  /** @type {HTMLStyleElement} */
-  let styleTag;
-
-  if (singleTag) {
-    let id = containers.indexOf(container);
-
-    if (id === -1) {
-      id = containers.push(container) - 1;
-      styleTags[id] = {};
-    }
-
-    if (styleTags[id] && styleTags[id][position]) {
-      styleTag = styleTags[id][position];
-    } else {
-      styleTag = styleTags[id][position] = createStyleTag();
-    }
-  } else {
-    styleTag = createStyleTag();
-  }
-
-  // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
-
-  if (styleTag.styleSheet) {
-    styleTag.styleSheet.cssText += css;
-  } else {
-    styleTag.textContent += css;
-  }
-};
-
-var css_2f84417a = \\".a {\\\\n  color: magenta; }\\\\n\\\\n.b {\\\\n  color: red; }\\\\n\\\\n.c {\\\\n  color: red; }\\\\n\\\\n.foo {\\\\n  color: royalblue; }\\\\n\\";
-injector_14187a73(css_2f84417a);
-"
-`;
-
-exports[`sass modules: js 1`] = `
-"'use strict';
-
-/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
-/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
-
-/**
- * @param {string|undefined} css
- * @param {object} [options={}]
- * @param {boolean} [options.prepend]
- * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
- * @returns {void}
- */
-var injector_14187a73 = (css, options = {}) => {
-  if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
-    return styleTag;
-  };
-
-  /** @type {HTMLStyleElement} */
-  let styleTag;
-
-  if (singleTag) {
-    let id = containers.indexOf(container);
-
-    if (id === -1) {
-      id = containers.push(container) - 1;
-      styleTags[id] = {};
-    }
-
-    if (styleTags[id] && styleTags[id][position]) {
-      styleTag = styleTags[id][position];
-    } else {
-      styleTag = styleTags[id][position] = createStyleTag();
-    }
-  } else {
-    styleTag = createStyleTag();
-  }
-
-  // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
-
-  if (styleTag.styleSheet) {
-    styleTag.styleSheet.cssText += css;
-  } else {
-    styleTag.textContent += css;
-  }
-};
-
-var css_2f84417a = \\".style_someStyle {\\\\n  color: red; }\\\\n\\";
-var style = {\\"some-style\\":\\"style_someStyle\\"};
-injector_14187a73(css_2f84417a);
 
 console.log(style);
 "
 `;
 
-exports[`sass sourcemap: js 1`] = `
-"'use strict';
-
-/* eslint-env browser */
+exports[`modules named-exports-custom-class-name: js 1`] = `
+"/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];
@@ -1849,7 +1534,7 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_14187a73 = (css, options = {}) => {
+var injector_b11e0f66 = (css, options = {}) => {
   if (!css || typeof document === \\"undefined\\") return;
   const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
   const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
@@ -1896,15 +1581,600 @@ var injector_14187a73 = (css, options = {}) => {
   }
 };
 
-var css_2f84417a = \\".style {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zYXNzL3N0eWxlLnNhc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0VBQ1YsVUFBVSxFQUFBIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWxlIHtcbiAgd2lkdGg6IDMwJTtcbiAgY29sb3I6IHJlZDsgfVxuIl19 */\\";
-injector_14187a73(css_2f84417a);
+const css_9e45ec64 = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\\\n.style_css {\\\\n  color: green;\\\\n}\\\\n\\";
+const modules_65f89cf3 = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"css\\":\\"style_css\\"};
+const css = css_9e45ec64;
+const validhacked = \\"style_valid\\";
+const newhacked = \\"style_new\\";
+const csshacked = \\"style_css\\";
+injector_b11e0f66(css_9e45ec64);
+
+var style = /*#__PURE__*/Object.freeze({
+  __proto__: null,
+  css: css,
+  'default': modules_65f89cf3,
+  validhacked: validhacked,
+  newhacked: newhacked,
+  csshacked: csshacked
+});
+
+console.log(style);
+"
+`;
+
+exports[`multiple-instances already-processed: js 1`] = `
+"/* eslint-env browser */
+
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
+
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_e8b4c2e2 = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
+  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
+    } else {
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+
+  if (singleTag) {
+    let id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
+
+const css_05950bee = \\".bar_less {\\\\n  color: magenta;\\\\n}\\\\n\\";
+const modules_139d7175 = {\\"less\\":\\"bar_less\\"};
+const css = css_05950bee;
+const less = \\"bar_less\\";
+injector_e8b4c2e2(css_05950bee);
+
+export default modules_139d7175;
+export { css, less };
+"
+`;
+
+exports[`multiple-instances default: js 1`] = `
+"/* eslint-env browser */
+
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
+
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_2401b93b = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
+  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
+    } else {
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+
+  if (singleTag) {
+    let id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
+
+const css_8ae7cafb = \\".style {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_2401b93b(css_8ae7cafb);
+
+const css_05950bee = \\".less {\\\\n  color: magenta;\\\\n}\\\\n\\";
+injector_2401b93b(css_05950bee);
+
+const css_19f64085 = \\".mod_mod {\\\\n  color: royalblue;\\\\n}\\\\n\\";
+const modules_47aee9cb = {\\"mod\\":\\"mod_mod\\"};
+injector_2401b93b(css_19f64085);
+
+console.log(modules_47aee9cb);
+"
+`;
+
+exports[`on-extract-fn: js 1`] = `
+"const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+
+const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+
+console.log(css_4fc87a7b, css_8b7409a7);
+"
+`;
+
+exports[`sass data: js 1`] = `
+"/* eslint-env browser */
+
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
+
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_00f7b4db = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
+  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
+    } else {
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+
+  if (singleTag) {
+    let id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
+
+const css_95339f02 = \\".data {\\\\n  color: red; }\\\\n\\";
+injector_00f7b4db(css_95339f02);
+"
+`;
+
+exports[`sass default: js 1`] = `
+"/* eslint-env browser */
+
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
+
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_b66c0a2f = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
+  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
+    } else {
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+
+  if (singleTag) {
+    let id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
+
+const css_29ef594f = \\".style {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
+injector_b66c0a2f(css_29ef594f);
+"
+`;
+
+exports[`sass import: js 1`] = `
+"/* eslint-env browser */
+
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
+
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_7e51928e = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
+  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
+    } else {
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+
+  if (singleTag) {
+    let id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
+
+const css_e795c482 = \\".a {\\\\n  color: magenta; }\\\\n\\\\n.b {\\\\n  color: red; }\\\\n\\\\n.c {\\\\n  color: red; }\\\\n\\\\n.foo {\\\\n  color: royalblue; }\\\\n\\";
+injector_7e51928e(css_e795c482);
+"
+`;
+
+exports[`sass modules: js 1`] = `
+"/* eslint-env browser */
+
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
+
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_704767c1 = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
+  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
+    } else {
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+
+  if (singleTag) {
+    let id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
+
+const css_6fc98ea3 = \\".style_someStyle {\\\\n  color: red; }\\\\n\\";
+const modules_af6d9715 = {\\"some-style\\":\\"style_someStyle\\"};
+injector_704767c1(css_6fc98ea3);
+
+console.log(modules_af6d9715);
+"
+`;
+
+exports[`sass sourcemap: js 1`] = `
+"/* eslint-env browser */
+
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
+
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_b66c0a2f = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
+  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
+    } else {
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+
+  if (singleTag) {
+    let id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
+
+const css_29ef594f = \\".style {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zYXNzL3N0eWxlLnNhc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0VBQ1YsVUFBVSxFQUFBIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWxlIHtcbiAgd2lkdGg6IDMwJTtcbiAgY29sb3I6IHJlZDsgfVxuIl19 */\\";
+injector_b66c0a2f(css_29ef594f);
+"
+`;
+
+exports[`sass use: js 1`] = `
+"/* eslint-env browser */
+
+/** @type {HTMLElement[]} */
+const containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+const styleTags = [];
+
+/**
+ * @param {string|undefined} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {HTMLElement} [options.container]
+ * @returns {void}
+ */
+var injector_ea92f1f2 = (css, options = {}) => {
+  if (!css || typeof document === \\"undefined\\") return;
+  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
+  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+
+  const createStyleTag = () => {
+    const styleTag = document.createElement(\\"style\\");
+    styleTag.type = \\"text/css\\";
+    if (position === \\"prepend\\" && container.firstChild) {
+      container.insertBefore(styleTag, container.firstChild);
+    } else {
+      container.append(styleTag);
+    }
+    return styleTag;
+  };
+
+  /** @type {HTMLStyleElement} */
+  let styleTag;
+
+  if (singleTag) {
+    let id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.textContent += css;
+  }
+};
+
+const css_35820dc5 = \\".button {\\\\n  border-radius: 3px;\\\\n  padding: 8px;\\\\n}\\";
+injector_ea92f1f2(css_35820dc5);
 "
 `;
 
 exports[`sourcemap inline: js 1`] = `
-"'use strict';
-
-/* eslint-env browser */
+"/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];
@@ -1919,7 +2189,7 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_14187a73 = (css, options = {}) => {
+var injector_9d0ece4d = (css, options = {}) => {
   if (!css || typeof document === \\"undefined\\") return;
   const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
   const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
@@ -1966,32 +2236,30 @@ var injector_14187a73 = (css, options = {}) => {
   }
 };
 
-var css_2f84417a = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
-injector_14187a73(css_2f84417a);
+const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
+injector_9d0ece4d(css_4fc87a7b);
 
-var css_2f84417a$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
-injector_14187a73(css_2f84417a$1);
+const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
+injector_9d0ece4d(css_8b7409a7);
 
-var css_2f84417a$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1cyB7XG4gIGNvbG9yOiAjZjAwO1xuICBiYWNrZ3JvdW5kOiAjZjAwO1xufVxuIl19 */\\";
-injector_14187a73(css_2f84417a$2);
+const css_9724c78b = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1cyB7XG4gIGNvbG9yOiAjZjAwO1xuICBiYWNrZ3JvdW5kOiAjZjAwO1xufVxuIl19 */\\";
+injector_9d0ece4d(css_9724c78b);
 
-var css_2f84417a$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
-injector_14187a73(css_2f84417a$3);
+const css_c0bf9526 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
+injector_9d0ece4d(css_c0bf9526);
 
-var css_2f84417a$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIuc2FzcyB7XG4gIHdpZHRoOiAzMCU7XG4gIGNvbG9yOiByZWQ7IH1cbiJdfQ== */\\";
-injector_14187a73(css_2f84417a$4);
+const css_2aa6e98a = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIuc2FzcyB7XG4gIHdpZHRoOiAzMCU7XG4gIGNvbG9yOiByZWQ7IH1cbiJdfQ== */\\";
+injector_9d0ece4d(css_2aa6e98a);
 
-var css_2f84417a$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiIsInNvdXJjZXNDb250ZW50IjpbIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */\\";
-injector_14187a73(css_2f84417a$5);
+const css_9a558625 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiIsInNvdXJjZXNDb250ZW50IjpbIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */\\";
+injector_9d0ece4d(css_9a558625);
 
-console.log(css_2f84417a, css_2f84417a$1);
+console.log(css_4fc87a7b, css_8b7409a7);
 "
 `;
 
 exports[`sourcemap true: js 1`] = `
-"'use strict';
-
-/* eslint-env browser */
+"/* eslint-env browser */
 
 /** @type {HTMLElement[]} */
 const containers = [];
@@ -2006,7 +2274,7 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_14187a73 = (css, options = {}) => {
+var injector_9d0ece4d = (css, options = {}) => {
   if (!css || typeof document === \\"undefined\\") return;
   const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
   const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
@@ -2053,24 +2321,24 @@ var injector_14187a73 = (css, options = {}) => {
   }
 };
 
-var css_2f84417a = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
-injector_14187a73(css_2f84417a);
+const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
+injector_9d0ece4d(css_4fc87a7b);
 
-var css_2f84417a$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
-injector_14187a73(css_2f84417a$1);
+const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
+injector_9d0ece4d(css_8b7409a7);
 
-var css_2f84417a$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1cyB7XG4gIGNvbG9yOiAjZjAwO1xuICBiYWNrZ3JvdW5kOiAjZjAwO1xufVxuIl19 */\\";
-injector_14187a73(css_2f84417a$2);
+const css_9724c78b = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1cyB7XG4gIGNvbG9yOiAjZjAwO1xuICBiYWNrZ3JvdW5kOiAjZjAwO1xufVxuIl19 */\\";
+injector_9d0ece4d(css_9724c78b);
 
-var css_2f84417a$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
-injector_14187a73(css_2f84417a$3);
+const css_c0bf9526 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
+injector_9d0ece4d(css_c0bf9526);
 
-var css_2f84417a$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIuc2FzcyB7XG4gIHdpZHRoOiAzMCU7XG4gIGNvbG9yOiByZWQ7IH1cbiJdfQ== */\\";
-injector_14187a73(css_2f84417a$4);
+const css_2aa6e98a = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIuc2FzcyB7XG4gIHdpZHRoOiAzMCU7XG4gIGNvbG9yOiByZWQ7IH1cbiJdfQ== */\\";
+injector_9d0ece4d(css_2aa6e98a);
 
-var css_2f84417a$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiIsInNvdXJjZXNDb250ZW50IjpbIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */\\";
-injector_14187a73(css_2f84417a$5);
+const css_9a558625 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiIsInNvdXJjZXNDb250ZW50IjpbIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */\\";
+injector_9d0ece4d(css_9a558625);
 
-console.log(css_2f84417a, css_2f84417a$1);
+console.log(css_4fc87a7b, css_8b7409a7);
 "
 `;

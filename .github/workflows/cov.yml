@@ -1,0 +1,35 @@
+name: Code Coverage
+
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Code Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: "12"
+
+      - name: Install Dependencies
+        run: |
+          npm install -g pnpm
+          pnpm i --frozen-lockfile
+        env:
+          HUSKY_SKIP_INSTALL: 1
+          CI: true
+
+      - name: Test /w Coverage
+        run: pnpm t -- --coverage
+        env:
+          CI: true
+
+      - name: Submit Coverage to codecov.io
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          fail_ci_if_error: true

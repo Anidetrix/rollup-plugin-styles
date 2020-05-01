@@ -1,6 +1,6 @@
-import { default as nodeResolve, AsyncOpts } from "resolve";
+import resolveAsync, { AsyncOpts } from "resolve";
 
-export default (id: string, options: AsyncOpts = {}): Promise<string> =>
+export default async (id: string, options: AsyncOpts = {}): Promise<string> =>
   new Promise((resolve, reject) => {
-    nodeResolve(id, options, (err, res) => (err ? reject(err) : resolve(res)));
+    resolveAsync(id, options, (err, res) => (err ? reject(err) : resolve(res)));
   });

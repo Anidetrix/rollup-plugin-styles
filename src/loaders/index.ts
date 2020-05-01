@@ -1,6 +1,6 @@
 import PQueue from "p-queue";
 
-import { Loader, Payload, LoaderContext, ObjectWithUnknownProps, LoadersOptions } from "../types";
+import { Loader, LoaderContext, LoadersOptions, ObjectWithUnknownProps, Payload } from "../types";
 import postcssLoader from "./postcss";
 import sourcemapLoader from "./sourcemap";
 import sassLoader from "./sass";
@@ -14,7 +14,7 @@ import lessLoader from "./less";
  */
 function matchFile(filepath: string, condition: Loader["test"]): boolean {
   if (typeof condition === "function") return condition(filepath);
-  return !!condition && condition.test(filepath);
+  return Boolean(condition?.test(filepath));
 }
 
 // This queue makes sure one thread is always available,
@@ -26,8 +26,8 @@ const threadPoolSize = process.env.UV_THREADPOOL_SIZE
 const workQueue = new PQueue({ concurrency: threadPoolSize - 1 });
 
 export default class Loaders {
-  use: [string, ObjectWithUnknownProps][] = [];
   loaders: Loader[] = [];
+  use: [string, ObjectWithUnknownProps][];
   test: (filepath: string) => boolean;
 
   constructor(options: LoadersOptions) {
@@ -66,23 +66,22 @@ export default class Loaders {
     return this.test(filepath) || this.loaders.some(loader => matchFile(filepath, loader.test));
   }
 
-  process(payload: Payload, context: LoaderContext): Promise<Payload> {
+  async process(payload: Payload, context: LoaderContext): Promise<Payload> {
     return this.use
       .slice()
       .reverse()
       .map(([name, options]) => {
         const loader = this.getLoader(name);
-        const loaderContext: LoaderContext = { ...context, options: options || {} };
+        const ctx: LoaderContext = { ...context, options: options ?? {} };
 
         return async (payload: Payload): Promise<Payload> => {
-          if (loader && (loader.alwaysProcess || matchFile(loaderContext.id, loader.test))) {
-            return workQueue.add(loader.process.bind(loaderContext, payload));
+          if (loader && (loader.alwaysProcess || matchFile(ctx.id, loader.test))) {
+            return workQueue.add(loader.process.bind(ctx, payload));
           }
 
-          // Otherwise directly return input value
           return payload;
         };
       })
-      .reduce((current, next) => current.then(next), Promise.resolve({ ...payload }));
+      .reduce(async (current, next) => current.then(next), Promise.resolve({ ...payload }));
   }
 }

@@ -6,36 +6,31 @@ import { Stylus } from "stylus";
 
 import resolveAsync from "./resolve-async";
 
-/**
- * Interface for mapping module's name to it's type
- */
-interface ModuleImportMap {
+export type ModuleImportMap = {
   sass: Sass;
   "node-sass": NodeSass;
   fibers: FiberConstructor;
   less: Less;
   stylus: Stylus;
   [k: string]: unknown;
-}
+};
 
-export default async <K extends keyof ModuleImportMap>(
-  moduleId: K,
+export default async <T extends keyof ModuleImportMap>(
+  moduleId: T,
   basedir = process.cwd(),
-): Promise<ModuleImportMap[K] | undefined> => {
+): Promise<ModuleImportMap[T] | undefined> => {
   if (typeof moduleId !== "string") return;
 
-  // Trying to load module normally (relative to plugin directory)
   try {
     return require(moduleId);
   } catch (error) {
-    // Ignore error
+    /* noop */
   }
 
-  // Then, trying to load it relative to provided dir or CWD
   try {
     return require(await resolveAsync(moduleId, { basedir }));
   } catch (error) {
-    // Ignore error
+    /* noop */
   }
 
   try {

@@ -5,7 +5,7 @@ declare module "fibers" {
   }
 
   export interface Fiber {
-    run<T = unknown, R = unknown>(param?: T): R;
+    run<T = unknown, TR = unknown>(param?: T): TR;
     reset<T = unknown>(): T;
     throwInto(exception: Error): void;
   }

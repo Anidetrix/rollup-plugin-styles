@@ -3,6 +3,7 @@
 /.cache
 /.vscode
 /node_modules
-/__tests__/fixtures/dist
 /coverage
 /docs
+/__tests__/fixtures/dist
+/pnpm-lock.yaml

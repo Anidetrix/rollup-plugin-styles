@@ -1,69 +1,58 @@
-import { Options as SASSOptions, Result as SASSResult, Sass } from "sass";
-import { FiberConstructor } from "fibers";
+import { Options as SASSOptions, Result as SASSResult } from "sass";
 
 import { Loader, SASSLoaderOptions } from "../../types";
 import loadModule from "../../utils/load-module";
+import { normalizePath } from "../../utils/path";
 
-import defaultImporter from "./default-importer";
-
-const sassIDs = ["node-sass", "sass"] as const;
-
-/**
- * Loads Sass module or throws an error
- * @returns A tuple in format [`loaded sass module`, `id`],
- */
-async function loadSassOrThrow(): Promise<[Sass, typeof sassIDs[number]]> {
-  // Loading one of the supported modules
-  for (const id of sassIDs) {
-    const module = await loadModule(id);
-    if (module) return [module, id];
-  }
-
-  // Throwing exception if module can't be loaded
-  throw new Error(
-    [
-      "You need to install one of the following packages:",
-      sassIDs.map(id => `\`${id}\``).join(", "),
-      "in order to process Sass files",
-    ].join("\n"),
-  );
-}
+import { loadSass } from "./load";
+import importer from "./importer";
 
 const loader: Loader<SASSLoaderOptions> = {
   name: "sass",
   test: /\.(sass|scss)$/i,
   async process({ code, map }) {
-    const [sass, sassType] = await loadSassOrThrow();
+    const { options } = this;
 
-    const render = (options: SASSOptions): Promise<SASSResult> =>
+    const [sass, type] = await loadSass(options.impl).catch(this.error);
+
+    // `fibers` doesn't work in testing
+    const useFibers = options.fibers ?? (type === "sass" && process.env.NODE_ENV !== "test");
+    const fiber = useFibers ? await loadModule("fibers") : undefined;
+
+    const render = async (options: SASSOptions): Promise<SASSResult> =>
       new Promise((resolve, reject) => {
         sass.render(options, (err, css) => (err ? reject(err) : resolve(css)));
       });
 
-    let fiber: FiberConstructor | undefined;
-    // Disable `fibers` for testing, it doesn't work
-    if (sassType == "sass" && process.env.NODE_ENV !== "test") fiber = await loadModule("fibers");
+    // Remove non-Sass options
+    delete options.fibers;
+    delete options.impl;
 
-    // node-sass won't produce source maps if the data option is used and `sourceMap` option is not a string.
-    // In case it is a string, `sourceMap` option should be a path where the source map is written.
-    // But since we're using the data option, the source map will not actually be written, but
+    // node-sass won't produce source maps if the `data`
+    // option is used and `sourceMap` option is not a string.
+    //
+    // In case it is a string, `sourceMap` option
+    // should be a path where the source map is written.
+    //
+    // But since we're using the `data` option,
+    // the source map will not actually be written, but
     // all paths in sourcemap's sources will be relative to that path.
     const res = await render({
-      ...this.options,
+      ...options,
       file: this.id,
-      data: (this.options.data || "") + code,
+      data: (options.data ?? "") + code,
       indentedSyntax: /\.sass$/i.test(this.id),
-      sourceMap: Boolean(this.sourceMap) && this.id,
+      sourceMap: this.id,
       omitSourceMapUrl: true,
       sourceMapContents: true,
-      importer: [defaultImporter].concat(this.options.importer || []),
+      importer: [importer].concat(options.importer ?? []),
       fiber,
     });
 
     const deps = res.stats.includedFiles;
-    for (const dep of deps) this.dependencies.add(dep);
+    for (const dep of deps) this.deps.add(normalizePath(dep));
 
-    return { code: res.css.toString(), map: (res.map && res.map.toString()) || map };
+    return { code: res.css.toString(), map: res.map?.toString() ?? map };
   },
 };
 

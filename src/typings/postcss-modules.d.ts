@@ -25,7 +25,7 @@ declare module "postcss-modules-extract-imports" {
 
   export interface ExtractImportsOptions {
     failOnWrongOrder?: boolean;
-    createImportedName?: (name: string, path: string) => string;
+    createImportedName?: (name: string, file: string) => string;
   }
 
   export default function (options?: ExtractImportsOptions): Plugin<unknown>;
@@ -36,8 +36,8 @@ declare module "postcss-modules-scope" {
 
   export interface ScopeOptions {
     exportGlobals?: boolean;
-    generateScopedName?: (name: string, path: string, css: string) => string;
-    generateExportEntry?: (name: string, scopedName: string, path: string, css: string) => string;
+    generateScopedName?: (name: string, file: string, css: string) => string;
+    generateExportEntry?: (name: string, scopedName: string, file: string, css: string) => string;
   }
 
   export default function (options?: ScopeOptions): Plugin<unknown>;

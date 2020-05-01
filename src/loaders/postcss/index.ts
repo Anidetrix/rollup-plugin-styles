@@ -1,32 +1,33 @@
 import path from "path";
-import { ExistingRawSourceMap } from "rollup";
+import { RawSourceMap } from "source-map";
 import { makeLegalIdentifier } from "@rollup/pluginutils";
 import postcss from "postcss";
-import findPostCSSConfig from "postcss-load-config";
+import loadPostCSSConfig from "postcss-load-config";
 import cssnano from "cssnano";
 
 import { Loader, PostCSSLoaderOptions } from "../../types";
-import { humanlizePath, normalizePath } from "../../utils/path-utils";
-import { MapModifier } from "../../utils/sourcemap-utils";
+import { humanlizePath, normalizePath } from "../../utils/path";
+import { mm } from "../../utils/sourcemap";
 import resolveAsync from "../../utils/resolve-async";
 import safeId from "../../utils/safe-id";
+import { denullifyObject, booleanFilter } from "../../utils/filter";
 
+import postcssImport from "./import";
+import postcssUrl from "./url";
 import postcssModules from "./modules";
-import postcssImportExport from "./import-export";
-import postcssNoop from "./noop";
+import postcssICSS from "./icss";
 
-type LoadedConfig = {
-  file?: string;
-  options?: postcss.ProcessOptions;
-  plugins?: (postcss.Transformer | postcss.Processor)[];
-};
+type LoadedConfig = ReturnType<typeof loadPostCSSConfig> extends PromiseLike<infer T> ? T : never;
 
 /**
  * @param id File path
  * @param config `postcss-load-config`'s options
  * @returns Loaded PostCSS config
  */
-function loadConfig(id: string, config: PostCSSLoaderOptions["config"]): Promise<LoadedConfig> {
+async function loadConfig(
+  id: string,
+  config: PostCSSLoaderOptions["config"],
+): Promise<Partial<LoadedConfig>> {
   const configPath =
     typeof config === "object" && config.path ? path.resolve(config.path) : path.dirname(id);
 
@@ -36,11 +37,11 @@ function loadConfig(id: string, config: PostCSSLoaderOptions["config"]): Promise
       dirname: path.dirname(id),
       basename: path.basename(id),
     },
-    options: (typeof config === "object" && config.ctx) || {},
+    options: typeof config === "object" ? config.ctx ?? {} : {},
   };
 
-  return findPostCSSConfig(context, configPath).catch(error => {
-    if (!error.message.toLowerCase().includes("no postcss config found")) throw error;
+  return loadPostCSSConfig(context, configPath).catch(error => {
+    if (!(error.message as string).toLowerCase().includes("no postcss config found")) throw error;
     return {};
   });
 }
@@ -59,9 +60,16 @@ const loader: Loader<PostCSSLoaderOptions> = {
   async process({ code, map, extracted }) {
     const { options } = this;
 
-    const config = await loadConfig(this.id, options.config);
+    const config = await loadConfig(this.id, options.config).catch(this.error);
 
-    const plugins = [...(options.postcss.plugins || []), ...(config.plugins || [])];
+    const plugins = [
+      ...[
+        options.import && postcssImport(options.import),
+        options.url && postcssUrl(options.url),
+      ].filter(booleanFilter),
+      ...(options.postcss.plugins ?? []),
+      ...(config.plugins ?? []),
+    ];
 
     const autoModules = options.autoModules && isModuleFile(this.id);
     const supportModules = Boolean(options.modules || autoModules);
@@ -73,21 +81,19 @@ const loader: Loader<PostCSSLoaderOptions> = {
       to: string;
       map: postcss.ProcessOptions["map"];
     } = {
-      ...options.postcss,
-      ...config.options,
+      ...denullifyObject((config.options ?? {}) as Required<postcss.ProcessOptions>),
+      ...denullifyObject(options.postcss),
       from: this.id,
-      // Set `to` to extract location, required for some plugins
       to: typeof options.extract === "string" ? path.resolve(options.extract) : this.id,
-      // Annotation are still enabled if you have set {inline: true} in PostCSS `map` option
-      map: Boolean(this.sourceMap) && { inline: false, annotation: false, sourcesContent: true },
+      map: {
+        inline: false,
+        annotation: false,
+        sourcesContent: true,
+        prev: mm(map).relative(path.dirname(this.id)).toObject(),
+      },
     };
 
     delete postcssOpts.plugins;
-
-    if (typeof postcssOpts.map === "object" && map)
-      postcssOpts.map.prev = new MapModifier(map)
-        .relative(path.dirname(postcssOpts.from))
-        .toObject();
 
     if (supportModules) {
       const modulesOptions = typeof options.modules === "object" ? options.modules : {};
@@ -99,15 +105,15 @@ const loader: Loader<PostCSSLoaderOptions> = {
           failOnWrongOrder: true,
           ...modulesOptions,
         }),
-        postcssImportExport({
+        postcssICSS({
           extensions: options.extensions,
-          getJSON(file, json, out) {
-            modulesExports[file] = json;
+          getReplacements(file, replacements, out) {
+            modulesExports[file] = replacements;
             if (
               typeof options.modules === "object" &&
-              typeof options.modules.getJSON === "function"
+              typeof options.modules.getReplacements === "function"
             ) {
-              return options.modules.getJSON(file, json, out);
+              return options.modules.getReplacements(file, replacements, out);
             }
           },
         }),
@@ -118,86 +124,96 @@ const loader: Loader<PostCSSLoaderOptions> = {
     if (!options.extract && options.minimize)
       plugins.push(cssnano(typeof options.minimize === "object" ? options.minimize : {}));
 
-    // Prevent from PostCSS warning about no plugins
-    if (plugins.length === 0) plugins.push(postcssNoop);
-
     const res = await postcss(plugins).process(code, postcssOpts);
 
-    const deps = res.messages.filter(msg => msg.type === "dependency");
-    for (const dep of deps) this.dependencies.add(dep.file);
-
     for (const warning of res.warnings())
-      this.warn(warning.text, { column: warning.column, line: warning.line });
+      this.warn({
+        name: warning.plugin,
+        message: warning.text,
+        loc: { column: warning.column, line: warning.line, file: warning.node.source?.input.file },
+      });
 
-    if (res.map) {
-      map =
-        new MapModifier((res.map.toJSON() as unknown) as ExistingRawSourceMap)
-          .resolve(path.dirname(postcssOpts.to))
-          .toString() || map;
-    }
+    const deps = res.messages.filter(msg => msg.type === "dependency");
+    for (const dep of deps) this.deps.add(normalizePath(dep.file));
 
-    if (!options.extract && this.sourceMap && map)
-      res.css += new MapModifier(map)
+    const assets = res.messages.filter(msg => msg.type === "asset");
+    for (const asset of assets) this.assets.set(asset.to, asset.source);
+
+    map = mm((res.map?.toJSON() as unknown) as RawSourceMap)
+      .resolve(path.dirname(postcssOpts.to))
+      .toString();
+
+    if (!options.extract && this.sourceMap)
+      res.css += mm(map)
         .modify(map => void delete map.file)
         .relative()
         .toCommentData();
 
-    let output = "\n";
+    if (options.emit) return { code: res.css, map };
+
+    const reservedWords = new Set<string>();
+    const saferId = (id: string): string => safeId(id, humanlizePath(this.id));
+
+    const cssExportName = "css";
+    reservedWords.add(cssExportName);
+
+    const cssVarName = saferId(cssExportName);
+    const modulesVarName = saferId("modules");
+
+    const output = [
+      `const ${cssVarName} = ${JSON.stringify(res.css)}`,
+      `const ${modulesVarName} = ${JSON.stringify(modulesExports[this.id] ?? {})}`,
+      `export const ${cssExportName} = ${cssVarName}`,
+      `export default ${supportModules ? modulesVarName : cssVarName}`,
+    ];
+
     if (options.namedExports) {
       const json = modulesExports[this.id];
 
       const getClassName =
-        typeof options.namedExports === "function" ? options.namedExports : makeLegalIdentifier;
+        typeof options.namedExports === "function"
+          ? options.namedExports
+          : (name: string): string =>
+              makeLegalIdentifier(reservedWords.has(name) ? `_${name}` : name);
 
       for (const name in json) {
         const newName = getClassName(name);
 
-        // Skip logging when namedExports is a function since user can do that manually
-        if (name !== newName && typeof options.namedExports !== "function")
-          this.warn(`Exported "${name}" as "${newName}" in ${humanlizePath(this.id)}`);
+        if (name !== newName)
+          this.warn(`Exported \`${name}\` as \`${newName}\` in ${humanlizePath(this.id)}`);
 
         if (!json[newName]) json[newName] = json[name];
 
-        output += `export const ${newName} = ${JSON.stringify(json[name])};\n`;
+        output.push(`export const ${newName} = ${JSON.stringify(json[name])}`);
       }
     }
 
-    const cssVarName = safeId("css");
-    if (options.extract) {
-      output += `export default ${JSON.stringify(modulesExports[this.id])};\n`;
-      extracted = { id: this.id, code: res.css, map };
-    } else {
-      const defaultExport = supportModules ? JSON.stringify(modulesExports[this.id]) : cssVarName;
-      output += `${[
-        `var ${cssVarName} = ${JSON.stringify(res.css)};`,
-        `export const stylesheet = ${cssVarName};`,
-        `export default ${defaultExport};`,
-      ].join("\n")}\n`;
-    }
+    if (options.extract) extracted = { id: this.id, css: res.css, map };
 
-    if (!options.extract && options.inject) {
+    if (options.inject) {
       if (typeof options.inject === "function") {
-        output += options.inject(cssVarName, this.id);
+        output.push(options.inject(cssVarName, this.id));
       } else {
-        const injectorName = safeId("injector");
-        const injectorPath = normalizePath(
-          await resolveAsync("./inject-css", {
-            basedir: path.join(
-              process.env.NODE_ENV === "test" ? process.cwd() : __dirname,
-              "runtime",
-            ),
-          }),
-        );
+        const injectorVarName = saferId("injector");
+        const injectorId = await resolveAsync("./inject-css", {
+          basedir: path.join(
+            process.env.NODE_ENV === "test" ? process.cwd() : __dirname,
+            "runtime",
+          ),
+        });
         const injectorData =
           typeof options.inject === "object" ? `,${JSON.stringify(options.inject)}` : "";
-        output += `${[
-          `import ${injectorName} from '${injectorPath}';`,
-          `${injectorName}(${cssVarName}${injectorData});`,
-        ].join("\n")}\n`;
+
+        output.push(
+          `import ${injectorVarName} from '${normalizePath(injectorId)}'`,
+          `${injectorVarName}(${cssVarName}${injectorData})`,
+        );
       }
     }
 
-    return { code: output, map, extracted };
+    code = `${output.join(";\n")};`;
+
+    return { code, map, extracted };
   },
 };
 

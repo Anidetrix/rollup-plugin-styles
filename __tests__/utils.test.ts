@@ -1,6 +1,6 @@
 import loadModule from "../src/utils/load-module";
 import { fixture } from "./helpers";
-import { getInlineMap, getExtractedMap, stripMap, MapModifier } from "../src/utils/sourcemap-utils";
+import { mm, getExtractedMap, getInlineMap, stripMap } from "../src/utils/sourcemap";
 
 describe("load-module", () => {
   test("wrong path", async () => {
@@ -9,7 +9,7 @@ describe("load-module", () => {
   });
 
   test("correct cwd path", async () => {
-    const correct = await loadModule(fixture("utils", "fixture"));
+    const correct = await loadModule(fixture("utils/fixture"));
     expect(correct).toBe("this is fixture");
   });
 
@@ -34,7 +34,7 @@ describe("sourcemap-utils", () => {
     const code = ".foo {color: red;}/*# sourceMappingURL=fixture.css.map */";
     const wrongMap = await getExtractedMap(code, "this/is/nonexistant/path.css");
     expect(wrongMap).toBeUndefined();
-    const correctMap = await getExtractedMap(code, fixture("utils", "pointless.css"));
+    const correctMap = await getExtractedMap(code, fixture("utils/pointless.css"));
     expect(correctMap).toBe("{THIS:ISASOURCEMAPSIMULATION}");
   });
 
@@ -45,7 +45,7 @@ describe("sourcemap-utils", () => {
 
   test("map modifier", () => {
     const map = JSON.stringify({ sources: ["../a/b/../foo/bar.css", "../b/a/../bar/foo.css"] });
-    const relativeSrc = JSON.stringify(new MapModifier(map).relative().toObject().sources);
+    const relativeSrc = JSON.stringify(mm(map).relative().toObject()?.sources);
     expect(relativeSrc).toBe(JSON.stringify(["../a/foo/bar.css", "../b/bar/foo.css"]));
   });
 });

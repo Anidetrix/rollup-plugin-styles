@@ -14,9 +14,9 @@
 ```bash
 npm install -D rollup-plugin-styles # npm
 
-yarn add rollup-plugin-styles --dev # yarn
-
 pnpm add -D rollup-plugin-styles # pnpm
+
+yarn add rollup-plugin-styles --dev # yarn 1.x
 ```
 
 ## Usage
@@ -36,11 +36,13 @@ After that you can import CSS files in your code:
 import "./style.css";
 ```
 
-Note that, by default, generated CSS will be injected into `<head>`, with CSS also available as default export unless `extract: true`:
+Note that, by default, generated CSS will be injected into `<head>`, with CSS also available as default export unless [CSS Modules](https://github.com/css-modules/css-modules) are enabled, in which case you need to use named `css` export:
 
 ```js
 // Inject into `<head>`, also available as `style` object in this example
 import style from "./style.css";
+// Named export of CSS string, available even with CSS Modules enabled
+import { css } from "./style.css";
 ```
 
 This plugin will also automatically detect and use local PostCSS config files.
@@ -49,10 +51,10 @@ This plugin will also automatically detect and use local PostCSS config files.
 
 ```js
 styles({
-  extract: true,
+  mode: "extract",
   // ...or with absolute/relative to current working directory path
   // Note: also acts as `to` for PostCSS
-  extract: "dist/awesome-bundle.css",
+  mode: ["extract", "dist/awesome-bundle.css"],
 });
 ```
 
@@ -77,17 +79,17 @@ Install corresponding dependency:
   ```bash
   npm install -D node-sass # npm
 
-  yarn add node-sass --dev # yarn
-
   pnpm add -D node-sass # pnpm
+
+  yarn add node-sass --dev # yarn 1.x
   ```
 
   ```bash
   npm install -D sass # npm
 
-  yarn add sass --dev # yarn
-
   pnpm add -D sass # pnpm
+
+  yarn add sass --dev # yarn 1.x
   ```
 
 - For `Stylus` support install `stylus`:
@@ -95,9 +97,9 @@ Install corresponding dependency:
   ```bash
   npm install -D stylus # npm
 
-  yarn add stylus --dev # yarn
-
   pnpm add -D stylus # pnpm
+
+  yarn add stylus --dev # yarn 1.x
   ```
 
 - For `Less` support install `less`:
@@ -105,9 +107,9 @@ Install corresponding dependency:
   ```bash
   npm install -D less # npm
 
-  yarn add less --dev # yarn
-
   pnpm add -D less # pnpm
+
+  yarn add less --dev # yarn 1.x
   ```
 
 That's it, now you can import `.scss` `.sass` `.styl` `.stylus` `.less` files in your code.
@@ -135,28 +137,30 @@ To install `fibers`:
 ```bash
 npm install -D fibers # npm
 
-yarn add fibers --dev # yarn
-
 pnpm add -D fibers # pnpm
+
+yarn add fibers --dev # yarn 1.x
 ```
 
 ## Configuration
 
 See [API Reference for `Options`](https://anidetrix.github.io/rollup-plugin-styles/interfaces/options.html) for full list of available options.
 
-## Differences from [rollup-plugin-postcss](https://github.com/egoist/rollup-plugin-postcss)
+## Main differences from [rollup-plugin-postcss](https://github.com/egoist/rollup-plugin-postcss)
 
 - Written completely in TypeScript
-- [CSS Modules](https://github.com/css-modules/css-modules) implementation which:
-  - Processes files imported with plugins like [postcss-import](https://github.com/postcss/postcss-import)
-  - Causes no duplication with plugins like [postcss-custom-properties](https://github.com/postcss/postcss-custom-properties)
+- Up-to-date [CSS Modules](https://github.com/css-modules/css-modules) implementation
+- Built-in `@import` handler
+- Built-in assets handler
+- Code splitting support
+- Ability to emit pure CSS for other plugins
+- Correct multiple instance support with check for already processed files
+- Support for implementation and `fibers` forcing for Sass
 - Support for partials and `~` in Less import statements
-- Proper sourcemap generation for all loaders
-- Proper order of imported CSS chunks
 - Sourcemaps include source content
+- Proper sourcemap generation for all loaders
 - Correct inline sourcemaps
 - Correct relative source paths in extracted sourcemaps
-- Can accept sourcemaps from previous plugins
 - Extracts sourcemaps from loaded files
 - More smaller things that I forgot
 
@@ -166,7 +170,7 @@ Any contributions are always welcome, not only Pull Requests! 😀
 
 - **QA**: file bug reports, the more details you can give the better
 - **Code**: take a look at the [open issues](https://github.com/Anidetrix/rollup-plugin-styles/issues), even if you can't write code showing that you care about a given issue matters
-- **Ideas**: feature requests are welcome, no matter how ambitions they are
+- **Ideas**: feature requests are welcome, even ambitious ones
 
 Your First Contribution? You can learn how from this _free_ series, [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
 

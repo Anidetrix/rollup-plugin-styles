@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        node: ["12", "10"]
+        node: ["14", "12", "10"]
 
     steps:
       - name: Code Checkout
@@ -22,17 +22,13 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          npm install -g yarn
-          yarn --frozen-lockfile --non-interactive
+          npm install -g pnpm
+          pnpm i --frozen-lockfile
         env:
           HUSKY_SKIP_INSTALL: 1
-
-      - name: Lint
-        run: yarn lint
-        env:
           CI: true
 
       - name: Test
-        run: yarn test
+        run: pnpm t
         env:
           CI: true

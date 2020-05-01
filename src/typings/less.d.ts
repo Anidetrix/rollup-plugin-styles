@@ -130,8 +130,7 @@ declare module "less" {
 
     render(input: string, callback: RenderCallback): void;
     render(input: string, options: Options, callback: RenderCallback): void;
-    render(input: string): Promise<RenderOutput>;
-    render(input: string, options: Options): Promise<RenderOutput>;
+    render(input: string, options?: Options): Promise<RenderOutput>;
   }
 
   const less: Less;

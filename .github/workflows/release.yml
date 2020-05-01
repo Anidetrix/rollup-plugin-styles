@@ -17,17 +17,14 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          npm install -g yarn
-          yarn --frozen-lockfile --non-interactive
+          npm install -g pnpm
+          pnpm i --frozen-lockfile
         env:
           HUSKY_SKIP_INSTALL: 1
+          CI: true
 
-      - name: Semantic Release
-        uses: cycjimmy/semantic-release-action@v2
-        with:
-          extra_plugins: |
-            @semantic-release/git@9.0.0
-            @semantic-release/changelog@5.0.0
+      - name: Release
+        run: pnpm run release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

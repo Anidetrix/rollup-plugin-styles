@@ -11,8 +11,6 @@
     /* Compile Checks */
     "isolatedModules": true,
     "noEmitOnError": true,
-    /* Output Options */
-    "sourceMap": true,
     /* Strict Type-Checking Options */
     "strict": true,
     /* Additional Checks */

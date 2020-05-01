@@ -1,9 +1,10 @@
 import path from "path";
 
-import { Loader, LESSLoaderOptions } from "../../types";
+import { LESSLoaderOptions, Loader } from "../../types";
 import loadModule from "../../utils/load-module";
+import { normalizePath } from "../../utils/path";
 
-import importPlugin from "./import-plugin";
+import importer from "./importer";
 
 const loader: Loader<LESSLoaderOptions> = {
   name: "less",
@@ -14,17 +15,15 @@ const loader: Loader<LESSLoaderOptions> = {
 
     const res = await less.render(code, {
       ...this.options,
-      plugins: [importPlugin].concat(this.options.plugins || []),
+      plugins: [importer].concat(this.options.plugins ?? []),
       filename: this.id,
-      sourceMap: this.sourceMap
-        ? { outputSourceFiles: true, sourceMapBasepath: path.dirname(this.id) }
-        : undefined,
+      sourceMap: { outputSourceFiles: true, sourceMapBasepath: path.dirname(this.id) },
     });
 
     const deps = res.imports;
-    for (const dep of deps) this.dependencies.add(dep);
+    for (const dep of deps) this.deps.add(normalizePath(dep));
 
-    return { code: res.css, map: res.map || map };
+    return { code: res.css, map: res.map ?? map };
   },
 };
 

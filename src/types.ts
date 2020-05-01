@@ -1,17 +1,18 @@
 import postcss from "postcss";
 import cssnano from "cssnano";
+import { CreateFilter } from "@rollup/pluginutils";
 import { PluginContext } from "rollup";
 import { Importer as SASSImporter } from "sass";
 import { Plugin as LESSPlugin } from "less";
-import { LocalByDefaultOptions } from "postcss-modules-local-by-default";
-import { ExtractImportsOptions } from "postcss-modules-extract-imports";
-import { ScopeOptions } from "postcss-modules-scope";
+import { ModulesOptions } from "./loaders/postcss/modules";
+import { UrlOptions } from "./loaders/postcss/url";
+import { ImportOptions } from "./loaders/postcss/import";
 
 /** Object, which properties are unknown */
 export type ObjectWithUnknownProps = { [prop: string]: unknown };
 
 /** `postcss-load-config`'s options */
-export interface PostCSSLoadConfigOptions {
+export type PostCSSLoadConfigOptions = {
   /**
    * Path to PostCSS config file directory
    * @default undefined
@@ -22,7 +23,7 @@ export interface PostCSSLoadConfigOptions {
    * @default {}
    */
   ctx?: ObjectWithUnknownProps;
-}
+};
 
 /** Options for PostCSS Loader */
 export type PostCSSLoaderOptions = {
@@ -30,13 +31,20 @@ export type PostCSSLoaderOptions = {
   minimize: Exclude<Options["minimize"], true | undefined>;
   /** @see {@link Options.config} */
   config: Exclude<Options["config"], true | undefined>;
+  /** @see {@link Options.import} */
+  import: Exclude<Options["import"], true | undefined>;
+  /** @see {@link Options.url} */
+  url: Exclude<Options["url"], true | undefined>;
   /** @see {@link Options.modules} */
   modules: Exclude<Options["modules"], true | undefined>;
 
-  /** @see {@link Options.inject} */
-  inject: NonNullable<Options["inject"]>;
-  /** @see {@link Options.extract} */
-  extract: NonNullable<Options["extract"]>;
+  /** @see {@link Options.mode} */
+  inject: boolean | InjectOptions | ((varname: string, id: string) => string);
+  /** @see {@link Options.mode} */
+  extract: boolean | string;
+  /** @see {@link Options.mode} */
+  emit: boolean;
+
   /** @see {@link Options.namedExports} */
   namedExports: NonNullable<Options["namedExports"]>;
   /** @see {@link Options.autoModules} */
@@ -69,6 +77,18 @@ export type SASSLoaderOptions = {
    * @default undefined
    */
   data?: string;
+  /** Force Sass implementation */
+  impl?: "node-sass" | "sass";
+  /** Forcefully disable/enable `fibers` */
+  fibers?: boolean;
+  /** Any options for `sass` processor */
+  [option: string]: unknown;
+};
+
+/** Options for Stylus loader */
+export type StylusLoaderOptions = {
+  /** Any options for `stylus` processor */
+  [option: string]: unknown;
 };
 
 /** Options for Less Loader */
@@ -78,23 +98,25 @@ export type LESSLoaderOptions = {
    * @default undefined
    */
   plugins?: LESSPlugin[];
+  /** Any options for `less` processor */
+  [option: string]: unknown;
 };
 
 /** Options for {@link Loaders} class */
-export interface LoadersOptions {
+export type LoadersOptions = {
   /** @see {@link Options.use} */
   use: (string | [string] | [string, ObjectWithUnknownProps])[];
   /** @see {@link Options.loaders} */
   loaders: Loader[];
   /** @see {@link Options.extensions} */
   extensions: string[];
-}
+};
 
 /**
  * Loader
  * @param LoaderOptionsType type of loader's options
  * */
-export interface Loader<LoaderOptionsType = ObjectWithUnknownProps> {
+export type Loader<TLoaderOptions = ObjectWithUnknownProps> = {
   /** Name */
   name: string;
   /**
@@ -105,35 +127,37 @@ export interface Loader<LoaderOptionsType = ObjectWithUnknownProps> {
   /** Skip testing, always process the file */
   alwaysProcess?: boolean;
   /** Function for processing */
-  process: (this: LoaderContext<LoaderOptionsType>, payload: Payload) => Promise<Payload> | Payload;
-}
+  process: (this: LoaderContext<TLoaderOptions>, payload: Payload) => Promise<Payload> | Payload;
+};
 
 /**
  * Loader's context
  * @param LoaderOptionsType type of loader's options
  * */
-export interface LoaderContext<LoaderOptionsType = ObjectWithUnknownProps> {
+export type LoaderContext<TLoaderOptions = ObjectWithUnknownProps> = {
   /**
    * Loader's options
    * @default {}
    * */
-  options: LoaderOptionsType;
+  readonly options: TLoaderOptions;
   /** @see {@link Options.sourceMap} */
-  sourceMap?: boolean | "inline";
+  readonly sourceMap?: boolean | "inline";
   /** Resource path */
-  id: string;
+  readonly id: string;
   /** Files to watch */
-  dependencies: Set<string>;
+  readonly deps: Set<string>;
+  /** Assets to emit */
+  readonly assets: Map<string, Uint8Array>;
   /** Function for emitting a waring */
-  warn: PluginContext["warn"];
+  readonly warn: PluginContext["warn"];
   /** Function for emitting an error */
-  error: PluginContext["error"];
+  readonly error: PluginContext["error"];
   /** https://rollupjs.org/guide/en#plugin-context */
-  plugin: PluginContext;
-}
+  readonly plugin: PluginContext;
+};
 
 /** Loader's payload */
-export interface Payload {
+export type Payload = {
   /** File content */
   code: string;
   /** Sourcemap */
@@ -142,40 +166,42 @@ export interface Payload {
   extracted?: {
     /** Source file path */
     id: string;
-    /** File content */
-    code: string;
+    /** CSS */
+    css: string;
     /** Sourcemap */
     map?: string;
   };
-}
+};
 
 /** CSS data, extracted from JS */
-export interface ExtractedData {
+export type ExtractedData = {
   /** CSS */
-  code: string;
+  css: string;
   /** Output filename for CSS */
-  codeFileName: string;
+  cssFileName: string;
   /** Sourcemap */
   map?: string;
   /** Output filename for sourcemap */
   mapFileName: string;
-}
+};
 
-/** Options for [CSS Modules](https://github.com/css-modules/css-modules) */
-export type ModulesOptions = {
+/** Options for CSS injection */
+export type InjectOptions = {
   /**
-   * Default mode for classes
-   * @default "local"
+   * Insert `<style>` tag into container as a first child
+   * @default false
    * */
-  mode?: LocalByDefaultOptions["mode"];
-  /** Fail on wrong order of composition */
-  failOnWrongOrder?: ExtractImportsOptions["failOnWrongOrder"];
-  /** Export global classes */
-  exportGlobals?: ScopeOptions["exportGlobals"];
-  /** Placeholder or function for scoped name generation */
-  generateScopedName?: string | ScopeOptions["generateScopedName"];
-  /** Function for resulting JSON extraction */
-  getJSON?: (file: string, json: { [k: string]: string }, out?: string) => void;
+  prepend?: boolean;
+  /**
+   * Inject CSS into single `<style>` tag only
+   * @default false
+   * */
+  singleTag?: boolean;
+  /**
+   * Container for `<style>` tag(s) injection
+   * @default document.head
+   * */
+  container?: HTMLElement;
 };
 
 /** `rollup-plugin-styles`'s full option list */
@@ -184,15 +210,15 @@ export interface Options {
    * Files to include for processing.
    * @default undefined
    * */
-  include?: string | RegExp | (string | RegExp)[];
+  include?: Parameters<CreateFilter>[0];
   /**
    * Files to exclude from processing.
    * @default undefined
    * */
-  exclude?: string | RegExp | (string | RegExp)[];
+  exclude?: Parameters<CreateFilter>[1];
   /**
    * PostCSS will process files ending with these extensions.
-   * @default [".css", ".sss", ".pcss"]
+   * @default [".css", ".sss", ".pcss", ".postcss"]
    * */
   extensions?: string[];
   /**
@@ -208,37 +234,37 @@ export interface Options {
     | undefined
   )[];
   /**
-   * Inject CSS into `<head>`, it's always false when `extract: true`.
-   * You can also use it as options for CSS injection.
-   * It can also be a `function`, returning a `string` with js code.
+   * Select mode for this plugin
+   * - `"inject"` *(default)* - Inject CSS into `<head>`.
+   * You can also pass options for CSS injection.
+   * Alternatively, you can pass your own CSS injector.
+   * - `"extract"` - Extract CSS to the same location where JS file is generated but with .css extension.
+   * You can also set it to an absolute or relative to current working directory path, which will also act as `to` option for PostCSS
+   * - `"emit"` - Emit processed CSS for other plugins
+   * @default "inject"
+   */
+  mode?:
+    | "inject"
+    | ["inject", InjectOptions | ((varname: string, id: string) => string)]
+    | "extract"
+    | ["extract", string]
+    | "emit"
+    | ["emit"];
+  /**
+   * Enable/disable or pass options for CSS `@import` resolver
    * @default true
    * */
-  inject?:
-    | boolean
-    | {
-        /**
-         * Insert `<style>` tag into container as a first child
-         * @default false
-         * */
-        prepend?: boolean;
-        /**
-         * Inject CSS into single `<style>` tag only
-         * @default false
-         * */
-        singleTag?: boolean;
-        /**
-         * Container for `<style>` tag(s) injection
-         * @default document.head
-         * */
-        container?: HTMLElement;
-      }
-    | ((varname: string, id: string) => string);
+  import?: ImportOptions | boolean;
   /**
-   * Extract CSS to the same location where JS file is generated but with .css extension.
-   * You can also set it to an absolute or relative to current working directory path, which will also act as `to` option for PostCSS
-   * @default false
+   * Enable/disable or pass options for CSS URL resolver
+   * @default true
    * */
-  extract?: boolean | string;
+  url?: UrlOptions | boolean;
+  /**
+   * Aliases for URL and import paths.
+   * - ex.: `{"foo":"bar"}`
+   */
+  alias?: { [from: string]: string };
   /**
    * Enable and optionally pass additional configuration for
    * [CSS Modules](https://github.com/css-modules/css-modules)
@@ -291,34 +317,34 @@ export interface Options {
    * */
   config?: boolean | PostCSSLoadConfigOptions;
   /**
-   * Array of loaders to use, executed from right to left, or object with loader's properties.
+   * Array of loaders to use, executed from right to left.
    * Currently built-in loaders are:
    * - `sass` (Supports `.scss` and `.sass` files)
    * - `stylus` (Supports `.styl` and `.stylus` files)
    * - `less` (Supports `.less` files)
    * @default ["sass", "stylus", "less"]
    * */
-  use?:
-    | (string | [string] | [string, ObjectWithUnknownProps])[]
-    | {
-        sass?: SASSLoaderOptions & ObjectWithUnknownProps;
-        stylus?: ObjectWithUnknownProps;
-        less?: LESSLoaderOptions & ObjectWithUnknownProps;
-      };
+  use?: string[];
+  /** Options for Sass loader */
+  sass?: SASSLoaderOptions;
+  /** Options for Stylus loader */
+  stylus?: StylusLoaderOptions;
+  /** Options for Less loader */
+  less?: LESSLoaderOptions;
   /**
    * Array of custom loaders.
    * @default undefined
    * */
   loaders?: Loader[];
   /**
-   * A `function` which is invoked on CSS file import.
+   * Function which is invoked on CSS file import.
    * @default undefined
    * */
   onImport?: (code: string, id: string) => void;
   /**
-   * A `function` which is invoked on CSS file import.
+   * Function which is invoked on CSS file import.
    * Return `boolean` to decide if you want to extract the file or not.
    * @default undefined
    * */
-  onExtract?: (fn: () => ExtractedData) => boolean;
+  onExtract?: (fn: (file: string, ids: string[]) => ExtractedData) => boolean;
 }

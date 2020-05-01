@@ -1,10 +1,11 @@
 import path from "path";
 
-import { Loader } from "../types";
+import { Loader, StylusLoaderOptions } from "../types";
+import { mm } from "../utils/sourcemap";
 import loadModule from "../utils/load-module";
-import { MapModifier } from "../utils/sourcemap-utils";
+import { normalizePath } from "../utils/path";
 
-const loader: Loader = {
+const loader: Loader<StylusLoaderOptions> = {
   name: "stylus",
   test: /\.(styl|stylus)$/i,
   async process({ code, map }) {
@@ -14,12 +15,9 @@ const loader: Loader = {
 
     const style = stylus(code, { ...this.options })
       .set("filename", this.id)
-      .set(
-        "sourcemap",
-        this.sourceMap ? { comment: false, basePath: path.dirname(this.id) } : undefined,
-      );
+      .set("sourcemap", { comment: false, basePath: path.dirname(this.id) });
 
-    const render = (): Promise<string> =>
+    const render = async (): Promise<string> =>
       new Promise((resolve, reject) => {
         style.render((err, css) => (err ? reject(err) : resolve(css)));
       });
@@ -27,17 +25,16 @@ const loader: Loader = {
     code = await render();
 
     const deps = style.deps();
-    for (const dep of deps) this.dependencies.add(dep);
+    for (const dep of deps) this.deps.add(normalizePath(dep));
 
-    if (style.sourcemap) {
-      map =
-        new MapModifier(style.sourcemap)
-          .modify(map => {
-            // We have to manually modify the sourcesContent field since stylus compiler doesn't support it yet
-            if (!map.sourcesContent) map.sourcesContent = [code];
-          })
-          .toString() || map;
-    }
+    map =
+      mm(style.sourcemap)
+        .modify(map => {
+          // We have to manually modify the sourcesContent field
+          // since stylus compiler doesn't support it yet
+          if (!map.sourcesContent) map.sourcesContent = [code];
+        })
+        .toString() ?? map;
 
     return { code, map };
   },

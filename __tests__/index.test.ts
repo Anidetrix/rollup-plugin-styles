@@ -3,7 +3,7 @@ import { rollup } from "rollup";
 import styles from "../src";
 
 import { fixture, validateMany, write } from "./helpers";
-import { humanlizePath } from "../src/utils/path-utils";
+import { humanlizePath } from "../src/utils/path";
 
 validateMany("basic", [
   {
@@ -15,12 +15,31 @@ validateMany("basic", [
     input: "postcss-config/index.js",
   },
   {
-    title: "postcss-resolvers",
-    input: "postcss-resolvers/index.js",
+    title: "resolvers",
+    input: "resolvers/index.js",
     options: {
-      extract: fixture("dist/basic/postcss-resolvers/bundle.css"),
-      sourceMap: true,
-      modules: true,
+      mode: "extract",
+      alias: { "@": fixture("resolvers/features2") },
+      url: { publicPath: "/pubpath" },
+    },
+    files: [
+      "assets/bg.png",
+      "assets/bg.testing.regex.png",
+      "assets/bg1.png",
+      "assets/bg1.testing.regex.png",
+      "assets/bg2.testing.regex.png",
+      "assets/cat-2x.png",
+      "assets/cat-print.png",
+      "assets/cat.png",
+    ],
+  },
+  {
+    title: "resolvers-url-inline",
+    input: "resolvers/index.js",
+    options: {
+      mode: "extract",
+      alias: { "@": fixture("resolvers/features2") },
+      url: { inline: true },
     },
   },
   {
@@ -42,7 +61,7 @@ validateMany("basic", [
     input: "postcss-options/index.js",
     options: {
       parser: "sugarss",
-      plugins: ["postcss-import", ["autoprefixer", { overrideBrowserslist: ["> 0%"] }]],
+      plugins: [["autoprefixer", { overrideBrowserslist: ["> 0%"] }]],
     },
   },
 ]);
@@ -60,7 +79,7 @@ validateMany("minimize", [
     input: "simple/index.js",
     options: {
       minimize: true,
-      extract: true,
+      mode: "extract",
     },
   },
   {
@@ -68,7 +87,7 @@ validateMany("minimize", [
     input: "simple/index.js",
     options: {
       minimize: true,
-      extract: true,
+      mode: "extract",
       sourceMap: true,
     },
   },
@@ -77,7 +96,7 @@ validateMany("minimize", [
     input: "simple/index.js",
     options: {
       minimize: true,
-      extract: true,
+      mode: "extract",
       sourceMap: "inline",
     },
   },
@@ -94,7 +113,7 @@ validateMany("modules", [
     input: "modules/index.js",
     options: {
       modules: {
-        getJSON(): void {
+        getReplacements(): void {
           /* noop */
         },
       },
@@ -116,17 +135,17 @@ validateMany("modules", [
   {
     title: "extract",
     input: "modules/index.js",
-    options: { modules: true, extract: true },
+    options: { modules: true, mode: "extract" },
   },
   {
     title: "extract-sourcemap-true",
     input: "modules/index.js",
-    options: { modules: true, extract: true, sourceMap: true },
+    options: { modules: true, mode: "extract", sourceMap: true },
   },
   {
     title: "extract-sourcemap-inline",
     input: "modules/index.js",
-    options: { modules: true, extract: true, sourceMap: "inline" },
+    options: { modules: true, mode: "extract", sourceMap: "inline" },
   },
   {
     title: "auto-modules",
@@ -136,7 +155,7 @@ validateMany("modules", [
   {
     title: "duplication",
     input: "modules-duplication/index.js",
-    options: { modules: true, extract: true },
+    options: { modules: true, mode: "extract" },
   },
 ]);
 
@@ -157,13 +176,13 @@ validateMany("extract", [
   {
     title: "true",
     input: "simple/index.js",
-    options: { extract: true },
+    options: { mode: "extract" },
   },
   {
     title: "custom-path-absolute",
     input: "simple/index.js",
     options: {
-      extract: fixture("dist", "extract", "custom-path-absolute", "this", "is", "extracted.css"),
+      mode: ["extract", fixture("dist/extract/custom-path-absolute/this/is/extracted.css")],
       sourceMap: true,
     },
   },
@@ -171,21 +190,22 @@ validateMany("extract", [
     title: "custom-path-relative",
     input: "simple/index.js",
     options: {
-      extract: humanlizePath(
-        fixture("dist", "extract", "custom-path-relative", "i", "am", "extracted.css"),
-      ),
+      mode: [
+        "extract",
+        humanlizePath(fixture("dist/extract/custom-path-relative/i/am/extracted.css")),
+      ],
       sourceMap: true,
     },
   },
   {
     title: "sourcemap-true",
     input: "simple/index.js",
-    options: { extract: true, sourceMap: true },
+    options: { mode: "extract", sourceMap: true },
   },
   {
     title: "sourcemap-inline",
     input: "simple/index.js",
-    options: { extract: true, sourceMap: "inline" },
+    options: { mode: "extract", sourceMap: "inline" },
   },
 ]);
 
@@ -194,21 +214,14 @@ validateMany("inject", [
     title: "top",
     input: "simple/index.js",
     options: {
-      inject: { prepend: true },
+      mode: ["inject", { prepend: true }],
     },
   },
   {
     title: "function",
     input: "simple/index.js",
     options: {
-      inject: (varname): string => `console.log(${varname})`,
-    },
-  },
-  {
-    title: "false",
-    input: "simple/index.js",
-    options: {
-      inject: false,
+      mode: ["inject", (varname): string => `console.log(${varname})`],
     },
   },
 ]);
@@ -217,6 +230,11 @@ validateMany("sass", [
   {
     title: "default",
     input: "sass/index.js",
+  },
+  {
+    title: "use",
+    input: "sass-use/index.js",
+    options: { sass: { impl: "sass" } },
   },
   {
     title: "sourcemap",
@@ -236,9 +254,7 @@ validateMany("sass", [
     title: "data",
     input: "sass-data/index.js",
     options: {
-      use: {
-        sass: { data: "@import 'data';" },
-      },
+      sass: { data: "@import 'data';" },
     },
   },
   {
@@ -267,7 +283,36 @@ validateMany("multiple-instances", [
   {
     title: "already-processed",
     input: "multiple-instances/bar.less",
-    plugins: [styles(), styles()],
+    plugins: [styles({ modules: true, namedExports: true }), styles()],
+  },
+]);
+
+validateMany("code-splitting", [
+  {
+    title: "true",
+    input: "code-splitting/index.js",
+    options: {
+      mode: "extract",
+      modules: true,
+      sourceMap: true,
+    },
+    outputOpts: {
+      entryFileNames: `[name].[hash].js`,
+      chunkFileNames: `[name].[hash].js`,
+    },
+  },
+  {
+    title: "single",
+    input: "code-splitting/index.js",
+    options: {
+      mode: ["extract", fixture("dist/code-splitting/single/extracted.css")],
+      modules: true,
+      sourceMap: true,
+    },
+    outputOpts: {
+      entryFileNames: `[name].[hash].js`,
+      chunkFileNames: `[name].[hash].js`,
+    },
   },
 ]);
 
@@ -276,51 +321,52 @@ test("on-extract-fn", async () => {
     input: "simple/index.js",
     outDir: "on-extract-fn",
     options: {
-      extract: true,
+      mode: "extract",
       onExtract(): boolean {
         return false;
       },
     },
   });
-  await expect(res.js()).resolves.toMatchSnapshot();
+  for (const f of await res.js()) expect(f).toMatchSnapshot("js");
   await expect(res.isCss()).resolves.toBeFalsy();
   await expect(res.isMap()).resolves.toBeFalsy();
 });
 
 test("augment-chunk-hash", async () => {
-  const outDir = fixture("dist", "augment-chunk-hash");
-  const cssFiles = ["simple/foo.css", "simple/foo.css", "simple/bar.css"];
+  const outDir = fixture("dist/augment-chunk-hash");
+  const cssFiles = ["simple/foo.css", "simple/bar.css", "simple/foo.css"];
 
   const outputFiles: string[] = [];
   for await (const file of cssFiles) {
     const bundle = await rollup({
       input: fixture(file),
-      plugins: [styles({ extract: true, sourceMap: "inline" })],
+      plugins: [styles({ mode: "extract", sourceMap: "inline" })],
     });
-    const entryFileName = file.split(".")[0];
     const { output } = await bundle.write({
       dir: outDir,
-      entryFileNames: `${entryFileName}.[hash].css`,
+      entryFileNames: `[name].[hash].js`,
     });
     outputFiles.push(output[0].fileName);
   }
 
-  const [fooOne, fooTwo, bar] = outputFiles;
+  const [foo1, bar, foo2] = outputFiles;
 
-  const fooOneHash = fooOne.split(".")[1];
-  const fooTwoHash = fooOne.split(".")[1];
+  const foo1Hash = foo1.split(".")[1];
+  const foo2Hash = foo1.split(".")[1];
   const barHash = bar.split(".")[1];
 
-  // Verify that [hash] part of `foo.[hash].css` is truthy
-  expect(fooOneHash).toBeTruthy();
-  expect(fooTwoHash).toBeTruthy();
+  // Verify that [hash] part of the filenames is truthy
+  expect(foo1Hash).toBeTruthy();
+  expect(foo2Hash).toBeTruthy();
   expect(barHash).toBeTruthy();
 
-  // Verify that the foo hashes to the same fileName
-  expect(fooOne).toEqual(fooTwo);
-  expect(fooOneHash).toEqual(fooTwoHash);
+  // Verify that the `foo` have the same filename and hash
+  expect(foo1).toEqual(foo2);
+  expect(foo1Hash).toEqual(foo2Hash);
 
-  // Verify that foo and bar does not hash to the same
-  expect(barHash).not.toEqual(fooOneHash);
-  expect(barHash).not.toEqual(fooTwoHash);
+  // Verify that `foo` and `bar` have different filename and hash
+  expect(bar).not.toEqual(foo1);
+  expect(bar).not.toEqual(foo2);
+  expect(barHash).not.toEqual(foo1Hash);
+  expect(barHash).not.toEqual(foo2Hash);
 });
