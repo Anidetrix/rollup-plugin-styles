@@ -16,6 +16,7 @@ import postcssImport from "./import";
 import postcssUrl from "./url";
 import postcssModules from "./modules";
 import postcssICSS from "./icss";
+import postcssNoop from "./noop";
 
 type LoadedConfig = ReturnType<typeof loadPostCSSConfig> extends PromiseLike<infer T> ? T : never;
 
@@ -123,6 +124,9 @@ const loader: Loader<PostCSSLoaderOptions> = {
     // If extracting, minimization is performed afterwards
     if (!options.extract && options.minimize)
       plugins.push(cssnano(typeof options.minimize === "object" ? options.minimize : {}));
+
+    // Avoid PostCSS warning
+    if (plugins.length === 0) plugins.push(postcssNoop);
 
     const res = await postcss(plugins).process(code, postcssOpts);
 
