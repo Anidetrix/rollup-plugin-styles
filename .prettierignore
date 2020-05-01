@@ -7,3 +7,4 @@
 /docs
 /__tests__/fixtures/dist
 /pnpm-lock.yaml
+/CHANGELOG.md

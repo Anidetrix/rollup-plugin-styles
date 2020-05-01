@@ -1,4 +1,3 @@
-import "expect-puppeteer";
 import fs from "fs-extra";
 import { fixture } from "./helpers";
 
