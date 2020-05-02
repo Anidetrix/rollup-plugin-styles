@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.0.5...v2.1.0) (2020-05-02)
+
+
+### Features
+
+* extended browser support (>=ie9, or >=ie8 with polyfills) ([d849278](https://github.com/Anidetrix/rollup-plugin-styles/commit/d849278b10d544b7d7e31cc03ff8042e287138c6))
+
 ## [2.0.5](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.0.4...v2.0.5) (2020-05-02)
 
 
