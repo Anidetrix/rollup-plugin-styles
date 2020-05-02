@@ -1,9 +1,7 @@
-/* eslint-env browser */
-
 /** @type {HTMLElement[]} */
-const containers = [];
+var containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
+var styleTags = [];
 
 /**
  * @param {string|undefined} css
@@ -13,28 +11,31 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-export default (css, options = {}) => {
+export default function (css, options) {
   if (!css || typeof document === "undefined") return;
-  const singleTag = typeof options.singleTag !== "undefined" ? options.singleTag : false;
-  const container = typeof options.container !== "undefined" ? options.container : document.head;
-  const position = options.prepend === true ? "prepend" : "append";
+  if (typeof options === "undefined") options = {};
 
-  const createStyleTag = () => {
-    const styleTag = document.createElement("style");
+  var position = options.prepend === true ? "prepend" : "append";
+  var singleTag = typeof options.singleTag !== "undefined" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== "undefined"
+      ? options.container
+      : document.getElementsByTagName("head")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement("style");
     styleTag.type = "text/css";
-    if (position === "prepend" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
+    var pos = position === "prepend" ? "afterbegin" : "beforeend";
+    container.insertAdjacentElement(pos, styleTag);
     return styleTag;
-  };
+  }
 
   /** @type {HTMLStyleElement} */
-  let styleTag;
+  var styleTag;
 
   if (singleTag) {
-    let id = containers.indexOf(container);
+    var id = containers.indexOf(container);
 
     if (id === -1) {
       id = containers.push(container) - 1;
@@ -56,6 +57,6 @@ export default (css, options = {}) => {
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
   } else {
-    styleTag.textContent += css;
+    styleTag.appendChild(document.createTextNode(css));
   }
-};
+}

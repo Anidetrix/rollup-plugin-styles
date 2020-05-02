@@ -1,12 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`basic postcss-config: js 1`] = `
-"/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
+"/** @type {HTMLElement[]} */
+var containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
+var styleTags = [];
 
 /**
  * @param {string|undefined} css
@@ -16,28 +14,31 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_7aa87f99 = (css, options = {}) => {
+function injector_7aa87f99 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  if (typeof options === \\"undefined\\") options = {};
 
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? options.container
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
     styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
     return styleTag;
-  };
+  }
 
   /** @type {HTMLStyleElement} */
-  let styleTag;
+  var styleTag;
 
   if (singleTag) {
-    let id = containers.indexOf(container);
+    var id = containers.indexOf(container);
 
     if (id === -1) {
       id = containers.push(container) - 1;
@@ -59,9 +60,9 @@ var injector_7aa87f99 = (css, options = {}) => {
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
   } else {
-    styleTag.textContent += css;
+    styleTag.appendChild(document.createTextNode(css));
   }
-};
+}
 
 const css_075560ec = \\"a {\\\\n  width: 30%;\\\\n  color: red\\\\n}\\\\n\\\\n.multiline,\\\\n.selector {\\\\n  box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000\\\\n}\\\\n\\";
 injector_7aa87f99(css_075560ec);
@@ -69,12 +70,10 @@ injector_7aa87f99(css_075560ec);
 `;
 
 exports[`basic postcss-options: js 1`] = `
-"/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
+"/** @type {HTMLElement[]} */
+var containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
+var styleTags = [];
 
 /**
  * @param {string|undefined} css
@@ -84,28 +83,31 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_5856ff83 = (css, options = {}) => {
+function injector_5856ff83 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  if (typeof options === \\"undefined\\") options = {};
 
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? options.container
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
     styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
     return styleTag;
-  };
+  }
 
   /** @type {HTMLStyleElement} */
-  let styleTag;
+  var styleTag;
 
   if (singleTag) {
-    let id = containers.indexOf(container);
+    var id = containers.indexOf(container);
 
     if (id === -1) {
       id = containers.push(container) - 1;
@@ -127,9 +129,9 @@ var injector_5856ff83 = (css, options = {}) => {
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
   } else {
-    styleTag.textContent += css;
+    styleTag.appendChild(document.createTextNode(css));
   }
-};
+}
 
 const css_71701082 = \\".subpartial {\\\\n  -webkit-box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000;\\\\n     -moz-box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000;\\\\n          box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000\\\\n}\\\\n\\\\n.partial {\\\\n    color: red\\\\n}\\\\n\\\\n.prefixed {\\\\n  display: -webkit-box;\\\\n  display: -webkit-flex;\\\\n  display: -moz-box;\\\\n  display: -ms-flexbox;\\\\n  display: flex\\\\n}\\\\n\\";
 injector_5856ff83(css_71701082);
@@ -199,12 +201,10 @@ exports[`basic resolvers-url-inline: js 1`] = `
 `;
 
 exports[`basic simple: js 1`] = `
-"/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
+"/** @type {HTMLElement[]} */
+var containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
+var styleTags = [];
 
 /**
  * @param {string|undefined} css
@@ -214,28 +214,31 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_9d0ece4d = (css, options = {}) => {
+function injector_9d0ece4d (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  if (typeof options === \\"undefined\\") options = {};
 
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? options.container
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
     styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
     return styleTag;
-  };
+  }
 
   /** @type {HTMLStyleElement} */
-  let styleTag;
+  var styleTag;
 
   if (singleTag) {
-    let id = containers.indexOf(container);
+    var id = containers.indexOf(container);
 
     if (id === -1) {
       id = containers.push(container) - 1;
@@ -257,9 +260,9 @@ var injector_9d0ece4d = (css, options = {}) => {
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
   } else {
-    styleTag.textContent += css;
+    styleTag.appendChild(document.createTextNode(css));
   }
-};
+}
 
 const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_9d0ece4d(css_4fc87a7b);
@@ -284,12 +287,10 @@ console.log(css_4fc87a7b, css_8b7409a7);
 `;
 
 exports[`basic skip-loader: js 1`] = `
-"/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
+"/** @type {HTMLElement[]} */
+var containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
+var styleTags = [];
 
 /**
  * @param {string|undefined} css
@@ -299,28 +300,31 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_b33bb41a = (css, options = {}) => {
+function injector_b33bb41a (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  if (typeof options === \\"undefined\\") options = {};
 
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? options.container
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
     styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
     return styleTag;
-  };
+  }
 
   /** @type {HTMLStyleElement} */
-  let styleTag;
+  var styleTag;
 
   if (singleTag) {
-    let id = containers.indexOf(container);
+    var id = containers.indexOf(container);
 
     if (id === -1) {
       id = containers.push(container) - 1;
@@ -342,9 +346,9 @@ var injector_b33bb41a = (css, options = {}) => {
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
   } else {
-    styleTag.textContent += css;
+    styleTag.appendChild(document.createTextNode(css));
   }
-};
+}
 
 const css_8712fdeb = \\".style {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_b33bb41a(css_8712fdeb);
@@ -770,12 +774,10 @@ console.log(css_4fc87a7b, css_8b7409a7);
 `;
 
 exports[`inject top: js 1`] = `
-"/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
+"/** @type {HTMLElement[]} */
+var containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
+var styleTags = [];
 
 /**
  * @param {string|undefined} css
@@ -785,28 +787,31 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_9d0ece4d = (css, options = {}) => {
+function injector_9d0ece4d (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  if (typeof options === \\"undefined\\") options = {};
 
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? options.container
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
     styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
     return styleTag;
-  };
+  }
 
   /** @type {HTMLStyleElement} */
-  let styleTag;
+  var styleTag;
 
   if (singleTag) {
-    let id = containers.indexOf(container);
+    var id = containers.indexOf(container);
 
     if (id === -1) {
       id = containers.push(container) - 1;
@@ -828,9 +833,9 @@ var injector_9d0ece4d = (css, options = {}) => {
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
   } else {
-    styleTag.textContent += css;
+    styleTag.appendChild(document.createTextNode(css));
   }
-};
+}
 
 const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_9d0ece4d(css_4fc87a7b,{\\"prepend\\":true});
@@ -855,12 +860,10 @@ console.log(css_4fc87a7b, css_8b7409a7);
 `;
 
 exports[`less import: js 1`] = `
-"/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
+"/** @type {HTMLElement[]} */
+var containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
+var styleTags = [];
 
 /**
  * @param {string|undefined} css
@@ -870,28 +873,31 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_c27d7fc7 = (css, options = {}) => {
+function injector_c27d7fc7 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  if (typeof options === \\"undefined\\") options = {};
 
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? options.container
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
     styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
     return styleTag;
-  };
+  }
 
   /** @type {HTMLStyleElement} */
-  let styleTag;
+  var styleTag;
 
   if (singleTag) {
-    let id = containers.indexOf(container);
+    var id = containers.indexOf(container);
 
     if (id === -1) {
       id = containers.push(container) - 1;
@@ -913,9 +919,9 @@ var injector_c27d7fc7 = (css, options = {}) => {
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
   } else {
-    styleTag.textContent += css;
+    styleTag.appendChild(document.createTextNode(css));
   }
-};
+}
 
 const css_ebbdb980 = \\".d {\\\\n  color: red;\\\\n}\\\\n.a {\\\\n  color: royalblue;\\\\n}\\\\n.b {\\\\n  color: red;\\\\n}\\\\n.c {\\\\n  color: red;\\\\n}\\\\n.foo {\\\\n  color: royalblue;\\\\n}\\\\n\\";
 injector_c27d7fc7(css_ebbdb980);
@@ -964,12 +970,10 @@ console.log(css_4fc87a7b, css_8b7409a7);
 exports[`minimize extract-sourcemap-true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../simple/style.styl\\",\\"../../../simple/bar.css\\",\\"../../../simple/style.sass\\",\\"../../../simple/style.pcss\\",\\"../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA,kBCCE,SDEF,CAHA,QAEE,cACF,CEHA,YCCE,SDCU,CAFZ,MACE,SACU,CECZ,MACE,aAFF\\",\\"file\\":\\"index.css\\",\\"sourcesContent\\":[\\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
 
 exports[`minimize inject: js 1`] = `
-"/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
+"/** @type {HTMLElement[]} */
+var containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
+var styleTags = [];
 
 /**
  * @param {string|undefined} css
@@ -979,28 +983,31 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_9d0ece4d = (css, options = {}) => {
+function injector_9d0ece4d (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  if (typeof options === \\"undefined\\") options = {};
 
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? options.container
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
     styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
     return styleTag;
-  };
+  }
 
   /** @type {HTMLStyleElement} */
-  let styleTag;
+  var styleTag;
 
   if (singleTag) {
-    let id = containers.indexOf(container);
+    var id = containers.indexOf(container);
 
     if (id === -1) {
       id = containers.push(container) - 1;
@@ -1022,9 +1029,9 @@ var injector_9d0ece4d = (css, options = {}) => {
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
   } else {
-    styleTag.textContent += css;
+    styleTag.appendChild(document.createTextNode(css));
   }
-};
+}
 
 const css_4fc87a7b = \\".foo{color:red}\\";
 injector_9d0ece4d(css_4fc87a7b);
@@ -1049,12 +1056,10 @@ console.log(css_4fc87a7b, css_8b7409a7);
 `;
 
 exports[`modules auto-modules: js 1`] = `
-"/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
+"/** @type {HTMLElement[]} */
+var containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
+var styleTags = [];
 
 /**
  * @param {string|undefined} css
@@ -1064,28 +1069,31 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_f247f96b = (css, options = {}) => {
+function injector_f247f96b (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  if (typeof options === \\"undefined\\") options = {};
 
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? options.container
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
     styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
     return styleTag;
-  };
+  }
 
   /** @type {HTMLStyleElement} */
-  let styleTag;
+  var styleTag;
 
   if (singleTag) {
-    let id = containers.indexOf(container);
+    var id = containers.indexOf(container);
 
     if (id === -1) {
       id = containers.push(container) - 1;
@@ -1107,9 +1115,9 @@ var injector_f247f96b = (css, options = {}) => {
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
   } else {
-    styleTag.textContent += css;
+    styleTag.appendChild(document.createTextNode(css));
   }
-};
+}
 
 const css_04a4c3e4 = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_f247f96b(css_04a4c3e4);
@@ -1277,12 +1285,10 @@ console.log(modules_66a8b034.module, modules_b4425b4f.composition, modules_75007
 exports[`modules extract-sourcemap-true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../modules/style.css\\",\\"../../../modules/composed.css\\",\\"../../../modules/subdir/composition2.css\\"],\\"names\\":[],\\"mappings\\":\\"AAEA;EACE,cAAgB;AAClB;;AAEA;AAEA;;ACNA;EACE;IAEE,sBAAsB;EACxB;AACF;;AAEA;EACE,yBAAyB;AAC3B;;ACXA;EACE,UAAU;AACZ\\",\\"file\\":\\"index.css\\",\\"sourcesContent\\":[\\"@value primary, secondary from colors;\\\\n\\\\n.module {\\\\n  color: secondary;\\\\n}\\\\n\\\\n.module2 {\\\\n  composes: composition from \\\\\\"./composed.css\\\\\\";\\\\n}\\\\n\\",\\"@value primary from colors;\\\\n\\\\n@media screen and (min-width: 900px) {\\\\n  .composition {\\\\n    composes: compositioned from \\\\\\"./subdir/composition2.css\\\\\\";\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composition {\\\\n  background-color: primary;\\\\n}\\\\n\\",\\".compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\"]}"`;
 
 exports[`modules inject: js 1`] = `
-"/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
+"/** @type {HTMLElement[]} */
+var containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
+var styleTags = [];
 
 /**
  * @param {string|undefined} css
@@ -1292,28 +1298,31 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_2ae7f8dc = (css, options = {}) => {
+function injector_2ae7f8dc (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  if (typeof options === \\"undefined\\") options = {};
 
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? options.container
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
     styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
     return styleTag;
-  };
+  }
 
   /** @type {HTMLStyleElement} */
-  let styleTag;
+  var styleTag;
 
   if (singleTag) {
-    let id = containers.indexOf(container);
+    var id = containers.indexOf(container);
 
     if (id === -1) {
       id = containers.push(container) - 1;
@@ -1335,9 +1344,9 @@ var injector_2ae7f8dc = (css, options = {}) => {
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
   } else {
-    styleTag.textContent += css;
+    styleTag.appendChild(document.createTextNode(css));
   }
-};
+}
 
 const css_3a3193e0 = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
 const modules_66a8b034 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
@@ -1356,12 +1365,10 @@ console.log(modules_66a8b034.module, modules_b4425b4f.composition, modules_75007
 `;
 
 exports[`modules inject-object: js 1`] = `
-"/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
+"/** @type {HTMLElement[]} */
+var containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
+var styleTags = [];
 
 /**
  * @param {string|undefined} css
@@ -1371,28 +1378,31 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_2ae7f8dc = (css, options = {}) => {
+function injector_2ae7f8dc (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  if (typeof options === \\"undefined\\") options = {};
 
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? options.container
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
     styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
     return styleTag;
-  };
+  }
 
   /** @type {HTMLStyleElement} */
-  let styleTag;
+  var styleTag;
 
   if (singleTag) {
-    let id = containers.indexOf(container);
+    var id = containers.indexOf(container);
 
     if (id === -1) {
       id = containers.push(container) - 1;
@@ -1414,9 +1424,9 @@ var injector_2ae7f8dc = (css, options = {}) => {
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
   } else {
-    styleTag.textContent += css;
+    styleTag.appendChild(document.createTextNode(css));
   }
-};
+}
 
 const css_3a3193e0 = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
 const modules_66a8b034 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
@@ -1435,12 +1445,10 @@ console.log(modules_66a8b034.module, modules_b4425b4f.composition, modules_75007
 `;
 
 exports[`modules named-exports: js 1`] = `
-"/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
+"/** @type {HTMLElement[]} */
+var containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
+var styleTags = [];
 
 /**
  * @param {string|undefined} css
@@ -1450,28 +1458,31 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_b11e0f66 = (css, options = {}) => {
+function injector_b11e0f66 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  if (typeof options === \\"undefined\\") options = {};
 
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? options.container
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
     styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
     return styleTag;
-  };
+  }
 
   /** @type {HTMLStyleElement} */
-  let styleTag;
+  var styleTag;
 
   if (singleTag) {
-    let id = containers.indexOf(container);
+    var id = containers.indexOf(container);
 
     if (id === -1) {
       id = containers.push(container) - 1;
@@ -1493,9 +1504,9 @@ var injector_b11e0f66 = (css, options = {}) => {
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
   } else {
-    styleTag.textContent += css;
+    styleTag.appendChild(document.createTextNode(css));
   }
-};
+}
 
 const css_9e45ec64 = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\\\n.style_css {\\\\n  color: green;\\\\n}\\\\n\\";
 const modules_65f89cf3 = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"css\\":\\"style_css\\"};
@@ -1519,12 +1530,10 @@ console.log(style);
 `;
 
 exports[`modules named-exports-custom-class-name: js 1`] = `
-"/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
+"/** @type {HTMLElement[]} */
+var containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
+var styleTags = [];
 
 /**
  * @param {string|undefined} css
@@ -1534,28 +1543,31 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_b11e0f66 = (css, options = {}) => {
+function injector_b11e0f66 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  if (typeof options === \\"undefined\\") options = {};
 
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? options.container
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
     styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
     return styleTag;
-  };
+  }
 
   /** @type {HTMLStyleElement} */
-  let styleTag;
+  var styleTag;
 
   if (singleTag) {
-    let id = containers.indexOf(container);
+    var id = containers.indexOf(container);
 
     if (id === -1) {
       id = containers.push(container) - 1;
@@ -1577,9 +1589,9 @@ var injector_b11e0f66 = (css, options = {}) => {
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
   } else {
-    styleTag.textContent += css;
+    styleTag.appendChild(document.createTextNode(css));
   }
-};
+}
 
 const css_9e45ec64 = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\\\n.style_css {\\\\n  color: green;\\\\n}\\\\n\\";
 const modules_65f89cf3 = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"css\\":\\"style_css\\"};
@@ -1603,12 +1615,10 @@ console.log(style);
 `;
 
 exports[`multiple-instances already-processed: js 1`] = `
-"/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
+"/** @type {HTMLElement[]} */
+var containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
+var styleTags = [];
 
 /**
  * @param {string|undefined} css
@@ -1618,28 +1628,31 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_e8b4c2e2 = (css, options = {}) => {
+function injector_e8b4c2e2 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  if (typeof options === \\"undefined\\") options = {};
 
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? options.container
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
     styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
     return styleTag;
-  };
+  }
 
   /** @type {HTMLStyleElement} */
-  let styleTag;
+  var styleTag;
 
   if (singleTag) {
-    let id = containers.indexOf(container);
+    var id = containers.indexOf(container);
 
     if (id === -1) {
       id = containers.push(container) - 1;
@@ -1661,9 +1674,9 @@ var injector_e8b4c2e2 = (css, options = {}) => {
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
   } else {
-    styleTag.textContent += css;
+    styleTag.appendChild(document.createTextNode(css));
   }
-};
+}
 
 const css_05950bee = \\".bar_less {\\\\n  color: magenta;\\\\n}\\\\n\\";
 const modules_139d7175 = {\\"less\\":\\"bar_less\\"};
@@ -1677,12 +1690,10 @@ export { css, less };
 `;
 
 exports[`multiple-instances default: js 1`] = `
-"/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
+"/** @type {HTMLElement[]} */
+var containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
+var styleTags = [];
 
 /**
  * @param {string|undefined} css
@@ -1692,28 +1703,31 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_2401b93b = (css, options = {}) => {
+function injector_2401b93b (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  if (typeof options === \\"undefined\\") options = {};
 
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? options.container
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
     styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
     return styleTag;
-  };
+  }
 
   /** @type {HTMLStyleElement} */
-  let styleTag;
+  var styleTag;
 
   if (singleTag) {
-    let id = containers.indexOf(container);
+    var id = containers.indexOf(container);
 
     if (id === -1) {
       id = containers.push(container) - 1;
@@ -1735,9 +1749,9 @@ var injector_2401b93b = (css, options = {}) => {
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
   } else {
-    styleTag.textContent += css;
+    styleTag.appendChild(document.createTextNode(css));
   }
-};
+}
 
 const css_8ae7cafb = \\".style {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_2401b93b(css_8ae7cafb);
@@ -1763,12 +1777,10 @@ console.log(css_4fc87a7b, css_8b7409a7);
 `;
 
 exports[`sass data: js 1`] = `
-"/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
+"/** @type {HTMLElement[]} */
+var containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
+var styleTags = [];
 
 /**
  * @param {string|undefined} css
@@ -1778,28 +1790,31 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_00f7b4db = (css, options = {}) => {
+function injector_00f7b4db (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  if (typeof options === \\"undefined\\") options = {};
 
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? options.container
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
     styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
     return styleTag;
-  };
+  }
 
   /** @type {HTMLStyleElement} */
-  let styleTag;
+  var styleTag;
 
   if (singleTag) {
-    let id = containers.indexOf(container);
+    var id = containers.indexOf(container);
 
     if (id === -1) {
       id = containers.push(container) - 1;
@@ -1821,9 +1836,9 @@ var injector_00f7b4db = (css, options = {}) => {
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
   } else {
-    styleTag.textContent += css;
+    styleTag.appendChild(document.createTextNode(css));
   }
-};
+}
 
 const css_95339f02 = \\".data {\\\\n  color: red; }\\\\n\\";
 injector_00f7b4db(css_95339f02);
@@ -1831,12 +1846,10 @@ injector_00f7b4db(css_95339f02);
 `;
 
 exports[`sass default: js 1`] = `
-"/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
+"/** @type {HTMLElement[]} */
+var containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
+var styleTags = [];
 
 /**
  * @param {string|undefined} css
@@ -1846,28 +1859,31 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_b66c0a2f = (css, options = {}) => {
+function injector_b66c0a2f (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  if (typeof options === \\"undefined\\") options = {};
 
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? options.container
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
     styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
     return styleTag;
-  };
+  }
 
   /** @type {HTMLStyleElement} */
-  let styleTag;
+  var styleTag;
 
   if (singleTag) {
-    let id = containers.indexOf(container);
+    var id = containers.indexOf(container);
 
     if (id === -1) {
       id = containers.push(container) - 1;
@@ -1889,9 +1905,9 @@ var injector_b66c0a2f = (css, options = {}) => {
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
   } else {
-    styleTag.textContent += css;
+    styleTag.appendChild(document.createTextNode(css));
   }
-};
+}
 
 const css_29ef594f = \\".style {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
 injector_b66c0a2f(css_29ef594f);
@@ -1899,12 +1915,10 @@ injector_b66c0a2f(css_29ef594f);
 `;
 
 exports[`sass import: js 1`] = `
-"/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
+"/** @type {HTMLElement[]} */
+var containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
+var styleTags = [];
 
 /**
  * @param {string|undefined} css
@@ -1914,28 +1928,31 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_7e51928e = (css, options = {}) => {
+function injector_7e51928e (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  if (typeof options === \\"undefined\\") options = {};
 
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? options.container
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
     styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
     return styleTag;
-  };
+  }
 
   /** @type {HTMLStyleElement} */
-  let styleTag;
+  var styleTag;
 
   if (singleTag) {
-    let id = containers.indexOf(container);
+    var id = containers.indexOf(container);
 
     if (id === -1) {
       id = containers.push(container) - 1;
@@ -1957,9 +1974,9 @@ var injector_7e51928e = (css, options = {}) => {
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
   } else {
-    styleTag.textContent += css;
+    styleTag.appendChild(document.createTextNode(css));
   }
-};
+}
 
 const css_e795c482 = \\".a {\\\\n  color: magenta; }\\\\n\\\\n.b {\\\\n  color: red; }\\\\n\\\\n.c {\\\\n  color: red; }\\\\n\\\\n.foo {\\\\n  color: royalblue; }\\\\n\\";
 injector_7e51928e(css_e795c482);
@@ -1967,12 +1984,10 @@ injector_7e51928e(css_e795c482);
 `;
 
 exports[`sass modules: js 1`] = `
-"/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
+"/** @type {HTMLElement[]} */
+var containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
+var styleTags = [];
 
 /**
  * @param {string|undefined} css
@@ -1982,28 +1997,31 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_704767c1 = (css, options = {}) => {
+function injector_704767c1 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  if (typeof options === \\"undefined\\") options = {};
 
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? options.container
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
     styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
     return styleTag;
-  };
+  }
 
   /** @type {HTMLStyleElement} */
-  let styleTag;
+  var styleTag;
 
   if (singleTag) {
-    let id = containers.indexOf(container);
+    var id = containers.indexOf(container);
 
     if (id === -1) {
       id = containers.push(container) - 1;
@@ -2025,9 +2043,9 @@ var injector_704767c1 = (css, options = {}) => {
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
   } else {
-    styleTag.textContent += css;
+    styleTag.appendChild(document.createTextNode(css));
   }
-};
+}
 
 const css_6fc98ea3 = \\".style_someStyle {\\\\n  color: red; }\\\\n\\";
 const modules_af6d9715 = {\\"some-style\\":\\"style_someStyle\\"};
@@ -2038,12 +2056,10 @@ console.log(modules_af6d9715);
 `;
 
 exports[`sass sourcemap: js 1`] = `
-"/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
+"/** @type {HTMLElement[]} */
+var containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
+var styleTags = [];
 
 /**
  * @param {string|undefined} css
@@ -2053,28 +2069,31 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_b66c0a2f = (css, options = {}) => {
+function injector_b66c0a2f (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  if (typeof options === \\"undefined\\") options = {};
 
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? options.container
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
     styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
     return styleTag;
-  };
+  }
 
   /** @type {HTMLStyleElement} */
-  let styleTag;
+  var styleTag;
 
   if (singleTag) {
-    let id = containers.indexOf(container);
+    var id = containers.indexOf(container);
 
     if (id === -1) {
       id = containers.push(container) - 1;
@@ -2096,9 +2115,9 @@ var injector_b66c0a2f = (css, options = {}) => {
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
   } else {
-    styleTag.textContent += css;
+    styleTag.appendChild(document.createTextNode(css));
   }
-};
+}
 
 const css_29ef594f = \\".style {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zYXNzL3N0eWxlLnNhc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0VBQ1YsVUFBVSxFQUFBIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWxlIHtcbiAgd2lkdGg6IDMwJTtcbiAgY29sb3I6IHJlZDsgfVxuIl19 */\\";
 injector_b66c0a2f(css_29ef594f);
@@ -2106,12 +2125,10 @@ injector_b66c0a2f(css_29ef594f);
 `;
 
 exports[`sass use: js 1`] = `
-"/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
+"/** @type {HTMLElement[]} */
+var containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
+var styleTags = [];
 
 /**
  * @param {string|undefined} css
@@ -2121,28 +2138,31 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_ea92f1f2 = (css, options = {}) => {
+function injector_ea92f1f2 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  if (typeof options === \\"undefined\\") options = {};
 
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? options.container
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
     styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
     return styleTag;
-  };
+  }
 
   /** @type {HTMLStyleElement} */
-  let styleTag;
+  var styleTag;
 
   if (singleTag) {
-    let id = containers.indexOf(container);
+    var id = containers.indexOf(container);
 
     if (id === -1) {
       id = containers.push(container) - 1;
@@ -2164,9 +2184,9 @@ var injector_ea92f1f2 = (css, options = {}) => {
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
   } else {
-    styleTag.textContent += css;
+    styleTag.appendChild(document.createTextNode(css));
   }
-};
+}
 
 const css_35820dc5 = \\".button {\\\\n  border-radius: 3px;\\\\n  padding: 8px;\\\\n}\\";
 injector_ea92f1f2(css_35820dc5);
@@ -2174,12 +2194,10 @@ injector_ea92f1f2(css_35820dc5);
 `;
 
 exports[`sourcemap inline: js 1`] = `
-"/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
+"/** @type {HTMLElement[]} */
+var containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
+var styleTags = [];
 
 /**
  * @param {string|undefined} css
@@ -2189,28 +2207,31 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_9d0ece4d = (css, options = {}) => {
+function injector_9d0ece4d (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  if (typeof options === \\"undefined\\") options = {};
 
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? options.container
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
     styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
     return styleTag;
-  };
+  }
 
   /** @type {HTMLStyleElement} */
-  let styleTag;
+  var styleTag;
 
   if (singleTag) {
-    let id = containers.indexOf(container);
+    var id = containers.indexOf(container);
 
     if (id === -1) {
       id = containers.push(container) - 1;
@@ -2232,9 +2253,9 @@ var injector_9d0ece4d = (css, options = {}) => {
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
   } else {
-    styleTag.textContent += css;
+    styleTag.appendChild(document.createTextNode(css));
   }
-};
+}
 
 const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
 injector_9d0ece4d(css_4fc87a7b);
@@ -2259,12 +2280,10 @@ console.log(css_4fc87a7b, css_8b7409a7);
 `;
 
 exports[`sourcemap true: js 1`] = `
-"/* eslint-env browser */
-
-/** @type {HTMLElement[]} */
-const containers = [];
+"/** @type {HTMLElement[]} */
+var containers = [];
 /** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-const styleTags = [];
+var styleTags = [];
 
 /**
  * @param {string|undefined} css
@@ -2274,28 +2293,31 @@ const styleTags = [];
  * @param {HTMLElement} [options.container]
  * @returns {void}
  */
-var injector_9d0ece4d = (css, options = {}) => {
+function injector_9d0ece4d (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  const singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
-  const container = typeof options.container !== \\"undefined\\" ? options.container : document.head;
-  const position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  if (typeof options === \\"undefined\\") options = {};
 
-  const createStyleTag = () => {
-    const styleTag = document.createElement(\\"style\\");
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? options.container
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
     styleTag.type = \\"text/css\\";
-    if (position === \\"prepend\\" && container.firstChild) {
-      container.insertBefore(styleTag, container.firstChild);
-    } else {
-      container.append(styleTag);
-    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
     return styleTag;
-  };
+  }
 
   /** @type {HTMLStyleElement} */
-  let styleTag;
+  var styleTag;
 
   if (singleTag) {
-    let id = containers.indexOf(container);
+    var id = containers.indexOf(container);
 
     if (id === -1) {
       id = containers.push(container) - 1;
@@ -2317,9 +2339,9 @@ var injector_9d0ece4d = (css, options = {}) => {
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
   } else {
-    styleTag.textContent += css;
+    styleTag.appendChild(document.createTextNode(css));
   }
-};
+}
 
 const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
 injector_9d0ece4d(css_4fc87a7b);

@@ -6,7 +6,6 @@
     /* Compile Options */
     "moduleResolution": "node",
     "resolveJsonModule": true,
-    "importHelpers": true,
     "esModuleInterop": true,
     /* Compile Checks */
     "isolatedModules": true,

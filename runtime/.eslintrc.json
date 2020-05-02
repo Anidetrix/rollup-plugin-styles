@@ -1,0 +1,6 @@
+{
+  "root": true,
+  "extends": ["eslint:recommended", "prettier"],
+  "env": { "browser": true },
+  "parserOptions": { "ecmaVersion": 6, "sourceType": "module" }
+}
