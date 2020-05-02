@@ -1,3 +1,10 @@
+## [2.0.4](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.0.3...v2.0.4) (2020-05-02)
+
+
+### Bug Fixes
+
+* remove <no source> from sourcemap ([b1c32e8](https://github.com/Anidetrix/rollup-plugin-styles/commit/b1c32e8c4c31d506df01d87669bcfbe8e2daab4c))
+
 ## [2.0.3](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.0.2...v2.0.3) (2020-05-01)
 
 ## [2.0.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.0.1...v2.0.2) (2020-05-01)
