@@ -1,3 +1,10 @@
+## [2.0.5](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.0.4...v2.0.5) (2020-05-02)
+
+
+### Bug Fixes
+
+* revert <no source> removal ([8def44e](https://github.com/Anidetrix/rollup-plugin-styles/commit/8def44e13581dc6ddcee1e71893fcba1cf6a2094))
+
 ## [2.0.4](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.0.3...v2.0.4) (2020-05-02)
 
 
