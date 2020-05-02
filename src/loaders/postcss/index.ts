@@ -144,6 +144,13 @@ const loader: Loader<PostCSSLoaderOptions> = {
     for (const asset of assets) this.assets.set(asset.to, asset.source);
 
     map = mm((res.map?.toJSON() as unknown) as RawSourceMap)
+      .modify(m => {
+        // Remove "<no source>" if present
+        const noSource = m.sources?.indexOf("<no source>");
+        if (noSource === -1) return;
+        m.sources?.splice(noSource, 1);
+        m.sourcesContent?.splice(noSource, 1);
+      })
       .resolve(path.dirname(postcssOpts.to))
       .toString();
 
