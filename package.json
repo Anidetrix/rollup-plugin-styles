@@ -47,7 +47,7 @@
     "concat-with-sourcemaps": "^1.1.0",
     "cssnano": "^4.1.10",
     "icss-utils": "^4.1.1",
-    "p-queue": "^6.3.0",
+    "p-queue": "^6.4.0",
     "postcss": "^7.0.28",
     "postcss-load-config": "^2.1.0",
     "postcss-modules-extract-imports": "^2.0.0",

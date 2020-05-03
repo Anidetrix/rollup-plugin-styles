@@ -4,7 +4,7 @@ dependencies:
   concat-with-sourcemaps: 1.1.0
   cssnano: 4.1.10
   icss-utils: 4.1.1
-  p-queue: 6.3.0
+  p-queue: 6.4.0
   postcss: 7.0.28
   postcss-load-config: 2.1.0
   postcss-modules-extract-imports: 2.0.0
@@ -4449,7 +4449,7 @@ packages:
       node: '>=0.4.7'
     hasBin: true
     optionalDependencies:
-      uglify-js: 3.9.1
+      uglify-js: 3.9.2
     resolution:
       integrity: sha512-1f2BACcBfiwAfStCKZNrUCgqNZkGsAT7UM3kkYtXuLo0KnaVfjKOyf7PRzB6++aK9STyT1Pd2ZCPe3EGOXleXA==
   /har-schema/2.0.0:
@@ -6988,7 +6988,7 @@ packages:
       node: '>=10'
     resolution:
       integrity: sha512-/bjOqmgETBYB5BoEeGVea8dmvHb2m9GLy1E9W43yeyfP6QQCZGFNa+XRceJEuDB6zqr+gKpIAmlLebMpykw/MQ==
-  /p-queue/6.3.0:
+  /p-queue/6.4.0:
     dependencies:
       eventemitter3: 4.0.0
       p-timeout: 3.2.0
@@ -6996,7 +6996,7 @@ packages:
     engines:
       node: '>=8'
     resolution:
-      integrity: sha512-fg5dJlFpd5+3CgG3/0ogpVZUeJbjiyXFg0nu53hrOYsybqSiDyxyOpad0Rm6tAiGjgztAwkyvhlYHC53OiAJOA==
+      integrity: sha512-X7ddxxiQ+bLR/CUt3/BVKrGcJDNxBr0pEEFKHHB6vTPWNUhgDv36GpIH18RmGM3YGPpBT+JWGjDDqsVGuF0ERw==
   /p-reduce/2.1.0:
     dev: true
     engines:
@@ -9430,7 +9430,7 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-MYlEfn5VrLNsgudQTVJeNaQFUAI7DkhnOjdpAp4T+ku1TfQClewlbSuTVHiA+8skNBgaf02TL/kLOvig4y3G8w==
-  /uglify-js/3.9.1:
+  /uglify-js/3.9.2:
     dependencies:
       commander: 2.20.3
     dev: true
@@ -9439,7 +9439,7 @@ packages:
     hasBin: true
     optional: true
     resolution:
-      integrity: sha512-JUPoL1jHsc9fOjVFHdQIhqEEJsQvfKDjlubcCilu8U26uZ73qOg8VsN8O1jbuei44ZPlwL7kmbAdM4tzaUvqnA==
+      integrity: sha512-zGVwKslUAD/EeqOrD1nQaBmXIHl1Vw371we8cvS8I6mYK9rmgX5tv8AAeJdfsQ3Kk5mGax2SVV/AizxdNGhl7Q==
   /unicode-canonical-property-names-ecmascript/1.0.4:
     dev: true
     engines:
@@ -9934,7 +9934,7 @@ specifiers:
   lint-staged: ^10.2.2
   mime-types: ^2.1.27
   node-sass: ^4.14.0
-  p-queue: ^6.3.0
+  p-queue: ^6.4.0
   postcss: ^7.0.28
   postcss-custom-properties: ^9.1.1
   postcss-load-config: ^2.1.0
