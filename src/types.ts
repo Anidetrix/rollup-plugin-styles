@@ -199,9 +199,9 @@ export type InjectOptions = {
   singleTag?: boolean;
   /**
    * Container for `<style>` tag(s) injection
-   * @default document.head
+   * @default "head"
    * */
-  container?: HTMLElement;
+  container?: string;
 };
 
 /** `rollup-plugin-styles`'s full option list */

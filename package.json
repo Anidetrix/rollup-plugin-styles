@@ -43,7 +43,7 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.9.6",
-    "@rollup/pluginutils": "^3.0.9",
+    "@rollup/pluginutils": "^3.0.10",
     "concat-with-sourcemaps": "^1.1.0",
     "cssnano": "^4.1.10",
     "icss-utils": "^4.1.1",

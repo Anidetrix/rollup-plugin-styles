@@ -11,7 +11,7 @@ var styleTags = [];
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
+ * @param {string} [options.container]
  * @returns {void}
  */
 function injector_7aa87f99 (css, options) {
@@ -23,7 +23,7 @@ function injector_7aa87f99 (css, options) {
 
   var container =
     typeof options.container !== \\"undefined\\"
-      ? options.container
+      ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
   function createStyleTag() {
@@ -80,7 +80,7 @@ var styleTags = [];
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
+ * @param {string} [options.container]
  * @returns {void}
  */
 function injector_5856ff83 (css, options) {
@@ -92,7 +92,7 @@ function injector_5856ff83 (css, options) {
 
   var container =
     typeof options.container !== \\"undefined\\"
-      ? options.container
+      ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
   function createStyleTag() {
@@ -211,7 +211,7 @@ var styleTags = [];
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
+ * @param {string} [options.container]
  * @returns {void}
  */
 function injector_9d0ece4d (css, options) {
@@ -223,7 +223,7 @@ function injector_9d0ece4d (css, options) {
 
   var container =
     typeof options.container !== \\"undefined\\"
-      ? options.container
+      ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
   function createStyleTag() {
@@ -297,7 +297,7 @@ var styleTags = [];
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
+ * @param {string} [options.container]
  * @returns {void}
  */
 function injector_b33bb41a (css, options) {
@@ -309,7 +309,7 @@ function injector_b33bb41a (css, options) {
 
   var container =
     typeof options.container !== \\"undefined\\"
-      ? options.container
+      ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
   function createStyleTag() {
@@ -784,7 +784,7 @@ var styleTags = [];
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
+ * @param {string} [options.container]
  * @returns {void}
  */
 function injector_9d0ece4d (css, options) {
@@ -796,7 +796,7 @@ function injector_9d0ece4d (css, options) {
 
   var container =
     typeof options.container !== \\"undefined\\"
-      ? options.container
+      ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
   function createStyleTag() {
@@ -870,7 +870,7 @@ var styleTags = [];
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
+ * @param {string} [options.container]
  * @returns {void}
  */
 function injector_c27d7fc7 (css, options) {
@@ -882,7 +882,7 @@ function injector_c27d7fc7 (css, options) {
 
   var container =
     typeof options.container !== \\"undefined\\"
-      ? options.container
+      ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
   function createStyleTag() {
@@ -980,7 +980,7 @@ var styleTags = [];
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
+ * @param {string} [options.container]
  * @returns {void}
  */
 function injector_9d0ece4d (css, options) {
@@ -992,7 +992,7 @@ function injector_9d0ece4d (css, options) {
 
   var container =
     typeof options.container !== \\"undefined\\"
-      ? options.container
+      ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
   function createStyleTag() {
@@ -1066,7 +1066,7 @@ var styleTags = [];
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
+ * @param {string} [options.container]
  * @returns {void}
  */
 function injector_f247f96b (css, options) {
@@ -1078,7 +1078,7 @@ function injector_f247f96b (css, options) {
 
   var container =
     typeof options.container !== \\"undefined\\"
-      ? options.container
+      ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
   function createStyleTag() {
@@ -1295,7 +1295,7 @@ var styleTags = [];
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
+ * @param {string} [options.container]
  * @returns {void}
  */
 function injector_2ae7f8dc (css, options) {
@@ -1307,7 +1307,7 @@ function injector_2ae7f8dc (css, options) {
 
   var container =
     typeof options.container !== \\"undefined\\"
-      ? options.container
+      ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
   function createStyleTag() {
@@ -1375,7 +1375,7 @@ var styleTags = [];
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
+ * @param {string} [options.container]
  * @returns {void}
  */
 function injector_2ae7f8dc (css, options) {
@@ -1387,7 +1387,7 @@ function injector_2ae7f8dc (css, options) {
 
   var container =
     typeof options.container !== \\"undefined\\"
-      ? options.container
+      ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
   function createStyleTag() {
@@ -1455,7 +1455,7 @@ var styleTags = [];
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
+ * @param {string} [options.container]
  * @returns {void}
  */
 function injector_b11e0f66 (css, options) {
@@ -1467,7 +1467,7 @@ function injector_b11e0f66 (css, options) {
 
   var container =
     typeof options.container !== \\"undefined\\"
-      ? options.container
+      ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
   function createStyleTag() {
@@ -1540,7 +1540,7 @@ var styleTags = [];
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
+ * @param {string} [options.container]
  * @returns {void}
  */
 function injector_b11e0f66 (css, options) {
@@ -1552,7 +1552,7 @@ function injector_b11e0f66 (css, options) {
 
   var container =
     typeof options.container !== \\"undefined\\"
-      ? options.container
+      ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
   function createStyleTag() {
@@ -1625,7 +1625,7 @@ var styleTags = [];
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
+ * @param {string} [options.container]
  * @returns {void}
  */
 function injector_e8b4c2e2 (css, options) {
@@ -1637,7 +1637,7 @@ function injector_e8b4c2e2 (css, options) {
 
   var container =
     typeof options.container !== \\"undefined\\"
-      ? options.container
+      ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
   function createStyleTag() {
@@ -1700,7 +1700,7 @@ var styleTags = [];
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
+ * @param {string} [options.container]
  * @returns {void}
  */
 function injector_2401b93b (css, options) {
@@ -1712,7 +1712,7 @@ function injector_2401b93b (css, options) {
 
   var container =
     typeof options.container !== \\"undefined\\"
-      ? options.container
+      ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
   function createStyleTag() {
@@ -1787,7 +1787,7 @@ var styleTags = [];
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
+ * @param {string} [options.container]
  * @returns {void}
  */
 function injector_00f7b4db (css, options) {
@@ -1799,7 +1799,7 @@ function injector_00f7b4db (css, options) {
 
   var container =
     typeof options.container !== \\"undefined\\"
-      ? options.container
+      ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
   function createStyleTag() {
@@ -1856,7 +1856,7 @@ var styleTags = [];
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
+ * @param {string} [options.container]
  * @returns {void}
  */
 function injector_b66c0a2f (css, options) {
@@ -1868,7 +1868,7 @@ function injector_b66c0a2f (css, options) {
 
   var container =
     typeof options.container !== \\"undefined\\"
-      ? options.container
+      ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
   function createStyleTag() {
@@ -1925,7 +1925,7 @@ var styleTags = [];
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
+ * @param {string} [options.container]
  * @returns {void}
  */
 function injector_7e51928e (css, options) {
@@ -1937,7 +1937,7 @@ function injector_7e51928e (css, options) {
 
   var container =
     typeof options.container !== \\"undefined\\"
-      ? options.container
+      ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
   function createStyleTag() {
@@ -1994,7 +1994,7 @@ var styleTags = [];
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
+ * @param {string} [options.container]
  * @returns {void}
  */
 function injector_704767c1 (css, options) {
@@ -2006,7 +2006,7 @@ function injector_704767c1 (css, options) {
 
   var container =
     typeof options.container !== \\"undefined\\"
-      ? options.container
+      ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
   function createStyleTag() {
@@ -2066,7 +2066,7 @@ var styleTags = [];
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
+ * @param {string} [options.container]
  * @returns {void}
  */
 function injector_b66c0a2f (css, options) {
@@ -2078,7 +2078,7 @@ function injector_b66c0a2f (css, options) {
 
   var container =
     typeof options.container !== \\"undefined\\"
-      ? options.container
+      ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
   function createStyleTag() {
@@ -2135,7 +2135,7 @@ var styleTags = [];
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
+ * @param {string} [options.container]
  * @returns {void}
  */
 function injector_ea92f1f2 (css, options) {
@@ -2147,7 +2147,7 @@ function injector_ea92f1f2 (css, options) {
 
   var container =
     typeof options.container !== \\"undefined\\"
-      ? options.container
+      ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
   function createStyleTag() {
@@ -2204,7 +2204,7 @@ var styleTags = [];
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
+ * @param {string} [options.container]
  * @returns {void}
  */
 function injector_9d0ece4d (css, options) {
@@ -2216,7 +2216,7 @@ function injector_9d0ece4d (css, options) {
 
   var container =
     typeof options.container !== \\"undefined\\"
-      ? options.container
+      ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
   function createStyleTag() {
@@ -2290,7 +2290,7 @@ var styleTags = [];
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
+ * @param {string} [options.container]
  * @returns {void}
  */
 function injector_9d0ece4d (css, options) {
@@ -2302,7 +2302,7 @@ function injector_9d0ece4d (css, options) {
 
   var container =
     typeof options.container !== \\"undefined\\"
-      ? options.container
+      ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
   function createStyleTag() {

@@ -8,7 +8,7 @@ var styleTags = [];
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
- * @param {HTMLElement} [options.container]
+ * @param {string} [options.container]
  * @returns {void}
  */
 export default function (css, options) {
@@ -20,7 +20,7 @@ export default function (css, options) {
 
   var container =
     typeof options.container !== "undefined"
-      ? options.container
+      ? document.querySelector(options.container)
       : document.getElementsByTagName("head")[0];
 
   function createStyleTag() {
