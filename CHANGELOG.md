@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.1.1...v2.2.0) (2020-05-03)
+
+
+### Features
+
+* **injector:** one less polyfill needed for ie8 ([97796d8](https://github.com/Anidetrix/rollup-plugin-styles/commit/97796d8a7b8e5029f14681ac3062895133491c14))
+
 ## [2.1.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.1.0...v2.1.1) (2020-05-03)
 
 
