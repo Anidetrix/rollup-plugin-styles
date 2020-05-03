@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.1.0...v2.1.1) (2020-05-03)
+
+
+### Bug Fixes
+
+* **injector:** pass selector instead of element as container ([63bc959](https://github.com/Anidetrix/rollup-plugin-styles/commit/63bc959bdabcdea5b3855232bce4fe78be6da26f))
+
 # [2.1.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.0.5...v2.1.0) (2020-05-02)
 
 
