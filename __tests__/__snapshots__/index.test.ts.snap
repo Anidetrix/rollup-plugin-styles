@@ -7,7 +7,7 @@ var containers = [];
 var styleTags = [];
 
 /**
- * @param {string|undefined} css
+ * @param {string} css
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
@@ -28,7 +28,7 @@ function injector_7aa87f99 (css, options) {
 
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -55,7 +55,7 @@ function injector_7aa87f99 (css, options) {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
@@ -76,7 +76,7 @@ var containers = [];
 var styleTags = [];
 
 /**
- * @param {string|undefined} css
+ * @param {string} css
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
@@ -97,7 +97,7 @@ function injector_5856ff83 (css, options) {
 
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -124,7 +124,7 @@ function injector_5856ff83 (css, options) {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
@@ -207,7 +207,7 @@ var containers = [];
 var styleTags = [];
 
 /**
- * @param {string|undefined} css
+ * @param {string} css
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
@@ -228,7 +228,7 @@ function injector_9d0ece4d (css, options) {
 
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -255,7 +255,7 @@ function injector_9d0ece4d (css, options) {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
@@ -293,7 +293,7 @@ var containers = [];
 var styleTags = [];
 
 /**
- * @param {string|undefined} css
+ * @param {string} css
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
@@ -314,7 +314,7 @@ function injector_b33bb41a (css, options) {
 
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -341,7 +341,7 @@ function injector_b33bb41a (css, options) {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
@@ -780,7 +780,7 @@ var containers = [];
 var styleTags = [];
 
 /**
- * @param {string|undefined} css
+ * @param {string} css
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
@@ -801,7 +801,7 @@ function injector_9d0ece4d (css, options) {
 
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -828,7 +828,7 @@ function injector_9d0ece4d (css, options) {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
@@ -866,7 +866,7 @@ var containers = [];
 var styleTags = [];
 
 /**
- * @param {string|undefined} css
+ * @param {string} css
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
@@ -887,7 +887,7 @@ function injector_c27d7fc7 (css, options) {
 
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -914,7 +914,7 @@ function injector_c27d7fc7 (css, options) {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
@@ -976,7 +976,7 @@ var containers = [];
 var styleTags = [];
 
 /**
- * @param {string|undefined} css
+ * @param {string} css
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
@@ -997,7 +997,7 @@ function injector_9d0ece4d (css, options) {
 
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -1024,7 +1024,7 @@ function injector_9d0ece4d (css, options) {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
@@ -1062,7 +1062,7 @@ var containers = [];
 var styleTags = [];
 
 /**
- * @param {string|undefined} css
+ * @param {string} css
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
@@ -1083,7 +1083,7 @@ function injector_f247f96b (css, options) {
 
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -1110,7 +1110,7 @@ function injector_f247f96b (css, options) {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
@@ -1291,7 +1291,7 @@ var containers = [];
 var styleTags = [];
 
 /**
- * @param {string|undefined} css
+ * @param {string} css
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
@@ -1312,7 +1312,7 @@ function injector_2ae7f8dc (css, options) {
 
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -1339,7 +1339,7 @@ function injector_2ae7f8dc (css, options) {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
@@ -1371,7 +1371,7 @@ var containers = [];
 var styleTags = [];
 
 /**
- * @param {string|undefined} css
+ * @param {string} css
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
@@ -1392,7 +1392,7 @@ function injector_2ae7f8dc (css, options) {
 
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -1419,7 +1419,7 @@ function injector_2ae7f8dc (css, options) {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
@@ -1451,7 +1451,7 @@ var containers = [];
 var styleTags = [];
 
 /**
- * @param {string|undefined} css
+ * @param {string} css
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
@@ -1472,7 +1472,7 @@ function injector_b11e0f66 (css, options) {
 
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -1499,7 +1499,7 @@ function injector_b11e0f66 (css, options) {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
@@ -1536,7 +1536,7 @@ var containers = [];
 var styleTags = [];
 
 /**
- * @param {string|undefined} css
+ * @param {string} css
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
@@ -1557,7 +1557,7 @@ function injector_b11e0f66 (css, options) {
 
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -1584,7 +1584,7 @@ function injector_b11e0f66 (css, options) {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
@@ -1621,7 +1621,7 @@ var containers = [];
 var styleTags = [];
 
 /**
- * @param {string|undefined} css
+ * @param {string} css
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
@@ -1642,7 +1642,7 @@ function injector_e8b4c2e2 (css, options) {
 
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -1669,7 +1669,7 @@ function injector_e8b4c2e2 (css, options) {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
@@ -1696,7 +1696,7 @@ var containers = [];
 var styleTags = [];
 
 /**
- * @param {string|undefined} css
+ * @param {string} css
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
@@ -1717,7 +1717,7 @@ function injector_2401b93b (css, options) {
 
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -1744,7 +1744,7 @@ function injector_2401b93b (css, options) {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
@@ -1783,7 +1783,7 @@ var containers = [];
 var styleTags = [];
 
 /**
- * @param {string|undefined} css
+ * @param {string} css
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
@@ -1804,7 +1804,7 @@ function injector_00f7b4db (css, options) {
 
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -1831,7 +1831,7 @@ function injector_00f7b4db (css, options) {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
@@ -1852,7 +1852,7 @@ var containers = [];
 var styleTags = [];
 
 /**
- * @param {string|undefined} css
+ * @param {string} css
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
@@ -1873,7 +1873,7 @@ function injector_b66c0a2f (css, options) {
 
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -1900,7 +1900,7 @@ function injector_b66c0a2f (css, options) {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
@@ -1921,7 +1921,7 @@ var containers = [];
 var styleTags = [];
 
 /**
- * @param {string|undefined} css
+ * @param {string} css
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
@@ -1942,7 +1942,7 @@ function injector_7e51928e (css, options) {
 
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -1969,7 +1969,7 @@ function injector_7e51928e (css, options) {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
@@ -1990,7 +1990,7 @@ var containers = [];
 var styleTags = [];
 
 /**
- * @param {string|undefined} css
+ * @param {string} css
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
@@ -2011,7 +2011,7 @@ function injector_704767c1 (css, options) {
 
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -2038,7 +2038,7 @@ function injector_704767c1 (css, options) {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
@@ -2062,7 +2062,7 @@ var containers = [];
 var styleTags = [];
 
 /**
- * @param {string|undefined} css
+ * @param {string} css
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
@@ -2083,7 +2083,7 @@ function injector_b66c0a2f (css, options) {
 
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -2110,7 +2110,7 @@ function injector_b66c0a2f (css, options) {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
@@ -2131,7 +2131,7 @@ var containers = [];
 var styleTags = [];
 
 /**
- * @param {string|undefined} css
+ * @param {string} css
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
@@ -2152,7 +2152,7 @@ function injector_ea92f1f2 (css, options) {
 
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -2179,7 +2179,7 @@ function injector_ea92f1f2 (css, options) {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
@@ -2200,7 +2200,7 @@ var containers = [];
 var styleTags = [];
 
 /**
- * @param {string|undefined} css
+ * @param {string} css
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
@@ -2221,7 +2221,7 @@ function injector_9d0ece4d (css, options) {
 
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -2248,7 +2248,7 @@ function injector_9d0ece4d (css, options) {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
@@ -2286,7 +2286,7 @@ var containers = [];
 var styleTags = [];
 
 /**
- * @param {string|undefined} css
+ * @param {string} css
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
@@ -2307,7 +2307,7 @@ function injector_9d0ece4d (css, options) {
 
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
-    styleTag.type = \\"text/css\\";
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -2334,7 +2334,7 @@ function injector_9d0ece4d (css, options) {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;

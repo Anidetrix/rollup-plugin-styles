@@ -4,7 +4,7 @@ var containers = [];
 var styleTags = [];
 
 /**
- * @param {string|undefined} css
+ * @param {string} css
  * @param {object} [options={}]
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
@@ -25,7 +25,7 @@ export default function (css, options) {
 
   function createStyleTag() {
     var styleTag = document.createElement("style");
-    styleTag.type = "text/css";
+    styleTag.setAttribute("type", "text/css");
     var pos = position === "prepend" ? "afterbegin" : "beforeend";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -52,7 +52,7 @@ export default function (css, options) {
   }
 
   // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.slice(1);
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
 
   if (styleTag.styleSheet) {
     styleTag.styleSheet.cssText += css;
