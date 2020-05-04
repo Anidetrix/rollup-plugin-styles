@@ -1,3 +1,10 @@
+## [2.2.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.2.1...v2.2.2) (2020-05-04)
+
+
+### Bug Fixes
+
+* **styles-url:** clarify which url is unresolved ([aefc263](https://github.com/Anidetrix/rollup-plugin-styles/commit/aefc26359607954832c06d6ca72c97829cb2ee3c))
+
 ## [2.2.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.2.0...v2.2.1) (2020-05-04)
 
 
