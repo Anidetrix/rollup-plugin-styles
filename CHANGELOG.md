@@ -1,3 +1,10 @@
+## [2.2.3](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.2.2...v2.2.3) (2020-05-04)
+
+
+### Bug Fixes
+
+* do not bundle mime-types ([e444f04](https://github.com/Anidetrix/rollup-plugin-styles/commit/e444f049f71a138702d1b1a439205263cf80c299))
+
 ## [2.2.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.2.1...v2.2.2) (2020-05-04)
 
 
