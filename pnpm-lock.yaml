@@ -4,6 +4,7 @@ dependencies:
   concat-with-sourcemaps: 1.1.0
   cssnano: 4.1.10
   icss-utils: 4.1.1
+  mime-types: 2.1.27
   p-queue: 6.4.0
   postcss: 7.0.29
   postcss-load-config: 2.1.0
@@ -42,6 +43,7 @@ devDependencies:
   autoprefixer: 9.7.6
   babel-jest: 25.5.1_@babel+core@7.9.6
   babel-plugin-transform-node-env-inline: 0.4.3
+  builtin-modules: 3.1.0
   eslint: 6.8.0
   eslint-config-prettier: 6.11.0_eslint@6.8.0
   eslint-import-resolver-node: 0.3.3
@@ -56,13 +58,12 @@ devDependencies:
   jest: 25.5.4
   less: 3.11.1
   lint-staged: 10.2.2
-  mime-types: 2.1.27
   node-sass: 4.14.0
   postcss-custom-properties: 9.1.1
   prettier: 2.0.5
   rollup: 2.7.6
-  rollup-plugin-auto-external: 2.0.0_rollup@2.7.6
   rollup-plugin-dts: 1.4.0_rollup@2.7.6+typescript@3.8.3
+  rollup-plugin-node-externals: 2.1.6_builtin-modules@3.1.0
   rollup-plugin-terser: 5.3.0_rollup@2.7.6
   sass: 1.26.5
   semantic-release: 17.0.7_semantic-release@17.0.7
@@ -1611,7 +1612,7 @@ packages:
       lodash: 4.17.15
       nerf-dart: 1.0.0
       normalize-url: 5.0.0
-      npm: 6.14.4
+      npm: 6.14.5
       rc: 1.2.8
       read-pkg: 5.2.0
       registry-auth-token: 4.1.1
@@ -2466,12 +2467,6 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-k0KL0aWZuBt2lrxrcASWDfwOLMnodeQjodT/1SxEQAXsHANgo6ZC/VEaSEHCXt7aSTZ4/4H5LKa+tBXmW7Vtvw==
-  /builtins/2.0.1:
-    dependencies:
-      semver: 6.3.0
-    dev: true
-    resolution:
-      integrity: sha512-XkkVe5QAb6guWPXTzpSrYpSlN3nqEmrrE2TkAr/tp7idSF6+MONh9WvKrAuR3HiKLvoSgmbs8l1U9IPmMrIoLw==
   /cache-base/1.0.1:
     dependencies:
       collection-visit: 1.0.0
@@ -6305,7 +6300,6 @@ packages:
     resolution:
       integrity: sha512-y7FpHSbMUMoyPbYUSzO6PaZ6FyRnQOpHuKwbo1G+Knck95XVU4QAiKdGEnj5wwoS7PlOgthX/09u5iFJ+aYf5Q==
   /mime-db/1.44.0:
-    dev: true
     engines:
       node: '>= 0.6'
     resolution:
@@ -6313,7 +6307,6 @@ packages:
   /mime-types/2.1.27:
     dependencies:
       mime-db: 1.44.0
-    dev: true
     engines:
       node: '>= 0.6'
     resolution:
@@ -6606,7 +6599,7 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-S48WzZW777zhNIrn7gxOlISNAqi9ZC/uQFnRdbeIHhZhCA6UqpkOT8T1G7BvfdgP4Er8gF4sUbaS0i7QvIfCWw==
-  /npm/6.14.4:
+  /npm/6.14.5:
     bundledDependencies:
       - abbrev
       - ansicolors
@@ -6736,7 +6729,7 @@ packages:
       node: 6 >=6.2.0 || 8 || >=9.3.0
     hasBin: true
     resolution:
-      integrity: sha512-B8UDDbWvdkW6RgXFn8/h2cHJP/u/FPa4HWeGzW23aNEBARN3QPrRaHqPIZW2NSN3fW649gtgUDNZpaRs0zTMPw==
+      integrity: sha512-CDwa3FJd0XJpKDbWCST484H+mCNjF26dPrU+xnREW+upR0UODjMEfXPl3bxWuAwZIX6c2ASg1plLO7jP8ehWeA==
   /npmlog/4.1.2:
     dependencies:
       are-we-there-yet: 1.1.5
@@ -8197,20 +8190,6 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==
-  /rollup-plugin-auto-external/2.0.0_rollup@2.7.6:
-    dependencies:
-      builtins: 2.0.1
-      read-pkg: 3.0.0
-      rollup: 2.7.6
-      safe-resolve: 1.0.0
-      semver: 5.7.1
-    dev: true
-    engines:
-      node: '>=6'
-    peerDependencies:
-      rollup: '>=0.45.2'
-    resolution:
-      integrity: sha512-HQM3ZkZYfSam1uoZtAB9sK26EiAsfs1phrkf91c/YX+S07wugyRXSigBxrIwiLr5EPPilKYmoMxsrnlGBsXnuQ==
   /rollup-plugin-dts/1.4.0_rollup@2.7.6+typescript@3.8.3:
     dependencies:
       rollup: 2.7.6
@@ -8223,6 +8202,16 @@ packages:
       typescript: ^3.8.3
     resolution:
       integrity: sha512-Yvag9u/uXgX+49qascRe4aFSrSMrY3rUAnbXrl6Y/08GL2cylosfCd5a1siOhHM6u1n4wyR9Nnc04cjceeedfw==
+  /rollup-plugin-node-externals/2.1.6_builtin-modules@3.1.0:
+    dependencies:
+      builtin-modules: 3.1.0
+    dev: true
+    engines:
+      node: '>=8.0.0'
+    peerDependencies:
+      builtin-modules: ^3.1.0
+    resolution:
+      integrity: sha512-xu2CVhmVLwcqcPzyoL+Y9Z4uxgbQu9w6vT7XAzjZXHi1AIK6b1KQoR2nzx633I2YG2cK7NmkodJNQ7Dn3g7OkQ==
   /rollup-plugin-terser/5.3.0_rollup@2.7.6:
     dependencies:
       '@babel/code-frame': 7.8.3
@@ -8304,10 +8293,6 @@ packages:
     dev: true
     resolution:
       integrity: sha512-rx+x8AMzKb5Q5lQ95Zoi6ZbJqwCLkqi3XuJXp5P3rT8OEc6sZCJG5AE5dU3lsgRr/F4Bs31jSlVN+j5KrsGu9A==
-  /safe-resolve/1.0.0:
-    dev: true
-    resolution:
-      integrity: sha1-/jT40p16O+z9JJ0KqKeZtcPPZVk=
   /safer-buffer/2.1.2:
     dev: true
     resolution:
@@ -9915,6 +9900,7 @@ specifiers:
   autoprefixer: ^9.7.6
   babel-jest: ^25.5.1
   babel-plugin-transform-node-env-inline: ^0.4.3
+  builtin-modules: ^3.1.0
   concat-with-sourcemaps: ^1.1.0
   cssnano: ^4.1.10
   eslint: ^6.8.0
@@ -9946,8 +9932,8 @@ specifiers:
   prettier: ^2.0.5
   resolve: ^1.17.0
   rollup: ^2.7.6
-  rollup-plugin-auto-external: ^2.0.0
   rollup-plugin-dts: ^1.4.0
+  rollup-plugin-node-externals: ^2.1.6
   rollup-plugin-terser: ^5.3.0
   sass: ^1.26.5
   semantic-release: ^17.0.7

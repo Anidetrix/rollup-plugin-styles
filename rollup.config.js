@@ -1,8 +1,8 @@
 import { terser } from "rollup-plugin-terser";
-import autoExternal from "rollup-plugin-auto-external";
 import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import dts from "rollup-plugin-dts";
+import externals from "rollup-plugin-node-externals";
 import json from "@rollup/plugin-json";
 import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
@@ -20,7 +20,7 @@ export default [
       { format: "es", file: pkg.module },
     ],
     plugins: [
-      autoExternal(),
+      externals({ deps: true }),
       json(),
       resolve({ preferBuiltins: true, extensions }),
       commonjs(),
