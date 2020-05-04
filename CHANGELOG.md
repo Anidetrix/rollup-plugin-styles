@@ -1,3 +1,10 @@
+## [2.2.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.2.0...v2.2.1) (2020-05-04)
+
+
+### Bug Fixes
+
+* skip parsing of invalid sourcemaps ([a96d01f](https://github.com/Anidetrix/rollup-plugin-styles/commit/a96d01f6e0ff7253c6f2477147ef241dde19fe75))
+
 # [2.2.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.1.1...v2.2.0) (2020-05-03)
 
 
