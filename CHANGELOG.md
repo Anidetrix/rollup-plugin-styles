@@ -1,3 +1,10 @@
+## [2.2.4](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.2.3...v2.2.4) (2020-05-04)
+
+
+### Bug Fixes
+
+* missing fs-extra ([4173a2a](https://github.com/Anidetrix/rollup-plugin-styles/commit/4173a2aa0c07cca518e1bf54091a32003177d915))
+
 ## [2.2.3](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.2.2...v2.2.3) (2020-05-04)
 
 
