@@ -47,5 +47,7 @@ describe("sourcemap-utils", () => {
     const map = JSON.stringify({ sources: ["../a/b/../foo/bar.css", "../b/a/../bar/foo.css"] });
     const relativeSrc = JSON.stringify(mm(map).relative().toObject()?.sources);
     expect(relativeSrc).toBe(JSON.stringify(["../a/foo/bar.css", "../b/bar/foo.css"]));
+    const wrongMap = mm("thisisnotjson").toString();
+    expect(wrongMap).toBeUndefined();
   });
 });
