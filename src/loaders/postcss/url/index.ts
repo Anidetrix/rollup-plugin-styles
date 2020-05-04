@@ -134,7 +134,7 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
         }
 
         // URL was not resolved
-        decl.warn(res, `Unresolved URL in \`${decl.toString()}\``);
+        decl.warn(res, `Unresolved URL \`${url}\` in \`${decl.toString()}\``);
       });
     });
 
@@ -168,7 +168,7 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
 
         decl.value = parsed.toString();
       } catch (error) {
-        decl.warn(res, `Unresolved URL in \`${decl.toString()}\``);
+        decl.warn(res, `Unresolved URL \`${url}\` in \`${decl.toString()}\``);
       }
     }
   },
