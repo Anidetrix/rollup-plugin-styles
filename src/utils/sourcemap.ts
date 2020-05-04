@@ -45,7 +45,11 @@ class MapModifier {
   readonly #map?: RawSourceMap;
 
   constructor(map?: string | RawSourceMap) {
-    this.#map = typeof map === "string" ? (JSON.parse(map) as RawSourceMap) : map;
+    try {
+      this.#map = typeof map === "string" ? (JSON.parse(map) as RawSourceMap) : map;
+    } catch (error) {
+      this.#map = undefined;
+    }
   }
 
   modify(f: (m: RawSourceMap) => void): this {

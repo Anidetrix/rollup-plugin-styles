@@ -6,13 +6,12 @@
       {
         "preset": "angular",
         "releaseRules": [
-          { "type": "docs", "scope": "readme", "release": "patch" },
-          { "type": "refactor", "scope": "core *", "release": "minor" },
-          { "type": "refactor", "release": "patch" },
-          { "type": "build", "scope": "core *", "release": "patch" },
-          { "type": "ci", "scope": "core *", "release": "patch" },
-          { "type": "test", "release": "patch" },
-          { "scope": "no-release", "release": false }
+          { "type": "docs", "scope": "*\\!", "release": "patch" },
+          { "type": "refactor", "scope": "*\\!", "release": "patch" },
+          { "type": "build", "scope": "*\\!", "release": "patch" },
+          { "type": "ci", "scope": "*\\!", "release": "patch" },
+          { "type": "test", "scope": "*\\!", "release": "patch" },
+          { "type": "style", "scope": "*\\!", "release": "patch" }
         ],
         "parserOpts": {
           "noteKeywords": ["BREAKING CHANGE", "BREAKING CHANGES", "BREAKING"]
