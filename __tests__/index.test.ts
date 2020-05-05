@@ -20,7 +20,7 @@ validateMany("basic", [
     options: {
       mode: "extract",
       alias: { "@": fixture("resolvers/features2") },
-      url: { publicPath: "/pubpath" },
+      url: { publicPath: "/pubpath", hash: "[name][extname]" },
     },
     outputOpts: {
       assetFileNames: "[name][extname]",

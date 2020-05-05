@@ -27,7 +27,7 @@ import styles from "rollup-plugin-styles";
 
 export default {
   output: {
-    // Governs names of CSS files and assets from CSS URLs
+    // Governs names of CSS files (for assets from CSS use `hash` option for url handler)
     // Recommended value shown below
     assetFileNames: "[name]-[hash][extname]",
   },

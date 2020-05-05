@@ -100,7 +100,8 @@ export default (options: Options = {}): Plugin => {
 
       for (const dep of ctx.deps) this.addWatchFile(dep);
 
-      for (const [name, source] of ctx.assets) this.emitFile({ type: "asset", name, source });
+      for (const [fileName, source] of ctx.assets)
+        this.emitFile({ type: "asset", fileName, source });
 
       if (postcssLoaderOpts.extract) {
         res.extracted && extracted.set(id, res.extracted);

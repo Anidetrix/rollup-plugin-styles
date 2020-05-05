@@ -20,10 +20,10 @@ export type ModulesOptions = {
   /**
    * Placeholder or function for scoped name generation.
    * Allowed blocks for placeholder:
-   * - `[dir]` - File's directory name
-   * - `[name]` - File's name
-   * - `[local]` - Selector's original name
-   * - `[hash(:<num>)]` - Hash (with optional length)
+   * - `[dir]`: The directory name of the asset.
+   * - `[name]`: The file name of the asset excluding any extension.
+   * - `[local]`: The original value of the selector.
+   * - `[hash(:<num>)]`: A hash based on the name and content of the asset (with optional length).
    * @default "[name]_[local]__[hash:8]"
    * */
   generateScopedName?: string | ScopeOptions["generateScopedName"];

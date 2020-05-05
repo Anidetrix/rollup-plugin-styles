@@ -3,6 +3,7 @@ import { makeLegalIdentifier } from "@rollup/pluginutils";
 import path from "path";
 
 import hasher from "../../../utils/hasher";
+import { humanlizePath } from "../../../utils/path";
 
 import { hashRe } from "../common";
 
@@ -11,7 +12,7 @@ export default (placeholder = "[name]_[local]__[hash:8]") => (
   file: string,
   css: string,
 ): string => {
-  const hash = hasher(css);
+  const hash = hasher(css + humanlizePath(file));
   const match = hashRe.exec(placeholder);
   const hashLen = match && Number.parseInt(match[1]);
   return makeLegalIdentifier(
