@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.0.0...v3.0.1) (2020-05-05)
+
+
+### Bug Fixes
+
+* normalize assetFileNames dir ([f551a76](https://github.com/Anidetrix/rollup-plugin-styles/commit/f551a76a4d89eaeaceb2a134e32bf318402e215a))
+
 # [3.0.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.2.4...v3.0.0) (2020-05-05)
 
 
