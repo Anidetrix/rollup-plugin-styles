@@ -267,7 +267,9 @@ export default (options: Options = {}): Plugin => {
           const fileName = this.getFileName(cssFileId);
           res.mapBaseName = normalizePath(path.dirname(fileName), res.mapBaseName);
 
-          const assetDir = opts.assetFileNames ? path.dirname(opts.assetFileNames) : "assets";
+          const assetDir = opts.assetFileNames
+            ? normalizePath(path.dirname(opts.assetFileNames))
+            : "assets";
 
           this.emitFile({
             type: "asset",
