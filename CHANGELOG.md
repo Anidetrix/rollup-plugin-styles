@@ -1,3 +1,10 @@
+## [3.0.3](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.0.2...v3.0.3) (2020-05-05)
+
+
+### Bug Fixes
+
+* **url handler:** working default `assetDir` ([7187a27](https://github.com/Anidetrix/rollup-plugin-styles/commit/7187a271e3235183dd0e78790faeb482a0d0e775))
+
 ## [3.0.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.0.1...v3.0.2) (2020-05-05)
 
 
