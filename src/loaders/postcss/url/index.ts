@@ -28,7 +28,7 @@ export type UrlOptions = {
   /**
    * Directory path for outputted CSS assets,
    * which is not included into resulting URL
-   * @default "assets"
+   * @default "."
    * */
   assetDir?: string;
   /**
@@ -63,7 +63,7 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
 
     const inline = options.inline ?? false;
     const publicPath = options.publicPath ?? "./";
-    const assetDir = options.assetDir ?? "assets";
+    const assetDir = options.assetDir ?? ".";
     const resolve = options.resolve ?? resolveDefault;
     const alias = options.alias ?? {};
     const placeholder =
