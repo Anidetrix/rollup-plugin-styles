@@ -1,3 +1,22 @@
+# [3.0.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.2.4...v3.0.0) (2020-05-05)
+
+
+### Features
+
+* v3 ([c0a7daa](https://github.com/Anidetrix/rollup-plugin-styles/commit/c0a7daa767ccb94e06ea1509e3cc012fca4ae2d9))
+
+
+### BREAKING CHANGES
+
+* Some breaking changes occured:
+* output.assetFileNames is now respected for both CSS files and assets from CSS
+* `extract`'s path now should be relative to output dir/output file's basedir, but not outside of it
+* `extract`'s path no longer passed to PostCSS as `to`, added dedicated `to` option instead
+* Removed `hash` option from url handler (now handled by Rollup's assetFileName)
+* `assetDir` option for url handler no longer affects resulting URL
+* signature changes for `onExtract`
+As always, please consult documentation and API Reference for details
+
 ## [2.2.4](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.2.3...v2.2.4) (2020-05-04)
 
 
