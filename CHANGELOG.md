@@ -1,3 +1,10 @@
+## [3.0.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.0.1...v3.0.2) (2020-05-05)
+
+
+### Bug Fixes
+
+* hashed url handling ([5735a01](https://github.com/Anidetrix/rollup-plugin-styles/commit/5735a01c6c3035aaa4089e41437ea5a2cd6b6fed))
+
 ## [3.0.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.0.0...v3.0.1) (2020-05-05)
 
 
