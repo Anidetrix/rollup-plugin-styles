@@ -45,6 +45,8 @@ export type PostCSSLoaderOptions = {
   /** @see {@link Options.mode} */
   emit: boolean;
 
+  /** @see {@link Options.to} */
+  to: Options["to"];
   /** @see {@link Options.namedExports} */
   namedExports: NonNullable<Options["namedExports"]>;
   /** @see {@link Options.autoModules} */
@@ -177,12 +179,12 @@ export type Payload = {
 export type ExtractedData = {
   /** CSS */
   css: string;
-  /** Output filename for CSS */
-  cssFileName: string;
   /** Sourcemap */
   map?: string;
-  /** Output filename for sourcemap */
-  mapFileName: string;
+  /** Output name for CSS */
+  cssName: string;
+  /** Output basename for sourcemap */
+  mapBaseName: string;
 };
 
 /** Options for CSS injection */
@@ -239,10 +241,13 @@ export interface Options {
    * You can also pass options for CSS injection.
    * Alternatively, you can pass your own CSS injector.
    * - `"extract"` - Extract CSS to the same location where JS file is generated but with .css extension.
-   * You can also set it to an absolute or relative to current working directory path, which will also act as `to` option for PostCSS
-   * - `"emit"` - Emit processed CSS for other plugins
+   * You can also set extraction path manually,
+   * relative to output dir/output file's basedir,
+   * but not outside of it.
+   * - `"emit"` - Emit pure processed CSS for other plugins in the build pipeline.
+   * Useful when you only need to preprocess CSS.
    * @default "inject"
-   */
+   * */
   mode?:
     | "inject"
     | ["inject", InjectOptions | ((varname: string, id: string) => string)]
@@ -250,6 +255,10 @@ export interface Options {
     | ["extract", string]
     | "emit"
     | ["emit"];
+  /**
+   * `to` option for PostCSS, required for some plugins
+   * */
+  to?: string;
   /**
    * Enable/disable or pass options for CSS `@import` resolver
    * @default true
@@ -346,5 +355,5 @@ export interface Options {
    * Return `boolean` to decide if you want to extract the file or not.
    * @default undefined
    * */
-  onExtract?: (fn: (file: string, ids: string[]) => ExtractedData) => boolean;
+  onExtract?: (fn: (name: string, ids: string[]) => ExtractedData) => boolean;
 }

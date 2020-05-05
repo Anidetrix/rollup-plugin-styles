@@ -1,9 +1,9 @@
 import { rollup } from "rollup";
 
 import styles from "../src";
+import litcss from "rollup-plugin-lit-css";
 
 import { fixture, validateMany, write } from "./helpers";
-import { humanlizePath } from "../src/utils/path";
 
 validateMany("basic", [
   {
@@ -21,6 +21,9 @@ validateMany("basic", [
       mode: "extract",
       alias: { "@": fixture("resolvers/features2") },
       url: { publicPath: "/pubpath" },
+    },
+    outputOpts: {
+      assetFileNames: "[name][extname]",
     },
     files: [
       "assets/bg.png",
@@ -179,21 +182,10 @@ validateMany("extract", [
     options: { mode: "extract" },
   },
   {
-    title: "custom-path-absolute",
+    title: "custom-path",
     input: "simple/index.js",
     options: {
-      mode: ["extract", fixture("dist/extract/custom-path-absolute/this/is/extracted.css")],
-      sourceMap: true,
-    },
-  },
-  {
-    title: "custom-path-relative",
-    input: "simple/index.js",
-    options: {
-      mode: [
-        "extract",
-        humanlizePath(fixture("dist/extract/custom-path-relative/i/am/extracted.css")),
-      ],
+      mode: ["extract", "i/am/extracted.css"],
       sourceMap: true,
     },
   },
@@ -296,23 +288,27 @@ validateMany("code-splitting", [
       modules: true,
       sourceMap: true,
     },
-    outputOpts: {
-      entryFileNames: `[name].[hash].js`,
-      chunkFileNames: `[name].[hash].js`,
-    },
   },
+
   {
     title: "single",
     input: "code-splitting/index.js",
     options: {
-      mode: ["extract", fixture("dist/code-splitting/single/extracted.css")],
+      mode: ["extract", "extracted.css"],
       modules: true,
       sourceMap: true,
     },
-    outputOpts: {
-      entryFileNames: `[name].[hash].js`,
-      chunkFileNames: `[name].[hash].js`,
-    },
+  },
+]);
+
+validateMany("emit", [
+  {
+    title: "true",
+    input: "emit/index.js",
+    plugins: [
+      styles({ mode: "emit", plugins: [["autoprefixer", { overrideBrowserslist: ["> 0%"] }]] }),
+      litcss(),
+    ],
   },
 ]);
 

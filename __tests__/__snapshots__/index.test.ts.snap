@@ -140,20 +140,20 @@ injector_5856ff83(css_71701082);
 
 exports[`basic resolvers: css 1`] = `
 ".subfoo {
-  background-image: url(\\"/pubpath/assets/bg.png\\");
-  background-image: url(\\"/pubpath/assets/bg.testing.regex.png\\");
+  background-image: url(\\"/pubpath/bg.png\\");
+  background-image: url(\\"/pubpath/bg.testing.regex.png\\");
 }
 
 .foo {
-  background-image: url(\\"/pubpath/assets/bg.png\\"), url(\\"/pubpath/assets/bg1.testing.regex.png\\"), url(\\"/pubpath/assets/bg2.testing.regex.png\\");
+  background-image: url(\\"/pubpath/bg.png\\"), url(\\"/pubpath/bg1.testing.regex.png\\"), url(\\"/pubpath/bg2.testing.regex.png\\");
 }
 
 .foo2 {
-  background-image: image-set(\\"/pubpath/assets/cat.png\\" 1x, \\"/pubpath/assets/cat-2x.png\\" 2x, \\"/pubpath/assets/cat-print.png\\" 600dpi);
+  background-image: image-set(\\"/pubpath/cat.png\\" 1x, \\"/pubpath/cat-2x.png\\" 2x, \\"/pubpath/cat-print.png\\" 600dpi);
 }
 .bar {
-  background-image: url(\\"/pubpath/assets/bg1.png\\");
-  background-image: url(\\"/pubpath/assets/bg2.testing.regex.png\\"); }
+  background-image: url(\\"/pubpath/bg1.png\\");
+  background-image: url(\\"/pubpath/bg2.testing.regex.png\\"); }
 
 .bar2 {
   color: magenta;
@@ -400,9 +400,9 @@ exports[`code-splitting single: js 2`] = `
 "const modules_963121b4 = {\\"fourth\\":\\"fourth_fourth\\"};
 
 (async () => {
-  const first = await import('./first.362849fe.js');
-  const second = await import('./second.94a7efef.js');
-  const otherScript = await import('./other-script.2bf5eba9.js');
+  const first = await import('./first-d9f26de0.js');
+  const second = await import('./second-f9fcf0ac.js');
+  const otherScript = await import('./other-script-8d6e6748.js');
   console.log(first, second, otherScript);
 })();
 
@@ -424,8 +424,8 @@ exports[`code-splitting single: js 4`] = `
 
 exports[`code-splitting single: js 5`] = `
 "(async () => {
-  await import('./noncss.ff82f22e.js');
-  const nestedScript = await import('./nested-script.46723574.js');
+  await import('./noncss-f3feb5ac.js');
+  const nestedScript = await import('./nested-script-ca48105f.js');
   console.log(nestedScript);
 })();
 "
@@ -441,7 +441,7 @@ export { css };
 "
 `;
 
-exports[`code-splitting single: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../code-splitting/third.scss\\",\\"../../../code-splitting/fourth.scss\\",\\"../../../code-splitting/partial.css\\",\\"../../../code-splitting/first.scss\\",\\"../../../code-splitting/second.scss\\",\\"../../../code-splitting/other-script.scss\\",\\"../../../code-splitting/nested-script.scss\\",\\"../../../code-splitting/nondynamic.scss\\",\\"../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA;;ACDhB;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA;;ACHZ;EACE,gBAAgB,EAAA;;ACDlB;EACE,YAAY,EAAA;;ACDd;EACE,oBAAoB,EAAA;;ACDtB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"extracted.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\",\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\",\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\",\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting single: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\",\\"../../../../code-splitting/second.scss\\",\\"../../../../code-splitting/other-script.scss\\",\\"../../../../code-splitting/nested-script.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA;;ACDhB;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA;;ACHZ;EACE,gBAAgB,EAAA;;ACDlB;EACE,YAAY,EAAA;;ACDd;EACE,oBAAoB,EAAA;;ACDtB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"extracted-f4bbb105.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\",\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\",\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\",\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
 
 exports[`code-splitting true: css 1`] = `
 ".first_partial {
@@ -450,7 +450,7 @@ exports[`code-splitting true: css 1`] = `
 .first_first {
   color: red; }
 
-/*# sourceMappingURL=first.d1cc633f.css.map */"
+/*# sourceMappingURL=first.css.map */"
 `;
 
 exports[`code-splitting true: css 2`] = `
@@ -460,7 +460,7 @@ exports[`code-splitting true: css 2`] = `
 .fourth_fourth {
   color: magenta; }
 
-/*# sourceMappingURL=index.fae1b360.css.map */"
+/*# sourceMappingURL=index.css.map */"
 `;
 
 exports[`code-splitting true: css 3`] = `
@@ -473,21 +473,21 @@ exports[`code-splitting true: css 3`] = `
 .nondynamic2_nondynamic2 {
   color: deeppink; }
 
-/*# sourceMappingURL=nested-script.24698cc5.css.map */"
+/*# sourceMappingURL=nested-script.css.map */"
 `;
 
 exports[`code-splitting true: css 4`] = `
 ".otherScript_otherScript {
   color: wheat; }
 
-/*# sourceMappingURL=other-script.7d98b97f.css.map */"
+/*# sourceMappingURL=other-script.css.map */"
 `;
 
 exports[`code-splitting true: css 5`] = `
 ".second_second {
   color: royalblue; }
 
-/*# sourceMappingURL=second.dd9ddbb2.css.map */"
+/*# sourceMappingURL=second.css.map */"
 `;
 
 exports[`code-splitting true: js 1`] = `
@@ -504,9 +504,9 @@ exports[`code-splitting true: js 2`] = `
 "const modules_963121b4 = {\\"fourth\\":\\"fourth_fourth\\"};
 
 (async () => {
-  const first = await import('./first.d1cc633f.js');
-  const second = await import('./second.dd9ddbb2.js');
-  const otherScript = await import('./other-script.7d98b97f.js');
+  const first = await import('./first-d9f26de0.js');
+  const second = await import('./second-f9fcf0ac.js');
+  const otherScript = await import('./other-script-8d6e6748.js');
   console.log(first, second, otherScript);
 })();
 
@@ -528,8 +528,8 @@ exports[`code-splitting true: js 4`] = `
 
 exports[`code-splitting true: js 5`] = `
 "(async () => {
-  await import('./noncss.ff82f22e.js');
-  const nestedScript = await import('./nested-script.24698cc5.js');
+  await import('./noncss-f3feb5ac.js');
+  const nestedScript = await import('./nested-script-ca48105f.js');
   console.log(nestedScript);
 })();
 "
@@ -545,17 +545,33 @@ export { css };
 "
 `;
 
-exports[`code-splitting true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../code-splitting/partial.css\\",\\"../../../code-splitting/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA\\",\\"file\\":\\"first.d1cc633f.css\\",\\"sourcesContent\\":[\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA\\",\\"file\\":\\"first-5d1a2d67.css\\",\\"sourcesContent\\":[\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting true: map 2`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../code-splitting/third.scss\\",\\"../../../code-splitting/fourth.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA\\",\\"file\\":\\"index.fae1b360.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting true: map 2`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/fourth.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA\\",\\"file\\":\\"index-e2463627.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting true: map 3`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../code-splitting/nested-script.scss\\",\\"../../../code-splitting/nondynamic.scss\\",\\"../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,oBAAoB,EAAA;;ACDtB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"nested-script.24698cc5.css\\",\\"sourcesContent\\":[\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting true: map 3`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nested-script.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,oBAAoB,EAAA;;ACDtB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"nested-script-ccf730db.css\\",\\"sourcesContent\\":[\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting true: map 4`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../code-splitting/other-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAY,EAAA\\",\\"file\\":\\"other-script.7d98b97f.css\\",\\"sourcesContent\\":[\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting true: map 4`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/other-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAY,EAAA\\",\\"file\\":\\"other-script-ae9cb42b.css\\",\\"sourcesContent\\":[\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting true: map 5`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../code-splitting/second.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB,EAAA\\",\\"file\\":\\"second.dd9ddbb2.css\\",\\"sourcesContent\\":[\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting true: map 5`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/second.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB,EAAA\\",\\"file\\":\\"second-b4686c0e.css\\",\\"sourcesContent\\":[\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\"]}"`;
 
-exports[`extract custom-path-absolute: css 1`] = `
+exports[`emit true: js 1`] = `
+"import { css } from 'lit-element';
+
+var style = css\`main {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+\`;
+
+console.log(style);
+"
+`;
+
+exports[`extract custom-path: css 1`] = `
 ".foo {
   color: red;
 }
@@ -584,7 +600,7 @@ exports[`extract custom-path-absolute: css 1`] = `
 /*# sourceMappingURL=extracted.css.map */"
 `;
 
-exports[`extract custom-path-absolute: js 1`] = `
+exports[`extract custom-path: js 1`] = `
 "const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
 const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
@@ -593,47 +609,7 @@ console.log(css_4fc87a7b, css_8b7409a7);
 "
 `;
 
-exports[`extract custom-path-absolute: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../../simple/foo.css\\",\\"../../../../../simple/bar.css\\",\\"../../../../../simple/style.styl\\",\\"../../../../../simple/style.pcss\\",\\"../../../../../simple/style.sass\\",\\"../../../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;AACZ;;ACFA;EACE,WAAO;EACP,gBAAY;AACd;;ACHA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;EACV,UAAU,EAAA;;ACCZ;EACE,cAAA;AAFF\\",\\"file\\":\\"extracted.css\\",\\"sourcesContent\\":[\\".foo {\\\\n  color: red;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
-
-exports[`extract custom-path-relative: css 1`] = `
-".foo {
-  color: red;
-}
-
-.bar {
-  color: red;
-}
-
-.stylus {
-  color: #f00;
-  background: #f00;
-}
-
-.pcss {
-  color: red;
-}
-
-.sass {
-  width: 30%;
-  color: red; }
-
-.less {
-  color: #6c94be;
-}
-
-/*# sourceMappingURL=extracted.css.map */"
-`;
-
-exports[`extract custom-path-relative: js 1`] = `
-"const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
-
-const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
-
-console.log(css_4fc87a7b, css_8b7409a7);
-"
-`;
-
-exports[`extract custom-path-relative: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../../simple/foo.css\\",\\"../../../../../simple/bar.css\\",\\"../../../../../simple/style.styl\\",\\"../../../../../simple/style.pcss\\",\\"../../../../../simple/style.sass\\",\\"../../../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;AACZ;;ACFA;EACE,WAAO;EACP,gBAAY;AACd;;ACHA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;EACV,UAAU,EAAA;;ACCZ;EACE,cAAA;AAFF\\",\\"file\\":\\"extracted.css\\",\\"sourcesContent\\":[\\".foo {\\\\n  color: red;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
+exports[`extract custom-path: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../../../simple/foo.css\\",\\"../../../../../../simple/bar.css\\",\\"../../../../../../simple/style.styl\\",\\"../../../../../../simple/style.pcss\\",\\"../../../../../../simple/style.sass\\",\\"../../../../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;AACZ;;ACFA;EACE,WAAO;EACP,gBAAY;AACd;;ACHA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;EACV,UAAU,EAAA;;ACCZ;EACE,cAAA;AAFF\\",\\"file\\":\\"extracted-c25c2e3a.css\\",\\"sourcesContent\\":[\\".foo {\\\\n  color: red;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
 
 exports[`extract sourcemap-inline: css 1`] = `
 ".foo {
@@ -711,7 +687,7 @@ console.log(css_4fc87a7b, css_8b7409a7);
 "
 `;
 
-exports[`extract sourcemap-true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../simple/foo.css\\",\\"../../../simple/bar.css\\",\\"../../../simple/style.styl\\",\\"../../../simple/style.pcss\\",\\"../../../simple/style.sass\\",\\"../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;AACZ;;ACFA;EACE,WAAO;EACP,gBAAY;AACd;;ACHA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;EACV,UAAU,EAAA;;ACCZ;EACE,cAAA;AAFF\\",\\"file\\":\\"index.css\\",\\"sourcesContent\\":[\\".foo {\\\\n  color: red;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
+exports[`extract sourcemap-true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../simple/foo.css\\",\\"../../../../simple/bar.css\\",\\"../../../../simple/style.styl\\",\\"../../../../simple/style.pcss\\",\\"../../../../simple/style.sass\\",\\"../../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;AACZ;;ACFA;EACE,WAAO;EACP,gBAAY;AACd;;ACHA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;EACV,UAAU,EAAA;;ACCZ;EACE,cAAA;AAFF\\",\\"file\\":\\"index-3775aa29.css\\",\\"sourcesContent\\":[\\".foo {\\\\n  color: red;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
 
 exports[`extract true: css 1`] = `
 ".foo {
@@ -967,7 +943,7 @@ console.log(css_4fc87a7b, css_8b7409a7);
 "
 `;
 
-exports[`minimize extract-sourcemap-true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../simple/style.styl\\",\\"../../../simple/bar.css\\",\\"../../../simple/style.sass\\",\\"../../../simple/style.pcss\\",\\"../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA,kBCCE,SDEF,CAHA,QAEE,cACF,CEHA,YCCE,SDCU,CAFZ,MACE,SACU,CECZ,MACE,aAFF\\",\\"file\\":\\"index.css\\",\\"sourcesContent\\":[\\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
+exports[`minimize extract-sourcemap-true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../simple/style.styl\\",\\"../../../../simple/bar.css\\",\\"../../../../simple/style.sass\\",\\"../../../../simple/style.pcss\\",\\"../../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA,kBCCE,SDEF,CAHA,QAEE,cACF,CEHA,YCCE,SDCU,CAFZ,MACE,SACU,CECZ,MACE,aAFF\\",\\"file\\":\\"index-06d16292.css\\",\\"sourcesContent\\":[\\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
 
 exports[`minimize inject: js 1`] = `
 "/** @type {HTMLElement[]} */
@@ -1282,7 +1258,7 @@ console.log(modules_66a8b034.module, modules_b4425b4f.composition, modules_75007
 "
 `;
 
-exports[`modules extract-sourcemap-true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../modules/style.css\\",\\"../../../modules/composed.css\\",\\"../../../modules/subdir/composition2.css\\"],\\"names\\":[],\\"mappings\\":\\"AAEA;EACE,cAAgB;AAClB;;AAEA;AAEA;;ACNA;EACE;IAEE,sBAAsB;EACxB;AACF;;AAEA;EACE,yBAAyB;AAC3B;;ACXA;EACE,UAAU;AACZ\\",\\"file\\":\\"index.css\\",\\"sourcesContent\\":[\\"@value primary, secondary from colors;\\\\n\\\\n.module {\\\\n  color: secondary;\\\\n}\\\\n\\\\n.module2 {\\\\n  composes: composition from \\\\\\"./composed.css\\\\\\";\\\\n}\\\\n\\",\\"@value primary from colors;\\\\n\\\\n@media screen and (min-width: 900px) {\\\\n  .composition {\\\\n    composes: compositioned from \\\\\\"./subdir/composition2.css\\\\\\";\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composition {\\\\n  background-color: primary;\\\\n}\\\\n\\",\\".compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\"]}"`;
+exports[`modules extract-sourcemap-true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../modules/style.css\\",\\"../../../../modules/composed.css\\",\\"../../../../modules/subdir/composition2.css\\"],\\"names\\":[],\\"mappings\\":\\"AAEA;EACE,cAAgB;AAClB;;AAEA;AAEA;;ACNA;EACE;IAEE,sBAAsB;EACxB;AACF;;AAEA;EACE,yBAAyB;AAC3B;;ACXA;EACE,UAAU;AACZ\\",\\"file\\":\\"index-25a95cf1.css\\",\\"sourcesContent\\":[\\"@value primary, secondary from colors;\\\\n\\\\n.module {\\\\n  color: secondary;\\\\n}\\\\n\\\\n.module2 {\\\\n  composes: composition from \\\\\\"./composed.css\\\\\\";\\\\n}\\\\n\\",\\"@value primary from colors;\\\\n\\\\n@media screen and (min-width: 900px) {\\\\n  .composition {\\\\n    composes: compositioned from \\\\\\"./subdir/composition2.css\\\\\\";\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composition {\\\\n  background-color: primary;\\\\n}\\\\n\\",\\".compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\"]}"`;
 
 exports[`modules inject: js 1`] = `
 "/** @type {HTMLElement[]} */

@@ -8,7 +8,6 @@ import { normalizePath, isAbsolutePath } from "../../../utils/path";
 import { firstExtRe, dataURIRe } from "../common";
 
 import resolveDefault, { Resolve } from "./resolve";
-import generateName from "./generate";
 import { walkUrls, isDeclWithUrl } from "./utils";
 import inlineFile from "./inline";
 
@@ -26,20 +25,11 @@ export type UrlOptions = {
    * */
   publicPath?: string;
   /**
-   * Directory path for outputted CSS assets
+   * Directory path for outputted CSS assets,
+   * which is not included into resulting URL
    * @default "assets"
    * */
   assetDir?: string;
-  /**
-   * Enable to generate names with hash for outputted CSS assets
-   * or provide your own placeholder with the following blocks:
-   * - `[dir]` - File's directory name
-   * - `[name]` - File's name
-   * - `[ext]` - File's extension (with dot)
-   * - `[hash(:<num>)]` - Hash (with optional length)
-   * @default "[name][ext]" ("[name]_[hash:8][ext]" if `true`)
-   * */
-  hash?: boolean | string;
   /**
    * Provide custom resolver for URLs
    * in place of the default one
@@ -63,11 +53,6 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
     const assetDir = options?.assetDir ?? "assets";
     const resolve = options?.resolve ?? resolveDefault;
     const alias = options?.alias ?? {};
-    const placeholder = options?.hash
-      ? typeof options.hash === "string"
-        ? options.hash
-        : "[name]_[hash:8][ext]"
-      : "[name][ext]";
 
     const { file } = css.source.input;
     const map = await mm(css.source.input.map?.text).resolve(path.dirname(file)).toConsumer();
@@ -133,8 +118,9 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
           }
         }
 
-        // URL was not resolved
-        decl.warn(res, `Unresolved URL \`${url}\` in \`${decl.toString()}\``);
+        // Use current file
+        const basedir = path.dirname(file);
+        nodeMap.set(node, { url, decl, parsed, basedir });
       });
     });
 
@@ -145,6 +131,8 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
       try {
         const { source, from } = await resolve(url, basedir);
 
+        if (!(source instanceof Uint8Array) || typeof from !== "string") continue;
+
         res.messages.push({ plugin: name, type: "dependency", file: from });
 
         if (inline) {
@@ -152,7 +140,7 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
           node.value = inlineFile(from, source);
         } else {
           let safeTo, to;
-          to = safeTo = normalizePath(assetDir, generateName(placeholder, from, source));
+          to = safeTo = path.basename(from);
 
           // Avoid file overrides
           for (let i = 1; usedNames.has(safeTo) && usedNames.get(safeTo) !== from; i++)
@@ -160,10 +148,12 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
 
           to = safeTo;
           usedNames.set(to, from);
-          res.messages.push({ plugin: name, type: "asset", to, source });
 
           node.type = "string";
           node.value = publicPath + (/[/\\]$/.test(publicPath) ? "" : "/") + to;
+
+          to = normalizePath(assetDir, safeTo);
+          res.messages.push({ plugin: name, type: "asset", to, source });
         }
 
         decl.value = parsed.toString();

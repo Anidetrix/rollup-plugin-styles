@@ -85,7 +85,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
       ...denullifyObject((config.options ?? {}) as Required<postcss.ProcessOptions>),
       ...denullifyObject(options.postcss),
       from: this.id,
-      to: typeof options.extract === "string" ? path.resolve(options.extract) : this.id,
+      to: options.to ?? this.id,
       map: {
         inline: false,
         annotation: false,

@@ -14,7 +14,13 @@ import cssnano from "cssnano";
 
 import { ExtractedData, LoaderContext, Options, Payload, PostCSSLoaderOptions } from "./types";
 import Loaders from "./loaders";
-import { humanlizePath, relativePath, normalizePath } from "./utils/path";
+import {
+  humanlizePath,
+  normalizePath,
+  relativePath,
+  isAbsolutePath,
+  isRelativePath,
+} from "./utils/path";
 import { mm } from "./utils/sourcemap";
 import {
   inferOption,
@@ -38,6 +44,7 @@ export default (options: Options = {}): Plugin => {
     url: inferResolverOption(options.url, options.alias),
     modules: inferOption(options.modules, false),
 
+    to: options.to,
     namedExports: options.namedExports ?? false,
     autoModules: options.autoModules ?? false,
     extensions: options.extensions ?? [".css", ".sss", ".pcss", ".postcss"],
@@ -93,8 +100,7 @@ export default (options: Options = {}): Plugin => {
 
       for (const dep of ctx.deps) this.addWatchFile(dep);
 
-      for (const [fileName, source] of ctx.assets)
-        this.emitFile({ type: "asset", source, fileName });
+      for (const [name, source] of ctx.assets) this.emitFile({ type: "asset", name, source });
 
       if (postcssLoaderOpts.extract) {
         res.extracted && extracted.set(id, res.extracted);
@@ -143,11 +149,27 @@ export default (options: Options = {}): Plugin => {
 
       const dir = opts.dir ?? path.dirname(opts.file ?? "");
 
-      const getExtractedData = (file: string, ids: string[]): ExtractedData => {
+      const getExtractedData = (name: string, ids: string[]): ExtractedData => {
         const fileName =
           typeof postcssLoaderOpts.extract === "string"
-            ? relativePath(dir, path.resolve(postcssLoaderOpts.extract))
-            : normalizePath(path.dirname(file), `${path.basename(file, path.extname(file))}.css`);
+            ? normalizePath(postcssLoaderOpts.extract).replace(/^\.[/\\]/, "")
+            : normalizePath(`${name}.css`);
+
+        if (isAbsolutePath(fileName))
+          this.error(
+            [
+              "Extraction path must be relative to the output directory,",
+              `which is ${humanlizePath(dir)}`,
+            ].join("\n"),
+          );
+
+        if (isRelativePath(fileName))
+          this.error(
+            [
+              "Extraction path must be nested inside output directory,",
+              `which is ${humanlizePath(dir)}`,
+            ].join("\n"),
+          );
 
         const fileBaseName = path.basename(fileName);
         const fileDir = path.dirname(path.resolve(dir, fileName));
@@ -176,8 +198,8 @@ export default (options: Options = {}): Plugin => {
         return {
           css,
           map: options.sourceMap === true ? map.toString() : undefined,
-          cssFileName: fileName,
-          mapFileName: `${fileName}.map`,
+          cssName: fileName,
+          mapBaseName: `${fileBaseName}.map`,
         };
       };
 
@@ -199,35 +221,35 @@ export default (options: Options = {}): Plugin => {
             if (chunkIds.length === 0) continue;
 
             ids.push(...chunkIds);
-            idsMap.set(chunk.fileName, chunkIds);
+            idsMap.set(chunk.name, chunkIds);
           }
         }
 
         const entryIds = moduleIds.filter(id => !ids.includes(id) && isSupported(id));
-        if (entryIds.length > 0) idsMap.set(entry.fileName, entryIds);
+        if (entryIds.length > 0) idsMap.set(entry.name, entryIds);
 
         return idsMap;
       };
 
-      for await (const [file, ids] of getEmitted()) {
-        const res = getExtractedData(file, ids);
+      for await (const [name, ids] of getEmitted()) {
+        const res = getExtractedData(name, ids);
 
         if (options.onExtract) {
           const shouldExtract = options.onExtract(getExtractedData);
           if (!shouldExtract) continue;
         }
 
-        // Perform cssnano on the extracted file
+        // Perform minimization on the extracted file
         if (postcssLoaderOpts.minimize) {
           const cssNanoOpts: cssnano.CssNanoOptions & postcss.ProcessOptions =
             typeof postcssLoaderOpts.minimize === "object" ? postcssLoaderOpts.minimize : {};
 
-          cssNanoOpts.from = res.cssFileName;
+          cssNanoOpts.from = res.cssName;
           if (options.sourceMap === "inline") {
             cssNanoOpts.map = { inline: true };
           } else if (options.sourceMap === true) {
             cssNanoOpts.map = { prev: res.map };
-            cssNanoOpts.to = res.cssFileName;
+            cssNanoOpts.to = res.cssName;
           }
 
           const resMin = await cssnano.process(res.css, cssNanoOpts);
@@ -235,17 +257,33 @@ export default (options: Options = {}): Plugin => {
           if (options.sourceMap === true) res.map = resMin.map?.toString();
         }
 
-        this.emitFile({
+        const cssFileId = this.emitFile({
           type: "asset",
+          name: res.cssName,
           source: res.css,
-          fileName: res.cssFileName,
         });
 
         if (res.map) {
+          const fileName = this.getFileName(cssFileId);
+          res.mapBaseName = normalizePath(path.dirname(fileName), res.mapBaseName);
+
+          const assetDir = opts.assetFileNames ? path.dirname(opts.assetFileNames) : "assets";
+
           this.emitFile({
             type: "asset",
-            source: res.map,
-            fileName: res.mapFileName,
+            fileName: res.mapBaseName,
+            source: mm(res.map)
+              .modify(m => {
+                m.file = path.basename(fileName);
+              })
+              .modifySources(s => {
+                // Compensate for possible nesting depending on `assetFileNames` value
+                if (assetDir.length <= 1) return s;
+                if (!opts.assetFileNames) return `../${s}`;
+                for (const char of `${assetDir}/`) if (char === "/") s = `../${s}`;
+                return s;
+              })
+              .toString(),
           });
         }
       }

@@ -26,6 +26,11 @@ yarn add rollup-plugin-styles --dev # yarn 1.x
 import styles from "rollup-plugin-styles";
 
 export default {
+  output: {
+    // Governs names of CSS files and assets from CSS URLs
+    // Recommended value shown below
+    assetFileNames: "[name]-[hash][extname]",
+  },
   plugins: [styles()],
 };
 ```
@@ -36,26 +41,60 @@ After that you can import CSS files in your code:
 import "./style.css";
 ```
 
-Note that, by default, generated CSS will be injected into `<head>`, with CSS also available as default export unless [CSS Modules](https://github.com/css-modules/css-modules) are enabled, in which case you need to use named `css` export:
+Default mode is `inject`, which means generated CSS will be injected into `<head>`, with ability to pass options to CSS injector or even pass your own injector
+
+CSS is available as default export in `inject` and `extract` modes, but if [CSS Modules](https://github.com/css-modules/css-modules) are enabled you need to use named `css` export.
+
+In `emit` mode none of the exports are available since it purely processes CSS and passes it along the build pipeline, which is useful if you only want to preprocess CSS for usage with CSS consuming plugins, i.e. [rollup-plugin-lit-css](https://github.com/bennypowers/rollup-plugin-lit-css)
 
 ```js
-// Inject into `<head>`, also available as `style` object in this example
+// Injects CSS, also available as `style` in this example
 import style from "./style.css";
-// Named export of CSS string, available even with CSS Modules enabled
+// Named export of CSS string
 import { css } from "./style.css";
 ```
 
-This plugin will also automatically detect and use local PostCSS config files.
+This plugin also automatically detects and uses local PostCSS config files.
+
+### CSS Injection
+
+```js
+styles({
+  mode: "inject", // Unnecessary, set by default
+  // ...or with custom options for injector
+  mode: ["inject", { container: "body", singleTag: true, prepend: true }],
+  // ...or with custom injector
+  mode: ["inject", yourInjectorFn],
+});
+```
 
 ### CSS Extraction
 
 ```js
 styles({
   mode: "extract",
-  // ...or with absolute/relative to current working directory path
-  // Note: also acts as `to` for PostCSS
-  mode: ["extract", "dist/awesome-bundle.css"],
+  // ... or with relative to output dir/output file's basedir (but not outside of it).
+  mode: ["extract", "awesome-bundle.css"],
 });
+```
+
+### Emitting processed CSS
+
+```js
+// rollup.config.js
+import styles from "rollup-plugin-styles";
+
+// Any plugin which consumes pure CSS
+import litcss from "rollup-plugin-lit-css";
+
+export default {
+  plugins: [
+    styles({ mode: "emit" }),
+
+    // Make sure to list it after this one
+    litcss(),
+  ],
+};
 ```
 
 ### [CSS Modules](https://github.com/css-modules/css-modules)
@@ -152,6 +191,7 @@ See [API Reference for `Options`](https://anidetrix.github.io/rollup-plugin-styl
 - Up-to-date [CSS Modules](https://github.com/css-modules/css-modules) implementation
 - Built-in `@import` handler
 - Built-in assets handler
+- Respects `output.assetFileNames`
 - Code splitting support
 - Ability to emit pure CSS for other plugins
 - Correct multiple instance support with check for already processed files

@@ -97,6 +97,9 @@ const plugin: postcss.Plugin<ImportOptions> = postcss.plugin(
     for await (const [importRule, url] of importMap) {
       try {
         const { source, from } = await resolve(url, basedir);
+
+        if (!(source instanceof Uint8Array) || typeof from !== "string") continue;
+
         if (normalizePath(from) === normalizePath(file)) {
           importRule.warn(res, `\`@import\` loop in \`${importRule.toString()}\``);
           continue;
