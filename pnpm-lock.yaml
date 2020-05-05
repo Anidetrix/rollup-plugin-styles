@@ -39,6 +39,7 @@ devDependencies:
   '@types/node': 13.13.4
   '@types/postcss-load-config': 2.0.1
   '@types/resolve': 1.17.0
+  '@types/uglifycss': 0.0.5
   '@typescript-eslint/eslint-plugin': 2.31.0_50950b2e6bdbd58a09a037463d6cec66
   '@typescript-eslint/parser': 2.31.0_eslint@6.8.0+typescript@3.8.3
   autoprefixer: 9.7.6
@@ -1817,6 +1818,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-l42BggppR6zLmpfU6fq9HEa2oGPEI8yrSPL3GITjfRInppYFahObbIQOQK3UGxEnyQpltZLaPe75046NOZQikw==
+  /@types/uglifycss/0.0.5:
+    dev: true
+    resolution:
+      integrity: sha1-D0vOKZx2+tX71NA4WV3ExV3l1V0=
   /@types/yargs-parser/15.0.0:
     dev: true
     resolution:
@@ -9926,6 +9931,7 @@ specifiers:
   '@types/node': '*'
   '@types/postcss-load-config': ^2.0.1
   '@types/resolve': ^1.17.0
+  '@types/uglifycss': ^0.0.5
   '@typescript-eslint/eslint-plugin': ^2.31.0
   '@typescript-eslint/parser': ^2.31.0
   autoprefixer: ^9.7.6
