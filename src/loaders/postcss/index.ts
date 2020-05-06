@@ -130,7 +130,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
 
     const res = await postcss(plugins).process(code, postcssOpts);
 
-    for await (const warning of res.warnings())
+    for (const warning of res.warnings())
       this.warn({ name: warning.plugin, message: warning.text });
 
     const deps = res.messages.filter(msg => msg.type === "dependency");
