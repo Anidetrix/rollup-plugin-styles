@@ -46,7 +46,7 @@ Default mode is `inject`, which means generated CSS will be injected into `<head
 
 CSS is available as default export in `inject` and `extract` modes, but if [CSS Modules](https://github.com/css-modules/css-modules) are enabled you need to use named `css` export.
 
-In `emit` mode none of the exports are available since it purely processes CSS and passes it along the build pipeline, which is useful if you only want to preprocess CSS for usage with CSS consuming plugins, i.e. [rollup-plugin-lit-css](https://github.com/bennypowers/rollup-plugin-lit-css)
+In `emit` mode none of the exports are available since it purely processes CSS and passes it along the build pipeline, which is useful if you only want to preprocess CSS for usage with CSS consuming plugins, e.g. [rollup-plugin-lit-css](https://github.com/bennypowers/rollup-plugin-lit-css)
 
 ```js
 // Injects CSS, also available as `style` in this example

@@ -47,12 +47,12 @@ export default (options: Options = {}): Plugin => {
     to: options.to,
     namedExports: options.namedExports ?? false,
     autoModules: options.autoModules ?? false,
-    extensions: options.extensions ?? [".css", ".sss", ".pcss", ".postcss"],
+    extensions: options.extensions ?? [".css", ".pcss", ".postcss", ".sss"],
 
     postcss: {
-      parser: ensurePCSSOption(options.parser),
-      syntax: ensurePCSSOption(options.syntax),
-      stringifier: ensurePCSSOption(options.stringifier),
+      parser: ensurePCSSOption(options.parser, "parser"),
+      syntax: ensurePCSSOption(options.syntax, "syntax"),
+      stringifier: ensurePCSSOption(options.stringifier, "stringifier"),
       plugins: ensurePCSSPlugins(options.plugins),
     },
   };
@@ -281,9 +281,10 @@ export default (options: Options = {}): Plugin => {
               })
               .modifySources(s => {
                 // Compensate for possible nesting depending on `assetFileNames` value
+                if (s === "<no source>") return s;
                 if (assetDir.length <= 1) return s;
                 if (!opts.assetFileNames) return `../${s}`;
-                for (const char of `${assetDir}/`) if (char === "/") s = `../${s}`;
+                for (const c of `${assetDir}/`) if (c === "/") s = `../${s}`;
                 return s;
               })
               .toString(),

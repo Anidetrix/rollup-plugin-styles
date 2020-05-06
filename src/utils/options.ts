@@ -8,7 +8,7 @@ import {
   LESSLoaderOptions,
   ObjectWithUnknownProps,
 } from "../types";
-import { nullishFilter } from "./filter";
+import { nullishFilter, isNullish } from "./filter";
 
 export function inferOption<T, TDef extends T | boolean>(
   option: T | boolean | undefined,
@@ -74,18 +74,25 @@ export function ensureUseOption(use: Options["use"], opts: UseOpts): LoadersOpti
   });
 }
 
-export function ensurePCSSOption<T>(option: T | string): T {
-  if (typeof option === "string") return require(option);
-  return option;
+type PCSSOption = "parser" | "syntax" | "stringifier" | "plugin";
+export function ensurePCSSOption<T>(option: T | string, type: PCSSOption): T {
+  if (typeof option !== "string") return option;
+  try {
+    return require(option);
+  } catch (error) {
+    throw new Error(`Unable to load PostCSS ${type} \`${option}\``);
+  }
 }
 
 export function ensurePCSSPlugins(plugins: Options["plugins"]): postcss.Transformer[] | undefined {
-  if (!Array.isArray(plugins)) return ensurePCSSOption(plugins);
-  return plugins.filter(nullishFilter).map(p => {
-    if (!Array.isArray(p)) return ensurePCSSOption(p);
-
-    const [plug, opts] = p;
-    if (!opts) return ensurePCSSOption<postcss.Transformer>(plug);
-    return ensurePCSSOption<postcss.Plugin<unknown>>(plug)(opts);
-  });
+  if (!Array.isArray(plugins)) return ensurePCSSOption(plugins, "plugin");
+  return plugins
+    .map(p => {
+      if (isNullish(p)) return;
+      if (!Array.isArray(p)) return ensurePCSSOption(p, "plugin");
+      const [plug, opts] = p;
+      if (!opts) return ensurePCSSOption<postcss.Transformer>(plug, "plugin");
+      return ensurePCSSOption<postcss.Plugin<unknown>>(plug, "plugin")(opts);
+    })
+    .filter(nullishFilter);
 }

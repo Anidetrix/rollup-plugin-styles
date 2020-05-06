@@ -60,24 +60,20 @@ class MapModifier {
 
   modifySources(op: (source: string) => string): this {
     if (isNullish(this.#map)) return this;
-
-    if (this.#map.sources) {
-      this.#map.sources = this.#map.sources.map(op);
-    }
-
-    if (this.#map.sourceRoot) {
-      this.#map.sourceRoot = op(this.#map.sourceRoot);
-    }
-
+    if (this.#map.sources) this.#map.sources = this.#map.sources.map(op);
     return this;
   }
 
   resolve(dir: string): this {
-    return this.modifySources(source => resolvePath(dir, source));
+    return this.modifySources(source => {
+      if (source === "<no source>") return source;
+      return resolvePath(dir, source);
+    });
   }
 
   relative(dir = process.cwd()): this {
     return this.modifySources(source => {
+      if (source === "<no source>") return source;
       if (isAbsolutePath(source)) return relativePath(dir, source);
       else return normalizePath(source);
     });

@@ -220,11 +220,12 @@ export interface Options {
   exclude?: Parameters<CreateFilter>[1];
   /**
    * PostCSS will process files ending with these extensions.
-   * @default [".css", ".sss", ".pcss", ".postcss"]
+   * @default [".css", ".pcss", ".postcss", ".sss"]
    * */
   extensions?: string[];
   /**
-   * A list of plugins for PostCSS.
+   * A list of plugins for PostCSS,
+   * which are used before plugins loaded from PostCSS config file, if any
    * @default undefined
    * */
   plugins?: (
@@ -306,17 +307,20 @@ export interface Options {
    * */
   sourceMap?: boolean | "inline";
   /**
-   * Set PostCSS parser, like `sugarss`.
+   * Set PostCSS parser, e.g. `sugarss`.
+   * Overrides the one loaded from PostCSS config file, if any
    * @default undefined
    * */
   parser?: string | postcss.Parser;
   /**
    * Set PostCSS stringifier.
+   * Overrides the one loaded from PostCSS config file, if any
    * @default undefined
    * */
   stringifier?: string | postcss.Stringifier;
   /**
    * Set PostCSS syntax.
+   * Overrides the one loaded from PostCSS config file, if any
    * @default undefined
    * */
   syntax?: string | postcss.Syntax;
