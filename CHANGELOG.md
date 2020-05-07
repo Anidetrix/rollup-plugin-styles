@@ -1,3 +1,15 @@
+# [3.1.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.0.6...v3.1.0) (2020-05-07)
+
+
+### Bug Fixes
+
+* **injector:** external @babel/runtime ([129aff5](https://github.com/Anidetrix/rollup-plugin-styles/commit/129aff515d5883809a7223f2a63e8aea5c45cd3a))
+
+
+### Features
+
+* **modules:** customizable `autoModules` ([c3298de](https://github.com/Anidetrix/rollup-plugin-styles/commit/c3298de27a7f983b4e013ce16dffbf8178d5d331))
+
 ## [3.0.6](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.0.5...v3.0.6) (2020-05-07)
 
 
