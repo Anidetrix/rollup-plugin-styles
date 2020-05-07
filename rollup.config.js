@@ -34,6 +34,10 @@ export default [
     input: "runtime/inject-css.js",
     output: { format: "es", file: "dist/runtime/inject-css.js" },
     plugins: [
+      externals({ deps: true }),
+      json(),
+      resolve({ preferBuiltins: true }),
+      commonjs(),
       babel({
         exclude: ["**/node_modules/@babel/**"],
         babelHelpers: "runtime",
