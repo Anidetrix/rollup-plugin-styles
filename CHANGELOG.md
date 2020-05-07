@@ -1,3 +1,10 @@
+## [3.0.6](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.0.5...v3.0.6) (2020-05-07)
+
+
+### Bug Fixes
+
+* **sourcemap:** more reliable detection ([a419361](https://github.com/Anidetrix/rollup-plugin-styles/commit/a419361e7db77255e0cb2a0343f27b145f6169b6))
+
 ## [3.0.5](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.0.4...v3.0.5) (2020-05-06)
 
 
