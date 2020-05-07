@@ -1,6 +1,6 @@
 import loadModule from "../src/utils/load-module";
 import { fixture } from "./helpers";
-import { mm, getExtractedMap, getInlineMap, stripMap } from "../src/utils/sourcemap";
+import { mm, getMap, stripMap } from "../src/utils/sourcemap";
 
 describe("load-module", () => {
   test("wrong path", async () => {
@@ -20,21 +20,24 @@ describe("load-module", () => {
 });
 
 describe("sourcemap-utils", () => {
-  test("inline map", () => {
-    let code = ".foo {color: red;}";
-    const wrongMap = getInlineMap(code);
-    expect(wrongMap).toBeUndefined();
+  test("inline map", async () => {
+    let code =
+      '.foo {color: red;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkBAMAAACCzIhnAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiklEQVRYhe3QMQ6EIBAF0C+GSInF9mYTs+1ewRsQbmBlayysKefYO2asXbbYxvxHQj6ECQMAEREREf2NQ/fCtp5Zky6vtRMkSJEzhyISynWJnzH6Z8oQlzS7lEc/fLmmQUSvc16OrCPqRl1JePxQYo1ZSWVj9nxrrOb5esw+eXdvzTWfTERERHRXH4tWFZGswQ2yAAAAAElFTkSuQmCC");}';
+    const noMap = await getMap(code);
+    expect(noMap).toBeUndefined();
     code +=
       "/*# sourceMappingURL=data:application/json;base64,e1RISVM6SVNBU09VUkNFTUFQU0lNVUxBVElPTn0= */";
-    const correctMap = getInlineMap(code);
+    const correctMap = await getMap(code);
     expect(correctMap).toBe("{THIS:ISASOURCEMAPSIMULATION}");
   });
 
   test("file map", async () => {
     const code = ".foo {color: red;}/*# sourceMappingURL=fixture.css.map */";
-    const wrongMap = await getExtractedMap(code, "this/is/nonexistant/path.css");
-    expect(wrongMap).toBeUndefined();
-    const correctMap = await getExtractedMap(code, fixture("utils/pointless.css"));
+    const noPathMap = await getMap(code);
+    expect(noPathMap).toBeUndefined();
+    const wrongPathMap = await getMap(code, "this/is/nonexistant/path.css");
+    expect(wrongPathMap).toBeUndefined();
+    const correctMap = await getMap(code, fixture("utils/pointless.css"));
     expect(correctMap).toBe("{THIS:ISASOURCEMAPSIMULATION}");
   });
 

@@ -11,18 +11,15 @@ const mapBlockRe = /\/\*[#*@]+?\s*?sourceMappingURL\s*?=\s*?(\S+)\s*?\*+?\//;
 const mapInlineRe = /\/\/[#@]+?\s*?sourceMappingURL\s*?=\s*?(\S+)\s*?(?:$|\n|\r\n)/;
 const mapRe = new RegExp([mapBlockRe, mapInlineRe].map(re => re.source).join("|"));
 
-export function getInlineMap(code: string): string | undefined {
-  if (!mapRe.test(code)) return;
-  const matches = dataURIRe.exec(code);
-  if (!matches || matches.length < 2) return;
-  return Buffer.from(matches[1], "base64").toString("utf8");
-}
+export async function getMap(code: string, id?: string): Promise<string | undefined> {
+  const [, data] = mapRe.exec(code) ?? [];
+  if (!data) return;
 
-export async function getExtractedMap(code: string, id: string): Promise<string | undefined> {
-  if (dataURIRe.test(code)) return;
-  const matches = mapBlockRe.exec(code) ?? mapInlineRe.exec(code);
-  if (!matches || matches.length < 2) return;
-  const mapFileName = path.resolve(path.dirname(id), matches[1]);
+  const [, inlineMap] = dataURIRe.exec(data) ?? [];
+  if (inlineMap) return Buffer.from(inlineMap, "base64").toString();
+
+  if (!id) return;
+  const mapFileName = path.resolve(path.dirname(id), data);
   try {
     return await fs.readFile(mapFileName, "utf8");
   } catch (error) {
@@ -30,15 +27,8 @@ export async function getExtractedMap(code: string, id: string): Promise<string 
   }
 }
 
-export async function getMap(code: string, id: string): Promise<string | undefined> {
-  let map = getInlineMap(code);
-  if (!map) map = await getExtractedMap(code, id);
-  return map;
-}
-
 export function stripMap(code: string): string {
-  if (!mapRe.test(code)) return code;
-  return code.replace(mapRe, "").replace(/\s+$/, "");
+  return code.replace(mapRe, "");
 }
 
 class MapModifier {

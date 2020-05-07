@@ -3,17 +3,9 @@ import valueParser, { Node, ParsedValue } from "postcss-value-parser";
 
 const urlFuncRe = /^url$/i;
 const imageSetFuncRe = /^(?:-webkit-)?image-set$/i;
-const declWithUrlRe = new RegExp(
-  [
-    "(?:",
-    [urlFuncRe, imageSetFuncRe].map(re => re.source.replace("$", "")).join("|"),
-    ")",
-    "\\(",
-  ].join(""),
-  "i",
-);
 
-export const isDeclWithUrl = (decl: postcss.Declaration): boolean => declWithUrlRe.test(decl.value);
+export const isDeclWithUrl = (decl: postcss.Declaration): boolean =>
+  /^(?:url|(?:-webkit-)?image-set)\(/i.test(decl.value);
 
 export const walkUrls = (
   parsed: ParsedValue,
