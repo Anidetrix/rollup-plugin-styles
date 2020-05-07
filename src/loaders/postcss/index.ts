@@ -47,14 +47,6 @@ async function loadConfig(
   });
 }
 
-/**
- * @param file Filename
- * @returns `true` if `file` matches `[name].module.[ext]` format, otherwise `false`
- */
-function isModuleFile(file: string): boolean {
-  return /\.module\.[a-z]+$/i.test(file);
-}
-
 const loader: Loader<PostCSSLoaderOptions> = {
   name: "postcss",
   alwaysProcess: true,
@@ -72,7 +64,14 @@ const loader: Loader<PostCSSLoaderOptions> = {
       ...(config.plugins ?? []),
     ];
 
-    const autoModules = options.autoModules && isModuleFile(this.id);
+    const autoModules =
+      options.autoModules &&
+      (typeof options.autoModules === "function"
+        ? options.autoModules(this.id)
+        : options.autoModules instanceof RegExp
+        ? options.autoModules.test(this.id)
+        : /\.module\.[A-Za-z]+$/.test(this.id));
+
     const supportModules = Boolean(options.modules || autoModules);
 
     const modulesExports: { [filepath: string]: { [prop: string]: string } } = {};

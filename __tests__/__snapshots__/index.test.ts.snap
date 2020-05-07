@@ -1118,6 +1118,174 @@ console.log(modules_0d0b6254, modules_6130213c, modules_ff4908e7, modules_571860
 "
 `;
 
+exports[`modules auto-modules-fn: js 1`] = `
+"/** @type {HTMLElement[]} */
+var containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+var styleTags = [];
+
+/**
+ * @param {string} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {string} [options.container]
+ * @returns {void}
+ */
+function injector_f247f96b (css, options) {
+  if (!css || typeof document === \\"undefined\\") return;
+  if (typeof options === \\"undefined\\") options = {};
+
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? document.querySelector(options.container)
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
+    return styleTag;
+  }
+
+  /** @type {HTMLStyleElement} */
+  var styleTag;
+
+  if (singleTag) {
+    var id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.appendChild(document.createTextNode(css));
+  }
+}
+
+const css_04a4c3e4 = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_f247f96b(css_04a4c3e4);
+
+const css_6c66bb9c = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_f247f96b(css_6c66bb9c);
+
+const css_27de4cbf = \\".b {\\\\n  color: red; }\\\\n\\";
+injector_f247f96b(css_27de4cbf);
+
+const css_12b0d2db = \\".c_module_c {\\\\n  color: red;\\\\n}\\\\n\\";
+const modules_ff4908e7 = {\\"c\\":\\"c_module_c\\"};
+injector_f247f96b(css_12b0d2db);
+
+const css_dfd0fcc3 = \\".d {\\\\n  color: #f00;\\\\n}\\\\n\\";
+injector_f247f96b(css_dfd0fcc3);
+
+console.log(css_6c66bb9c, css_27de4cbf, modules_ff4908e7, css_dfd0fcc3);
+"
+`;
+
+exports[`modules auto-modules-regexp: js 1`] = `
+"/** @type {HTMLElement[]} */
+var containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+var styleTags = [];
+
+/**
+ * @param {string} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {string} [options.container]
+ * @returns {void}
+ */
+function injector_f247f96b (css, options) {
+  if (!css || typeof document === \\"undefined\\") return;
+  if (typeof options === \\"undefined\\") options = {};
+
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? document.querySelector(options.container)
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
+    return styleTag;
+  }
+
+  /** @type {HTMLStyleElement} */
+  var styleTag;
+
+  if (singleTag) {
+    var id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.appendChild(document.createTextNode(css));
+  }
+}
+
+const css_04a4c3e4 = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_f247f96b(css_04a4c3e4);
+
+const css_6c66bb9c = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_f247f96b(css_6c66bb9c);
+
+const css_27de4cbf = \\".b {\\\\n  color: red; }\\\\n\\";
+injector_f247f96b(css_27de4cbf);
+
+const css_12b0d2db = \\".c {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_f247f96b(css_12b0d2db);
+
+const css_dfd0fcc3 = \\".d_module_d {\\\\n  color: #f00;\\\\n}\\\\n\\";
+const modules_5718608d = {\\"d\\":\\"d_module_d\\"};
+injector_f247f96b(css_dfd0fcc3);
+
+console.log(css_6c66bb9c, css_27de4cbf, css_12b0d2db, modules_5718608d);
+"
+`;
+
 exports[`modules duplication: css 1`] = `
 "html {
   --color-primary: green;

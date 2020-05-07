@@ -27,8 +27,8 @@ type Mode = {
 export function inferModeOption(mode: Options["mode"]): Mode {
   const m = Array.isArray(mode)
     ? {
-        inject: mode[0] === "inject" ? mode[1] ?? true : false,
-        extract: mode[0] === "extract" ? mode[1] ?? true : false,
+        inject: mode[0] === "inject" && (mode[1] ?? true),
+        extract: mode[0] === "extract" && (mode[1] ?? true),
         emit: mode[0] === "emit",
       }
     : {

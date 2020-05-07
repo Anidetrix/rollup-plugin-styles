@@ -285,10 +285,11 @@ export interface Options {
    * Automatically enable
    * [CSS Modules](https://github.com/css-modules/css-modules)
    * for files named `[name].module.[ext]`
-   * - ex.: `foo.module.css`, `bar.module.stylus`, etc...
+   * (e.g. `foo.module.css`, `bar.module.stylus`),
+   * or pass your own function or regular expression
    * @default false
    * */
-  autoModules?: boolean;
+  autoModules?: boolean | RegExp | ((id: string) => boolean);
   /**
    * Use named exports alongside default export.
    * You can supply a function to control how exported name is generated.

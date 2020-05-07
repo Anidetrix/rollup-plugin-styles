@@ -156,6 +156,16 @@ validateMany("modules", [
     options: { autoModules: true },
   },
   {
+    title: "auto-modules-regexp",
+    input: "auto-modules/index.js",
+    options: { autoModules: /(?<!\.module\.)\.styl/ },
+  },
+  {
+    title: "auto-modules-fn",
+    input: "auto-modules/index.js",
+    options: { autoModules: (id): boolean => id.endsWith(".less") },
+  },
+  {
     title: "duplication",
     input: "modules-duplication/index.js",
     options: { modules: true, mode: "extract" },
