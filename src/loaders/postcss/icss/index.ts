@@ -14,19 +14,15 @@ export type InteroperableCSSOptions = {
 
 const plugin: postcss.Plugin<InteroperableCSSOptions> = postcss.plugin(
   name,
-  options => async (css, res): Promise<void> => {
+  (options = {}) => async (css, res): Promise<void> => {
     if (!css.source?.input.file) return;
     if (!res.processor) return;
 
-    const load = options?.load ?? loadDefault;
-    const extensions = options?.extensions ?? [".css"];
+    const load = options.load ?? loadDefault;
+    const extensions = options.extensions ?? [".css", ".pcss", ".postcss", ".sss"];
 
-    const opts = res.opts
-      ? {
-          ...res.opts,
-          map: typeof res.opts.map === "object" ? { ...res.opts.map, prev: false } : res.opts.map,
-        }
-      : {};
+    const opts = res.opts && { ...res.opts };
+    delete opts?.map;
 
     const { icssExports, icssImports } = extractICSS(css);
 
@@ -48,7 +44,7 @@ const plugin: postcss.Plugin<InteroperableCSSOptions> = postcss.plugin(
 
     res.messages.push({ plugin: name, type: "icss", replacements });
 
-    if (typeof options?.getReplacements === "function")
+    if (typeof options.getReplacements === "function")
       options.getReplacements(css.source.input.file, replacements, res.opts?.to);
   },
 );

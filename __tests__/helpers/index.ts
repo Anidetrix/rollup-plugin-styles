@@ -33,6 +33,13 @@ export async function write(data: WriteData): Promise<WriteResult> {
   const bundle = await rollup({
     input: fixture(data.input),
     plugins: data.plugins ?? [styles(data.options)],
+    onwarn: (warning, warn) => {
+      if (warning.code === "EMPTY_BUNDLE") return;
+      if (warning.source === "lit-element") return;
+      if (/Exported `\S+` as `\S+` in \S+/.test(warning.message)) return;
+      if (/Skipping processed file \S+/.test(warning.message)) return;
+      warn(warning);
+    },
   });
 
   const { output } = await bundle.write({

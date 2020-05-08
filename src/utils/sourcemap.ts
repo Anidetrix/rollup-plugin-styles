@@ -18,7 +18,7 @@ export async function getMap(code: string, id?: string): Promise<string | undefi
   const [, inlineMap] = dataURIRe.exec(data) ?? [];
   if (inlineMap) return Buffer.from(inlineMap, "base64").toString();
 
-  if (!id) return;
+  if (!id) throw new Error("Extracted map detected, but no ID is provided");
   const mapFileName = path.resolve(path.dirname(id), data);
   try {
     return await fs.readFile(mapFileName, "utf8");

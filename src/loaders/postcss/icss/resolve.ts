@@ -11,12 +11,12 @@ export default async function (
   processor: postcss.Processor,
   opts?: postcss.ProcessOptions,
 ): Promise<Replacements> {
-  return Object.entries(icssImports).reduce(async (result, [url, values]) => {
+  return Object.entries(icssImports).reduce(async (acc, [url, values]) => {
     const exports = await load(url, file, extensions, processor, opts);
     const mappedValues = Object.entries(values).reduce<Replacements>((acc, [k, v]) => {
       acc[k] = exports[v];
       return acc;
     }, {});
-    return { ...(await result), ...mappedValues };
+    return { ...(await acc), ...mappedValues };
   }, Promise.resolve({}));
 }

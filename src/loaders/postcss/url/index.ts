@@ -14,6 +14,7 @@ import inlineFile from "./inline";
 
 const name = "styles-url";
 
+/** URL handler options */
 export type UrlOptions = {
   /**
    * Inline files instead of copying
@@ -57,9 +58,8 @@ export type UrlOptions = {
 
 const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
   name,
-  options => async (css, res): Promise<void> => {
+  (options = {}) => async (css, res): Promise<void> => {
     if (!css.source?.input.file) return;
-    if (!options) return;
 
     const inline = options.inline ?? false;
     const publicPath = options.publicPath ?? "./";
@@ -150,7 +150,10 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
       try {
         const { source, from } = await resolve(url, basedir);
 
-        if (!(source instanceof Uint8Array) || typeof from !== "string") continue;
+        if (!(source instanceof Uint8Array) || typeof from !== "string") {
+          decl.warn(res, `Incorrectly resolved URL \`${url}\` in \`${decl.toString()}\``);
+          continue;
+        }
 
         res.messages.push({ plugin: name, type: "dependency", file: from });
 

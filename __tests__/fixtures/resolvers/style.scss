@@ -1,4 +1,4 @@
-@import url(features/foo.css);
+@import "features/foo.css";
 @import "features2/bar";
 
 .ignore-data-uri {

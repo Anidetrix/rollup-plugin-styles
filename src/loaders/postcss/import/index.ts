@@ -8,6 +8,7 @@ import resolveDefault, { Resolve } from "./resolve";
 
 const name = "styles-import";
 
+/** `@import` handler options */
 export type ImportOptions = {
   /**
    * Provide custom resolver for imports
@@ -22,20 +23,18 @@ export type ImportOptions = {
   alias?: { [from: string]: string };
 };
 
-const plugin: postcss.Plugin<ImportOptions> = postcss.plugin(
+type ImportPrivateOptions = { extensions?: string[] };
+const plugin: postcss.Plugin<ImportOptions & ImportPrivateOptions> = postcss.plugin(
   name,
-  options => async (css, res): Promise<void> => {
+  (options = {}) => async (css, res): Promise<void> => {
     if (!css.source?.input.file) return;
 
-    const resolve = options?.resolve ?? resolveDefault;
-    const alias = options?.alias ?? {};
+    const resolve = options.resolve ?? resolveDefault;
+    const alias = options.alias ?? {};
+    const extensions = options.extensions ?? [".css", ".pcss", ".postcss", ".sss"];
 
-    const opts = res.opts
-      ? {
-          ...res.opts,
-          map: typeof res.opts.map === "object" ? { ...res.opts.map, prev: false } : res.opts.map,
-        }
-      : {};
+    const opts = res.opts && { ...res.opts };
+    delete opts?.map;
 
     const { file } = css.source.input;
     const importMap = new Map<postcss.AtRule, string>();
@@ -96,9 +95,12 @@ const plugin: postcss.Plugin<ImportOptions> = postcss.plugin(
 
     for await (const [importRule, url] of importMap) {
       try {
-        const { source, from } = await resolve(url, basedir);
+        const { source, from } = await resolve(url, basedir, extensions);
 
-        if (!(source instanceof Uint8Array) || typeof from !== "string") continue;
+        if (!(source instanceof Uint8Array) || typeof from !== "string") {
+          importRule.warn(res, `Incorrectly resolved \`@import\` in \`${importRule.toString()}\``);
+          continue;
+        }
 
         if (normalizePath(from) === normalizePath(file)) {
           importRule.warn(res, `\`@import\` loop in \`${importRule.toString()}\``);

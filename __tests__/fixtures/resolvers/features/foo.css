@@ -1,4 +1,4 @@
-@import "sub/subfoo.css";
+@import "sub/subfoo";
 
 .foo {
   background-image: url("./bg.png"), url("./bg.testing.regex.png"), url("@/bg.testing.regex.png");

@@ -57,7 +57,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
 
     const plugins = [
       ...[
-        options.import && postcssImport(options.import),
+        options.import && postcssImport({ ...options.import, extensions: options.extensions }),
         options.url && postcssUrl(options.url),
       ].filter(booleanFilter),
       ...(options.postcss.plugins ?? []),
