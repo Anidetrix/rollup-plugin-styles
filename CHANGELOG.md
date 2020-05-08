@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.1.0...v3.2.0) (2020-05-08)
+
+
+### Features
+
+* **import:** resolve extensions ([9005ab8](https://github.com/Anidetrix/rollup-plugin-styles/commit/9005ab8c4124f18cefcf94064abe191e60d1cca0))
+
 # [3.1.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.0.6...v3.1.0) (2020-05-07)
 
 
