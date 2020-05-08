@@ -43,7 +43,6 @@ devDependencies:
   '@typescript-eslint/eslint-plugin': 2.31.0_e099344722c1a8e3a885c1e7bee66158
   '@typescript-eslint/parser': 2.31.0_eslint@7.0.0+typescript@3.8.3
   autoprefixer: 9.7.6
-  babel-jest: 26.0.1_@babel+core@7.9.6
   babel-plugin-transform-node-env-inline: 0.4.3
   builtin-modules: 3.1.0
   eslint: 7.0.0
@@ -57,6 +56,7 @@ devDependencies:
   gh-pages: 2.2.0
   husky: 4.2.5
   jest: 26.0.1
+  jest-circus: 26.0.1
   less: 3.11.1
   lint-staged: 10.2.2
   node-sass: 4.14.1
@@ -1047,7 +1047,7 @@ packages:
   /@commitlint/parse/8.3.4:
     dependencies:
       conventional-changelog-angular: 1.6.6
-      conventional-commits-parser: 3.0.8
+      conventional-commits-parser: 3.1.0
       lodash: 4.17.15
     dev: true
     engines:
@@ -1079,7 +1079,7 @@ packages:
       '@commitlint/top-level': 8.3.4
       '@marionebl/sander': 0.6.1
       babel-runtime: 6.26.0
-      git-raw-commits: 2.0.3
+      git-raw-commits: 2.0.7
     dev: true
     engines:
       node: '>=4'
@@ -1360,7 +1360,7 @@ packages:
       integrity: sha512-1V9XOY4rDW0rehzbrcqAmHnz8e7SKvX27gh8Gt2WgB0+pdzdiLV83p72kZPU+jvMbS1qU5mauP2iOvO8rhmurQ==
   /@octokit/auth-token/2.4.0:
     dependencies:
-      '@octokit/types': 2.14.0
+      '@octokit/types': 2.15.0
     dev: true
     resolution:
       integrity: sha512-eoOVMjILna7FVQf96iWc3+ZtE/ZT6y8ob8ZzcqKY1ibSQCnu4O/B7pJvzMx5cyZ/RjAff6DAdEb0O0Cjcxidkg==
@@ -1369,7 +1369,7 @@ packages:
       '@octokit/auth-token': 2.4.0
       '@octokit/graphql': 4.4.0
       '@octokit/request': 5.4.2
-      '@octokit/types': 2.14.0
+      '@octokit/types': 2.15.0
       before-after-hook: 2.1.0
       universal-user-agent: 5.0.0
     dev: true
@@ -1377,7 +1377,7 @@ packages:
       integrity: sha512-uvzmkemQrBgD8xuGbjhxzJN1darJk9L2cS+M99cHrDG2jlSVpxNJVhoV86cXdYBqdHCc9Z995uLCczaaHIYA6Q==
   /@octokit/endpoint/6.0.1:
     dependencies:
-      '@octokit/types': 2.14.0
+      '@octokit/types': 2.15.0
       is-plain-object: 3.0.0
       universal-user-agent: 5.0.0
     dev: true
@@ -1386,14 +1386,14 @@ packages:
   /@octokit/graphql/4.4.0:
     dependencies:
       '@octokit/request': 5.4.2
-      '@octokit/types': 2.14.0
+      '@octokit/types': 2.15.0
       universal-user-agent: 5.0.0
     dev: true
     resolution:
       integrity: sha512-Du3hAaSROQ8EatmYoSAJjzAz3t79t9Opj/WY1zUgxVUGfIKn0AEjg+hlOLscF6fv6i/4y/CeUvsWgIfwMkTccw==
   /@octokit/plugin-paginate-rest/2.2.0:
     dependencies:
-      '@octokit/types': 2.14.0
+      '@octokit/types': 2.15.0
     dev: true
     resolution:
       integrity: sha512-KoNxC3PLNar8UJwR+1VMQOw2IoOrrFdo5YOiDKnBhpVbKpw+zkBKNMNKwM44UWL25Vkn0Sl3nYIEGKY+gW5ebw==
@@ -1403,14 +1403,14 @@ packages:
       integrity: sha512-ywoxP68aOT3zHCLgWZgwUJatiENeHE7xJzYjfz8WI0goynp96wETBF+d95b8g/uL4QmS6owPVlaxiz3wyMAzcw==
   /@octokit/plugin-rest-endpoint-methods/3.10.0:
     dependencies:
-      '@octokit/types': 2.14.0
+      '@octokit/types': 2.15.0
       deprecation: 2.3.1
     dev: true
     resolution:
       integrity: sha512-Z2DBsdnkWKuVBVFiLoEUKP/82ylH4Ij5F1Mss106hnQYXTxDfCWAyHW+hJ6ophuHVJ9Flaaue3fYn4CggzkHTg==
   /@octokit/request-error/2.0.0:
     dependencies:
-      '@octokit/types': 2.14.0
+      '@octokit/types': 2.15.0
       deprecation: 2.3.1
       once: 1.4.0
     dev: true
@@ -1420,7 +1420,7 @@ packages:
     dependencies:
       '@octokit/endpoint': 6.0.1
       '@octokit/request-error': 2.0.0
-      '@octokit/types': 2.14.0
+      '@octokit/types': 2.15.0
       deprecation: 2.3.1
       is-plain-object: 3.0.0
       node-fetch: 2.6.0
@@ -1438,12 +1438,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-m2pdo9+DoEoqQ7wRXV1ihffhE1gbvoC20nvchphluEusbZI6Y9HyXABGiXL+mByy2uUMR2cgBDqBJQQ6bY8Uvg==
-  /@octokit/types/2.14.0:
+  /@octokit/types/2.15.0:
     dependencies:
       '@types/node': 13.13.5
     dev: true
     resolution:
-      integrity: sha512-1w2wxpN45rEXPDFeB7rGain7wcJ/aTRg8bdILITVnS0O7a4zEGELa3JmIe+jeLdekQjvZRbVfNPqS+mi5fKCKQ==
+      integrity: sha512-0mnpenB8rLhBVu8VUklp38gWi+EatjvcEcLWcdProMKauSaQWWepOAybZ714sOGsEyhXPlIcHICggn8HUsCXVw==
   /@rollup/plugin-babel/5.0.0_@babel+core@7.9.6+rollup@2.8.2:
     dependencies:
       '@babel/core': 7.9.6
@@ -1551,9 +1551,9 @@ packages:
       integrity: sha512-unvqHo5jk4dvAf2nZ3aw4imrlwQ2I50eVVvq9D47Qc3R+keNqepx1vDYwkjF8guFXnOYaYcR28yrZWno1hFbiw==
   /@semantic-release/commit-analyzer/8.0.1_semantic-release@17.0.7:
     dependencies:
-      conventional-changelog-angular: 5.0.6
-      conventional-commits-filter: 2.0.2
-      conventional-commits-parser: 3.0.8
+      conventional-changelog-angular: 5.0.10
+      conventional-commits-filter: 2.0.6
+      conventional-commits-parser: 3.1.0
       debug: 4.1.1
       import-from: 3.0.0
       lodash: 4.17.15
@@ -1639,10 +1639,10 @@ packages:
       integrity: sha512-D+oEmsx9aHE1q806NFQwSC9KdBO8ri/VO99eEz0wWbX2jyLqVyWr7t0IjKC8aSnkkQswg/4KN/ZjfF6iz1XOpw==
   /@semantic-release/release-notes-generator/9.0.1_semantic-release@17.0.7:
     dependencies:
-      conventional-changelog-angular: 5.0.6
+      conventional-changelog-angular: 5.0.10
       conventional-changelog-writer: 4.0.16
-      conventional-commits-filter: 2.0.2
-      conventional-commits-parser: 3.0.8
+      conventional-commits-filter: 2.0.6
+      conventional-commits-parser: 3.1.0
       debug: 4.1.1
       get-stream: 5.1.0
       import-from: 3.0.0
@@ -2908,15 +2908,15 @@ packages:
     dev: true
     resolution:
       integrity: sha512-suQnFSqCxRwyBxY68pYTsFkG0taIdinHLNEAX5ivtw8bCRnIgnpvcHmlR/yjUyZIrNPYAoXlY1WiEKWgSE4BNg==
-  /conventional-changelog-angular/5.0.6:
+  /conventional-changelog-angular/5.0.10:
     dependencies:
       compare-func: 1.3.2
       q: 1.5.1
     dev: true
     engines:
-      node: '>=6.9.0'
+      node: '>=10'
     resolution:
-      integrity: sha512-QDEmLa+7qdhVIv8sFZfVxU1VSyVvnXPsxq8Vam49mKUcO1Z8VTLEJk9uI21uiJUsnmm0I4Hrsdc9TgkOQo9WSA==
+      integrity: sha512-k7RPPRs0vp8+BtPsM9uDxRl6KcgqtCJmzRD1wRtgqmhQ96g8ifBGo9O/TZBG23jqlXS/rg8BKRDELxfnQQGiaA==
   /conventional-changelog-writer/4.0.16:
     dependencies:
       compare-func: 1.3.2
@@ -2935,15 +2935,6 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-jmU1sDJDZpm/dkuFxBeRXvyNcJQeKhGtVcFFkwTphUAzyYWcwz2j36Wcv+Mv2hU3tpvLMkysOPXJTLO55AUrYQ==
-  /conventional-commits-filter/2.0.2:
-    dependencies:
-      lodash.ismatch: 4.4.0
-      modify-values: 1.0.1
-    dev: true
-    engines:
-      node: '>=6.9.0'
-    resolution:
-      integrity: sha512-WpGKsMeXfs21m1zIw4s9H5sys2+9JccTzpN6toXtxhpw2VNF2JUXwIakthKBy+LN4DvJm+TzWhxOMWOs1OFCFQ==
   /conventional-commits-filter/2.0.6:
     dependencies:
       lodash.ismatch: 4.4.0
@@ -2953,21 +2944,21 @@ packages:
       node: '>=10'
     resolution:
       integrity: sha512-4g+sw8+KA50/Qwzfr0hL5k5NWxqtrOVw4DDk3/h6L85a9Gz0/Eqp3oP+CWCNfesBvZZZEFHF7OTEbRe+yYSyKw==
-  /conventional-commits-parser/3.0.8:
+  /conventional-commits-parser/3.1.0:
     dependencies:
       JSONStream: 1.3.5
       is-text-path: 1.0.1
       lodash: 4.17.15
-      meow: 5.0.0
+      meow: 7.0.0
       split2: 2.2.0
       through2: 3.0.1
       trim-off-newlines: 1.0.1
     dev: true
     engines:
-      node: '>=6.9.0'
+      node: '>=10'
     hasBin: true
     resolution:
-      integrity: sha512-YcBSGkZbYp7d+Cr3NWUeXbPDFUN6g3SaSIzOybi8bjHL5IJ5225OSCxJJ4LgziyEJ7AaJtE9L2/EU6H7Nt/DDQ==
+      integrity: sha512-RSo5S0WIwXZiRxUGTPuYFbqvrR4vpJ1BDdTlthFgvHt5kEdnd1+pdvwWphWn57/oIl4V72NMmOocFqqJ8mFFhA==
   /convert-source-map/1.7.0:
     dependencies:
       safe-buffer: 5.1.2
@@ -3232,14 +3223,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-mI3zP+qxke95mmE2nddsF635V+o=
-  /dargs/4.1.0:
-    dependencies:
-      number-is-nan: 1.0.1
+  /dargs/7.0.0:
     dev: true
     engines:
-      node: '>=0.10.0'
+      node: '>=8'
     resolution:
-      integrity: sha1-A6nbtLXC8Tm/FK5T8LiipqhvThc=
+      integrity: sha512-2iy1EkLdlBzQGvbweYRFxmFath8+K7+AKB0TlhHWkNuH+TmovaMH/Wp7V7R4u7f4SnX3OgLsU9t1NI9ioDnUpg==
   /dashdash/1.14.1:
     dependencies:
       assert-plus: 1.0.0
@@ -4380,19 +4369,19 @@ packages:
     dev: true
     resolution:
       integrity: sha1-LmpMGxP8AAKCB7p5WnrDFme5/Uo=
-  /git-raw-commits/2.0.3:
+  /git-raw-commits/2.0.7:
     dependencies:
-      dargs: 4.1.0
+      dargs: 7.0.0
       lodash.template: 4.5.0
-      meow: 5.0.0
+      meow: 7.0.0
       split2: 2.2.0
       through2: 3.0.1
     dev: true
     engines:
-      node: '>=6.9.0'
+      node: '>=10'
     hasBin: true
     resolution:
-      integrity: sha512-SoSsFL5lnixVzctGEi2uykjA7B5I0AhO9x6kdzvGRHbxsa6JSEgrgy1esRKsfOKE1cgyOJ/KDR2Trxu157sb8w==
+      integrity: sha512-SkwrTqrDxw8y0G1uGJ9Zw13F7qu3LF8V4BifyDeiJCxSnjRGZD9SaoMiMqUvvXMXh6S3sOQ1DsBN7L2fMUZW/g==
   /glob-parent/5.1.1:
     dependencies:
       is-glob: 4.0.1
@@ -5344,6 +5333,31 @@ packages:
       node: '>= 10.14.2'
     resolution:
       integrity: sha512-q8LP9Sint17HaE2LjxQXL+oYWW/WeeXMPE2+Op9X3mY8IEGFVc14xRxFjUuXUbcPAlDLhtWdIEt59GdQbn76Hw==
+  /jest-circus/26.0.1:
+    dependencies:
+      '@babel/traverse': 7.9.6
+      '@jest/environment': 26.0.1
+      '@jest/test-result': 26.0.1
+      '@jest/types': 26.0.1
+      chalk: 4.0.0
+      co: 4.6.0
+      dedent: 0.7.0
+      expect: 26.0.1
+      is-generator-fn: 2.1.0
+      jest-each: 26.0.1
+      jest-matcher-utils: 26.0.1
+      jest-message-util: 26.0.1
+      jest-runtime: 26.0.1
+      jest-snapshot: 26.0.1
+      jest-util: 26.0.1
+      pretty-format: 26.0.1
+      stack-utils: 2.0.2
+      throat: 5.0.0
+    dev: true
+    engines:
+      node: '>= 10.14.2'
+    resolution:
+      integrity: sha512-dp20V0Pi1N92Y7+ULPa3tNR9KCG0Sy19NiopyPmo5rNoQ4OGWmuzp1P0q1je2HV3fRD0BYE7wqh8aReGGENfUA==
   /jest-cli/26.0.1:
     dependencies:
       '@jest/core': 26.0.1
@@ -10062,7 +10076,6 @@ specifiers:
   '@typescript-eslint/eslint-plugin': ^2.31.0
   '@typescript-eslint/parser': ^2.31.0
   autoprefixer: ^9.7.6
-  babel-jest: ^26.0.1
   babel-plugin-transform-node-env-inline: ^0.4.3
   builtin-modules: ^3.1.0
   concat-with-sourcemaps: ^1.1.0
@@ -10080,6 +10093,7 @@ specifiers:
   husky: ^4.2.5
   icss-utils: ^4.1.1
   jest: ^26.0.1
+  jest-circus: ^26.0.1
   less: ^3.11.1
   lint-staged: ^10.2.2
   mime-types: ^2.1.27
