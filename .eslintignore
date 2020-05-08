@@ -6,3 +6,4 @@
 /coverage
 /docs
 /__tests__/fixtures
+.eslintrc.js
