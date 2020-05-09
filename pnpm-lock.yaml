@@ -72,7 +72,7 @@ devDependencies:
   shx: 0.3.2
   stylus: 0.54.7
   sugarss: 2.0.0
-  ts-jest: 25.5.0_jest@26.0.1+typescript@3.8.3
+  ts-jest: 25.5.1_jest@26.0.1+typescript@3.8.3
   typedoc: 0.17.6_typescript@3.8.3
   typescript: 3.8.3
 lockfileVersion: 5.1
@@ -1929,14 +1929,14 @@ packages:
       integrity: sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==
   /acorn-globals/6.0.0:
     dependencies:
-      acorn: 7.1.1
+      acorn: 7.2.0
       acorn-walk: 7.1.1
     dev: true
     resolution:
       integrity: sha512-ZQl7LOWaF5ePqqcX4hLuv/bLXYQNfNWw2c0/yX/TsPRKamzHcTGQnlCjHT3TsmkOUVEPS3crCxiPfdzE/Trlhg==
-  /acorn-jsx/5.2.0_acorn@7.1.1:
+  /acorn-jsx/5.2.0_acorn@7.2.0:
     dependencies:
-      acorn: 7.1.1
+      acorn: 7.2.0
     dev: true
     peerDependencies:
       acorn: ^6.0.0 || ^7.0.0
@@ -1948,13 +1948,13 @@ packages:
       node: '>=0.4.0'
     resolution:
       integrity: sha512-wdlPY2tm/9XBr7QkKlq0WQVgiuGTX6YWPyRyBviSoScBuLfTVQhvwg6wJ369GJ/1nPfTLMfnrFIfjqVg6d+jQQ==
-  /acorn/7.1.1:
+  /acorn/7.2.0:
     dev: true
     engines:
       node: '>=0.4.0'
     hasBin: true
     resolution:
-      integrity: sha512-add7dgA5ppRPxCFJoAGfMDi7PIBXq1RtGo7BhbLaxwrXPOmw8gq48Y9ozT01hUKy9byMjlR20EJhu5zlkErEkg==
+      integrity: sha512-apwXVmYVpQ34m/i71vrApRrRKCWQnZZF1+npOD0WV5xZFfwWOmKGQ2RWlfdy9vWITsenisM8M0Qeq8agcFHNiQ==
   /agent-base/6.0.0:
     dependencies:
       debug: 4.1.1
@@ -2450,7 +2450,7 @@ packages:
   /browserslist/4.12.0:
     dependencies:
       caniuse-lite: 1.0.30001054
-      electron-to-chromium: 1.3.431
+      electron-to-chromium: 1.3.432
       node-releases: 1.1.55
       pkg-up: 2.0.0
     hasBin: true
@@ -3475,9 +3475,9 @@ packages:
     dev: true
     resolution:
       integrity: sha1-OoOpBOVDUyh4dMVkt1SThoSamMk=
-  /electron-to-chromium/1.3.431:
+  /electron-to-chromium/1.3.432:
     resolution:
-      integrity: sha512-2okqkXCIda7qDwjYhUFxPcQdZDIZZ/zBLDzVOif7WW/TSNfEhdT6SO07O1x/sFteEHX189Z//UwjbZKKCOn2Fg==
+      integrity: sha512-/GdNhXyLP5Yl2322CUX/+Xi8NhdHBqL6lD9VJVKjH6CjoPGakvwZ5CpKgj/oOlbzuWWjOvMjDw1bBuAIRCNTlw==
   /elegant-spinner/2.0.0:
     dev: true
     engines:
@@ -3790,8 +3790,8 @@ packages:
       integrity: sha512-qY1cwdOxMONHJfGqw52UOpZDeqXy8xmD0u8CT6jIstil72jkhURC704W8CFyTPDPllz4z4lu0Ql1+07PG/XdIg==
   /espree/6.2.1:
     dependencies:
-      acorn: 7.1.1
-      acorn-jsx: 5.2.0_acorn@7.1.1
+      acorn: 7.2.0
+      acorn-jsx: 5.2.0_acorn@7.2.0
       eslint-visitor-keys: 1.1.0
     dev: true
     engines:
@@ -3800,8 +3800,8 @@ packages:
       integrity: sha512-ysCxRQY3WaXJz9tdbWOwuWr5Y/XrPTGX9Kiz3yoUXwW0VZ4w30HTkQLaGx/+ttFjF8i+ACbArnB4ce68a9m5hw==
   /espree/7.0.0:
     dependencies:
-      acorn: 7.1.1
-      acorn-jsx: 5.2.0_acorn@7.1.1
+      acorn: 7.2.0
+      acorn-jsx: 5.2.0_acorn@7.2.0
       eslint-visitor-keys: 1.1.0
     dev: true
     engines:
@@ -5796,7 +5796,7 @@ packages:
   /jsdom/16.2.2:
     dependencies:
       abab: 2.0.3
-      acorn: 7.1.1
+      acorn: 7.2.0
       acorn-globals: 6.0.0
       cssom: 0.4.4
       cssstyle: 2.3.0
@@ -9441,7 +9441,7 @@ packages:
     dev: true
     resolution:
       integrity: sha512-m6s2OdQe5wgpFMC+pAJ+q9djG82O2jcHPOI6RNg1yy9rCYR+WD6Nbpl32fDpfC56nirdRy+opFa/Vk7HYhqaew==
-  /ts-jest/25.5.0_jest@26.0.1+typescript@3.8.3:
+  /ts-jest/25.5.1_jest@26.0.1+typescript@3.8.3:
     dependencies:
       bs-logger: 0.2.6
       buffer-from: 1.1.1
@@ -9463,7 +9463,7 @@ packages:
       jest: '>=25 <26'
       typescript: '>=3.4 <4.0'
     resolution:
-      integrity: sha512-govrjbOk1UEzcJ5cX5k8X8IUtFuP3lp3mrF3ZuKtCdAOQzdeCM7qualhb/U8s8SWFwEDutOqfF5PLkJ+oaYD4w==
+      integrity: sha512-kHEUlZMK8fn8vkxDjwbHlxXRB9dHYpyzqKIGDNxbzs+Rz+ssNDSDNusEK8Fk/sDd4xE6iKoQLfFkFVaskmTJyw==
   /tslib/1.11.2:
     resolution:
       integrity: sha512-tTSkux6IGPnUGUd1XAZHcpu85MOkIl5zX49pO+jfsie3eP0B6pyhOlLXm3cAC6T7s+euSDDUUV+Acop5WmtkVg==
@@ -10120,7 +10120,7 @@ specifiers:
   source-map: ^0.7.3
   stylus: ^0.54.7
   sugarss: ^2.0.0
-  ts-jest: ^25.5.0
+  ts-jest: ^25.5.1
   tslib: ^1.11.2
   typedoc: ^0.17.6
   typescript: ^3.8.3

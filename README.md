@@ -184,7 +184,7 @@ yarn add fibers --dev # yarn 1.x
 
 ## Configuration
 
-See [API Reference for `Options`](https://anidetrix.github.io/rollup-plugin-styles/interfaces/options.html) for full list of available options.
+See [API Reference for `Options`](https://anidetrix.github.io/rollup-plugin-styles/interfaces/_src_types_.options.html) for full list of available options.
 
 ## Main differences from [rollup-plugin-postcss](https://github.com/egoist/rollup-plugin-postcss)
 
