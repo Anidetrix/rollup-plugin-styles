@@ -1,3 +1,10 @@
+## [3.2.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.2.0...v3.2.1) (2020-05-09)
+
+
+### Bug Fixes
+
+* respect `output.file` for main CSS chunk ([19eb9d7](https://github.com/Anidetrix/rollup-plugin-styles/commit/19eb9d71cbe1069f03ea4a2fce7340714a6be751))
+
 # [3.2.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.1.0...v3.2.0) (2020-05-08)
 
 
