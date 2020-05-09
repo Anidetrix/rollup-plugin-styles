@@ -119,7 +119,6 @@
     "sugarss": "^2.0.0",
     "ts-jest": "^25.5.1",
     "typedoc": "^0.17.6",
-    "typedoc-plugin-markdown": "^2.2.17",
     "typescript": "^3.8.3"
   },
   "peerDependencies": {
