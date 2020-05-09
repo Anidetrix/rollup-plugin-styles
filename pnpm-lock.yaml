@@ -74,6 +74,7 @@ devDependencies:
   sugarss: 2.0.0
   ts-jest: 25.5.1_jest@26.0.1+typescript@3.8.3
   typedoc: 0.17.6_typescript@3.8.3
+  typedoc-plugin-markdown: 2.2.17_typedoc@0.17.6
   typescript: 3.8.3
 lockfileVersion: 5.1
 packages:
@@ -9554,6 +9555,18 @@ packages:
       node: '>= 8'
     resolution:
       integrity: sha512-SuqAQI0CkwhqSJ2kaVTgl37cWs733uy9UGUqwtcds8pkFK8oRF4rZmCq+FXTGIb9hIUOu40rf5Kojg0Ha6akeg==
+  /typedoc-plugin-markdown/2.2.17_typedoc@0.17.6:
+    dependencies:
+      fs-extra: 8.1.0
+      handlebars: 4.7.6
+      typedoc: 0.17.6_typescript@3.8.3
+    dev: true
+    engines:
+      node: '>=6'
+    peerDependencies:
+      typedoc: '>=0.16.0'
+    resolution:
+      integrity: sha512-eE6cTeqsZIbjur6RG91Lhx1vTwjR49OHwVPRlmsxY3dthS4FNRL8sHxT5Y9pkosBwv1kSmNGQEPHjMYy1Ag6DQ==
   /typedoc/0.17.6_typescript@3.8.3:
     dependencies:
       fs-extra: 8.1.0
@@ -10123,4 +10136,5 @@ specifiers:
   ts-jest: ^25.5.1
   tslib: ^1.11.2
   typedoc: ^0.17.6
+  typedoc-plugin-markdown: ^2.2.17
   typescript: ^3.8.3

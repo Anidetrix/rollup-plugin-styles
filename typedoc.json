@@ -1,5 +1,5 @@
 {
   "inputFiles": ["./src"],
   "out": "docs",
-  "theme": "minimal"
+  "plugin": "typedoc-plugin-markdown"
 }
