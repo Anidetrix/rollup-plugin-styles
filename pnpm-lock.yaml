@@ -49,7 +49,7 @@ devDependencies:
   eslint-config-prettier: 6.11.0_eslint@7.0.0
   eslint-import-resolver-node: 0.3.3
   eslint-plugin-import: 2.20.2_eslint@7.0.0
-  eslint-plugin-jest: 23.9.0_eslint@7.0.0+typescript@3.8.3
+  eslint-plugin-jest: 23.10.0_eslint@7.0.0+typescript@3.8.3
   eslint-plugin-node: 11.1.0_eslint@7.0.0
   eslint-plugin-unicorn: 19.0.1_eslint@7.0.0
   fibers: 5.0.0
@@ -3660,7 +3660,7 @@ packages:
       eslint: 2.x - 6.x
     resolution:
       integrity: sha512-FObidqpXrR8OnCh4iNsxy+WACztJLXAHBO5hK79T1Hc77PgQZkyDGA5Ag9xAvRpglvLNxhH/zSmZ70/pZ31dHg==
-  /eslint-plugin-jest/23.9.0_eslint@7.0.0+typescript@3.8.3:
+  /eslint-plugin-jest/23.10.0_eslint@7.0.0+typescript@3.8.3:
     dependencies:
       '@typescript-eslint/experimental-utils': 2.31.0_eslint@7.0.0+typescript@3.8.3
       eslint: 7.0.0
@@ -3671,7 +3671,7 @@ packages:
       eslint: '>=5'
       typescript: '*'
     resolution:
-      integrity: sha512-8mt5xJQIFh33W5nE7vCikkDTE4saTo08V91KjU6yI5sLQ9e8Jkp1OXkWJoIHLheFqY5OXIZdAjZmNYHSJ3IpzQ==
+      integrity: sha512-cHC//nesojSO1MLxVmFJR/bUaQQG7xvMHQD8YLbsQzevR41WKm8paKDUv2wMHlUy5XLZUmNcWuflOi4apS8D+Q==
   /eslint-plugin-node/11.1.0_eslint@7.0.0:
     dependencies:
       eslint: 7.0.0
@@ -10084,7 +10084,7 @@ specifiers:
   eslint-config-prettier: ^6.11.0
   eslint-import-resolver-node: ^0.3.3
   eslint-plugin-import: ^2.20.2
-  eslint-plugin-jest: ^23.9.0
+  eslint-plugin-jest: ^23.10.0
   eslint-plugin-node: ^11.1.0
   eslint-plugin-unicorn: ^19.0.1
   fibers: ^5.0.0

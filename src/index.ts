@@ -227,7 +227,12 @@ export default (options: Options = {}): Plugin => {
         }
 
         const entryIds = moduleIds.filter(id => !ids.includes(id) && isSupported(id));
-        if (entryIds.length > 0) idsMap.set(entry.name, entryIds);
+        if (entryIds.length > 0) {
+          idsMap.set(
+            opts.file ? path.basename(opts.file, path.extname(opts.file)) : entry.name,
+            entryIds,
+          );
+        }
 
         return idsMap;
       };
