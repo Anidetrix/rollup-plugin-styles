@@ -37,7 +37,6 @@ export async function write(data: WriteData): Promise<WriteResult> {
       if (warning.code === "EMPTY_BUNDLE") return;
       if (warning.source === "lit-element") return;
       if (/Exported `\S+` as `\S+` in \S+/.test(warning.message)) return;
-      if (/Skipping processed file \S+/.test(warning.message)) return;
       warn(warning);
     },
   });

@@ -5,5 +5,10 @@
 }
 
 .foo2 {
-  background-image: image-set("cat/cat.png" 1x, "cat/cat-2x.png" 2x, "cat/cat-print.png" 600dpi);
+  background-image: -webkit-image-set(
+    "cat/cat.png" 1x,
+    url("cat/cat-2x.png") 2x,
+    url(cat/cat-print.png) 600dpi
+  );
+  background-image: image-set("cat/cat.png" 1x);
 }

@@ -32,8 +32,8 @@ describe("sourcemap-utils", () => {
   test("file map", async () => {
     const code = ".foo {color: red;}/*# sourceMappingURL=fixture.css.map */";
 
-    await expect(getMap(code)).rejects.toMatchObject(
-      new Error("Extracted map detected, but no ID is provided"),
+    await expect(getMap(code)).rejects.toMatchInlineSnapshot(
+      `[Error: Extracted map detected, but no ID is provided]`,
     );
 
     await expect(getMap(code, "this/is/nonexistant/path.css")).resolves.toBeUndefined();
