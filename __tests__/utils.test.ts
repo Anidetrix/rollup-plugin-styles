@@ -1,4 +1,6 @@
 import loadModule from "../src/utils/load-module";
+import { ensurePCSSOption } from "../src/utils/options";
+import { loadSass } from "../src/loaders/sass/load";
 import { fixture } from "./helpers";
 import { mm, getMap, stripMap } from "../src/utils/sourcemap";
 
@@ -13,6 +15,24 @@ describe("load-module", () => {
 
   test("correct path with custom basepath", async () => {
     await expect(loadModule("fixture", fixture("utils"))).resolves.toBe("this is fixture");
+  });
+});
+
+describe("load-sass", () => {
+  test("wrong implementation", async () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    await expect(loadSass("swass" as any)).rejects.toMatchInlineSnapshot(
+      `[Error: Could not load \`swass\` Sass implementation]`,
+    );
+  });
+});
+
+describe("option-utils", () => {
+  test("wrong postcss option", () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    expect(() => ensurePCSSOption("pumpinizer", "plugin")).toThrowErrorMatchingInlineSnapshot(
+      `"Unable to load PostCSS plugin \`pumpinizer\`"`,
+    );
   });
 });
 
