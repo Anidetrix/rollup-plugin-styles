@@ -4,7 +4,7 @@ import resolveAsync from "../../utils/resolve-async";
 import { getUrlOfPartial, isModule, normalizeUrl } from "../../utils/url";
 
 const importer: SASSImporter = (url, importer, done) => {
-  if (!isModule(url)) return done({ file: normalizeUrl(url) });
+  if (!isModule(url)) return done({ file: url });
 
   // Do not add `.css` extension in order to inline the file
   const finishImport = (id: string): void => done({ file: id.replace(/\.css$/i, "") });
