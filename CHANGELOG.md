@@ -1,3 +1,5 @@
+## [3.2.3](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.2.2...v3.2.3) (2020-05-09)
+
 ## [3.2.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.2.1...v3.2.2) (2020-05-09)
 
 
