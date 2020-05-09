@@ -1,3 +1,10 @@
+## [3.2.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.2.1...v3.2.2) (2020-05-09)
+
+
+### Bug Fixes
+
+* **sass:** do not modify non-module url ([fd022c6](https://github.com/Anidetrix/rollup-plugin-styles/commit/fd022c644f6d9523d2db513952f98ed399b4b435))
+
 ## [3.2.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.2.0...v3.2.1) (2020-05-09)
 
 
