@@ -14,7 +14,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_7aa87f99 (css, options) {
+function injector_a772e92e (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -64,8 +64,8 @@ function injector_7aa87f99 (css, options) {
   }
 }
 
-const css_075560ec = \\"a {\\\\n  width: 30%;\\\\n  color: red\\\\n}\\\\n\\\\n.multiline,\\\\n.selector {\\\\n  box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000\\\\n}\\\\n\\";
-injector_7aa87f99(css_075560ec);
+const css_73424376 = \\"a {\\\\n  width: 30%;\\\\n  color: red\\\\n}\\\\n\\\\n.multiline,\\\\n.selector {\\\\n  box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000\\\\n}\\\\n\\";
+injector_a772e92e(css_73424376);
 "
 `;
 
@@ -83,7 +83,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_5856ff83 (css, options) {
+function injector_10ba2831 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -133,8 +133,8 @@ function injector_5856ff83 (css, options) {
   }
 }
 
-const css_71701082 = \\".subpartial {\\\\n  -webkit-box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000;\\\\n     -moz-box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000;\\\\n          box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000\\\\n}\\\\n\\\\n.partial {\\\\n    color: red\\\\n}\\\\n\\\\n.prefixed {\\\\n  display: -webkit-box;\\\\n  display: -webkit-flex;\\\\n  display: -moz-box;\\\\n  display: -ms-flexbox;\\\\n  display: flex\\\\n}\\\\n\\";
-injector_5856ff83(css_71701082);
+const css_0b0f16fa = \\".subpartial {\\\\n  -webkit-box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000;\\\\n     -moz-box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000;\\\\n          box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000\\\\n}\\\\n\\\\n.partial {\\\\n    color: red\\\\n}\\\\n\\\\n.prefixed {\\\\n  display: -webkit-box;\\\\n  display: -webkit-flex;\\\\n  display: -moz-box;\\\\n  display: -ms-flexbox;\\\\n  display: flex\\\\n}\\\\n\\";
+injector_10ba2831(css_0b0f16fa);
 "
 `;
 
@@ -226,7 +226,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_9d0ece4d (css, options) {
+function injector_8aeabfb4 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -276,25 +276,25 @@ function injector_9d0ece4d (css, options) {
   }
 }
 
-const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_9d0ece4d(css_4fc87a7b);
+const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_8aeabfb4(css_a87c82eb);
 
-const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_9d0ece4d(css_8b7409a7);
+const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_8aeabfb4(css_6e569e18);
 
-const css_9724c78b = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
-injector_9d0ece4d(css_9724c78b);
+const css_a00496d3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
+injector_8aeabfb4(css_a00496d3);
 
-const css_c0bf9526 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_9d0ece4d(css_c0bf9526);
+const css_855b3ad0 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_8aeabfb4(css_855b3ad0);
 
-const css_2aa6e98a = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
-injector_9d0ece4d(css_2aa6e98a);
+const css_31899cde = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
+injector_8aeabfb4(css_31899cde);
 
-const css_9a558625 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
-injector_9d0ece4d(css_9a558625);
+const css_aee437ad = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
+injector_8aeabfb4(css_aee437ad);
 
-console.log(css_4fc87a7b, css_8b7409a7);
+console.log(css_a87c82eb, css_6e569e18);
 "
 `;
 
@@ -312,7 +312,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_b33bb41a (css, options) {
+function injector_6d837214 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -362,8 +362,8 @@ function injector_b33bb41a (css, options) {
   }
 }
 
-const css_8712fdeb = \\".style {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_b33bb41a(css_8712fdeb);
+const css_147dacc9 = \\".style {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_6d837214(css_147dacc9);
 "
 `;
 
@@ -399,33 +399,33 @@ exports[`code-splitting single: css 1`] = `
 `;
 
 exports[`code-splitting single: js 1`] = `
-"const css_8fb221f0 = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_051b4c3f = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
-const css = css_8fb221f0;
+"const css_c80ea5b3 = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+const modules_9c526d97 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
+const css = css_c80ea5b3;
 
-export default modules_051b4c3f;
+export default modules_9c526d97;
 export { css };
 "
 `;
 
 exports[`code-splitting single: js 2`] = `
-"const modules_963121b4 = {\\"fourth\\":\\"fourth_fourth\\"};
+"const modules_0858c0ee = {\\"fourth\\":\\"fourth_fourth\\"};
 
 (async () => {
-  const first = await import('./first-d9f26de0.js');
-  const second = await import('./second-f9fcf0ac.js');
-  const otherScript = await import('./other-script-8d6e6748.js');
+  const first = await import('./first-4ee52dc0.js');
+  const second = await import('./second-0e0469bf.js');
+  const otherScript = await import('./other-script-71e1de4d.js');
   console.log(first, second, otherScript);
 })();
 
-console.log(modules_963121b4);
+console.log(modules_0858c0ee);
 "
 `;
 
 exports[`code-splitting single: js 3`] = `
-"const modules_79e4a77e = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"const modules_f895f00f = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
-console.log(modules_79e4a77e);
+console.log(modules_f895f00f);
 "
 `;
 
@@ -437,18 +437,18 @@ exports[`code-splitting single: js 4`] = `
 exports[`code-splitting single: js 5`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-ca48105f.js');
+  const nestedScript = await import('./nested-script-3a18b46f.js');
   console.log(nestedScript);
 })();
 "
 `;
 
 exports[`code-splitting single: js 6`] = `
-"const css_a1bc2d4c = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_169ad3fe = {\\"second\\":\\"second_second\\"};
-const css = css_a1bc2d4c;
+"const css_80152599 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+const modules_7f4bc46a = {\\"second\\":\\"second_second\\"};
+const css = css_80152599;
 
-export default modules_169ad3fe;
+export default modules_7f4bc46a;
 export { css };
 "
 `;
@@ -503,33 +503,33 @@ exports[`code-splitting true: css 5`] = `
 `;
 
 exports[`code-splitting true: js 1`] = `
-"const css_8fb221f0 = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_051b4c3f = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
-const css = css_8fb221f0;
+"const css_c80ea5b3 = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+const modules_9c526d97 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
+const css = css_c80ea5b3;
 
-export default modules_051b4c3f;
+export default modules_9c526d97;
 export { css };
 "
 `;
 
 exports[`code-splitting true: js 2`] = `
-"const modules_963121b4 = {\\"fourth\\":\\"fourth_fourth\\"};
+"const modules_0858c0ee = {\\"fourth\\":\\"fourth_fourth\\"};
 
 (async () => {
-  const first = await import('./first-d9f26de0.js');
-  const second = await import('./second-f9fcf0ac.js');
-  const otherScript = await import('./other-script-8d6e6748.js');
+  const first = await import('./first-4ee52dc0.js');
+  const second = await import('./second-0e0469bf.js');
+  const otherScript = await import('./other-script-71e1de4d.js');
   console.log(first, second, otherScript);
 })();
 
-console.log(modules_963121b4);
+console.log(modules_0858c0ee);
 "
 `;
 
 exports[`code-splitting true: js 3`] = `
-"const modules_79e4a77e = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"const modules_f895f00f = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
-console.log(modules_79e4a77e);
+console.log(modules_f895f00f);
 "
 `;
 
@@ -541,18 +541,18 @@ exports[`code-splitting true: js 4`] = `
 exports[`code-splitting true: js 5`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-ca48105f.js');
+  const nestedScript = await import('./nested-script-3a18b46f.js');
   console.log(nestedScript);
 })();
 "
 `;
 
 exports[`code-splitting true: js 6`] = `
-"const css_a1bc2d4c = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_169ad3fe = {\\"second\\":\\"second_second\\"};
-const css = css_a1bc2d4c;
+"const css_80152599 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+const modules_7f4bc46a = {\\"second\\":\\"second_second\\"};
+const css = css_80152599;
 
-export default modules_169ad3fe;
+export default modules_7f4bc46a;
 export { css };
 "
 `;
@@ -613,11 +613,11 @@ exports[`extract custom-path: css 1`] = `
 `;
 
 exports[`extract custom-path: js 1`] = `
-"const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(css_4fc87a7b, css_8b7409a7);
+console.log(css_a87c82eb, css_6e569e18);
 "
 `;
 
@@ -653,11 +653,11 @@ exports[`extract sourcemap-inline: css 1`] = `
 `;
 
 exports[`extract sourcemap-inline: js 1`] = `
-"const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(css_4fc87a7b, css_8b7409a7);
+console.log(css_a87c82eb, css_6e569e18);
 "
 `;
 
@@ -691,11 +691,11 @@ exports[`extract sourcemap-true: css 1`] = `
 `;
 
 exports[`extract sourcemap-true: js 1`] = `
-"const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(css_4fc87a7b, css_8b7409a7);
+console.log(css_a87c82eb, css_6e569e18);
 "
 `;
 
@@ -730,34 +730,34 @@ exports[`extract true: css 1`] = `
 `;
 
 exports[`extract true: js 1`] = `
-"const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(css_4fc87a7b, css_8b7409a7);
+console.log(css_a87c82eb, css_6e569e18);
 "
 `;
 
 exports[`inject function: js 1`] = `
-"const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
-console.log(css_4fc87a7b);
+"const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+console.log(css_a87c82eb);
 
-const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
-console.log(css_8b7409a7);
+const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+console.log(css_6e569e18);
 
-const css_9724c78b = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
-console.log(css_9724c78b);
+const css_a00496d3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
+console.log(css_a00496d3);
 
-const css_c0bf9526 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
-console.log(css_c0bf9526);
+const css_855b3ad0 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
+console.log(css_855b3ad0);
 
-const css_2aa6e98a = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
-console.log(css_2aa6e98a);
+const css_31899cde = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
+console.log(css_31899cde);
 
-const css_9a558625 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
-console.log(css_9a558625);
+const css_aee437ad = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
+console.log(css_aee437ad);
 
-console.log(css_4fc87a7b, css_8b7409a7);
+console.log(css_a87c82eb, css_6e569e18);
 "
 `;
 
@@ -775,7 +775,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_9d0ece4d (css, options) {
+function injector_8aeabfb4 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -825,25 +825,25 @@ function injector_9d0ece4d (css, options) {
   }
 }
 
-const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_9d0ece4d(css_4fc87a7b,{\\"prepend\\":true});
+const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_8aeabfb4(css_a87c82eb,{\\"prepend\\":true});
 
-const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_9d0ece4d(css_8b7409a7,{\\"prepend\\":true});
+const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_8aeabfb4(css_6e569e18,{\\"prepend\\":true});
 
-const css_9724c78b = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
-injector_9d0ece4d(css_9724c78b,{\\"prepend\\":true});
+const css_a00496d3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
+injector_8aeabfb4(css_a00496d3,{\\"prepend\\":true});
 
-const css_c0bf9526 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_9d0ece4d(css_c0bf9526,{\\"prepend\\":true});
+const css_855b3ad0 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_8aeabfb4(css_855b3ad0,{\\"prepend\\":true});
 
-const css_2aa6e98a = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
-injector_9d0ece4d(css_2aa6e98a,{\\"prepend\\":true});
+const css_31899cde = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
+injector_8aeabfb4(css_31899cde,{\\"prepend\\":true});
 
-const css_9a558625 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
-injector_9d0ece4d(css_9a558625,{\\"prepend\\":true});
+const css_aee437ad = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
+injector_8aeabfb4(css_aee437ad,{\\"prepend\\":true});
 
-console.log(css_4fc87a7b, css_8b7409a7);
+console.log(css_a87c82eb, css_6e569e18);
 "
 `;
 
@@ -861,7 +861,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_c27d7fc7 (css, options) {
+function injector_e1c140db (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -911,19 +911,19 @@ function injector_c27d7fc7 (css, options) {
   }
 }
 
-const css_ebbdb980 = \\".d {\\\\n  color: red;\\\\n}\\\\n.a {\\\\n  color: royalblue;\\\\n}\\\\n.b {\\\\n  color: red;\\\\n}\\\\n.c {\\\\n  color: red;\\\\n}\\\\n.foo {\\\\n  color: royalblue;\\\\n}\\\\n\\";
-injector_c27d7fc7(css_ebbdb980);
+const css_427c8846 = \\".d {\\\\n  color: red;\\\\n}\\\\n.a {\\\\n  color: royalblue;\\\\n}\\\\n.b {\\\\n  color: red;\\\\n}\\\\n.c {\\\\n  color: red;\\\\n}\\\\n.foo {\\\\n  color: royalblue;\\\\n}\\\\n\\";
+injector_e1c140db(css_427c8846);
 "
 `;
 
 exports[`minimize extract: css 1`] = `".bar,.foo,.stylus{color:red}.stylus{background:red}.pcss,.sass{color:red}.sass{width:30%}.less{color:#6c94be}"`;
 
 exports[`minimize extract: js 1`] = `
-"const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(css_4fc87a7b, css_8b7409a7);
+console.log(css_a87c82eb, css_6e569e18);
 "
 `;
 
@@ -933,11 +933,11 @@ exports[`minimize extract-sourcemap-inline: css 1`] = `
 `;
 
 exports[`minimize extract-sourcemap-inline: js 1`] = `
-"const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(css_4fc87a7b, css_8b7409a7);
+console.log(css_a87c82eb, css_6e569e18);
 "
 `;
 
@@ -947,11 +947,11 @@ exports[`minimize extract-sourcemap-true: css 1`] = `
 `;
 
 exports[`minimize extract-sourcemap-true: js 1`] = `
-"const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(css_4fc87a7b, css_8b7409a7);
+console.log(css_a87c82eb, css_6e569e18);
 "
 `;
 
@@ -971,7 +971,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_9d0ece4d (css, options) {
+function injector_8aeabfb4 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -1021,25 +1021,25 @@ function injector_9d0ece4d (css, options) {
   }
 }
 
-const css_4fc87a7b = \\".foo{color:red}\\";
-injector_9d0ece4d(css_4fc87a7b);
+const css_a87c82eb = \\".foo{color:red}\\";
+injector_8aeabfb4(css_a87c82eb);
 
-const css_8b7409a7 = \\".bar{color:red}\\";
-injector_9d0ece4d(css_8b7409a7);
+const css_6e569e18 = \\".bar{color:red}\\";
+injector_8aeabfb4(css_6e569e18);
 
-const css_9724c78b = \\".stylus{color:red;background:red}\\";
-injector_9d0ece4d(css_9724c78b);
+const css_a00496d3 = \\".stylus{color:red;background:red}\\";
+injector_8aeabfb4(css_a00496d3);
 
-const css_c0bf9526 = \\".pcss{color:red}\\";
-injector_9d0ece4d(css_c0bf9526);
+const css_855b3ad0 = \\".pcss{color:red}\\";
+injector_8aeabfb4(css_855b3ad0);
 
-const css_2aa6e98a = \\".sass{width:30%;color:red}\\";
-injector_9d0ece4d(css_2aa6e98a);
+const css_31899cde = \\".sass{width:30%;color:red}\\";
+injector_8aeabfb4(css_31899cde);
 
-const css_9a558625 = \\".less{color:#6c94be}\\";
-injector_9d0ece4d(css_9a558625);
+const css_aee437ad = \\".less{color:#6c94be}\\";
+injector_8aeabfb4(css_aee437ad);
 
-console.log(css_4fc87a7b, css_8b7409a7);
+console.log(css_a87c82eb, css_6e569e18);
 "
 `;
 
@@ -1057,7 +1057,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_f247f96b (css, options) {
+function injector_717f9233 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -1107,26 +1107,26 @@ function injector_f247f96b (css, options) {
   }
 }
 
-const css_04a4c3e4 = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_f247f96b(css_04a4c3e4);
+const css_7ffcb4b5 = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_717f9233(css_7ffcb4b5);
 
-const css_6c66bb9c = \\".a_module_a {\\\\n  color: red;\\\\n}\\\\n\\";
-const modules_0d0b6254 = {\\"a\\":\\"a_module_a\\"};
-injector_f247f96b(css_6c66bb9c);
+const css_bea182d1 = \\".a_module_a {\\\\n  color: red;\\\\n}\\\\n\\";
+const modules_dc9297a5 = {\\"a\\":\\"a_module_a\\"};
+injector_717f9233(css_bea182d1);
 
-const css_27de4cbf = \\".b_module_b {\\\\n  color: red; }\\\\n\\";
-const modules_6130213c = {\\"b\\":\\"b_module_b\\"};
-injector_f247f96b(css_27de4cbf);
+const css_ab26163b = \\".b_module_b {\\\\n  color: red; }\\\\n\\";
+const modules_886afbbe = {\\"b\\":\\"b_module_b\\"};
+injector_717f9233(css_ab26163b);
 
-const css_12b0d2db = \\".c_module_c {\\\\n  color: red;\\\\n}\\\\n\\";
-const modules_ff4908e7 = {\\"c\\":\\"c_module_c\\"};
-injector_f247f96b(css_12b0d2db);
+const css_a4ea8038 = \\".c_module_c {\\\\n  color: red;\\\\n}\\\\n\\";
+const modules_b45a4370 = {\\"c\\":\\"c_module_c\\"};
+injector_717f9233(css_a4ea8038);
 
-const css_dfd0fcc3 = \\".d_module_d {\\\\n  color: #f00;\\\\n}\\\\n\\";
-const modules_5718608d = {\\"d\\":\\"d_module_d\\"};
-injector_f247f96b(css_dfd0fcc3);
+const css_4e1fe5d3 = \\".d_module_d {\\\\n  color: #f00;\\\\n}\\\\n\\";
+const modules_14f9be16 = {\\"d\\":\\"d_module_d\\"};
+injector_717f9233(css_4e1fe5d3);
 
-console.log(modules_0d0b6254, modules_6130213c, modules_ff4908e7, modules_5718608d);
+console.log(modules_dc9297a5, modules_886afbbe, modules_b45a4370, modules_14f9be16);
 "
 `;
 
@@ -1144,7 +1144,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_f247f96b (css, options) {
+function injector_717f9233 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -1194,23 +1194,23 @@ function injector_f247f96b (css, options) {
   }
 }
 
-const css_04a4c3e4 = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_f247f96b(css_04a4c3e4);
+const css_7ffcb4b5 = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_717f9233(css_7ffcb4b5);
 
-const css_6c66bb9c = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_f247f96b(css_6c66bb9c);
+const css_bea182d1 = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_717f9233(css_bea182d1);
 
-const css_27de4cbf = \\".b {\\\\n  color: red; }\\\\n\\";
-injector_f247f96b(css_27de4cbf);
+const css_ab26163b = \\".b {\\\\n  color: red; }\\\\n\\";
+injector_717f9233(css_ab26163b);
 
-const css_12b0d2db = \\".c_module_c {\\\\n  color: red;\\\\n}\\\\n\\";
-const modules_ff4908e7 = {\\"c\\":\\"c_module_c\\"};
-injector_f247f96b(css_12b0d2db);
+const css_a4ea8038 = \\".c_module_c {\\\\n  color: red;\\\\n}\\\\n\\";
+const modules_b45a4370 = {\\"c\\":\\"c_module_c\\"};
+injector_717f9233(css_a4ea8038);
 
-const css_dfd0fcc3 = \\".d {\\\\n  color: #f00;\\\\n}\\\\n\\";
-injector_f247f96b(css_dfd0fcc3);
+const css_4e1fe5d3 = \\".d {\\\\n  color: #f00;\\\\n}\\\\n\\";
+injector_717f9233(css_4e1fe5d3);
 
-console.log(css_6c66bb9c, css_27de4cbf, modules_ff4908e7, css_dfd0fcc3);
+console.log(css_bea182d1, css_ab26163b, modules_b45a4370, css_4e1fe5d3);
 "
 `;
 
@@ -1228,7 +1228,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_f247f96b (css, options) {
+function injector_717f9233 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -1278,23 +1278,23 @@ function injector_f247f96b (css, options) {
   }
 }
 
-const css_04a4c3e4 = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_f247f96b(css_04a4c3e4);
+const css_7ffcb4b5 = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_717f9233(css_7ffcb4b5);
 
-const css_6c66bb9c = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_f247f96b(css_6c66bb9c);
+const css_bea182d1 = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_717f9233(css_bea182d1);
 
-const css_27de4cbf = \\".b {\\\\n  color: red; }\\\\n\\";
-injector_f247f96b(css_27de4cbf);
+const css_ab26163b = \\".b {\\\\n  color: red; }\\\\n\\";
+injector_717f9233(css_ab26163b);
 
-const css_12b0d2db = \\".c {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_f247f96b(css_12b0d2db);
+const css_a4ea8038 = \\".c {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_717f9233(css_a4ea8038);
 
-const css_dfd0fcc3 = \\".d_module_d {\\\\n  color: #f00;\\\\n}\\\\n\\";
-const modules_5718608d = {\\"d\\":\\"d_module_d\\"};
-injector_f247f96b(css_dfd0fcc3);
+const css_4e1fe5d3 = \\".d_module_d {\\\\n  color: #f00;\\\\n}\\\\n\\";
+const modules_14f9be16 = {\\"d\\":\\"d_module_d\\"};
+injector_717f9233(css_4e1fe5d3);
 
-console.log(css_6c66bb9c, css_27de4cbf, css_12b0d2db, modules_5718608d);
+console.log(css_bea182d1, css_ab26163b, css_a4ea8038, modules_14f9be16);
 "
 `;
 
@@ -1321,13 +1321,13 @@ exports[`modules duplication: css 1`] = `
 `;
 
 exports[`modules duplication: js 1`] = `
-"const modules_46f188fa = {\\"test\\":\\"shared_test\\"};
+"const modules_68a066f1 = {\\"test\\":\\"shared_test\\"};
 
-const modules_f85a7596 = {\\"foo\\":\\"foo_foo shared_test\\"};
+const modules_385fa60f = {\\"foo\\":\\"foo_foo shared_test\\"};
 
-const modules_a9adff68 = {\\"bar\\":\\"bar_bar shared_test\\"};
+const modules_37b00a3b = {\\"bar\\":\\"bar_bar shared_test\\"};
 
-console.log(modules_46f188fa, modules_f85a7596, modules_a9adff68);
+console.log(modules_68a066f1, modules_385fa60f, modules_37b00a3b);
 "
 `;
 
@@ -1356,13 +1356,13 @@ exports[`modules extract: css 1`] = `
 `;
 
 exports[`modules extract: js 1`] = `
-"const modules_66a8b034 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
+"const modules_06c16b9a = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
 
-const modules_b4425b4f = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
+const modules_c2f65cd3 = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
 
-const modules_75007da7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
+const modules_b033f21c = {\\"compositioned\\":\\"composition2_compositioned\\"};
 
-console.log(modules_66a8b034.module, modules_b4425b4f.composition, modules_75007da7.compositioned);
+console.log(modules_06c16b9a.module, modules_c2f65cd3.composition, modules_b033f21c.compositioned);
 "
 `;
 
@@ -1392,13 +1392,13 @@ exports[`modules extract-sourcemap-inline: css 1`] = `
 `;
 
 exports[`modules extract-sourcemap-inline: js 1`] = `
-"const modules_66a8b034 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
+"const modules_06c16b9a = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
 
-const modules_b4425b4f = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
+const modules_c2f65cd3 = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
 
-const modules_75007da7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
+const modules_b033f21c = {\\"compositioned\\":\\"composition2_compositioned\\"};
 
-console.log(modules_66a8b034.module, modules_b4425b4f.composition, modules_75007da7.compositioned);
+console.log(modules_06c16b9a.module, modules_c2f65cd3.composition, modules_b033f21c.compositioned);
 "
 `;
 
@@ -1428,13 +1428,13 @@ exports[`modules extract-sourcemap-true: css 1`] = `
 `;
 
 exports[`modules extract-sourcemap-true: js 1`] = `
-"const modules_66a8b034 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
+"const modules_06c16b9a = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
 
-const modules_b4425b4f = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
+const modules_c2f65cd3 = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
 
-const modules_75007da7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
+const modules_b033f21c = {\\"compositioned\\":\\"composition2_compositioned\\"};
 
-console.log(modules_66a8b034.module, modules_b4425b4f.composition, modules_75007da7.compositioned);
+console.log(modules_06c16b9a.module, modules_c2f65cd3.composition, modules_b033f21c.compositioned);
 "
 `;
 
@@ -1454,7 +1454,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_2ae7f8dc (css, options) {
+function injector_86728f90 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -1504,19 +1504,19 @@ function injector_2ae7f8dc (css, options) {
   }
 }
 
-const css_3a3193e0 = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
-const modules_66a8b034 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
-injector_2ae7f8dc(css_3a3193e0);
+const css_6856db17 = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
+const modules_06c16b9a = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
+injector_86728f90(css_6856db17);
 
-const css_fe17c453 = \\"@media screen and (min-width: 900px) {\\\\n  .composed_composition {\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composed_composition {\\\\n  background-color: #BF4040;\\\\n}\\\\n\\";
-const modules_b4425b4f = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
-injector_2ae7f8dc(css_fe17c453);
+const css_99f8382e = \\"@media screen and (min-width: 900px) {\\\\n  .composed_composition {\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composed_composition {\\\\n  background-color: #BF4040;\\\\n}\\\\n\\";
+const modules_c2f65cd3 = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
+injector_86728f90(css_99f8382e);
 
-const css_970ba438 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
-const modules_75007da7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
-injector_2ae7f8dc(css_970ba438);
+const css_1f7ddd56 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
+const modules_b033f21c = {\\"compositioned\\":\\"composition2_compositioned\\"};
+injector_86728f90(css_1f7ddd56);
 
-console.log(modules_66a8b034.module, modules_b4425b4f.composition, modules_75007da7.compositioned);
+console.log(modules_06c16b9a.module, modules_c2f65cd3.composition, modules_b033f21c.compositioned);
 "
 `;
 
@@ -1534,7 +1534,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_2ae7f8dc (css, options) {
+function injector_86728f90 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -1584,19 +1584,19 @@ function injector_2ae7f8dc (css, options) {
   }
 }
 
-const css_3a3193e0 = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
-const modules_66a8b034 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
-injector_2ae7f8dc(css_3a3193e0);
+const css_6856db17 = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
+const modules_06c16b9a = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
+injector_86728f90(css_6856db17);
 
-const css_fe17c453 = \\"@media screen and (min-width: 900px) {\\\\n  .composed_composition {\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composed_composition {\\\\n  background-color: #BF4040;\\\\n}\\\\n\\";
-const modules_b4425b4f = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
-injector_2ae7f8dc(css_fe17c453);
+const css_99f8382e = \\"@media screen and (min-width: 900px) {\\\\n  .composed_composition {\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composed_composition {\\\\n  background-color: #BF4040;\\\\n}\\\\n\\";
+const modules_c2f65cd3 = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
+injector_86728f90(css_99f8382e);
 
-const css_970ba438 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
-const modules_75007da7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
-injector_2ae7f8dc(css_970ba438);
+const css_1f7ddd56 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
+const modules_b033f21c = {\\"compositioned\\":\\"composition2_compositioned\\"};
+injector_86728f90(css_1f7ddd56);
 
-console.log(modules_66a8b034.module, modules_b4425b4f.composition, modules_75007da7.compositioned);
+console.log(modules_06c16b9a.module, modules_c2f65cd3.composition, modules_b033f21c.compositioned);
 "
 `;
 
@@ -1614,7 +1614,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_b11e0f66 (css, options) {
+function injector_1dfca575 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -1664,18 +1664,18 @@ function injector_b11e0f66 (css, options) {
   }
 }
 
-const css_9e45ec64 = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\\\n.style_css {\\\\n  color: green;\\\\n}\\\\n\\";
-const modules_65f89cf3 = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"css\\":\\"style_css\\"};
-const css = css_9e45ec64;
+const css_805c5fb0 = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\\\n.style_css {\\\\n  color: green;\\\\n}\\\\n\\";
+const modules_c5c61d93 = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"css\\":\\"style_css\\"};
+const css = css_805c5fb0;
 const valid = \\"style_valid\\";
 const _new = \\"style_new\\";
 const _css = \\"style_css\\";
-injector_b11e0f66(css_9e45ec64);
+injector_1dfca575(css_805c5fb0);
 
 var style = /*#__PURE__*/Object.freeze({
   __proto__: null,
   css: css,
-  'default': modules_65f89cf3,
+  'default': modules_c5c61d93,
   valid: valid,
   _new: _new,
   _css: _css
@@ -1699,7 +1699,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_b11e0f66 (css, options) {
+function injector_1dfca575 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -1749,18 +1749,18 @@ function injector_b11e0f66 (css, options) {
   }
 }
 
-const css_9e45ec64 = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\\\n.style_css {\\\\n  color: green;\\\\n}\\\\n\\";
-const modules_65f89cf3 = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"css\\":\\"style_css\\"};
-const css = css_9e45ec64;
+const css_805c5fb0 = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\\\n.style_css {\\\\n  color: green;\\\\n}\\\\n\\";
+const modules_c5c61d93 = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"css\\":\\"style_css\\"};
+const css = css_805c5fb0;
 const validhacked = \\"style_valid\\";
 const newhacked = \\"style_new\\";
 const csshacked = \\"style_css\\";
-injector_b11e0f66(css_9e45ec64);
+injector_1dfca575(css_805c5fb0);
 
 var style = /*#__PURE__*/Object.freeze({
   __proto__: null,
   css: css,
-  'default': modules_65f89cf3,
+  'default': modules_c5c61d93,
   validhacked: validhacked,
   newhacked: newhacked,
   csshacked: csshacked
@@ -1784,7 +1784,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_e8b4c2e2 (css, options) {
+function injector_14375eb8 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -1834,13 +1834,13 @@ function injector_e8b4c2e2 (css, options) {
   }
 }
 
-const css_05950bee = \\".bar_less {\\\\n  color: magenta;\\\\n}\\\\n\\";
-const modules_139d7175 = {\\"less\\":\\"bar_less\\"};
-const css = css_05950bee;
+const css_3f173abc = \\".bar_less {\\\\n  color: magenta;\\\\n}\\\\n\\";
+const modules_0fe909db = {\\"less\\":\\"bar_less\\"};
+const css = css_3f173abc;
 const less = \\"bar_less\\";
-injector_e8b4c2e2(css_05950bee);
+injector_14375eb8(css_3f173abc);
 
-export default modules_139d7175;
+export default modules_0fe909db;
 export { css, less };
 "
 `;
@@ -1859,7 +1859,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_2401b93b (css, options) {
+function injector_7eff9fe8 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -1909,26 +1909,26 @@ function injector_2401b93b (css, options) {
   }
 }
 
-const css_8ae7cafb = \\".style {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_2401b93b(css_8ae7cafb);
+const css_39967a1a = \\".style {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_7eff9fe8(css_39967a1a);
 
-const css_05950bee = \\".less {\\\\n  color: magenta;\\\\n}\\\\n\\";
-injector_2401b93b(css_05950bee);
+const css_3f173abc = \\".less {\\\\n  color: magenta;\\\\n}\\\\n\\";
+injector_7eff9fe8(css_3f173abc);
 
-const css_19f64085 = \\".mod_mod {\\\\n  color: royalblue;\\\\n}\\\\n\\";
-const modules_47aee9cb = {\\"mod\\":\\"mod_mod\\"};
-injector_2401b93b(css_19f64085);
+const css_01776caf = \\".mod_mod {\\\\n  color: royalblue;\\\\n}\\\\n\\";
+const modules_c3cfbd24 = {\\"mod\\":\\"mod_mod\\"};
+injector_7eff9fe8(css_01776caf);
 
-console.log(modules_47aee9cb);
+console.log(modules_c3cfbd24);
 "
 `;
 
 exports[`on-extract-fn: js 1`] = `
-"const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(css_4fc87a7b, css_8b7409a7);
+console.log(css_a87c82eb, css_6e569e18);
 "
 `;
 
@@ -1946,7 +1946,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_00f7b4db (css, options) {
+function injector_7d4ccedb (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -1996,8 +1996,8 @@ function injector_00f7b4db (css, options) {
   }
 }
 
-const css_95339f02 = \\".data {\\\\n  color: red; }\\\\n\\";
-injector_00f7b4db(css_95339f02);
+const css_d5e3885b = \\".data {\\\\n  color: red; }\\\\n\\";
+injector_7d4ccedb(css_d5e3885b);
 "
 `;
 
@@ -2015,7 +2015,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_b66c0a2f (css, options) {
+function injector_de38afa6 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -2065,8 +2065,8 @@ function injector_b66c0a2f (css, options) {
   }
 }
 
-const css_29ef594f = \\".style {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
-injector_b66c0a2f(css_29ef594f);
+const css_c2755970 = \\".style {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
+injector_de38afa6(css_c2755970);
 "
 `;
 
@@ -2084,7 +2084,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_7e51928e (css, options) {
+function injector_948a9cfd (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -2134,8 +2134,8 @@ function injector_7e51928e (css, options) {
   }
 }
 
-const css_e795c482 = \\".a {\\\\n  color: magenta; }\\\\n\\\\n.b {\\\\n  color: red; }\\\\n\\\\n.c {\\\\n  color: red; }\\\\n\\\\n.foo {\\\\n  color: royalblue; }\\\\n\\";
-injector_7e51928e(css_e795c482);
+const css_a77306c7 = \\".a {\\\\n  color: magenta; }\\\\n\\\\n.b {\\\\n  color: red; }\\\\n\\\\n.c {\\\\n  color: red; }\\\\n\\\\n.foo {\\\\n  color: royalblue; }\\\\n\\";
+injector_948a9cfd(css_a77306c7);
 "
 `;
 
@@ -2153,7 +2153,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_704767c1 (css, options) {
+function injector_cc9f7d0d (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -2203,11 +2203,11 @@ function injector_704767c1 (css, options) {
   }
 }
 
-const css_6fc98ea3 = \\".style_someStyle {\\\\n  color: red; }\\\\n\\";
-const modules_af6d9715 = {\\"some-style\\":\\"style_someStyle\\"};
-injector_704767c1(css_6fc98ea3);
+const css_022686dd = \\".style_someStyle {\\\\n  color: red; }\\\\n\\";
+const modules_c56d3964 = {\\"some-style\\":\\"style_someStyle\\"};
+injector_cc9f7d0d(css_022686dd);
 
-console.log(modules_af6d9715);
+console.log(modules_c56d3964);
 "
 `;
 
@@ -2225,7 +2225,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_b66c0a2f (css, options) {
+function injector_de38afa6 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -2275,8 +2275,8 @@ function injector_b66c0a2f (css, options) {
   }
 }
 
-const css_29ef594f = \\".style {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zYXNzL3N0eWxlLnNhc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0VBQ1YsVUFBVSxFQUFBIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWxlIHtcbiAgd2lkdGg6IDMwJTtcbiAgY29sb3I6IHJlZDsgfVxuIl19 */\\";
-injector_b66c0a2f(css_29ef594f);
+const css_c2755970 = \\".style {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zYXNzL3N0eWxlLnNhc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0VBQ1YsVUFBVSxFQUFBIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWxlIHtcbiAgd2lkdGg6IDMwJTtcbiAgY29sb3I6IHJlZDsgfVxuIl19 */\\";
+injector_de38afa6(css_c2755970);
 "
 `;
 
@@ -2294,7 +2294,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_ea92f1f2 (css, options) {
+function injector_e6e31059 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -2344,8 +2344,8 @@ function injector_ea92f1f2 (css, options) {
   }
 }
 
-const css_35820dc5 = \\".button {\\\\n  border-radius: 3px;\\\\n  padding: 8px;\\\\n}\\";
-injector_ea92f1f2(css_35820dc5);
+const css_41ddbe0c = \\".button {\\\\n  border-radius: 3px;\\\\n  padding: 8px;\\\\n}\\";
+injector_e6e31059(css_41ddbe0c);
 "
 `;
 
@@ -2363,7 +2363,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_9d0ece4d (css, options) {
+function injector_8aeabfb4 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -2413,25 +2413,25 @@ function injector_9d0ece4d (css, options) {
   }
 }
 
-const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
-injector_9d0ece4d(css_4fc87a7b);
+const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
+injector_8aeabfb4(css_a87c82eb);
 
-const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
-injector_9d0ece4d(css_8b7409a7);
+const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
+injector_8aeabfb4(css_6e569e18);
 
-const css_9724c78b = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1cyB7XG4gIGNvbG9yOiAjZjAwO1xuICBiYWNrZ3JvdW5kOiAjZjAwO1xufVxuIl19 */\\";
-injector_9d0ece4d(css_9724c78b);
+const css_a00496d3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1cyB7XG4gIGNvbG9yOiAjZjAwO1xuICBiYWNrZ3JvdW5kOiAjZjAwO1xufVxuIl19 */\\";
+injector_8aeabfb4(css_a00496d3);
 
-const css_c0bf9526 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
-injector_9d0ece4d(css_c0bf9526);
+const css_855b3ad0 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
+injector_8aeabfb4(css_855b3ad0);
 
-const css_2aa6e98a = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIuc2FzcyB7XG4gIHdpZHRoOiAzMCU7XG4gIGNvbG9yOiByZWQ7IH1cbiJdfQ== */\\";
-injector_9d0ece4d(css_2aa6e98a);
+const css_31899cde = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIuc2FzcyB7XG4gIHdpZHRoOiAzMCU7XG4gIGNvbG9yOiByZWQ7IH1cbiJdfQ== */\\";
+injector_8aeabfb4(css_31899cde);
 
-const css_9a558625 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiIsInNvdXJjZXNDb250ZW50IjpbIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */\\";
-injector_9d0ece4d(css_9a558625);
+const css_aee437ad = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiIsInNvdXJjZXNDb250ZW50IjpbIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */\\";
+injector_8aeabfb4(css_aee437ad);
 
-console.log(css_4fc87a7b, css_8b7409a7);
+console.log(css_a87c82eb, css_6e569e18);
 "
 `;
 
@@ -2449,7 +2449,7 @@ var styleTags = [];
  * @param {string} [options.container]
  * @returns {void}
  */
-function injector_9d0ece4d (css, options) {
+function injector_8aeabfb4 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
   if (typeof options === \\"undefined\\") options = {};
 
@@ -2499,24 +2499,24 @@ function injector_9d0ece4d (css, options) {
   }
 }
 
-const css_4fc87a7b = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
-injector_9d0ece4d(css_4fc87a7b);
+const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
+injector_8aeabfb4(css_a87c82eb);
 
-const css_8b7409a7 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
-injector_9d0ece4d(css_8b7409a7);
+const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
+injector_8aeabfb4(css_6e569e18);
 
-const css_9724c78b = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1cyB7XG4gIGNvbG9yOiAjZjAwO1xuICBiYWNrZ3JvdW5kOiAjZjAwO1xufVxuIl19 */\\";
-injector_9d0ece4d(css_9724c78b);
+const css_a00496d3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1cyB7XG4gIGNvbG9yOiAjZjAwO1xuICBiYWNrZ3JvdW5kOiAjZjAwO1xufVxuIl19 */\\";
+injector_8aeabfb4(css_a00496d3);
 
-const css_c0bf9526 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
-injector_9d0ece4d(css_c0bf9526);
+const css_855b3ad0 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
+injector_8aeabfb4(css_855b3ad0);
 
-const css_2aa6e98a = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIuc2FzcyB7XG4gIHdpZHRoOiAzMCU7XG4gIGNvbG9yOiByZWQ7IH1cbiJdfQ== */\\";
-injector_9d0ece4d(css_2aa6e98a);
+const css_31899cde = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIuc2FzcyB7XG4gIHdpZHRoOiAzMCU7XG4gIGNvbG9yOiByZWQ7IH1cbiJdfQ== */\\";
+injector_8aeabfb4(css_31899cde);
 
-const css_9a558625 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiIsInNvdXJjZXNDb250ZW50IjpbIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */\\";
-injector_9d0ece4d(css_9a558625);
+const css_aee437ad = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiIsInNvdXJjZXNDb250ZW50IjpbIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */\\";
+injector_8aeabfb4(css_aee437ad);
 
-console.log(css_4fc87a7b, css_8b7409a7);
+console.log(css_a87c82eb, css_6e569e18);
 "
 `;

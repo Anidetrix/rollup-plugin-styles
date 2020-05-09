@@ -1,12 +1,11 @@
 import path from "path";
 
 import hasher from "../../../utils/hasher";
-import { humanlizePath } from "../../../utils/path";
 
 import { hashRe } from "../common";
 
 export default (placeholder: string, file: string, source: Uint8Array): string => {
-  const hash = hasher(Buffer.from(source).toString() + humanlizePath(file));
+  const hash = hasher(`${path.basename(file)}:${Buffer.from(source).toString()}`);
   const match = hashRe.exec(placeholder);
   const hashLen = match && Number.parseInt(match[1]);
   return placeholder
