@@ -1,3 +1,11 @@
+## [3.2.4](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.2.3...v3.2.4) (2020-05-10)
+
+
+### Bug Fixes
+
+* **sourcemaps:** hashing and fixes for inlining in `extract` mode ([c2bb12d](https://github.com/Anidetrix/rollup-plugin-styles/commit/c2bb12d225d3b86909eeb5b32c85cd9ba8a9a0b0))
+* better match Rollup's hashing method ([1825045](https://github.com/Anidetrix/rollup-plugin-styles/commit/18250456a568aab90c11bbbaa00ed1eef7bf7c7e))
+
 ## [3.2.3](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.2.2...v3.2.3) (2020-05-09)
 
 ## [3.2.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.2.1...v3.2.2) (2020-05-09)
