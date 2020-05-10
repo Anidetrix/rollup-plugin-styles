@@ -3855,10 +3855,10 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-kVscqXk4OCp68SZ0dkgEKVi6/8ij300KBWTJq32P/dYeWTSwK41WyTxalN1eRmA5Z9UU/LX9D7FWSmV9SAYx6g==
-  /eventemitter3/4.0.0:
+  /eventemitter3/4.0.1:
     dev: false
     resolution:
-      integrity: sha512-qerSRB0p+UDEssxTtm6EDKcE7W4OaoisfIMl4CngyEhjpYglocpNg6UEqCvemdGhosAsg4sO2dXJOdyBifPGCg==
+      integrity: sha512-MnI0l35oYL2C/c80rjJN7qu50MDx39yYE7y7oYck2YA3v+y7EaAenY8IU8AP4d1RWqE8VAKWFGSh3rfP87ll3g==
   /exec-sh/0.3.4:
     dev: true
     resolution:
@@ -7101,7 +7101,7 @@ packages:
       integrity: sha512-/bjOqmgETBYB5BoEeGVea8dmvHb2m9GLy1E9W43yeyfP6QQCZGFNa+XRceJEuDB6zqr+gKpIAmlLebMpykw/MQ==
   /p-queue/6.4.0:
     dependencies:
-      eventemitter3: 4.0.0
+      eventemitter3: 4.0.1
       p-timeout: 3.2.0
     dev: false
     engines:
