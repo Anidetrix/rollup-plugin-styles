@@ -13,7 +13,7 @@ const loader: Loader<SASSLoaderOptions> = {
   async process({ code, map }) {
     const { options } = this;
 
-    const [sass, type] = await loadSass(options.impl).catch(this.error);
+    const [sass, type] = await loadSass(options.impl);
 
     // `fibers` doesn't work in testing
     const useFibers = options.fibers ?? (type === "sass" && process.env.NODE_ENV !== "test");

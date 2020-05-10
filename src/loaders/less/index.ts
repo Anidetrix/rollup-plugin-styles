@@ -11,7 +11,7 @@ const loader: Loader<LESSLoaderOptions> = {
   test: /\.less$/i,
   async process({ code, map }) {
     const less = await loadModule("less");
-    if (!less) this.error("You need to install `less` package in order to process Less files");
+    if (!less) throw new Error("You need to install `less` package in order to process Less files");
 
     const res = await less.render(code, {
       ...this.options,

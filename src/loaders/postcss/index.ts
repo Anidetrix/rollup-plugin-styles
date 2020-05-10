@@ -53,7 +53,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
   async process({ code, map, extracted }) {
     const { options } = this;
 
-    const config = await loadConfig(this.id, options.config).catch(this.error);
+    const config = await loadConfig(this.id, options.config);
 
     const plugins = [
       ...[

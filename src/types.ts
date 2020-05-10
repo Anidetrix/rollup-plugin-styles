@@ -152,8 +152,6 @@ export type LoaderContext<TLoaderOptions = ObjectWithUnknownProps> = {
   readonly assets: Map<string, Uint8Array>;
   /** Function for emitting a waring */
   readonly warn: PluginContext["warn"];
-  /** Function for emitting an error */
-  readonly error: PluginContext["error"];
   /** https://rollupjs.org/guide/en#plugin-context */
   readonly plugin: PluginContext;
 };

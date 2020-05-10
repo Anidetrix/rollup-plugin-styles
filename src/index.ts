@@ -91,7 +91,6 @@ export default (options: Options = {}): Plugin => {
         deps: new Set(),
         assets: new Map<string, Uint8Array>(),
         warn: this.warn.bind(this),
-        error: this.error.bind(this),
         plugin: this,
         options: {},
       };

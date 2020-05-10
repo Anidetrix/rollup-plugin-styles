@@ -11,7 +11,7 @@ const loader: Loader<StylusLoaderOptions> = {
   async process({ code, map }) {
     const stylus = await loadModule("stylus");
     if (!stylus)
-      this.error("You need to install `stylus` package in order to process Stylus files");
+      throw new Error("You need to install `stylus` package in order to process Stylus files");
 
     const style = stylus(code, { ...this.options })
       .set("filename", this.id)
