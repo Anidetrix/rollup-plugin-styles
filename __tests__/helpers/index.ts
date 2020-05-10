@@ -57,7 +57,7 @@ export async function write(data: WriteData): Promise<WriteResult> {
     .sort();
 
   const map = output
-    .filter(f => f.type === "asset" && f.fileName.endsWith(".css.map"))
+    .filter(f => f.type === "asset" && f.fileName.includes(".css") && f.fileName.endsWith(".map"))
     .map(f => path.join(outDir, f.fileName))
     .sort();
 

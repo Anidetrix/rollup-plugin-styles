@@ -8,7 +8,7 @@ import { createFilter } from "@rollup/pluginutils";
 
 import path from "path";
 import Concat from "concat-with-sourcemaps";
-import { Plugin, OutputChunk } from "rollup";
+import { Plugin, OutputChunk, OutputAsset } from "rollup";
 import postcss from "postcss";
 import cssnano from "cssnano";
 
@@ -172,14 +172,13 @@ export default (options: Options = {}): Plugin => {
             ].join("\n"),
           );
 
-        const fileBaseName = path.basename(fileName);
         const fileDir = path.dirname(path.resolve(dir, fileName));
 
         const entries = [...extracted.values()]
           .filter(e => ids.includes(e.id))
           .sort((a, b) => moduleIds.indexOf(a.id) - moduleIds.indexOf(b.id));
 
-        const concat = new Concat(true, fileBaseName, "\n");
+        const concat = new Concat(true, path.basename(fileName), "\n");
         for (const res of entries) {
           const relative = relativePath(dir, res.id);
           const map = mm(res.map).relative(fileDir).toObject();
@@ -187,20 +186,10 @@ export default (options: Options = {}): Plugin => {
           concat.add(relative, res.css, (map as unknown) as ConcatSourceMap);
         }
 
-        let css = concat.content.toString();
-        const map = mm(concat.sourceMap);
-
-        if (options.sourceMap === "inline") {
-          css += map.toCommentData();
-        } else if (options.sourceMap === true) {
-          css += map.toCommentFile(fileBaseName);
-        }
-
         return {
-          css,
-          map: options.sourceMap === true ? map.toString() : undefined,
-          cssName: fileName,
-          mapBaseName: `${fileBaseName}.map`,
+          css: concat.content.toString(),
+          map: options.sourceMap ? concat.sourceMap : undefined,
+          name: fileName,
         };
       };
 
@@ -250,50 +239,57 @@ export default (options: Options = {}): Plugin => {
           const cssNanoOpts: cssnano.CssNanoOptions & postcss.ProcessOptions =
             typeof postcssLoaderOpts.minimize === "object" ? postcssLoaderOpts.minimize : {};
 
-          cssNanoOpts.from = res.cssName;
-          if (options.sourceMap === "inline") {
-            cssNanoOpts.map = { inline: true };
-          } else if (options.sourceMap === true) {
-            cssNanoOpts.map = { prev: res.map };
-            cssNanoOpts.to = res.cssName;
-          }
+          cssNanoOpts.from = res.name;
+          cssNanoOpts.to = res.name;
+          cssNanoOpts.map = {
+            inline: false,
+            annotation: false,
+            sourcesContent: true,
+            prev: res.map,
+          };
 
           const resMin = await cssnano.process(res.css, cssNanoOpts);
           res.css = resMin.css;
-          if (options.sourceMap === true) res.map = resMin.map?.toString();
+          if (options.sourceMap) res.map = resMin.map?.toString();
         }
 
         const cssFileId = this.emitFile({
           type: "asset",
-          name: res.cssName,
+          name: res.name,
           source: res.css,
         });
 
         if (res.map) {
           const fileName = this.getFileName(cssFileId);
-          res.mapBaseName = normalizePath(path.dirname(fileName), res.mapBaseName);
 
           const assetDir = opts.assetFileNames
             ? normalizePath(path.dirname(opts.assetFileNames))
-            : "assets";
+            : "assets"; // Default for Rollup v2
 
-          this.emitFile({
-            type: "asset",
-            fileName: res.mapBaseName,
-            source: mm(res.map)
-              .modify(m => {
-                m.file = path.basename(fileName);
-              })
-              .modifySources(s => {
-                // Compensate for possible nesting depending on `assetFileNames` value
-                if (s === "<no source>") return s;
-                if (assetDir.length <= 1) return s;
-                if (!opts.assetFileNames) return `../${s}`;
-                for (const c of `${assetDir}/`) if (c === "/") s = `../${s}`;
-                return s;
-              })
-              .toString(),
-          });
+          const map = mm(res.map)
+            .modify(m => {
+              m.file = path.basename(fileName);
+            })
+            .modifySources(s => {
+              // Compensate for possible nesting depending on `assetFileNames` value
+              if (s === "<no source>") return s;
+              if (assetDir.length <= 1) return s;
+              s = `../${s}`; // If it didnt return then there's definitely at least 1 level offset
+              for (const c of assetDir) if (c === "/") s = `../${s}`;
+              return s;
+            });
+
+          if (options.sourceMap === "inline") {
+            (bundle[fileName] as OutputAsset).source += map.toCommentData();
+          } else if (options.sourceMap === true) {
+            const mapFileId = this.emitFile({
+              type: "asset",
+              name: `${res.name}.map`,
+              source: map.toString(),
+            });
+            const mapFileName = path.basename(this.getFileName(mapFileId));
+            (bundle[fileName] as OutputAsset).source += map.toCommentFile(mapFileName);
+          }
         }
       }
     },

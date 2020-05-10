@@ -182,9 +182,7 @@ export type ExtractedData = {
   /** Sourcemap */
   map?: string;
   /** Output name for CSS */
-  cssName: string;
-  /** Output basename for sourcemap */
-  mapBaseName: string;
+  name: string;
 };
 
 /** Options for CSS injection */

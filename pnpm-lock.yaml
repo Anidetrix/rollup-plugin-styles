@@ -3419,7 +3419,7 @@ packages:
   /dom-serializer/0.2.2:
     dependencies:
       domelementtype: 2.0.1
-      entities: 2.0.0
+      entities: 2.0.2
     dev: false
     resolution:
       integrity: sha512-2/xPb3ORsQ42nHYiSunXkDjPLBaEj/xTwUO4B7XCZQTRk7EBtTOPaygh10YAAh2OI1Qrp6NWfpAhzswj0ydt9g==
@@ -3510,10 +3510,10 @@ packages:
       node: '>=8.6'
     resolution:
       integrity: sha512-BNT1C08P9XD0vNg3J475yIUG+mVdp9T6towYFHUv897X0KoHBjB1shyrNmhmtHWKP17iSWgo7Gqh7BBuzLZMSA==
-  /entities/2.0.0:
+  /entities/2.0.2:
     dev: false
     resolution:
-      integrity: sha512-D9f7V0JSRwIxlRI2mjMqufDrRDnx8p+eEOz7aUM9SuvF8gsBzra0/6tbjl1m8eQHrZlYj6PxqE00hZ1SAIKPLw==
+      integrity: sha512-dmD3AvJQBUjKpcNkoqr+x+IF0SdRtPz9Vk0uTy4yWqga9ibB6s4v++QFWNohjiUGoMlF552ZvNyXDxz5iW0qmw==
   /env-ci/5.0.2:
     dependencies:
       execa: 4.0.1

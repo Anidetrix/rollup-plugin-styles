@@ -92,7 +92,7 @@ class MapModifier {
 
   toCommentFile(fileName: string): string {
     if (isNullish(this.#map)) return "";
-    return `\n/*# sourceMappingURL=${fileName}.map */`;
+    return `\n/*# sourceMappingURL=${fileName} */`;
   }
 }
 
