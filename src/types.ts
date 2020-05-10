@@ -236,7 +236,7 @@ export interface Options {
   )[];
   /**
    * Select mode for this plugin
-   * - `"inject"` *(default)* - Inject CSS into `<head>`.
+   * - `"inject"` *(default)* - Embeds CSS inside JS and injects it into `<head>` at runtime.
    * You can also pass options for CSS injection.
    * Alternatively, you can pass your own CSS injector.
    * - `"extract"` - Extract CSS to the same location where JS file is generated but with .css extension.
@@ -301,7 +301,7 @@ export interface Options {
    * */
   minimize?: boolean | cssnano.CssNanoOptions;
   /**
-   * Enable sourceMap.
+   * Enable sourcemaps.
    * @default false
    * */
   sourceMap?: boolean | "inline";

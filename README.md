@@ -107,6 +107,10 @@ styles({
   modules: {},
   // ...additionally using autoModules
   autoModules: true,
+  // ...with custom regex
+  autoModules: /\.mod\.\S+$/,
+  // ...or custom function
+  autoModules: id => id.startsWith("modular."),
 });
 ```
 
