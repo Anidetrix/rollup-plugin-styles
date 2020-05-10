@@ -58,7 +58,7 @@ export default (options: Options = {}): Plugin => {
   };
 
   const loaders = new Loaders({
-    use: [["postcss", postcssLoaderOpts], "sourcemap", ...ensureUseOption(options.use, options)],
+    use: [["postcss", postcssLoaderOpts], ...ensureUseOption(options.use, options), "sourcemap"],
     loaders: options.loaders ?? [],
     extensions: postcssLoaderOpts.extensions,
   });
