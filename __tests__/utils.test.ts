@@ -4,6 +4,7 @@ import Loaders from "../src/loaders";
 import { Payload } from "../src/types";
 import { fixture } from "./helpers";
 import { mm, getMap, stripMap } from "../src/utils/sourcemap";
+import { humanlizePath } from "../src/utils/path";
 
 jest.mock("../src/utils/load-module", () => jest.fn().mockReturnValue(undefined));
 import loadModuleMock from "../src/utils/load-module";
@@ -17,6 +18,12 @@ describe("load-module", () => {
   });
 
   test("correct cwd path", async () => {
+    await expect(loadModule(humanlizePath(fixture("utils/fixture")))).resolves.toBe(
+      "this is fixture",
+    );
+  });
+
+  test("correct absolute path", async () => {
     await expect(loadModule(fixture("utils/fixture"))).resolves.toBe("this is fixture");
   });
 

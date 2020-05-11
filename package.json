@@ -107,7 +107,7 @@
     "node-sass": "^4.14.1",
     "postcss-custom-properties": "^9.1.1",
     "prettier": "^2.0.5",
-    "rollup": "^2.9.0",
+    "rollup": "^2.9.1",
     "rollup-plugin-dts": "^1.4.2",
     "rollup-plugin-lit-css": "^2.0.3",
     "rollup-plugin-node-externals": "^2.1.6",
