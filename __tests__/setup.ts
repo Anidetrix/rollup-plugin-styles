@@ -1,6 +1,2 @@
-import fs from "fs-extra";
-import { fixture } from "./helpers";
-
+export {}; // fixes "isolatedModules" warning
 jest.setTimeout(30000);
-
-beforeAll(async () => fs.remove(fixture("dist")));

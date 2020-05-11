@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`url resolver warns about being empty: warning 1`] = `"Empty URL in \`background:url()\`"`;
+
+exports[`url resolver warns about being unresolved: warning 1`] = `"Unresolved URL \`bg.png\` in \`background:url(bg.png)\`"`;
+
+exports[`url resolver warns about incorrect resolving: warning 1`] = `"Incorrectly resolved URL \`bg.png\` in \`background:url(bg.png)\`"`;

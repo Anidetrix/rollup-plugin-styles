@@ -1,10 +1,17 @@
-import loadModule from "../src/utils/load-module";
 import { ensurePCSSOption } from "../src/utils/options";
 import { loadSass } from "../src/loaders/sass/load";
+import Loaders from "../src/loaders";
+import { Payload } from "../src/types";
 import { fixture } from "./helpers";
 import { mm, getMap, stripMap } from "../src/utils/sourcemap";
 
+jest.mock("../src/utils/load-module", () => jest.fn().mockReturnValue(undefined));
+import loadModuleMock from "../src/utils/load-module";
+
 describe("load-module", () => {
+  const loadModule = jest.requireActual("../src/utils/load-module")
+    .default as typeof loadModuleMock;
+
   test("wrong path", async () => {
     await expect(loadModule("totallyWRONGPATH/here")).resolves.toBeUndefined();
   });
@@ -18,21 +25,54 @@ describe("load-module", () => {
   });
 });
 
+describe("less", () => {
+  test("not found", async () => {
+    const loaders = new Loaders({ use: ["less"], loaders: [], extensions: [""] });
+    await expect(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      loaders.process({ code: "" }, { id: "file.less" } as any),
+    ).rejects.toThrowErrorMatchingSnapshot();
+  });
+});
+
+describe("stylus", () => {
+  test("not found", async () => {
+    const loaders = new Loaders({ use: ["stylus"], loaders: [], extensions: [""] });
+    await expect(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      loaders.process({ code: "" }, { id: "file.styl" } as any),
+    ).rejects.toThrowErrorMatchingSnapshot();
+  });
+});
+
 describe("load-sass", () => {
   test("wrong implementation", async () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    await expect(loadSass("swass" as any)).rejects.toMatchInlineSnapshot(
-      `[Error: Could not load \`swass\` Sass implementation]`,
-    );
+    await expect(loadSass("swass" as any)).rejects.toThrowErrorMatchingSnapshot();
+  });
+
+  test("not found", async () => {
+    await expect(loadSass()).rejects.toThrowErrorMatchingSnapshot();
+  });
+});
+
+describe("loaders", () => {
+  test("unlisting", () => {
+    const testLoader = {
+      name: "test",
+      alwaysProcess: true,
+      process: (): Payload => ({ code: "" }),
+    };
+    const loaders = new Loaders({ use: ["test"], loaders: [testLoader], extensions: [""] });
+    expect(loaders.getLoader("test")).toBe(testLoader);
+    loaders.unlistLoader("test");
+    expect(loaders.getLoader("test")).toBeUndefined();
   });
 });
 
 describe("option-utils", () => {
   test("wrong postcss option", () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    expect(() => ensurePCSSOption("pumpinizer", "plugin")).toThrowErrorMatchingInlineSnapshot(
-      `"Unable to load PostCSS plugin \`pumpinizer\`"`,
-    );
+    expect(() => ensurePCSSOption("pumpinizer", "plugin")).toThrowErrorMatchingSnapshot();
   });
 });
 
@@ -40,24 +80,16 @@ describe("sourcemap-utils", () => {
   test("inline map", async () => {
     let code =
       '.foo {color: red;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkBAMAAACCzIhnAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiklEQVRYhe3QMQ6EIBAF0C+GSInF9mYTs+1ewRsQbmBlayysKefYO2asXbbYxvxHQj6ECQMAEREREf2NQ/fCtp5Zky6vtRMkSJEzhyISynWJnzH6Z8oQlzS7lEc/fLmmQUSvc16OrCPqRl1JePxQYo1ZSWVj9nxrrOb5esw+eXdvzTWfTERERHRXH4tWFZGswQ2yAAAAAElFTkSuQmCC");}';
-
     await expect(getMap(code)).resolves.toBeUndefined();
-
     code +=
       "/*# sourceMappingURL=data:application/json;base64,e1RISVM6SVNBU09VUkNFTUFQU0lNVUxBVElPTn0= */";
-
     await expect(getMap(code)).resolves.toBe("{THIS:ISASOURCEMAPSIMULATION}");
   });
 
   test("file map", async () => {
     const code = ".foo {color: red;}/*# sourceMappingURL=fixture.css.map */";
-
-    await expect(getMap(code)).rejects.toMatchInlineSnapshot(
-      `[Error: Extracted map detected, but no ID is provided]`,
-    );
-
+    await expect(getMap(code)).rejects.toThrowErrorMatchingSnapshot();
     await expect(getMap(code, "this/is/nonexistant/path.css")).resolves.toBeUndefined();
-
     await expect(getMap(code, fixture("utils/pointless.css"))).resolves.toBe(
       "{THIS:ISASOURCEMAPSIMULATION}",
     );

@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`less not found 1`] = `"You need to install \`less\` package in order to process Less files"`;
+
+exports[`load-sass not found 1`] = `
+"You need to install one of the following packages:
+\`node-sass\`, \`sass\`
+in order to process Sass files"
+`;
+
+exports[`load-sass wrong implementation 1`] = `"Could not load \`swass\` Sass implementation"`;
+
+exports[`option-utils wrong postcss option 1`] = `"Unable to load PostCSS plugin \`pumpinizer\`"`;
+
+exports[`sourcemap-utils file map 1`] = `"Extracted map detected, but no ID is provided"`;
+
+exports[`stylus not found 1`] = `"You need to install \`stylus\` package in order to process Stylus files"`;

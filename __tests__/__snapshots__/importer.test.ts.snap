@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`importer warns about being unresolved: warning 1`] = `"Unresolved \`@import\` in \`@import \\"smh.css\\"\`"`;
+
+exports[`importer warns about empty url: warning 1`] = `"Empty URL in \`@import \\" \\"\`"`;
+
+exports[`importer warns about incorrect resolving: warning 1`] = `"Incorrectly resolved \`@import\` in \`@import \\"smh.css\\"\`"`;
+
+exports[`importer warns about invalid url function: warning 1`] = `"Invalid \`url\` function in \`@import omg(\\"smh.css\\")\`"`;
+
+exports[`importer warns about lack of termination: warning 1`] = `"\`@import\` was not terminated correctly"`;
+
+exports[`importer warns about loop: warning 1`] = `"\`@import\` loop in \`@import \\"./foo.css\\"\`"`;
+
+exports[`importer warns about no url: warning 1`] = `"No URL in \`@import\`"`;
+
+exports[`importer warns about not being top level: warning 1`] = `"\`@import\` should be top level"`;

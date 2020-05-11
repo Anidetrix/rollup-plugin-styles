@@ -1,14 +1,25 @@
+import fs from "fs-extra";
 import { rollup } from "rollup";
+import { RawSourceMap } from "source-map";
 
 import styles from "../src";
 import litcss from "rollup-plugin-lit-css";
 
 import { fixture, validateMany, write } from "./helpers";
 
+beforeAll(async () => fs.remove(fixture("dist")));
+
 validateMany("basic", [
   {
     title: "simple",
     input: "simple/index.js",
+  },
+  {
+    title: "use-fail",
+    shouldFail: true,
+    input: "simple/index.js",
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-assignment
+    options: { use: [false] as any },
   },
   {
     title: "postcss-config",
@@ -192,6 +203,18 @@ validateMany("extract", [
     options: { mode: "extract" },
   },
   {
+    title: "absolute-path-fail",
+    shouldFail: true,
+    input: "simple/index.js",
+    options: { mode: ["extract", fixture("dist/wrong.css")] },
+  },
+  {
+    title: "relative-path-fail",
+    shouldFail: true,
+    input: "simple/index.js",
+    options: { mode: ["extract", "../wrong.css"] },
+  },
+  {
     title: "custom-path",
     input: "simple/index.js",
     options: {
@@ -278,7 +301,7 @@ validateMany("multiple-instances", [
     input: "multiple-instances/index.js",
     plugins: [
       styles({ extensions: [".css"], use: [] }),
-      styles({ extensions: [], use: ["less"] }),
+      styles({ extensions: [], use: ["less", "sass", "stylus"] }),
       styles({ extensions: [".mcss"], use: [], modules: true, namedExports: true }),
     ],
   },
@@ -336,6 +359,22 @@ test("on-extract-fn", async () => {
   for (const f of await res.js()) expect(f).toMatchSnapshot("js");
   await expect(res.isCss()).resolves.toBeFalsy();
   await expect(res.isMap()).resolves.toBeFalsy();
+});
+
+test("nested", async () => {
+  const outDir = fixture("dist/nested");
+  const bundle = await rollup({
+    input: fixture("simple/index.js"),
+    plugins: [styles({ mode: "extract", sourceMap: true })],
+  });
+  await bundle.write({ dir: outDir, assetFileNames: "this/is/nested/[name][extname]" });
+  const outMap = `${outDir}/this/is/nested/index.css.map`;
+  await expect(fs.pathExists(outMap)).resolves.toBeTruthy();
+  const map = JSON.parse(await fs.readFile(outMap, "utf8")) as RawSourceMap;
+  const inSource = `${outDir}/this/is/nested/${map.sources[0]}`;
+  await expect(fs.pathExists(inSource)).resolves.toBeTruthy();
+  const source = await fs.readFile(inSource, "utf8");
+  expect(map.sourcesContent && map.sourcesContent[0]).toBe(source);
 });
 
 test("augment-chunk-hash", async () => {

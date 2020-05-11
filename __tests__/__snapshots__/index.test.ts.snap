@@ -367,6 +367,8 @@ injector_6d837214(css_147dacc9);
 "
 `;
 
+exports[`basic use-fail 1`] = `"The rule in \`use\` option must be string or array!"`;
+
 exports[`code-splitting single: css 1`] = `
 ".third_third {
   color: maroon; }
@@ -583,6 +585,11 @@ console.log(style);
 "
 `;
 
+exports[`extract absolute-path-fail 1`] = `
+"Extraction path must be relative to the output directory,
+which is __tests__/fixtures/dist/extract/absolute-path-fail"
+`;
+
 exports[`extract custom-path: css 1`] = `
 ".foo {
   color: red;
@@ -622,6 +629,11 @@ console.log(css_a87c82eb, css_6e569e18);
 `;
 
 exports[`extract custom-path: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../../../simple/foo.css\\",\\"../../../../../../simple/bar.css\\",\\"../../../../../../simple/style.styl\\",\\"../../../../../../simple/style.pcss\\",\\"../../../../../../simple/style.sass\\",\\"../../../../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;AACZ;;ACFA;EACE,WAAO;EACP,gBAAY;AACd;;ACHA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;EACV,UAAU,EAAA;;ACCZ;EACE,cAAA;AAFF\\",\\"file\\":\\"extracted-57b81765.css\\",\\"sourcesContent\\":[\\".foo {\\\\n  color: red;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
+
+exports[`extract relative-path-fail 1`] = `
+"Extraction path must be nested inside output directory,
+which is __tests__/fixtures/dist/extract/relative-path-fail"
+`;
 
 exports[`extract sourcemap-inline: css 1`] = `
 ".foo {

@@ -15,14 +15,12 @@ const validateUrl = async (
 describe("url resolver", () => {
   it("warns about being empty", async () => {
     const warning = await validateUrl(".foo{background:url()}");
-    expect(warning).toMatchInlineSnapshot(`"Empty URL in \`background:url()\`"`);
+    expect(warning).toMatchSnapshot("warning");
   });
 
   it("warns about being unresolved", async () => {
     const warning = await validateUrl(".foo{background:url(bg.png)}");
-    expect(warning).toMatchInlineSnapshot(
-      `"Unresolved URL \`bg.png\` in \`background:url(bg.png)\`"`,
-    );
+    expect(warning).toMatchSnapshot("warning");
   });
 
   it("warns about incorrect resolving", async () => {
@@ -30,8 +28,6 @@ describe("url resolver", () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       resolve: () => "lol" as any,
     });
-    expect(warning).toMatchInlineSnapshot(
-      `"Incorrectly resolved URL \`bg.png\` in \`background:url(bg.png)\`"`,
-    );
+    expect(warning).toMatchSnapshot("warning");
   });
 });

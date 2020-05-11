@@ -9,6 +9,7 @@ import { inferModeOption } from "../../src/utils/options";
 
 export type WriteData = {
   input: string;
+  title?: string;
   outDir?: string;
   options?: Options;
   plugins?: Plugin[];
@@ -28,7 +29,7 @@ export const fixture = (...args: string[]): string =>
   path.normalize(path.join(__dirname, "..", "fixtures", ...args));
 
 export async function write(data: WriteData): Promise<WriteResult> {
-  const outDir = fixture("dist", data.outDir ?? "");
+  const outDir = fixture("dist", data.outDir ?? data.title ?? "");
 
   const bundle = await rollup({
     input: fixture(data.input),
@@ -86,12 +87,17 @@ export async function write(data: WriteData): Promise<WriteResult> {
   return res;
 }
 
-export type TestData = WriteData & { title: string; files?: string[] };
+export type TestData = WriteData & { title: string; files?: string[]; shouldFail?: boolean };
 
 export function validate(data: TestData): void {
   const options = data.options ?? {};
   const mode = inferModeOption(options.mode);
   test(data.title, async () => {
+    if (data.shouldFail) {
+      await expect(write(data)).rejects.toThrowErrorMatchingSnapshot();
+      return;
+    }
+
     const res = await write(data);
 
     for (const f of await res.js()) expect(f).toMatchSnapshot("js");
