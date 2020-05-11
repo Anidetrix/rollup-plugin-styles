@@ -1,3 +1,15 @@
+## [3.2.5](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.2.4...v3.2.5) (2020-05-11)
+
+
+### Bug Fixes
+
+* **loaders:** run `sourcemap` loader first ([b651be3](https://github.com/Anidetrix/rollup-plugin-styles/commit/b651be35fe27b02670547fb639706feab68d5ab9))
+
+
+### Performance Improvements
+
+* simpler error handling ([438d5b1](https://github.com/Anidetrix/rollup-plugin-styles/commit/438d5b1d678854d4ad3cc18ebfdf5d0d0bcf1472))
+
 ## [3.2.4](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.2.3...v3.2.4) (2020-05-10)
 
 
