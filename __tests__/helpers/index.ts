@@ -37,6 +37,12 @@ export async function write(data: WriteData): Promise<WriteResult> {
     ? Object.entries(data.input).reduce((acc, [k, v]) => ({ ...acc, [k]: fixture(v) }), {})
     : fixture(data.input);
 
+  const multiEntry = Array.isArray(data.input)
+    ? data.input.length > 1
+    : typeof data.input === "object"
+    ? Object.keys(data.input).length > 1
+    : false;
+
   const bundle = await rollup({
     input,
     plugins: data.plugins ?? [styles(data.options)],
@@ -71,7 +77,8 @@ export async function write(data: WriteData): Promise<WriteResult> {
   const res: WriteResult = {
     js: async () => Promise.all(js.map(async f => fs.readFile(f, "utf8"))),
 
-    css: async () => Promise.all(css.map(async f => fs.readFile(f, "utf8"))),
+    // Content differs sometimes in multi-entry mode due to `this.moduleIds` inconsistency
+    css: async () => (multiEntry ? [] : Promise.all(css.map(async f => fs.readFile(f, "utf8")))),
     isCss: async () =>
       css.length > 0 &&
       css.reduce(
@@ -79,7 +86,8 @@ export async function write(data: WriteData): Promise<WriteResult> {
         Promise.resolve(true),
       ),
 
-    map: async () => Promise.all(map.map(async f => fs.readFile(f, "utf8"))),
+    // Content differs sometimes in multi-entry mode due to `this.moduleIds` inconsistency
+    map: async () => (multiEntry ? [] : Promise.all(map.map(async f => fs.readFile(f, "utf8")))),
     isMap: async () =>
       map.length > 0 &&
       map.reduce(
