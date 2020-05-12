@@ -205,17 +205,17 @@ export type InjectOptions = {
 /** `rollup-plugin-styles`'s full option list */
 export interface Options {
   /**
-   * Files to include for processing.
+   * Files to include for processing
    * @default undefined
    * */
   include?: Parameters<CreateFilter>[0];
   /**
-   * Files to exclude from processing.
+   * Files to exclude from processing
    * @default undefined
    * */
   exclude?: Parameters<CreateFilter>[1];
   /**
-   * PostCSS will process files ending with these extensions.
+   * PostCSS will process files ending with these extensions
    * @default [".css", ".pcss", ".postcss", ".sss"]
    * */
   extensions?: string[];
@@ -233,7 +233,7 @@ export interface Options {
     | undefined
   )[];
   /**
-   * Select mode for this plugin
+   * Select mode for this plugin:
    * - `"inject"` *(default)* - Embeds CSS inside JS and injects it into `<head>` at runtime.
    * You can also pass options for CSS injection.
    * Alternatively, you can pass your own CSS injector.
@@ -252,9 +252,7 @@ export interface Options {
     | ["extract", string]
     | "emit"
     | ["emit"];
-  /**
-   * `to` option for PostCSS, required for some plugins
-   * */
+  /** `to` option for PostCSS, required for some plugins */
   to?: string;
   /**
    * Enable/disable or pass options for CSS `@import` resolver
@@ -267,7 +265,7 @@ export interface Options {
    * */
   url?: UrlOptions | boolean;
   /**
-   * Aliases for URL and import paths.
+   * Aliases for URL and import paths
    * - ex.: `{"foo":"bar"}`
    */
   alias?: { [from: string]: string };
@@ -299,30 +297,30 @@ export interface Options {
    * */
   minimize?: boolean | cssnano.CssNanoOptions;
   /**
-   * Enable sourcemaps.
+   * Enable sourcemaps
    * @default false
    * */
   sourceMap?: boolean | "inline";
   /**
    * Set PostCSS parser, e.g. `sugarss`.
-   * Overrides the one loaded from PostCSS config file, if any
+   * Overrides the one loaded from PostCSS config file, if any.
    * @default undefined
    * */
   parser?: string | postcss.Parser;
   /**
    * Set PostCSS stringifier.
-   * Overrides the one loaded from PostCSS config file, if any
+   * Overrides the one loaded from PostCSS config file, if any.
    * @default undefined
    * */
   stringifier?: string | postcss.Stringifier;
   /**
    * Set PostCSS syntax.
-   * Overrides the one loaded from PostCSS config file, if any
+   * Overrides the one loaded from PostCSS config file, if any.
    * @default undefined
    * */
   syntax?: string | postcss.Syntax;
   /**
-   * Enable loading PostCSS config file.
+   * Enable loading PostCSS config file
    * @default true
    * */
   config?: boolean | PostCSSLoadConfigOptions;
@@ -342,12 +340,12 @@ export interface Options {
   /** Options for Less loader */
   less?: LESSLoaderOptions;
   /**
-   * Array of custom loaders.
+   * Array of custom loaders
    * @default undefined
    * */
   loaders?: Loader[];
   /**
-   * Function which is invoked on CSS file import.
+   * Function which is invoked on CSS file import
    * @default undefined
    * */
   onImport?: (code: string, id: string) => void;

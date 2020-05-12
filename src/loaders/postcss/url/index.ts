@@ -39,6 +39,7 @@ export type UrlOptions = {
    * - `[ext]`: The file extension without a leading dot, e.g. `png`.
    * - `[hash(:<num>)]`: A hash based on the name and content of the asset (with optional length).
    * - `[name]`: The file name of the asset excluding any extension.
+   *
    * Forward slashes / can be used to place files in sub-directories.
    * @default "assets/[name]-[hash][extname]" ("assets/[name][extname]" if `false`)
    * */

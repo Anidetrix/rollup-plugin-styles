@@ -1,11 +1,11 @@
 # rollup-plugin-styles
 
-<a href="https://www.npmjs.com/package/rollup-plugin-styles"><img src="https://img.shields.io/npm/v/rollup-plugin-styles"/></a>
-<a href="https://www.npmjs.com/package/rollup-plugin-styles"><img src="https://img.shields.io/npm/dt/rollup-plugin-styles"/></a>
-<a href="https://www.npmjs.com/package/rollup"><img src="https://img.shields.io/npm/dependency-version/rollup-plugin-styles/peer/rollup"/></a>
-<a href="https://david-dm.org/Anidetrix/rollup-plugin-styles"><img src="https://img.shields.io/david/Anidetrix/rollup-plugin-styles"/></a>
-<a href="https://codecov.io/gh/Anidetrix/rollup-plugin-styles"><img src="https://codecov.io/gh/Anidetrix/rollup-plugin-styles/branch/master/graph/badge.svg"/></a>
-<a href="./LICENSE"><img src="https://img.shields.io/github/license/Anidetrix/rollup-plugin-styles"/></a>
+[![npm version](https://img.shields.io/npm/v/rollup-plugin-styles)](https://www.npmjs.com/package/rollup-plugin-styles)
+[![downloads count](https://img.shields.io/npm/dt/rollup-plugin-styles)](https://www.npmjs.com/package/rollup-plugin-styles)
+[![required rollup version](https://img.shields.io/npm/dependency-version/rollup-plugin-styles/peer/rollup)](https://www.npmjs.com/package/rollup)
+[![dependencies status](https://img.shields.io/david/Anidetrix/rollup-plugin-styles)](https://david-dm.org/Anidetrix/rollup-plugin-styles)
+[![code coverage](https://codecov.io/gh/Anidetrix/rollup-plugin-styles/branch/master/graph/badge.svg)](https://codecov.io/gh/Anidetrix/rollup-plugin-styles)
+[![license](https://img.shields.io/github/license/Anidetrix/rollup-plugin-styles)](./LICENSE)
 
 🎨 Universal [Rollup](https://github.com/rollup/rollup) plugin for styles: [PostCSS](https://github.com/postcss/postcss), [Sass](https://github.com/sass/dart-sass), [Less](https://github.com/less/less.js), [Stylus](https://github.com/stylus/stylus) and more.
 
@@ -27,9 +27,10 @@ import styles from "rollup-plugin-styles";
 
 export default {
   output: {
-    // Governs names of CSS files (for assets from CSS use `hash` option for url handler)
+    // Governs names of CSS files (for assets from CSS use `hash` option for url handler).
     // Note: using value below will put .css files near js,
-    // but make sure to adjust `hash`, `assetDir` and `publicPath` accordingly as well
+    // but make sure to adjust `hash`, `assetDir` and `publicPath`
+    // options for url handler accordingly as well.
     assetFileNames: "[name]-[hash][extname]",
   },
   plugins: [styles()],
@@ -42,11 +43,11 @@ After that you can import CSS files in your code:
 import "./style.css";
 ```
 
-Default mode is `inject`, which means generated CSS will be injected into `<head>`, with ability to pass options to CSS injector or even pass your own injector
+Default mode is `inject`, which means generated CSS will be injected into `<head>`, with ability to pass options to CSS injector or even pass your own injector.
 
 CSS is available as default export in `inject` and `extract` modes, but if [CSS Modules](https://github.com/css-modules/css-modules) are enabled you need to use named `css` export.
 
-In `emit` mode none of the exports are available since it purely processes CSS and passes it along the build pipeline, which is useful if you only want to preprocess CSS for usage with CSS consuming plugins, e.g. [rollup-plugin-lit-css](https://github.com/bennypowers/rollup-plugin-lit-css)
+In `emit` mode none of the exports are available since it purely processes CSS and passes it along the build pipeline, which is useful if you only want to preprocess CSS for usage with CSS consuming plugins, e.g. [rollup-plugin-lit-css](https://github.com/bennypowers/rollup-plugin-lit-css).
 
 ```js
 // Injects CSS, also available as `style` in this example
@@ -74,7 +75,7 @@ styles({
 ```js
 styles({
   mode: "extract",
-  // ... or with relative to output dir/output file's basedir (but not outside of it).
+  // ... or with relative to output dir/output file's basedir (but not outside of it)
   mode: ["extract", "awesome-bundle.css"],
 });
 ```
@@ -168,7 +169,7 @@ Similar to how webpack's [sass-loader](https://github.com/webpack-contrib/sass-l
 
 #### `fibers` (**Sass/Scss only**)
 
-This plugin will auto detect `fibers` package when using `sass` implementation
+This plugin will auto detect `fibers` package when using `sass` implementation.
 
 > When installed via npm, `Dart Sass` supports a JavaScript API that's fully compatible with `Node Sass` <...>, with support for both the render() and renderSync() functions. <...>
 >
@@ -216,6 +217,7 @@ Any contributions are always welcome, not only Pull Requests! 😀
 - **QA**: file bug reports, the more details you can give the better
 - **Code**: take a look at the [open issues](https://github.com/Anidetrix/rollup-plugin-styles/issues), even if you can't write code showing that you care about a given issue matters
 - **Ideas**: feature requests are welcome, even ambitious ones
+- **Donations**: financial support helps to dedicate more time to this project
 
 Your First Contribution? You can learn how from this _free_ series, [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
 
