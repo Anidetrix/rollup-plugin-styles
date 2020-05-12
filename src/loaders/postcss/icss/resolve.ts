@@ -13,10 +13,10 @@ export default async function (
 ): Promise<Replacements> {
   return Object.entries(icssImports).reduce(async (acc, [url, values]) => {
     const exports = await load(url, file, extensions, processor, opts);
-    const mappedValues = Object.entries(values).reduce<Replacements>((acc, [k, v]) => {
-      acc[k] = exports[v];
-      return acc;
-    }, {});
+    const mappedValues = Object.entries(values).reduce(
+      (acc, [k, v]) => ({ ...acc, [k]: exports[v] }),
+      {},
+    );
     return { ...(await acc), ...mappedValues };
   }, Promise.resolve({}));
 }

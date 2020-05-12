@@ -37,10 +37,10 @@ const plugin: postcss.Plugin<InteroperableCSSOptions> = postcss.plugin(
 
     replaceSymbols(css, imports);
 
-    const replacements = Object.entries(icssExports).reduce<Replacements>((acc, [k, v]) => {
-      acc[k] = replaceValueSymbols(v, imports);
-      return acc;
-    }, {});
+    const replacements = Object.entries(icssExports).reduce(
+      (acc, [k, v]) => ({ ...acc, [k]: replaceValueSymbols(v, imports) }),
+      {},
+    );
 
     res.messages.push({ plugin: name, type: "icss", replacements });
 

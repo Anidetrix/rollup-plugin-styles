@@ -63,7 +63,7 @@ export default (options: Options = {}): Plugin => {
     extensions: postcssLoaderOpts.extensions,
   });
 
-  const isSupported = (id: string): boolean => filter(id) && loaders.isSupported(id);
+  const isSupported = (id: string): boolean => filter(id) && loaders.isSupported.call(loaders, id);
 
   const extracted = new Map<string, NonNullable<Payload["extracted"]>>();
 
@@ -193,32 +193,51 @@ export default (options: Options = {}): Plugin => {
       };
 
       const getEmitted = (): Map<string, string[]> => {
-        const chunks = Object.values(bundle).filter((c): c is OutputChunk => c.type === "chunk");
-
-        const entryIndex = chunks.findIndex(v => v.isEntry);
-        const [entry] = chunks.splice(entryIndex, 1);
+        const chunks: OutputChunk[] = [];
+        const entries = Object.values(bundle).filter((c): c is OutputChunk => {
+          if (c.type !== "chunk") return false;
+          if (c.isEntry) return true;
+          chunks.push(c);
+          return false;
+        });
+        const [index] = entries.splice(0, 1);
 
         const idsMap = new Map<string, string[]>();
         const ids: string[] = [];
 
         if (typeof postcssLoaderOpts.extract !== "string") {
+          const chunkIds: string[] = [];
           for (const chunk of chunks) {
-            const chunkIds = getIds(chunk, infoFn)
+            const ids = getIds(chunk, infoFn)
               .filter(isSupported)
               .sort((a, b) => moduleIds.indexOf(a) - moduleIds.indexOf(b));
 
-            if (chunkIds.length === 0) continue;
+            if (ids.length === 0) continue;
 
-            ids.push(...chunkIds);
-            idsMap.set(chunk.name, chunkIds);
+            chunkIds.push(...ids);
+            idsMap.set(chunk.name, ids);
           }
+
+          const entryIds: string[] = [];
+          for (const entry of entries) {
+            const ids = getIds(entry, infoFn)
+              .filter(id => !chunkIds.includes(id) && isSupported(id))
+              .sort((a, b) => moduleIds.indexOf(a) - moduleIds.indexOf(b));
+
+            if (ids.length === 0) continue;
+
+            entryIds.push(...ids);
+            idsMap.set(entry.name, ids);
+          }
+
+          ids.push(...chunkIds, ...entryIds);
         }
 
-        const entryIds = moduleIds.filter(id => !ids.includes(id) && isSupported(id));
-        if (entryIds.length > 0) {
+        const indexIds = moduleIds.filter(id => !ids.includes(id) && isSupported(id));
+        if (indexIds.length > 0) {
           idsMap.set(
-            opts.file ? path.basename(opts.file, path.extname(opts.file)) : entry.name,
-            entryIds,
+            opts.file ? path.basename(opts.file, path.extname(opts.file)) : index.name,
+            indexIds,
           );
         }
 
@@ -283,7 +302,7 @@ export default (options: Options = {}): Plugin => {
           } else if (options.sourceMap === true) {
             const mapFileId = this.emitFile({
               type: "asset",
-              name: `${res.name}.map`,
+              fileName: `${fileName}.map`,
               source: map.toString(),
             });
             const mapFileName = path.basename(this.getFileName(mapFileId));

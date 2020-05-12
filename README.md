@@ -4,7 +4,7 @@
 [![monthly downloads count](https://img.shields.io/npm/dm/rollup-plugin-styles)](https://www.npmjs.com/package/rollup-plugin-styles)
 [![required rollup version](https://img.shields.io/npm/dependency-version/rollup-plugin-styles/peer/rollup)](https://www.npmjs.com/package/rollup)
 [![dependencies status](https://img.shields.io/david/Anidetrix/rollup-plugin-styles)](https://david-dm.org/Anidetrix/rollup-plugin-styles)
-[![build status](https://img.shields.io/github/workflow/status/Anidetrix/rollup-plugin-styles/CI)](https://github.com/Anidetrix/rollup-plugin-styles/actions?query=workflow%3ACI)
+[![build status](https://github.com/Anidetrix/rollup-plugin-styles/workflows/CI/badge.svg)](https://github.com/Anidetrix/rollup-plugin-styles/actions?query=workflow%3ACI)
 [![code coverage](https://codecov.io/gh/Anidetrix/rollup-plugin-styles/branch/master/graph/badge.svg)](https://codecov.io/gh/Anidetrix/rollup-plugin-styles)
 [![license](https://img.shields.io/github/license/Anidetrix/rollup-plugin-styles)](./LICENSE)
 
@@ -200,6 +200,7 @@ See [API Reference for `Options`](https://anidetrix.github.io/rollup-plugin-styl
 - Built-in assets handler
 - Respects `output.assetFileNames`
 - Code splitting support
+- Multi entry support
 - Ability to emit pure CSS for other plugins
 - Correct multiple instance support with check for already processed files
 - Support for implementation and `fibers` forcing for Sass

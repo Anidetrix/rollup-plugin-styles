@@ -322,10 +322,33 @@ validateMany("code-splitting", [
       sourceMap: true,
     },
   },
-
   {
     title: "single",
     input: "code-splitting/index.js",
+    options: {
+      mode: ["extract", "extracted.css"],
+      modules: true,
+      sourceMap: true,
+    },
+  },
+  {
+    title: "multi-entry",
+    input: {
+      entry1: "code-splitting/index.js",
+      entry2: "code-splitting/index2.js",
+    },
+    options: {
+      mode: "extract",
+      modules: true,
+      sourceMap: true,
+    },
+  },
+  {
+    title: "multi-entry-single",
+    input: {
+      entry1: "code-splitting/index.js",
+      entry2: "code-splitting/index2.js",
+    },
     options: {
       mode: ["extract", "extracted.css"],
       modules: true,

@@ -12,7 +12,7 @@ const importer: SASSImporter = (url, importer, done) => {
   // Pass responsibility back to other custom importers
   const next = (): void => done(null); // eslint-disable-line unicorn/no-null
 
-  const moduleUrl = normalizeUrl(url).slice(1);
+  const moduleUrl = normalizeUrl(url);
   const partialUrl = getUrlOfPartial(moduleUrl);
   const options = { basedir: path.dirname(importer), extensions: [".scss", ".sass", ".css"] };
 

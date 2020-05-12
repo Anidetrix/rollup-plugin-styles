@@ -7,11 +7,6 @@ import sassLoader from "./sass";
 import stylusLoader from "./stylus";
 import lessLoader from "./less";
 
-/**
- * @param filepath File path
- * @param condition Condition to check againts
- * @returns `true` if `filepath` matches `condition`, otherwise `false`
- */
 function matchFile(filepath: string, condition: Loader["test"]): boolean {
   if (typeof condition === "function") return condition(filepath);
   return Boolean(condition?.test(filepath));

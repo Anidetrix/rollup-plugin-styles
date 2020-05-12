@@ -1,7 +1,7 @@
 import fs from "fs-extra";
 import { FileManagerInterface, Less, LoadedFile, Plugin } from "less";
 import resolveAsync from "../../utils/resolve-async";
-import { getUrlOfPartial, isModule, normalizeUrl } from "../../utils/url";
+import { getUrlOfPartial, normalizeUrl } from "../../utils/url";
 
 const getStylesFileManager = (less: Less): FileManagerInterface =>
   new (class extends less.AbstractFileManager implements FileManagerInterface {
@@ -16,8 +16,7 @@ const getStylesFileManager = (less: Less): FileManagerInterface =>
     async loadFile(filename: string, basedir: string): Promise<LoadedFile> {
       const options = { basedir, extensions: [".less", ".css"] };
 
-      let url = normalizeUrl(filename);
-      if (isModule(url)) url = url.slice(1);
+      const url = normalizeUrl(filename);
       const partialUrl = getUrlOfPartial(url);
 
       // Give precedence to importing a partial

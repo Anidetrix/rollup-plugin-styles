@@ -369,6 +369,252 @@ injector_6d837214(css_147dacc9);
 
 exports[`basic use-fail 1`] = `"The rule in \`use\` option must be string or array!"`;
 
+exports[`code-splitting multi-entry: css 1`] = `
+".third_third {
+  color: maroon; }
+
+.fourth_fourth {
+  color: magenta; }
+
+/*# sourceMappingURL=entry1-6447f610.css.map */"
+`;
+
+exports[`code-splitting multi-entry: css 2`] = `
+".third2_third2 {
+  color: hotpink; }
+
+.fourth2_fourth2 {
+  color: honeydew; }
+
+/*# sourceMappingURL=entry2-abccb1d0.css.map */"
+`;
+
+exports[`code-splitting multi-entry: css 3`] = `
+".first_partial {
+  color: rosybrown;
+}
+.first_first {
+  color: red; }
+
+/*# sourceMappingURL=first-67312563.css.map */"
+`;
+
+exports[`code-splitting multi-entry: css 4`] = `
+".nestedScript_nestedScript {
+  color: rebeccapurple; }
+
+.nondynamic_nondynamic {
+  color: deepskyblue; }
+
+.nondynamic2_nondynamic2 {
+  color: deeppink; }
+
+/*# sourceMappingURL=nested-script-a24720a9.css.map */"
+`;
+
+exports[`code-splitting multi-entry: css 5`] = `
+".otherScript_otherScript {
+  color: wheat; }
+
+/*# sourceMappingURL=other-script-0b4c1d5a.css.map */"
+`;
+
+exports[`code-splitting multi-entry: css 6`] = `
+".second_second {
+  color: royalblue; }
+
+/*# sourceMappingURL=second-9b132bc0.css.map */"
+`;
+
+exports[`code-splitting multi-entry: js 1`] = `
+"const modules_0858c0ee = {\\"fourth\\":\\"fourth_fourth\\"};
+
+(async () => {
+  const first = await import('./first-4ee52dc0.js');
+  const second = await import('./second-0e0469bf.js');
+  const otherScript = await import('./other-script-71e1de4d.js');
+  console.log(first, second, otherScript);
+})();
+
+console.log(modules_0858c0ee);
+"
+`;
+
+exports[`code-splitting multi-entry: js 2`] = `
+"const modules_1f0f2177 = {\\"fourth2\\":\\"fourth2_fourth2\\"};
+
+(async () => {
+  const first = await import('./first-4ee52dc0.js');
+  const second = await import('./second-0e0469bf.js');
+  const otherScript = await import('./other-script-71e1de4d.js');
+  console.log(first, second, otherScript);
+})();
+
+console.log(modules_1f0f2177);
+"
+`;
+
+exports[`code-splitting multi-entry: js 3`] = `
+"const css_c80ea5b3 = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+const modules_9c526d97 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
+const css = css_c80ea5b3;
+
+export default modules_9c526d97;
+export { css };
+"
+`;
+
+exports[`code-splitting multi-entry: js 4`] = `
+"const modules_f895f00f = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+
+console.log(modules_f895f00f);
+"
+`;
+
+exports[`code-splitting multi-entry: js 5`] = `
+"console.log(\\"noncss\\");
+"
+`;
+
+exports[`code-splitting multi-entry: js 6`] = `
+"(async () => {
+  await import('./noncss-f3feb5ac.js');
+  const nestedScript = await import('./nested-script-3a18b46f.js');
+  console.log(nestedScript);
+})();
+"
+`;
+
+exports[`code-splitting multi-entry: js 7`] = `
+"const css_80152599 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+const modules_7f4bc46a = {\\"second\\":\\"second_second\\"};
+const css = css_80152599;
+
+export default modules_7f4bc46a;
+export { css };
+"
+`;
+
+exports[`code-splitting multi-entry: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/fourth.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA\\",\\"file\\":\\"entry1-6447f610.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\"]}"`;
+
+exports[`code-splitting multi-entry: map 2`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third2.scss\\",\\"../../../../code-splitting/fourth2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,cAAc,EAAA;;ACDhB;EACE,eAAe,EAAA\\",\\"file\\":\\"entry2-abccb1d0.css\\",\\"sourcesContent\\":[\\".third2 {\\\\n  color: hotpink;\\\\n}\\\\n\\",\\".fourth2 {\\\\n  color: honeydew;\\\\n}\\\\n\\"]}"`;
+
+exports[`code-splitting multi-entry: map 3`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA\\",\\"file\\":\\"first-67312563.css\\",\\"sourcesContent\\":[\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\"]}"`;
+
+exports[`code-splitting multi-entry: map 4`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nested-script.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,oBAAoB,EAAA;;ACDtB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"nested-script-a24720a9.css\\",\\"sourcesContent\\":[\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+
+exports[`code-splitting multi-entry: map 5`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/other-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAY,EAAA\\",\\"file\\":\\"other-script-0b4c1d5a.css\\",\\"sourcesContent\\":[\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\"]}"`;
+
+exports[`code-splitting multi-entry: map 6`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/second.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB,EAAA\\",\\"file\\":\\"second-9b132bc0.css\\",\\"sourcesContent\\":[\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\"]}"`;
+
+exports[`code-splitting multi-entry-single: css 1`] = `
+".third_third {
+  color: maroon; }
+
+.fourth_fourth {
+  color: magenta; }
+
+.first_partial {
+  color: rosybrown;
+}
+.first_first {
+  color: red; }
+
+.second_second {
+  color: royalblue; }
+
+.third2_third2 {
+  color: hotpink; }
+
+.fourth2_fourth2 {
+  color: honeydew; }
+
+.otherScript_otherScript {
+  color: wheat; }
+
+.nestedScript_nestedScript {
+  color: rebeccapurple; }
+
+.nondynamic_nondynamic {
+  color: deepskyblue; }
+
+.nondynamic2_nondynamic2 {
+  color: deeppink; }
+
+/*# sourceMappingURL=extracted-ce4cad6d.css.map */"
+`;
+
+exports[`code-splitting multi-entry-single: js 1`] = `
+"const modules_0858c0ee = {\\"fourth\\":\\"fourth_fourth\\"};
+
+(async () => {
+  const first = await import('./first-4ee52dc0.js');
+  const second = await import('./second-0e0469bf.js');
+  const otherScript = await import('./other-script-71e1de4d.js');
+  console.log(first, second, otherScript);
+})();
+
+console.log(modules_0858c0ee);
+"
+`;
+
+exports[`code-splitting multi-entry-single: js 2`] = `
+"const modules_1f0f2177 = {\\"fourth2\\":\\"fourth2_fourth2\\"};
+
+(async () => {
+  const first = await import('./first-4ee52dc0.js');
+  const second = await import('./second-0e0469bf.js');
+  const otherScript = await import('./other-script-71e1de4d.js');
+  console.log(first, second, otherScript);
+})();
+
+console.log(modules_1f0f2177);
+"
+`;
+
+exports[`code-splitting multi-entry-single: js 3`] = `
+"const css_c80ea5b3 = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+const modules_9c526d97 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
+const css = css_c80ea5b3;
+
+export default modules_9c526d97;
+export { css };
+"
+`;
+
+exports[`code-splitting multi-entry-single: js 4`] = `
+"const modules_f895f00f = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+
+console.log(modules_f895f00f);
+"
+`;
+
+exports[`code-splitting multi-entry-single: js 5`] = `
+"console.log(\\"noncss\\");
+"
+`;
+
+exports[`code-splitting multi-entry-single: js 6`] = `
+"(async () => {
+  await import('./noncss-f3feb5ac.js');
+  const nestedScript = await import('./nested-script-3a18b46f.js');
+  console.log(nestedScript);
+})();
+"
+`;
+
+exports[`code-splitting multi-entry-single: js 7`] = `
+"const css_80152599 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+const modules_7f4bc46a = {\\"second\\":\\"second_second\\"};
+const css = css_80152599;
+
+export default modules_7f4bc46a;
+export { css };
+"
+`;
+
+exports[`code-splitting multi-entry-single: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\",\\"../../../../code-splitting/second.scss\\",\\"../../../../code-splitting/third2.scss\\",\\"../../../../code-splitting/fourth2.scss\\",\\"../../../../code-splitting/other-script.scss\\",\\"../../../../code-splitting/nested-script.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA;;ACDhB;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA;;ACHZ;EACE,gBAAgB,EAAA;;ACDlB;EACE,cAAc,EAAA;;ACDhB;EACE,eAAe,EAAA;;ACDjB;EACE,YAAY,EAAA;;ACDd;EACE,oBAAoB,EAAA;;ACDtB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"extracted-ce4cad6d.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\",\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\",\\".third2 {\\\\n  color: hotpink;\\\\n}\\\\n\\",\\".fourth2 {\\\\n  color: honeydew;\\\\n}\\\\n\\",\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\",\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+
 exports[`code-splitting single: css 1`] = `
 ".third_third {
   color: maroon; }
@@ -397,7 +643,7 @@ exports[`code-splitting single: css 1`] = `
 .nondynamic2_nondynamic2 {
   color: deeppink; }
 
-/*# sourceMappingURL=extracted.css-4c3ed563.map */"
+/*# sourceMappingURL=extracted-080e44dc.css.map */"
 `;
 
 exports[`code-splitting single: js 1`] = `
@@ -464,7 +710,7 @@ exports[`code-splitting true: css 1`] = `
 .first_first {
   color: red; }
 
-/*# sourceMappingURL=first.css-b42c562d.map */"
+/*# sourceMappingURL=first-67312563.css.map */"
 `;
 
 exports[`code-splitting true: css 2`] = `
@@ -474,7 +720,7 @@ exports[`code-splitting true: css 2`] = `
 .fourth_fourth {
   color: magenta; }
 
-/*# sourceMappingURL=index.css-4b0571c9.map */"
+/*# sourceMappingURL=index-fef2e800.css.map */"
 `;
 
 exports[`code-splitting true: css 3`] = `
@@ -487,21 +733,21 @@ exports[`code-splitting true: css 3`] = `
 .nondynamic2_nondynamic2 {
   color: deeppink; }
 
-/*# sourceMappingURL=nested-script.css-4c5daaa7.map */"
+/*# sourceMappingURL=nested-script-a24720a9.css.map */"
 `;
 
 exports[`code-splitting true: css 4`] = `
 ".otherScript_otherScript {
   color: wheat; }
 
-/*# sourceMappingURL=other-script.css-e4929b49.map */"
+/*# sourceMappingURL=other-script-0b4c1d5a.css.map */"
 `;
 
 exports[`code-splitting true: css 5`] = `
 ".second_second {
   color: royalblue; }
 
-/*# sourceMappingURL=second.css-133bca06.map */"
+/*# sourceMappingURL=second-9b132bc0.css.map */"
 `;
 
 exports[`code-splitting true: js 1`] = `
@@ -616,7 +862,7 @@ exports[`extract custom-path: css 1`] = `
   color: #6c94be;
 }
 
-/*# sourceMappingURL=extracted.css-18ef3897.map */"
+/*# sourceMappingURL=extracted-57b81765.css.map */"
 `;
 
 exports[`extract custom-path: js 1`] = `
@@ -699,7 +945,7 @@ exports[`extract sourcemap-true: css 1`] = `
   color: #6c94be;
 }
 
-/*# sourceMappingURL=index.css-db409508.map */"
+/*# sourceMappingURL=index-7ec82926.css.map */"
 `;
 
 exports[`extract sourcemap-true: js 1`] = `
@@ -955,7 +1201,7 @@ console.log(css_a87c82eb, css_6e569e18);
 
 exports[`minimize extract-sourcemap-true: css 1`] = `
 ".bar,.foo,.stylus{color:red}.stylus{background:red}.pcss,.sass{color:red}.sass{width:30%}.less{color:#6c94be}
-/*# sourceMappingURL=index.css-e9ca85b8.map */"
+/*# sourceMappingURL=index-80951838.css.map */"
 `;
 
 exports[`minimize extract-sourcemap-true: js 1`] = `
@@ -1436,7 +1682,7 @@ exports[`modules extract-sourcemap-true: css 1`] = `
   width: 30%;
 }
 
-/*# sourceMappingURL=index.css-8d9b5aba.map */"
+/*# sourceMappingURL=index-4aaf5d80.css.map */"
 `;
 
 exports[`modules extract-sourcemap-true: js 1`] = `

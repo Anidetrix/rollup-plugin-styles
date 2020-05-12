@@ -87,9 +87,9 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
       }
     >();
 
-    const imported = new Set(
-      res.messages.filter(msg => msg.type === "dependency").map<string>(msg => msg.file),
-    );
+    const imported = res.messages
+      .filter(msg => msg.type === "dependency")
+      .map<string>(msg => msg.file);
 
     css.walkDecls(decl => {
       if (!isDeclWithUrl(decl)) return;
@@ -121,7 +121,7 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
         }
 
         // Use PostCSS imports
-        if (decl.source?.input.file && imported.has(decl.source.input.file)) {
+        if (decl.source?.input.file && imported.includes(decl.source.input.file)) {
           const basedir = path.dirname(decl.source.input.file);
           nodeMap.set(node, { url, decl, parsed, basedir });
           return;

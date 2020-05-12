@@ -8,7 +8,7 @@ import { isAbsolutePath, relativePath, resolvePath, normalizePath } from "./path
 import { isNullish } from "./filter";
 
 const mapBlockRe = /\/\*[#*@]+?\s*?sourceMappingURL\s*?=\s*?(\S+)\s*?\*+?\//;
-const mapInlineRe = /\/\/[#@]+?\s*?sourceMappingURL\s*?=\s*?(\S+)\s*?(?:$|\n|\r\n)/;
+const mapInlineRe = /\/\/[#@]+?\s*?sourceMappingURL\s*?=\s*?(\S+)\s*?(?:$|\n|\r\n)?/;
 const mapRe = new RegExp([mapBlockRe, mapInlineRe].map(re => re.source).join("|"));
 
 export async function getMap(code: string, id?: string): Promise<string | undefined> {
@@ -27,9 +27,7 @@ export async function getMap(code: string, id?: string): Promise<string | undefi
   }
 }
 
-export function stripMap(code: string): string {
-  return code.replace(mapRe, "");
-}
+export const stripMap = (code: string): string => code.replace(mapRe, "");
 
 class MapModifier {
   readonly #map?: RawSourceMap;

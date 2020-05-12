@@ -22,6 +22,7 @@ module.exports = {
     "prefer-template": "error",
     "sort-vars": "error",
     "unicorn/no-fn-reference-in-iterator": "off",
+    "unicorn/prefer-set-has": "off",
     "unicorn/prevent-abbreviations": "off",
     yoda: ["error", "never", { exceptRange: true }],
   },
