@@ -4575,10 +4575,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
-  /highlight.js/10.0.2:
+  /highlight.js/10.0.3:
     dev: true
     resolution:
-      integrity: sha512-2gMT2MHU6/2OjAlnaOE2LFdr9dwviDN3Q2lSw7Ois3/5uTtahbgYTkr4EPoY828ps+2eQWiixPTF8+phU6Ofkg==
+      integrity: sha512-9FG7SSzv9yOY5CGGxfI6NDm7xLYtMOjKtPBxw7Zff3t5UcRcUNTGEeS8lNjhceL34KeetLMoGMFTGoaa83HwyQ==
   /hook-std/2.0.0:
     dev: true
     engines:
@@ -9556,7 +9556,7 @@ packages:
     dependencies:
       fs-extra: 8.1.0
       handlebars: 4.7.6
-      highlight.js: 10.0.2
+      highlight.js: 10.0.3
       lodash: 4.17.15
       lunr: 2.3.8
       marked: 1.0.0
