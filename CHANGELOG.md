@@ -1,3 +1,15 @@
+# [3.3.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.2.5...v3.3.0) (2020-05-12)
+
+
+### Bug Fixes
+
+* minimize exports in extract mode as well ([ab919d7](https://github.com/Anidetrix/rollup-plugin-styles/commit/ab919d7c815b8eaf543d0eec525db6b5323e4ec9))
+
+
+### Features
+
+* multi entry support ([840996c](https://github.com/Anidetrix/rollup-plugin-styles/commit/840996cbf8deb4b7928e90ff7ee346905a07fade))
+
 ## [3.2.5](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.2.4...v3.2.5) (2020-05-11)
 
 
