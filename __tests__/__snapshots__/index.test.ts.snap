@@ -1177,9 +1177,9 @@ injector_e1c140db(css_427c8846);
 exports[`minimize extract: css 1`] = `".bar,.foo,.stylus{color:red}.stylus{background:red}.pcss,.sass{color:red}.sass{width:30%}.less{color:#6c94be}"`;
 
 exports[`minimize extract: js 1`] = `
-"const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"const css_a87c82eb = \\".foo{color:red}\\";
 
-const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+const css_6e569e18 = \\".bar{color:red}\\";
 
 console.log(css_a87c82eb, css_6e569e18);
 "
@@ -1191,9 +1191,9 @@ exports[`minimize extract-sourcemap-inline: css 1`] = `
 `;
 
 exports[`minimize extract-sourcemap-inline: js 1`] = `
-"const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"const css_a87c82eb = \\".foo{color:red}\\";
 
-const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+const css_6e569e18 = \\".bar{color:red}\\";
 
 console.log(css_a87c82eb, css_6e569e18);
 "
@@ -1205,9 +1205,9 @@ exports[`minimize extract-sourcemap-true: css 1`] = `
 `;
 
 exports[`minimize extract-sourcemap-true: js 1`] = `
-"const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"const css_a87c82eb = \\".foo{color:red}\\";
 
-const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+const css_6e569e18 = \\".bar{color:red}\\";
 
 console.log(css_a87c82eb, css_6e569e18);
 "

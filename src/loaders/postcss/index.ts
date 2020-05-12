@@ -120,8 +120,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
       );
     }
 
-    // If extracting, minimization is performed afterwards
-    if (!options.extract && options.minimize)
+    if (options.minimize)
       plugins.push(cssnano(typeof options.minimize === "object" ? options.minimize : {}));
 
     // Avoid PostCSS warning
