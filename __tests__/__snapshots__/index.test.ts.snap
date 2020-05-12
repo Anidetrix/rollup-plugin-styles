@@ -818,14 +818,7 @@ exports[`code-splitting true: map 5`] = `"{\\"version\\":3,\\"sources\\":[\\"../
 exports[`emit true: js 1`] = `
 "import { css } from 'lit-element';
 
-var style = css\`main {
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-\`;
+var style = css\`main{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex}\`;
 
 console.log(style);
 "

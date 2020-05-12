@@ -362,7 +362,11 @@ validateMany("emit", [
     title: "true",
     input: "emit/index.js",
     plugins: [
-      styles({ mode: "emit", plugins: [["autoprefixer", { overrideBrowserslist: ["> 0%"] }]] }),
+      styles({
+        mode: "emit",
+        minimize: true,
+        plugins: [["autoprefixer", { overrideBrowserslist: ["> 0%"] }]],
+      }),
       litcss(),
     ],
   },
