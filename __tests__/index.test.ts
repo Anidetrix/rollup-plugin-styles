@@ -333,10 +333,7 @@ validateMany("code-splitting", [
   },
   {
     title: "multi-entry",
-    input: {
-      entry1: "code-splitting/index.js",
-      entry2: "code-splitting/index2.js",
-    },
+    input: ["code-splitting/index.js", "code-splitting/index2.js"],
     options: {
       mode: "extract",
       modules: true,
@@ -345,10 +342,7 @@ validateMany("code-splitting", [
   },
   {
     title: "multi-entry-single",
-    input: {
-      entry1: "code-splitting/index.js",
-      entry2: "code-splitting/index2.js",
-    },
+    input: ["code-splitting/index.js", "code-splitting/index2.js"],
     options: {
       mode: ["extract", "extracted.css"],
       modules: true,

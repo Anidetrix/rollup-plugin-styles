@@ -23,7 +23,7 @@ const getStylesFileManager = (less: Less): FileManagerInterface =>
       let id: string;
       try {
         id = await resolveAsync(partialUrl, options);
-      } catch (error) {
+      } catch {
         id = await resolveAsync(url, options);
       }
 

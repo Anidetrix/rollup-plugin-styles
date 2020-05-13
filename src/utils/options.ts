@@ -79,7 +79,7 @@ export function ensurePCSSOption<T>(option: T | string, type: PCSSOption): T {
   if (typeof option !== "string") return option;
   try {
     return require(option);
-  } catch (error) {
+  } catch {
     throw new Error(`Unable to load PostCSS ${type} \`${option}\``);
   }
 }

@@ -90,7 +90,6 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
     const imported = res.messages
       .filter(msg => msg.type === "dependency")
       .map<string>(msg => msg.file);
-
     css.walkDecls(decl => {
       if (!isDeclWithUrl(decl)) return;
       const parsed = valueParser(decl.value);
@@ -180,7 +179,7 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
         }
 
         decl.value = parsed.toString();
-      } catch (error) {
+      } catch {
         decl.warn(res, `Unresolved URL \`${url}\` in \`${decl.toString()}\``);
       }
     }

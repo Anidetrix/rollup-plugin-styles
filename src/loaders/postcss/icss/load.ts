@@ -18,7 +18,7 @@ const load: Load = async (url, file, extensions, processor, opts) => {
   const options = { basedir: path.dirname(file), extensions };
   try {
     from = await resolveAsync(url, options);
-  } catch (error) {
+  } catch {
     from = await resolveAsync(`./${url}`, options);
   }
   const source = await fs.readFile(from);

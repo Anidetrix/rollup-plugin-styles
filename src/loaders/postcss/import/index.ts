@@ -114,7 +114,7 @@ const plugin: postcss.Plugin<ImportOptions & ImportPrivateOptions> = postcss.plu
 
         if (!imported.root) importRule.remove();
         else importRule.replaceWith(imported.root);
-      } catch (error) {
+      } catch {
         importRule.warn(res, `Unresolved \`@import\` in \`${importRule.toString()}\``);
       }
     }

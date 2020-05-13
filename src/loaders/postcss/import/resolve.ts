@@ -13,7 +13,7 @@ const resolve: Resolve = async (url, basedir, extensions) => {
   let from: string;
   try {
     from = await resolveAsync(url, options);
-  } catch (error) {
+  } catch {
     from = await resolveAsync(`./${url}`, options);
   }
   return { from, source: await fs.readFile(from) };

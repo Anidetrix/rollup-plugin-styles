@@ -76,7 +76,7 @@ export default (options: Options = {}): Plugin => {
       // Check if file was already processed into JS
       // by other instance(s) of this or other plugin(s)
       try {
-        this.parse(code, undefined); // If it doesn't throw...
+        this.parse(code, {}); // If it doesn't throw...
         this.warn(`Skipping processed file ${humanlizePath(id)}`);
         return;
       } catch {

@@ -25,6 +25,15 @@ export type WriteResult = {
   isFile: (file: string) => Promise<boolean>;
 };
 
+async function pathExistsAll(files: string[]): Promise<boolean> {
+  if (files.length === 0) return false;
+  for await (const file of files) {
+    const exists = await fs.pathExists(file);
+    if (!exists) return false;
+  }
+  return true;
+}
+
 export const fixture = (...args: string[]): string =>
   path.normalize(path.join(__dirname, "..", "fixtures", ...args));
 
@@ -46,6 +55,7 @@ export async function write(data: WriteData): Promise<WriteResult> {
   const bundle = await rollup({
     input,
     plugins: data.plugins ?? [styles(data.options)],
+    preserveModules: multiEntry,
     onwarn: (warning, warn) => {
       if (warning.code === "EMPTY_BUNDLE") return;
       if (warning.source === "lit-element") return;
@@ -76,25 +86,10 @@ export async function write(data: WriteData): Promise<WriteResult> {
 
   const res: WriteResult = {
     js: async () => Promise.all(js.map(async f => fs.readFile(f, "utf8"))),
-
-    // Content differs sometimes in multi-entry mode due to `this.moduleIds` inconsistency
-    css: async () => (multiEntry ? [] : Promise.all(css.map(async f => fs.readFile(f, "utf8")))),
-    isCss: async () =>
-      css.length > 0 &&
-      css.reduce(
-        async (prevExists, f) => (await prevExists) && (await fs.pathExists(f)),
-        Promise.resolve(true),
-      ),
-
-    // Content differs sometimes in multi-entry mode due to `this.moduleIds` inconsistency
-    map: async () => (multiEntry ? [] : Promise.all(map.map(async f => fs.readFile(f, "utf8")))),
-    isMap: async () =>
-      map.length > 0 &&
-      map.reduce(
-        async (prevExists, f) => (await prevExists) && (await fs.pathExists(f)),
-        Promise.resolve(true),
-      ),
-
+    css: async () => Promise.all(css.map(async f => fs.readFile(f, "utf8"))),
+    isCss: async () => pathExistsAll(css),
+    map: async () => Promise.all(map.map(async f => fs.readFile(f, "utf8"))),
+    isMap: async () => pathExistsAll(map),
     isFile: async file => fs.pathExists(path.join(outDir, file)),
   };
 

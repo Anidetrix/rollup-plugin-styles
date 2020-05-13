@@ -23,19 +23,19 @@ export default async <T extends keyof ModuleImportMap>(
 
   try {
     return require(moduleId);
-  } catch (error) {
+  } catch {
     /* noop */
   }
 
   try {
     return require(await resolveAsync(moduleId, { basedir }));
-  } catch (error) {
+  } catch {
     /* noop */
   }
 
   try {
     return require(await resolveAsync(`./${moduleId}`, { basedir }));
-  } catch (error) {
+  } catch {
     return;
   }
 };

@@ -22,7 +22,7 @@ export async function getMap(code: string, id?: string): Promise<string | undefi
   const mapFileName = path.resolve(path.dirname(id), data);
   try {
     return await fs.readFile(mapFileName, "utf8");
-  } catch (error) {
+  } catch {
     return;
   }
 }
@@ -35,7 +35,7 @@ class MapModifier {
   constructor(map?: string | RawSourceMap) {
     try {
       this.#map = typeof map === "string" ? (JSON.parse(map) as RawSourceMap) : map;
-    } catch (error) {
+    } catch {
       this.#map = undefined;
     }
   }
