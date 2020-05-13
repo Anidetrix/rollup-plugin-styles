@@ -1,3 +1,10 @@
+## [3.3.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.3.0...v3.3.1) (2020-05-13)
+
+
+### Bug Fixes
+
+* `onExtract` option fix ([65d74cf](https://github.com/Anidetrix/rollup-plugin-styles/commit/65d74cfb48086ca9dd9923fa942e56de17856292))
+
 # [3.3.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.2.5...v3.3.0) (2020-05-12)
 
 
