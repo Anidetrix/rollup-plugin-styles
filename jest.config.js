@@ -5,4 +5,5 @@ module.exports = {
   globals: { "ts-jest": { packageJson: "package.json" } },
   testMatch: ["<rootDir>/__tests__/*.(spec|test).[jt]s?(x)"],
   setupFilesAfterEnv: ["<rootDir>/__tests__/setup.ts"],
+  collectCoverageFrom: ["<rootDir>/src/**/*.[jt]s?(x)", "!**/*.d.ts"],
 };
