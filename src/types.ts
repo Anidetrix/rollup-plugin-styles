@@ -173,7 +173,7 @@ export type Payload = {
   };
 };
 
-/** CSS data, extracted from JS */
+/** CSS data for extraction */
 export type ExtractedData = {
   /** CSS */
   css: string;

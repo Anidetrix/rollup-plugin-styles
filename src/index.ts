@@ -247,7 +247,7 @@ export default (options: Options = {}): Plugin => {
       for await (const [name, ids] of getEmitted()) {
         const res = getExtractedData(name, ids);
 
-        if (options.onExtract) {
+        if (typeof options.onExtract === "function") {
           const shouldExtract = options.onExtract(res);
           if (!shouldExtract) continue;
         }
