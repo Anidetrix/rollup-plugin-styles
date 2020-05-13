@@ -345,14 +345,15 @@ export interface Options {
    * */
   loaders?: Loader[];
   /**
-   * Function which is invoked on CSS file import
+   * Function which is invoked on CSS file import,
+   * before any transformations are applied
    * @default undefined
    * */
   onImport?: (code: string, id: string) => void;
   /**
-   * Function which is invoked on CSS file import.
+   * Function which is invoked on CSS file export.
    * Return `boolean` to decide if you want to extract the file or not.
    * @default undefined
    * */
-  onExtract?: (fn: (name: string, ids: string[]) => ExtractedData) => boolean;
+  onExtract?: (data: ExtractedData) => boolean;
 }

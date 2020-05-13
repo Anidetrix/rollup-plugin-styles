@@ -248,7 +248,7 @@ export default (options: Options = {}): Plugin => {
         const res = getExtractedData(name, ids);
 
         if (options.onExtract) {
-          const shouldExtract = options.onExtract(getExtractedData);
+          const shouldExtract = options.onExtract(res);
           if (!shouldExtract) continue;
         }
 
