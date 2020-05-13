@@ -1,3 +1,10 @@
+## [3.3.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.3.1...v3.3.2) (2020-05-13)
+
+
+### Bug Fixes
+
+* `onExtract` func check and desc ([4bfaac5](https://github.com/Anidetrix/rollup-plugin-styles/commit/4bfaac54917fe3f54520042996017553d6ac939f))
+
 ## [3.3.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.3.0...v3.3.1) (2020-05-13)
 
 
