@@ -1,14 +1,14 @@
 /* eslint-disable jest/no-export */
 import path from "path";
 import fs from "fs-extra";
-import { Plugin, rollup, OutputOptions, RollupOptions } from "rollup";
+import { Plugin, rollup, OutputOptions } from "rollup";
 
 import styles from "../../src";
 import { Options } from "../../src/types";
 import { inferModeOption } from "../../src/utils/options";
 
 export type WriteData = {
-  input: NonNullable<RollupOptions["input"]>;
+  input: string | string[];
   title?: string;
   outDir?: string;
   options?: Options;
@@ -39,18 +39,8 @@ export const fixture = (...args: string[]): string =>
 
 export async function write(data: WriteData): Promise<WriteResult> {
   const outDir = fixture("dist", data.outDir ?? data.title ?? "");
-
-  const input = Array.isArray(data.input)
-    ? data.input.map(i => fixture(i))
-    : typeof data.input === "object"
-    ? Object.entries(data.input).reduce((acc, [k, v]) => ({ ...acc, [k]: fixture(v) }), {})
-    : fixture(data.input);
-
-  const multiEntry = Array.isArray(data.input)
-    ? data.input.length > 1
-    : typeof data.input === "object"
-    ? Object.keys(data.input).length > 1
-    : false;
+  const input = Array.isArray(data.input) ? data.input.map(i => fixture(i)) : fixture(data.input);
+  const multiEntry = Array.isArray(data.input) ? data.input.length > 1 : false;
 
   const bundle = await rollup({
     input,

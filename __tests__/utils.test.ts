@@ -1,13 +1,21 @@
-import { ensurePCSSOption } from "../src/utils/options";
-import { loadSass } from "../src/loaders/sass/load";
-import Loaders from "../src/loaders";
+import postcss from "postcss";
 import { Payload } from "../src/types";
-import { fixture } from "./helpers";
+import Loaders from "../src/loaders";
+import postcssNoop from "../src/loaders/postcss/noop";
+import { loadSass } from "../src/loaders/sass/load";
+import { ensurePCSSOption } from "../src/utils/options";
 import { mm, getMap, stripMap } from "../src/utils/sourcemap";
 import { humanlizePath } from "../src/utils/path";
 
+import { fixture } from "./helpers";
+
 jest.mock("../src/utils/load-module", () => jest.fn());
 import loadModuleMock from "../src/utils/load-module";
+
+test("noop", async () => {
+  const { css } = await postcss(postcssNoop).process(".foo{color:red}", { from: "simple.css" });
+  expect(css).toBe(".foo{color:red}");
+});
 
 describe("load-module", () => {
   const loadModule = jest.requireActual("../src/utils/load-module")

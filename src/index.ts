@@ -145,7 +145,6 @@ export default (options: Options = {}): Plugin => {
       if (extracted.size === 0 || !(opts.dir || opts.file)) return;
 
       const infoFn = this.getModuleInfo.bind(this);
-      const moduleIds = [...this.moduleIds];
 
       const dir = opts.dir ?? path.dirname(opts.file ?? "");
 
@@ -175,7 +174,7 @@ export default (options: Options = {}): Plugin => {
 
         const entries = [...extracted.values()]
           .filter(e => ids.includes(e.id))
-          .sort((a, b) => moduleIds.indexOf(a.id) - moduleIds.indexOf(b.id));
+          .sort((a, b) => ids.indexOf(a.id) - ids.indexOf(b.id));
 
         const concat = new Concat(true, path.basename(fileName), "\n");
         for (const res of entries) {
@@ -193,47 +192,56 @@ export default (options: Options = {}): Plugin => {
       };
 
       const getEmitted = (): Map<string, string[]> => {
+        const moduleIds = [...this.moduleIds];
         const chunks: OutputChunk[] = [];
-        const entries = Object.values(bundle).filter((c): c is OutputChunk => {
+        const [index, ...entries] = Object.values(bundle).filter((c): c is OutputChunk => {
           if (c.type !== "chunk") return false;
           if (c.isEntry) return true;
           chunks.push(c);
           return false;
         });
-        const [index] = entries.splice(0, 1);
 
         const idsMap = new Map<string, string[]>();
-        const ids: string[] = [];
 
-        if (typeof postcssLoaderOpts.extract !== "string") {
-          const chunkIds: string[] = [];
-          for (const chunk of chunks) {
-            const ids = getIds(chunk, infoFn)
-              .filter(isSupported)
-              .sort((a, b) => moduleIds.indexOf(a) - moduleIds.indexOf(b));
+        const chunkIds: string[] = [];
+        for (const chunk of chunks) {
+          const ids = getIds(chunk, infoFn)
+            .filter(isSupported)
+            .sort((a, b) => moduleIds.indexOf(a) - moduleIds.indexOf(b));
 
-            if (ids.length === 0) continue;
+          if (ids.length === 0) continue;
+          chunkIds.push(...ids);
 
-            chunkIds.push(...ids);
-            idsMap.set(chunk.name, ids);
-          }
-
-          const entryIds: string[] = [];
-          for (const entry of entries) {
-            const ids = getIds(entry, infoFn)
-              .filter(id => !chunkIds.includes(id) && isSupported(id))
-              .sort((a, b) => moduleIds.indexOf(a) - moduleIds.indexOf(b));
-
-            if (ids.length === 0) continue;
-
-            entryIds.push(...ids);
-            idsMap.set(entry.name, ids);
-          }
-
-          ids.push(...chunkIds, ...entryIds);
+          if (typeof postcssLoaderOpts.extract === "string") continue;
+          idsMap.set(chunk.name, ids);
         }
 
-        const indexIds = moduleIds.filter(id => !ids.includes(id) && isSupported(id));
+        const entryIds: string[] = [];
+        for (const entry of entries) {
+          const ids = getIds(entry, infoFn)
+            .filter(id => !chunkIds.includes(id) && isSupported(id))
+            .sort((a, b) => moduleIds.indexOf(a) - moduleIds.indexOf(b));
+
+          if (ids.length === 0) continue;
+          entryIds.push(...ids);
+
+          if (typeof postcssLoaderOpts.extract === "string") continue;
+          idsMap.set(entry.name, ids);
+        }
+
+        const orderedIds = [
+          ...moduleIds.filter(id => !entryIds.includes(id) && !chunkIds.includes(id)),
+          ...entryIds,
+          ...chunkIds,
+        ];
+
+        const indexIds = moduleIds
+          .filter(id => {
+            if (typeof postcssLoaderOpts.extract === "string") return isSupported(id);
+            return !entryIds.includes(id) && !chunkIds.includes(id) && isSupported(id);
+          })
+          .sort((a, b) => orderedIds.lastIndexOf(a) - orderedIds.lastIndexOf(b));
+
         if (indexIds.length > 0) {
           idsMap.set(
             opts.file ? path.basename(opts.file, path.extname(opts.file)) : index.name,
