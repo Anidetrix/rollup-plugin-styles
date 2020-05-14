@@ -1,3 +1,12 @@
+## [3.3.3](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.3.2...v3.3.3) (2020-05-14)
+
+
+### Bug Fixes
+
+* **multi-entry:** correct and consistent order of single extracted file ([553ca85](https://github.com/Anidetrix/rollup-plugin-styles/commit/553ca85c8efe27007a1be22771bb8719fd54da40))
+* do not depend on directory structure for hashing ([18c3022](https://github.com/Anidetrix/rollup-plugin-styles/commit/18c30225ccce6a0cdcd491d4933ca199132eda41))
+* uniform sass error message ([49655a4](https://github.com/Anidetrix/rollup-plugin-styles/commit/49655a40479ff3e1a89f43cde8a88483c0209b90))
+
 ## [3.3.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.3.1...v3.3.2) (2020-05-13)
 
 
