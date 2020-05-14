@@ -132,8 +132,8 @@ export default (options: Options = {}): Plugin => {
         .map(e => ({
           name: chunk.name,
           ...e,
-          id: humanlizePath(e.id),
-          map: mm(e.map).relative().toString(),
+          id: path.basename(e.id),
+          map: mm(e.map).relative(path.dirname(e.id)).toString(),
         }));
 
       if (hashable.length === 0) return;
