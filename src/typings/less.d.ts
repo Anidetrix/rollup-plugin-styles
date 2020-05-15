@@ -21,8 +21,8 @@ declare module "less" {
   }
 
   export interface LoadedFile {
-    contents: string;
-    filename: string;
+    contents?: string;
+    filename?: string;
   }
 
   export interface LoadedFileSync extends LoadedFile {

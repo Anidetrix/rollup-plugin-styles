@@ -9,10 +9,6 @@ const getStylesFileManager = (less: Less): FileManagerInterface =>
       return true;
     }
 
-    supportsSync(): boolean {
-      return false;
-    }
-
     async loadFile(filename: string, basedir: string): Promise<LoadedFile> {
       const options = { basedir, extensions: [".less", ".css"] };
 
