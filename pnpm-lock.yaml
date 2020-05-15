@@ -1,6 +1,6 @@
 dependencies:
   '@babel/runtime': 7.9.6
-  '@rollup/pluginutils': 3.0.10_rollup@2.10.0
+  '@rollup/pluginutils': 3.0.10_rollup@2.10.2
   concat-with-sourcemaps: 1.1.0
   cssnano: 4.1.10
   fs-extra: 9.0.0
@@ -24,22 +24,22 @@ devDependencies:
   '@commitlint/cli': 8.3.5
   '@commitlint/config-angular': 8.3.4
   '@commitlint/prompt-cli': 8.3.5
-  '@rollup/plugin-babel': 5.0.0_@babel+core@7.9.6+rollup@2.10.0
-  '@rollup/plugin-commonjs': 11.1.0_rollup@2.10.0
-  '@rollup/plugin-json': 4.0.3_rollup@2.10.0
-  '@rollup/plugin-node-resolve': 7.1.3_rollup@2.10.0
-  '@rollup/plugin-typescript': 4.1.1_7b24226ea7248964760f24097bf20b1b
+  '@rollup/plugin-babel': 5.0.0_@babel+core@7.9.6+rollup@2.10.2
+  '@rollup/plugin-commonjs': 11.1.0_rollup@2.10.2
+  '@rollup/plugin-json': 4.0.3_rollup@2.10.2
+  '@rollup/plugin-node-resolve': 7.1.3_rollup@2.10.2
+  '@rollup/plugin-typescript': 4.1.1_c15a79c912787bc6efebd09e4c5007bb
   '@semantic-release/changelog': 5.0.1_semantic-release@17.0.7
   '@semantic-release/git': 9.0.0_semantic-release@17.0.7
   '@types/cssnano': 4.0.0
-  '@types/fs-extra': 8.1.0
+  '@types/fs-extra': 9.0.0
   '@types/icss-utils': 4.1.0
   '@types/jest': 25.2.2
   '@types/mime-types': 2.1.0
   '@types/node': 14.0.1
   '@types/postcss-load-config': 2.0.1
   '@types/resolve': 1.17.1
-  '@types/uglifycss': 0.0.5
+  '@types/uglifycss': 0.0.6
   '@typescript-eslint/eslint-plugin': 2.33.0_3ac210dae6de5ddc23c7c35018f15506
   '@typescript-eslint/parser': 2.33.0_eslint@7.0.0+typescript@3.9.2
   autoprefixer: 9.7.6
@@ -59,14 +59,15 @@ devDependencies:
   jest-circus: 26.0.1
   less: 3.11.1
   lint-staged: 10.2.2
+  minireset.css: 0.0.6
   node-sass: 4.14.1
   postcss-custom-properties: 9.1.1
   prettier: 2.0.5
-  rollup: 2.10.0
-  rollup-plugin-dts: 1.4.3_rollup@2.10.0+typescript@3.9.2
+  rollup: 2.10.2
+  rollup-plugin-dts: 1.4.3_rollup@2.10.2+typescript@3.9.2
   rollup-plugin-lit-css: 2.0.3
   rollup-plugin-node-externals: 2.1.6_builtin-modules@3.1.0
-  rollup-plugin-terser: 5.3.0_rollup@2.10.0
+  rollup-plugin-terser: 5.3.0_rollup@2.10.2
   sass: 1.26.5
   semantic-release: 17.0.7_semantic-release@17.0.7
   shx: 0.3.2
@@ -1263,7 +1264,7 @@ packages:
     dependencies:
       '@jest/console': 26.0.1
       '@jest/types': 26.0.1
-      '@types/istanbul-lib-coverage': 2.0.1
+      '@types/istanbul-lib-coverage': 2.0.2
       collect-v8-coverage: 1.0.1
     dev: true
     engines:
@@ -1306,8 +1307,8 @@ packages:
       integrity: sha512-pPRkVkAQ91drKGbzCfDOoHN838+FSbYaEAvBXvKuWeeRRUD8FjwXkqfUNUZL6Ke48aA/1cqq/Ni7kVMCoqagWA==
   /@jest/types/25.5.0:
     dependencies:
-      '@types/istanbul-lib-coverage': 2.0.1
-      '@types/istanbul-reports': 1.1.1
+      '@types/istanbul-lib-coverage': 2.0.2
+      '@types/istanbul-reports': 1.1.2
       '@types/yargs': 15.0.5
       chalk: 3.0.0
     dev: true
@@ -1317,8 +1318,8 @@ packages:
       integrity: sha512-OXD0RgQ86Tu3MazKo8bnrkDRaDXXMGUqd+kTtLtK1Zb7CRzQcaSRPPPV37SvYTdevXEBVxe0HXylEjs8ibkmCw==
   /@jest/types/26.0.1:
     dependencies:
-      '@types/istanbul-lib-coverage': 2.0.1
-      '@types/istanbul-reports': 1.1.1
+      '@types/istanbul-lib-coverage': 2.0.2
+      '@types/istanbul-reports': 1.1.2
       '@types/yargs': 15.0.5
       chalk: 4.0.0
     dev: true
@@ -1444,12 +1445,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-O75k56TYvJ8WpAakWwYRN8Bgu60KrmX0z1KqFp1kNiFNkgW+JW+9EBKZ+S33PU6SLvbihqd+3drvPxKK68Ee8Q==
-  /@rollup/plugin-babel/5.0.0_@babel+core@7.9.6+rollup@2.10.0:
+  /@rollup/plugin-babel/5.0.0_@babel+core@7.9.6+rollup@2.10.2:
     dependencies:
       '@babel/core': 7.9.6
       '@babel/helper-module-imports': 7.8.3
-      '@rollup/pluginutils': 3.0.10_rollup@2.10.0
-      rollup: 2.10.0
+      '@rollup/pluginutils': 3.0.10_rollup@2.10.2
+      rollup: 2.10.2
     dev: true
     engines:
       node: '>= 10.0.0'
@@ -1458,16 +1459,16 @@ packages:
       rollup: ^1.20.0||^2.0.0
     resolution:
       integrity: sha512-YpVnwdUeVj/fDFN75Y3CAzJTMYNcqbH05SJs551wqj+BSwLT9pS3dqJrVDPYl3eH4OrI8ueiEseX5VgUn+0HLA==
-  /@rollup/plugin-commonjs/11.1.0_rollup@2.10.0:
+  /@rollup/plugin-commonjs/11.1.0_rollup@2.10.2:
     dependencies:
-      '@rollup/pluginutils': 3.0.10_rollup@2.10.0
+      '@rollup/pluginutils': 3.0.10_rollup@2.10.2
       commondir: 1.0.1
       estree-walker: 1.0.1
       glob: 7.1.6
       is-reference: 1.1.4
       magic-string: 0.25.7
       resolve: 1.17.0
-      rollup: 2.10.0
+      rollup: 2.10.2
     dev: true
     engines:
       node: '>= 8.0.0'
@@ -1475,23 +1476,23 @@ packages:
       rollup: ^1.20.0||^2.0.0
     resolution:
       integrity: sha512-Ycr12N3ZPN96Fw2STurD21jMqzKwL9QuFhms3SD7KKRK7oaXUsBU9Zt0jL/rOPHiPYisI21/rXGO3jr9BnLHUA==
-  /@rollup/plugin-json/4.0.3_rollup@2.10.0:
+  /@rollup/plugin-json/4.0.3_rollup@2.10.2:
     dependencies:
-      '@rollup/pluginutils': 3.0.10_rollup@2.10.0
-      rollup: 2.10.0
+      '@rollup/pluginutils': 3.0.10_rollup@2.10.2
+      rollup: 2.10.2
     dev: true
     peerDependencies:
       rollup: ^1.20.0 || ^2.0.0
     resolution:
       integrity: sha512-QMUT0HZNf4CX17LMdwaslzlYHUKTYGuuk34yYIgZrNdu+pMEfqMS55gck7HEeHBKXHM4cz5Dg1OVwythDdbbuQ==
-  /@rollup/plugin-node-resolve/7.1.3_rollup@2.10.0:
+  /@rollup/plugin-node-resolve/7.1.3_rollup@2.10.2:
     dependencies:
-      '@rollup/pluginutils': 3.0.10_rollup@2.10.0
+      '@rollup/pluginutils': 3.0.10_rollup@2.10.2
       '@types/resolve': 0.0.8
       builtin-modules: 3.1.0
       is-module: 1.0.0
       resolve: 1.17.0
-      rollup: 2.10.0
+      rollup: 2.10.2
     dev: true
     engines:
       node: '>= 8.0.0'
@@ -1499,11 +1500,11 @@ packages:
       rollup: ^1.20.0||^2.0.0
     resolution:
       integrity: sha512-RxtSL3XmdTAE2byxekYLnx+98kEUOrPHF/KRVjLH+DEIHy6kjIw7YINQzn+NXiH/NTrQLAwYs0GWB+csWygA9Q==
-  /@rollup/plugin-typescript/4.1.1_7b24226ea7248964760f24097bf20b1b:
+  /@rollup/plugin-typescript/4.1.1_c15a79c912787bc6efebd09e4c5007bb:
     dependencies:
-      '@rollup/pluginutils': 3.0.10_rollup@2.10.0
+      '@rollup/pluginutils': 3.0.10_rollup@2.10.2
       resolve: 1.17.0
-      rollup: 2.10.0
+      rollup: 2.10.2
       tslib: 2.0.0
       typescript: 3.9.2
     dev: true
@@ -1515,12 +1516,12 @@ packages:
       typescript: '>=2.1.0'
     resolution:
       integrity: sha512-KYZCn1Iw9hZWkeEPqPs5YjlmvSjR7UdezVca8z0e8rm/29wU24UD9Y4IZHhnc9tm749hzsgBTiOUxA85gfShEQ==
-  /@rollup/pluginutils/3.0.10_rollup@2.10.0:
+  /@rollup/pluginutils/3.0.10_rollup@2.10.2:
     dependencies:
       '@types/estree': 0.0.39
       estree-walker: 1.0.1
       picomatch: 2.2.2
-      rollup: 2.10.0
+      rollup: 2.10.2
     engines:
       node: '>= 8.0.0'
     peerDependencies:
@@ -1588,7 +1589,7 @@ packages:
       semantic-release: '>=16.0.0 <18.0.0'
     resolution:
       integrity: sha512-AZ4Zha5NAPAciIJH3ipzw/WU9qLAn8ENaoVAhD6srRPxTpTzuV3NhNh14rcAo8Paj9dO+5u4rTKcpetOBluYVw==
-  /@semantic-release/github/7.0.5_semantic-release@17.0.7:
+  /@semantic-release/github/7.0.6_semantic-release@17.0.7:
     dependencies:
       '@octokit/rest': 17.9.0
       '@semantic-release/error': 2.2.0
@@ -1613,7 +1614,7 @@ packages:
     peerDependencies:
       semantic-release: '>=16.0.0 <18.0.0'
     resolution:
-      integrity: sha512-1nJCMeomspRIXKiFO3VXtkUMbIBEreYLFNBdWoLjvlUNcEK0/pEbupEZJA3XHfJuSzv43u3OLpPhF/JBrMuv+A==
+      integrity: sha512-70fUj+t98AWRgeOG0j2kdguvaVyysOZRUmXykZBwkktSDm1UZ6YfelYFPuM9OJbKPuNjKsCsRXl5/wukDUg8PA==
   /@semantic-release/npm/7.0.5_semantic-release@17.0.7:
     dependencies:
       '@semantic-release/error': 2.2.0
@@ -1721,12 +1722,12 @@ packages:
   /@types/estree/0.0.39:
     resolution:
       integrity: sha512-EYNwp3bU+98cpU4lAWYYL7Zz+2gryWH1qbdDTidVd6hkiR6weksdbMadyXKXNPEkQFhXM+hVO9ZygomHXp+AIw==
-  /@types/fs-extra/8.1.0:
+  /@types/fs-extra/9.0.0:
     dependencies:
       '@types/node': 14.0.1
     dev: true
     resolution:
-      integrity: sha512-UoOfVEzAUpeSPmjm7h1uk5MH6KZma2z2O7a75onTGjnNvAvMVrPzPL/vBbT65iIGHWj6rokwfmYcmxmlSf2uwg==
+      integrity: sha512-xCbDUSZArlmMjiJdczt8AFNH2MwcMb/pj/HKja1hx3u1qzOUINcJktQMGoGVlgFnzxnuCahxKFlcRBkSAcm33g==
   /@types/graceful-fs/4.1.3:
     dependencies:
       '@types/node': 14.0.1
@@ -1739,23 +1740,23 @@ packages:
     dev: true
     resolution:
       integrity: sha512-OmLjTGEAgPTxGO8xy1ixbStAxG7aqetBtm7pFmreBqof6acWlrRpxePfPL+RQaBXTETTVYfR5O8FS0278U+V/A==
-  /@types/istanbul-lib-coverage/2.0.1:
+  /@types/istanbul-lib-coverage/2.0.2:
     dev: true
     resolution:
-      integrity: sha512-hRJD2ahnnpLgsj6KWMYSrmXkM3rm2Dl1qkx6IOFD5FnuNPXJIG5L0dhgKXCYTRMGzU4n0wImQ/xfmRc4POUFlg==
+      integrity: sha512-rsZg7eL+Xcxsxk2XlBt9KcG8nOp9iYdKCOikY9x2RFJCyOdNj4MKPQty0e8oZr29vVAzKXr1BmR+kZauti3o1w==
   /@types/istanbul-lib-report/3.0.0:
     dependencies:
-      '@types/istanbul-lib-coverage': 2.0.1
+      '@types/istanbul-lib-coverage': 2.0.2
     dev: true
     resolution:
       integrity: sha512-plGgXAPfVKFoYfa9NpYDAkseG+g6Jr294RqeqcqDixSbU34MZVJRi/P+7Y8GDpzkEwLaGZZOpKIEmeVZNtKsrg==
-  /@types/istanbul-reports/1.1.1:
+  /@types/istanbul-reports/1.1.2:
     dependencies:
-      '@types/istanbul-lib-coverage': 2.0.1
+      '@types/istanbul-lib-coverage': 2.0.2
       '@types/istanbul-lib-report': 3.0.0
     dev: true
     resolution:
-      integrity: sha512-UpYjBi8xefVChsCoBpKShdxTllC9pwISirfoZsUa2AAdQg/Jd2KQGtSbw+ya7GPo7x/wAPlH6JBhKhAsXUEZNA==
+      integrity: sha512-P/W9yOX/3oPZSpaYOCQzGqgCQRXn0FFO/V8bWrCQs+wLmvVVxk6CRBXALEvNs9OHIatlnlFokfhuDo2ug01ciw==
   /@types/jest/25.2.2:
     dependencies:
       jest-diff: 25.5.0
@@ -1798,10 +1799,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-/rM+sWiuOZ5dvuVzV37sUuklsbg+JPOP8d+nNFlo2ZtfpzPiPvh1/gc8liWOLBqe+sR+ZM7guPaIcTt6UZTo7Q==
-  /@types/q/1.5.2:
+  /@types/q/1.5.3:
     dev: false
     resolution:
-      integrity: sha512-ce5d3q03Ex0sy4R14722Rmt6MT07Ua+k4FwDfdcToYJcMKNtRVQvJ6JCAPdAmAnbRb6CsX6aYb9m96NGod9uTw==
+      integrity: sha512-I3wR8FNrk9ny4zJzSB1FBpPHw8kv+eVapS3Hkw+QAF7WCIF7foiEj0GcWFR5mwzw/HUMrLBD+rO/OKJcLf/v+w==
   /@types/resolve/0.0.8:
     dependencies:
       '@types/node': 14.0.1
@@ -1822,10 +1823,10 @@ packages:
     dev: true
     resolution:
       integrity: sha512-l42BggppR6zLmpfU6fq9HEa2oGPEI8yrSPL3GITjfRInppYFahObbIQOQK3UGxEnyQpltZLaPe75046NOZQikw==
-  /@types/uglifycss/0.0.5:
+  /@types/uglifycss/0.0.6:
     dev: true
     resolution:
-      integrity: sha1-D0vOKZx2+tX71NA4WV3ExV3l1V0=
+      integrity: sha512-Gs7gCOWmT3S3RcEpJf7iTPtcZ0SF8dmzbBdxprfBZtJ/NlGFRPHHachCcCWfhQRI84mQjyNKTQO/s4bNFSjdUg==
   /@types/yargs-parser/15.0.0:
     dev: true
     resolution:
@@ -2246,7 +2247,7 @@ packages:
   /autoprefixer/9.7.6:
     dependencies:
       browserslist: 4.12.0
-      caniuse-lite: 1.0.30001058
+      caniuse-lite: 1.0.30001059
       chalk: 2.4.2
       normalize-range: 0.1.2
       num2fraction: 1.2.2
@@ -2449,8 +2450,8 @@ packages:
       integrity: sha512-9o5UecI3GhkpM6DrXr69PblIuWxPKk9Y0jHBRhdocZ2y7YECBFCsHm79Pr3OyR2AvjhDkabFJaDJMYRazHgsow==
   /browserslist/4.12.0:
     dependencies:
-      caniuse-lite: 1.0.30001058
-      electron-to-chromium: 1.3.437
+      caniuse-lite: 1.0.30001059
+      electron-to-chromium: 1.3.438
       node-releases: 1.1.55
       pkg-up: 2.0.0
     hasBin: true
@@ -2577,15 +2578,15 @@ packages:
   /caniuse-api/3.0.0:
     dependencies:
       browserslist: 4.12.0
-      caniuse-lite: 1.0.30001058
+      caniuse-lite: 1.0.30001059
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
     dev: false
     resolution:
       integrity: sha512-bsTwuIg/BZZK/vreVTYYbSWoe2F+71P7K5QGEX+pT250DZbfU1MQ5prOKpPR+LL6uWKK3KMwMCAS74QB3Um1uw==
-  /caniuse-lite/1.0.30001058:
+  /caniuse-lite/1.0.30001059:
     resolution:
-      integrity: sha512-UiRZmBYd1HdVVdFKy7PuLVx9e2NS7SMyx7QpWvFjiklYrLJKpLd19cRnRNqlw4zYa7vVejS3c8JUVobX241zHQ==
+      integrity: sha512-oOrc+jPJWooKIA0IrNZ5sYlsXc7NP7KLhNWrSGEJhnfSzDvDJ0zd3i6HXsslExY9bbu+x0FQ5C61LcqmPt7bOQ==
   /capture-exit/2.0.0:
     dependencies:
       rsvp: 4.8.5
@@ -2778,7 +2779,7 @@ packages:
       integrity: sha1-bqa989hTrlTMuOR7+gvz+QMfsYQ=
   /coa/2.0.2:
     dependencies:
-      '@types/q': 1.5.2
+      '@types/q': 1.5.3
       chalk: 2.4.2
       q: 1.5.1
     dev: false
@@ -2866,13 +2867,13 @@ packages:
     dev: true
     resolution:
       integrity: sha1-3dgA2gxmEnOTzKWVDqloo6rxJTs=
-  /compare-func/1.3.2:
+  /compare-func/1.3.4:
     dependencies:
       array-ify: 1.0.0
       dot-prop: 3.0.0
     dev: true
     resolution:
-      integrity: sha1-md0LpFfh+bxyKxLAjsM+6rMfpkg=
+      integrity: sha512-sq2sWtrqKPkEXAC8tEJA1+BqAH9GbFkGBtUOqrUX57VSfwp8xyktctk+uLoRy5eccTdxzDcVIztlYDpKs3Jv1Q==
   /compare-versions/3.6.0:
     dev: true
     resolution:
@@ -2903,14 +2904,14 @@ packages:
       integrity: sha1-/ozxhP9mcLa67wGp1IYaXL7EEgo=
   /conventional-changelog-angular/1.6.6:
     dependencies:
-      compare-func: 1.3.2
+      compare-func: 1.3.4
       q: 1.5.1
     dev: true
     resolution:
       integrity: sha512-suQnFSqCxRwyBxY68pYTsFkG0taIdinHLNEAX5ivtw8bCRnIgnpvcHmlR/yjUyZIrNPYAoXlY1WiEKWgSE4BNg==
   /conventional-changelog-angular/5.0.10:
     dependencies:
-      compare-func: 1.3.2
+      compare-func: 1.3.4
       q: 1.5.1
     dev: true
     engines:
@@ -2919,7 +2920,7 @@ packages:
       integrity: sha512-k7RPPRs0vp8+BtPsM9uDxRl6KcgqtCJmzRD1wRtgqmhQ96g8ifBGo9O/TZBG23jqlXS/rg8BKRDELxfnQQGiaA==
   /conventional-changelog-writer/4.0.16:
     dependencies:
-      compare-func: 1.3.2
+      compare-func: 1.3.4
       conventional-commits-filter: 2.0.6
       dateformat: 3.0.3
       handlebars: 4.7.6
@@ -3475,9 +3476,9 @@ packages:
     dev: true
     resolution:
       integrity: sha1-OoOpBOVDUyh4dMVkt1SThoSamMk=
-  /electron-to-chromium/1.3.437:
+  /electron-to-chromium/1.3.438:
     resolution:
-      integrity: sha512-PBQn2q68ErqMyBUABh9Gh8R6DunGky8aB5y3N5lPM7OVpldwyUbAK5AX9WcwE/5F6ceqvQ+iQLYkJYRysAs6Bg==
+      integrity: sha512-QKMcpfA/fCOnqFHsZvKr2haQQb3eXkDI17zT+4hHxJJThyN5nShcG6q1VR8vRiE/2GCJM+0p3PzinYknkdsBYg==
   /elegant-spinner/2.0.0:
     dev: true
     engines:
@@ -3626,7 +3627,7 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-6j9xxegbqe8/kZY8cYpcp0xhbK0EgJlg3g9mib3/miLaExuuwc3n5UEfSnU6hWMbT0FAYVvDbL9RrRgpUeQIvA==
-  /eslint-plugin-es/3.0.0_eslint@7.0.0:
+  /eslint-plugin-es/3.0.1_eslint@7.0.0:
     dependencies:
       eslint: 7.0.0
       eslint-utils: 2.0.0
@@ -3637,7 +3638,7 @@ packages:
     peerDependencies:
       eslint: '>=4.19.1'
     resolution:
-      integrity: sha512-6/Jb/J/ZvSebydwbBJO1R9E5ky7YeElfK56Veh7e4QGFHCXoIXGH9HhVz+ibJLM3XJ1XjP+T7rKBLUa/Y7eIng==
+      integrity: sha512-GUmAsJaN4Fc7Gbtl8uOBlayo2DqhwWvEzykMHSCZHU3XdJ+NSzzZcVhXh3VxX5icqQ+oQdIEawXX8xkR3mIFmQ==
   /eslint-plugin-import/2.20.2_eslint@7.0.0:
     dependencies:
       array-includes: 3.1.1
@@ -3675,7 +3676,7 @@ packages:
   /eslint-plugin-node/11.1.0_eslint@7.0.0:
     dependencies:
       eslint: 7.0.0
-      eslint-plugin-es: 3.0.0_eslint@7.0.0
+      eslint-plugin-es: 3.0.1_eslint@7.0.0
       eslint-utils: 2.0.0
       ignore: 5.1.4
       minimatch: 3.0.4
@@ -6468,6 +6469,10 @@ packages:
   /minimist/1.2.5:
     resolution:
       integrity: sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
+  /minireset.css/0.0.6:
+    dev: true
+    resolution:
+      integrity: sha512-aluj16Tc1KhEYGDa/tedYzIbZ2Ax/JR25MUQzGkqOrcw/P5OPSlwNNrlLpdULu0xFNnxu2SRHx4rKiIMq3iSTQ==
   /mixin-deep/1.3.2:
     dependencies:
       for-in: 1.0.2
@@ -8317,9 +8322,9 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==
-  /rollup-plugin-dts/1.4.3_rollup@2.10.0+typescript@3.9.2:
+  /rollup-plugin-dts/1.4.3_rollup@2.10.2+typescript@3.9.2:
     dependencies:
-      rollup: 2.10.0
+      rollup: 2.10.2
       typescript: 3.9.2
     dev: true
     optionalDependencies:
@@ -8346,11 +8351,11 @@ packages:
       builtin-modules: ^3.1.0
     resolution:
       integrity: sha512-xu2CVhmVLwcqcPzyoL+Y9Z4uxgbQu9w6vT7XAzjZXHi1AIK6b1KQoR2nzx633I2YG2cK7NmkodJNQ7Dn3g7OkQ==
-  /rollup-plugin-terser/5.3.0_rollup@2.10.0:
+  /rollup-plugin-terser/5.3.0_rollup@2.10.2:
     dependencies:
       '@babel/code-frame': 7.8.3
       jest-worker: 24.9.0
-      rollup: 2.10.0
+      rollup: 2.10.2
       rollup-pluginutils: 2.8.2
       serialize-javascript: 2.1.2
       terser: 4.6.13
@@ -8365,14 +8370,14 @@ packages:
     dev: true
     resolution:
       integrity: sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==
-  /rollup/2.10.0:
+  /rollup/2.10.2:
     engines:
       node: '>=10.0.0'
     hasBin: true
     optionalDependencies:
       fsevents: 2.1.3
     resolution:
-      integrity: sha512-7BmpEfUN9P6esJzWIn3DmR//90mW6YwYB1t3y48LpF8ITpYtL8s1kEirMKqUu44dVH/6a/rs0EuwYVL3FuRDoA==
+      integrity: sha512-tivFM8UXBlYOUqpBYD3pRktYpZvK/eiCQ190eYlrAyrpE/lzkyG2gbawroNdbwmzyUc7Y4eT297xfzv0BDh9qw==
   /rsvp/4.8.5:
     dev: true
     engines:
@@ -8489,7 +8494,7 @@ packages:
     dependencies:
       '@semantic-release/commit-analyzer': 8.0.1_semantic-release@17.0.7
       '@semantic-release/error': 2.2.0
-      '@semantic-release/github': 7.0.5_semantic-release@17.0.7
+      '@semantic-release/github': 7.0.6_semantic-release@17.0.7
       '@semantic-release/npm': 7.0.5_semantic-release@17.0.7
       '@semantic-release/release-notes-generator': 9.0.1_semantic-release@17.0.7
       aggregate-error: 3.0.1
@@ -9744,7 +9749,7 @@ packages:
       integrity: sha512-usZBT3PW+LOjM25wbqIlZwPeJV+3OSz3M1k1Ws8snlW39dZyYL9lOGC5FgPVHfk0jKmjiDV8Z0mIbVQPiwFs7g==
   /v8-to-istanbul/4.1.4:
     dependencies:
-      '@types/istanbul-lib-coverage': 2.0.1
+      '@types/istanbul-lib-coverage': 2.0.2
       convert-source-map: 1.7.0
       source-map: 0.7.3
     dev: true
@@ -10067,14 +10072,14 @@ specifiers:
   '@semantic-release/changelog': ^5.0.1
   '@semantic-release/git': ^9.0.0
   '@types/cssnano': ^4.0.0
-  '@types/fs-extra': ^8.1.0
+  '@types/fs-extra': ^9.0.0
   '@types/icss-utils': ^4.1.0
   '@types/jest': ^25.2.2
   '@types/mime-types': ^2.1.0
   '@types/node': '*'
   '@types/postcss-load-config': ^2.0.1
   '@types/resolve': ^1.17.1
-  '@types/uglifycss': ^0.0.5
+  '@types/uglifycss': ^0.0.6
   '@typescript-eslint/eslint-plugin': ^2.33.0
   '@typescript-eslint/parser': ^2.33.0
   autoprefixer: ^9.7.6
@@ -10099,6 +10104,7 @@ specifiers:
   less: ^3.11.1
   lint-staged: ^10.2.2
   mime-types: ^2.1.27
+  minireset.css: ^0.0.6
   node-sass: ^4.14.1
   p-queue: ^6.4.0
   postcss: ^7.0.30
@@ -10111,7 +10117,7 @@ specifiers:
   postcss-value-parser: ^4.1.0
   prettier: ^2.0.5
   resolve: ^1.17.0
-  rollup: ^2.10.0
+  rollup: ^2.10.2
   rollup-plugin-dts: ^1.4.3
   rollup-plugin-lit-css: ^2.0.3
   rollup-plugin-node-externals: ^2.1.6
