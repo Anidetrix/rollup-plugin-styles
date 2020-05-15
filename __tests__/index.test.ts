@@ -293,6 +293,23 @@ validateMany("less", [
     title: "import",
     input: "less-import/index.js",
   },
+  {
+    title: "sourcemap",
+    input: "stylus-import/index.js",
+    options: { mode: "extract", sourceMap: true },
+  },
+]);
+
+validateMany("stylus", [
+  {
+    title: "import",
+    input: "stylus-import/index.js",
+  },
+  {
+    title: "sourcemap",
+    input: "stylus-import/index.js",
+    options: { mode: "extract", sourceMap: true },
+  },
 ]);
 
 validateMany("multiple-instances", [

@@ -1,6 +1,6 @@
-import postcss from "postcss";
 import { Payload } from "../src/types";
 import Loaders from "../src/loaders";
+import postcss from "postcss";
 import postcssNoop from "../src/loaders/postcss/noop";
 import { loadSass } from "../src/loaders/sass/load";
 import { ensurePCSSOption } from "../src/utils/options";

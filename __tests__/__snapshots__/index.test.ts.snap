@@ -1241,10 +1241,46 @@ function injector_e1c140db (css, options) {
   }
 }
 
-const css_427c8846 = \\".d {\\\\n  color: red;\\\\n}\\\\n.a {\\\\n  color: royalblue;\\\\n}\\\\n.b {\\\\n  color: red;\\\\n}\\\\n.c {\\\\n  color: red;\\\\n}\\\\n.foo {\\\\n  color: royalblue;\\\\n}\\\\n\\";
+const css_427c8846 = \\".d {\\\\n  color: red;\\\\n}\\\\n.a {\\\\n  color: royalblue;\\\\n}\\\\n.b {\\\\n  color: red;\\\\n}\\\\n.c {\\\\n  color: red;\\\\n}\\\\n.foo {\\\\n  color: royalblue;\\\\n}\\\\n/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */\\\\nhtml,\\\\nbody,\\\\np,\\\\nol,\\\\nul,\\\\nli,\\\\ndl,\\\\ndt,\\\\ndd,\\\\nblockquote,\\\\nfigure,\\\\nfieldset,\\\\nlegend,\\\\ntextarea,\\\\npre,\\\\niframe,\\\\nhr,\\\\nh1,\\\\nh2,\\\\nh3,\\\\nh4,\\\\nh5,\\\\nh6 {\\\\n  margin: 0;\\\\n  padding: 0;\\\\n}\\\\nh1,\\\\nh2,\\\\nh3,\\\\nh4,\\\\nh5,\\\\nh6 {\\\\n  font-size: 100%;\\\\n  font-weight: normal;\\\\n}\\\\nul {\\\\n  list-style: none;\\\\n}\\\\nbutton,\\\\ninput,\\\\nselect,\\\\ntextarea {\\\\n  margin: 0;\\\\n}\\\\nhtml {\\\\n  box-sizing: border-box;\\\\n}\\\\n*,\\\\n*::before,\\\\n*::after {\\\\n  box-sizing: inherit;\\\\n}\\\\nimg,\\\\nvideo {\\\\n  height: auto;\\\\n  max-width: 100%;\\\\n}\\\\niframe {\\\\n  border: 0;\\\\n}\\\\ntable {\\\\n  border-collapse: collapse;\\\\n  border-spacing: 0;\\\\n}\\\\ntd,\\\\nth {\\\\n  padding: 0;\\\\n}\\\\ntd:not([align]),\\\\nth:not([align]) {\\\\n  text-align: left;\\\\n}\\\\n\\";
 injector_e1c140db(css_427c8846);
 "
 `;
+
+exports[`less sourcemap: css 1`] = `
+".a {
+  color: #f0f;
+}
+.b {
+  color: red;
+}
+.style .foo {
+  color: #4169e1;
+}
+.style .foo .inner {
+  color: #4169e1;
+}
+/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
+html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}
+ul{list-style:none}
+button,input,select,textarea{margin:0}
+html{box-sizing:border-box}
+*,*::before,*::after{box-sizing:inherit}
+img,video{height:auto;max-width:100%}
+iframe{border:0}
+table{border-collapse:collapse;border-spacing:0}
+td,th{padding:0}
+td:not([align]),th:not([align]){text-align:left}
+
+/*# sourceMappingURL=index-192a63dc.css.map */"
+`;
+
+exports[`less sourcemap: js 1`] = `
+"
+"
+`;
+
+exports[`less sourcemap: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../stylus-import/node_modules/foo/bar/a.styl\\",\\"../../../../stylus-import/style.styl\\",\\"../../../../stylus-import/node_modules/foo/bar/b.css\\",\\"../../../../stylus-import/foo.styl\\",\\"../../../../../../node_modules/minireset.css/minireset.min.css\\"],\\"names\\":[],\\"mappings\\":\\"AAEA;EACE,WAAO;ACDT;ACFA;EACE,UAAU;AACZ;ACDA;EACE,cAAO;AFIT;AEHE;EACE,cAAO;AFKX;AGTA,0EAA0E;AAAC,yGAAyG,QAAQ,CAAC,SAAS;AAAC,kBAAkB,cAAc,CAAC,kBAAkB;AAAC,GAAG,eAAe;AAAC,6BAA6B,QAAQ;AAAC,KAAK,qBAAqB;AAAC,qBAAqB,kBAAkB;AAAC,UAAU,WAAW,CAAC,cAAc;AAAC,OAAO,QAAQ;AAAC,MAAM,wBAAwB,CAAC,gBAAgB;AAAC,MAAM,SAAS;AAAC,gCAAgC,eAAe\\",\\"file\\":\\"index-192a63dc.css\\",\\"sourcesContent\\":[\\".a {\\\\n  color: #f0f;\\\\n}\\\\n@import \\\\\\"foo/bar/b.css\\\\\\";\\\\n.style .foo {\\\\n  color: #4169e1;\\\\n}\\\\n.style .foo .inner {\\\\n  color: #4169e1;\\\\n}\\\\n@import \\\\\\"minireset.css/minireset.min.css\\\\\\";\\\\n\\",\\".a {\\\\n  color: #f0f;\\\\n}\\\\n@import \\\\\\"foo/bar/b.css\\\\\\";\\\\n.style .foo {\\\\n  color: #4169e1;\\\\n}\\\\n.style .foo .inner {\\\\n  color: #4169e1;\\\\n}\\\\n@import \\\\\\"minireset.css/minireset.min.css\\\\\\";\\\\n\\",\\".b {\\\\n  color: red;\\\\n}\\\\n\\",null,\\"/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}ul{list-style:none}button,input,select,textarea{margin:0}html{box-sizing:border-box}*,*::before,*::after{box-sizing:inherit}img,video{height:auto;max-width:100%}iframe{border:0}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}td:not([align]),th:not([align]){text-align:left}\\\\n\\"]}"`;
 
 exports[`minimize extract: css 1`] = `".bar,.foo,.stylus{color:red}.stylus{background:red}.pcss,.sass{color:red}.sass{width:30%}.less{color:#6c94be}"`;
 
@@ -2464,7 +2500,7 @@ function injector_948a9cfd (css, options) {
   }
 }
 
-const css_a77306c7 = \\".a {\\\\n  color: magenta; }\\\\n\\\\n.b {\\\\n  color: red; }\\\\n\\\\n.c {\\\\n  color: red; }\\\\n\\\\n.foo {\\\\n  color: royalblue; }\\\\n\\";
+const css_a77306c7 = \\".a {\\\\n  color: magenta; }\\\\n\\\\n.b {\\\\n  color: red; }\\\\n\\\\n.c {\\\\n  color: red; }\\\\n\\\\n.foo {\\\\n  color: royalblue; }\\\\n\\\\n/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */\\\\nhtml, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {\\\\n  margin: 0;\\\\n  padding: 0; }\\\\n\\\\nh1, h2, h3, h4, h5, h6 {\\\\n  font-size: 100%;\\\\n  font-weight: normal; }\\\\n\\\\nul {\\\\n  list-style: none; }\\\\n\\\\nbutton, input, select, textarea {\\\\n  margin: 0; }\\\\n\\\\nhtml {\\\\n  box-sizing: border-box; }\\\\n\\\\n*, *::before, *::after {\\\\n  box-sizing: inherit; }\\\\n\\\\nimg, video {\\\\n  height: auto;\\\\n  max-width: 100%; }\\\\n\\\\niframe {\\\\n  border: 0; }\\\\n\\\\ntable {\\\\n  border-collapse: collapse;\\\\n  border-spacing: 0; }\\\\n\\\\ntd, th {\\\\n  padding: 0; }\\\\n\\\\ntd:not([align]), th:not([align]) {\\\\n  text-align: left; }\\\\n\\";
 injector_948a9cfd(css_a77306c7);
 "
 `;
@@ -2850,3 +2886,108 @@ injector_8aeabfb4(css_aee437ad);
 console.log(css_a87c82eb, css_6e569e18);
 "
 `;
+
+exports[`stylus import: js 1`] = `
+"/** @type {HTMLElement[]} */
+var containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+var styleTags = [];
+
+/**
+ * @param {string} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {string} [options.container]
+ * @returns {void}
+ */
+function injector_1b197479 (css, options) {
+  if (!css || typeof document === \\"undefined\\") return;
+  if (typeof options === \\"undefined\\") options = {};
+
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? document.querySelector(options.container)
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
+    return styleTag;
+  }
+
+  /** @type {HTMLStyleElement} */
+  var styleTag;
+
+  if (singleTag) {
+    var id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.appendChild(document.createTextNode(css));
+  }
+}
+
+const css_6a843908 = \\".a {\\\\n  color: #f0f;\\\\n}\\\\n.b {\\\\n  color: red;\\\\n}\\\\n.style .foo {\\\\n  color: #4169e1;\\\\n}\\\\n.style .foo .inner {\\\\n  color: #4169e1;\\\\n}\\\\n/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */\\\\nhtml,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}\\\\nh1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}\\\\nul{list-style:none}\\\\nbutton,input,select,textarea{margin:0}\\\\nhtml{box-sizing:border-box}\\\\n*,*::before,*::after{box-sizing:inherit}\\\\nimg,video{height:auto;max-width:100%}\\\\niframe{border:0}\\\\ntable{border-collapse:collapse;border-spacing:0}\\\\ntd,th{padding:0}\\\\ntd:not([align]),th:not([align]){text-align:left}\\\\n\\";
+injector_1b197479(css_6a843908);
+"
+`;
+
+exports[`stylus sourcemap: css 1`] = `
+".a {
+  color: #f0f;
+}
+.b {
+  color: red;
+}
+.style .foo {
+  color: #4169e1;
+}
+.style .foo .inner {
+  color: #4169e1;
+}
+/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */
+html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}
+ul{list-style:none}
+button,input,select,textarea{margin:0}
+html{box-sizing:border-box}
+*,*::before,*::after{box-sizing:inherit}
+img,video{height:auto;max-width:100%}
+iframe{border:0}
+table{border-collapse:collapse;border-spacing:0}
+td,th{padding:0}
+td:not([align]),th:not([align]){text-align:left}
+
+/*# sourceMappingURL=index-192a63dc.css.map */"
+`;
+
+exports[`stylus sourcemap: js 1`] = `
+"
+"
+`;
+
+exports[`stylus sourcemap: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../stylus-import/node_modules/foo/bar/a.styl\\",\\"../../../../stylus-import/style.styl\\",\\"../../../../stylus-import/node_modules/foo/bar/b.css\\",\\"../../../../stylus-import/foo.styl\\",\\"../../../../../../node_modules/minireset.css/minireset.min.css\\"],\\"names\\":[],\\"mappings\\":\\"AAEA;EACE,WAAO;ACDT;ACFA;EACE,UAAU;AACZ;ACDA;EACE,cAAO;AFIT;AEHE;EACE,cAAO;AFKX;AGTA,0EAA0E;AAAC,yGAAyG,QAAQ,CAAC,SAAS;AAAC,kBAAkB,cAAc,CAAC,kBAAkB;AAAC,GAAG,eAAe;AAAC,6BAA6B,QAAQ;AAAC,KAAK,qBAAqB;AAAC,qBAAqB,kBAAkB;AAAC,UAAU,WAAW,CAAC,cAAc;AAAC,OAAO,QAAQ;AAAC,MAAM,wBAAwB,CAAC,gBAAgB;AAAC,MAAM,SAAS;AAAC,gCAAgC,eAAe\\",\\"file\\":\\"index-192a63dc.css\\",\\"sourcesContent\\":[\\".a {\\\\n  color: #f0f;\\\\n}\\\\n@import \\\\\\"foo/bar/b.css\\\\\\";\\\\n.style .foo {\\\\n  color: #4169e1;\\\\n}\\\\n.style .foo .inner {\\\\n  color: #4169e1;\\\\n}\\\\n@import \\\\\\"minireset.css/minireset.min.css\\\\\\";\\\\n\\",\\".a {\\\\n  color: #f0f;\\\\n}\\\\n@import \\\\\\"foo/bar/b.css\\\\\\";\\\\n.style .foo {\\\\n  color: #4169e1;\\\\n}\\\\n.style .foo .inner {\\\\n  color: #4169e1;\\\\n}\\\\n@import \\\\\\"minireset.css/minireset.min.css\\\\\\";\\\\n\\",\\".b {\\\\n  color: red;\\\\n}\\\\n\\",null,\\"/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */html,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}ul{list-style:none}button,input,select,textarea{margin:0}html{box-sizing:border-box}*,*::before,*::after{box-sizing:inherit}img,video{height:auto;max-width:100%}iframe{border:0}table{border-collapse:collapse;border-spacing:0}td,th{padding:0}td:not([align]),th:not([align]){text-align:left}\\\\n\\"]}"`;
