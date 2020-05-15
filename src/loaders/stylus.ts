@@ -13,9 +13,12 @@ const loader: Loader<StylusLoaderOptions> = {
     if (!stylus)
       throw new Error("You need to install `stylus` package in order to process Stylus files");
 
+    const basePath = normalizePath(path.dirname(this.id));
+
     const style = stylus(code, { ...this.options })
       .set("filename", this.id)
-      .set("sourcemap", { comment: false, basePath: path.dirname(this.id) });
+      .set("paths", [`${basePath}/node_modules`, basePath].concat(this.options.paths ?? []))
+      .set("sourcemap", { comment: false, basePath });
 
     const render = async (): Promise<string> =>
       new Promise((resolve, reject) => {

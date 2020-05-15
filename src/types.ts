@@ -69,15 +69,9 @@ export type PostCSSLoaderOptions = {
 
 /** Options for Sass Loader */
 export type SASSLoaderOptions = {
-  /**
-   * Sass importer, or array of such
-   * @default undefined
-   */
+  /** Sass importer, or array of such */
   importer?: SASSImporter | SASSImporter[];
-  /**
-   * Data to prepend to every Sass file
-   * @default undefined
-   */
+  /** Data to prepend to every Sass file */
   data?: string;
   /** Force Sass implementation */
   impl?: "node-sass" | "sass";
@@ -89,16 +83,15 @@ export type SASSLoaderOptions = {
 
 /** Options for Stylus loader */
 export type StylusLoaderOptions = {
+  /** Array of paths for Stylus */
+  paths?: string[];
   /** Any options for `stylus` processor */
   [option: string]: unknown;
 };
 
 /** Options for Less Loader */
 export type LESSLoaderOptions = {
-  /**
-   * Array of Less plugins
-   * @default undefined
-   */
+  /** Array of Less plugins */
   plugins?: LESSPlugin[];
   /** Any options for `less` processor */
   [option: string]: unknown;
