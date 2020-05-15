@@ -1,5 +1,5 @@
 import path from "path";
-
+import fs from "fs-extra";
 import { Loader, StylusLoaderOptions } from "../types";
 import { mm } from "../utils/sourcemap";
 import loadModule from "../utils/load-module";
@@ -30,14 +30,23 @@ const loader: Loader<StylusLoaderOptions> = {
     const deps = style.deps();
     for (const dep of deps) this.deps.add(normalizePath(dep));
 
-    map =
-      mm(style.sourcemap)
-        .modify(map => {
-          // We have to manually modify the sourcesContent field
-          // since stylus compiler doesn't support it yet
-          if (!map.sourcesContent) map.sourcesContent = [code];
-        })
-        .toString() ?? map;
+    // We have to manually modify the `sourcesContent` field
+    // since stylus compiler doesn't support it yet
+    if (style.sourcemap?.sources) {
+      style.sourcemap.sourcesContent = await Promise.all(
+        style.sourcemap.sources.map(async source => {
+          try {
+            const file = normalizePath(basePath, source);
+            return await fs.readFile(file, "utf8");
+          } catch {
+            // eslint-disable-next-line unicorn/no-null
+            return (null as unknown) as string;
+          }
+        }),
+      );
+    }
+
+    map = mm(style.sourcemap).toString() ?? map;
 
     return { code, map };
   },
