@@ -1,3 +1,16 @@
+## [3.3.4](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.3.3...v3.3.4) (2020-05-15)
+
+
+### Bug Fixes
+
+* **stylus:** proper sourcesContent ([f9b4774](https://github.com/Anidetrix/rollup-plugin-styles/commit/f9b4774977d54e034b2f9cb02097ef0154046507))
+* **stylus:** respect local node_modules ([eebbbed](https://github.com/Anidetrix/rollup-plugin-styles/commit/eebbbedc11909594f51faefb7373127106ed139d))
+
+
+### Performance Improvements
+
+* **less:** less code ([2717427](https://github.com/Anidetrix/rollup-plugin-styles/commit/27174273901813108c271906fbdc2d1aef4d1f7e))
+
 ## [3.3.3](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.3.2...v3.3.3) (2020-05-14)
 
 
