@@ -1,3 +1,10 @@
+# [3.4.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.3.4...v3.4.0) (2020-05-16)
+
+
+### Features
+
+* code splitting rework /w `preserveModules` support ([8f44a7a](https://github.com/Anidetrix/rollup-plugin-styles/commit/8f44a7ab30d98438d2c60dde888b63f67a7f2ad1))
+
 ## [3.3.4](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.3.3...v3.3.4) (2020-05-15)
 
 
