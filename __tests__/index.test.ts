@@ -362,7 +362,7 @@ validateMany("code-splitting", [
     title: "preserve-modules-single",
     input: "code-splitting/index.js",
     options: {
-      mode: "extract",
+      mode: ["extract", "extracted.css"],
       modules: true,
       sourceMap: true,
     },
