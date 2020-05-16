@@ -10,7 +10,7 @@ const importer: SASSImporter = (url, importer, done) => {
   const finishImport = (id: string): void => done({ file: id.replace(/\.css$/i, "") });
 
   // Pass responsibility back to other custom importers
-  const next = (): void => done(null); // eslint-disable-line unicorn/no-null
+  const next = (): void => done(null);
 
   const moduleUrl = normalizeUrl(url);
   const partialUrl = getUrlOfPartial(moduleUrl);

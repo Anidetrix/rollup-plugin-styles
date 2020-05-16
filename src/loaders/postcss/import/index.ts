@@ -37,7 +37,7 @@ const plugin: postcss.Plugin<ImportOptions & ImportPrivateOptions> = postcss.plu
     delete opts?.map;
 
     const { file } = css.source.input;
-    const importMap = new Map<postcss.AtRule, string>();
+    const importSet = new Set<{ importRule: postcss.AtRule; url: string }>();
     const basedir = path.dirname(file);
 
     css.walkAtRules(/^import$/i, importRule => {
@@ -79,10 +79,10 @@ const plugin: postcss.Plugin<ImportOptions & ImportPrivateOptions> = postcss.plu
       url = url.replace(/^\s+|\s+$/g, "");
 
       // Resolve aliases
-      Object.entries(alias).forEach(([from, to]) => {
-        if (!url.startsWith(from)) return;
+      for (const [from, to] of Object.entries(alias)) {
+        if (!url.startsWith(from)) continue;
         url = normalizePath(to) + url.slice(from.length);
-      });
+      }
 
       // Empty url
       if (url.length === 0) {
@@ -90,10 +90,10 @@ const plugin: postcss.Plugin<ImportOptions & ImportPrivateOptions> = postcss.plu
         return;
       }
 
-      importMap.set(importRule, url);
+      importSet.add({ importRule, url });
     });
 
-    for await (const [importRule, url] of importMap) {
+    for await (const { importRule, url } of importSet) {
       try {
         const { source, from } = await resolve(url, basedir, extensions);
 

@@ -1,7 +1,7 @@
 /* eslint-disable jest/no-export */
 import path from "path";
 import fs from "fs-extra";
-import { Plugin, rollup, OutputOptions } from "rollup";
+import { Plugin, rollup, InputOptions, OutputOptions } from "rollup";
 
 import styles from "../../src";
 import { Options } from "../../src/types";
@@ -13,6 +13,7 @@ export type WriteData = {
   outDir?: string;
   options?: Options;
   plugins?: Plugin[];
+  inputOpts?: InputOptions;
   outputOpts?: OutputOptions;
 };
 
@@ -40,12 +41,11 @@ export const fixture = (...args: string[]): string =>
 export async function write(data: WriteData): Promise<WriteResult> {
   const outDir = fixture("dist", data.outDir ?? data.title ?? "");
   const input = Array.isArray(data.input) ? data.input.map(i => fixture(i)) : fixture(data.input);
-  const multiEntry = Array.isArray(data.input) ? data.input.length > 1 : false;
 
   const bundle = await rollup({
+    ...data.inputOpts,
     input,
     plugins: data.plugins ?? [styles(data.options)],
-    preserveModules: multiEntry,
     onwarn: (warning, warn) => {
       if (warning.code === "EMPTY_BUNDLE") return;
       if (warning.source === "lit-element") return;

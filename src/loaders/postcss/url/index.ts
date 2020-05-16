@@ -77,15 +77,13 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
     const { file } = css.source.input;
     const map = await mm(css.source.input.map?.text).resolve(path.dirname(file)).toConsumer();
 
-    const nodeMap = new Map<
-      Node,
-      {
-        url: string;
-        decl: postcss.Declaration;
-        parsed: ParsedValue;
-        basedir: string;
-      }
-    >();
+    const nodeSet = new Set<{
+      node: Node;
+      url: string;
+      decl: postcss.Declaration;
+      parsed: ParsedValue;
+      basedir: string;
+    }>();
 
     const imported = res.messages
       .filter(msg => msg.type === "dependency")
@@ -95,10 +93,10 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
       const parsed = valueParser(decl.value);
       walkUrls(parsed, (url, node) => {
         // Resolve aliases
-        Object.entries(alias).forEach(([from, to]) => {
-          if (!url.startsWith(from)) return;
+        for (const [from, to] of Object.entries(alias)) {
+          if (!url.startsWith(from)) continue;
           url = normalizePath(to) + url.slice(from.length);
-        });
+        }
 
         // Empty URL
         if (!node || url.length === 0) {
@@ -122,7 +120,7 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
         // Use PostCSS imports
         if (decl.source?.input.file && imported.includes(decl.source.input.file)) {
           const basedir = path.dirname(decl.source.input.file);
-          nodeMap.set(node, { url, decl, parsed, basedir });
+          nodeSet.add({ node, url, decl, parsed, basedir });
           return;
         }
 
@@ -132,21 +130,21 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
           const realPos = map?.originalPositionFor(pos);
           const basedir = realPos?.source && path.dirname(realPos.source);
           if (basedir) {
-            nodeMap.set(node, { url, decl, parsed, basedir });
+            nodeSet.add({ node, url, decl, parsed, basedir });
             return;
           }
         }
 
         // Use current file
         const basedir = path.dirname(file);
-        nodeMap.set(node, { url, decl, parsed, basedir });
+        nodeSet.add({ node, url, decl, parsed, basedir });
       });
     });
 
     map?.destroy();
     const usedNames = new Map<string, string>();
 
-    for await (const [node, { url, decl, parsed, basedir }] of nodeMap) {
+    for await (const { node, url, decl, parsed, basedir } of nodeSet) {
       try {
         const { source, from } = await resolve(url, basedir);
 

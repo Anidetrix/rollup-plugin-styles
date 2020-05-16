@@ -30,7 +30,6 @@ import {
   ensureUseOption,
   inferModeOption,
 } from "./utils/options";
-import { getIds } from "./utils/chunk";
 
 export default (options: Options = {}): Plugin => {
   const filter = createFilter(options.include, options.exclude);
@@ -67,18 +66,24 @@ export default (options: Options = {}): Plugin => {
 
   const extracted = new Map<string, NonNullable<Payload["extracted"]>>();
 
+  let preserveModules: boolean;
+
   const plugin: Plugin = {
     name: "styles",
 
+    buildStart(opts) {
+      preserveModules = Boolean(opts.preserveModules);
+    },
+
     async transform(code, id) {
-      if (!isSupported(id)) return;
+      if (!isSupported(id)) return null;
 
       // Check if file was already processed into JS
       // by other instance(s) of this or other plugin(s)
       try {
         this.parse(code, {}); // If it doesn't throw...
         this.warn(`Skipping processed file ${humanlizePath(id)}`);
-        return;
+        return null;
       } catch {
         // Was not already processed, continuing
       }
@@ -107,30 +112,28 @@ export default (options: Options = {}): Plugin => {
         return {
           code: res.code,
           map: { mappings: "" as const },
+          moduleSideEffects: true,
         };
       }
 
       return {
         code: res.code,
         map: (options.sourceMap ? res.map : undefined) ?? { mappings: "" as const },
+        moduleSideEffects: null,
       };
     },
 
     augmentChunkHash(chunk) {
       if (extracted.size === 0) return;
 
-      const infoFn = this.getModuleInfo.bind(this);
-      const chunkIds = getIds(chunk, infoFn).filter(isSupported);
-
-      if (chunkIds.length === 0) return;
-
-      const moduleIds = [...this.moduleIds];
+      const ids = Object.keys(chunk.modules)
+        .map(m => this.getModuleInfo(m))
+        .reduce<string[]>((acc, i) => [...acc, i.id, ...i.importedIds], []);
 
       const hashable = [...extracted.values()]
-        .filter(e => chunkIds.includes(e.id))
-        .sort((a, b) => moduleIds.indexOf(a.id) - moduleIds.indexOf(b.id))
+        .filter(e => ids.includes(e.id))
+        .sort((a, b) => ids.lastIndexOf(a.id) - ids.lastIndexOf(b.id))
         .map(e => ({
-          name: chunk.name,
           ...e,
           id: path.basename(e.id),
           map: mm(e.map).relative(path.dirname(e.id)).toString(),
@@ -143,8 +146,6 @@ export default (options: Options = {}): Plugin => {
 
     async generateBundle(opts, bundle) {
       if (extracted.size === 0 || !(opts.dir || opts.file)) return;
-
-      const infoFn = this.getModuleInfo.bind(this);
 
       const dir = opts.dir ?? path.dirname(opts.file ?? "");
 
@@ -191,63 +192,54 @@ export default (options: Options = {}): Plugin => {
         };
       };
 
+      const getImports = (chunk: OutputChunk): string[] => {
+        const orderedIds = new Set<string>();
+
+        let ids = Object.keys(chunk.modules)
+          .map(m => this.getModuleInfo(m))
+          .reduce<string[]>((acc, i) => [...acc, i.id, ...i.importedIds], []);
+
+        for (;;) {
+          ids = ids
+            .map(id => {
+              const i = this.getModuleInfo(id);
+              if (isSupported(i.id)) orderedIds.delete(i.id), orderedIds.add(i.id);
+              return i.importedIds;
+            })
+            .reduce<string[]>((acc, ids) => [...acc, ...ids], []);
+
+          if (ids.length === 0) return [...orderedIds];
+        }
+      };
+
       const getEmitted = (): Map<string, string[]> => {
-        const moduleIds = [...this.moduleIds];
-        const chunks: OutputChunk[] = [];
-        const [index, ...entries] = Object.values(bundle).filter((c): c is OutputChunk => {
-          if (c.type !== "chunk") return false;
-          if (c.isEntry) return true;
-          chunks.push(c);
-          return false;
-        });
+        const multiFile = typeof postcssLoaderOpts.extract !== "string";
 
         const idsMap = new Map<string, string[]>();
 
-        const chunkIds: string[] = [];
-        for (const chunk of chunks) {
-          const ids = getIds(chunk, infoFn)
-            .filter(isSupported)
-            .sort((a, b) => moduleIds.indexOf(a) - moduleIds.indexOf(b));
+        const emitted = Object.values(bundle).filter((c): c is OutputChunk => {
+          if (c.type !== "chunk") return false;
+          if (c.isEntry || c.isDynamicEntry) return true;
+          if (preserveModules && multiFile) return true;
+          return false;
+        });
 
-          if (ids.length === 0) continue;
-          chunkIds.push(...ids);
+        if (multiFile) {
+          for (const e of emitted) {
+            const name = preserveModules
+              ? path.basename(e.fileName, path.extname(e.fileName))
+              : e.name;
+            const ids = getImports(e);
+            if (ids.length !== 0) idsMap.set(name, ids);
+          }
 
-          if (typeof postcssLoaderOpts.extract === "string") continue;
-          idsMap.set(chunk.name, ids);
+          return idsMap;
         }
 
-        const entryIds: string[] = [];
-        for (const entry of entries) {
-          const ids = getIds(entry, infoFn)
-            .filter(id => !chunkIds.includes(id) && isSupported(id))
-            .sort((a, b) => moduleIds.indexOf(a) - moduleIds.indexOf(b));
-
-          if (ids.length === 0) continue;
-          entryIds.push(...ids);
-
-          if (typeof postcssLoaderOpts.extract === "string") continue;
-          idsMap.set(entry.name, ids);
-        }
-
-        const orderedIds = [
-          ...moduleIds.filter(id => !entryIds.includes(id) && !chunkIds.includes(id)),
-          ...entryIds,
-          ...chunkIds,
-        ];
-
-        const indexIds = moduleIds
-          .filter(id => {
-            if (typeof postcssLoaderOpts.extract === "string") return isSupported(id);
-            return !entryIds.includes(id) && !chunkIds.includes(id) && isSupported(id);
-          })
-          .sort((a, b) => orderedIds.lastIndexOf(a) - orderedIds.lastIndexOf(b));
-
-        if (indexIds.length > 0) {
-          idsMap.set(
-            opts.file ? path.basename(opts.file, path.extname(opts.file)) : index.name,
-            indexIds,
-          );
-        }
+        const root = emitted.find(e => e.isEntry) ?? emitted[0];
+        const name = opts.file ? path.basename(opts.file, path.extname(opts.file)) : root.name;
+        const ids = emitted.reduce<string[]>((acc, e) => [...acc, ...getImports(e)], []);
+        if (ids.length !== 0) idsMap.set(name, ids);
 
         return idsMap;
       };

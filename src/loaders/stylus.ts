@@ -39,7 +39,6 @@ const loader: Loader<StylusLoaderOptions> = {
             const file = normalizePath(basePath, source);
             return await fs.readFile(file, "utf8");
           } catch {
-            // eslint-disable-next-line unicorn/no-null
             return (null as unknown) as string;
           }
         }),

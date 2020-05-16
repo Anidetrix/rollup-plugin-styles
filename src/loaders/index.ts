@@ -40,7 +40,7 @@ export default class Loaders {
     this.listLoader(sassLoader);
     this.listLoader(stylusLoader);
     this.listLoader(lessLoader);
-    options.loaders.forEach(loader => this.listLoader(loader));
+    for (const loader of options.loaders) this.listLoader(loader);
   }
 
   getLoader(name: string): Loader | undefined {

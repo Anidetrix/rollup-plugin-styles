@@ -349,6 +349,26 @@ validateMany("code-splitting", [
     },
   },
   {
+    title: "preserve-modules",
+    input: "code-splitting/index.js",
+    options: {
+      mode: "extract",
+      modules: true,
+      sourceMap: true,
+    },
+    inputOpts: { preserveModules: true },
+  },
+  {
+    title: "preserve-modules-single",
+    input: "code-splitting/index.js",
+    options: {
+      mode: "extract",
+      modules: true,
+      sourceMap: true,
+    },
+    inputOpts: { preserveModules: true },
+  },
+  {
     title: "multi-entry",
     input: ["code-splitting/index.js", "code-splitting/index2.js"],
     options: {
