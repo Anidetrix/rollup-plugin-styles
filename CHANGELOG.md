@@ -1,3 +1,10 @@
+## [3.4.3](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.4.2...v3.4.3) (2020-05-17)
+
+
+### Bug Fixes
+
+* **code splitting:** potential over-extraction ([0b94909](https://github.com/Anidetrix/rollup-plugin-styles/commit/0b94909b4d20639ae3f9a5b2f7fcd9649d0ec2fc))
+
 ## [3.4.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.4.1...v3.4.2) (2020-05-17)
 
 
