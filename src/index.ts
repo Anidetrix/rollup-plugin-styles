@@ -213,32 +213,26 @@ export default (options: Options = {}): Plugin => {
       };
 
       const getEmitted = (): Map<string, string[]> => {
-        const multiFile = typeof postcssLoaderOpts.extract !== "string";
-
         const idsMap = new Map<string, string[]>();
-
-        const emitted = Object.values(bundle).filter((c): c is OutputChunk => {
-          if (c.type !== "chunk") return false;
-          if (c.isEntry || c.isDynamicEntry) return true;
-          if (preserveModules && multiFile) return true;
-          return false;
-        });
+        const chunks = Object.values(bundle).filter((c): c is OutputChunk => c.type === "chunk");
+        const entries = chunks.filter(c => c.isEntry || c.isDynamicEntry);
+        const multiFile = typeof postcssLoaderOpts.extract !== "string" && entries.length > 1;
 
         if (multiFile) {
-          for (const e of emitted) {
+          for (const chunk of chunks) {
             const name = preserveModules
-              ? path.basename(e.fileName, path.extname(e.fileName))
-              : e.name;
-            const ids = getImports(e);
+              ? path.basename(chunk.fileName, path.extname(chunk.fileName))
+              : chunk.name;
+            const ids = getImports(chunk);
             if (ids.length !== 0) idsMap.set(name, ids);
           }
 
           return idsMap;
         }
 
-        const root = emitted.find(e => e.isEntry) ?? emitted[0];
+        const root = entries.find(e => e.isEntry) ?? entries[0];
         const name = opts.file ? path.basename(opts.file, path.extname(opts.file)) : root.name;
-        const ids = emitted.reduce<string[]>((acc, e) => [...acc, ...getImports(e)], []);
+        const ids = entries.reduce<string[]>((acc, e) => [...acc, ...getImports(e)], []);
         if (ids.length !== 0) idsMap.set(name, ids);
 
         return idsMap;
