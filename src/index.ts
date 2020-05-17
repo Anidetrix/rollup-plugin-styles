@@ -231,7 +231,11 @@ export default (options: Options = {}): Plugin => {
         }
 
         const root = entries.find(e => e.isEntry) ?? entries[0];
-        const name = opts.file ? path.basename(opts.file, path.extname(opts.file)) : root.name;
+        const name = opts.file
+          ? path.basename(opts.file, path.extname(opts.file))
+          : preserveModules
+          ? path.basename(root.fileName, path.extname(root.fileName))
+          : root.name;
         const ids = entries.reduce<string[]>((acc, e) => [...acc, ...getImports(e)], []);
         if (ids.length !== 0) idsMap.set(name, ids);
 
