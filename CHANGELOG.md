@@ -1,3 +1,10 @@
+## [3.4.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.4.0...v3.4.1) (2020-05-17)
+
+
+### Bug Fixes
+
+* correct multi-file detection ([d92d6da](https://github.com/Anidetrix/rollup-plugin-styles/commit/d92d6da45a9af8aa959b3693f7ef4a1418b6db57))
+
 # [3.4.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.3.4...v3.4.0) (2020-05-16)
 
 
