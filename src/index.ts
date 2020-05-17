@@ -213,21 +213,22 @@ export default (options: Options = {}): Plugin => {
       };
 
       const getEmitted = (): Map<string, string[]> => {
-        const idsMap = new Map<string, string[]>();
+        const emittedMap = new Map<string, string[]>();
         const chunks = Object.values(bundle).filter((c): c is OutputChunk => c.type === "chunk");
         const entries = chunks.filter(c => c.isEntry || c.isDynamicEntry);
         const multiFile = typeof postcssLoaderOpts.extract !== "string" && entries.length > 1;
 
         if (multiFile) {
-          for (const chunk of chunks) {
+          const emitted = preserveModules ? chunks : entries;
+          for (const chunk of emitted) {
             const name = preserveModules
               ? path.basename(chunk.fileName, path.extname(chunk.fileName))
               : chunk.name;
             const ids = getImports(chunk);
-            if (ids.length !== 0) idsMap.set(name, ids);
+            if (ids.length !== 0) emittedMap.set(name, ids);
           }
 
-          return idsMap;
+          return emittedMap;
         }
 
         const root = entries.find(e => e.isEntry) ?? entries[0];
@@ -237,9 +238,9 @@ export default (options: Options = {}): Plugin => {
           ? path.basename(root.fileName, path.extname(root.fileName))
           : root.name;
         const ids = entries.reduce<string[]>((acc, e) => [...acc, ...getImports(e)], []);
-        if (ids.length !== 0) idsMap.set(name, ids);
+        if (ids.length !== 0) emittedMap.set(name, ids);
 
-        return idsMap;
+        return emittedMap;
       };
 
       for await (const [name, ids] of getEmitted()) {
