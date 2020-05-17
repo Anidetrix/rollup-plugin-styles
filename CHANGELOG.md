@@ -1,3 +1,10 @@
+## [3.4.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.4.1...v3.4.2) (2020-05-17)
+
+
+### Bug Fixes
+
+* correct filename for single file /w `preserveModules` ([837f9ed](https://github.com/Anidetrix/rollup-plugin-styles/commit/837f9ed8f00565c5fb8a3920004fe06e1155e503))
+
 ## [3.4.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.4.0...v3.4.1) (2020-05-17)
 
 
