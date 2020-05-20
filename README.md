@@ -33,6 +33,7 @@
   - [CSS Modules](#css-modules)
   - [With Sass/Less/Stylus](#with-sasslessstylus)
   - [`fibers` (**Sass only**)](#fibers-sass-only)
+- [Configuration](#configuration)
 - [Main differences from `rollup-plugin-postcss`](#main-differences-from-rollup-plugin-postcss)
 - [Contributing](#contributing)
 - [License](#license)
