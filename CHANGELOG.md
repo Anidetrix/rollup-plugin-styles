@@ -1,3 +1,10 @@
+## [3.5.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.5.1...v3.5.2) (2020-05-20)
+
+
+### Bug Fixes
+
+* better typedoc ([fb31286](https://github.com/Anidetrix/rollup-plugin-styles/commit/fb31286eff12eca938c9ce30b7422e01fb9e0fea))
+
 ## [3.5.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.5.0...v3.5.1) (2020-05-20)
 
 
