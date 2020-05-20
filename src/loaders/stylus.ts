@@ -32,7 +32,7 @@ const loader: Loader<StylusLoaderOptions> = {
 
     // We have to manually modify the `sourcesContent` field
     // since stylus compiler doesn't support it yet
-    if (style.sourcemap?.sources) {
+    if (style.sourcemap?.sources && !style.sourcemap.sourcesContent) {
       style.sourcemap.sourcesContent = await Promise.all(
         style.sourcemap.sources.map(async source => {
           try {

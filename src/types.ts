@@ -207,7 +207,7 @@ export interface Options {
    * - `"inject"` *(default)* - Embeds CSS inside JS and injects it into `<head>` at runtime.
    * You can also pass options for CSS injection.
    * Alternatively, you can pass your own CSS injector.
-   * - `"extract"` - Extract CSS to the same location where JS file is generated but with .css extension.
+   * - `"extract"` - Extract CSS to the same location where JS file is generated but with `.css` extension.
    * You can also set extraction path manually,
    * relative to output dir/output file's basedir,
    * but not outside of it.
@@ -314,8 +314,8 @@ export interface Options {
    */
   onImport?: (code: string, id: string) => void;
   /**
-   * Function which is invoked on CSS file export.
-   * Return `boolean` to control if file should be exported or not.
+   * Function which is invoked on CSS file extraction.
+   * Return `boolean` to control if file should be extracted or not.
    */
   onExtract?: (data: ExtractedData) => boolean;
 }

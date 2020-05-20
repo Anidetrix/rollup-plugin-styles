@@ -18,7 +18,7 @@
 - URL resolving/rewriting with asset handling
 - Ability to use `@import` statements inside regular CSS
 
-...and much more!
+...and more!
 
 ## Table of Contents
 
@@ -58,7 +58,7 @@ import styles from "rollup-plugin-styles";
 export default {
   output: {
     // Governs names of CSS files (for assets from CSS use `hash` option for url handler).
-    // Note: using value below will put .css files near js,
+    // Note: using value below will put `.css` files near js,
     // but make sure to adjust `hash`, `assetDir` and `publicPath`
     // options for url handler accordingly.
     assetFileNames: "[name]-[hash][extname]",
@@ -120,7 +120,7 @@ Also note that partials are considered first, e.g.
 @import "custom";
 ```
 
-Will look for `_custom` first _(with the approptiate extension(s))_, and then for `custom` if `_custom` doesn't exist.
+Will look for `_custom` first (_with the approptiate extension(s)_), and then for `custom` if `_custom` doesn't exist.
 
 ### CSS Injection
 

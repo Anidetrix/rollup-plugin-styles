@@ -11,7 +11,7 @@ declare namespace stylus {
     };
   }
 
-  type Callback = (err: Error, css: string, js: string) => void;
+  type Callback = (err: Error, css: string) => void;
 
   interface Renderer {
     render(callback: Callback): void;

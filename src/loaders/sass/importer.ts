@@ -17,10 +17,8 @@ const importer: sass.Importer = (url, importer, done) => {
   // Give precedence to importing a partial
   resolveAsync(partialUrl, options)
     .then(finishImport)
-    .catch(error => {
-      if (error.code === "MODULE_NOT_FOUND" || error.code === "ENOENT")
-        resolveAsync(moduleUrl, options).then(finishImport).catch(next);
-      else next();
+    .catch(() => {
+      resolveAsync(moduleUrl, options).then(finishImport).catch(next);
     });
 };
 
