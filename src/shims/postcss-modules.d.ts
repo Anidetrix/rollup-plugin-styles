@@ -1,12 +1,7 @@
 /* eslint-disable import/no-duplicates */
 declare module "postcss-modules-values" {
   import { Plugin } from "postcss";
-
-  export interface ValuesOptions {
-    createImportedName?: (name: string, path: string) => string;
-  }
-
-  export default function (options?: ValuesOptions): Plugin<unknown>;
+  export default function (options?: {}): Plugin<{}>;
 }
 
 declare module "postcss-modules-local-by-default" {
@@ -14,10 +9,9 @@ declare module "postcss-modules-local-by-default" {
 
   export interface LocalByDefaultOptions {
     mode?: "local" | "global" | "pure";
-    rewriteUrl?: (global: boolean, value: string) => string;
   }
 
-  export default function (options?: LocalByDefaultOptions): Plugin<unknown>;
+  export default function (options?: LocalByDefaultOptions): Plugin<LocalByDefaultOptions>;
 }
 
 declare module "postcss-modules-extract-imports" {
@@ -25,10 +19,9 @@ declare module "postcss-modules-extract-imports" {
 
   export interface ExtractImportsOptions {
     failOnWrongOrder?: boolean;
-    createImportedName?: (name: string, file: string) => string;
   }
 
-  export default function (options?: ExtractImportsOptions): Plugin<unknown>;
+  export default function (options?: ExtractImportsOptions): Plugin<ExtractImportsOptions>;
 }
 
 declare module "postcss-modules-scope" {
@@ -37,8 +30,7 @@ declare module "postcss-modules-scope" {
   export interface ScopeOptions {
     exportGlobals?: boolean;
     generateScopedName?: (name: string, file: string, css: string) => string;
-    generateExportEntry?: (name: string, scopedName: string, file: string, css: string) => string;
   }
 
-  export default function (options?: ScopeOptions): Plugin<unknown>;
+  export default function (options?: ScopeOptions): Plugin<ScopeOptions>;
 }
