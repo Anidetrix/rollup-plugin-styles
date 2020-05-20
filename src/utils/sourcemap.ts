@@ -7,16 +7,15 @@ import { dataURIRe } from "../loaders/postcss/common";
 import { isAbsolutePath, relativePath, resolvePath, normalizePath } from "./path";
 import { isNullish } from "./filter";
 
-const mapBlockRe = /\/\*[#*@]+?\s*?sourceMappingURL\s*?=\s*?(\S+)\s*?\*+?\//;
-const mapInlineRe = /\/\/[#@]+?\s*?sourceMappingURL\s*?=\s*?(\S+)\s*?(?:$|\n|\r\n)?/;
-const mapRe = new RegExp([mapBlockRe, mapInlineRe].map(re => re.source).join("|"));
+const mapBlockRe = /(?:\n|\r\n)?\/\*[#*@]+?\s*?sourceMappingURL\s*?=\s*?(\S+)\s*?\*+?\//gm;
+const mapLineRe = /(?:\n|\r\n)?\/\/[#@]+?\s*?sourceMappingURL\s*?=\s*?(\S+)\s*?$/gm;
 
 export async function getMap(code: string, id?: string): Promise<string | undefined> {
-  const [, data] = mapRe.exec(code) ?? [];
+  const [, data] = mapBlockRe.exec(code) ?? mapLineRe.exec(code) ?? [];
   if (!data) return;
 
-  const [, inlineMap] = dataURIRe.exec(data) ?? [];
-  if (inlineMap) return Buffer.from(inlineMap, "base64").toString();
+  const [, uriMap] = dataURIRe.exec(data) ?? [];
+  if (uriMap) return Buffer.from(uriMap, "base64").toString();
 
   if (!id) throw new Error("Extracted map detected, but no ID is provided");
   const mapFileName = path.resolve(path.dirname(id), data);
@@ -27,17 +26,20 @@ export async function getMap(code: string, id?: string): Promise<string | undefi
   }
 }
 
-export const stripMap = (code: string): string => code.replace(mapRe, "");
+export const stripMap = (code: string): string =>
+  code.replace(mapBlockRe, "").replace(mapLineRe, "");
 
 class MapModifier {
   readonly #map?: RawSourceMap;
 
   constructor(map?: string | RawSourceMap) {
-    try {
-      this.#map = typeof map === "string" ? (JSON.parse(map) as RawSourceMap) : map;
-    } catch {
-      this.#map = undefined;
-    }
+    if (typeof map === "string")
+      try {
+        this.#map = JSON.parse(map) as RawSourceMap;
+      } catch {
+        /* noop */
+      }
+    else this.#map = map && { ...map };
   }
 
   modify(f: (m: RawSourceMap) => void): this {
