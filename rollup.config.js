@@ -45,13 +45,13 @@ export default [
         presets: [["@babel/preset-env", { modules: false, targets: { ie: "8" } }]],
         plugins: [["@babel/plugin-transform-runtime", { useESModules: true }]],
       }),
-      prod && terser({ ie8: true }),
+      prod && terser({ output: { comments: false }, ie8: true, safari10: true }),
     ],
   },
   // Declaration
   {
     input: "src/index.ts",
     output: { format: "es", file: pkg.types },
-    plugins: [dts()],
+    plugins: [externals({ deps: true }), dts({ respectExternal: true })],
   },
 ];
