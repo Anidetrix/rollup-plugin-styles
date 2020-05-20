@@ -1,3 +1,10 @@
+## [3.5.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.5.0...v3.5.1) (2020-05-20)
+
+
+### Bug Fixes
+
+* typenames too long for typedoc ([13e2d49](https://github.com/Anidetrix/rollup-plugin-styles/commit/13e2d496582e026a1efb3bf9c2d75e296d6c1108))
+
 # [3.5.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.4.3...v3.5.0) (2020-05-20)
 
 
