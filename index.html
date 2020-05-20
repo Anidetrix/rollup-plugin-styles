@@ -51,7 +51,7 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="index.html">Globals</a>
+					<a href="globals.html">Globals</a>
 				</li>
 			</ul>
 			<h1>rollup-plugin-styles</h1>
@@ -61,30 +61,266 @@
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel-group tsd-index-group">
-				<h2>Index</h2>
-				<section class="tsd-panel tsd-index-panel">
-					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
-							<h3>Modules</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-module"><a href="modules/_index_d_.html" class="tsd-kind-icon">&quot;index.d&quot;</a></li>
-								<li class="tsd-kind-module"><a href="modules/_shims_fibers_d_.html" class="tsd-kind-icon">&quot;shims/fibers.d&quot;</a></li>
-								<li class="tsd-kind-module"><a href="modules/_shims_less_d_.html" class="tsd-kind-icon">&quot;shims/less.d&quot;</a></li>
-								<li class="tsd-kind-module"><a href="modules/_shims_postcss_modules_d_.html" class="tsd-kind-icon">&quot;shims/postcss-<wbr>modules.d&quot;</a></li>
-								<li class="tsd-kind-module"><a href="modules/_shims_sass_d_.html" class="tsd-kind-icon">&quot;shims/sass.d&quot;</a></li>
-								<li class="tsd-kind-module"><a href="modules/_shims_stylus_d_.html" class="tsd-kind-icon">&quot;shims/stylus.d&quot;</a></li>
-							</ul>
-						</section>
-					</div>
-				</section>
-			</section>
+			<div class="tsd-panel tsd-typography">
+				<a href="#rollup-plugin-styles" id="rollup-plugin-styles" style="color: inherit; text-decoration: none;">
+					<h1>rollup-plugin-styles</h1>
+				</a>
+				<p><a href="https://www.npmjs.com/package/rollup-plugin-styles"><img src="https://img.shields.io/npm/v/rollup-plugin-styles" alt="npm version"></a>
+					<a href="https://www.npmjs.com/package/rollup-plugin-styles"><img src="https://img.shields.io/npm/dm/rollup-plugin-styles" alt="monthly downloads count"></a>
+					<a href="https://www.npmjs.com/package/rollup"><img src="https://img.shields.io/npm/dependency-version/rollup-plugin-styles/peer/rollup" alt="required rollup version"></a>
+					<a href="https://david-dm.org/Anidetrix/rollup-plugin-styles"><img src="https://img.shields.io/david/Anidetrix/rollup-plugin-styles" alt="dependencies status"></a>
+					<a href="https://github.com/Anidetrix/rollup-plugin-styles/actions?query=workflow%3ACI"><img src="https://github.com/Anidetrix/rollup-plugin-styles/workflows/CI/badge.svg" alt="build status"></a>
+					<a href="https://codecov.io/gh/Anidetrix/rollup-plugin-styles"><img src="https://codecov.io/gh/Anidetrix/rollup-plugin-styles/branch/master/graph/badge.svg" alt="code coverage"></a>
+				<a href="./LICENSE"><img src="https://img.shields.io/github/license/Anidetrix/rollup-plugin-styles" alt="license"></a></p>
+				<a href="#🎨-universal-rollup-plugin-for-styles" id="🎨-universal-rollup-plugin-for-styles" style="color: inherit; text-decoration: none;">
+					<h3>🎨 Universal <a href="https://github.com/rollup/rollup">Rollup</a> plugin for styles:</h3>
+				</a>
+				<ul>
+					<li><a href="https://github.com/postcss/postcss">PostCSS</a></li>
+					<li><a href="https://github.com/sass/dart-sass">Sass</a></li>
+					<li><a href="https://github.com/less/less.js">Less</a></li>
+					<li><a href="https://github.com/stylus/stylus">Stylus</a></li>
+					<li><a href="https://github.com/css-modules/css-modules">CSS Modules</a></li>
+					<li>URL resolving/rewriting with asset handling</li>
+					<li>Ability to use <code>@import</code> statements inside regular CSS</li>
+				</ul>
+				<p>...and much more!</p>
+				<a href="#table-of-contents" id="table-of-contents" style="color: inherit; text-decoration: none;">
+					<h2>Table of Contents</h2>
+				</a>
+				<ul>
+					<li><a href="#installation">Installation</a></li>
+					<li><a href="#usage">Usage</a><ul>
+							<li><a href="#importing-a-file">Importing a file</a><ul>
+									<li><a href="#cssstylus">CSS/Stylus</a></li>
+									<li><a href="#sassless">Sass/Less</a></li>
+								</ul>
+							</li>
+							<li><a href="#css-injection">CSS Injection</a></li>
+							<li><a href="#css-extraction">CSS Extraction</a></li>
+							<li><a href="#emitting-processed-css">Emitting processed CSS</a></li>
+							<li><a href="#css-modules">CSS Modules</a></li>
+							<li><a href="#with-sasslessstylus">With Sass/Less/Stylus</a></li>
+							<li><a href="#fibers-sass-only"><code>fibers</code> (<strong>Sass only</strong>)</a></li>
+						</ul>
+					</li>
+					<li><a href="#configuration">Configuration</a></li>
+					<li><a href="#main-differences-from-rollup-plugin-postcss">Main differences from <code>rollup-plugin-postcss</code></a></li>
+					<li><a href="#contributing">Contributing</a></li>
+					<li><a href="#license">License</a></li>
+					<li><a href="#thanks">Thanks</a></li>
+				</ul>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
+				<pre><code class="language-bash">npm install -D rollup-plugin-styles <span class="hljs-comment"># npm</span>
+
+pnpm add -D rollup-plugin-styles <span class="hljs-comment"># pnpm</span>
+
+yarn add rollup-plugin-styles --dev <span class="hljs-comment"># yarn 1.x</span></code></pre>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<pre><code class="language-js"><span class="hljs-comment">// rollup.config.js</span>
+<span class="hljs-keyword">import</span> styles <span class="hljs-keyword">from</span> <span class="hljs-string">"rollup-plugin-styles"</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  <span class="hljs-attr">output</span>: {
+    <span class="hljs-comment">// Governs names of CSS files (for assets from CSS use `hash` option for url handler).</span>
+    <span class="hljs-comment">// Note: using value below will put .css files near js,</span>
+    <span class="hljs-comment">// but make sure to adjust `hash`, `assetDir` and `publicPath`</span>
+    <span class="hljs-comment">// options for url handler accordingly.</span>
+    <span class="hljs-attr">assetFileNames</span>: <span class="hljs-string">"[name]-[hash][extname]"</span>,
+  },
+  <span class="hljs-attr">plugins</span>: [styles()],
+};</code></pre>
+				<p>After that you can import CSS files in your code:</p>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> <span class="hljs-string">"./style.css"</span>;</code></pre>
+				<p>Default mode is <code>inject</code>, which means CSS is embedded inside JS and injected into <code>&lt;head&gt;</code> at runtime, with ability to pass options to CSS injector or even pass your own injector.</p>
+				<p>CSS is available as default export in <code>inject</code> and <code>extract</code> modes, but if <a href="https://github.com/css-modules/css-modules">CSS Modules</a> are enabled you need to use named <code>css</code> export.</p>
+				<pre><code class="language-js"><span class="hljs-comment">// Injects CSS, also available as `style` in this example</span>
+<span class="hljs-keyword">import</span> style <span class="hljs-keyword">from</span> <span class="hljs-string">"./style.css"</span>;
+<span class="hljs-comment">// Named export of CSS string</span>
+<span class="hljs-keyword">import</span> { css } <span class="hljs-keyword">from</span> <span class="hljs-string">"./style.css"</span>;</code></pre>
+				<p>In <code>emit</code> mode none of the exports are available as CSS is purely processed and passed along the build pipeline, which is useful if you want to preprocess CSS before using it with CSS consuming plugins, e.g. <a href="https://github.com/bennypowers/rollup-plugin-lit-css">rollup-plugin-lit-css</a>.</p>
+				<p>PostCSS configuration files will be found and loaded automatically, but this behavior is configurable using <code>config</code> option.</p>
+				<a href="#importing-a-file" id="importing-a-file" style="color: inherit; text-decoration: none;">
+					<h3>Importing a file</h3>
+				</a>
+				<a href="#cssstylus" id="cssstylus" style="color: inherit; text-decoration: none;">
+					<h4>CSS/Stylus</h4>
+				</a>
+				<pre><code class="language-css"><span class="hljs-comment">/* Import from `node_modules` */</span>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">"bulma/css/bulma"</span>;
+<span class="hljs-comment">/* Local import */</span>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">"./custom"</span>;
+<span class="hljs-comment">/* ...or (if no package named `custom` in `node_modules`) */</span>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">"custom"</span>;</code></pre>
+				<a href="#sassless" id="sassless" style="color: inherit; text-decoration: none;">
+					<h4>Sass/Less</h4>
+				</a>
+				<p>You can prepend the path with <code>~</code> to resolve in <code>node_modules</code>:</p>
+				<pre><code class="language-scss"><span class="hljs-comment">// Import from `node_modules`</span>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">"~bulma/css/bulma"</span>;
+<span class="hljs-comment">// Local import</span>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">"custom"</span>;
+<span class="hljs-comment">// ...or</span>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">"./custom"</span>;</code></pre>
+				<p>Also note that partials are considered first, e.g.</p>
+				<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">"custom"</span>;</code></pre>
+				<p>Will look for <code>_custom</code> first _(with the approptiate extension(s))_, and then for <code>custom</code> if <code>_custom</code> doesn&#39;t exist.</p>
+				<a href="#css-injection" id="css-injection" style="color: inherit; text-decoration: none;">
+					<h3>CSS Injection</h3>
+				</a>
+				<pre><code class="language-js">styles({
+  <span class="hljs-attr">mode</span>: <span class="hljs-string">"inject"</span>, <span class="hljs-comment">// Unnecessary, set by default</span>
+  <span class="hljs-comment">// ...or with custom options for injector</span>
+  <span class="hljs-attr">mode</span>: [<span class="hljs-string">"inject"</span>, { <span class="hljs-attr">container</span>: <span class="hljs-string">"body"</span>, <span class="hljs-attr">singleTag</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">prepend</span>: <span class="hljs-literal">true</span> }],
+  <span class="hljs-comment">// ...or with custom injector</span>
+  <span class="hljs-attr">mode</span>: [<span class="hljs-string">"inject"</span>, yourInjectorFn],
+});</code></pre>
+				<a href="#css-extraction" id="css-extraction" style="color: inherit; text-decoration: none;">
+					<h3>CSS Extraction</h3>
+				</a>
+				<pre><code class="language-js">styles({
+  <span class="hljs-attr">mode</span>: <span class="hljs-string">"extract"</span>,
+  <span class="hljs-comment">// ... or with relative to output dir/output file's basedir (but not outside of it)</span>
+  <span class="hljs-attr">mode</span>: [<span class="hljs-string">"extract"</span>, <span class="hljs-string">"awesome-bundle.css"</span>],
+});</code></pre>
+				<a href="#emitting-processed-css" id="emitting-processed-css" style="color: inherit; text-decoration: none;">
+					<h3>Emitting processed CSS</h3>
+				</a>
+				<pre><code class="language-js"><span class="hljs-comment">// rollup.config.js</span>
+<span class="hljs-keyword">import</span> styles <span class="hljs-keyword">from</span> <span class="hljs-string">"rollup-plugin-styles"</span>;
+
+<span class="hljs-comment">// Any plugin which consumes pure CSS</span>
+<span class="hljs-keyword">import</span> litcss <span class="hljs-keyword">from</span> <span class="hljs-string">"rollup-plugin-lit-css"</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+  <span class="hljs-attr">plugins</span>: [
+    styles({ <span class="hljs-attr">mode</span>: <span class="hljs-string">"emit"</span> }),
+
+    <span class="hljs-comment">// Make sure to list it after this one</span>
+    litcss(),
+  ],
+};</code></pre>
+				<a href="#css-modules" id="css-modules" style="color: inherit; text-decoration: none;">
+					<h3><a href="https://github.com/css-modules/css-modules">CSS Modules</a></h3>
+				</a>
+				<pre><code class="language-js">styles({
+  <span class="hljs-attr">modules</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-comment">// ...or with custom options</span>
+  <span class="hljs-attr">modules</span>: {},
+  <span class="hljs-comment">// ...additionally using autoModules</span>
+  <span class="hljs-attr">autoModules</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-comment">// ...with custom regex</span>
+  <span class="hljs-attr">autoModules</span>: <span class="hljs-regexp">/\.mod\.\S+$/</span>,
+  <span class="hljs-comment">// ...or custom function</span>
+  autoModules: <span class="hljs-function"><span class="hljs-params">id</span> =&gt;</span> id.includes(<span class="hljs-string">".modular."</span>),
+});</code></pre>
+				<a href="#with-sasslessstylus" id="with-sasslessstylus" style="color: inherit; text-decoration: none;">
+					<h3>With Sass/Less/Stylus</h3>
+				</a>
+				<p>Install corresponding dependency:</p>
+				<ul>
+					<li><p>For <code>Sass</code> support install <code>node-sass</code> or <code>sass</code>:</p>
+						<pre><code class="language-bash">npm install -D node-sass <span class="hljs-comment"># npm</span>
+
+pnpm add -D node-sass <span class="hljs-comment"># pnpm</span>
+
+yarn add node-sass --dev <span class="hljs-comment"># yarn 1.x</span></code></pre>
+						<pre><code class="language-bash">npm install -D sass <span class="hljs-comment"># npm</span>
+
+pnpm add -D sass <span class="hljs-comment"># pnpm</span>
+
+yarn add sass --dev <span class="hljs-comment"># yarn 1.x</span></code></pre>
+					</li>
+					<li><p>For <code>Less</code> support install <code>less</code>:</p>
+						<pre><code class="language-bash">npm install -D less <span class="hljs-comment"># npm</span>
+
+pnpm add -D less <span class="hljs-comment"># pnpm</span>
+
+yarn add less --dev <span class="hljs-comment"># yarn 1.x</span></code></pre>
+					</li>
+					<li><p>For <code>Stylus</code> support install <code>stylus</code>:</p>
+						<pre><code class="language-bash">npm install -D stylus <span class="hljs-comment"># npm</span>
+
+pnpm add -D stylus <span class="hljs-comment"># pnpm</span>
+
+yarn add stylus --dev <span class="hljs-comment"># yarn 1.x</span></code></pre>
+					</li>
+				</ul>
+				<p>That&#39;s it, now you can import <code>.scss</code> <code>.sass</code> <code>.less</code> <code>.styl</code> <code>.stylus</code> files in your code.</p>
+				<a href="#fibers-sass-only" id="fibers-sass-only" style="color: inherit; text-decoration: none;">
+					<h3><code>fibers</code> (<strong>Sass only</strong>)</h3>
+				</a>
+				<p>By default, <code>fibers</code> package will be loaded automatically if available when using <code>sass</code> implementation.</p>
+				<blockquote>
+					<p>When installed via npm, <code>Dart Sass</code> supports a JavaScript API that&#39;s fully compatible with <code>Node Sass</code> &lt;...&gt;, with support for both the render() and renderSync() functions. &lt;...&gt;</p>
+					<p>Note however that by default, <strong>renderSync() is more than twice as fast as render()</strong> due to the overhead of asynchronous callbacks. To avoid this performance hit, render() can use the <code>fibers</code> package to call asynchronous importers from the synchronous code path.</p>
+					<p><a href="https://github.com/sass/dart-sass/blob/master/README.md#javascript-api">Source</a></p>
+				</blockquote>
+				<p>To install <code>fibers</code>:</p>
+				<pre><code class="language-bash">npm install -D fibers <span class="hljs-comment"># npm</span>
+
+pnpm add -D fibers <span class="hljs-comment"># pnpm</span>
+
+yarn add fibers --dev <span class="hljs-comment"># yarn 1.x</span></code></pre>
+				<a href="#configuration" id="configuration" style="color: inherit; text-decoration: none;">
+					<h2>Configuration</h2>
+				</a>
+				<p>See <a href="https://anidetrix.github.io/rollup-plugin-styles/interfaces/_index_d_.options.html">API Reference for <code>Options</code></a> for full list of available options.</p>
+				<a href="#main-differences-from-rollup-plugin-postcss" id="main-differences-from-rollup-plugin-postcss" style="color: inherit; text-decoration: none;">
+					<h2>Main differences from <a href="https://github.com/egoist/rollup-plugin-postcss">rollup-plugin-postcss</a></h2>
+				</a>
+				<ul>
+					<li>Written completely in TypeScript</li>
+					<li>Up-to-date <a href="https://github.com/css-modules/css-modules">CSS Modules</a> implementation</li>
+					<li>Built-in <code>@import</code> handler</li>
+					<li>Built-in assets handler</li>
+					<li>Respects <code>output.assetFileNames</code></li>
+					<li>Code splitting support</li>
+					<li>Multi entry support</li>
+					<li>Ability to emit pure CSS for other plugins</li>
+					<li>Correct multiple instance support with check for already processed files</li>
+					<li>Support for implementation and <code>fibers</code> forcing for Sass</li>
+					<li>Support for partials and <code>~</code> in Less import statements</li>
+					<li>Sourcemaps include source content</li>
+					<li>Proper sourcemap generation for all loaders</li>
+					<li>Correct inline sourcemaps</li>
+					<li>Correct relative source paths in extracted sourcemaps</li>
+					<li>Extracts sourcemaps from loaded files</li>
+					<li>More smaller things that I forgot</li>
+				</ul>
+				<a href="#contributing" id="contributing" style="color: inherit; text-decoration: none;">
+					<h2>Contributing</h2>
+				</a>
+				<p>Any contributions are always welcome, not only Pull Requests! 😀</p>
+				<ul>
+					<li><strong>QA</strong>: file bug reports, the more details you can give the better</li>
+					<li><strong>Code</strong>: take a look at the <a href="https://github.com/Anidetrix/rollup-plugin-styles/issues">open issues</a>, even if you can&#39;t write code showing that you care about a given issue matters</li>
+					<li><strong>Ideas</strong>: feature requests are welcome, even ambitious ones</li>
+					<li><strong>Donations</strong>: financial support helps to dedicate more time to this project</li>
+				</ul>
+				<p>Your First Contribution? You can learn how from this <em>free</em> series, <a href="https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github">How to Contribute to an Open Source Project on GitHub</a>.</p>
+				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+					<h2>License</h2>
+				</a>
+				<p>MIT &copy; <a href="https://github.com/Anidetrix">Anton Kudryavtsev</a></p>
+				<a href="#thanks" id="thanks" style="color: inherit; text-decoration: none;">
+					<h2>Thanks</h2>
+				</a>
+				<ul>
+					<li><a href="https://github.com/egoist/rollup-plugin-postcss">rollup-plugin-postcss</a> - for good reference 👍</li>
+					<li><a href="https://github.com/rollup/rollup">rollup</a> - for awesome bundler 😎</li>
+				</ul>
+			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals current ">
-						<a href="index.html"><em>Globals</em></a>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
 					</li>
 					<li class=" tsd-kind-module">
 						<a href="modules/_index_d_.html">&quot;index.d&quot;</a>
