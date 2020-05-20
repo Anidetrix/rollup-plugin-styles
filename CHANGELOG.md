@@ -1,3 +1,23 @@
+# [3.5.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.4.3...v3.5.0) (2020-05-20)
+
+
+### Bug Fixes
+
+* **sass:** properly call custom resolvers ([002366f](https://github.com/Anidetrix/rollup-plugin-styles/commit/002366f03348f87ece42a5a0a271a568c9c2369e))
+* **sourcemap:** broken single line URL comments extraction ([fd8ebf9](https://github.com/Anidetrix/rollup-plugin-styles/commit/fd8ebf99a788935d88ac407b98733315e27da791))
+
+
+### Features
+
+* **importer:** extensions override ([74fcd39](https://github.com/Anidetrix/rollup-plugin-styles/commit/74fcd395720c447ed56a6145bbaa410b802619d0))
+* **url:** automatically inline assets in inject mode ([db7dc9a](https://github.com/Anidetrix/rollup-plugin-styles/commit/db7dc9a870199ecacbedb79720f78dead8164819))
+
+
+### Performance Improvements
+
+* overall improvements and optimizations ([a460dd0](https://github.com/Anidetrix/rollup-plugin-styles/commit/a460dd0233de61717039e5365cfcca858dcb1673))
+* **types:** trimmed down vendor types ([6a52be8](https://github.com/Anidetrix/rollup-plugin-styles/commit/6a52be8c10ab067df6c1f1b3b63a67ce5485572f))
+
 ## [3.4.3](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.4.2...v3.4.3) (2020-05-17)
 
 
