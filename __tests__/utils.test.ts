@@ -93,12 +93,13 @@ describe("option-utils", () => {
 
 describe("sourcemap-utils", () => {
   test("inline map", async () => {
-    let code =
+    const code =
       '.foo {color: red;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkBAMAAACCzIhnAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiklEQVRYhe3QMQ6EIBAF0C+GSInF9mYTs+1ewRsQbmBlayysKefYO2asXbbYxvxHQj6ECQMAEREREf2NQ/fCtp5Zky6vtRMkSJEzhyISynWJnzH6Z8oQlzS7lEc/fLmmQUSvc16OrCPqRl1JePxQYo1ZSWVj9nxrrOb5esw+eXdvzTWfTERERHRXH4tWFZGswQ2yAAAAAElFTkSuQmCC");}';
     await expect(getMap(code)).resolves.toBeUndefined();
-    code +=
-      "/*# sourceMappingURL=data:application/json;base64,e1RISVM6SVNBU09VUkNFTUFQU0lNVUxBVElPTn0= */";
-    await expect(getMap(code)).resolves.toBe("{THIS:ISASOURCEMAPSIMULATION}");
+    const withBlock = `${code}/*# sourceMappingURL=data:application/json;base64,e1RISVM6SVNBU09VUkNFTUFQU0lNVUxBVElPTn0= */`;
+    await expect(getMap(withBlock)).resolves.toBe("{THIS:ISASOURCEMAPSIMULATION}");
+    const withInline = `${code}//# sourceMappingURL=data:application/json;base64,e1RISVM6SVNBU09VUkNFTUFQU0lNVUxBVElPTn0=`;
+    await expect(getMap(withInline)).resolves.toBe("{THIS:ISASOURCEMAPSIMULATION}");
   });
 
   test("file map", async () => {
@@ -111,8 +112,11 @@ describe("sourcemap-utils", () => {
   });
 
   test("strip map", () => {
-    const code = ".foo {color: red;}/*# sourceMappingURL=fixture.css.map */";
-    expect(stripMap(code)).toBe(".foo {color: red;}");
+    const code = ".foo {color: red;}";
+    const withBlock = `${code}/*# sourceMappingURL=fixture.css.map */`;
+    expect(stripMap(withBlock)).toBe(".foo {color: red;}");
+    const withInline = `${code}//# sourceMappingURL=fixture.css.map`;
+    expect(stripMap(withInline)).toBe(".foo {color: red;}");
   });
 
   test("map modifier", () => {

@@ -1137,6 +1137,93 @@ console.log(css_a87c82eb, css_6e569e18);
 
 exports[`extract custom-path: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../../../simple/foo.css\\",\\"../../../../../../simple/bar.css\\",\\"../../../../../../simple/style.styl\\",\\"../../../../../../simple/style.pcss\\",\\"../../../../../../simple/style.sass\\",\\"../../../../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;AACZ;;ACFA;EACE,WAAO;EACP,gBAAY;AACd;;ACHA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;EACV,UAAU,EAAA;;ACCZ;EACE,cAAA;AAFF\\",\\"file\\":\\"extracted-57b81765.css\\",\\"sourcesContent\\":[\\".foo {\\\\n  color: red;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".stylus\\\\n  color: red\\\\n  background: @color\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
 
+exports[`extract file: css 1`] = `
+".foo {
+  color: red;
+}
+
+.bar {
+  color: red;
+}
+
+.stylus {
+  color: #f00;
+  background: #f00;
+}
+
+.pcss {
+  color: red;
+}
+
+.sass {
+  width: 30%;
+  color: red; }
+
+.less {
+  color: #6c94be;
+}
+"
+`;
+
+exports[`extract file: js 1`] = `
+"const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+
+const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+
+console.log(css_a87c82eb, css_6e569e18);
+"
+`;
+
+exports[`extract preserve-modules: css 1`] = `
+".foo {
+  color: red;
+}
+
+.bar {
+  color: red;
+}
+
+.stylus {
+  color: #f00;
+  background: #f00;
+}
+
+.pcss {
+  color: red;
+}
+
+.sass {
+  width: 30%;
+  color: red; }
+
+.less {
+  color: #6c94be;
+}
+"
+`;
+
+exports[`extract preserve-modules: js 1`] = `
+"const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+
+export default css_6e569e18;
+"
+`;
+
+exports[`extract preserve-modules: js 2`] = `
+"const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+
+export default css_a87c82eb;
+"
+`;
+
+exports[`extract preserve-modules: js 3`] = `
+"import css_a87c82eb from './foo.css.js';
+import css_6e569e18 from './bar.css.js';
+
+console.log(css_a87c82eb, css_6e569e18);
+"
+`;
+
 exports[`extract relative-path-fail 1`] = `
 "Extraction path must be nested inside output directory,
 which is __tests__/fixtures/dist/extract/relative-path-fail"

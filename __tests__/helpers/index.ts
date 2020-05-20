@@ -7,7 +7,7 @@ import styles from "../../src";
 import { Options } from "../../src/types";
 import { inferModeOption } from "../../src/utils/options";
 
-export type WriteData = {
+export interface WriteData {
   input: string | string[];
   title?: string;
   outDir?: string;
@@ -15,16 +15,16 @@ export type WriteData = {
   plugins?: Plugin[];
   inputOpts?: InputOptions;
   outputOpts?: OutputOptions;
-};
+}
 
-export type WriteResult = {
+export interface WriteResult {
   js: () => Promise<string[]>;
   css: () => Promise<string[]>;
   isCss: () => Promise<boolean>;
   map: () => Promise<string[]>;
   isMap: () => Promise<boolean>;
   isFile: (file: string) => Promise<boolean>;
-};
+}
 
 async function pathExistsAll(files: string[]): Promise<boolean> {
   if (files.length === 0) return false;
@@ -56,7 +56,8 @@ export async function write(data: WriteData): Promise<WriteResult> {
 
   const { output } = await bundle.write({
     ...data.outputOpts,
-    dir: outDir,
+    dir: data.outputOpts?.file ? undefined : outDir,
+    file: data.outputOpts?.file && path.join(outDir, data.outputOpts.file),
   });
 
   const js = output
@@ -70,7 +71,7 @@ export async function write(data: WriteData): Promise<WriteResult> {
     .sort();
 
   const map = output
-    .filter(f => f.type === "asset" && f.fileName.includes(".css") && f.fileName.endsWith(".map"))
+    .filter(f => f.type === "asset" && f.fileName.endsWith(".css.map"))
     .map(f => path.join(outDir, f.fileName))
     .sort();
 
@@ -86,7 +87,11 @@ export async function write(data: WriteData): Promise<WriteResult> {
   return res;
 }
 
-export type TestData = WriteData & { title: string; files?: string[]; shouldFail?: boolean };
+export interface TestData extends WriteData {
+  title: string;
+  files?: string[];
+  shouldFail?: boolean;
+}
 
 export function validate(data: TestData): void {
   const options = data.options ?? {};

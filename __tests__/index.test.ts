@@ -203,6 +203,18 @@ validateMany("extract", [
     options: { mode: "extract" },
   },
   {
+    title: "file",
+    input: "simple/index.js",
+    options: { mode: "extract" },
+    outputOpts: { file: "result.js" },
+  },
+  {
+    title: "preserve-modules",
+    input: "simple/index.js",
+    options: { mode: "extract" },
+    inputOpts: { preserveModules: true },
+  },
+  {
     title: "absolute-path-fail",
     shouldFail: true,
     input: "simple/index.js",
@@ -318,7 +330,7 @@ validateMany("multiple-instances", [
     input: "multiple-instances/index.js",
     plugins: [
       styles({ extensions: [".css"], use: [] }),
-      styles({ extensions: [], use: ["less", "sass", "stylus"] }),
+      styles({ extensions: [], use: ["sass", "less", "stylus"] }),
       styles({ extensions: [".mcss"], use: [], modules: true, namedExports: true }),
     ],
   },
