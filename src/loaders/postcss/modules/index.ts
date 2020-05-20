@@ -1,8 +1,8 @@
 import postcss from "postcss";
 import modulesValues from "postcss-modules-values";
-import localByDefault, { LocalByDefaultOptions } from "postcss-modules-local-by-default";
-import extractImports, { ExtractImportsOptions } from "postcss-modules-extract-imports";
-import modulesScope, { ScopeOptions } from "postcss-modules-scope";
+import localByDefault, { Options as LocalByDefaultOptions } from "postcss-modules-local-by-default";
+import extractImports, { Options as ExtractImportsOptions } from "postcss-modules-extract-imports";
+import modulesScope, { Options as ScopeOptions } from "postcss-modules-scope";
 import generateScopedNameDefault from "./generate";
 
 /** Options for [CSS Modules](https://github.com/css-modules/css-modules) */

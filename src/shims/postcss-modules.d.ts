@@ -6,31 +6,21 @@ declare module "postcss-modules-values" {
 
 declare module "postcss-modules-local-by-default" {
   import { Plugin } from "postcss";
-
-  export interface LocalByDefaultOptions {
-    mode?: "local" | "global" | "pure";
-  }
-
-  export default function (options?: LocalByDefaultOptions): Plugin<LocalByDefaultOptions>;
+  export type Options = { mode?: "local" | "global" | "pure" };
+  export default function (options?: Options): Plugin<Options>;
 }
 
 declare module "postcss-modules-extract-imports" {
   import { Plugin } from "postcss";
-
-  export interface ExtractImportsOptions {
-    failOnWrongOrder?: boolean;
-  }
-
-  export default function (options?: ExtractImportsOptions): Plugin<ExtractImportsOptions>;
+  export type Options = { failOnWrongOrder?: boolean };
+  export default function (options?: Options): Plugin<Options>;
 }
 
 declare module "postcss-modules-scope" {
   import { Plugin } from "postcss";
-
-  export interface ScopeOptions {
+  export type Options = {
     exportGlobals?: boolean;
     generateScopedName?: (name: string, file: string, css: string) => string;
-  }
-
-  export default function (options?: ScopeOptions): Plugin<ScopeOptions>;
+  };
+  export default function (options?: Options): Plugin<Options>;
 }
