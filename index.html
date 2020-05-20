@@ -84,7 +84,7 @@
 					<li>URL resolving/rewriting with asset handling</li>
 					<li>Ability to use <code>@import</code> statements inside regular CSS</li>
 				</ul>
-				<p>...and much more!</p>
+				<p>...and more!</p>
 				<a href="#table-of-contents" id="table-of-contents" style="color: inherit; text-decoration: none;">
 					<h2>Table of Contents</h2>
 				</a>
@@ -127,7 +127,7 @@ yarn add rollup-plugin-styles --dev <span class="hljs-comment"># yarn 1.x</span>
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
   <span class="hljs-attr">output</span>: {
     <span class="hljs-comment">// Governs names of CSS files (for assets from CSS use `hash` option for url handler).</span>
-    <span class="hljs-comment">// Note: using value below will put .css files near js,</span>
+    <span class="hljs-comment">// Note: using value below will put `.css` files near js,</span>
     <span class="hljs-comment">// but make sure to adjust `hash`, `assetDir` and `publicPath`</span>
     <span class="hljs-comment">// options for url handler accordingly.</span>
     <span class="hljs-attr">assetFileNames</span>: <span class="hljs-string">"[name]-[hash][extname]"</span>,
@@ -168,7 +168,7 @@ yarn add rollup-plugin-styles --dev <span class="hljs-comment"># yarn 1.x</span>
 <span class="hljs-keyword">@import</span> <span class="hljs-string">"./custom"</span>;</code></pre>
 				<p>Also note that partials are considered first, e.g.</p>
 				<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">"custom"</span>;</code></pre>
-				<p>Will look for <code>_custom</code> first _(with the approptiate extension(s))_, and then for <code>custom</code> if <code>_custom</code> doesn&#39;t exist.</p>
+				<p>Will look for <code>_custom</code> first (<em>with the approptiate extension(s)</em>), and then for <code>custom</code> if <code>_custom</code> doesn&#39;t exist.</p>
 				<a href="#css-injection" id="css-injection" style="color: inherit; text-decoration: none;">
 					<h3>CSS Injection</h3>
 				</a>
