@@ -1,8 +1,8 @@
-/// <reference types="./typings/fibers" />
-/// <reference types="./typings/less" />
-/// <reference types="./typings/postcss-modules" />
-/// <reference types="./typings/sass" />
-/// <reference types="./typings/stylus" />
+/// <reference types="./shims/postcss-modules" />
+/// <reference types="./shims/fibers" />
+/// <reference types="./shims/sass" />
+/// <reference types="./shims/less" />
+/// <reference types="./shims/stylus" />
 
 import { createFilter } from "@rollup/pluginutils";
 
@@ -24,23 +24,23 @@ import {
 import { mm } from "./utils/sourcemap";
 import {
   inferOption,
-  inferResolverOption,
+  inferModeOption,
+  inferHandlerOption,
+  ensureUseOption,
   ensurePCSSOption,
   ensurePCSSPlugins,
-  ensureUseOption,
-  inferModeOption,
 } from "./utils/options";
 
 export default (options: Options = {}): Plugin => {
   const filter = createFilter(options.include, options.exclude);
 
-  const postcssLoaderOpts: PostCSSLoaderOptions = {
+  const postcssOpts: PostCSSLoaderOptions = {
     ...inferModeOption(options.mode),
 
     minimize: inferOption(options.minimize, false),
     config: inferOption(options.config, {}),
-    import: inferResolverOption(options.import, options.alias),
-    url: inferResolverOption(options.url, options.alias),
+    import: inferHandlerOption(options.import, options.alias),
+    url: inferHandlerOption(options.url, options.alias),
     modules: inferOption(options.modules, false),
 
     to: options.to,
@@ -57,9 +57,9 @@ export default (options: Options = {}): Plugin => {
   };
 
   const loaders = new Loaders({
-    use: [["postcss", postcssLoaderOpts], ...ensureUseOption(options.use, options), "sourcemap"],
+    use: [["postcss", postcssOpts], ...ensureUseOption(options.use, options), "sourcemap"],
     loaders: options.loaders ?? [],
-    extensions: postcssLoaderOpts.extensions,
+    extensions: postcssOpts.extensions,
   });
 
   const isSupported = (id: string): boolean => filter(id) && loaders.isSupported.call(loaders, id);
@@ -107,7 +107,7 @@ export default (options: Options = {}): Plugin => {
       for (const [fileName, source] of ctx.assets)
         this.emitFile({ type: "asset", fileName, source });
 
-      if (postcssLoaderOpts.extract) {
+      if (postcssOpts.extract) {
         res.extracted && extracted.set(id, res.extracted);
         return {
           code: res.code,
@@ -126,9 +126,10 @@ export default (options: Options = {}): Plugin => {
     augmentChunkHash(chunk) {
       if (extracted.size === 0) return;
 
-      const ids = Object.keys(chunk.modules)
-        .map(m => this.getModuleInfo(m))
-        .reduce<string[]>((acc, i) => [...acc, i.id, ...i.importedIds], []);
+      const ids = Object.keys(chunk.modules).reduce<string[]>((acc, id) => {
+        const i = this.getModuleInfo(id);
+        return [...acc, i.id, ...i.importedIds];
+      }, []);
 
       const hashable = [...extracted.values()]
         .filter(e => ids.includes(e.id))
@@ -151,8 +152,8 @@ export default (options: Options = {}): Plugin => {
 
       const getExtractedData = (name: string, ids: string[]): ExtractedData => {
         const fileName =
-          typeof postcssLoaderOpts.extract === "string"
-            ? normalizePath(postcssLoaderOpts.extract).replace(/^\.[/\\]/, "")
+          typeof postcssOpts.extract === "string"
+            ? normalizePath(postcssOpts.extract).replace(/^\.[/\\]/, "")
             : normalizePath(`${name}.css`);
 
         if (isAbsolutePath(fileName))
@@ -195,18 +196,17 @@ export default (options: Options = {}): Plugin => {
       const getImports = (chunk: OutputChunk): string[] => {
         const orderedIds = new Set<string>();
 
-        let ids = Object.keys(chunk.modules)
-          .map(m => this.getModuleInfo(m))
-          .reduce<string[]>((acc, i) => [...acc, i.id, ...i.importedIds], []);
+        let ids = Object.keys(chunk.modules).reduce<string[]>((acc, id) => {
+          const i = this.getModuleInfo(id);
+          return [...acc, i.id, ...i.importedIds];
+        }, []);
 
         for (;;) {
-          ids = ids
-            .map(id => {
-              const i = this.getModuleInfo(id);
-              if (isSupported(i.id)) orderedIds.delete(i.id), orderedIds.add(i.id);
-              return i.importedIds;
-            })
-            .reduce<string[]>((acc, ids) => [...acc, ...ids], []);
+          ids = ids.reduce<string[]>((acc, id) => {
+            const i = this.getModuleInfo(id);
+            if (isSupported(i.id)) orderedIds.delete(i.id), orderedIds.add(i.id);
+            return [...acc, ...i.importedIds];
+          }, []);
 
           if (ids.length === 0) return [...orderedIds];
         }
@@ -216,7 +216,7 @@ export default (options: Options = {}): Plugin => {
         const emittedMap = new Map<string, string[]>();
         const chunks = Object.values(bundle).filter((c): c is OutputChunk => c.type === "chunk");
         const entries = chunks.filter(c => c.isEntry || c.isDynamicEntry);
-        const multiFile = typeof postcssLoaderOpts.extract !== "string" && entries.length > 1;
+        const multiFile = typeof postcssOpts.extract !== "string" && entries.length > 1;
 
         if (multiFile) {
           const emitted = preserveModules ? chunks : entries;
@@ -252,9 +252,9 @@ export default (options: Options = {}): Plugin => {
         }
 
         // Perform minimization on the extracted file
-        if (postcssLoaderOpts.minimize) {
+        if (postcssOpts.minimize) {
           const cssNanoOpts: cssnano.CssNanoOptions & postcss.ProcessOptions =
-            typeof postcssLoaderOpts.minimize === "object" ? postcssLoaderOpts.minimize : {};
+            typeof postcssOpts.minimize === "object" ? postcssOpts.minimize : {};
 
           cssNanoOpts.from = res.name;
           cssNanoOpts.to = res.name;

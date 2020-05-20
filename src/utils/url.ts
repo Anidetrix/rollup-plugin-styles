@@ -1,7 +1,7 @@
 import path from "path";
 import { isAbsolutePath, isRelativePath, normalizePath } from "./path";
 
-export const isModule = (url: string): boolean => /^~([\dA-Za-z]|@)\S+/.test(url);
+export const isModule = (url: string): boolean => /^~[\d@A-Za-z]\S+/.test(url);
 
 export function getUrlOfPartial(url: string): string {
   const parsedUrl = path.parse(url);

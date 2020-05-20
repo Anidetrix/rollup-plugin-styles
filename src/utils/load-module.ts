@@ -1,19 +1,13 @@
-import { Sass } from "sass";
-import { Sass as NodeSass } from "node-sass";
-import { FiberConstructor } from "fibers";
-import { Less } from "less";
-import { Stylus } from "stylus";
-
 import resolveAsync from "./resolve-async";
 
-export type ModuleImportMap = {
-  sass: Sass;
-  "node-sass": NodeSass;
-  fibers: FiberConstructor;
-  less: Less;
-  stylus: Stylus;
-  [k: string]: unknown;
-};
+export interface ModuleImportMap {
+  sass: sass.Sass;
+  "node-sass": sass.Sass;
+  fibers: fibers.Fiber;
+  less: less.Less;
+  stylus: stylus.Stylus;
+  [x: string]: unknown;
+}
 
 export default async <T extends keyof ModuleImportMap>(
   moduleId: T,

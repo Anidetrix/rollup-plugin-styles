@@ -32,7 +32,7 @@ async function loadConfig(
   const configPath =
     typeof config === "object" && config.path ? path.resolve(config.path) : path.dirname(id);
 
-  const context: { [prop: string]: object | string } = {
+  const context: { [x: string]: object | string } = {
     file: {
       extname: path.extname(id),
       dirname: path.dirname(id),
@@ -42,7 +42,7 @@ async function loadConfig(
   };
 
   return loadPostCSSConfig(context, configPath).catch(error => {
-    if (!(error.message as string).toLowerCase().includes("no postcss config found")) throw error;
+    if (!/no postcss config found/i.test(error.message)) throw error;
     return {};
   });
 }
@@ -74,7 +74,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
 
     const supportModules = Boolean(options.modules || autoModules);
 
-    const modulesExports: { [filepath: string]: { [prop: string]: string } } = {};
+    const modulesExports: { [file: string]: { [x: string]: string } } = {};
 
     const postcssOpts: PostCSSLoaderOptions["postcss"] & {
       from: string;
@@ -99,8 +99,6 @@ const loader: Loader<PostCSSLoaderOptions> = {
       const modulesOptions = typeof options.modules === "object" ? options.modules : {};
       plugins.push(
         ...postcssModules({
-          // Skip hash while testing since CSS content would differ on Windows and Linux
-          // due to different line endings.
           generateScopedName: process.env.NODE_ENV === "test" ? "[name]_[local]" : undefined,
           failOnWrongOrder: true,
           ...modulesOptions,

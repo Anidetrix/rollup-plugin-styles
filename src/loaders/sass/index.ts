@@ -1,5 +1,3 @@
-import { Options as SASSOptions, Result as SASSResult } from "sass";
-
 import { Loader, SASSLoaderOptions } from "../../types";
 import loadModule from "../../utils/load-module";
 import { normalizePath } from "../../utils/path";
@@ -19,7 +17,7 @@ const loader: Loader<SASSLoaderOptions> = {
     const useFibers = options.fibers ?? (type === "sass" && process.env.NODE_ENV !== "test");
     const fiber = useFibers ? await loadModule("fibers") : undefined;
 
-    const render = async (options: SASSOptions): Promise<SASSResult> =>
+    const render = async (options: sass.Options): Promise<sass.Result> =>
       new Promise((resolve, reject) => {
         sass.render(options, (err, css) => (err ? reject(err) : resolve(css)));
       });
@@ -52,7 +50,10 @@ const loader: Loader<SASSLoaderOptions> = {
     const deps = res.stats.includedFiles;
     for (const dep of deps) this.deps.add(normalizePath(dep));
 
-    return { code: res.css.toString(), map: res.map?.toString() ?? map };
+    return {
+      code: Buffer.from(res.css).toString(),
+      map: res.map ? Buffer.from(res.map).toString() : map,
+    };
   },
 };
 

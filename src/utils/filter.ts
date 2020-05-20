@@ -6,7 +6,7 @@ export const isNullish = <T>(v: T): v is Extract<T, null | undefined> => {
 
 export const nullishFilter = <T>(v: T): v is NonNullable<T> => !isNullish(v);
 
-export const denullifyObject = <T>(o: { [k: string]: T }): { [k: string]: NonNullable<T> } =>
+export const denullifyObject = <T>(o: { [x: string]: T }): { [x: string]: NonNullable<T> } =>
   Object.entries(o)
     .filter(([, v]) => nullishFilter(v))
     .reduce((acc, [k, v]) => ({ ...acc, [k]: v }), {});

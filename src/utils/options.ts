@@ -6,7 +6,6 @@ import {
   SASSLoaderOptions,
   StylusLoaderOptions,
   LESSLoaderOptions,
-  ObjectWithUnknownProps,
 } from "../types";
 import { nullishFilter, isNullish } from "./filter";
 
@@ -19,11 +18,11 @@ export function inferOption<T, TDef extends T | boolean>(
   return defaultValue;
 }
 
-type Mode = {
+interface Mode {
   inject: PostCSSLoaderOptions["inject"];
   extract: PostCSSLoaderOptions["extract"];
   emit: PostCSSLoaderOptions["emit"];
-};
+}
 export function inferModeOption(mode: Options["mode"]): Mode {
   const m = Array.isArray(mode)
     ? {
@@ -40,38 +39,28 @@ export function inferModeOption(mode: Options["mode"]): Mode {
   return m;
 }
 
-export function inferResolverOption<T extends { alias?: { [from: string]: string } }>(
-  url: T | boolean | undefined,
+export function inferHandlerOption<T extends { alias?: { [from: string]: string } }>(
+  option: T | boolean | undefined,
   alias: T["alias"],
 ): T | false {
-  const u = inferOption(url, { alias } as T);
-  if (typeof u === "object" && !u.alias) u.alias = alias;
-  return u;
+  const opt = inferOption(option, { alias } as T);
+  if (typeof opt === "object" && !opt.alias) opt.alias = alias;
+  return opt;
 }
 
-type UseOpts = {
+interface UseOpts {
   sass?: SASSLoaderOptions;
-  stylus?: StylusLoaderOptions;
   less?: LESSLoaderOptions;
-};
+  stylus?: StylusLoaderOptions;
+}
 export function ensureUseOption(use: Options["use"], opts: UseOpts): LoadersOptions["use"] {
-  const sass = ["sass", opts.sass ?? {}] as [string, ObjectWithUnknownProps];
-  const stylus = ["stylus", opts.stylus ?? {}] as [string, ObjectWithUnknownProps];
-  const less = ["less", opts.less ?? {}] as [string, ObjectWithUnknownProps];
-  if (!Array.isArray(use)) return [sass, stylus, less];
-
-  return use.map(loader => {
-    switch (loader) {
-      case "sass":
-        return sass;
-      case "stylus":
-        return stylus;
-      case "less":
-        return less;
-      default:
-        return loader;
-    }
-  });
+  const all: { [x: string]: [string, object] } = {
+    sass: ["sass", opts.sass ?? {}],
+    less: ["less", opts.less ?? {}],
+    stylus: ["stylus", opts.stylus ?? {}],
+  };
+  if (!Array.isArray(use)) return Object.values(all);
+  return use.map(loader => all[loader] ?? loader);
 }
 
 type PCSSOption = "parser" | "syntax" | "stringifier" | "plugin";

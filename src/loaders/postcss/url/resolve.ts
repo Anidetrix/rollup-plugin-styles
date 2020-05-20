@@ -3,12 +3,17 @@ import fs from "fs-extra";
 import resolveAsync from "../../../utils/resolve-async";
 
 /** File resolved by URL resolver */
-export type ResolvedFile = { from: string; source: Uint8Array };
+export interface UrlFile {
+  /** Absolute path to file */
+  from: string;
+  /** File source */
+  source: Uint8Array;
+}
 
 /** URL resolver */
-export type Resolve = (url: string, basedir: string) => Promise<ResolvedFile>;
+export type UrlResolve = (url: string, basedir: string) => Promise<UrlFile>;
 
-const resolve: Resolve = async (url, basedir) => {
+const resolve: UrlResolve = async (url, basedir) => {
   const options = { basedir };
   let from: string;
   try {

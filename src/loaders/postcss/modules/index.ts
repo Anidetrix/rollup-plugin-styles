@@ -3,15 +3,14 @@ import modulesValues from "postcss-modules-values";
 import localByDefault, { LocalByDefaultOptions } from "postcss-modules-local-by-default";
 import extractImports, { ExtractImportsOptions } from "postcss-modules-extract-imports";
 import modulesScope, { ScopeOptions } from "postcss-modules-scope";
-
 import generateScopedNameDefault from "./generate";
 
 /** Options for [CSS Modules](https://github.com/css-modules/css-modules) */
-export type ModulesOptions = {
+export interface ModulesOptions {
   /**
    * Default mode for classes
    * @default "local"
-   * */
+   */
   mode?: LocalByDefaultOptions["mode"];
   /** Fail on wrong order of composition */
   failOnWrongOrder?: ExtractImportsOptions["failOnWrongOrder"];
@@ -25,11 +24,11 @@ export type ModulesOptions = {
    * - `[local]`: The original value of the selector.
    * - `[hash(:<num>)]`: A hash based on the name and content of the asset (with optional length).
    * @default "[name]_[local]__[hash:8]"
-   * */
+   */
   generateScopedName?: string | ScopeOptions["generateScopedName"];
   /** Function for resulting replacements extraction */
-  getReplacements?: (file: string, replacements: { [k: string]: string }, out?: string) => void;
-};
+  getReplacements?: (file: string, replacements: { [x: string]: string }, out?: string) => void;
+}
 
 export default (options: ModulesOptions): postcss.Transformer[] => {
   const opts = {

@@ -1,9 +1,5 @@
-import { Sass } from "sass";
-
-import { SASSLoaderOptions } from "../../types";
 import loadModule from "../../utils/load-module";
 
-type SassImplementation = NonNullable<SASSLoaderOptions["impl"]>;
 const allSassIDs = ["node-sass", "sass"] as const;
 
 const idFmt = allSassIDs
@@ -15,14 +11,18 @@ const idFmt = allSassIDs
   })
   .join(" ");
 
-export async function loadSass(impl?: SassImplementation): Promise<[Sass, SassImplementation]> {
-  const sassIDs = impl ? ([impl] as const) : allSassIDs;
+export async function loadSass(impl?: string): Promise<[sass.Sass, string]> {
+  // Loading provided implementation
+  if (impl) {
+    const provided = await loadModule(impl);
+    if (provided) return [provided as sass.Sass, impl];
+    throw new Error(`Could not load \`${impl}\` Sass implementation`);
+  }
 
   // Loading one of the supported modules
-  for await (const id of sassIDs) {
-    const module = await loadModule(id);
-    if (module) return [module, id];
-    if (impl) throw new Error(`Could not load \`${impl}\` Sass implementation`);
+  for await (const id of allSassIDs) {
+    const sass = await loadModule(id);
+    if (sass) return [sass, id];
   }
 
   throw new Error(`You need to install ${idFmt} package in order to process Sass files`);

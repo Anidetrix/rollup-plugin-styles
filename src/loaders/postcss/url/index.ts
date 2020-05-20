@@ -7,7 +7,7 @@ import { normalizePath, isAbsolutePath } from "../../../utils/path";
 
 import { firstExtRe, dataURIRe } from "../common";
 
-import resolveDefault, { Resolve } from "./resolve";
+import resolveDefault, { UrlResolve } from "./resolve";
 import generateName from "./generate";
 import { walkUrls, isDeclWithUrl } from "./utils";
 import inlineFile from "./inline";
@@ -15,22 +15,22 @@ import inlineFile from "./inline";
 const name = "styles-url";
 
 /** URL handler options */
-export type UrlOptions = {
+export interface UrlOptions {
   /**
    * Inline files instead of copying
-   * @default false
+   * @default true for `inject` mode, otherwise false
    */
   inline?: boolean;
   /**
    * Public Path for URLs in CSS files
    * @default "./"
-   * */
+   */
   publicPath?: string;
   /**
    * Directory path for outputted CSS assets,
    * which is not included into resulting URL
    * @default "."
-   * */
+   */
   assetDir?: string;
   /**
    * Enable/disable name generation with hash for outputted CSS assets
@@ -41,21 +41,21 @@ export type UrlOptions = {
    * - `[name]`: The file name of the asset excluding any extension.
    *
    * Forward slashes / can be used to place files in sub-directories.
-   * @default "assets/[name]-[hash][extname]" ("assets/[name][extname]" if `false`)
-   * */
+   * @default "assets/[name]-[hash][extname]" ("assets/[name][extname]" if false)
+   */
   hash?: boolean | string;
   /**
    * Provide custom resolver for URLs
    * in place of the default one
    */
-  resolve?: Resolve;
+  resolve?: UrlResolve;
   /**
    * Aliases for URL paths.
    * Overrides the global `alias` option.
    * - ex.: `{"foo":"bar"}`
    */
   alias?: { [from: string]: string };
-};
+}
 
 const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
   name,
@@ -88,6 +88,7 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
     const imported = res.messages
       .filter(msg => msg.type === "dependency")
       .map<string>(msg => msg.file);
+
     css.walkDecls(decl => {
       if (!isDeclWithUrl(decl)) return;
       const parsed = valueParser(decl.value);

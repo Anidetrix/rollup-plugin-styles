@@ -4,17 +4,17 @@ import valueParser from "postcss-value-parser";
 
 import { normalizePath } from "../../../utils/path";
 
-import resolveDefault, { Resolve } from "./resolve";
+import resolveDefault, { ImportResolve } from "./resolve";
 
 const name = "styles-import";
 
 /** `@import` handler options */
-export type ImportOptions = {
+export interface ImportOptions {
   /**
    * Provide custom resolver for imports
    * in place of the default one
    */
-  resolve?: Resolve;
+  resolve?: ImportResolve;
   /**
    * Aliases for import paths.
    * Overrides the global `alias` option.
@@ -27,7 +27,7 @@ export type ImportOptions = {
    * @default [".css", ".pcss", ".postcss", ".sss"]
    */
   extensions?: string[];
-};
+}
 
 const plugin: postcss.Plugin<ImportOptions> = postcss.plugin(
   name,
@@ -72,7 +72,7 @@ const plugin: postcss.Plugin<ImportOptions> = postcss.plugin(
         url = urlNode.value;
       } else if (urlNode.type === "function") {
         // Invalid function
-        if (urlNode.value.toLowerCase() !== "url") {
+        if (!/^url$/i.test(urlNode.value)) {
           importRule.warn(res, `Invalid \`url\` function in \`${importRule.toString()}\``);
           return;
         }

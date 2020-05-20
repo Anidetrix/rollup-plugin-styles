@@ -1,15 +1,15 @@
 import PQueue from "p-queue";
 
-import { Loader, LoaderContext, LoadersOptions, ObjectWithUnknownProps, Payload } from "../types";
+import { Loader, LoaderContext, LoadersOptions, Payload } from "../types";
 import postcssLoader from "./postcss";
 import sourcemapLoader from "./sourcemap";
 import sassLoader from "./sass";
 import stylusLoader from "./stylus";
 import lessLoader from "./less";
 
-function matchFile(filepath: string, condition: Loader["test"]): boolean {
-  if (typeof condition === "function") return condition(filepath);
-  return Boolean(condition?.test(filepath));
+function matchFile(file: string, condition: Loader["test"]): boolean {
+  if (typeof condition === "function") return condition(file);
+  return Boolean(condition?.test(file));
 }
 
 // This queue makes sure one thread is always available,
@@ -22,8 +22,8 @@ const workQueue = new PQueue({ concurrency: threadPoolSize - 1 });
 
 export default class Loaders {
   loaders: Loader[] = [];
-  use: [string, ObjectWithUnknownProps][];
-  test: (filepath: string) => boolean;
+  use: [string, object][];
+  test: (file: string) => boolean;
 
   constructor(options: LoadersOptions) {
     this.use = options.use.map(rule => {
@@ -32,8 +32,7 @@ export default class Loaders {
       throw new TypeError("The rule in `use` option must be string or array!");
     });
 
-    this.test = (filepath): boolean =>
-      options.extensions.some(ext => filepath.toLowerCase().endsWith(ext));
+    this.test = (file): boolean => options.extensions.some(ext => file.toLowerCase().endsWith(ext));
 
     this.listLoader(postcssLoader);
     this.listLoader(sourcemapLoader);
@@ -47,7 +46,7 @@ export default class Loaders {
     return this.loaders.find(loader => loader.name === name);
   }
 
-  listLoader<T extends ObjectWithUnknownProps>(loader: Loader<T>): void {
+  listLoader<T extends object>(loader: Loader<T>): void {
     if (!this.use.some(rule => rule[0] === loader.name)) return;
     if (this.getLoader(loader.name)) this.unlistLoader(loader.name);
     this.loaders.push(loader as Loader);
@@ -57,8 +56,8 @@ export default class Loaders {
     this.loaders = this.loaders.filter(loader => loader.name !== name);
   }
 
-  isSupported(filepath: string): boolean {
-    return this.test(filepath) || this.loaders.some(loader => matchFile(filepath, loader.test));
+  isSupported(file: string): boolean {
+    return this.test(file) || this.loaders.some(loader => matchFile(file, loader.test));
   }
 
   async process(payload: Payload, context: LoaderContext): Promise<Payload> {

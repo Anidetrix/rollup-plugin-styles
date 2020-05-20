@@ -1,16 +1,16 @@
 import postcss from "postcss";
-import { extractICSS, replaceSymbols, replaceValueSymbols, Replacements } from "icss-utils";
-
+import { extractICSS, replaceSymbols, replaceValueSymbols } from "icss-utils";
+import { ModulesOptions } from "../modules";
 import loadDefault, { Load } from "./load";
 import resolve from "./resolve";
 
 const name = "styles-icss";
 
-export type InteroperableCSSOptions = {
+export interface InteroperableCSSOptions {
   load?: Load;
-  getReplacements?: (file: string, replacements: Replacements, out?: string) => void;
+  getReplacements?: ModulesOptions["getReplacements"];
   extensions?: string[];
-};
+}
 
 const plugin: postcss.Plugin<InteroperableCSSOptions> = postcss.plugin(
   name,
