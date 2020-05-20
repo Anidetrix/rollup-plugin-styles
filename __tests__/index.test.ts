@@ -298,6 +298,17 @@ validateMany("sass", [
     title: "import",
     input: "sass-import/index.js",
   },
+  {
+    title: "importer",
+    input: "sass-importer/index.js",
+    options: {
+      sass: {
+        importer(_, __, done): void {
+          done({ contents: ".virtual{color:red}" });
+        },
+      },
+    },
+  },
 ]);
 
 validateMany("less", [
