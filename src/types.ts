@@ -1,32 +1,23 @@
 import postcss from "postcss";
 import cssnano from "cssnano";
-import { CreateFilter } from "@rollup/pluginutils";
-import { PluginContext } from "rollup";
-import { Importer as SASSImporter } from "sass";
-import { Plugin as LESSPlugin } from "less";
-import { ModulesOptions } from "./loaders/postcss/modules";
-import { UrlOptions } from "./loaders/postcss/url";
+import rollup from "rollup";
 import { ImportOptions } from "./loaders/postcss/import";
-
-/** Object, which properties are unknown */
-export type ObjectWithUnknownProps = { [prop: string]: unknown };
+import { UrlOptions } from "./loaders/postcss/url";
+import { ModulesOptions } from "./loaders/postcss/modules";
 
 /** `postcss-load-config`'s options */
-export type PostCSSLoadConfigOptions = {
-  /**
-   * Path to PostCSS config file directory
-   * @default undefined
-   */
+export interface PostCSSLoadConfigOptions {
+  /** Path to PostCSS config file directory */
   path?: string;
   /**
    * Context object passed to PostCSS config file
    * @default {}
    */
-  ctx?: ObjectWithUnknownProps;
-};
+  ctx?: object;
+}
 
-/** Options for PostCSS Loader */
-export type PostCSSLoaderOptions = {
+/** Options for PostCSS loader */
+export interface PostCSSLoaderOptions {
   /** @see {@link Options.minimize} */
   minimize: Exclude<Options["minimize"], true | undefined>;
   /** @see {@link Options.config} */
@@ -65,75 +56,75 @@ export type PostCSSLoaderOptions = {
     /** @see {@link Options.plugins} */
     plugins?: postcss.Transformer[];
   };
-};
+}
 
-/** Options for Sass Loader */
-export type SASSLoaderOptions = {
+/** Options for Sass loader */
+export interface SASSLoaderOptions {
   /** Sass importer, or array of such */
-  importer?: SASSImporter | SASSImporter[];
+  importer?: sass.Importer | sass.Importer[];
   /** Data to prepend to every Sass file */
   data?: string;
   /** Force Sass implementation */
-  impl?: "node-sass" | "sass";
+  impl?: string;
   /** Forcefully disable/enable `fibers` */
   fibers?: boolean;
   /** Any options for `sass` processor */
   [option: string]: unknown;
-};
+}
 
 /** Options for Stylus loader */
-export type StylusLoaderOptions = {
+export interface StylusLoaderOptions {
   /** Array of paths for Stylus */
   paths?: string[];
   /** Any options for `stylus` processor */
   [option: string]: unknown;
-};
+}
 
-/** Options for Less Loader */
-export type LESSLoaderOptions = {
+/** Options for Less loader */
+export interface LESSLoaderOptions {
   /** Array of Less plugins */
-  plugins?: LESSPlugin[];
+  plugins?: less.Plugin[];
   /** Any options for `less` processor */
   [option: string]: unknown;
-};
+}
 
 /** Options for {@link Loaders} class */
-export type LoadersOptions = {
+export interface LoadersOptions {
   /** @see {@link Options.use} */
-  use: (string | [string] | [string, ObjectWithUnknownProps])[];
+  use: (string | [string] | [string, object])[];
   /** @see {@link Options.loaders} */
   loaders: Loader[];
   /** @see {@link Options.extensions} */
   extensions: string[];
-};
+}
 
 /**
  * Loader
- * @param LoaderOptionsType type of loader's options
- * */
-export type Loader<TLoaderOptions = ObjectWithUnknownProps> = {
+ * @param TLoaderOptions type of loader's options
+ */
+export interface Loader<TLoaderOptions = object> {
   /** Name */
   name: string;
   /**
-   * Test to decide if file should be processed.
+   * Test to control if file should be processed.
    * Also used for plugin's supported files test.
-   * */
-  test?: RegExp | ((filepath: string) => boolean);
+   */
+  test?: RegExp | ((file: string) => boolean);
   /** Skip testing, always process the file */
   alwaysProcess?: boolean;
   /** Function for processing */
   process: (this: LoaderContext<TLoaderOptions>, payload: Payload) => Promise<Payload> | Payload;
-};
+}
 
 /**
  * Loader's context
- * @param LoaderOptionsType type of loader's options
- * */
-export type LoaderContext<TLoaderOptions = ObjectWithUnknownProps> = {
+ * @param TLoaderOptions type of loader's options
+ */
+export interface LoaderContext<TLoaderOptions = object> {
   /**
    * Loader's options
    * @default {}
-   * */
+   */
   readonly options: TLoaderOptions;
   /** @see {@link Options.sourceMap} */
   readonly sourceMap?: boolean | "inline";
@@ -143,14 +134,14 @@ export type LoaderContext<TLoaderOptions = ObjectWithUnknownProps> = {
   readonly deps: Set<string>;
   /** Assets to emit */
   readonly assets: Map<string, Uint8Array>;
-  /** Function for emitting a waring */
-  readonly warn: PluginContext["warn"];
-  /** https://rollupjs.org/guide/en#plugin-context */
-  readonly plugin: PluginContext;
-};
+  /** [Plugin's context](https://rollupjs.org/guide/en#plugin-context) */
+  readonly plugin: rollup.PluginContext;
+  /** [Function for emitting a warning](https://rollupjs.org/guide/en/#thiswarnwarning-string--rollupwarning-position-number---column-number-line-number---void) */
+  readonly warn: rollup.PluginContext["warn"];
+}
 
 /** Loader's payload */
-export type Payload = {
+export interface Payload {
   /** File content */
   code: string;
   /** Sourcemap */
@@ -164,67 +155,53 @@ export type Payload = {
     /** Sourcemap */
     map?: string;
   };
-};
+}
 
 /** CSS data for extraction */
-export type ExtractedData = {
+export interface ExtractedData {
   /** CSS */
   css: string;
   /** Sourcemap */
   map?: string;
   /** Output name for CSS */
   name: string;
-};
+}
 
 /** Options for CSS injection */
-export type InjectOptions = {
+export interface InjectOptions {
   /**
-   * Insert `<style>` tag into container as a first child
+   * Insert `<style>` tag(s) to the beginning of the container
    * @default false
-   * */
+   */
   prepend?: boolean;
   /**
    * Inject CSS into single `<style>` tag only
    * @default false
-   * */
+   */
   singleTag?: boolean;
   /**
    * Container for `<style>` tag(s) injection
    * @default "head"
-   * */
+   */
   container?: string;
-};
+}
 
 /** `rollup-plugin-styles`'s full option list */
 export interface Options {
-  /**
-   * Files to include for processing
-   * @default undefined
-   * */
-  include?: Parameters<CreateFilter>[0];
-  /**
-   * Files to exclude from processing
-   * @default undefined
-   * */
-  exclude?: Parameters<CreateFilter>[1];
+  /** Files to include for processing */
+  include?: ReadonlyArray<string | RegExp> | string | RegExp | null;
+  /** Files to exclude from processing */
+  exclude?: ReadonlyArray<string | RegExp> | string | RegExp | null;
   /**
    * PostCSS will process files ending with these extensions
    * @default [".css", ".pcss", ".postcss", ".sss"]
-   * */
+   */
   extensions?: string[];
   /**
    * A list of plugins for PostCSS,
    * which are used before plugins loaded from PostCSS config file, if any
-   * @default undefined
-   * */
-  plugins?: (
-    | postcss.Transformer
-    | string
-    | [string]
-    | [string, ObjectWithUnknownProps]
-    | null
-    | undefined
-  )[];
+   */
+  plugins?: (postcss.Transformer | string | [string] | [string, object] | null | undefined)[];
   /**
    * Select mode for this plugin:
    * - `"inject"` *(default)* - Embeds CSS inside JS and injects it into `<head>` at runtime.
@@ -234,10 +211,10 @@ export interface Options {
    * You can also set extraction path manually,
    * relative to output dir/output file's basedir,
    * but not outside of it.
-   * - `"emit"` - Emit pure processed CSS for other plugins in the build pipeline.
-   * Useful when you only need to preprocess CSS.
+   * - `"emit"` - Emit pure processed CSS and pass it along the build pipeline.
+   * Useful if you want to preprocess CSS before using it with CSS consuming plugins.
    * @default "inject"
-   * */
+   */
   mode?:
     | "inject"
     | ["inject", InjectOptions | ((varname: string, id: string) => string)]
@@ -250,12 +227,12 @@ export interface Options {
   /**
    * Enable/disable or pass options for CSS `@import` resolver
    * @default true
-   * */
+   */
   import?: ImportOptions | boolean;
   /**
    * Enable/disable or pass options for CSS URL resolver
    * @default true
-   * */
+   */
   url?: UrlOptions | boolean;
   /**
    * Aliases for URL and import paths
@@ -266,7 +243,7 @@ export interface Options {
    * Enable and optionally pass additional configuration for
    * [CSS Modules](https://github.com/css-modules/css-modules)
    * @default false
-   * */
+   */
   modules?: boolean | ModulesOptions;
   /**
    * Automatically enable
@@ -275,78 +252,70 @@ export interface Options {
    * (e.g. `foo.module.css`, `bar.module.stylus`),
    * or pass your own function or regular expression
    * @default false
-   * */
+   */
   autoModules?: boolean | RegExp | ((id: string) => boolean);
   /**
    * Use named exports alongside default export.
-   * You can supply a function to control how exported name is generated.
+   * You can pass a function to control how exported name is generated.
    * @default false
-   * */
+   */
   namedExports?: boolean | ((name: string) => string);
   /**
    * Enable CSS minification and optionally pass additional configuration for
    * [cssnano](https://github.com/cssnano/cssnano)
    * @default false
-   * */
+   */
   minimize?: boolean | cssnano.CssNanoOptions;
   /**
    * Enable sourcemaps
    * @default false
-   * */
+   */
   sourceMap?: boolean | "inline";
   /**
    * Set PostCSS parser, e.g. `sugarss`.
    * Overrides the one loaded from PostCSS config file, if any.
-   * @default undefined
-   * */
+   */
   parser?: string | postcss.Parser;
   /**
    * Set PostCSS stringifier.
    * Overrides the one loaded from PostCSS config file, if any.
-   * @default undefined
-   * */
+   */
   stringifier?: string | postcss.Stringifier;
   /**
    * Set PostCSS syntax.
    * Overrides the one loaded from PostCSS config file, if any.
-   * @default undefined
-   * */
+   */
   syntax?: string | postcss.Syntax;
   /**
    * Enable loading PostCSS config file
    * @default true
-   * */
+   */
   config?: boolean | PostCSSLoadConfigOptions;
   /**
    * Array of loaders to use, executed from right to left.
    * Currently built-in loaders are:
    * - `sass` (Supports `.scss` and `.sass` files)
-   * - `stylus` (Supports `.styl` and `.stylus` files)
    * - `less` (Supports `.less` files)
-   * @default ["sass", "stylus", "less"]
-   * */
+   * - `stylus` (Supports `.styl` and `.stylus` files)
+   * @default ["sass", "less", "stylus"]
+   */
   use?: string[];
   /** Options for Sass loader */
   sass?: SASSLoaderOptions;
-  /** Options for Stylus loader */
-  stylus?: StylusLoaderOptions;
   /** Options for Less loader */
   less?: LESSLoaderOptions;
-  /**
-   * Array of custom loaders
-   * @default undefined
-   * */
+  /** Options for Stylus loader */
+  stylus?: StylusLoaderOptions;
+  /** Array of custom loaders */
   loaders?: Loader[];
   /**
    * Function which is invoked on CSS file import,
    * before any transformations are applied
-   * @default undefined
-   * */
+   */
   onImport?: (code: string, id: string) => void;
   /**
    * Function which is invoked on CSS file export.
-   * Return `boolean` to decide if you want to extract the file or not.
-   * @default undefined
-   * */
+   * Return `boolean` to control if file should be exported or not.
+   */
   onExtract?: (data: ExtractedData) => boolean;
 }

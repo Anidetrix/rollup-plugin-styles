@@ -1,5 +1,8 @@
 {
-  "inputFiles": ["./src"],
   "out": "docs",
-  "theme": "minimal"
+  "includeDeclarations": true,
+  "excludeExternals": true,
+  "disableSources": true,
+  "readme": "none",
+  "gitRevision": "master"
 }

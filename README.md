@@ -8,9 +8,37 @@
 [![code coverage](https://codecov.io/gh/Anidetrix/rollup-plugin-styles/branch/master/graph/badge.svg)](https://codecov.io/gh/Anidetrix/rollup-plugin-styles)
 [![license](https://img.shields.io/github/license/Anidetrix/rollup-plugin-styles)](./LICENSE)
 
-🎨 Universal [Rollup](https://github.com/rollup/rollup) plugin for styles: [PostCSS](https://github.com/postcss/postcss), [Sass](https://github.com/sass/dart-sass), [Less](https://github.com/less/less.js), [Stylus](https://github.com/stylus/stylus) and more.
+### 🎨 Universal [Rollup](https://github.com/rollup/rollup) plugin for styles:
 
-## Install
+- [PostCSS](https://github.com/postcss/postcss)
+- [Sass](https://github.com/sass/dart-sass)
+- [Less](https://github.com/less/less.js)
+- [Stylus](https://github.com/stylus/stylus)
+- [CSS Modules](https://github.com/css-modules/css-modules)
+- URL resolving/rewriting with asset handling
+- Ability to use `@import` statements inside regular CSS
+
+...and much more!
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Importing a file](#importing-a-file)
+    - [CSS/Stylus](#cssstylus)
+    - [Sass/Less](#sassless)
+  - [CSS Injection](#css-injection)
+  - [CSS Extraction](#css-extraction)
+  - [Emitting processed CSS](#emitting-processed-css)
+  - [CSS Modules](#css-modules)
+  - [With Sass/Less/Stylus](#with-sasslessstylus)
+  - [`fibers` (**Sass only**)](#fibers-sass-only)
+- [Main differences from `rollup-plugin-postcss`](#main-differences-from-rollup-plugin-postcss)
+- [Contributing](#contributing)
+- [License](#license)
+- [Thanks](#thanks)
+
+## Installation
 
 ```bash
 npm install -D rollup-plugin-styles # npm
@@ -31,7 +59,7 @@ export default {
     // Governs names of CSS files (for assets from CSS use `hash` option for url handler).
     // Note: using value below will put .css files near js,
     // but make sure to adjust `hash`, `assetDir` and `publicPath`
-    // options for url handler accordingly as well.
+    // options for url handler accordingly.
     assetFileNames: "[name]-[hash][extname]",
   },
   plugins: [styles()],
@@ -44,11 +72,9 @@ After that you can import CSS files in your code:
 import "./style.css";
 ```
 
-Default mode is `inject`, which means generated CSS will be injected into `<head>`, with ability to pass options to CSS injector or even pass your own injector.
+Default mode is `inject`, which means CSS is embedded inside JS and injected into `<head>` at runtime, with ability to pass options to CSS injector or even pass your own injector.
 
 CSS is available as default export in `inject` and `extract` modes, but if [CSS Modules](https://github.com/css-modules/css-modules) are enabled you need to use named `css` export.
-
-In `emit` mode none of the exports are available since it purely processes CSS and passes it along the build pipeline, which is useful if you only want to preprocess CSS for usage with CSS consuming plugins, e.g. [rollup-plugin-lit-css](https://github.com/bennypowers/rollup-plugin-lit-css).
 
 ```js
 // Injects CSS, also available as `style` in this example
@@ -57,7 +83,43 @@ import style from "./style.css";
 import { css } from "./style.css";
 ```
 
-This plugin also automatically detects and uses local PostCSS config files.
+In `emit` mode none of the exports are available as CSS is purely processed and passed along the build pipeline, which is useful if you want to preprocess CSS before using it with CSS consuming plugins, e.g. [rollup-plugin-lit-css](https://github.com/bennypowers/rollup-plugin-lit-css).
+
+PostCSS configuration files will be found and loaded automatically, but this behavior is configurable using `config` option.
+
+### Importing a file
+
+#### CSS/Stylus
+
+```css
+/* Import from `node_modules` */
+@import "bulma/css/bulma";
+/* Local import */
+@import "./custom";
+/* ...or (if no package named `custom` in `node_modules`) */
+@import "custom";
+```
+
+#### Sass/Less
+
+You can prepend the path with `~` to resolve in `node_modules`:
+
+```scss
+// Import from `node_modules`
+@import "~bulma/css/bulma";
+// Local import
+@import "custom";
+// ...or
+@import "./custom";
+```
+
+Also note that partials are considered first, e.g.
+
+```scss
+@import "custom";
+```
+
+Will look for `_custom` first _(with the approptiate extension(s))_, and then for `custom` if `_custom` doesn't exist.
 
 ### CSS Injection
 
@@ -116,7 +178,7 @@ styles({
 });
 ```
 
-### With Sass/Stylus/Less
+### With Sass/Less/Stylus
 
 Install corresponding dependency:
 
@@ -138,16 +200,6 @@ Install corresponding dependency:
   yarn add sass --dev # yarn 1.x
   ```
 
-- For `Stylus` support install `stylus`:
-
-  ```bash
-  npm install -D stylus # npm
-
-  pnpm add -D stylus # pnpm
-
-  yarn add stylus --dev # yarn 1.x
-  ```
-
 - For `Less` support install `less`:
 
   ```bash
@@ -158,19 +210,21 @@ Install corresponding dependency:
   yarn add less --dev # yarn 1.x
   ```
 
-That's it, now you can import `.scss` `.sass` `.styl` `.stylus` `.less` files in your code.
+- For `Stylus` support install `stylus`:
 
-#### imports (**Sass/Scss/Less**)
+  ```bash
+  npm install -D stylus # npm
 
-Similar to how webpack's [sass-loader](https://github.com/webpack-contrib/sass-loader#resolving-import-at-rules) works, you can prepend the import path with `~` to tell this plugin to resolve in `node_modules`:
+  pnpm add -D stylus # pnpm
 
-```scss
-@import "~bulma/css/bulma";
-```
+  yarn add stylus --dev # yarn 1.x
+  ```
 
-#### `fibers` (**Sass/Scss only**)
+That's it, now you can import `.scss` `.sass` `.less` `.styl` `.stylus` files in your code.
 
-This plugin will auto detect `fibers` package when using `sass` implementation.
+### `fibers` (**Sass only**)
+
+By default, `fibers` package will be loaded automatically if available when using `sass` implementation.
 
 > When installed via npm, `Dart Sass` supports a JavaScript API that's fully compatible with `Node Sass` <...>, with support for both the render() and renderSync() functions. <...>
 >
@@ -190,7 +244,7 @@ yarn add fibers --dev # yarn 1.x
 
 ## Configuration
 
-See [API Reference for `Options`](https://anidetrix.github.io/rollup-plugin-styles/interfaces/_src_types_.options.html) for full list of available options.
+See [API Reference for `Options`](https://anidetrix.github.io/rollup-plugin-styles/interfaces/_index_d_.options.html) for full list of available options.
 
 ## Main differences from [rollup-plugin-postcss](https://github.com/egoist/rollup-plugin-postcss)
 
@@ -212,7 +266,7 @@ See [API Reference for `Options`](https://anidetrix.github.io/rollup-plugin-styl
 - Extracts sourcemaps from loaded files
 - More smaller things that I forgot
 
-## Contribute
+## Contributing
 
 Any contributions are always welcome, not only Pull Requests! 😀
 
