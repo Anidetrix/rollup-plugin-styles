@@ -21,10 +21,15 @@ export type ImportOptions = {
    * - ex.: `{"foo":"bar"}`
    */
   alias?: { [from: string]: string };
+  /**
+   * Import files ending with these extensions.
+   * Overrides the global `extensions` option.
+   * @default [".css", ".pcss", ".postcss", ".sss"]
+   */
+  extensions?: string[];
 };
 
-type ImportPrivateOptions = { extensions?: string[] };
-const plugin: postcss.Plugin<ImportOptions & ImportPrivateOptions> = postcss.plugin(
+const plugin: postcss.Plugin<ImportOptions> = postcss.plugin(
   name,
   (options = {}) => async (css, res): Promise<void> => {
     if (!css.source?.input.file) return;
