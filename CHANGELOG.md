@@ -1,3 +1,10 @@
+## [3.5.3](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.5.2...v3.5.3) (2020-05-20)
+
+
+### Bug Fixes
+
+* small misc fixes and changes ([7cbb05a](https://github.com/Anidetrix/rollup-plugin-styles/commit/7cbb05a6269c40b22e03acc84b45fedb82277aeb))
+
 ## [3.5.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.5.1...v3.5.2) (2020-05-20)
 
 
