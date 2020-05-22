@@ -1,3 +1,10 @@
+## [3.5.4](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.5.3...v3.5.4) (2020-05-22)
+
+
+### Bug Fixes
+
+* **code splitting:** infinite loop on cyclic imports ([4dd0ca3](https://github.com/Anidetrix/rollup-plugin-styles/commit/4dd0ca338be34315cb7b9475e932cabd005c61b9))
+
 ## [3.5.3](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.5.2...v3.5.3) (2020-05-20)
 
 
