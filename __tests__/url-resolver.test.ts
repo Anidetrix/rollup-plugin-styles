@@ -25,7 +25,7 @@ describe("url resolver", () => {
 
   it("warns about incorrect resolving", async () => {
     const warning = await validateUrl(".foo{background:url(bg.png)}", {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-return
       resolve: () => "lol" as any,
     });
     expect(warning).toMatchSnapshot("warning");

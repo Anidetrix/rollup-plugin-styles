@@ -1,7 +1,7 @@
 import { Loader } from "../types";
 import { getMap, stripMap } from "../utils/sourcemap";
 
-const loader: Loader<{}> = {
+const loader: Loader = {
   name: "sourcemap",
   alwaysProcess: true,
   async process({ code, map }) {

@@ -32,7 +32,7 @@ async function loadConfig(
   const configPath =
     typeof config === "object" && config.path ? path.resolve(config.path) : path.dirname(id);
 
-  const context: { [x: string]: object | string } = {
+  const context: Record<string, Record<string, unknown>> = {
     file: {
       extname: path.extname(id),
       dirname: path.dirname(id),
@@ -42,7 +42,7 @@ async function loadConfig(
   };
 
   return loadPostCSSConfig(context, configPath).catch(error => {
-    if (!/no postcss config found/i.test(error.message)) throw error;
+    if (!/no postcss config found/i.test((error as Error).message)) throw error;
     return {};
   });
 }
@@ -74,7 +74,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
 
     const supportModules = Boolean(options.modules || autoModules);
 
-    const modulesExports: { [file: string]: { [x: string]: string } } = {};
+    const modulesExports: Record<string, Record<string, string>> = {};
 
     const postcssOpts: PostCSSLoaderOptions["postcss"] & {
       from: string;

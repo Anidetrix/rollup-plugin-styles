@@ -32,7 +32,7 @@ import {
 } from "./utils/options";
 
 export default (options: Options = {}): Plugin => {
-  const filter = createFilter(options.include, options.exclude);
+  const isIncluded = createFilter(options.include, options.exclude);
 
   const postcssOpts: PostCSSLoaderOptions = {
     ...inferModeOption(options.mode),
@@ -62,8 +62,6 @@ export default (options: Options = {}): Plugin => {
     extensions: postcssOpts.extensions,
   });
 
-  const isSupported = (id: string): boolean => filter(id) && loaders.isSupported.call(loaders, id);
-
   const extracted = new Map<string, NonNullable<Payload["extracted"]>>();
 
   let preserveModules: boolean;
@@ -76,7 +74,7 @@ export default (options: Options = {}): Plugin => {
     },
 
     async transform(code, id) {
-      if (!isSupported(id)) return null;
+      if (!isIncluded(id) || !loaders.isSupported(id)) return null;
 
       // Check if file was already processed into JS
       // by other instance(s) of this or other plugin(s)
@@ -176,7 +174,7 @@ export default (options: Options = {}): Plugin => {
 
         const entries = [...extracted.values()]
           .filter(e => ids.includes(e.id))
-          .sort((a, b) => ids.indexOf(a.id) - ids.indexOf(b.id));
+          .sort((a, b) => ids.lastIndexOf(a.id) - ids.lastIndexOf(b.id));
 
         const concat = new Concat(true, path.basename(fileName), "\n");
         for (const res of entries) {
@@ -194,22 +192,22 @@ export default (options: Options = {}): Plugin => {
       };
 
       const getImports = (chunk: OutputChunk): string[] => {
-        const orderedIds = new Set<string>();
+        const ordered: string[] = [];
 
-        let ids = Object.keys(chunk.modules).reduce<string[]>((acc, id) => {
-          const i = this.getModuleInfo(id);
-          return [...acc, i.id, ...i.importedIds];
-        }, []);
-
-        for (;;) {
-          ids = ids.reduce<string[]>((acc, id) => {
-            const i = this.getModuleInfo(id);
-            if (isSupported(i.id)) orderedIds.delete(i.id), orderedIds.add(i.id);
-            return [...acc, ...i.importedIds];
-          }, []);
-
-          if (ids.length === 0) return [...orderedIds];
+        for (const module of Object.keys(chunk.modules)) {
+          const traversed = new Set<string>();
+          let ids = [module];
+          while (ids.length > 0) {
+            ids = ids.reduce<string[]>((acc, id) => {
+              if (!isIncluded(id) || traversed.has(id)) return acc;
+              if (extracted.has(id)) ordered.push(id);
+              else traversed.add(id);
+              return [...acc, ...this.getModuleInfo(id).importedIds];
+            }, []);
+          }
         }
+
+        return ordered;
       };
 
       const getEmitted = (): Map<string, string[]> => {

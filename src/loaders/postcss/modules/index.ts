@@ -27,7 +27,7 @@ export interface ModulesOptions {
    */
   generateScopedName?: string | ((name: string, file: string, css: string) => string);
   /** Function for resulting replacements extraction */
-  getReplacements?: (file: string, replacements: { [x: string]: string }, out?: string) => void;
+  getReplacements?: (file: string, replacements: Record<string, string>, out?: string) => void;
 }
 
 export default (options: ModulesOptions): postcss.Transformer[] => {

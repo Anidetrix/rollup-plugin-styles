@@ -20,7 +20,7 @@ export interface ImportOptions {
    * Overrides the global `alias` option.
    * - ex.: `{"foo":"bar"}`
    */
-  alias?: { [from: string]: string };
+  alias?: Record<string, string>;
   /**
    * Import files ending with these extensions.
    * Overrides the global `extensions` option.

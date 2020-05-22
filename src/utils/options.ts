@@ -39,7 +39,7 @@ export function inferModeOption(mode: Options["mode"]): Mode {
   return m;
 }
 
-export function inferHandlerOption<T extends { alias?: { [from: string]: string } }>(
+export function inferHandlerOption<T extends { alias?: Record<string, string> }>(
   option: T | boolean | undefined,
   alias: T["alias"],
 ): T | false {
@@ -54,7 +54,7 @@ interface UseOpts {
   stylus?: StylusLoaderOptions;
 }
 export function ensureUseOption(use: Options["use"], opts: UseOpts): LoadersOptions["use"] {
-  const all: { [x: string]: [string, object] } = {
+  const all: Record<string, [string, Record<string, unknown>]> = {
     sass: ["sass", opts.sass ?? {}],
     less: ["less", opts.less ?? {}],
     stylus: ["stylus", opts.stylus ?? {}],
@@ -67,7 +67,7 @@ type PCSSOption = "parser" | "syntax" | "stringifier" | "plugin";
 export function ensurePCSSOption<T>(option: T | string, type: PCSSOption): T {
   if (typeof option !== "string") return option;
   try {
-    return require(option);
+    return require(option) as T;
   } catch {
     throw new Error(`Unable to load PostCSS ${type} \`${option}\``);
   }

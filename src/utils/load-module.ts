@@ -1,12 +1,11 @@
 import resolveAsync from "./resolve-async";
 
-export interface ModuleImportMap {
+export interface ModuleImportMap extends Record<string, unknown> {
   sass: sass.Sass;
   "node-sass": sass.Sass;
   fibers: fibers.Fiber;
   less: less.Less;
   stylus: stylus.Stylus;
-  [x: string]: unknown;
 }
 
 export default async <T extends keyof ModuleImportMap>(
@@ -16,19 +15,19 @@ export default async <T extends keyof ModuleImportMap>(
   if (typeof moduleId !== "string") return;
 
   try {
-    return require(moduleId);
+    return require(moduleId) as ModuleImportMap[T];
   } catch {
     /* noop */
   }
 
   try {
-    return require(await resolveAsync(moduleId, { basedir }));
+    return require(await resolveAsync(moduleId, { basedir })) as ModuleImportMap[T];
   } catch {
     /* noop */
   }
 
   try {
-    return require(await resolveAsync(`./${moduleId}`, { basedir }));
+    return require(await resolveAsync(`./${moduleId}`, { basedir })) as ModuleImportMap[T];
   } catch {
     return;
   }

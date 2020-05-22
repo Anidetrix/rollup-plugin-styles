@@ -25,7 +25,7 @@ const load: Load = async (url, file, extensions, processor, opts) => {
   const { messages } = await processor.process(source, { ...opts, from });
   return messages
     .filter(msg => msg.type === "icss")
-    .reduce((acc, msg) => ({ ...acc, ...msg.replacements }), {});
+    .reduce((acc, msg) => ({ ...acc, ...(msg.replacements as Record<string, string>) }), {});
 };
 
 export default load;

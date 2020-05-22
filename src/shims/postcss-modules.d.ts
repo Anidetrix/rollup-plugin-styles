@@ -1,7 +1,7 @@
 /* eslint-disable import/no-duplicates */
 declare module "postcss-modules-values" {
   import { Plugin } from "postcss";
-  export default function (options?: {}): Plugin<{}>;
+  export default function (options?: unknown): Plugin<unknown>;
 }
 
 declare module "postcss-modules-local-by-default" {

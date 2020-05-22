@@ -54,7 +54,7 @@ export interface UrlOptions {
    * Overrides the global `alias` option.
    * - ex.: `{"foo":"bar"}`
    */
-  alias?: { [from: string]: string };
+  alias?: Record<string, string>;
 }
 
 const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
@@ -87,7 +87,7 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
 
     const imported = res.messages
       .filter(msg => msg.type === "dependency")
-      .map<string>(msg => msg.file);
+      .map(msg => msg.file as string);
 
     css.walkDecls(decl => {
       if (!isDeclWithUrl(decl)) return;

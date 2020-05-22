@@ -49,8 +49,8 @@ declare namespace less {
     math?: "always" | "strict" | "parens-division" | "parens" | "strict-legacy" | number;
     silent?: boolean;
     strictUnits?: boolean;
-    globalVars?: { [x: string]: string };
-    modifyVars?: { [x: string]: string };
+    globalVars?: Record<string, string>;
+    modifyVars?: Record<string, string>;
     syncImport?: boolean;
   }
 

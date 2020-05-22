@@ -22,7 +22,7 @@ const workQueue = new PQueue({ concurrency: threadPoolSize - 1 });
 
 export default class Loaders {
   loaders: Loader[] = [];
-  use: [string, object][];
+  use: [string, Record<string, unknown>][];
   test: (file: string) => boolean;
 
   constructor(options: LoadersOptions) {
@@ -46,7 +46,7 @@ export default class Loaders {
     return this.loaders.find(loader => loader.name === name);
   }
 
-  listLoader<T extends object>(loader: Loader<T>): void {
+  listLoader<T extends Record<string, unknown>>(loader: Loader<T>): void {
     if (!this.use.some(rule => rule[0] === loader.name)) return;
     if (this.getLoader(loader.name)) this.unlistLoader(loader.name);
     this.loaders.push(loader as Loader);

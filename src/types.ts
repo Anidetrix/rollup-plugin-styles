@@ -13,11 +13,11 @@ export interface PostCSSLoadConfigOptions {
    * Context object passed to PostCSS config file
    * @default {}
    */
-  ctx?: object;
+  ctx?: Record<string, unknown>;
 }
 
 /** Options for PostCSS loader */
-export interface PostCSSLoaderOptions {
+export interface PostCSSLoaderOptions extends Record<string, unknown> {
   /** @see {@link Options.minimize} */
   minimize: Exclude<Options["minimize"], true | undefined>;
   /** @see {@link Options.config} */
@@ -59,7 +59,7 @@ export interface PostCSSLoaderOptions {
 }
 
 /** Options for Sass loader */
-export interface SASSLoaderOptions {
+export interface SASSLoaderOptions extends Record<string, unknown> {
   /** Sass importer, or array of such */
   importer?: sass.Importer | sass.Importer[];
   /** Data to prepend to every Sass file */
@@ -68,30 +68,24 @@ export interface SASSLoaderOptions {
   impl?: string;
   /** Forcefully disable/enable `fibers` */
   fibers?: boolean;
-  /** Any options for `sass` processor */
-  [option: string]: unknown;
 }
 
 /** Options for Stylus loader */
-export interface StylusLoaderOptions {
+export interface StylusLoaderOptions extends Record<string, unknown> {
   /** Array of paths for Stylus */
   paths?: string[];
-  /** Any options for `stylus` processor */
-  [option: string]: unknown;
 }
 
 /** Options for Less loader */
-export interface LESSLoaderOptions {
+export interface LESSLoaderOptions extends Record<string, unknown> {
   /** Array of Less plugins */
   plugins?: less.Plugin[];
-  /** Any options for `less` processor */
-  [option: string]: unknown;
 }
 
 /** Options for {@link Loaders} class */
 export interface LoadersOptions {
   /** @see {@link Options.use} */
-  use: (string | [string] | [string, object])[];
+  use: (string | [string] | [string, Record<string, unknown>])[];
   /** @see {@link Options.loaders} */
   loaders: Loader[];
   /** @see {@link Options.extensions} */
@@ -102,7 +96,7 @@ export interface LoadersOptions {
  * Loader
  * @param TLoaderOptions type of loader's options
  */
-export interface Loader<TLoaderOptions = object> {
+export interface Loader<TLoaderOptions = Record<string, unknown>> {
   /** Name */
   name: string;
   /**
@@ -120,7 +114,7 @@ export interface Loader<TLoaderOptions = object> {
  * Loader's context
  * @param TLoaderOptions type of loader's options
  */
-export interface LoaderContext<TLoaderOptions = object> {
+export interface LoaderContext<TLoaderOptions = Record<string, unknown>> {
   /**
    * Loader's options
    * @default {}
@@ -201,7 +195,14 @@ export interface Options {
    * A list of plugins for PostCSS,
    * which are used before plugins loaded from PostCSS config file, if any
    */
-  plugins?: (postcss.Transformer | string | [string] | [string, object] | null | undefined)[];
+  plugins?: (
+    | postcss.Transformer
+    | string
+    | [string]
+    | [string, Record<string, unknown>]
+    | null
+    | undefined
+  )[];
   /**
    * Select mode for this plugin:
    * - `"inject"` *(default)* - Embeds CSS inside JS and injects it into `<head>` at runtime.
@@ -238,7 +239,7 @@ export interface Options {
    * Aliases for URL and import paths
    * - ex.: `{"foo":"bar"}`
    */
-  alias?: { [from: string]: string };
+  alias?: Record<string, string>;
   /**
    * Enable and optionally pass additional configuration for
    * [CSS Modules](https://github.com/css-modules/css-modules)
