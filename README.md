@@ -32,9 +32,9 @@
   - [Emitting processed CSS](#emitting-processed-css)
   - [CSS Modules](#css-modules)
   - [With Sass/Less/Stylus](#with-sasslessstylus)
-  - [`fibers` (**Sass only**)](#fibers-sass-only)
+  - [Sass and `fibers`](#sass-and-fibers)
 - [Configuration](#configuration)
-- [Main differences from `rollup-plugin-postcss`](#main-differences-from-rollup-plugin-postcss)
+- [Why](#why)
 - [Contributing](#contributing)
 - [License](#license)
 - [Thanks](#thanks)
@@ -223,7 +223,7 @@ Install corresponding dependency:
 
 That's it, now you can import `.scss` `.sass` `.less` `.styl` `.stylus` files in your code.
 
-### `fibers` (**Sass only**)
+### Sass and `fibers`
 
 By default, `fibers` package will be loaded automatically if available when using `sass` implementation.
 
@@ -247,7 +247,13 @@ yarn add fibers --dev # yarn 1.x
 
 See [API Reference for `Options`](https://anidetrix.github.io/rollup-plugin-styles/interfaces/_index_d_.options.html) for full list of available options.
 
-## Main differences from [rollup-plugin-postcss](https://github.com/egoist/rollup-plugin-postcss)
+## Why
+
+Because alternatives did not look good enough - they are either too basic, too buggy or poorly maintained.
+
+For example, the main alternative (and inspiration) is [rollup-plugin-postcss](https://github.com/egoist/rollup-plugin-postcss), but at the time it is not actively maintained, has a bunch of critical bugs and subjectively lacks some useful features and quality of life improvements which should be a part of it.
+
+With that said, here is the basic list of things which differentiate this plugin from the aforementioned one:
 
 - Written completely in TypeScript
 - Up-to-date [CSS Modules](https://github.com/css-modules/css-modules) implementation
