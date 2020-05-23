@@ -6,12 +6,7 @@
 * trigger release due to `semantic-release` failure (see [here](https://github.com/Anidetrix/rollup-plugin-styles/blob/master/CHANGELOG.md[#354](https://github.com/Anidetrix/rollup-plugin-styles/issues/354)-2020-05-22)) ([c9e6acf](https://github.com/Anidetrix/rollup-plugin-styles/commit/c9e6acff8b4141476b0566ef5b0dc435fde1b5b9)), closes [/github.com/Anidetrix/rollup-plugin-styles/blob/master/CHANGELOG.md#354-2020-05-22](https://github.com//github.com/Anidetrix/rollup-plugin-styles/blob/master/CHANGELOG.md/issues/354-2020-05-22)
 * **code splitting:** infinite loop on cyclic imports ([4dd0ca3](https://github.com/Anidetrix/rollup-plugin-styles/commit/4dd0ca338be34315cb7b9475e932cabd005c61b9))
 
-## [3.5.4](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.5.3...v3.5.4) (2020-05-22)
 
-
-### Bug Fixes
-
-* **code splitting:** infinite loop on cyclic imports ([4dd0ca3](https://github.com/Anidetrix/rollup-plugin-styles/commit/4dd0ca338be34315cb7b9475e932cabd005c61b9))
 
 ## [3.5.3](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.5.2...v3.5.3) (2020-05-20)
 
@@ -20,6 +15,8 @@
 
 * small misc fixes and changes ([7cbb05a](https://github.com/Anidetrix/rollup-plugin-styles/commit/7cbb05a6269c40b22e03acc84b45fedb82277aeb))
 
+
+
 ## [3.5.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.5.1...v3.5.2) (2020-05-20)
 
 
@@ -27,12 +24,16 @@
 
 * better typedoc ([fb31286](https://github.com/Anidetrix/rollup-plugin-styles/commit/fb31286eff12eca938c9ce30b7422e01fb9e0fea))
 
+
+
 ## [3.5.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.5.0...v3.5.1) (2020-05-20)
 
 
 ### Bug Fixes
 
 * typenames too long for typedoc ([13e2d49](https://github.com/Anidetrix/rollup-plugin-styles/commit/13e2d496582e026a1efb3bf9c2d75e296d6c1108))
+
+
 
 # [3.5.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.4.3...v3.5.0) (2020-05-20)
 
@@ -54,12 +55,16 @@
 * overall improvements and optimizations ([a460dd0](https://github.com/Anidetrix/rollup-plugin-styles/commit/a460dd0233de61717039e5365cfcca858dcb1673))
 * **types:** trimmed down vendor types ([6a52be8](https://github.com/Anidetrix/rollup-plugin-styles/commit/6a52be8c10ab067df6c1f1b3b63a67ce5485572f))
 
+
+
 ## [3.4.3](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.4.2...v3.4.3) (2020-05-17)
 
 
 ### Bug Fixes
 
 * **code splitting:** potential over-extraction ([0b94909](https://github.com/Anidetrix/rollup-plugin-styles/commit/0b94909b4d20639ae3f9a5b2f7fcd9649d0ec2fc))
+
+
 
 ## [3.4.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.4.1...v3.4.2) (2020-05-17)
 
@@ -68,6 +73,8 @@
 
 * correct filename for single file /w `preserveModules` ([837f9ed](https://github.com/Anidetrix/rollup-plugin-styles/commit/837f9ed8f00565c5fb8a3920004fe06e1155e503))
 
+
+
 ## [3.4.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.4.0...v3.4.1) (2020-05-17)
 
 
@@ -75,12 +82,16 @@
 
 * correct multi-file detection ([d92d6da](https://github.com/Anidetrix/rollup-plugin-styles/commit/d92d6da45a9af8aa959b3693f7ef4a1418b6db57))
 
+
+
 # [3.4.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.3.4...v3.4.0) (2020-05-16)
 
 
 ### Features
 
 * code splitting rework /w `preserveModules` support ([8f44a7a](https://github.com/Anidetrix/rollup-plugin-styles/commit/8f44a7ab30d98438d2c60dde888b63f67a7f2ad1))
+
+
 
 ## [3.3.4](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.3.3...v3.3.4) (2020-05-15)
 
@@ -95,6 +106,8 @@
 
 * **less:** less code ([2717427](https://github.com/Anidetrix/rollup-plugin-styles/commit/27174273901813108c271906fbdc2d1aef4d1f7e))
 
+
+
 ## [3.3.3](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.3.2...v3.3.3) (2020-05-14)
 
 
@@ -104,6 +117,8 @@
 * do not depend on directory structure for hashing ([18c3022](https://github.com/Anidetrix/rollup-plugin-styles/commit/18c30225ccce6a0cdcd491d4933ca199132eda41))
 * uniform sass error message ([49655a4](https://github.com/Anidetrix/rollup-plugin-styles/commit/49655a40479ff3e1a89f43cde8a88483c0209b90))
 
+
+
 ## [3.3.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.3.1...v3.3.2) (2020-05-13)
 
 
@@ -111,12 +126,16 @@
 
 * `onExtract` func check and desc ([4bfaac5](https://github.com/Anidetrix/rollup-plugin-styles/commit/4bfaac54917fe3f54520042996017553d6ac939f))
 
+
+
 ## [3.3.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.3.0...v3.3.1) (2020-05-13)
 
 
 ### Bug Fixes
 
 * `onExtract` option fix ([65d74cf](https://github.com/Anidetrix/rollup-plugin-styles/commit/65d74cfb48086ca9dd9923fa942e56de17856292))
+
+
 
 # [3.3.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.2.5...v3.3.0) (2020-05-12)
 
@@ -130,6 +149,8 @@
 
 * multi entry support ([840996c](https://github.com/Anidetrix/rollup-plugin-styles/commit/840996cbf8deb4b7928e90ff7ee346905a07fade))
 
+
+
 ## [3.2.5](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.2.4...v3.2.5) (2020-05-11)
 
 
@@ -142,6 +163,8 @@
 
 * simpler error handling ([438d5b1](https://github.com/Anidetrix/rollup-plugin-styles/commit/438d5b1d678854d4ad3cc18ebfdf5d0d0bcf1472))
 
+
+
 ## [3.2.4](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.2.3...v3.2.4) (2020-05-10)
 
 
@@ -150,7 +173,11 @@
 * **sourcemaps:** hashing and fixes for inlining in `extract` mode ([c2bb12d](https://github.com/Anidetrix/rollup-plugin-styles/commit/c2bb12d225d3b86909eeb5b32c85cd9ba8a9a0b0))
 * better match Rollup's hashing method ([1825045](https://github.com/Anidetrix/rollup-plugin-styles/commit/18250456a568aab90c11bbbaa00ed1eef7bf7c7e))
 
+
+
 ## [3.2.3](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.2.2...v3.2.3) (2020-05-09)
+
+
 
 ## [3.2.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.2.1...v3.2.2) (2020-05-09)
 
@@ -159,6 +186,8 @@
 
 * **sass:** do not modify non-module url ([fd022c6](https://github.com/Anidetrix/rollup-plugin-styles/commit/fd022c644f6d9523d2db513952f98ed399b4b435))
 
+
+
 ## [3.2.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.2.0...v3.2.1) (2020-05-09)
 
 
@@ -166,12 +195,16 @@
 
 * respect `output.file` for main CSS chunk ([19eb9d7](https://github.com/Anidetrix/rollup-plugin-styles/commit/19eb9d71cbe1069f03ea4a2fce7340714a6be751))
 
+
+
 # [3.2.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.1.0...v3.2.0) (2020-05-08)
 
 
 ### Features
 
 * **import:** resolve extensions ([9005ab8](https://github.com/Anidetrix/rollup-plugin-styles/commit/9005ab8c4124f18cefcf94064abe191e60d1cca0))
+
+
 
 # [3.1.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.0.6...v3.1.0) (2020-05-07)
 
@@ -185,12 +218,16 @@
 
 * **modules:** customizable `autoModules` ([c3298de](https://github.com/Anidetrix/rollup-plugin-styles/commit/c3298de27a7f983b4e013ce16dffbf8178d5d331))
 
+
+
 ## [3.0.6](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.0.5...v3.0.6) (2020-05-07)
 
 
 ### Bug Fixes
 
 * **sourcemap:** more reliable detection ([a419361](https://github.com/Anidetrix/rollup-plugin-styles/commit/a419361e7db77255e0cb2a0343f27b145f6169b6))
+
+
 
 ## [3.0.5](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.0.4...v3.0.5) (2020-05-06)
 
@@ -199,12 +236,16 @@
 
 * misc fixes ([a4d3924](https://github.com/Anidetrix/rollup-plugin-styles/commit/a4d39247f10a7b3801b6ebbda60bf35a0dcd4e49))
 
+
+
 ## [3.0.4](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.0.3...v3.0.4) (2020-05-05)
 
 
 ### Bug Fixes
 
 * **readme:** clarification ([6f5b995](https://github.com/Anidetrix/rollup-plugin-styles/commit/6f5b99500c291db3e37a82954e02ba4ffe019dbd))
+
+
 
 ## [3.0.3](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.0.2...v3.0.3) (2020-05-05)
 
@@ -213,6 +254,8 @@
 
 * **url handler:** working default `assetDir` ([7187a27](https://github.com/Anidetrix/rollup-plugin-styles/commit/7187a271e3235183dd0e78790faeb482a0d0e775))
 
+
+
 ## [3.0.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.0.1...v3.0.2) (2020-05-05)
 
 
@@ -220,12 +263,16 @@
 
 * hashed url handling ([5735a01](https://github.com/Anidetrix/rollup-plugin-styles/commit/5735a01c6c3035aaa4089e41437ea5a2cd6b6fed))
 
+
+
 ## [3.0.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.0.0...v3.0.1) (2020-05-05)
 
 
 ### Bug Fixes
 
 * normalize assetFileNames dir ([f551a76](https://github.com/Anidetrix/rollup-plugin-styles/commit/f551a76a4d89eaeaceb2a134e32bf318402e215a))
+
+
 
 # [3.0.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.2.4...v3.0.0) (2020-05-05)
 
@@ -246,12 +293,16 @@
 * signature changes for `onExtract`
 As always, please consult documentation and API Reference for details
 
+
+
 ## [2.2.4](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.2.3...v2.2.4) (2020-05-04)
 
 
 ### Bug Fixes
 
 * missing fs-extra ([4173a2a](https://github.com/Anidetrix/rollup-plugin-styles/commit/4173a2aa0c07cca518e1bf54091a32003177d915))
+
+
 
 ## [2.2.3](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.2.2...v2.2.3) (2020-05-04)
 
@@ -260,12 +311,16 @@ As always, please consult documentation and API Reference for details
 
 * do not bundle mime-types ([e444f04](https://github.com/Anidetrix/rollup-plugin-styles/commit/e444f049f71a138702d1b1a439205263cf80c299))
 
+
+
 ## [2.2.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.2.1...v2.2.2) (2020-05-04)
 
 
 ### Bug Fixes
 
 * **styles-url:** clarify which url is unresolved ([aefc263](https://github.com/Anidetrix/rollup-plugin-styles/commit/aefc26359607954832c06d6ca72c97829cb2ee3c))
+
+
 
 ## [2.2.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.2.0...v2.2.1) (2020-05-04)
 
@@ -274,12 +329,16 @@ As always, please consult documentation and API Reference for details
 
 * skip parsing of invalid sourcemaps ([a96d01f](https://github.com/Anidetrix/rollup-plugin-styles/commit/a96d01f6e0ff7253c6f2477147ef241dde19fe75))
 
+
+
 # [2.2.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.1.1...v2.2.0) (2020-05-03)
 
 
 ### Features
 
 * **injector:** one less polyfill needed for ie8 ([97796d8](https://github.com/Anidetrix/rollup-plugin-styles/commit/97796d8a7b8e5029f14681ac3062895133491c14))
+
+
 
 ## [2.1.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.1.0...v2.1.1) (2020-05-03)
 
@@ -288,12 +347,16 @@ As always, please consult documentation and API Reference for details
 
 * **injector:** pass selector instead of element as container ([63bc959](https://github.com/Anidetrix/rollup-plugin-styles/commit/63bc959bdabcdea5b3855232bce4fe78be6da26f))
 
+
+
 # [2.1.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.0.5...v2.1.0) (2020-05-02)
 
 
 ### Features
 
 * extended browser support (>=ie9, or >=ie8 with polyfills) ([d849278](https://github.com/Anidetrix/rollup-plugin-styles/commit/d849278b10d544b7d7e31cc03ff8042e287138c6))
+
+
 
 ## [2.0.5](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.0.4...v2.0.5) (2020-05-02)
 
@@ -302,6 +365,8 @@ As always, please consult documentation and API Reference for details
 
 * revert <no source> removal ([8def44e](https://github.com/Anidetrix/rollup-plugin-styles/commit/8def44e13581dc6ddcee1e71893fcba1cf6a2094))
 
+
+
 ## [2.0.4](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.0.3...v2.0.4) (2020-05-02)
 
 
@@ -309,7 +374,11 @@ As always, please consult documentation and API Reference for details
 
 * remove <no source> from sourcemap ([b1c32e8](https://github.com/Anidetrix/rollup-plugin-styles/commit/b1c32e8c4c31d506df01d87669bcfbe8e2daab4c))
 
+
+
 ## [2.0.3](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.0.2...v2.0.3) (2020-05-01)
+
+
 
 ## [2.0.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v2.0.1...v2.0.2) (2020-05-01)
 
@@ -707,3 +776,6 @@ As always, please consult documentation and API Reference for details
 
 
 ## 1.0.5 (2020-03-13)
+
+
+
