@@ -1,3 +1,11 @@
+## [3.5.4](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.5.3...v3.5.4) (2020-05-23)
+
+
+### Bug Fixes
+
+* trigger release due to `semantic-release` failure (see [here](https://github.com/Anidetrix/rollup-plugin-styles/blob/master/CHANGELOG.md[#354](https://github.com/Anidetrix/rollup-plugin-styles/issues/354)-2020-05-22)) ([c9e6acf](https://github.com/Anidetrix/rollup-plugin-styles/commit/c9e6acff8b4141476b0566ef5b0dc435fde1b5b9)), closes [/github.com/Anidetrix/rollup-plugin-styles/blob/master/CHANGELOG.md#354-2020-05-22](https://github.com//github.com/Anidetrix/rollup-plugin-styles/blob/master/CHANGELOG.md/issues/354-2020-05-22)
+* **code splitting:** infinite loop on cyclic imports ([4dd0ca3](https://github.com/Anidetrix/rollup-plugin-styles/commit/4dd0ca338be34315cb7b9475e932cabd005c61b9))
+
 ## [3.5.4](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.5.3...v3.5.4) (2020-05-22)
 
 
