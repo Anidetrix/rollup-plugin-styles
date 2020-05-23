@@ -101,11 +101,11 @@
 							<li><a href="#emitting-processed-css">Emitting processed CSS</a></li>
 							<li><a href="#css-modules">CSS Modules</a></li>
 							<li><a href="#with-sasslessstylus">With Sass/Less/Stylus</a></li>
-							<li><a href="#fibers-sass-only"><code>fibers</code> (<strong>Sass only</strong>)</a></li>
+							<li><a href="#sass-and-fibers">Sass and <code>fibers</code></a></li>
 						</ul>
 					</li>
 					<li><a href="#configuration">Configuration</a></li>
-					<li><a href="#main-differences-from-rollup-plugin-postcss">Main differences from <code>rollup-plugin-postcss</code></a></li>
+					<li><a href="#why">Why</a></li>
 					<li><a href="#contributing">Contributing</a></li>
 					<li><a href="#license">License</a></li>
 					<li><a href="#thanks">Thanks</a></li>
@@ -251,8 +251,8 @@ yarn add stylus --dev <span class="hljs-comment"># yarn 1.x</span></code></pre>
 					</li>
 				</ul>
 				<p>That&#39;s it, now you can import <code>.scss</code> <code>.sass</code> <code>.less</code> <code>.styl</code> <code>.stylus</code> files in your code.</p>
-				<a href="#fibers-sass-only" id="fibers-sass-only" style="color: inherit; text-decoration: none;">
-					<h3><code>fibers</code> (<strong>Sass only</strong>)</h3>
+				<a href="#sass-and-fibers" id="sass-and-fibers" style="color: inherit; text-decoration: none;">
+					<h3>Sass and <code>fibers</code></h3>
 				</a>
 				<p>By default, <code>fibers</code> package will be loaded automatically if available when using <code>sass</code> implementation.</p>
 				<blockquote>
@@ -270,9 +270,12 @@ yarn add fibers --dev <span class="hljs-comment"># yarn 1.x</span></code></pre>
 					<h2>Configuration</h2>
 				</a>
 				<p>See <a href="https://anidetrix.github.io/rollup-plugin-styles/interfaces/_index_d_.options.html">API Reference for <code>Options</code></a> for full list of available options.</p>
-				<a href="#main-differences-from-rollup-plugin-postcss" id="main-differences-from-rollup-plugin-postcss" style="color: inherit; text-decoration: none;">
-					<h2>Main differences from <a href="https://github.com/egoist/rollup-plugin-postcss">rollup-plugin-postcss</a></h2>
+				<a href="#why" id="why" style="color: inherit; text-decoration: none;">
+					<h2>Why</h2>
 				</a>
+				<p>Because alternatives did not look good enough - they are either too basic, too buggy or poorly maintained.</p>
+				<p>For example, the main alternative (and inspiration) is <a href="https://github.com/egoist/rollup-plugin-postcss">rollup-plugin-postcss</a>, but at the time it is not actively maintained, has a bunch of critical bugs and subjectively lacks some useful features and quality of life improvements which should be a part of it.</p>
+				<p>With that said, here is the basic list of things which differentiate this plugin from the aforementioned one:</p>
 				<ul>
 					<li>Written completely in TypeScript</li>
 					<li>Up-to-date <a href="https://github.com/css-modules/css-modules">CSS Modules</a> implementation</li>
