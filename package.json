@@ -24,7 +24,7 @@
   "license": "MIT",
   "author": "Anton Kudryavtsev <boblobl4@gmail.com>",
   "main": "dist/index.js",
-  "module": "dist/index.es.js",
+  "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "files": [
     "dist"

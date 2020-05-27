@@ -1,3 +1,5 @@
+/* eslint node/no-unsupported-features/es-syntax: ["error", { ignores: ["modules"] }] */
+
 import { terser } from "rollup-plugin-terser";
 import babel from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
@@ -25,8 +27,7 @@ export default [
       resolve({ preferBuiltins: true, extensions }),
       commonjs(),
       typescript(),
-      babel({ exclude: ["**/node_modules/@babel/**"], babelHelpers: "runtime", extensions }),
-      prod && terser({ output: { comments: false } }),
+      babel({ babelHelpers: "bundled", extensions }),
     ],
   },
   // Injector
@@ -39,11 +40,9 @@ export default [
       resolve({ preferBuiltins: true }),
       commonjs(),
       babel({
-        exclude: ["**/node_modules/@babel/**"],
-        babelHelpers: "runtime",
+        babelHelpers: "bundled",
         configFile: false,
         presets: [["@babel/preset-env", { modules: false, targets: { ie: "8" } }]],
-        plugins: [["@babel/plugin-transform-runtime", { useESModules: true }]],
       }),
       prod && terser({ output: { comments: false }, ie8: true, safari10: true }),
     ],
