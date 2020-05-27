@@ -71,7 +71,8 @@
 					<a href="https://david-dm.org/Anidetrix/rollup-plugin-styles"><img src="https://img.shields.io/david/Anidetrix/rollup-plugin-styles" alt="dependencies status"></a>
 					<a href="https://github.com/Anidetrix/rollup-plugin-styles/actions?query=workflow%3ACI"><img src="https://github.com/Anidetrix/rollup-plugin-styles/workflows/CI/badge.svg" alt="build status"></a>
 					<a href="https://codecov.io/gh/Anidetrix/rollup-plugin-styles"><img src="https://codecov.io/gh/Anidetrix/rollup-plugin-styles/branch/master/graph/badge.svg" alt="code coverage"></a>
-				<a href="./LICENSE"><img src="https://img.shields.io/github/license/Anidetrix/rollup-plugin-styles" alt="license"></a></p>
+					<a href="./LICENSE"><img src="https://img.shields.io/github/license/Anidetrix/rollup-plugin-styles" alt="license"></a>
+				<a href="https://liberamanifesto.com"><img src="https://img.shields.io/badge/libera-manifesto-lightgrey.svg" alt="libera manifesto"></a></p>
 				<a href="#🎨-universal-rollup-plugin-for-styles" id="🎨-universal-rollup-plugin-for-styles" style="color: inherit; text-decoration: none;">
 					<h3>🎨 Universal <a href="https://github.com/rollup/rollup">Rollup</a> plugin for styles:</h3>
 				</a>
@@ -175,7 +176,10 @@ yarn add rollup-plugin-styles --dev <span class="hljs-comment"># yarn 1.x</span>
 				<pre><code class="language-js">styles({
   <span class="hljs-attr">mode</span>: <span class="hljs-string">"inject"</span>, <span class="hljs-comment">// Unnecessary, set by default</span>
   <span class="hljs-comment">// ...or with custom options for injector</span>
-  <span class="hljs-attr">mode</span>: [<span class="hljs-string">"inject"</span>, { <span class="hljs-attr">container</span>: <span class="hljs-string">"body"</span>, <span class="hljs-attr">singleTag</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">prepend</span>: <span class="hljs-literal">true</span> }],
+  <span class="hljs-attr">mode</span>: [
+    <span class="hljs-string">"inject"</span>,
+    { <span class="hljs-attr">container</span>: <span class="hljs-string">"body"</span>, <span class="hljs-attr">singleTag</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">prepend</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">attributes</span>: { <span class="hljs-attr">id</span>: <span class="hljs-string">"global"</span> } },
+  ],
   <span class="hljs-comment">// ...or with custom injector</span>
   <span class="hljs-attr">mode</span>: [<span class="hljs-string">"inject"</span>, yourInjectorFn],
 });</code></pre>
