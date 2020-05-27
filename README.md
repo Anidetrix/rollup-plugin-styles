@@ -7,6 +7,7 @@
 [![build status](https://github.com/Anidetrix/rollup-plugin-styles/workflows/CI/badge.svg)](https://github.com/Anidetrix/rollup-plugin-styles/actions?query=workflow%3ACI)
 [![code coverage](https://codecov.io/gh/Anidetrix/rollup-plugin-styles/branch/master/graph/badge.svg)](https://codecov.io/gh/Anidetrix/rollup-plugin-styles)
 [![license](https://img.shields.io/github/license/Anidetrix/rollup-plugin-styles)](./LICENSE)
+[![libera manifesto](https://img.shields.io/badge/libera-manifesto-lightgrey.svg)](https://liberamanifesto.com)
 
 ### 🎨 Universal [Rollup](https://github.com/rollup/rollup) plugin for styles:
 
@@ -128,7 +129,7 @@ Will look for `_custom` first (_with the approptiate extension(s)_), and then fo
 styles({
   mode: "inject", // Unnecessary, set by default
   // ...or with custom options for injector
-  mode: ["inject", { container: "body", singleTag: true, prepend: true }],
+  mode: ["inject", { container: "body", singleTag: true, prepend: true, selector: "#global" }],
   // ...or with custom injector
   mode: ["inject", yourInjectorFn],
 });
