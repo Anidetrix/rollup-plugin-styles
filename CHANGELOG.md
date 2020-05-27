@@ -1,3 +1,21 @@
+# [3.6.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.5.5...v3.6.0) (2020-05-27)
+
+
+### Bug Fixes
+
+* **build:** disable minification for use with `patch-package` ([fbba337](https://github.com/Anidetrix/rollup-plugin-styles/commit/fbba337c063bd0f2b41bc83e88e7e532fa7b6347))
+
+
+### Features
+
+* **code splitting:** rollup's `manualChunks` option support ([5aeb350](https://github.com/Anidetrix/rollup-plugin-styles/commit/5aeb350e12e57834027d4046aabf923524f5cf21))
+* **injector:** ability to set attibutes ([653e91c](https://github.com/Anidetrix/rollup-plugin-styles/commit/653e91cd76148e87b2de5c703c08fd9d209ef94b))
+
+
+### Performance Improvements
+
+* replace some sets with arrays ([2b7c28e](https://github.com/Anidetrix/rollup-plugin-styles/commit/2b7c28ee763b63e36e900389921b9bb19de1629f))
+
 ## [3.5.5](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.5.4...v3.5.5) (2020-05-23)
 
 
