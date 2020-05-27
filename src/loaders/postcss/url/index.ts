@@ -1,12 +1,9 @@
 import path from "path";
 import postcss from "postcss";
 import valueParser, { Node, ParsedValue } from "postcss-value-parser";
-
 import { mm } from "../../../utils/sourcemap";
 import { normalizePath, isAbsolutePath } from "../../../utils/path";
-
 import { firstExtRe, dataURIRe } from "../common";
-
 import resolveDefault, { UrlResolve } from "./resolve";
 import generateName from "./generate";
 import { walkUrls, isDeclWithUrl } from "./utils";
@@ -77,13 +74,13 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
     const { file } = css.source.input;
     const map = await mm(css.source.input.map?.text).resolve(path.dirname(file)).toConsumer();
 
-    const nodeSet = new Set<{
+    const urlList: {
       node: Node;
       url: string;
       decl: postcss.Declaration;
       parsed: ParsedValue;
       basedir: string;
-    }>();
+    }[] = [];
 
     const imported = res.messages
       .filter(msg => msg.type === "dependency")
@@ -121,7 +118,7 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
         // Use PostCSS imports
         if (decl.source?.input.file && imported.includes(decl.source.input.file)) {
           const basedir = path.dirname(decl.source.input.file);
-          nodeSet.add({ node, url, decl, parsed, basedir });
+          urlList.push({ node, url, decl, parsed, basedir });
           return;
         }
 
@@ -131,21 +128,21 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
           const realPos = map?.originalPositionFor(pos);
           const basedir = realPos?.source && path.dirname(realPos.source);
           if (basedir) {
-            nodeSet.add({ node, url, decl, parsed, basedir });
+            urlList.push({ node, url, decl, parsed, basedir });
             return;
           }
         }
 
         // Use current file
         const basedir = path.dirname(file);
-        nodeSet.add({ node, url, decl, parsed, basedir });
+        urlList.push({ node, url, decl, parsed, basedir });
       });
     });
 
     map?.destroy();
     const usedNames = new Map<string, string>();
 
-    for await (const { node, url, decl, parsed, basedir } of nodeSet) {
+    for await (const { node, url, decl, parsed, basedir } of urlList) {
       try {
         const { source, from } = await resolve(url, basedir);
 

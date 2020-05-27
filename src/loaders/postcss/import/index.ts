@@ -42,7 +42,7 @@ const plugin: postcss.Plugin<ImportOptions> = postcss.plugin(
     delete opts?.map;
 
     const { file } = css.source.input;
-    const importSet = new Set<{ importRule: postcss.AtRule; url: string }>();
+    const importList: { importRule: postcss.AtRule; url: string }[] = [];
     const basedir = path.dirname(file);
 
     css.walkAtRules(/^import$/i, importRule => {
@@ -95,10 +95,10 @@ const plugin: postcss.Plugin<ImportOptions> = postcss.plugin(
         return;
       }
 
-      importSet.add({ importRule, url });
+      importList.push({ importRule, url });
     });
 
-    for await (const { importRule, url } of importSet) {
+    for await (const { importRule, url } of importList) {
       try {
         const { source, from } = await resolve(url, basedir, extensions);
 

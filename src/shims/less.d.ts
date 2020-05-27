@@ -61,6 +61,7 @@ declare namespace less {
   }
 
   interface Less {
+    // eslint-disable-next-line @typescript-eslint/naming-convention
     AbstractFileManager: typeof AbstractFileManager;
     render(input: string, options?: Options): Promise<RenderOutput>;
   }
