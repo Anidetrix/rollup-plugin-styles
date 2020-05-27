@@ -1,23 +1,21 @@
+const extensions = [".mjs", ".js", ".json"];
 module.exports = {
   root: true,
   extends: [
     "eslint:recommended",
+    "plugin:node/recommended",
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:unicorn/recommended",
-    "plugin:node/recommended",
     "prettier",
     "prettier/unicorn",
   ],
   env: { node: true, browser: false, es6: true },
   parserOptions: { sourceType: "module" },
-  plugins: ["unicorn", "node"],
+  plugins: ["unicorn"],
   rules: {
     "no-await-in-loop": "error",
     "no-var": "error",
-    "node/file-extension-in-import": "off",
-    "node/no-missing-import": "off",
-    "node/no-unsupported-features/es-syntax": "off",
     "prefer-const": "error",
     "prefer-template": "error",
     "sort-vars": "error",
@@ -28,5 +26,5 @@ module.exports = {
     "unicorn/prevent-abbreviations": "off",
     yoda: ["error", "never", { exceptRange: true }],
   },
-  settings: { "import/resolver": { node: { extensions: [".js", ".ts"] } } },
+  settings: { "import/resolver": { node: { extensions } }, node: { tryExtensions: extensions } },
 };

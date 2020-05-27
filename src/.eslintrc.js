@@ -1,15 +1,16 @@
 const { join } = require("path");
+const extensions = [".ts", ".mjs", ".js", ".json"];
 module.exports = {
   root: true,
   extends: [
     "eslint:recommended",
+    "plugin:node/recommended-module",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:import/errors",
     "plugin:import/warnings",
     "plugin:import/typescript",
     "plugin:unicorn/recommended",
-    "plugin:node/recommended",
     "prettier",
     "prettier/@typescript-eslint",
     "prettier/unicorn",
@@ -21,7 +22,7 @@ module.exports = {
     project: join(__dirname, "..", "tsconfig.json"),
     tsconfigRootDir: join(__dirname, ".."),
   },
-  plugins: ["unicorn", "@typescript-eslint", "node"],
+  plugins: ["@typescript-eslint", "unicorn"],
   rules: {
     "@typescript-eslint/default-param-last": "error",
     "@typescript-eslint/naming-convention": "error",
@@ -35,9 +36,6 @@ module.exports = {
     "@typescript-eslint/return-await": "error",
     "@typescript-eslint/unified-signatures": "error",
     "no-await-in-loop": "error",
-    "node/file-extension-in-import": "off",
-    "node/no-missing-import": "off",
-    "node/no-unsupported-features/es-syntax": "off",
     "prefer-template": "error",
     "sort-vars": "error",
     "unicorn/no-fn-reference-in-iterator": "off",
@@ -47,5 +45,5 @@ module.exports = {
     "unicorn/prevent-abbreviations": "off",
     yoda: ["error", "never", { exceptRange: true }],
   },
-  settings: { "import/resolver": { node: { extensions: [".js", ".ts"] } } },
+  settings: { "import/resolver": { node: { extensions } }, node: { tryExtensions: extensions } },
 };
