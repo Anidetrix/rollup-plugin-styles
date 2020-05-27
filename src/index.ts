@@ -65,12 +65,14 @@ export default (options: Options = {}): Plugin => {
   const extracted = new Map<string, NonNullable<Payload["extracted"]>>();
 
   let preserveModules: boolean;
+  let manualChunks: boolean;
 
   const plugin: Plugin = {
     name: "styles",
 
     buildStart(opts) {
       preserveModules = Boolean(opts.preserveModules);
+      manualChunks = Boolean(opts.manualChunks);
     },
 
     async transform(code, id) {
@@ -191,12 +193,20 @@ export default (options: Options = {}): Plugin => {
         };
       };
 
+      const getName = (chunk: OutputChunk): string => {
+        if (opts.file) return path.basename(opts.file, path.extname(opts.file));
+        if (preserveModules) return path.basename(chunk.fileName, path.extname(chunk.fileName));
+        return chunk.name;
+      };
+
       const getImports = (chunk: OutputChunk): string[] => {
+        const traversed = new Set<string>();
         const ordered: string[] = [];
+        let ids: string[] = [];
 
         for (const module of Object.keys(chunk.modules)) {
-          const traversed = new Set<string>();
-          let ids = [module];
+          traversed.clear();
+          ids.push(module);
           while (ids.length > 0) {
             ids = ids.reduce<string[]>((acc, id) => {
               if (!isIncluded(id) || traversed.has(id)) return acc;
@@ -214,29 +224,42 @@ export default (options: Options = {}): Plugin => {
         const emittedMap = new Map<string, string[]>();
         const chunks = Object.values(bundle).filter((c): c is OutputChunk => c.type === "chunk");
         const entries = chunks.filter(c => c.isEntry || c.isDynamicEntry);
-        const multiFile = typeof postcssOpts.extract !== "string" && entries.length > 1;
 
-        if (multiFile) {
+        if (typeof postcssOpts.extract === "string") {
+          const name = getName(entries.find(e => e.isEntry) ?? entries[0]);
           const emitted = preserveModules ? chunks : entries;
-          for (const chunk of emitted) {
-            const name = preserveModules
-              ? path.basename(chunk.fileName, path.extname(chunk.fileName))
-              : chunk.name;
+          const ids = emitted.reduce<string[]>((acc, e) => [...acc, ...getImports(e)], []);
+          if (ids.length !== 0) emittedMap.set(name, ids);
+          return emittedMap;
+        }
+
+        // "preserveModules" does not support the "manualChunks" option.
+        if (manualChunks) {
+          const manuals = chunks.filter(c => !c.isEntry && !c.isDynamicEntry);
+          const taken: string[] = [];
+
+          for (const chunk of manuals) {
+            const name = getName(chunk);
             const ids = getImports(chunk);
+            taken.push(...ids);
+            if (ids.length !== 0) emittedMap.set(name, ids);
+          }
+
+          for (const chunk of entries) {
+            const name = getName(chunk);
+            const ids = getImports(chunk).filter(id => !taken.includes(id));
             if (ids.length !== 0) emittedMap.set(name, ids);
           }
 
           return emittedMap;
         }
 
-        const root = entries.find(e => e.isEntry) ?? entries[0];
-        const name = opts.file
-          ? path.basename(opts.file, path.extname(opts.file))
-          : preserveModules
-          ? path.basename(root.fileName, path.extname(root.fileName))
-          : root.name;
-        const ids = entries.reduce<string[]>((acc, e) => [...acc, ...getImports(e)], []);
-        if (ids.length !== 0) emittedMap.set(name, ids);
+        const emitted = preserveModules ? chunks : entries;
+        for (const chunk of emitted) {
+          const name = getName(chunk);
+          const ids = getImports(chunk);
+          if (ids.length !== 0) emittedMap.set(name, ids);
+        }
 
         return emittedMap;
       };

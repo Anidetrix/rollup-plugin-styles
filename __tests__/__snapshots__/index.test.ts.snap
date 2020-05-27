@@ -369,6 +369,296 @@ injector_6d837214(css_147dacc9);
 
 exports[`basic use-fail 1`] = `"The rule in \`use\` option must be string or array!"`;
 
+exports[`code-splitting manual-chunks: css 1`] = `
+".first_partial {
+  color: rosybrown;
+}
+.first_first {
+  color: red; }
+
+/*# sourceMappingURL=first-67312563.css.map */"
+`;
+
+exports[`code-splitting manual-chunks: css 2`] = `
+".fourth_fourth {
+  color: magenta; }
+
+.fourth2_fourth2 {
+  color: honeydew; }
+
+/*# sourceMappingURL=fourts-4a5aeb60.css.map */"
+`;
+
+exports[`code-splitting manual-chunks: css 3`] = `
+".nestedScript_nestedScript {
+  color: rebeccapurple; }
+
+/*# sourceMappingURL=nested-script-863b7bde.css.map */"
+`;
+
+exports[`code-splitting manual-chunks: css 4`] = `
+".nondynamic_nondynamic {
+  color: deepskyblue; }
+
+.nondynamic2_nondynamic2 {
+  color: deeppink; }
+
+/*# sourceMappingURL=nondynamics-0b30d44e.css.map */"
+`;
+
+exports[`code-splitting manual-chunks: css 5`] = `
+".otherScript_otherScript {
+  color: wheat; }
+
+/*# sourceMappingURL=other-script-0b4c1d5a.css.map */"
+`;
+
+exports[`code-splitting manual-chunks: css 6`] = `
+".second_second {
+  color: royalblue; }
+
+/*# sourceMappingURL=second-9b132bc0.css.map */"
+`;
+
+exports[`code-splitting manual-chunks: css 7`] = `
+".third_third {
+  color: maroon; }
+
+.third2_third2 {
+  color: hotpink; }
+
+/*# sourceMappingURL=thirds-7269bce0.css.map */"
+`;
+
+exports[`code-splitting manual-chunks: js 1`] = `
+"const css_c80ea5b3 = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+const modules_9c526d97 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
+const css = css_c80ea5b3;
+
+export default modules_9c526d97;
+export { css };
+"
+`;
+
+exports[`code-splitting manual-chunks: js 2`] = `
+"const modules_0858c0ee = {\\"fourth\\":\\"fourth_fourth\\"};
+
+const modules_1f0f2177 = {\\"fourth2\\":\\"fourth2_fourth2\\"};
+
+export { modules_1f0f2177 as a, modules_0858c0ee as m };
+"
+`;
+
+exports[`code-splitting manual-chunks: js 3`] = `
+"import { m as modules_0858c0ee } from './fourts-25d27569.js';
+
+(async () => {
+  const first = await import('./first-624745ec.js');
+  const second = await import('./second-48ba0f1d.js');
+  const otherScript = await import('./other-script-153f674c.js');
+  console.log(first, second, otherScript);
+})();
+
+console.log(modules_0858c0ee);
+"
+`;
+
+exports[`code-splitting manual-chunks: js 4`] = `
+"import { a as modules_1f0f2177 } from './fourts-25d27569.js';
+
+(async () => {
+  const first = await import('./first-624745ec.js');
+  const second = await import('./second-48ba0f1d.js');
+  const otherScript = await import('./other-script-153f674c.js');
+  console.log(first, second, otherScript);
+})();
+
+console.log(modules_1f0f2177);
+"
+`;
+
+exports[`code-splitting manual-chunks: js 5`] = `
+"import './nondynamics-25535eaa.js';
+"
+`;
+
+exports[`code-splitting manual-chunks: js 6`] = `
+"console.log(\\"noncss\\");
+"
+`;
+
+exports[`code-splitting manual-chunks: js 7`] = `
+"const modules_f895f00f = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+
+console.log(modules_f895f00f);
+"
+`;
+
+exports[`code-splitting manual-chunks: js 8`] = `
+"(async () => {
+  await import('./noncss-f3feb5ac.js');
+  const nestedScript = await import('./nested-script-c33cf393.js');
+  console.log(nestedScript);
+})();
+"
+`;
+
+exports[`code-splitting manual-chunks: js 9`] = `
+"const css_80152599 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+const modules_7f4bc46a = {\\"second\\":\\"second_second\\"};
+const css = css_80152599;
+
+export default modules_7f4bc46a;
+export { css };
+"
+`;
+
+exports[`code-splitting manual-chunks: js 10`] = `
+"
+"
+`;
+
+exports[`code-splitting manual-chunks: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA\\",\\"file\\":\\"first-67312563.css\\",\\"sourcesContent\\":[\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\"]}"`;
+
+exports[`code-splitting manual-chunks: map 2`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/fourth2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,cAAc,EAAA;;ACDhB;EACE,eAAe,EAAA\\",\\"file\\":\\"fourts-4a5aeb60.css\\",\\"sourcesContent\\":[\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".fourth2 {\\\\n  color: honeydew;\\\\n}\\\\n\\"]}"`;
+
+exports[`code-splitting manual-chunks: map 3`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nested-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,oBAAoB,EAAA\\",\\"file\\":\\"nested-script-863b7bde.css\\",\\"sourcesContent\\":[\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\"]}"`;
+
+exports[`code-splitting manual-chunks: map 4`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"nondynamics-0b30d44e.css\\",\\"sourcesContent\\":[\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+
+exports[`code-splitting manual-chunks: map 5`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/other-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAY,EAAA\\",\\"file\\":\\"other-script-0b4c1d5a.css\\",\\"sourcesContent\\":[\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\"]}"`;
+
+exports[`code-splitting manual-chunks: map 6`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/second.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB,EAAA\\",\\"file\\":\\"second-9b132bc0.css\\",\\"sourcesContent\\":[\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\"]}"`;
+
+exports[`code-splitting manual-chunks: map 7`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/third2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA\\",\\"file\\":\\"thirds-7269bce0.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".third2 {\\\\n  color: hotpink;\\\\n}\\\\n\\"]}"`;
+
+exports[`code-splitting manual-chunks-single: css 1`] = `
+".third_third {
+  color: maroon; }
+
+.fourth_fourth {
+  color: magenta; }
+
+.third2_third2 {
+  color: hotpink; }
+
+.fourth2_fourth2 {
+  color: honeydew; }
+
+.first_partial {
+  color: rosybrown;
+}
+.first_first {
+  color: red; }
+
+.second_second {
+  color: royalblue; }
+
+.otherScript_otherScript {
+  color: wheat; }
+
+.nestedScript_nestedScript {
+  color: rebeccapurple; }
+
+.nondynamic_nondynamic {
+  color: deepskyblue; }
+
+.nondynamic2_nondynamic2 {
+  color: deeppink; }
+
+/*# sourceMappingURL=extracted-53a81094.css.map */"
+`;
+
+exports[`code-splitting manual-chunks-single: js 1`] = `
+"const css_c80ea5b3 = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+const modules_9c526d97 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
+const css = css_c80ea5b3;
+
+export default modules_9c526d97;
+export { css };
+"
+`;
+
+exports[`code-splitting manual-chunks-single: js 2`] = `
+"const modules_0858c0ee = {\\"fourth\\":\\"fourth_fourth\\"};
+
+const modules_1f0f2177 = {\\"fourth2\\":\\"fourth2_fourth2\\"};
+
+export { modules_1f0f2177 as a, modules_0858c0ee as m };
+"
+`;
+
+exports[`code-splitting manual-chunks-single: js 3`] = `
+"import { m as modules_0858c0ee } from './fourts-25d27569.js';
+
+(async () => {
+  const first = await import('./first-624745ec.js');
+  const second = await import('./second-48ba0f1d.js');
+  const otherScript = await import('./other-script-153f674c.js');
+  console.log(first, second, otherScript);
+})();
+
+console.log(modules_0858c0ee);
+"
+`;
+
+exports[`code-splitting manual-chunks-single: js 4`] = `
+"import { a as modules_1f0f2177 } from './fourts-25d27569.js';
+
+(async () => {
+  const first = await import('./first-624745ec.js');
+  const second = await import('./second-48ba0f1d.js');
+  const otherScript = await import('./other-script-153f674c.js');
+  console.log(first, second, otherScript);
+})();
+
+console.log(modules_1f0f2177);
+"
+`;
+
+exports[`code-splitting manual-chunks-single: js 5`] = `
+"import './nondynamics-25535eaa.js';
+"
+`;
+
+exports[`code-splitting manual-chunks-single: js 6`] = `
+"console.log(\\"noncss\\");
+"
+`;
+
+exports[`code-splitting manual-chunks-single: js 7`] = `
+"const modules_f895f00f = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+
+console.log(modules_f895f00f);
+"
+`;
+
+exports[`code-splitting manual-chunks-single: js 8`] = `
+"(async () => {
+  await import('./noncss-f3feb5ac.js');
+  const nestedScript = await import('./nested-script-c33cf393.js');
+  console.log(nestedScript);
+})();
+"
+`;
+
+exports[`code-splitting manual-chunks-single: js 9`] = `
+"const css_80152599 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+const modules_7f4bc46a = {\\"second\\":\\"second_second\\"};
+const css = css_80152599;
+
+export default modules_7f4bc46a;
+export { css };
+"
+`;
+
+exports[`code-splitting manual-chunks-single: js 10`] = `
+"
+"
+`;
+
+exports[`code-splitting manual-chunks-single: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/third2.scss\\",\\"../../../../code-splitting/fourth2.scss\\",\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\",\\"../../../../code-splitting/second.scss\\",\\"../../../../code-splitting/other-script.scss\\",\\"../../../../code-splitting/nested-script.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA;;ACDhB;EACE,cAAc,EAAA;;ACDhB;EACE,eAAe,EAAA;;ACDjB;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA;;ACHZ;EACE,gBAAgB,EAAA;;ACDlB;EACE,YAAY,EAAA;;ACDd;EACE,oBAAoB,EAAA;;ACDtB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"extracted-53a81094.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".third2 {\\\\n  color: hotpink;\\\\n}\\\\n\\",\\".fourth2 {\\\\n  color: honeydew;\\\\n}\\\\n\\",\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\",\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\",\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\",\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+
 exports[`code-splitting multi-entry: css 1`] = `
 ".first_partial {
   color: rosybrown;
@@ -1175,6 +1465,20 @@ console.log(css_a87c82eb, css_6e569e18);
 `;
 
 exports[`extract preserve-modules: css 1`] = `
+".bar {
+  color: red;
+}
+"
+`;
+
+exports[`extract preserve-modules: css 2`] = `
+".foo {
+  color: red;
+}
+"
+`;
+
+exports[`extract preserve-modules: css 3`] = `
 ".foo {
   color: red;
 }

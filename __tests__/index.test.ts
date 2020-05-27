@@ -409,6 +409,40 @@ validateMany("code-splitting", [
       sourceMap: true,
     },
   },
+  {
+    title: "manual-chunks",
+    input: ["code-splitting/index.js", "code-splitting/index2.js"],
+    options: {
+      mode: "extract",
+      modules: true,
+      sourceMap: true,
+    },
+    inputOpts: {
+      manualChunks(id) {
+        if (id.includes("third")) return "thirds";
+        if (id.includes("fourth")) return "fourts";
+        if (id.includes("nondynamic")) return "nondynamics";
+        return;
+      },
+    },
+  },
+  {
+    title: "manual-chunks-single",
+    input: ["code-splitting/index.js", "code-splitting/index2.js"],
+    options: {
+      mode: ["extract", "extracted.css"],
+      modules: true,
+      sourceMap: true,
+    },
+    inputOpts: {
+      manualChunks(id) {
+        if (id.includes("third")) return "thirds";
+        if (id.includes("fourth")) return "fourts";
+        if (id.includes("nondynamic")) return "nondynamics";
+        return;
+      },
+    },
+  },
 ]);
 
 validateMany("emit", [
