@@ -12,6 +12,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_a772e92e (css, options) {
@@ -29,6 +30,12 @@ function injector_a772e92e (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -81,6 +88,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_10ba2831 (css, options) {
@@ -98,6 +106,12 @@ function injector_10ba2831 (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -224,6 +238,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_8aeabfb4 (css, options) {
@@ -241,6 +256,12 @@ function injector_8aeabfb4 (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -310,6 +331,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_6d837214 (css, options) {
@@ -327,6 +349,12 @@ function injector_6d837214 (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -1683,6 +1711,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_8aeabfb4 (css, options) {
@@ -1700,6 +1729,12 @@ function injector_8aeabfb4 (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -1769,6 +1804,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_e1c140db (css, options) {
@@ -1786,6 +1822,12 @@ function injector_e1c140db (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -1915,6 +1957,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_8aeabfb4 (css, options) {
@@ -1932,6 +1975,12 @@ function injector_8aeabfb4 (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -2001,6 +2050,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_717f9233 (css, options) {
@@ -2018,6 +2068,12 @@ function injector_717f9233 (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -2088,6 +2144,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_717f9233 (css, options) {
@@ -2105,6 +2162,12 @@ function injector_717f9233 (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -2172,6 +2235,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_717f9233 (css, options) {
@@ -2189,6 +2253,12 @@ function injector_717f9233 (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -2398,6 +2468,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_86728f90 (css, options) {
@@ -2415,6 +2486,12 @@ function injector_86728f90 (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -2478,6 +2555,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_86728f90 (css, options) {
@@ -2495,6 +2573,12 @@ function injector_86728f90 (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -2558,6 +2642,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_1dfca575 (css, options) {
@@ -2575,6 +2660,12 @@ function injector_1dfca575 (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -2643,6 +2734,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_1dfca575 (css, options) {
@@ -2660,6 +2752,12 @@ function injector_1dfca575 (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -2728,6 +2826,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_14375eb8 (css, options) {
@@ -2745,6 +2844,12 @@ function injector_14375eb8 (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -2803,6 +2908,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_7eff9fe8 (css, options) {
@@ -2820,6 +2926,12 @@ function injector_7eff9fe8 (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -2890,6 +3002,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_7d4ccedb (css, options) {
@@ -2907,6 +3020,12 @@ function injector_7d4ccedb (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -2959,6 +3078,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_de38afa6 (css, options) {
@@ -2976,6 +3096,12 @@ function injector_de38afa6 (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -3028,6 +3154,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_948a9cfd (css, options) {
@@ -3045,6 +3172,12 @@ function injector_948a9cfd (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -3097,6 +3230,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_bc6501d3 (css, options) {
@@ -3114,6 +3248,12 @@ function injector_bc6501d3 (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -3166,6 +3306,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_cc9f7d0d (css, options) {
@@ -3183,6 +3324,12 @@ function injector_cc9f7d0d (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -3238,6 +3385,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_de38afa6 (css, options) {
@@ -3255,6 +3403,12 @@ function injector_de38afa6 (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -3307,6 +3461,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_e6e31059 (css, options) {
@@ -3324,6 +3479,12 @@ function injector_e6e31059 (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -3376,6 +3537,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_8aeabfb4 (css, options) {
@@ -3393,6 +3555,12 @@ function injector_8aeabfb4 (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -3462,6 +3630,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_8aeabfb4 (css, options) {
@@ -3479,6 +3648,12 @@ function injector_8aeabfb4 (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;
@@ -3548,6 +3723,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 function injector_1b197479 (css, options) {
@@ -3565,6 +3741,12 @@ function injector_1b197479 (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement(\\"style\\");
     styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;

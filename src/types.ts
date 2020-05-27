@@ -178,6 +178,11 @@ export interface InjectOptions {
    * @default "head"
    */
   container?: string;
+  /**
+   * Set attributes of injected `<style>` tag(s)
+   * - ex.: `{"id":"global"}`
+   */
+  attributes?: Record<string, string>;
 }
 
 /** `rollup-plugin-styles`'s full option list */

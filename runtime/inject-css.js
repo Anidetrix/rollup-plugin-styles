@@ -9,6 +9,7 @@ var styleTags = [];
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
 export default function (css, options) {
@@ -26,6 +27,12 @@ export default function (css, options) {
   function createStyleTag() {
     var styleTag = document.createElement("style");
     styleTag.setAttribute("type", "text/css");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
     var pos = position === "prepend" ? "afterbegin" : "beforeend";
     container.insertAdjacentElement(pos, styleTag);
     return styleTag;

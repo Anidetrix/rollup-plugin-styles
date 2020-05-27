@@ -129,7 +129,10 @@ Will look for `_custom` first (_with the approptiate extension(s)_), and then fo
 styles({
   mode: "inject", // Unnecessary, set by default
   // ...or with custom options for injector
-  mode: ["inject", { container: "body", singleTag: true, prepend: true, selector: "#global" }],
+  mode: [
+    "inject",
+    { container: "body", singleTag: true, prepend: true, attributes: { id: "global" } },
+  ],
   // ...or with custom injector
   mode: ["inject", yourInjectorFn],
 });
