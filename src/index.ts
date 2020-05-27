@@ -65,14 +65,12 @@ export default (options: Options = {}): Plugin => {
   const extracted = new Map<string, NonNullable<Payload["extracted"]>>();
 
   let preserveModules: boolean;
-  let manualChunks: boolean;
 
   const plugin: Plugin = {
     name: "styles",
 
     buildStart(opts) {
       preserveModules = Boolean(opts.preserveModules);
-      manualChunks = Boolean(opts.manualChunks);
     },
 
     async transform(code, id) {
@@ -233,31 +231,21 @@ export default (options: Options = {}): Plugin => {
           return emittedMap;
         }
 
-        // "preserveModules" does not support the "manualChunks" option.
-        if (manualChunks) {
-          const manuals = chunks.filter(c => !c.isEntry && !c.isDynamicEntry);
-          const taken: string[] = [];
-
-          for (const chunk of manuals) {
-            const name = getName(chunk);
-            const ids = getImports(chunk);
-            taken.push(...ids);
-            if (ids.length !== 0) emittedMap.set(name, ids);
-          }
-
-          for (const chunk of entries) {
-            const name = getName(chunk);
-            const ids = getImports(chunk).filter(id => !taken.includes(id));
-            if (ids.length !== 0) emittedMap.set(name, ids);
-          }
-
-          return emittedMap;
+        const moved: string[] = [];
+        const virtuals = chunks.filter(c => !c.facadeModuleId);
+        for (const chunk of virtuals) {
+          const name = getName(chunk);
+          const ids = getImports(chunk);
+          if (ids.length !== 0) emittedMap.set(name, ids);
+          moved.push(...ids);
         }
 
+        // `preserveModules` does not support the `manualChunks` option,
+        // so there will be no overlap
         const emitted = preserveModules ? chunks : entries;
         for (const chunk of emitted) {
           const name = getName(chunk);
-          const ids = getImports(chunk);
+          const ids = getImports(chunk).filter(id => !moved.includes(id));
           if (ids.length !== 0) emittedMap.set(name, ids);
         }
 
