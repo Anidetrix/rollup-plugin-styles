@@ -1,3 +1,10 @@
+## [3.6.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.6.0...v3.6.1) (2020-05-27)
+
+
+### Bug Fixes
+
+* respect programmatic manual chunks as well ([311e0dc](https://github.com/Anidetrix/rollup-plugin-styles/commit/311e0dcb4aae623e3bb62a873d55ba89210a1823))
+
 # [3.6.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.5.5...v3.6.0) (2020-05-27)
 
 
