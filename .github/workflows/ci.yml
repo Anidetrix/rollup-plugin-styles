@@ -22,7 +22,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          npm install -g pnpm
+          npm install -g pnpm@4
           pnpm i --frozen-lockfile
         env:
           HUSKY_SKIP_INSTALL: 1
