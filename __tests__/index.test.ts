@@ -167,6 +167,11 @@ validateMany("modules", [
     options: { autoModules: true },
   },
   {
+    title: "auto-modules-off",
+    input: "auto-modules/index.js",
+    options: { autoModules: false },
+  },
+  {
     title: "auto-modules-regexp",
     input: "auto-modules/index.js",
     options: { autoModules: /(?<!\.module\.)\.styl/ },
@@ -190,9 +195,19 @@ validateMany("sourcemap", [
     options: { sourceMap: true },
   },
   {
+    title: "no-content",
+    input: "simple/index.js",
+    options: { sourceMap: [true, { content: false }] },
+  },
+  {
     title: "inline",
     input: "simple/index.js",
     options: { sourceMap: "inline" },
+  },
+  {
+    title: "inline-no-content",
+    input: "simple/index.js",
+    options: { sourceMap: ["inline", { content: false }] },
   },
 ]);
 

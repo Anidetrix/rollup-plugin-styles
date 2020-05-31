@@ -1,6 +1,7 @@
 import postcss from "postcss";
 import {
   LoadersOptions,
+  LoaderContext,
   Options,
   PostCSSLoaderOptions,
   SASSLoaderOptions,
@@ -37,6 +38,19 @@ export function inferModeOption(mode: Options["mode"]): Mode {
       };
   if (!(m.inject || m.extract || m.emit)) m.inject = true;
   return m;
+}
+
+export function inferSourceMapOption(sourceMap: Options["sourceMap"]): LoaderContext["sourceMap"] {
+  return Array.isArray(sourceMap)
+    ? Boolean(sourceMap[0]) && {
+        content: true,
+        ...sourceMap[1],
+        inline: sourceMap[0] === "inline",
+      }
+    : Boolean(sourceMap) && {
+        content: true,
+        inline: sourceMap === "inline",
+      };
 }
 
 export function inferHandlerOption<T extends { alias?: Record<string, string> }>(

@@ -5,7 +5,7 @@ import { Plugin, rollup, InputOptions, OutputOptions } from "rollup";
 
 import styles from "../../src";
 import { Options } from "../../src/types";
-import { inferModeOption } from "../../src/utils/options";
+import { inferModeOption, inferSourceMapOption } from "../../src/utils/options";
 
 export interface WriteData {
   input: string | string[];
@@ -96,6 +96,7 @@ export interface TestData extends WriteData {
 export function validate(data: TestData): void {
   const options = data.options ?? {};
   const mode = inferModeOption(options.mode);
+  const sourceMap = inferSourceMapOption(options.sourceMap);
   test(data.title, async () => {
     if (data.shouldFail) {
       await expect(write(data)).rejects.toThrowErrorMatchingSnapshot();
@@ -111,16 +112,14 @@ export function validate(data: TestData): void {
       for (const f of await res.css()) expect(f).toMatchSnapshot("css");
     }
 
-    if (options.sourceMap === "inline") {
-      await expect(res.isMap()).resolves.toBeFalsy();
-    } else if (options.sourceMap === true) {
+    if (sourceMap && !sourceMap.inline) {
       await expect(res.isMap()).resolves.toBe(Boolean(mode.extract));
-      if (mode.extract) for (const f of await res.map()) expect(f).toMatchSnapshot("map");
+      for (const f of await res.map()) expect(f).toMatchSnapshot("map");
+    } else {
+      await expect(res.isMap()).resolves.toBeFalsy();
     }
 
-    if (data.files) {
-      for await (const f of data.files) await expect(res.isFile(f)).resolves.toBeTruthy();
-    }
+    for await (const f of data.files ?? []) await expect(res.isFile(f)).resolves.toBeTruthy();
   });
 }
 

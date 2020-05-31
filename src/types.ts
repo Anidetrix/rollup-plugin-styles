@@ -5,8 +5,8 @@ import { ImportOptions } from "./loaders/postcss/import";
 import { UrlOptions } from "./loaders/postcss/url";
 import { ModulesOptions } from "./loaders/postcss/modules";
 
-/** `postcss-load-config`'s options */
-export interface PostCSSLoadConfigOptions {
+/** Options for PostCSS config loader */
+export interface PostCSSConfigLoaderOptions {
   /** Path to PostCSS config file directory */
   path?: string;
   /**
@@ -66,7 +66,7 @@ export interface SASSLoaderOptions extends Record<string, unknown> {
   data?: string;
   /** Force Sass implementation */
   impl?: string;
-  /** Forcefully disable/enable `fibers` */
+  /** Forcefully enable/disable `fibers` */
   fibers?: boolean;
 }
 
@@ -121,7 +121,7 @@ export interface LoaderContext<TLoaderOptions = Record<string, unknown>> {
    */
   readonly options: TLoaderOptions;
   /** @see {@link Options.sourceMap} */
-  readonly sourceMap?: boolean | "inline";
+  readonly sourceMap: false | ({ inline: boolean } & SourceMapOptions);
   /** Resource path */
   readonly id: string;
   /** Files to watch */
@@ -185,6 +185,15 @@ export interface InjectOptions {
   attributes?: Record<string, string>;
 }
 
+/** Options for sourcemaps */
+export interface SourceMapOptions {
+  /**
+   * Include sources content
+   * @default true
+   */
+  content?: boolean;
+}
+
 /** `rollup-plugin-styles`'s full option list */
 export interface Options {
   /** Files to include for processing */
@@ -246,7 +255,7 @@ export interface Options {
    */
   alias?: Record<string, string>;
   /**
-   * Enable and optionally pass additional configuration for
+   * Enable/disable or pass options for
    * [CSS Modules](https://github.com/css-modules/css-modules)
    * @default false
    */
@@ -267,16 +276,16 @@ export interface Options {
    */
   namedExports?: boolean | ((name: string) => string);
   /**
-   * Enable CSS minification and optionally pass additional configuration for
+   * Enable/disable or pass options for
    * [cssnano](https://github.com/cssnano/cssnano)
    * @default false
    */
   minimize?: boolean | cssnano.CssNanoOptions;
   /**
-   * Enable sourcemaps
+   * Enable/disable or configure sourcemaps
    * @default false
    */
-  sourceMap?: boolean | "inline";
+  sourceMap?: boolean | "inline" | [boolean | "inline"] | [boolean | "inline", SourceMapOptions];
   /**
    * Set PostCSS parser, e.g. `sugarss`.
    * Overrides the one loaded from PostCSS config file, if any.
@@ -293,10 +302,10 @@ export interface Options {
    */
   syntax?: string | postcss.Syntax;
   /**
-   * Enable loading PostCSS config file
+   * Enable/disable or pass options for PostCSS config loader
    * @default true
    */
-  config?: boolean | PostCSSLoadConfigOptions;
+  config?: boolean | PostCSSConfigLoaderOptions;
   /**
    * Array of loaders to use, executed from right to left.
    * Currently built-in loaders are:

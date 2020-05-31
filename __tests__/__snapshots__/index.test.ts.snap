@@ -2503,6 +2503,96 @@ console.log(css_bea182d1, css_ab26163b, modules_b45a4370, css_4e1fe5d3);
 "
 `;
 
+exports[`modules auto-modules-off: js 1`] = `
+"/** @type {HTMLElement[]} */
+var containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+var styleTags = [];
+
+/**
+ * @param {string} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
+ * @returns {void}
+ */
+function injector_717f9233 (css, options) {
+  if (!css || typeof document === \\"undefined\\") return;
+  if (typeof options === \\"undefined\\") options = {};
+
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? document.querySelector(options.container)
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
+    return styleTag;
+  }
+
+  /** @type {HTMLStyleElement} */
+  var styleTag;
+
+  if (singleTag) {
+    var id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.appendChild(document.createTextNode(css));
+  }
+}
+
+const css_7ffcb4b5 = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_717f9233(css_7ffcb4b5);
+
+const css_bea182d1 = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_717f9233(css_bea182d1);
+
+const css_ab26163b = \\".b {\\\\n  color: red; }\\\\n\\";
+injector_717f9233(css_ab26163b);
+
+const css_a4ea8038 = \\".c {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_717f9233(css_a4ea8038);
+
+const css_4e1fe5d3 = \\".d {\\\\n  color: #f00;\\\\n}\\\\n\\";
+injector_717f9233(css_4e1fe5d3);
+
+console.log(css_bea182d1, css_ab26163b, css_a4ea8038, css_4e1fe5d3);
+"
+`;
+
 exports[`modules auto-modules-regexp: js 1`] = `
 "/** @type {HTMLElement[]} */
 var containers = [];
@@ -3892,6 +3982,192 @@ const css_31899cde = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/
 injector_8aeabfb4(css_31899cde);
 
 const css_aee437ad = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiIsInNvdXJjZXNDb250ZW50IjpbIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */\\";
+injector_8aeabfb4(css_aee437ad);
+
+console.log(css_a87c82eb, css_6e569e18);
+"
+`;
+
+exports[`sourcemap inline-no-content: js 1`] = `
+"/** @type {HTMLElement[]} */
+var containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+var styleTags = [];
+
+/**
+ * @param {string} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
+ * @returns {void}
+ */
+function injector_8aeabfb4 (css, options) {
+  if (!css || typeof document === \\"undefined\\") return;
+  if (typeof options === \\"undefined\\") options = {};
+
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? document.querySelector(options.container)
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
+    return styleTag;
+  }
+
+  /** @type {HTMLStyleElement} */
+  var styleTag;
+
+  if (singleTag) {
+    var id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.appendChild(document.createTextNode(css));
+  }
+}
+
+const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
+injector_8aeabfb4(css_a87c82eb);
+
+const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
+injector_8aeabfb4(css_6e569e18);
+
+const css_a00496d3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIn0= */\\";
+injector_8aeabfb4(css_a00496d3);
+
+const css_855b3ad0 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
+injector_8aeabfb4(css_855b3ad0);
+
+const css_31899cde = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEifQ== */\\";
+injector_8aeabfb4(css_31899cde);
+
+const css_aee437ad = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiJ9 */\\";
+injector_8aeabfb4(css_aee437ad);
+
+console.log(css_a87c82eb, css_6e569e18);
+"
+`;
+
+exports[`sourcemap no-content: js 1`] = `
+"/** @type {HTMLElement[]} */
+var containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+var styleTags = [];
+
+/**
+ * @param {string} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
+ * @returns {void}
+ */
+function injector_8aeabfb4 (css, options) {
+  if (!css || typeof document === \\"undefined\\") return;
+  if (typeof options === \\"undefined\\") options = {};
+
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? document.querySelector(options.container)
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
+    return styleTag;
+  }
+
+  /** @type {HTMLStyleElement} */
+  var styleTag;
+
+  if (singleTag) {
+    var id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.appendChild(document.createTextNode(css));
+  }
+}
+
+const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
+injector_8aeabfb4(css_a87c82eb);
+
+const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
+injector_8aeabfb4(css_6e569e18);
+
+const css_a00496d3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIn0= */\\";
+injector_8aeabfb4(css_a00496d3);
+
+const css_855b3ad0 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
+injector_8aeabfb4(css_855b3ad0);
+
+const css_31899cde = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEifQ== */\\";
+injector_8aeabfb4(css_31899cde);
+
+const css_aee437ad = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiJ9 */\\";
 injector_8aeabfb4(css_aee437ad);
 
 console.log(css_a87c82eb, css_6e569e18);

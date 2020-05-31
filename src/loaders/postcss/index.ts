@@ -2,7 +2,7 @@ import path from "path";
 import { RawSourceMap } from "source-map";
 import { makeLegalIdentifier } from "@rollup/pluginutils";
 import postcss from "postcss";
-import loadPostCSSConfig from "postcss-load-config";
+import postcssrc from "postcss-load-config";
 import cssnano from "cssnano";
 
 import { Loader, PostCSSLoaderOptions } from "../../types";
@@ -18,13 +18,7 @@ import postcssModules from "./modules";
 import postcssICSS from "./icss";
 import postcssNoop from "./noop";
 
-type LoadedConfig = ReturnType<typeof loadPostCSSConfig> extends PromiseLike<infer T> ? T : never;
-
-/**
- * @param id File path
- * @param config `postcss-load-config`'s options
- * @returns Loaded PostCSS config
- */
+type LoadedConfig = ReturnType<typeof postcssrc> extends PromiseLike<infer T> ? T : never;
 async function loadConfig(
   id: string,
   config: PostCSSLoaderOptions["config"],
@@ -41,10 +35,16 @@ async function loadConfig(
     options: typeof config === "object" ? config.ctx ?? {} : {},
   };
 
-  return loadPostCSSConfig(context, configPath).catch(error => {
+  return postcssrc(context, configPath).catch(error => {
     if (!/no postcss config found/i.test((error as Error).message)) throw error;
     return {};
   });
+}
+
+function isAutoModules(am: PostCSSLoaderOptions["autoModules"], id: string): boolean {
+  if (typeof am === "function") return am(id);
+  if (am instanceof RegExp) return am.test(id);
+  return am && /\.module\.[A-Za-z]+$/.test(id);
 }
 
 const loader: Loader<PostCSSLoaderOptions> = {
@@ -64,16 +64,8 @@ const loader: Loader<PostCSSLoaderOptions> = {
       ...(config.plugins ?? []),
     ];
 
-    const autoModules =
-      options.autoModules &&
-      (typeof options.autoModules === "function"
-        ? options.autoModules(this.id)
-        : options.autoModules instanceof RegExp
-        ? options.autoModules.test(this.id)
-        : /\.module\.[A-Za-z]+$/.test(this.id));
-
+    const autoModules = isAutoModules(options.autoModules, this.id);
     const supportModules = Boolean(options.modules || autoModules);
-
     const modulesExports: Record<string, Record<string, string>> = {};
 
     const postcssOpts: PostCSSLoaderOptions["postcss"] & {
@@ -136,6 +128,9 @@ const loader: Loader<PostCSSLoaderOptions> = {
     for (const asset of assets) this.assets.set(asset.to, asset.source);
 
     map = mm((res.map?.toJSON() as unknown) as RawSourceMap)
+      .modify(m => {
+        if (this.sourceMap && !this.sourceMap.content) delete m.sourcesContent;
+      })
       .resolve(path.dirname(postcssOpts.to))
       .toString();
 

@@ -263,18 +263,14 @@ With that said, here is the basic list of things which differentiate this plugin
 - Up-to-date [CSS Modules](https://github.com/css-modules/css-modules) implementation
 - Built-in `@import` handler
 - Built-in assets handler
-- Respects `output.assetFileNames`
-- Code splitting support
-- Multi entry support
 - Ability to emit pure CSS for other plugins
-- Correct multiple instance support with check for already processed files
+- Complete code splitting support, with respect for multiple entries, `preserveModules` and `manualChunks`
+- Multiple instances support, with check for already processed files
+- Proper sourcemaps, with included sources content by default
+- Respects `assetFileNames` for CSS file names
+- Respects sourcemaps from loaded files
 - Support for implementation and `fibers` forcing for Sass
 - Support for partials and `~` in Less import statements
-- Sourcemaps include source content
-- Proper sourcemap generation for all loaders
-- Correct inline sourcemaps
-- Correct relative source paths in extracted sourcemaps
-- Extracts sourcemaps from loaded files
 - More smaller things that I forgot
 
 ## Contributing

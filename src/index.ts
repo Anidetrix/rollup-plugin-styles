@@ -25,6 +25,7 @@ import { mm } from "./utils/sourcemap";
 import {
   inferOption,
   inferModeOption,
+  inferSourceMapOption,
   inferHandlerOption,
   ensureUseOption,
   ensurePCSSOption,
@@ -34,6 +35,7 @@ import {
 export default (options: Options = {}): Plugin => {
   const isIncluded = createFilter(options.include, options.exclude);
 
+  const sourceMap = inferSourceMapOption(options.sourceMap);
   const postcssOpts: PostCSSLoaderOptions = {
     ...inferModeOption(options.mode),
 
@@ -90,7 +92,7 @@ export default (options: Options = {}): Plugin => {
 
       const ctx: LoaderContext = {
         id,
-        sourceMap: options.sourceMap,
+        sourceMap,
         deps: new Set(),
         assets: new Map<string, Uint8Array>(),
         warn: this.warn.bind(this),
@@ -105,19 +107,12 @@ export default (options: Options = {}): Plugin => {
       for (const [fileName, source] of ctx.assets)
         this.emitFile({ type: "asset", fileName, source });
 
-      if (postcssOpts.extract) {
-        res.extracted && extracted.set(id, res.extracted);
-        return {
-          code: res.code,
-          map: { mappings: "" as const },
-          moduleSideEffects: true,
-        };
-      }
+      if (res.extracted) extracted.set(id, res.extracted);
 
       return {
         code: res.code,
-        map: (options.sourceMap ? res.map : undefined) ?? { mappings: "" as const },
-        moduleSideEffects: null,
+        map: (sourceMap ? res.map : undefined) ?? { mappings: "" as const },
+        moduleSideEffects: Boolean(postcssOpts.extract) || null,
       };
     },
 
@@ -186,7 +181,7 @@ export default (options: Options = {}): Plugin => {
 
         return {
           css: concat.content.toString(),
-          map: options.sourceMap ? concat.sourceMap : undefined,
+          map: concat.sourceMap,
           name: fileName,
         };
       };
@@ -276,7 +271,7 @@ export default (options: Options = {}): Plugin => {
 
           const resMin = await cssnano.process(res.css, cssNanoOpts);
           res.css = resMin.css;
-          if (options.sourceMap) res.map = resMin.map?.toString();
+          res.map = resMin.map?.toString();
         }
 
         const cssFileId = this.emitFile({
@@ -285,7 +280,7 @@ export default (options: Options = {}): Plugin => {
           source: res.css,
         });
 
-        if (res.map) {
+        if (res.map && sourceMap) {
           const fileName = this.getFileName(cssFileId);
 
           const assetDir = opts.assetFileNames
@@ -305,9 +300,9 @@ export default (options: Options = {}): Plugin => {
               return s;
             });
 
-          if (options.sourceMap === "inline") {
+          if (sourceMap.inline) {
             (bundle[fileName] as OutputAsset).source += map.toCommentData();
-          } else if (options.sourceMap === true) {
+          } else {
             const mapFileId = this.emitFile({
               type: "asset",
               fileName: `${fileName}.map`,
