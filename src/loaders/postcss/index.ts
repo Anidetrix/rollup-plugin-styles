@@ -80,7 +80,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
       map: {
         inline: false,
         annotation: false,
-        sourcesContent: true,
+        sourcesContent: this.sourceMap ? this.sourceMap.content : true,
         prev: mm(map).relative(path.dirname(this.id)).toObject(),
       },
     };
@@ -128,9 +128,6 @@ const loader: Loader<PostCSSLoaderOptions> = {
     for (const asset of assets) this.assets.set(asset.to, asset.source);
 
     map = mm((res.map?.toJSON() as unknown) as RawSourceMap)
-      .modify(m => {
-        if (this.sourceMap && !this.sourceMap.content) delete m.sourcesContent;
-      })
       .resolve(path.dirname(postcssOpts.to))
       .toString();
 

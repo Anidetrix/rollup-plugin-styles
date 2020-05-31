@@ -262,10 +262,10 @@ export default (options: Options = {}): Plugin => {
 
           cssNanoOpts.from = res.name;
           cssNanoOpts.to = res.name;
-          cssNanoOpts.map = {
+          cssNanoOpts.map = sourceMap && {
             inline: false,
             annotation: false,
-            sourcesContent: true,
+            sourcesContent: sourceMap.content,
             prev: res.map,
           };
 
