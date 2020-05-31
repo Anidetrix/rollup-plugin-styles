@@ -1,3 +1,10 @@
+## [3.7.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.7.0...v3.7.1) (2020-05-31)
+
+
+### Bug Fixes
+
+* respect content option for minification ([59b3c07](https://github.com/Anidetrix/rollup-plugin-styles/commit/59b3c07c3d5d7c428aa2eab33d0e9b0c0295ab8d))
+
 # [3.7.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.6.1...v3.7.0) (2020-05-31)
 
 
