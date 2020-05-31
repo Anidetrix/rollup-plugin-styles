@@ -51,7 +51,6 @@ devDependencies:
   eslint-plugin-jest: 23.13.2_eslint@7.1.0+typescript@3.9.3
   eslint-plugin-node: 11.1.0_eslint@7.1.0
   eslint-plugin-unicorn: 20.1.0_eslint@7.1.0
-  fibers: 5.0.0
   gh-pages: 3.0.0
   husky: 4.2.5
   jest: 26.0.1
@@ -3449,13 +3448,6 @@ packages:
     dev: true
     resolution:
       integrity: sha512-xmHIy4F3scKVwMsQ4WnVaS8bHOx0DmVwRywosKhaILI0ywMDWPtBSku2HNxRvF7jtwDRsoEwYQSfbxj8b7RlJQ==
-  /detect-libc/1.0.3:
-    dev: true
-    engines:
-      node: '>=0.10'
-    hasBin: true
-    resolution:
-      integrity: sha1-+hN8S9aY7fVc1c0CrFWfkaTEups=
   /detect-newline/3.1.0:
     dev: true
     engines:
@@ -4109,15 +4101,6 @@ packages:
     dev: true
     resolution:
       integrity: sha512-DkPJKQeY6kKwmuMretBhr7G6Vodr7bFwDYTXIkfG1gjvNpaxBTQV3PbXg6bR1c1UP4jPOX0jHUbbHANL9vRjVg==
-  /fibers/5.0.0:
-    dependencies:
-      detect-libc: 1.0.3
-    dev: true
-    engines:
-      node: '>=10.0.0'
-    requiresBuild: true
-    resolution:
-      integrity: sha512-UpGv/YAZp7mhKHxDvC1tColrroGRX90sSvh8RMZV9leo+e5+EkRVgCEZPlmXeo3BUNQTZxUaVdLskq1Q2FyCPg==
   /figures/1.7.0:
     dependencies:
       escape-string-regexp: 1.0.5
@@ -10192,7 +10175,6 @@ specifiers:
   eslint-plugin-jest: ^23.13.2
   eslint-plugin-node: ^11.1.0
   eslint-plugin-unicorn: ^20.1.0
-  fibers: ^5.0.0
   fs-extra: ^9.0.0
   gh-pages: ^3.0.0
   husky: ^4.2.5

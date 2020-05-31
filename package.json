@@ -99,7 +99,6 @@
     "eslint-plugin-jest": "^23.13.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-unicorn": "^20.1.0",
-    "fibers": "^5.0.0",
     "gh-pages": "^3.0.0",
     "husky": "^4.2.5",
     "jest": "^26.0.1",
