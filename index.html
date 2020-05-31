@@ -285,18 +285,14 @@ yarn add fibers --dev <span class="hljs-comment"># yarn 1.x</span></code></pre>
 					<li>Up-to-date <a href="https://github.com/css-modules/css-modules">CSS Modules</a> implementation</li>
 					<li>Built-in <code>@import</code> handler</li>
 					<li>Built-in assets handler</li>
-					<li>Respects <code>output.assetFileNames</code></li>
-					<li>Code splitting support</li>
-					<li>Multi entry support</li>
 					<li>Ability to emit pure CSS for other plugins</li>
-					<li>Correct multiple instance support with check for already processed files</li>
+					<li>Complete code splitting support, with respect for multiple entries, <code>preserveModules</code> and <code>manualChunks</code></li>
+					<li>Multiple instances support, with check for already processed files</li>
+					<li>Proper sourcemaps, with included sources content by default</li>
+					<li>Respects <code>assetFileNames</code> for CSS file names</li>
+					<li>Respects sourcemaps from loaded files</li>
 					<li>Support for implementation and <code>fibers</code> forcing for Sass</li>
 					<li>Support for partials and <code>~</code> in Less import statements</li>
-					<li>Sourcemaps include source content</li>
-					<li>Proper sourcemap generation for all loaders</li>
-					<li>Correct inline sourcemaps</li>
-					<li>Correct relative source paths in extracted sourcemaps</li>
-					<li>Extracts sourcemaps from loaded files</li>
 					<li>More smaller things that I forgot</li>
 				</ul>
 				<a href="#contributing" id="contributing" style="color: inherit; text-decoration: none;">
