@@ -1,3 +1,10 @@
+# [3.7.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.6.1...v3.7.0) (2020-05-31)
+
+
+### Features
+
+* option to disable `sourcesContent` in sourcemaps ([afc440b](https://github.com/Anidetrix/rollup-plugin-styles/commit/afc440b6cfba5f24ddf989f7c8bb8d44f02b7dce))
+
 ## [3.6.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.6.0...v3.6.1) (2020-05-27)
 
 
