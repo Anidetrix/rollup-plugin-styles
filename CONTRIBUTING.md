@@ -6,7 +6,7 @@ Your First Contribution? You can learn how from this _free_ series, [How to Cont
 
 ## Stars
 
-Stars helps to attract more people, thus improving the quality by coreving more and more use cases, which helps with finding bugs and introducing new features
+Stars help to attract more people, thus improving the quality by coreving more and more use cases, which helps with finding bugs and introducing new features
 
 ## Quality Assurance
 
