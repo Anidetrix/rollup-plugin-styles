@@ -1,3 +1,17 @@
+# [3.8.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.7.1...v3.8.0) (2020-06-08)
+
+
+### Features
+
+* **sass:** sync mode support with dart implementation ([91846bc](https://github.com/Anidetrix/rollup-plugin-styles/commit/91846bcc07b6474147a96ca0ea426663a49f3de8))
+
+
+### Performance Improvements
+
+* overall considerable performance improvements ([6c08d55](https://github.com/Anidetrix/rollup-plugin-styles/commit/6c08d55358c36a4ef635bbe68cab39091fe3cab8))
+* replace concat-with-sourcemaps with custom function ([a1b04d2](https://github.com/Anidetrix/rollup-plugin-styles/commit/a1b04d23e88652db5f894a2e994e587b95293cf0))
+* resolved modules caching ([7eab36d](https://github.com/Anidetrix/rollup-plugin-styles/commit/7eab36d30ffcf99df7ff9e4bddbb710ccca9aaf1))
+
 ## [3.7.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.7.0...v3.7.1) (2020-05-31)
 
 
