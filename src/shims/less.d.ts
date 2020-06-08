@@ -1,7 +1,7 @@
 declare namespace less {
   interface File {
-    contents?: string;
-    filename?: string;
+    contents: string;
+    filename: string;
   }
 
   class AbstractFileManager {
@@ -65,9 +65,4 @@ declare namespace less {
     AbstractFileManager: typeof AbstractFileManager;
     render(input: string, options?: Options): Promise<RenderOutput>;
   }
-}
-
-declare module "less" {
-  const less: less.Less;
-  export = less;
 }

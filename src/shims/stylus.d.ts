@@ -1,17 +1,19 @@
 declare namespace stylus {
+  type Callback = (err: Error, css: string) => void;
+
+  interface SourceMapOptions {
+    comment?: boolean;
+    inline?: boolean;
+    sourceRoot?: string;
+    basePath?: string;
+  }
+
   interface Options {
     imports?: string[];
     paths?: string[];
     filename?: string;
-    sourcemap?: {
-      comment?: boolean;
-      inline?: boolean;
-      sourceRoot?: string;
-      basePath?: string;
-    };
+    sourcemap?: SourceMapOptions;
   }
-
-  type Callback = (err: Error, css: string) => void;
 
   interface Renderer {
     render(callback: Callback): void;
@@ -31,9 +33,4 @@ declare namespace stylus {
   interface Stylus {
     (code: string, options?: Options): Renderer;
   }
-}
-
-declare module "stylus" {
-  const stylus: stylus.Stylus;
-  export = stylus;
 }

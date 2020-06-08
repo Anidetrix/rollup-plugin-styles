@@ -43,15 +43,6 @@ declare namespace sass {
 
   interface Sass {
     render: (options: Options, callback: Callback) => void;
+    renderSync: (options: Options) => Result;
   }
-}
-
-declare module "sass" {
-  const sass: sass.Sass;
-  export = sass;
-}
-
-declare module "node-sass" {
-  const sass: sass.Sass;
-  export = sass;
 }

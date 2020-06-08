@@ -1,34 +1,21 @@
-import resolveAsync from "./resolve-async";
+/* eslint-disable @typescript-eslint/no-var-requires */
+import { sync as resolveSync } from "resolve";
 
-export interface ModuleImportMap extends Record<string, unknown> {
-  sass: sass.Sass;
-  "node-sass": sass.Sass;
-  fibers: fibers.Fiber;
-  less: less.Less;
-  stylus: stylus.Stylus;
-}
-
-export default async <T extends keyof ModuleImportMap>(
-  moduleId: T,
-  basedir = process.cwd(),
-): Promise<ModuleImportMap[T] | undefined> => {
-  if (typeof moduleId !== "string") return;
+const loaded: Record<string, unknown> = {};
+export default function (moduleId: string, basedir = process.cwd()): unknown | undefined {
+  if (loaded[moduleId]) return loaded[moduleId];
+  if (loaded[moduleId] === null) return;
 
   try {
-    return require(moduleId) as ModuleImportMap[T];
+    try {
+      loaded[moduleId] = require(resolveSync(moduleId, { basedir })) as unknown;
+    } catch {
+      loaded[moduleId] = require(resolveSync(`./${moduleId}`, { basedir })) as unknown;
+    }
   } catch {
-    /* noop */
-  }
-
-  try {
-    return require(await resolveAsync(moduleId, { basedir })) as ModuleImportMap[T];
-  } catch {
-    /* noop */
-  }
-
-  try {
-    return require(await resolveAsync(`./${moduleId}`, { basedir })) as ModuleImportMap[T];
-  } catch {
+    loaded[moduleId] = null;
     return;
   }
-};
+
+  return loaded[moduleId];
+}
