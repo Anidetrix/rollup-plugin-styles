@@ -1,9 +1,12 @@
 import postcss from "postcss";
 import cssnano from "cssnano";
-import rollup from "rollup";
 import { ImportOptions } from "./loaders/postcss/import";
 import { UrlOptions } from "./loaders/postcss/url";
 import { ModulesOptions } from "./loaders/postcss/modules";
+import { SASSLoaderOptions } from "./loaders/sass";
+import { LESSLoaderOptions } from "./loaders/less";
+import { StylusLoaderOptions } from "./loaders/stylus";
+import { SourceMapOptions, Loader } from "./loaders/types";
 
 /** Options for PostCSS config loader */
 export interface PostCSSConfigLoaderOptions {
@@ -54,100 +57,7 @@ export interface PostCSSLoaderOptions extends Record<string, unknown> {
     /** @see {@link Options.stringifier} */
     stringifier?: postcss.Stringifier;
     /** @see {@link Options.plugins} */
-    plugins?: postcss.Transformer[];
-  };
-}
-
-/** Options for Sass loader */
-export interface SASSLoaderOptions extends Record<string, unknown> {
-  /** Sass importer, or array of such */
-  importer?: sass.Importer | sass.Importer[];
-  /** Data to prepend to every Sass file */
-  data?: string;
-  /** Force Sass implementation */
-  impl?: string;
-  /** Forcefully enable/disable `fibers` */
-  fibers?: boolean;
-}
-
-/** Options for Stylus loader */
-export interface StylusLoaderOptions extends Record<string, unknown> {
-  /** Array of paths for Stylus */
-  paths?: string[];
-}
-
-/** Options for Less loader */
-export interface LESSLoaderOptions extends Record<string, unknown> {
-  /** Array of Less plugins */
-  plugins?: less.Plugin[];
-}
-
-/** Options for {@link Loaders} class */
-export interface LoadersOptions {
-  /** @see {@link Options.use} */
-  use: (string | [string] | [string, Record<string, unknown>])[];
-  /** @see {@link Options.loaders} */
-  loaders: Loader[];
-  /** @see {@link Options.extensions} */
-  extensions: string[];
-}
-
-/**
- * Loader
- * @param TLoaderOptions type of loader's options
- */
-export interface Loader<TLoaderOptions = Record<string, unknown>> {
-  /** Name */
-  name: string;
-  /**
-   * Test to control if file should be processed.
-   * Also used for plugin's supported files test.
-   */
-  test?: RegExp | ((file: string) => boolean);
-  /** Skip testing, always process the file */
-  alwaysProcess?: boolean;
-  /** Function for processing */
-  process: (this: LoaderContext<TLoaderOptions>, payload: Payload) => Promise<Payload> | Payload;
-}
-
-/**
- * Loader's context
- * @param TLoaderOptions type of loader's options
- */
-export interface LoaderContext<TLoaderOptions = Record<string, unknown>> {
-  /**
-   * Loader's options
-   * @default {}
-   */
-  readonly options: TLoaderOptions;
-  /** @see {@link Options.sourceMap} */
-  readonly sourceMap: false | ({ inline: boolean } & SourceMapOptions);
-  /** Resource path */
-  readonly id: string;
-  /** Files to watch */
-  readonly deps: Set<string>;
-  /** Assets to emit */
-  readonly assets: Map<string, Uint8Array>;
-  /** [Plugin's context](https://rollupjs.org/guide/en#plugin-context) */
-  readonly plugin: rollup.PluginContext;
-  /** [Function for emitting a warning](https://rollupjs.org/guide/en/#thiswarnwarning-string--rollupwarning-position-number---column-number-line-number---void) */
-  readonly warn: rollup.PluginContext["warn"];
-}
-
-/** Loader's payload */
-export interface Payload {
-  /** File content */
-  code: string;
-  /** Sourcemap */
-  map?: string;
-  /** Extracted data */
-  extracted?: {
-    /** Source file path */
-    id: string;
-    /** CSS */
-    css: string;
-    /** Sourcemap */
-    map?: string;
+    plugins?: (postcss.Transformer | postcss.Processor)[];
   };
 }
 
@@ -185,15 +95,6 @@ export interface InjectOptions {
   attributes?: Record<string, string>;
 }
 
-/** Options for sourcemaps */
-export interface SourceMapOptions {
-  /**
-   * Include sources content
-   * @default true
-   */
-  content?: boolean;
-}
-
 /** `rollup-plugin-styles`'s full option list */
 export interface Options {
   /** Files to include for processing */
@@ -211,9 +112,10 @@ export interface Options {
    */
   plugins?: (
     | postcss.Transformer
+    | postcss.Processor
     | string
-    | [string]
-    | [string, Record<string, unknown>]
+    | [string | postcss.Plugin<unknown>]
+    | [string | postcss.Plugin<unknown>, Record<string, unknown>]
     | null
     | undefined
   )[];
