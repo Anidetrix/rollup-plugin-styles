@@ -1,29 +1,21 @@
 import loadModule from "../../utils/load-module";
+import arrayFmt from "../../utils/array-fmt";
 
-const allSassIDs = ["node-sass", "sass"] as const;
-
-const idFmt = allSassIDs
-  .map((id, i, arr) => {
-    const newId = `\`${id}\``;
-    if (i === arr.length - 2) return newId;
-    if (i === arr.length - 1) return `or ${newId}`;
-    return `${newId},`;
-  })
-  .join(" ");
-
-export async function loadSass(impl?: string): Promise<[sass.Sass, string]> {
+const ids = ["node-sass", "sass"];
+const idsFmt = arrayFmt(ids);
+export default function (impl?: string): [sass.Sass, string] {
   // Loading provided implementation
   if (impl) {
-    const provided = await loadModule(impl);
+    const provided = loadModule(impl);
     if (provided) return [provided as sass.Sass, impl];
     throw new Error(`Could not load \`${impl}\` Sass implementation`);
   }
 
   // Loading one of the supported modules
-  for await (const id of allSassIDs) {
-    const sass = await loadModule(id);
-    if (sass) return [sass, id];
+  for (const id of ids) {
+    const sass = loadModule(id);
+    if (sass) return [sass as sass.Sass, id];
   }
 
-  throw new Error(`You need to install ${idFmt} package in order to process Sass files`);
+  throw new Error(`You need to install ${idsFmt} package in order to process Sass files`);
 }

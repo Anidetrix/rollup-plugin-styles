@@ -1,30 +1,41 @@
-import { Loader, SASSLoaderOptions } from "../../types";
 import loadModule from "../../utils/load-module";
 import { normalizePath } from "../../utils/path";
+import { Loader } from "../types";
+import loadSass from "./load";
+import { importer, importerSync } from "./importer";
 
-import { loadSass } from "./load";
-import importer from "./importer";
+/** Options for Sass loader */
+// https://github.com/microsoft/TypeScript/issues/37901
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+export interface SASSLoaderOptions extends Record<string, unknown>, sass.Options {
+  /** Force Sass implementation */
+  impl?: string;
+  /** Forcefully enable/disable `fibers` */
+  fibers?: boolean;
+  /** Forcefully enable/disable sync mode */
+  sync?: boolean;
+}
 
 const loader: Loader<SASSLoaderOptions> = {
   name: "sass",
   test: /\.(sass|scss)$/i,
   async process({ code, map }) {
-    const { options } = this;
-
-    const [sass, type] = await loadSass(options.impl);
-
-    // `fibers` doesn't work in testing
-    const useFibers = options.fibers ?? (type === "sass" && process.env.NODE_ENV !== "test");
-    const fiber = useFibers ? await loadModule("fibers") : undefined;
+    const options = { ...this.options };
+    const [sass, type] = loadSass(options.impl);
+    const useFibers = options.fibers ?? type === "sass";
+    const fiber = useFibers ? (loadModule("fibers") as fibers.Fiber) : undefined;
+    const sync = options.sync ?? (type !== "node-sass" && !fiber);
 
     const render = async (options: sass.Options): Promise<sass.Result> =>
       new Promise((resolve, reject) => {
-        sass.render(options, (err, css) => (err ? reject(err) : resolve(css)));
+        if (sync) resolve(sass.renderSync(options));
+        else sass.render(options, (err, css) => (err ? reject(err) : resolve(css)));
       });
 
     // Remove non-Sass options
-    delete options.fibers;
     delete options.impl;
+    delete options.fibers;
+    delete options.sync;
 
     // node-sass won't produce source maps if the `data`
     // option is used and `sourceMap` option is not a string.
@@ -43,7 +54,7 @@ const loader: Loader<SASSLoaderOptions> = {
       sourceMap: this.id,
       omitSourceMapUrl: true,
       sourceMapContents: true,
-      importer: [importer].concat(options.importer ?? []),
+      importer: [sync ? importerSync : importer].concat(options.importer ?? []),
       fiber,
     });
 

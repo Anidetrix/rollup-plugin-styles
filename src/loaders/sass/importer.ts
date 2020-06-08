@@ -1,25 +1,42 @@
 import path from "path";
+import { sync as resolveSync } from "resolve";
 import resolveAsync from "../../utils/resolve-async";
 import { getUrlOfPartial, isModule, normalizeUrl } from "../../utils/url";
 
-const importer: sass.Importer = (url, importer, done) => {
-  // Do not add `.css` extension in order to inline the file
-  const finishImport = (id: string): void => done({ file: id.replace(/\.css$/i, "") });
+const extensions = [".scss", ".sass", ".css"];
 
-  // Pass responsibility back to other custom importers
+export const importer: sass.Importer = (url, importer, done): void => {
+  const finalize = (id: string): void => done({ file: id.replace(/\.css$/i, "") });
   const next = (): void => done(null);
 
   if (!isModule(url)) return next();
   const moduleUrl = normalizeUrl(url);
   const partialUrl = getUrlOfPartial(moduleUrl);
-  const options = { basedir: path.dirname(importer), extensions: [".scss", ".sass", ".css"] };
+  const options = { basedir: path.dirname(importer), extensions };
 
   // Give precedence to importing a partial
   resolveAsync(partialUrl, options)
-    .then(finishImport)
+    .then(finalize)
     .catch(() => {
-      resolveAsync(moduleUrl, options).then(finishImport).catch(next);
+      resolveAsync(moduleUrl, options).then(finalize).catch(next);
     });
 };
 
-export default importer;
+const finalize = (id: string): sass.Data => ({ file: id.replace(/\.css$/i, "") });
+export const importerSync: sass.Importer = (url, importer): sass.Data => {
+  if (!isModule(url)) return null;
+  const moduleUrl = normalizeUrl(url);
+  const partialUrl = getUrlOfPartial(moduleUrl);
+  const options = { basedir: path.dirname(importer), extensions };
+
+  // Give precedence to importing a partial
+  try {
+    try {
+      return finalize(resolveSync(partialUrl, options));
+    } catch {
+      return finalize(resolveSync(moduleUrl, options));
+    }
+  } catch {
+    return null;
+  }
+};
