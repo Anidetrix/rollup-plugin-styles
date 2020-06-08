@@ -60,7 +60,7 @@
 					<a href="_index_d_.loader.html">Loader</a>
 				</li>
 			</ul>
-			<h1>Interface Loader&lt;TLoaderOptions&gt;</h1>
+			<h1>Interface Loader&lt;T&gt;</h1>
 		</div>
 	</div>
 </header>
@@ -78,7 +78,7 @@
 				<h3>Type parameters</h3>
 				<ul class="tsd-type-parameters">
 					<li>
-						<h4>TLoaderOptions</h4>
+						<h4>T</h4>
 						<div class="tsd-comment tsd-typography">
 							<div class="lead">
 								<p>type of loader&#39;s options</p>
@@ -140,7 +140,7 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 					<a name="process" class="tsd-anchor"></a>
 					<h3>process</h3>
-					<div class="tsd-signature tsd-kind-icon">process<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><a href="_index_d_.loadercontext.html" class="tsd-signature-type">LoaderContext</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TLoaderOptions</span><span class="tsd-signature-symbol">&gt;</span>, payload<span class="tsd-signature-symbol">: </span><a href="_index_d_.payload.html" class="tsd-signature-type">Payload</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_index_d_.payload.html" class="tsd-signature-type">Payload</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><a href="_index_d_.payload.html" class="tsd-signature-type">Payload</a></div>
+					<div class="tsd-signature tsd-kind-icon">process<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><a href="_index_d_.loadercontext.html" class="tsd-signature-type">LoaderContext</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, payload<span class="tsd-signature-symbol">: </span><a href="_index_d_.payload.html" class="tsd-signature-type">Payload</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_index_d_.payload.html" class="tsd-signature-type">Payload</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><a href="_index_d_.payload.html" class="tsd-signature-type">Payload</a></div>
 					<aside class="tsd-sources">
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -153,14 +153,14 @@
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-signature">
 								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-property tsd-is-not-exported">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><a href="_index_d_.loadercontext.html" class="tsd-signature-type">LoaderContext</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TLoaderOptions</span><span class="tsd-signature-symbol">&gt;</span>, payload<span class="tsd-signature-symbol">: </span><a href="_index_d_.payload.html" class="tsd-signature-type">Payload</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_index_d_.payload.html" class="tsd-signature-type">Payload</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><a href="_index_d_.payload.html" class="tsd-signature-type">Payload</a></li>
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>this<span class="tsd-signature-symbol">: </span><a href="_index_d_.loadercontext.html" class="tsd-signature-type">LoaderContext</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span>, payload<span class="tsd-signature-symbol">: </span><a href="_index_d_.payload.html" class="tsd-signature-type">Payload</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="_index_d_.payload.html" class="tsd-signature-type">Payload</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><a href="_index_d_.payload.html" class="tsd-signature-type">Payload</a></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
-												<h5>this: <a href="_index_d_.loadercontext.html" class="tsd-signature-type">LoaderContext</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TLoaderOptions</span><span class="tsd-signature-symbol">&gt;</span></h5>
+												<h5>this: <a href="_index_d_.loadercontext.html" class="tsd-signature-type">LoaderContext</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">T</span><span class="tsd-signature-symbol">&gt;</span></h5>
 											</li>
 											<li>
 												<h5>payload: <a href="_index_d_.payload.html" class="tsd-signature-type">Payload</a></h5>
@@ -216,6 +216,9 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
+						<a href="_index_d_.extracted.html" class="tsd-kind-icon">Extracted</a>
+					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-module tsd-is-not-exported">
 						<a href="_index_d_.extracteddata.html" class="tsd-kind-icon">Extracted<wbr>Data</a>
 					</li>

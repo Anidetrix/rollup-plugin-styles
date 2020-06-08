@@ -107,18 +107,18 @@
 					</li>
 					<li><a href="#configuration">Configuration</a></li>
 					<li><a href="#why">Why</a></li>
-					<li><a href="#contributing">Contributing</a></li>
 					<li><a href="#license">License</a></li>
 					<li><a href="#thanks">Thanks</a></li>
 				</ul>
 				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
 					<h2>Installation</h2>
 				</a>
-				<pre><code class="language-bash">npm install -D rollup-plugin-styles <span class="hljs-comment"># npm</span>
-
-pnpm add -D rollup-plugin-styles <span class="hljs-comment"># pnpm</span>
-
-yarn add rollup-plugin-styles --dev <span class="hljs-comment"># yarn 1.x</span></code></pre>
+				<pre><code class="language-bash"><span class="hljs-comment"># npm</span>
+npm install -D rollup-plugin-styles
+<span class="hljs-comment"># pnpm</span>
+pnpm add -D rollup-plugin-styles
+<span class="hljs-comment"># yarn</span>
+yarn add rollup-plugin-styles --dev</code></pre>
 				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
 					<h2>Usage</h2>
 				</a>
@@ -141,7 +141,7 @@ yarn add rollup-plugin-styles --dev <span class="hljs-comment"># yarn 1.x</span>
 				<p>CSS is available as default export in <code>inject</code> and <code>extract</code> modes, but if <a href="https://github.com/css-modules/css-modules">CSS Modules</a> are enabled you need to use named <code>css</code> export.</p>
 				<pre><code class="language-js"><span class="hljs-comment">// Injects CSS, also available as `style` in this example</span>
 <span class="hljs-keyword">import</span> style <span class="hljs-keyword">from</span> <span class="hljs-string">"./style.css"</span>;
-<span class="hljs-comment">// Named export of CSS string</span>
+<span class="hljs-comment">// Using named export of CSS string</span>
 <span class="hljs-keyword">import</span> { css } <span class="hljs-keyword">from</span> <span class="hljs-string">"./style.css"</span>;</code></pre>
 				<p>In <code>emit</code> mode none of the exports are available as CSS is purely processed and passed along the build pipeline, which is useful if you want to preprocess CSS before using it with CSS consuming plugins, e.g. <a href="https://github.com/bennypowers/rollup-plugin-lit-css">rollup-plugin-lit-css</a>.</p>
 				<p>PostCSS configuration files will be found and loaded automatically, but this behavior is configurable using <code>config</code> option.</p>
@@ -181,7 +181,7 @@ yarn add rollup-plugin-styles --dev <span class="hljs-comment"># yarn 1.x</span>
     { <span class="hljs-attr">container</span>: <span class="hljs-string">"body"</span>, <span class="hljs-attr">singleTag</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">prepend</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">attributes</span>: { <span class="hljs-attr">id</span>: <span class="hljs-string">"global"</span> } },
   ],
   <span class="hljs-comment">// ...or with custom injector</span>
-  <span class="hljs-attr">mode</span>: [<span class="hljs-string">"inject"</span>, yourInjectorFn],
+  <span class="hljs-attr">mode</span>: [<span class="hljs-string">"inject"</span>, (varname, id) =&gt; <span class="hljs-string">`console.log(<span class="hljs-subst">${varname}</span>,<span class="hljs-subst">${<span class="hljs-built_in">JSON</span>.stringify(id)}</span>)`</span>],
 });</code></pre>
 				<a href="#css-extraction" id="css-extraction" style="color: inherit; text-decoration: none;">
 					<h3>CSS Extraction</h3>
@@ -228,48 +228,53 @@ yarn add rollup-plugin-styles --dev <span class="hljs-comment"># yarn 1.x</span>
 				<p>Install corresponding dependency:</p>
 				<ul>
 					<li><p>For <code>Sass</code> support install <code>node-sass</code> or <code>sass</code>:</p>
-						<pre><code class="language-bash">npm install -D node-sass <span class="hljs-comment"># npm</span>
-
-pnpm add -D node-sass <span class="hljs-comment"># pnpm</span>
-
-yarn add node-sass --dev <span class="hljs-comment"># yarn 1.x</span></code></pre>
-						<pre><code class="language-bash">npm install -D sass <span class="hljs-comment"># npm</span>
-
-pnpm add -D sass <span class="hljs-comment"># pnpm</span>
-
-yarn add sass --dev <span class="hljs-comment"># yarn 1.x</span></code></pre>
+						<pre><code class="language-bash"><span class="hljs-comment"># npm</span>
+npm install -D node-sass
+<span class="hljs-comment"># pnpm</span>
+pnpm add -D node-sass
+<span class="hljs-comment"># yarn</span>
+yarn add node-sass --dev</code></pre>
+						<pre><code class="language-bash"><span class="hljs-comment"># npm</span>
+npm install -D sass
+<span class="hljs-comment"># pnpm</span>
+pnpm add -D sass
+<span class="hljs-comment"># yarn</span>
+yarn add sass --dev</code></pre>
 					</li>
 					<li><p>For <code>Less</code> support install <code>less</code>:</p>
-						<pre><code class="language-bash">npm install -D less <span class="hljs-comment"># npm</span>
-
-pnpm add -D less <span class="hljs-comment"># pnpm</span>
-
-yarn add less --dev <span class="hljs-comment"># yarn 1.x</span></code></pre>
+						<pre><code class="language-bash"><span class="hljs-comment"># npm</span>
+npm install -D less
+<span class="hljs-comment"># pnpm</span>
+pnpm add -D less
+<span class="hljs-comment"># yarn</span>
+yarn add less --dev</code></pre>
 					</li>
 					<li><p>For <code>Stylus</code> support install <code>stylus</code>:</p>
-						<pre><code class="language-bash">npm install -D stylus <span class="hljs-comment"># npm</span>
-
-pnpm add -D stylus <span class="hljs-comment"># pnpm</span>
-
-yarn add stylus --dev <span class="hljs-comment"># yarn 1.x</span></code></pre>
+						<pre><code class="language-bash"><span class="hljs-comment"># npm</span>
+npm install -D stylus
+<span class="hljs-comment"># pnpm</span>
+pnpm add -D stylus
+<span class="hljs-comment"># yarn</span>
+yarn add stylus --dev</code></pre>
 					</li>
 				</ul>
 				<p>That&#39;s it, now you can import <code>.scss</code> <code>.sass</code> <code>.less</code> <code>.styl</code> <code>.stylus</code> files in your code.</p>
 				<a href="#sass-and-fibers" id="sass-and-fibers" style="color: inherit; text-decoration: none;">
 					<h3>Sass and <code>fibers</code></h3>
 				</a>
-				<p>By default, <code>fibers</code> package will be loaded automatically if available when using <code>sass</code> implementation.</p>
+				<p>By default, when using <code>Dart Sass</code> implementation, <code>fibers</code> package will be loaded automatically if available, otherwise sync mode will be used for better performance.</p>
 				<blockquote>
 					<p>When installed via npm, <code>Dart Sass</code> supports a JavaScript API that&#39;s fully compatible with <code>Node Sass</code> &lt;...&gt;, with support for both the render() and renderSync() functions. &lt;...&gt;</p>
 					<p>Note however that by default, <strong>renderSync() is more than twice as fast as render()</strong> due to the overhead of asynchronous callbacks. To avoid this performance hit, render() can use the <code>fibers</code> package to call asynchronous importers from the synchronous code path.</p>
 					<p><a href="https://github.com/sass/dart-sass/blob/master/README.md#javascript-api">Source</a></p>
 				</blockquote>
 				<p>To install <code>fibers</code>:</p>
-				<pre><code class="language-bash">npm install -D fibers <span class="hljs-comment"># npm</span>
-
-pnpm add -D fibers <span class="hljs-comment"># pnpm</span>
-
-yarn add fibers --dev <span class="hljs-comment"># yarn 1.x</span></code></pre>
+				<pre><code class="language-bash"><span class="hljs-comment"># npm</span>
+npm install -D fibers
+<span class="hljs-comment"># pnpm</span>
+pnpm add -D fibers
+<span class="hljs-comment"># yarn</span>
+yarn add fibers --dev</code></pre>
 				<a href="#configuration" id="configuration" style="color: inherit; text-decoration: none;">
 					<h2>Configuration</h2>
 				</a>
@@ -295,17 +300,6 @@ yarn add fibers --dev <span class="hljs-comment"># yarn 1.x</span></code></pre>
 					<li>Support for partials and <code>~</code> in Less import statements</li>
 					<li>More smaller things that I forgot</li>
 				</ul>
-				<a href="#contributing" id="contributing" style="color: inherit; text-decoration: none;">
-					<h2>Contributing</h2>
-				</a>
-				<p>Any contributions are always welcome, not only Pull Requests! 😀</p>
-				<ul>
-					<li><strong>QA</strong>: file bug reports, the more details you can give the better</li>
-					<li><strong>Code</strong>: take a look at the <a href="https://github.com/Anidetrix/rollup-plugin-styles/issues">open issues</a>, even if you can&#39;t write code showing that you care about a given issue matters</li>
-					<li><strong>Ideas</strong>: feature requests are welcome, even ambitious ones</li>
-					<li><strong>Donations</strong>: financial support helps to dedicate more time to this project</li>
-				</ul>
-				<p>Your First Contribution? You can learn how from this <em>free</em> series, <a href="https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github">How to Contribute to an Open Source Project on GitHub</a>.</p>
 				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
 					<h2>License</h2>
 				</a>

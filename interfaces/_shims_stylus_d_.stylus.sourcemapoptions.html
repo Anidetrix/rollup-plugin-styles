@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>File | rollup-plugin-styles</title>
+	<title>SourceMapOptions | rollup-plugin-styles</title>
 	<meta name="description" content="Documentation for rollup-plugin-styles">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -54,16 +54,16 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_shims_less_d_.html">&quot;shims/less.d&quot;</a>
+					<a href="../modules/_shims_stylus_d_.html">&quot;shims/stylus.d&quot;</a>
 				</li>
 				<li>
-					<a href="../modules/_shims_less_d_.less.html">less</a>
+					<a href="../modules/_shims_stylus_d_.stylus.html">stylus</a>
 				</li>
 				<li>
-					<a href="_shims_less_d_.less.file.html">File</a>
+					<a href="_shims_stylus_d_.stylus.sourcemapoptions.html">SourceMapOptions</a>
 				</li>
 			</ul>
-			<h1>Interface File</h1>
+			<h1>Interface SourceMapOptions</h1>
 		</div>
 	</div>
 </header>
@@ -74,7 +74,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">File</span>
+						<span class="target">SourceMapOptions</span>
 					</li>
 				</ul>
 			</section>
@@ -85,8 +85,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_shims_less_d_.less.file.html#contents" class="tsd-kind-icon">contents</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_shims_less_d_.less.file.html#filename" class="tsd-kind-icon">filename</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_shims_stylus_d_.stylus.sourcemapoptions.html#basepath" class="tsd-kind-icon">base<wbr>Path</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_shims_stylus_d_.stylus.sourcemapoptions.html#comment" class="tsd-kind-icon">comment</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_shims_stylus_d_.stylus.sourcemapoptions.html#inline" class="tsd-kind-icon">inline</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_shims_stylus_d_.stylus.sourcemapoptions.html#sourceroot" class="tsd-kind-icon">source<wbr>Root</a></li>
 							</ul>
 						</section>
 					</div>
@@ -95,16 +97,30 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="contents" class="tsd-anchor"></a>
-					<h3>contents</h3>
-					<div class="tsd-signature tsd-kind-icon">contents<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="basepath" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> base<wbr>Path</h3>
+					<div class="tsd-signature tsd-kind-icon">base<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="filename" class="tsd-anchor"></a>
-					<h3>filename</h3>
-					<div class="tsd-signature tsd-kind-icon">filename<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="comment" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> comment</h3>
+					<div class="tsd-signature tsd-kind-icon">comment<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
+					<aside class="tsd-sources">
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="inline" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> inline</h3>
+					<div class="tsd-signature tsd-kind-icon">inline<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
+					<aside class="tsd-sources">
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="sourceroot" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> source<wbr>Root</h3>
+					<div class="tsd-signature tsd-kind-icon">source<wbr>Root<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 					</aside>
 				</section>
@@ -120,44 +136,38 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-class tsd-parent-kind-namespace">
-						<a href="../classes/_shims_less_d_.less.abstractfilemanager.html" class="tsd-kind-icon">Abstract<wbr>File<wbr>Manager</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="_shims_stylus_d_.stylus.options.html" class="tsd-kind-icon">Options</a>
 					</li>
-					<li class=" tsd-kind-class tsd-parent-kind-namespace">
-						<a href="../classes/_shims_less_d_.less.pluginmanager.html" class="tsd-kind-icon">Plugin<wbr>Manager</a>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="_shims_stylus_d_.stylus.renderer.html" class="tsd-kind-icon">Renderer</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="_shims_less_d_.less.file.html" class="tsd-kind-icon">File</a>
+						<a href="_shims_stylus_d_.stylus.sourcemapoptions.html" class="tsd-kind-icon">Source<wbr>Map<wbr>Options</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_shims_less_d_.less.file.html#contents" class="tsd-kind-icon">contents</a>
+								<a href="_shims_stylus_d_.stylus.sourcemapoptions.html#basepath" class="tsd-kind-icon">base<wbr>Path</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_shims_less_d_.less.file.html#filename" class="tsd-kind-icon">filename</a>
+								<a href="_shims_stylus_d_.stylus.sourcemapoptions.html#comment" class="tsd-kind-icon">comment</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_shims_stylus_d_.stylus.sourcemapoptions.html#inline" class="tsd-kind-icon">inline</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_shims_stylus_d_.stylus.sourcemapoptions.html#sourceroot" class="tsd-kind-icon">source<wbr>Root</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="_shims_less_d_.less.filemanager.html" class="tsd-kind-icon">File<wbr>Manager</a>
+						<a href="_shims_stylus_d_.stylus.stylus.html" class="tsd-kind-icon">Stylus</a>
 					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="_shims_less_d_.less.less.html" class="tsd-kind-icon">Less</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="_shims_less_d_.less.options.html" class="tsd-kind-icon">Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="_shims_less_d_.less.plugin.html" class="tsd-kind-icon">Plugin</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="_shims_less_d_.less.renderoutput.html" class="tsd-kind-icon">Render<wbr>Output</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="_shims_less_d_.less.sourcemapoption.html" class="tsd-kind-icon">Source<wbr>Map<wbr>Option</a>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-namespace">
+						<a href="../modules/_shims_stylus_d_.stylus.html#callback" class="tsd-kind-icon">Callback</a>
 					</li>
 				</ul>
 			</nav>
