@@ -36,18 +36,18 @@
   - [Sass and `fibers`](#sass-and-fibers)
 - [Configuration](#configuration)
 - [Why](#why)
-- [Contributing](#contributing)
 - [License](#license)
 - [Thanks](#thanks)
 
 ## Installation
 
 ```bash
-npm install -D rollup-plugin-styles # npm
-
-pnpm add -D rollup-plugin-styles # pnpm
-
-yarn add rollup-plugin-styles --dev # yarn 1.x
+# npm
+npm install -D rollup-plugin-styles
+# pnpm
+pnpm add -D rollup-plugin-styles
+# yarn
+yarn add rollup-plugin-styles --dev
 ```
 
 ## Usage
@@ -81,7 +81,7 @@ CSS is available as default export in `inject` and `extract` modes, but if [CSS 
 ```js
 // Injects CSS, also available as `style` in this example
 import style from "./style.css";
-// Named export of CSS string
+// Using named export of CSS string
 import { css } from "./style.css";
 ```
 
@@ -134,7 +134,7 @@ styles({
     { container: "body", singleTag: true, prepend: true, attributes: { id: "global" } },
   ],
   // ...or with custom injector
-  mode: ["inject", yourInjectorFn],
+  mode: ["inject", (varname, id) => `console.log(${varname},${JSON.stringify(id)})`],
 });
 ```
 
@@ -190,46 +190,50 @@ Install corresponding dependency:
 - For `Sass` support install `node-sass` or `sass`:
 
   ```bash
-  npm install -D node-sass # npm
-
-  pnpm add -D node-sass # pnpm
-
-  yarn add node-sass --dev # yarn 1.x
+  # npm
+  npm install -D node-sass
+  # pnpm
+  pnpm add -D node-sass
+  # yarn
+  yarn add node-sass --dev
   ```
 
   ```bash
-  npm install -D sass # npm
-
-  pnpm add -D sass # pnpm
-
-  yarn add sass --dev # yarn 1.x
+  # npm
+  npm install -D sass
+  # pnpm
+  pnpm add -D sass
+  # yarn
+  yarn add sass --dev
   ```
 
 - For `Less` support install `less`:
 
   ```bash
-  npm install -D less # npm
-
-  pnpm add -D less # pnpm
-
-  yarn add less --dev # yarn 1.x
+  # npm
+  npm install -D less
+  # pnpm
+  pnpm add -D less
+  # yarn
+  yarn add less --dev
   ```
 
 - For `Stylus` support install `stylus`:
 
   ```bash
-  npm install -D stylus # npm
-
-  pnpm add -D stylus # pnpm
-
-  yarn add stylus --dev # yarn 1.x
+  # npm
+  npm install -D stylus
+  # pnpm
+  pnpm add -D stylus
+  # yarn
+  yarn add stylus --dev
   ```
 
 That's it, now you can import `.scss` `.sass` `.less` `.styl` `.stylus` files in your code.
 
 ### Sass and `fibers`
 
-By default, `fibers` package will be loaded automatically if available when using `sass` implementation.
+By default, when using `Dart Sass` implementation, `fibers` package will be loaded automatically if available, otherwise sync mode will be used for better performance.
 
 > When installed via npm, `Dart Sass` supports a JavaScript API that's fully compatible with `Node Sass` <...>, with support for both the render() and renderSync() functions. <...>
 >
@@ -240,11 +244,12 @@ By default, `fibers` package will be loaded automatically if available when usin
 To install `fibers`:
 
 ```bash
-npm install -D fibers # npm
-
-pnpm add -D fibers # pnpm
-
-yarn add fibers --dev # yarn 1.x
+# npm
+npm install -D fibers
+# pnpm
+pnpm add -D fibers
+# yarn
+yarn add fibers --dev
 ```
 
 ## Configuration
@@ -272,17 +277,6 @@ With that said, here is the basic list of things which differentiate this plugin
 - Support for implementation and `fibers` forcing for Sass
 - Support for partials and `~` in Less import statements
 - More smaller things that I forgot
-
-## Contributing
-
-Any contributions are always welcome, not only Pull Requests! 😀
-
-- **QA**: file bug reports, the more details you can give the better
-- **Code**: take a look at the [open issues](https://github.com/Anidetrix/rollup-plugin-styles/issues), even if you can't write code showing that you care about a given issue matters
-- **Ideas**: feature requests are welcome, even ambitious ones
-- **Donations**: financial support helps to dedicate more time to this project
-
-Your First Contribution? You can learn how from this _free_ series, [How to Contribute to an Open Source Project on GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github).
 
 ## License
 
