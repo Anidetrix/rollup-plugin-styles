@@ -2,6 +2,8 @@ import fs from "fs-extra";
 import resolveAsync from "../../utils/resolve-async";
 import { getUrlOfPartial, normalizeUrl } from "../../utils/url";
 
+const extensions = [".less", ".css"];
+
 const getStylesFileManager = (less: less.Less): less.FileManager =>
   new (class extends less.AbstractFileManager implements less.FileManager {
     supports(): boolean {
@@ -9,10 +11,9 @@ const getStylesFileManager = (less: less.Less): less.FileManager =>
     }
 
     async loadFile(filename: string, basedir: string): Promise<less.File> {
-      const options = { basedir, extensions: [".less", ".css"] };
-
       const url = normalizeUrl(filename);
       const partialUrl = getUrlOfPartial(url);
+      const options = { basedir, extensions };
 
       // Give precedence to importing a partial
       let id: string;

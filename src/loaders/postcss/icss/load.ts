@@ -1,8 +1,6 @@
 import path from "path";
 import fs from "fs-extra";
 import postcss from "postcss";
-import { Replacements } from "icss-utils";
-
 import resolveAsync from "../../../utils/resolve-async";
 
 export type Load = (
@@ -11,7 +9,7 @@ export type Load = (
   extensions: string[],
   processor: postcss.Processor,
   opts?: postcss.ProcessOptions,
-) => Promise<Replacements>;
+) => Promise<Record<string, string>>;
 
 const load: Load = async (url, file, extensions, processor, opts) => {
   let from: string;
@@ -21,11 +19,17 @@ const load: Load = async (url, file, extensions, processor, opts) => {
   } catch {
     from = await resolveAsync(`./${url}`, options);
   }
+
   const source = await fs.readFile(from);
   const { messages } = await processor.process(source, { ...opts, from });
-  return messages
-    .filter(msg => msg.type === "icss")
-    .reduce((acc, msg) => ({ ...acc, ...(msg.replacements as Record<string, string>) }), {});
+
+  const exports: Record<string, string> = {};
+  for (const msg of messages) {
+    if (msg.type !== "icss") continue;
+    Object.assign(exports, msg.exports as Record<string, string>);
+  }
+
+  return exports;
 };
 
 export default load;

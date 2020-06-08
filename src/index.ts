@@ -4,24 +4,17 @@
 /// <reference types="./shims/less" />
 /// <reference types="./shims/stylus" />
 
-import { createFilter } from "@rollup/pluginutils";
-
 import path from "path";
-import Concat from "concat-with-sourcemaps";
 import { Plugin, OutputChunk, OutputAsset } from "rollup";
+import { createFilter } from "@rollup/pluginutils";
 import postcss from "postcss";
 import cssnano from "cssnano";
-
-import { ExtractedData, LoaderContext, Options, Payload, PostCSSLoaderOptions } from "./types";
+import { LoaderContext, Extracted } from "./loaders/types";
+import { ExtractedData, Options, PostCSSLoaderOptions } from "./types";
 import Loaders from "./loaders";
-import {
-  humanlizePath,
-  normalizePath,
-  relativePath,
-  isAbsolutePath,
-  isRelativePath,
-} from "./utils/path";
+import { humanlizePath, normalizePath, isAbsolutePath, isRelativePath } from "./utils/path";
 import { mm } from "./utils/sourcemap";
+import concat from "./utils/concat";
 import {
   inferOption,
   inferModeOption,
@@ -36,7 +29,7 @@ export default (options: Options = {}): Plugin => {
   const isIncluded = createFilter(options.include, options.exclude);
 
   const sourceMap = inferSourceMapOption(options.sourceMap);
-  const postcssOpts: PostCSSLoaderOptions = {
+  const loaderOpts: PostCSSLoaderOptions = {
     ...inferModeOption(options.mode),
 
     minimize: inferOption(options.minimize, false),
@@ -49,23 +42,25 @@ export default (options: Options = {}): Plugin => {
     namedExports: options.namedExports ?? false,
     autoModules: options.autoModules ?? false,
     extensions: options.extensions ?? [".css", ".pcss", ".postcss", ".sss"],
-
-    postcss: {
-      parser: ensurePCSSOption(options.parser, "parser"),
-      syntax: ensurePCSSOption(options.syntax, "syntax"),
-      stringifier: ensurePCSSOption(options.stringifier, "stringifier"),
-      plugins: ensurePCSSPlugins(options.plugins),
-    },
+    postcss: {},
   };
 
+  if (options.parser) loaderOpts.postcss.parser = ensurePCSSOption(options.parser, "parser");
+
+  if (options.syntax) loaderOpts.postcss.syntax = ensurePCSSOption(options.syntax, "syntax");
+
+  if (options.stringifier)
+    loaderOpts.postcss.stringifier = ensurePCSSOption(options.stringifier, "stringifier");
+
+  if (options.plugins) loaderOpts.postcss.plugins = ensurePCSSPlugins(options.plugins);
+
   const loaders = new Loaders({
-    use: [["postcss", postcssOpts], ...ensureUseOption(options.use, options), "sourcemap"],
-    loaders: options.loaders ?? [],
-    extensions: postcssOpts.extensions,
+    use: [["postcss", loaderOpts], ...ensureUseOption(options), ["sourcemap", {}]],
+    loaders: options.loaders,
+    extensions: loaderOpts.extensions,
   });
 
-  const extracted = new Map<string, NonNullable<Payload["extracted"]>>();
-
+  const extracted: Extracted[] = [];
   let preserveModules: boolean;
 
   const plugin: Plugin = {
@@ -107,24 +102,25 @@ export default (options: Options = {}): Plugin => {
       for (const [fileName, source] of ctx.assets)
         this.emitFile({ type: "asset", fileName, source });
 
-      if (res.extracted) extracted.set(id, res.extracted);
+      if (res.extracted) extracted.push(res.extracted);
 
       return {
         code: res.code,
         map: (sourceMap ? res.map : undefined) ?? { mappings: "" as const },
-        moduleSideEffects: Boolean(postcssOpts.extract) || null,
+        moduleSideEffects: loaderOpts.extract ? true : null,
       };
     },
 
     augmentChunkHash(chunk) {
-      if (extracted.size === 0) return;
+      if (extracted.length === 0) return;
 
-      const ids = Object.keys(chunk.modules).reduce<string[]>((acc, id) => {
+      const ids: string[] = [];
+      for (const id of Object.keys(chunk.modules)) {
         const i = this.getModuleInfo(id);
-        return [...acc, i.id, ...i.importedIds];
-      }, []);
+        ids.push(i.id, ...i.importedIds);
+      }
 
-      const hashable = [...extracted.values()]
+      const hashable = extracted
         .filter(e => ids.includes(e.id))
         .sort((a, b) => ids.lastIndexOf(a.id) - ids.lastIndexOf(b.id))
         .map(e => ({
@@ -139,14 +135,14 @@ export default (options: Options = {}): Plugin => {
     },
 
     async generateBundle(opts, bundle) {
-      if (extracted.size === 0 || !(opts.dir || opts.file)) return;
+      if (extracted.length === 0 || !(opts.dir || opts.file)) return;
 
       const dir = opts.dir ?? path.dirname(opts.file ?? "");
 
-      const getExtractedData = (name: string, ids: string[]): ExtractedData => {
+      const getExtractedData = async (name: string, ids: string[]): Promise<ExtractedData> => {
         const fileName =
-          typeof postcssOpts.extract === "string"
-            ? normalizePath(postcssOpts.extract).replace(/^\.[/\\]/, "")
+          typeof loaderOpts.extract === "string"
+            ? normalizePath(loaderOpts.extract).replace(/^\.[/\\]/, "")
             : normalizePath(`${name}.css`);
 
         if (isAbsolutePath(fileName))
@@ -165,24 +161,18 @@ export default (options: Options = {}): Plugin => {
             ].join("\n"),
           );
 
-        const fileDir = path.dirname(path.resolve(dir, fileName));
-
-        const entries = [...extracted.values()]
+        const entries = extracted
           .filter(e => ids.includes(e.id))
           .sort((a, b) => ids.lastIndexOf(a.id) - ids.lastIndexOf(b.id));
 
-        const concat = new Concat(true, path.basename(fileName), "\n");
-        for (const res of entries) {
-          const relative = relativePath(dir, res.id);
-          const map = mm(res.map).relative(fileDir).toObject();
-          type ConcatSourceMap = Exclude<Parameters<typeof concat.add>[2], string | undefined>;
-          concat.add(relative, res.css, (map as unknown) as ConcatSourceMap);
-        }
+        const res = await concat(entries);
 
         return {
-          css: concat.content.toString(),
-          map: concat.sourceMap,
           name: fileName,
+          css: res.css,
+          map: mm(res.map)
+            .relative(path.dirname(path.resolve(dir, fileName)))
+            .toString(),
         };
       };
 
@@ -193,20 +183,21 @@ export default (options: Options = {}): Plugin => {
       };
 
       const getImports = (chunk: OutputChunk): string[] => {
-        const traversed = new Set<string>();
         const ordered: string[] = [];
         let ids: string[] = [];
 
         for (const module of Object.keys(chunk.modules)) {
-          traversed.clear();
+          const traversed: string[] = [];
           ids.push(module);
           while (ids.length > 0) {
-            ids = ids.reduce<string[]>((acc, id) => {
-              if (!isIncluded(id) || traversed.has(id)) return acc;
-              if (extracted.has(id)) ordered.push(id);
-              else traversed.add(id);
-              return [...acc, ...this.getModuleInfo(id).importedIds];
-            }, []);
+            const imports: string[] = [];
+            for (const id of ids) {
+              if (traversed.includes(id) || !isIncluded(id)) continue;
+              if (loaders.isSupported(id)) ordered.push(id);
+              else traversed.push(id);
+              imports.push(...this.getModuleInfo(id).importedIds);
+            }
+            ids = imports;
           }
         }
 
@@ -216,28 +207,28 @@ export default (options: Options = {}): Plugin => {
       const getEmitted = (): Map<string, string[]> => {
         const emittedMap = new Map<string, string[]>();
         const chunks = Object.values(bundle).filter((c): c is OutputChunk => c.type === "chunk");
-        const entries = chunks.filter(c => c.isEntry || c.isDynamicEntry);
 
-        if (typeof postcssOpts.extract === "string") {
-          const name = getName(entries.find(e => e.isEntry) ?? entries[0]);
-          const emitted = preserveModules ? chunks : entries;
-          const ids = emitted.reduce<string[]>((acc, e) => [...acc, ...getImports(e)], []);
+        const emitted = preserveModules
+          ? chunks
+          : chunks.filter(c => c.isEntry || c.isDynamicEntry);
+
+        if (typeof loaderOpts.extract === "string") {
+          const name = getName(chunks.find(e => e.isEntry) ?? chunks[0]);
+          const ids: string[] = [];
+          for (const chunk of emitted) ids.push(...getImports(chunk));
           if (ids.length !== 0) emittedMap.set(name, ids);
           return emittedMap;
         }
 
         const moved: string[] = [];
-        const virtuals = chunks.filter(c => !c.facadeModuleId);
-        for (const chunk of virtuals) {
+        const manual = chunks.filter(c => !c.facadeModuleId);
+        for (const chunk of manual) {
           const name = getName(chunk);
           const ids = getImports(chunk);
           if (ids.length !== 0) emittedMap.set(name, ids);
           moved.push(...ids);
         }
 
-        // `preserveModules` does not support the `manualChunks` option,
-        // so there will be no overlap
-        const emitted = preserveModules ? chunks : entries;
         for (const chunk of emitted) {
           const name = getName(chunk);
           const ids = getImports(chunk).filter(id => !moved.includes(id));
@@ -248,7 +239,7 @@ export default (options: Options = {}): Plugin => {
       };
 
       for await (const [name, ids] of getEmitted()) {
-        const res = getExtractedData(name, ids);
+        const res = await getExtractedData(name, ids);
 
         if (typeof options.onExtract === "function") {
           const shouldExtract = options.onExtract(res);
@@ -256,9 +247,9 @@ export default (options: Options = {}): Plugin => {
         }
 
         // Perform minimization on the extracted file
-        if (postcssOpts.minimize) {
+        if (loaderOpts.minimize) {
           const cssNanoOpts: cssnano.CssNanoOptions & postcss.ProcessOptions =
-            typeof postcssOpts.minimize === "object" ? postcssOpts.minimize : {};
+            typeof loaderOpts.minimize === "object" ? loaderOpts.minimize : {};
 
           cssNanoOpts.from = res.name;
           cssNanoOpts.to = res.name;

@@ -1,6 +1,5 @@
 import PQueue from "p-queue";
-
-import { Loader, LoaderContext, LoadersOptions, Payload } from "../types";
+import { Loader, LoaderContext, Payload } from "./types";
 import postcssLoader from "./postcss";
 import sourcemapLoader from "./sourcemap";
 import sassLoader from "./sass";
@@ -8,8 +7,9 @@ import stylusLoader from "./stylus";
 import lessLoader from "./less";
 
 function matchFile(file: string, condition: Loader["test"]): boolean {
+  if (!condition) return false;
   if (typeof condition === "function") return condition(file);
-  return Boolean(condition?.test(file));
+  return condition.test(file);
 }
 
 // This queue makes sure one thread is always available,
@@ -20,62 +20,58 @@ const threadPoolSize = process.env.UV_THREADPOOL_SIZE
   : 4; // default `libuv` threadpool size
 const workQueue = new PQueue({ concurrency: threadPoolSize - 1 });
 
-export default class Loaders {
-  loaders: Loader[] = [];
+/** Options for {@link Loaders} class */
+interface LoadersOptions {
+  /** @see {@link Options.use} */
   use: [string, Record<string, unknown>][];
-  test: (file: string) => boolean;
+  /** @see {@link Options.loaders} */
+  loaders?: Loader[];
+  /** @see {@link Options.extensions} */
+  extensions: string[];
+}
+
+export default class Loaders {
+  readonly #use: Map<string, Record<string, unknown>>;
+  readonly #test: (file: string) => boolean;
+  readonly #loaders = new Map<string, Loader>();
 
   constructor(options: LoadersOptions) {
-    this.use = options.use.map(rule => {
-      if (typeof rule === "string") return [rule, {}];
-      if (Array.isArray(rule)) return rule.length === 1 ? [rule[0], {}] : rule;
-      throw new TypeError("The rule in `use` option must be string or array!");
-    });
+    this.#use = new Map(options.use.reverse());
 
-    this.test = (file): boolean => options.extensions.some(ext => file.toLowerCase().endsWith(ext));
+    this.#test = (file): boolean =>
+      options.extensions.some(ext => file.toLowerCase().endsWith(ext));
 
-    this.listLoader(postcssLoader);
-    this.listLoader(sourcemapLoader);
-    this.listLoader(sassLoader);
-    this.listLoader(stylusLoader);
-    this.listLoader(lessLoader);
-    for (const loader of options.loaders) this.listLoader(loader);
+    this.addLoader(postcssLoader);
+    this.addLoader(sourcemapLoader);
+    this.addLoader(sassLoader);
+    this.addLoader(lessLoader);
+    this.addLoader(stylusLoader);
+    if (options.loaders) for (const loader of options.loaders) this.addLoader(loader);
   }
 
-  getLoader(name: string): Loader | undefined {
-    return this.loaders.find(loader => loader.name === name);
-  }
-
-  listLoader<T extends Record<string, unknown>>(loader: Loader<T>): void {
-    if (!this.use.some(rule => rule[0] === loader.name)) return;
-    if (this.getLoader(loader.name)) this.unlistLoader(loader.name);
-    this.loaders.push(loader as Loader);
-  }
-
-  unlistLoader(name: string): void {
-    this.loaders = this.loaders.filter(loader => loader.name !== name);
+  addLoader<T extends Record<string, unknown>>(loader: Loader<T>): void {
+    if (!this.#use.has(loader.name)) return;
+    this.#loaders.set(loader.name, loader as Loader);
   }
 
   isSupported(file: string): boolean {
-    return this.test(file) || this.loaders.some(loader => matchFile(file, loader.test));
+    if (this.#test(file)) return true;
+    for (const [, loader] of this.#loaders) {
+      if (matchFile(file, loader.test)) return true;
+    }
+    return false;
   }
 
   async process(payload: Payload, context: LoaderContext): Promise<Payload> {
-    return this.use
-      .slice()
-      .reverse()
-      .map(([name, options]) => {
-        const loader = this.getLoader(name);
-        const ctx: LoaderContext = { ...context, options: options ?? {} };
+    for await (const [name, options] of this.#use) {
+      const loader = this.#loaders.get(name);
+      if (!loader) continue;
+      const ctx: LoaderContext = { ...context, options };
+      if (loader.alwaysProcess || matchFile(ctx.id, loader.test)) {
+        payload = await workQueue.add(loader.process.bind(ctx, payload));
+      }
+    }
 
-        return async (payload: Payload): Promise<Payload> => {
-          if (loader && (loader.alwaysProcess || matchFile(ctx.id, loader.test))) {
-            return workQueue.add(loader.process.bind(ctx, payload));
-          }
-
-          return payload;
-        };
-      })
-      .reduce(async (current, next) => current.then(next), Promise.resolve({ ...payload }));
+    return payload;
   }
 }

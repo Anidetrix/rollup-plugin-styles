@@ -1,8 +1,7 @@
-import { Payload } from "../src/types";
-import Loaders from "../src/loaders";
 import postcss from "postcss";
+import Loaders from "../src/loaders";
 import postcssNoop from "../src/loaders/postcss/noop";
-import { loadSass } from "../src/loaders/sass/load";
+import loadSass from "../src/loaders/sass/load";
 import { ensurePCSSOption } from "../src/utils/options";
 import { mm, getMap, stripMap } from "../src/utils/sourcemap";
 import { humanlizePath } from "../src/utils/path";
@@ -22,28 +21,26 @@ describe("load-module", () => {
   const loadModule = jest.requireActual("../src/utils/load-module")
     .default as typeof loadModuleMock;
 
-  test("wrong path", async () => {
-    await expect(loadModule("totallyWRONGPATH/here")).resolves.toBeUndefined();
+  test("wrong path", () => {
+    expect(loadModule("totallyWRONGPATH/here")).toBeUndefined();
   });
 
-  test("correct cwd path", async () => {
-    await expect(loadModule(humanlizePath(fixture("utils/fixture")))).resolves.toBe(
-      "this is fixture",
-    );
+  test("correct cwd path", () => {
+    expect(loadModule(humanlizePath(fixture("utils/fixture")))).toBe("this is fixture");
   });
 
-  test("correct absolute path", async () => {
-    await expect(loadModule(fixture("utils/fixture"))).resolves.toBe("this is fixture");
+  test("correct absolute path", () => {
+    expect(loadModule(fixture("utils/fixture"))).toBe("this is fixture");
   });
 
-  test("correct path with custom basepath", async () => {
-    await expect(loadModule("fixture", fixture("utils"))).resolves.toBe("this is fixture");
+  test("correct path with custom basepath", () => {
+    expect(loadModule("fixture", fixture("utils"))).toBe("this is fixture");
   });
 });
 
 describe("less", () => {
   test("not found", async () => {
-    const loaders = new Loaders({ use: ["less"], loaders: [], extensions: [""] });
+    const loaders = new Loaders({ use: [["less", {}]], loaders: [], extensions: [""] });
     await expect(
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       loaders.process({ code: "" }, { id: "file.less" } as any),
@@ -53,7 +50,7 @@ describe("less", () => {
 
 describe("stylus", () => {
   test("not found", async () => {
-    const loaders = new Loaders({ use: ["stylus"], loaders: [], extensions: [""] });
+    const loaders = new Loaders({ use: [["stylus", {}]], loaders: [], extensions: [""] });
     await expect(
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       loaders.process({ code: "" }, { id: "file.styl" } as any),
@@ -62,27 +59,13 @@ describe("stylus", () => {
 });
 
 describe("load-sass", () => {
-  test("wrong implementation", async () => {
+  test("wrong implementation", () => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    await expect(loadSass("swass" as any)).rejects.toThrowErrorMatchingSnapshot();
+    expect(() => loadSass("swass" as any)).toThrowErrorMatchingSnapshot();
   });
 
-  test("not found", async () => {
-    await expect(loadSass()).rejects.toThrowErrorMatchingSnapshot();
-  });
-});
-
-describe("loaders", () => {
-  test("unlisting", () => {
-    const testLoader = {
-      name: "test",
-      alwaysProcess: true,
-      process: (): Payload => ({ code: "" }),
-    };
-    const loaders = new Loaders({ use: ["test"], loaders: [testLoader], extensions: [""] });
-    expect(loaders.getLoader("test")).toBe(testLoader);
-    loaders.unlistLoader("test");
-    expect(loaders.getLoader("test")).toBeUndefined();
+  test("not found", () => {
+    expect(() => loadSass()).toThrowErrorMatchingSnapshot();
   });
 });
 

@@ -1,14 +1,8 @@
 import postcss from "postcss";
-import {
-  LoadersOptions,
-  LoaderContext,
-  Options,
-  PostCSSLoaderOptions,
-  SASSLoaderOptions,
-  StylusLoaderOptions,
-  LESSLoaderOptions,
-} from "../types";
-import { nullishFilter, isNullish } from "./filter";
+import { LoaderContext } from "../loaders/types";
+import { Options, PostCSSLoaderOptions } from "../types";
+import loadModule from "./load-module";
+import arrayFmt from "./array-fmt";
 
 export function inferOption<T, TDef extends T | boolean>(
   option: T | boolean | undefined,
@@ -24,78 +18,82 @@ interface Mode {
   extract: PostCSSLoaderOptions["extract"];
   emit: PostCSSLoaderOptions["emit"];
 }
+
+const modes = ["inject", "extract", "emit"];
+const modesFmt = arrayFmt(modes);
 export function inferModeOption(mode: Options["mode"]): Mode {
-  const m = Array.isArray(mode)
-    ? {
-        inject: mode[0] === "inject" && (mode[1] ?? true),
-        extract: mode[0] === "extract" && (mode[1] ?? true),
-        emit: mode[0] === "emit",
-      }
-    : {
-        inject: mode === "inject",
-        extract: mode === "extract",
-        emit: mode === "emit",
-      };
-  if (!(m.inject || m.extract || m.emit)) m.inject = true;
-  return m;
+  const m = Array.isArray(mode) ? mode : ([mode] as const);
+
+  if (m[0] && !modes.includes(m[0]))
+    throw new Error(`Incorrect mode provided, allowed modes are ${modesFmt}`);
+
+  return {
+    inject: (!m[0] || m[0] === "inject") && (m[1] ?? true),
+    extract: m[0] === "extract" && (m[1] ?? true),
+    emit: m[0] === "emit",
+  };
 }
 
 export function inferSourceMapOption(sourceMap: Options["sourceMap"]): LoaderContext["sourceMap"] {
-  return Array.isArray(sourceMap)
-    ? Boolean(sourceMap[0]) && {
-        content: true,
-        ...sourceMap[1],
-        inline: sourceMap[0] === "inline",
-      }
-    : Boolean(sourceMap) && {
-        content: true,
-        inline: sourceMap === "inline",
-      };
+  const sm = Array.isArray(sourceMap) ? sourceMap : ([sourceMap] as const);
+  if (!sm[0]) return false;
+  return { content: true, ...sm[1], inline: sm[0] === "inline" };
 }
 
 export function inferHandlerOption<T extends { alias?: Record<string, string> }>(
   option: T | boolean | undefined,
   alias: T["alias"],
 ): T | false {
-  const opt = inferOption(option, { alias } as T);
-  if (typeof opt === "object" && !opt.alias) opt.alias = alias;
+  const opt = inferOption(option, {} as T);
+  if (alias && typeof opt === "object" && !opt.alias) opt.alias = alias;
   return opt;
 }
 
-interface UseOpts {
-  sass?: SASSLoaderOptions;
-  less?: LESSLoaderOptions;
-  stylus?: StylusLoaderOptions;
-}
-export function ensureUseOption(use: Options["use"], opts: UseOpts): LoadersOptions["use"] {
+export function ensureUseOption(opts: Options): [string, Record<string, unknown>][] {
   const all: Record<string, [string, Record<string, unknown>]> = {
     sass: ["sass", opts.sass ?? {}],
     less: ["less", opts.less ?? {}],
     stylus: ["stylus", opts.stylus ?? {}],
   };
-  if (!Array.isArray(use)) return Object.values(all);
-  return use.map(loader => all[loader] ?? loader);
+
+  if (typeof opts.use === "undefined") return Object.values(all);
+  else if (!Array.isArray(opts.use)) throw new TypeError("`use` option must be an array!");
+
+  return opts.use.map(loader => {
+    if (typeof loader !== "string")
+      throw new TypeError("`use` option must be an array of strings!");
+
+    return all[loader] || [loader, {}];
+  });
 }
 
 type PCSSOption = "parser" | "syntax" | "stringifier" | "plugin";
 export function ensurePCSSOption<T>(option: T | string, type: PCSSOption): T {
   if (typeof option !== "string") return option;
-  try {
-    return require(option) as T;
-  } catch {
-    throw new Error(`Unable to load PostCSS ${type} \`${option}\``);
-  }
+  const module = loadModule(option);
+  if (!module) throw new Error(`Unable to load PostCSS ${type} \`${option}\``);
+  return module as T;
 }
 
-export function ensurePCSSPlugins(plugins: Options["plugins"]): postcss.Transformer[] | undefined {
-  if (!Array.isArray(plugins)) return ensurePCSSOption(plugins, "plugin");
-  return plugins
-    .map(p => {
-      if (isNullish(p)) return;
-      if (!Array.isArray(p)) return ensurePCSSOption(p, "plugin");
-      const [plug, opts] = p;
-      if (!opts) return ensurePCSSOption<postcss.Transformer>(plug, "plugin");
-      return ensurePCSSOption<postcss.Plugin<unknown>>(plug, "plugin")(opts);
-    })
-    .filter(nullishFilter);
+export function ensurePCSSPlugins(
+  plugins: Options["plugins"],
+): (postcss.Transformer | postcss.Processor)[] {
+  if (typeof plugins === "undefined") return [];
+  else if (!Array.isArray(plugins)) throw new TypeError("`plugins` option must be an array!");
+
+  const ps: (postcss.Transformer | postcss.Processor)[] = [];
+  for (const p of plugins) {
+    if (!p) continue;
+
+    if (!Array.isArray(p)) {
+      ps.push(ensurePCSSOption(p, "plugin"));
+      continue;
+    }
+
+    const [plug, opts] = p;
+    if (!opts) ps.push(ensurePCSSOption(plug, "plugin"));
+    else ps.push(ensurePCSSOption(plug, "plugin")(opts));
+  }
+
+  return ps;
 }

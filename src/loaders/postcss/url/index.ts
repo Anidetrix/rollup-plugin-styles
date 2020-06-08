@@ -10,6 +10,8 @@ import { walkUrls, isDeclWithUrl } from "./utils";
 import inlineFile from "./inline";
 
 const name = "styles-url";
+const placeholderHashDefault = "assets/[name]-[hash][extname]";
+const placeholderNoHashDefault = "assets/[name][extname]";
 
 /** URL handler options */
 export interface UrlOptions {
@@ -68,8 +70,8 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
       options.hash ?? true
         ? typeof options.hash === "string"
           ? options.hash
-          : "assets/[name]-[hash][extname]"
-        : "assets/[name][extname]";
+          : placeholderHashDefault
+        : placeholderNoHashDefault;
 
     const { file } = css.source.input;
     const map = await mm(css.source.input.map?.text).resolve(path.dirname(file)).toConsumer();

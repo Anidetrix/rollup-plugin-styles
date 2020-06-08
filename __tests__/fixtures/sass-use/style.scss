@@ -1,4 +1,5 @@
 @use "src/corners" as *;
+@import "~minireset.css/minireset.min";
 
 .button {
   @include rounded;

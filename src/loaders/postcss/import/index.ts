@@ -7,6 +7,7 @@ import { normalizePath } from "../../../utils/path";
 import resolveDefault, { ImportResolve } from "./resolve";
 
 const name = "styles-import";
+const extensionsDefault = [".css", ".pcss", ".postcss", ".sss"];
 
 /** `@import` handler options */
 export interface ImportOptions {
@@ -36,10 +37,10 @@ const plugin: postcss.Plugin<ImportOptions> = postcss.plugin(
 
     const resolve = options.resolve ?? resolveDefault;
     const alias = options.alias ?? {};
-    const extensions = options.extensions ?? [".css", ".pcss", ".postcss", ".sss"];
+    const extensions = options.extensions ?? extensionsDefault;
 
-    const opts = res.opts && { ...res.opts };
-    delete opts?.map;
+    const opts: postcss.ResultOptions = { ...res.opts };
+    delete opts.map;
 
     const { file } = css.source.input;
     const importList: { importRule: postcss.AtRule; url: string }[] = [];
@@ -112,10 +113,8 @@ const plugin: postcss.Plugin<ImportOptions> = postcss.plugin(
           continue;
         }
 
-        res.messages.push({ plugin: name, type: "dependency", file: from });
-
         const imported = await postcss(plugin(options)).process(source, { ...opts, from });
-        res.messages.unshift(...imported.messages);
+        res.messages.push(...imported.messages, { plugin: name, type: "dependency", file: from });
 
         if (!imported.root) importRule.remove();
         else importRule.replaceWith(imported.root);

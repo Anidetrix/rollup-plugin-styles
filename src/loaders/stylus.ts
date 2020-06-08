@@ -1,15 +1,20 @@
 import path from "path";
 import fs from "fs-extra";
-import { Loader, StylusLoaderOptions } from "../types";
 import { mm } from "../utils/sourcemap";
 import loadModule from "../utils/load-module";
 import { normalizePath } from "../utils/path";
+import { Loader } from "./types";
+
+/** Options for Stylus loader */
+// https://github.com/microsoft/TypeScript/issues/37901
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+export interface StylusLoaderOptions extends Record<string, unknown>, stylus.Options {}
 
 const loader: Loader<StylusLoaderOptions> = {
   name: "stylus",
   test: /\.(styl|stylus)$/i,
   async process({ code, map }) {
-    const stylus = await loadModule("stylus");
+    const stylus = loadModule("stylus") as stylus.Stylus;
     if (!stylus)
       throw new Error("You need to install `stylus` package in order to process Stylus files");
 
@@ -35,12 +40,10 @@ const loader: Loader<StylusLoaderOptions> = {
     if (style.sourcemap?.sources && !style.sourcemap.sourcesContent) {
       style.sourcemap.sourcesContent = await Promise.all(
         style.sourcemap.sources.map(async source => {
-          try {
-            const file = normalizePath(basePath, source);
-            return await fs.readFile(file, "utf8");
-          } catch {
-            return (null as unknown) as string;
-          }
+          const file = normalizePath(basePath, source);
+          const exists = await fs.pathExists(file);
+          if (!exists) return (null as unknown) as string;
+          return fs.readFile(file, "utf8");
         }),
       );
     }

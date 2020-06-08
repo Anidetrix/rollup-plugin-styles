@@ -95,8 +95,6 @@ export interface TestData extends WriteData {
 
 export function validate(data: TestData): void {
   const options = data.options ?? {};
-  const mode = inferModeOption(options.mode);
-  const sourceMap = inferSourceMapOption(options.sourceMap);
   test(data.title, async () => {
     if (data.shouldFail) {
       await expect(write(data)).rejects.toThrowErrorMatchingSnapshot();
@@ -107,11 +105,13 @@ export function validate(data: TestData): void {
 
     for (const f of await res.js()) expect(f).toMatchSnapshot("js");
 
+    const mode = inferModeOption(options.mode);
     if (mode.extract) {
       await expect(res.isCss()).resolves.toBeTruthy();
       for (const f of await res.css()) expect(f).toMatchSnapshot("css");
     }
 
+    const sourceMap = inferSourceMapOption(options.sourceMap);
     if (sourceMap && !sourceMap.inline) {
       await expect(res.isMap()).resolves.toBe(Boolean(mode.extract));
       for (const f of await res.map()) expect(f).toMatchSnapshot("map");

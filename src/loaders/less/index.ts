@@ -1,16 +1,19 @@
 import path from "path";
-
-import { LESSLoaderOptions, Loader } from "../../types";
 import loadModule from "../../utils/load-module";
 import { normalizePath } from "../../utils/path";
-
+import { Loader } from "../types";
 import importer from "./importer";
+
+/** Options for Less loader */
+// https://github.com/microsoft/TypeScript/issues/37901
+// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+export interface LESSLoaderOptions extends Record<string, unknown>, less.Options {}
 
 const loader: Loader<LESSLoaderOptions> = {
   name: "less",
   test: /\.less$/i,
   async process({ code, map }) {
-    const less = await loadModule("less");
+    const less = loadModule("less") as less.Less;
     if (!less) throw new Error("You need to install `less` package in order to process Less files");
 
     const res = await less.render(code, {

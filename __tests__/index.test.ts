@@ -15,11 +15,57 @@ validateMany("basic", [
     input: "simple/index.js",
   },
   {
+    title: "mode-fail",
+    shouldFail: true,
+    input: "simple/index.js",
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-assignment
+    options: { mode: "mash" as any },
+  },
+  {
     title: "use-fail",
     shouldFail: true,
     input: "simple/index.js",
     // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-assignment
     options: { use: [false] as any },
+  },
+  {
+    title: "use-type-fail",
+    shouldFail: true,
+    input: "simple/index.js",
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-assignment
+    options: { use: false as any },
+  },
+  {
+    title: "parser-fail",
+    shouldFail: true,
+    input: "simple/index.js",
+    options: { parser: "walrus" },
+  },
+  {
+    title: "syntax-fail",
+    shouldFail: true,
+    input: "simple/index.js",
+    options: { syntax: "walrus" },
+  },
+  {
+    title: "stringifier-fail",
+    shouldFail: true,
+    input: "simple/index.js",
+    options: { stringifier: "walrus" },
+  },
+  {
+    title: "plugin-fail",
+    shouldFail: true,
+    input: "simple/index.js",
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-assignment
+    options: { plugins: ["pulverizer"] as any },
+  },
+  {
+    title: "plugin-type-fail",
+    shouldFail: true,
+    input: "simple/index.js",
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any,@typescript-eslint/no-unsafe-assignment
+    options: { plugins: "pulverizer" as any },
   },
   {
     title: "postcss-config",
@@ -75,7 +121,7 @@ validateMany("basic", [
     input: "postcss-options/index.js",
     options: {
       parser: "sugarss",
-      plugins: [["autoprefixer", { overrideBrowserslist: ["> 0%"] }]],
+      plugins: ["autoprefixer", ["autoprefixer", { overrideBrowserslist: ["> 0%"] }]],
     },
   },
 ]);
@@ -273,7 +319,7 @@ validateMany("inject", [
     title: "function",
     input: "simple/index.js",
     options: {
-      mode: ["inject", (varname): string => `console.log(${varname})`],
+      mode: ["inject", (varname, id) => `console.log(${varname},${JSON.stringify(id)})`],
     },
   },
 ]);
@@ -318,8 +364,50 @@ validateMany("sass", [
     input: "sass-importer/index.js",
     options: {
       sass: {
-        importer(_, __, done): void {
-          done({ contents: ".virtual{color:red}" });
+        importer(url, _, done): void {
+          if (url === "~modularvirtualimport") done({ contents: ".modularvirtual{color:blue}" });
+          else done({ contents: ".virtual{color:red}" });
+        },
+      },
+    },
+  },
+  {
+    title: "importer-dart",
+    input: "sass-importer/index.js",
+    options: {
+      sass: {
+        impl: "sass",
+        sync: false,
+        importer(url, _, done): void {
+          if (url === "~modularvirtualimport") done({ contents: ".modularvirtual{color:blue}" });
+          else done({ contents: ".virtual{color:red}" });
+        },
+      },
+    },
+  },
+  {
+    title: "importer-sync",
+    input: "sass-importer/index.js",
+    options: {
+      sass: {
+        sync: true,
+        importer(url): sass.Data {
+          if (url === "~modularvirtualimport") return { contents: ".modularvirtual{color:blue}" };
+          return { contents: ".virtual{color:red}" };
+        },
+      },
+    },
+  },
+  {
+    title: "importer-dart-sync",
+    input: "sass-importer/index.js",
+    options: {
+      sass: {
+        impl: "sass",
+        sync: true,
+        importer(url): sass.Data {
+          if (url === "~modularvirtualimport") return { contents: ".modularvirtual{color:blue}" };
+          return { contents: ".virtual{color:red}" };
         },
       },
     },

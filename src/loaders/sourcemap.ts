@@ -1,5 +1,5 @@
-import { Loader } from "../types";
 import { getMap, stripMap } from "../utils/sourcemap";
+import { Loader } from "./types";
 
 const loader: Loader = {
   name: "sourcemap",

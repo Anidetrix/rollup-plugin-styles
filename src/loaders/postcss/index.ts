@@ -4,19 +4,25 @@ import { makeLegalIdentifier } from "@rollup/pluginutils";
 import postcss from "postcss";
 import postcssrc from "postcss-load-config";
 import cssnano from "cssnano";
-
-import { Loader, PostCSSLoaderOptions } from "../../types";
+import { PostCSSLoaderOptions } from "../../types";
 import { humanlizePath, normalizePath } from "../../utils/path";
 import { mm } from "../../utils/sourcemap";
 import resolveAsync from "../../utils/resolve-async";
 import safeId from "../../utils/safe-id";
-import { denullifyObject, booleanFilter } from "../../utils/filter";
-
+import { Loader } from "../types";
 import postcssImport from "./import";
 import postcssUrl from "./url";
 import postcssModules from "./modules";
 import postcssICSS from "./icss";
 import postcssNoop from "./noop";
+
+let injectorId: string;
+const reservedWords = ["css"];
+function getClassNameDefault(name: string): string {
+  const id = makeLegalIdentifier(name);
+  if (reservedWords.includes(id)) return `_${id}`;
+  return id;
+}
 
 type LoadedConfig = ReturnType<typeof postcssrc> extends PromiseLike<infer T> ? T : never;
 async function loadConfig(
@@ -41,40 +47,29 @@ async function loadConfig(
   });
 }
 
-function isAutoModules(am: PostCSSLoaderOptions["autoModules"], id: string): boolean {
+function ensureAutoModules(am: PostCSSLoaderOptions["autoModules"], id: string): boolean {
   if (typeof am === "function") return am(id);
   if (am instanceof RegExp) return am.test(id);
   return am && /\.module\.[A-Za-z]+$/.test(id);
 }
 
+type PostCSSOptions = PostCSSLoaderOptions["postcss"] &
+  Pick<Required<postcss.ProcessOptions>, "from" | "to" | "map">;
+
 const loader: Loader<PostCSSLoaderOptions> = {
   name: "postcss",
   alwaysProcess: true,
   async process({ code, map, extracted }) {
-    const { options } = this;
-
+    const options = { ...this.options };
     const config = await loadConfig(this.id, options.config);
-
-    const plugins = [
-      ...[
-        options.import && postcssImport({ extensions: options.extensions, ...options.import }),
-        options.url && postcssUrl({ inline: Boolean(options.inject), ...options.url }),
-      ].filter(booleanFilter),
-      ...(options.postcss.plugins ?? []),
-      ...(config.plugins ?? []),
-    ];
-
-    const autoModules = isAutoModules(options.autoModules, this.id);
+    const plugins: (postcss.Transformer | postcss.Processor)[] = [];
+    const autoModules = ensureAutoModules(options.autoModules, this.id);
     const supportModules = Boolean(options.modules || autoModules);
     const modulesExports: Record<string, Record<string, string>> = {};
 
-    const postcssOpts: PostCSSLoaderOptions["postcss"] & {
-      from: string;
-      to: string;
-      map: postcss.ProcessOptions["map"];
-    } = {
-      ...denullifyObject((config.options ?? {}) as Required<postcss.ProcessOptions>),
-      ...denullifyObject(options.postcss),
+    const postcssOpts: PostCSSOptions = {
+      ...config.options,
+      ...options.postcss,
       from: this.id,
       to: options.to ?? this.id,
       map: {
@@ -86,6 +81,15 @@ const loader: Loader<PostCSSLoaderOptions> = {
     };
 
     delete postcssOpts.plugins;
+
+    if (options.import)
+      plugins.push(postcssImport({ extensions: options.extensions, ...options.import }));
+
+    if (options.url) plugins.push(postcssUrl({ inline: Boolean(options.inject), ...options.url }));
+
+    if (options.postcss.plugins) plugins.push(...options.postcss.plugins);
+
+    if (config.plugins) plugins.push(...config.plugins);
 
     if (supportModules) {
       const modulesOptions = typeof options.modules === "object" ? options.modules : {};
@@ -139,19 +143,14 @@ const loader: Loader<PostCSSLoaderOptions> = {
 
     if (options.emit) return { code: res.css, map };
 
-    const reservedWords = new Set<string>();
     const saferId = (id: string): string => safeId(id, humanlizePath(this.id));
-
-    const cssExportName = "css";
-    reservedWords.add(cssExportName);
-
-    const cssVarName = saferId(cssExportName);
+    const cssVarName = saferId("css");
     const modulesVarName = saferId("modules");
 
     const output = [
       `const ${cssVarName} = ${JSON.stringify(res.css)}`,
       `const ${modulesVarName} = ${JSON.stringify(modulesExports[this.id] ?? {})}`,
-      `export const ${cssExportName} = ${cssVarName}`,
+      `export const css = ${cssVarName}`,
       `export default ${supportModules ? modulesVarName : cssVarName}`,
     ];
 
@@ -159,10 +158,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
       const json = modulesExports[this.id];
 
       const getClassName =
-        typeof options.namedExports === "function"
-          ? options.namedExports
-          : (name: string): string =>
-              makeLegalIdentifier(reservedWords.has(name) ? `_${name}` : name);
+        typeof options.namedExports === "function" ? options.namedExports : getClassNameDefault;
 
       for (const name in json) {
         const newName = getClassName(name);
@@ -183,17 +179,20 @@ const loader: Loader<PostCSSLoaderOptions> = {
         output.push(options.inject(cssVarName, this.id));
       } else {
         const injectorVarName = saferId("injector");
-        const injectorId = await resolveAsync("./inject-css", {
-          basedir: path.join(
-            process.env.NODE_ENV === "test" ? process.cwd() : __dirname,
-            "runtime",
-          ),
-        });
+
+        if (!injectorId)
+          injectorId = await resolveAsync("./inject-css", {
+            basedir: path.join(
+              process.env.NODE_ENV === "test" ? process.cwd() : __dirname,
+              "runtime",
+            ),
+          }).then(normalizePath);
+
         const injectorData =
           typeof options.inject === "object" ? `,${JSON.stringify(options.inject)}` : "";
 
         output.push(
-          `import ${injectorVarName} from '${normalizePath(injectorId)}'`,
+          `import ${injectorVarName} from '${injectorId}'`,
           `${injectorVarName}(${cssVarName}${injectorData})`,
         );
       }

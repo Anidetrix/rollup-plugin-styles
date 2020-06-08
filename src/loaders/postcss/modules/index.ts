@@ -30,7 +30,7 @@ export interface ModulesOptions {
   getReplacements?: (file: string, replacements: Record<string, string>, out?: string) => void;
 }
 
-export default (options: ModulesOptions): postcss.Transformer[] => {
+export default (options: ModulesOptions): (postcss.Transformer | postcss.Processor)[] => {
   const opts = {
     mode: "local" as const,
     ...options,

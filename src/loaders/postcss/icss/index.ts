@@ -5,6 +5,7 @@ import loadDefault, { Load } from "./load";
 import resolve from "./resolve";
 
 const name = "styles-icss";
+const extensionsDefault = [".css", ".pcss", ".postcss", ".sss"];
 
 export interface InteroperableCSSOptions {
   load?: Load;
@@ -19,12 +20,12 @@ const plugin: postcss.Plugin<InteroperableCSSOptions> = postcss.plugin(
     if (!res.processor) return;
 
     const load = options.load ?? loadDefault;
-    const extensions = options.extensions ?? [".css", ".pcss", ".postcss", ".sss"];
+    const extensions = options.extensions ?? extensionsDefault;
 
-    const opts = res.opts && { ...res.opts };
-    delete opts?.map;
+    const opts: postcss.ResultOptions = { ...res.opts };
+    delete opts.map;
 
-    const { icssExports, icssImports } = extractICSS(css);
+    const { icssImports, icssExports } = extractICSS(css);
 
     const imports = await resolve(
       icssImports,
@@ -37,15 +38,15 @@ const plugin: postcss.Plugin<InteroperableCSSOptions> = postcss.plugin(
 
     replaceSymbols(css, imports);
 
-    const replacements = Object.entries(icssExports).reduce(
-      (acc, [k, v]) => ({ ...acc, [k]: replaceValueSymbols(v, imports) }),
-      {},
-    );
+    const exports: Record<string, string> = {};
+    for (const [k, v] of Object.entries(icssExports)) {
+      exports[k] = replaceValueSymbols(v, imports);
+    }
 
-    res.messages.push({ plugin: name, type: "icss", replacements });
+    res.messages.push({ plugin: name, type: "icss", exports });
 
     if (typeof options.getReplacements === "function")
-      options.getReplacements(css.source.input.file, replacements, res.opts?.to);
+      options.getReplacements(css.source.input.file, exports, opts.to);
   },
 );
 

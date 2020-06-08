@@ -1,11 +1,8 @@
 import path from "path";
 import fs from "fs-extra";
 import { RawSourceMap, SourceMapConsumer, BasicSourceMapConsumer } from "source-map";
-
 import { dataURIRe } from "../loaders/postcss/common";
-
 import { isAbsolutePath, relativePath, resolvePath, normalizePath } from "./path";
-import { isNullish } from "./filter";
 
 const mapBlockRe = /(?:\n|\r\n)?\/\*[#*@]+?\s*?sourceMappingURL\s*?=\s*?(\S+)\s*?\*+?\//gm;
 const mapLineRe = /(?:\n|\r\n)?\/\/[#@]+?\s*?sourceMappingURL\s*?=\s*?(\S+)\s*?$/gm;
@@ -19,11 +16,9 @@ export async function getMap(code: string, id?: string): Promise<string | undefi
 
   if (!id) throw new Error("Extracted map detected, but no ID is provided");
   const mapFileName = path.resolve(path.dirname(id), data);
-  try {
-    return await fs.readFile(mapFileName, "utf8");
-  } catch {
-    return;
-  }
+  const exists = await fs.pathExists(mapFileName);
+  if (!exists) return;
+  return fs.readFile(mapFileName, "utf8");
 }
 
 export const stripMap = (code: string): string =>
@@ -39,18 +34,18 @@ class MapModifier {
       } catch {
         /* noop */
       }
-    else this.#map = map && { ...map };
+    else this.#map = map;
   }
 
   modify(f: (m: RawSourceMap) => void): this {
-    if (isNullish(this.#map)) return this;
+    if (!this.#map) return this;
     f(this.#map);
     return this;
   }
 
   modifySources(op: (source: string) => string): this {
-    if (isNullish(this.#map)) return this;
-    if (this.#map.sources) this.#map.sources = this.#map.sources.map(op);
+    if (!this.#map) return this;
+    if (this.#map.sources) this.#map.sources = this.#map.sources.map(s => op(s));
     return this;
   }
 
@@ -74,24 +69,24 @@ class MapModifier {
   }
 
   toString(): string | undefined {
-    if (isNullish(this.#map)) return this.#map;
+    if (!this.#map) return this.#map;
     return JSON.stringify(this.#map);
   }
 
   async toConsumer(): Promise<BasicSourceMapConsumer | undefined> {
-    if (isNullish(this.#map)) return this.#map;
+    if (!this.#map) return this.#map;
     return new SourceMapConsumer(this.#map);
   }
 
   toCommentData(): string {
     const map = this.toString();
-    if (isNullish(map)) return "";
+    if (!map) return "";
     const sourceMapData = Buffer.from(map).toString("base64");
     return `\n/*# sourceMappingURL=data:application/json;base64,${sourceMapData} */`;
   }
 
   toCommentFile(fileName: string): string {
-    if (isNullish(this.#map)) return "";
+    if (!this.#map) return "";
     return `\n/*# sourceMappingURL=${fileName} */`;
   }
 }

@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`basic mode-fail 1`] = `"Incorrect mode provided, allowed modes are \`inject\`, \`extract\` or \`emit\`"`;
+
+exports[`basic parser-fail 1`] = `"Unable to load PostCSS parser \`walrus\`"`;
+
+exports[`basic plugin-fail 1`] = `"Unable to load PostCSS plugin \`pulverizer\`"`;
+
+exports[`basic plugin-type-fail 1`] = `"\`plugins\` option must be an array!"`;
+
 exports[`basic postcss-config: js 1`] = `
 "/** @type {HTMLElement[]} */
 var containers = [];
@@ -156,6 +164,7 @@ exports[`basic resolvers: css 1`] = `
 ".subfoo {
   background-image: url(\\"/pubpath/bg.png\\");
   background-image: url(\\"/pubpath/bg.testing.regex.png\\");
+  background-image: url(\\"./nonexistant\\");
 }
 
 .foo {
@@ -193,6 +202,7 @@ exports[`basic resolvers-url-inline: css 1`] = `
 ".subfoo {
   background-image: url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAABmBAMAAADL8flRAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAArUlEQVRYhe3QIQ+CUBTF8cPTB8RHsKMTqQQ/gMqmVRkj4+ZmZQRnNBD42F7Afp3N7fxIN/zH2wGIiIiI6J8ZBKk95NMRo23KdaYksz36oKtv47F14et59HdKY69I7AoX9PMMlTPnIrZOe5sHJ18Hc5fDeXKH2n+mpmzgLz6NPWmJNIlNNkA4NvK2ov6ikQ1kqWKYYdggVxNpgtREER6ygTyzbZaRugERERER/eYNUMwTiwsgIHkAAAAASUVORK5CYII=\\");
   background-image: url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGgAAABoBAMAAADvMqiSAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAn0lEQVRYhe3QoQ7CMBSF4XNHSidvBcEOkg2L4AFG9gKDEDQz6AIGORSvTbs9QCsR51PX/GlzACIiIiKilApPj9N8F7A7GE02By39G4/pXhzxtaNNR1ct+vNyQDl2MANqU93TEVQgFwEaDwgUqzYzeoVo6Odovc+Jwvc2TvGZotpsncuI4hAC07QxCkMg56U4ucDeuhiFyXMiIiIiIvpXP7QVEbg2Dt6kAAAAAElFTkSuQmCC\\");
+  background-image: url(\\"./nonexistant\\");
 }
 
 .foo {
@@ -395,7 +405,13 @@ injector_6d837214(css_147dacc9);
 "
 `;
 
-exports[`basic use-fail 1`] = `"The rule in \`use\` option must be string or array!"`;
+exports[`basic stringifier-fail 1`] = `"Unable to load PostCSS stringifier \`walrus\`"`;
+
+exports[`basic syntax-fail 1`] = `"Unable to load PostCSS syntax \`walrus\`"`;
+
+exports[`basic use-fail 1`] = `"\`use\` option must be an array of strings!"`;
+
+exports[`basic use-type-fail 1`] = `"\`use\` option must be an array!"`;
 
 exports[`code-splitting manual-chunks: css 1`] = `
 ".first_partial {
@@ -1958,22 +1974,22 @@ console.log(css_a87c82eb, css_6e569e18);
 
 exports[`inject function: js 1`] = `
 "const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
-console.log(css_a87c82eb);
+console.log(css_a87c82eb,\\"D:\\\\\\\\CodeProjects\\\\\\\\rollup-plugin-styles\\\\\\\\__tests__\\\\\\\\fixtures\\\\\\\\simple\\\\\\\\foo.css\\");
 
 const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
-console.log(css_6e569e18);
+console.log(css_6e569e18,\\"D:\\\\\\\\CodeProjects\\\\\\\\rollup-plugin-styles\\\\\\\\__tests__\\\\\\\\fixtures\\\\\\\\simple\\\\\\\\bar.css\\");
 
 const css_a00496d3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
-console.log(css_a00496d3);
+console.log(css_a00496d3,\\"D:\\\\\\\\CodeProjects\\\\\\\\rollup-plugin-styles\\\\\\\\__tests__\\\\\\\\fixtures\\\\\\\\simple\\\\\\\\style.styl\\");
 
 const css_855b3ad0 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
-console.log(css_855b3ad0);
+console.log(css_855b3ad0,\\"D:\\\\\\\\CodeProjects\\\\\\\\rollup-plugin-styles\\\\\\\\__tests__\\\\\\\\fixtures\\\\\\\\simple\\\\\\\\style.pcss\\");
 
 const css_31899cde = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
-console.log(css_31899cde);
+console.log(css_31899cde,\\"D:\\\\\\\\CodeProjects\\\\\\\\rollup-plugin-styles\\\\\\\\__tests__\\\\\\\\fixtures\\\\\\\\simple\\\\\\\\style.sass\\");
 
 const css_aee437ad = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
-console.log(css_aee437ad);
+console.log(css_aee437ad,\\"D:\\\\\\\\CodeProjects\\\\\\\\rollup-plugin-styles\\\\\\\\__tests__\\\\\\\\fixtures\\\\\\\\simple\\\\\\\\style.less\\");
 
 console.log(css_a87c82eb, css_6e569e18);
 "
@@ -3659,7 +3675,235 @@ function injector_bc6501d3 (css, options) {
   }
 }
 
-const css_dba73744 = \\".virtual {\\\\n  color: red; }\\\\n\\";
+const css_dba73744 = \\".virtual {\\\\n  color: red; }\\\\n\\\\n.modularvirtual {\\\\n  color: blue; }\\\\n\\";
+injector_bc6501d3(css_dba73744);
+"
+`;
+
+exports[`sass importer-dart: js 1`] = `
+"/** @type {HTMLElement[]} */
+var containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+var styleTags = [];
+
+/**
+ * @param {string} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
+ * @returns {void}
+ */
+function injector_bc6501d3 (css, options) {
+  if (!css || typeof document === \\"undefined\\") return;
+  if (typeof options === \\"undefined\\") options = {};
+
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? document.querySelector(options.container)
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
+    return styleTag;
+  }
+
+  /** @type {HTMLStyleElement} */
+  var styleTag;
+
+  if (singleTag) {
+    var id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.appendChild(document.createTextNode(css));
+  }
+}
+
+const css_dba73744 = \\".virtual {\\\\n  color: red;\\\\n}\\\\n\\\\n.modularvirtual {\\\\n  color: blue;\\\\n}\\";
+injector_bc6501d3(css_dba73744);
+"
+`;
+
+exports[`sass importer-dart-sync: js 1`] = `
+"/** @type {HTMLElement[]} */
+var containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+var styleTags = [];
+
+/**
+ * @param {string} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
+ * @returns {void}
+ */
+function injector_bc6501d3 (css, options) {
+  if (!css || typeof document === \\"undefined\\") return;
+  if (typeof options === \\"undefined\\") options = {};
+
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? document.querySelector(options.container)
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
+    return styleTag;
+  }
+
+  /** @type {HTMLStyleElement} */
+  var styleTag;
+
+  if (singleTag) {
+    var id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.appendChild(document.createTextNode(css));
+  }
+}
+
+const css_dba73744 = \\".virtual {\\\\n  color: red;\\\\n}\\\\n\\\\n.modularvirtual {\\\\n  color: blue;\\\\n}\\";
+injector_bc6501d3(css_dba73744);
+"
+`;
+
+exports[`sass importer-sync: js 1`] = `
+"/** @type {HTMLElement[]} */
+var containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+var styleTags = [];
+
+/**
+ * @param {string} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
+ * @returns {void}
+ */
+function injector_bc6501d3 (css, options) {
+  if (!css || typeof document === \\"undefined\\") return;
+  if (typeof options === \\"undefined\\") options = {};
+
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? document.querySelector(options.container)
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
+    return styleTag;
+  }
+
+  /** @type {HTMLStyleElement} */
+  var styleTag;
+
+  if (singleTag) {
+    var id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.appendChild(document.createTextNode(css));
+  }
+}
+
+const css_dba73744 = \\".virtual {\\\\n  color: red; }\\\\n\\\\n.modularvirtual {\\\\n  color: blue; }\\\\n\\";
 injector_bc6501d3(css_dba73744);
 "
 `;
@@ -3890,7 +4134,7 @@ function injector_e6e31059 (css, options) {
   }
 }
 
-const css_41ddbe0c = \\".button {\\\\n  border-radius: 3px;\\\\n  padding: 8px;\\\\n}\\";
+const css_41ddbe0c = \\"/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */\\\\nhtml, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {\\\\n  margin: 0;\\\\n  padding: 0;\\\\n}\\\\n\\\\nh1, h2, h3, h4, h5, h6 {\\\\n  font-size: 100%;\\\\n  font-weight: normal;\\\\n}\\\\n\\\\nul {\\\\n  list-style: none;\\\\n}\\\\n\\\\nbutton, input, select, textarea {\\\\n  margin: 0;\\\\n}\\\\n\\\\nhtml {\\\\n  box-sizing: border-box;\\\\n}\\\\n\\\\n*, *::before, *::after {\\\\n  box-sizing: inherit;\\\\n}\\\\n\\\\nimg, video {\\\\n  height: auto;\\\\n  max-width: 100%;\\\\n}\\\\n\\\\niframe {\\\\n  border: 0;\\\\n}\\\\n\\\\ntable {\\\\n  border-collapse: collapse;\\\\n  border-spacing: 0;\\\\n}\\\\n\\\\ntd, th {\\\\n  padding: 0;\\\\n}\\\\n\\\\ntd:not([align]), th:not([align]) {\\\\n  text-align: left;\\\\n}\\\\n\\\\n.button {\\\\n  border-radius: 3px;\\\\n  padding: 8px;\\\\n}\\";
 injector_e6e31059(css_41ddbe0c);
 "
 `;
