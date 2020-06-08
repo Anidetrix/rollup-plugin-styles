@@ -174,11 +174,16 @@ validateMany("modules", [
     input: "modules/index.js",
     options: {
       modules: {
-        getReplacements(): void {
+        getReplacements: () => {
           /* noop */
         },
       },
     },
+  },
+  {
+    title: "generate-scoped-name",
+    input: "modules-duplication/index.js",
+    options: { modules: { generateScopedName: name => `${name}hacked` } },
   },
   {
     title: "named-exports",
@@ -190,7 +195,7 @@ validateMany("modules", [
     input: "named-exports/index.js",
     options: {
       modules: true,
-      namedExports: (name): string => `${name}hacked`,
+      namedExports: name => `${name}hacked`,
     },
   },
   {
@@ -226,7 +231,7 @@ validateMany("modules", [
   {
     title: "auto-modules-fn",
     input: "auto-modules/index.js",
-    options: { autoModules: (id): boolean => id.endsWith(".less") },
+    options: { autoModules: id => id.endsWith(".less") },
   },
   {
     title: "duplication",

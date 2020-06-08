@@ -2842,6 +2842,96 @@ console.log(modules_06c16b9a.module, modules_c2f65cd3.composition, modules_b033f
 
 exports[`modules extract-sourcemap-true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../modules/style.css\\",\\"../../../../modules/composed.css\\",\\"../../../../modules/subdir/composition2.css\\"],\\"names\\":[],\\"mappings\\":\\"AAEA;EACE,cAAgB;AAClB;;AAEA;AAEA;;ACNA;EACE;IAEE,sBAAsB;EACxB;AACF;;AAEA;EACE,yBAAyB;AAC3B;;ACXA;EACE,UAAU;AACZ\\",\\"file\\":\\"index-4aaf5d80.css\\",\\"sourcesContent\\":[\\"@value primary, secondary from colors;\\\\n\\\\n.module {\\\\n  color: secondary;\\\\n}\\\\n\\\\n.module2 {\\\\n  composes: composition from \\\\\\"./composed.css\\\\\\";\\\\n}\\\\n\\",\\"@value primary from colors;\\\\n\\\\n@media screen and (min-width: 900px) {\\\\n  .composition {\\\\n    composes: compositioned from \\\\\\"./subdir/composition2.css\\\\\\";\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composition {\\\\n  background-color: primary;\\\\n}\\\\n\\",\\".compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\"]}"`;
 
+exports[`modules generate-scoped-name: js 1`] = `
+"/** @type {HTMLElement[]} */
+var containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+var styleTags = [];
+
+/**
+ * @param {string} css
+ * @param {object} [options={}]
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
+ * @returns {void}
+ */
+function injector_0177ae87 (css, options) {
+  if (!css || typeof document === \\"undefined\\") return;
+  if (typeof options === \\"undefined\\") options = {};
+
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+
+  var container =
+    typeof options.container !== \\"undefined\\"
+      ? document.querySelector(options.container)
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
+    return styleTag;
+  }
+
+  /** @type {HTMLStyleElement} */
+  var styleTag;
+
+  if (singleTag) {
+    var id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.appendChild(document.createTextNode(css));
+  }
+}
+
+const css_ba3888b2 = \\"html {\\\\n  --color-primary: green;\\\\n}\\\\n\\\\n.primaryhacked {\\\\n  color: green;\\\\n  color: var(--color-primary);\\\\n}\\\\n\\";
+injector_0177ae87(css_ba3888b2);
+
+const css_a0bc2a0c = \\".testhacked {\\\\n  content: \\\\\\"test\\\\\\";\\\\n}\\\\n\\";
+const modules_68a066f1 = {\\"test\\":\\"testhacked\\"};
+injector_0177ae87(css_a0bc2a0c);
+
+const css_45c6c5ca = \\".foohacked {\\\\n}\\\\n\\";
+const modules_385fa60f = {\\"foo\\":\\"foohacked testhacked\\"};
+injector_0177ae87(css_45c6c5ca);
+
+const css_3ee4b4fc = \\".barhacked {\\\\n}\\\\n\\";
+const modules_37b00a3b = {\\"bar\\":\\"barhacked testhacked\\"};
+injector_0177ae87(css_3ee4b4fc);
+
+console.log(modules_68a066f1, modules_385fa60f, modules_37b00a3b);
+"
+`;
+
 exports[`modules inject: js 1`] = `
 "/** @type {HTMLElement[]} */
 var containers = [];
