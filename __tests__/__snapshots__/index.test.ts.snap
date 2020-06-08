@@ -1974,22 +1974,22 @@ console.log(css_a87c82eb, css_6e569e18);
 
 exports[`inject function: js 1`] = `
 "const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
-console.log(css_a87c82eb,\\"D:\\\\\\\\CodeProjects\\\\\\\\rollup-plugin-styles\\\\\\\\__tests__\\\\\\\\fixtures\\\\\\\\simple\\\\\\\\foo.css\\");
+console.log(css_a87c82eb,\\"__tests__/fixtures/simple/foo.css\\");
 
 const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
-console.log(css_6e569e18,\\"D:\\\\\\\\CodeProjects\\\\\\\\rollup-plugin-styles\\\\\\\\__tests__\\\\\\\\fixtures\\\\\\\\simple\\\\\\\\bar.css\\");
+console.log(css_6e569e18,\\"__tests__/fixtures/simple/bar.css\\");
 
 const css_a00496d3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
-console.log(css_a00496d3,\\"D:\\\\\\\\CodeProjects\\\\\\\\rollup-plugin-styles\\\\\\\\__tests__\\\\\\\\fixtures\\\\\\\\simple\\\\\\\\style.styl\\");
+console.log(css_a00496d3,\\"__tests__/fixtures/simple/style.styl\\");
 
 const css_855b3ad0 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
-console.log(css_855b3ad0,\\"D:\\\\\\\\CodeProjects\\\\\\\\rollup-plugin-styles\\\\\\\\__tests__\\\\\\\\fixtures\\\\\\\\simple\\\\\\\\style.pcss\\");
+console.log(css_855b3ad0,\\"__tests__/fixtures/simple/style.pcss\\");
 
 const css_31899cde = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
-console.log(css_31899cde,\\"D:\\\\\\\\CodeProjects\\\\\\\\rollup-plugin-styles\\\\\\\\__tests__\\\\\\\\fixtures\\\\\\\\simple\\\\\\\\style.sass\\");
+console.log(css_31899cde,\\"__tests__/fixtures/simple/style.sass\\");
 
 const css_aee437ad = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
-console.log(css_aee437ad,\\"D:\\\\\\\\CodeProjects\\\\\\\\rollup-plugin-styles\\\\\\\\__tests__\\\\\\\\fixtures\\\\\\\\simple\\\\\\\\style.less\\");
+console.log(css_aee437ad,\\"__tests__/fixtures/simple/style.less\\");
 
 console.log(css_a87c82eb, css_6e569e18);
 "

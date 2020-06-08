@@ -3,6 +3,7 @@ import { rollup } from "rollup";
 import { RawSourceMap } from "source-map";
 
 import styles from "../src";
+import { humanlizePath } from "../src/utils/path";
 import litcss from "rollup-plugin-lit-css";
 
 import { fixture, validateMany, write } from "./helpers";
@@ -319,7 +320,10 @@ validateMany("inject", [
     title: "function",
     input: "simple/index.js",
     options: {
-      mode: ["inject", (varname, id) => `console.log(${varname},${JSON.stringify(id)})`],
+      mode: [
+        "inject",
+        (varname, id) => `console.log(${varname},${JSON.stringify(humanlizePath(id))})`,
+      ],
     },
   },
 ]);
