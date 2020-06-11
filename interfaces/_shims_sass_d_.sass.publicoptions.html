@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Exception | rollup-plugin-styles</title>
+	<title>PublicOptions | rollup-plugin-styles</title>
 	<meta name="description" content="Documentation for rollup-plugin-styles">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -60,10 +60,10 @@
 					<a href="../modules/_shims_sass_d_.sass.html">sass</a>
 				</li>
 				<li>
-					<a href="_shims_sass_d_.sass.exception.html">Exception</a>
+					<a href="_shims_sass_d_.sass.publicoptions.html">PublicOptions</a>
 				</li>
 			</ul>
-			<h1>Interface Exception</h1>
+			<h1>Interface PublicOptions</h1>
 		</div>
 	</div>
 </header>
@@ -74,10 +74,13 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<a href="_shims_sass_d_.sass.exception.html#error" class="tsd-signature-type">Error</a>
+						<span class="target">PublicOptions</span>
 						<ul class="tsd-hierarchy">
 							<li>
-								<span class="target">Exception</span>
+								<a href="_shims_sass_d_.sass.options.html" class="tsd-signature-type">Options</a>
+							</li>
+							<li>
+								<a href="_index_d_.sassloaderoptions.html" class="tsd-signature-type">SASSLoaderOptions</a>
 							</li>
 						</ul>
 					</li>
@@ -90,15 +93,13 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_shims_sass_d_.sass.exception.html#error" class="tsd-kind-icon">Error</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_shims_sass_d_.sass.exception.html#column" class="tsd-kind-icon">column</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_shims_sass_d_.sass.exception.html#file" class="tsd-kind-icon">file</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_shims_sass_d_.sass.exception.html#formatted" class="tsd-kind-icon">formatted</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_shims_sass_d_.sass.exception.html#line" class="tsd-kind-icon">line</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite"><a href="_shims_sass_d_.sass.exception.html#message" class="tsd-kind-icon">message</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_shims_sass_d_.sass.exception.html#name" class="tsd-kind-icon">name</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_shims_sass_d_.sass.exception.html#stack" class="tsd-kind-icon">stack</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_shims_sass_d_.sass.exception.html#status" class="tsd-kind-icon">status</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_shims_sass_d_.sass.publicoptions.html#data" class="tsd-kind-icon">data</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_shims_sass_d_.sass.publicoptions.html#importer" class="tsd-kind-icon">importer</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_shims_sass_d_.sass.publicoptions.html#includepaths" class="tsd-kind-icon">include<wbr>Paths</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_shims_sass_d_.sass.publicoptions.html#indenttype" class="tsd-kind-icon">indent<wbr>Type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_shims_sass_d_.sass.publicoptions.html#indentwidth" class="tsd-kind-icon">indent<wbr>Width</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_shims_sass_d_.sass.publicoptions.html#linefeed" class="tsd-kind-icon">linefeed</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_shims_sass_d_.sass.publicoptions.html#outputstyle" class="tsd-kind-icon">output<wbr>Style</a></li>
 							</ul>
 						</section>
 					</div>
@@ -107,68 +108,51 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="error" class="tsd-anchor"></a>
-					<h3>Error</h3>
-					<div class="tsd-signature tsd-kind-icon">Error<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ErrorConstructor</span></div>
+					<a name="data" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> data</h3>
+					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="column" class="tsd-anchor"></a>
-					<h3>column</h3>
-					<div class="tsd-signature tsd-kind-icon">column<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="importer" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> importer</h3>
+					<div class="tsd-signature tsd-kind-icon">importer<span class="tsd-signature-symbol">:</span> <a href="../modules/_shims_sass_d_.sass.html#importer" class="tsd-signature-type">Importer</a><span class="tsd-signature-symbol"> | </span><a href="../modules/_shims_sass_d_.sass.html#importer" class="tsd-signature-type">Importer</a><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="file" class="tsd-anchor"></a>
-					<h3>file</h3>
-					<div class="tsd-signature tsd-kind-icon">file<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="includepaths" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> include<wbr>Paths</h3>
+					<div class="tsd-signature tsd-kind-icon">include<wbr>Paths<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="formatted" class="tsd-anchor"></a>
-					<h3>formatted</h3>
-					<div class="tsd-signature tsd-kind-icon">formatted<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="indenttype" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> indent<wbr>Type</h3>
+					<div class="tsd-signature tsd-kind-icon">indent<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"space"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"tab"</span></div>
 					<aside class="tsd-sources">
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="line" class="tsd-anchor"></a>
-					<h3>line</h3>
-					<div class="tsd-signature tsd-kind-icon">line<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="indentwidth" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> indent<wbr>Width</h3>
+					<div class="tsd-signature tsd-kind-icon">indent<wbr>Width<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
-					<a name="message" class="tsd-anchor"></a>
-					<h3>message</h3>
-					<div class="tsd-signature tsd-kind-icon">message<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Overrides Error.message</p>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="name" class="tsd-anchor"></a>
-					<h3>name</h3>
-					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="_shims_sass_d_.sass.exception.html">Exception</a>.<a href="_shims_sass_d_.sass.exception.html#name">name</a></p>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-					<a name="stack" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> stack</h3>
-					<div class="tsd-signature tsd-kind-icon">stack<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<p>Inherited from <a href="_shims_sass_d_.sass.exception.html">Exception</a>.<a href="_shims_sass_d_.sass.exception.html#stack">stack</a></p>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="status" class="tsd-anchor"></a>
-					<h3>status</h3>
-					<div class="tsd-signature tsd-kind-icon">status<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<a name="linefeed" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> linefeed</h3>
+					<div class="tsd-signature tsd-kind-icon">linefeed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"cr"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"crlf"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"lf"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"lfcr"</span></div>
+					<aside class="tsd-sources">
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="outputstyle" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> output<wbr>Style</h3>
+					<div class="tsd-signature tsd-kind-icon">output<wbr>Style<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"compressed"</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">"expanded"</span></div>
 					<aside class="tsd-sources">
 					</aside>
 				</section>
@@ -184,48 +168,42 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="_shims_sass_d_.sass.exception.html" class="tsd-kind-icon">Exception</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="_shims_sass_d_.sass.options.html" class="tsd-kind-icon">Options</a>
+					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="_shims_sass_d_.sass.exception.html" class="tsd-kind-icon">Exception</a>
+						<a href="_shims_sass_d_.sass.publicoptions.html" class="tsd-kind-icon">Public<wbr>Options</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_shims_sass_d_.sass.exception.html#error" class="tsd-kind-icon">Error</a>
+								<a href="_shims_sass_d_.sass.publicoptions.html#data" class="tsd-kind-icon">data</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_shims_sass_d_.sass.exception.html#column" class="tsd-kind-icon">column</a>
+								<a href="_shims_sass_d_.sass.publicoptions.html#importer" class="tsd-kind-icon">importer</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_shims_sass_d_.sass.exception.html#file" class="tsd-kind-icon">file</a>
+								<a href="_shims_sass_d_.sass.publicoptions.html#includepaths" class="tsd-kind-icon">include<wbr>Paths</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_shims_sass_d_.sass.exception.html#formatted" class="tsd-kind-icon">formatted</a>
+								<a href="_shims_sass_d_.sass.publicoptions.html#indenttype" class="tsd-kind-icon">indent<wbr>Type</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_shims_sass_d_.sass.exception.html#line" class="tsd-kind-icon">line</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-overwrite">
-								<a href="_shims_sass_d_.sass.exception.html#message" class="tsd-kind-icon">message</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_shims_sass_d_.sass.exception.html#name" class="tsd-kind-icon">name</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
-								<a href="_shims_sass_d_.sass.exception.html#stack" class="tsd-kind-icon">stack</a>
+								<a href="_shims_sass_d_.sass.publicoptions.html#indentwidth" class="tsd-kind-icon">indent<wbr>Width</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_shims_sass_d_.sass.exception.html#status" class="tsd-kind-icon">status</a>
+								<a href="_shims_sass_d_.sass.publicoptions.html#linefeed" class="tsd-kind-icon">linefeed</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_shims_sass_d_.sass.publicoptions.html#outputstyle" class="tsd-kind-icon">output<wbr>Style</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="_shims_sass_d_.sass.options.html" class="tsd-kind-icon">Options</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
-						<a href="_shims_sass_d_.sass.publicoptions.html" class="tsd-kind-icon">Public<wbr>Options</a>
-					</li>
 					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
 						<a href="_shims_sass_d_.sass.result.html" class="tsd-kind-icon">Result</a>
 					</li>
