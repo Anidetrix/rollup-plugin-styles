@@ -159,20 +159,21 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
           node.type = "string";
           node.value = inlineFile(from, source);
         } else {
-          let safeTo, to;
-          to = safeTo = normalizePath(generateName(placeholder, from, source));
+          const unsafeTo = normalizePath(generateName(placeholder, from, source));
+          let to = unsafeTo;
 
           // Avoid file overrides
-          for (let i = 1; usedNames.has(safeTo) && usedNames.get(safeTo) !== from; i++)
-            safeTo = firstExtRe.test(to) ? to.replace(firstExtRe, `${i}$1`) : `${to}${i}`;
+          const hasExt = firstExtRe.test(unsafeTo);
+          for (let i = 1; usedNames.has(to) && usedNames.get(to) !== from; i++) {
+            to = hasExt ? unsafeTo.replace(firstExtRe, `${i}$1`) : `${unsafeTo}${i}`;
+          }
 
-          to = safeTo;
           usedNames.set(to, from);
 
           node.type = "string";
           node.value = publicPath + (/[/\\]$/.test(publicPath) ? "" : "/") + path.basename(to);
 
-          to = normalizePath(assetDir, safeTo);
+          to = normalizePath(assetDir, to);
           res.messages.push({ plugin: name, type: "asset", to, source });
         }
 

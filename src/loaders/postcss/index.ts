@@ -180,13 +180,14 @@ const loader: Loader<PostCSSLoaderOptions> = {
       } else {
         const injectorVarName = saferId("injector");
 
-        if (!injectorId)
+        if (!injectorId) {
           injectorId = await resolveAsync("./inject-css", {
             basedir: path.join(
               process.env.NODE_ENV === "test" ? process.cwd() : __dirname,
               "runtime",
             ),
           }).then(normalizePath);
+        }
 
         const injectorData =
           typeof options.inject === "object" ? `,${JSON.stringify(options.inject)}` : "";
