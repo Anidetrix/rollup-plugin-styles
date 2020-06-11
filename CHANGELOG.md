@@ -1,3 +1,17 @@
+## [3.8.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.8.1...v3.8.2) (2020-06-11)
+
+
+### Bug Fixes
+
+* missing/overwritten files ([b4dc69c](https://github.com/Anidetrix/rollup-plugin-styles/commit/b4dc69c6223883abd6251b7c41e6a1b7020874bf))
+* **loaders:** clearly show what options are public ([2ab86be](https://github.com/Anidetrix/rollup-plugin-styles/commit/2ab86bebba8e3a8126ae9b5f473991e1abf2bab8))
+* **partials:** incorrect path without dir in url ([68d40be](https://github.com/Anidetrix/rollup-plugin-styles/commit/68d40be429dc811134dd67a3df53e8f6033f93d1))
+
+
+### Performance Improvements
+
+* tiny optimizations ([309e37b](https://github.com/Anidetrix/rollup-plugin-styles/commit/309e37b87dcaf4f0bb82c687697a5c4f1574982b))
+
 ## [3.8.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.8.0...v3.8.1) (2020-06-11)
 
 
