@@ -4,8 +4,8 @@ import { isAbsolutePath, isRelativePath, normalizePath } from "./path";
 export const isModule = (url: string): boolean => /^~[\d@A-Za-z]/.test(url);
 
 export function getUrlOfPartial(url: string): string {
-  const parsedUrl = path.parse(url);
-  return `${normalizePath(parsedUrl.dir)}/_${parsedUrl.base}`;
+  const { dir, base } = path.parse(url);
+  return dir ? `${normalizePath(dir)}/_${base}` : `_${base}`;
 }
 
 export function normalizeUrl(url: string): string {
