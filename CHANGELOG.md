@@ -1,3 +1,11 @@
+## [3.8.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.8.0...v3.8.1) (2020-06-11)
+
+
+### Bug Fixes
+
+* fix overwrite style file in preserveModules mode ([2c13345](https://github.com/Anidetrix/rollup-plugin-styles/commit/2c13345b3e382976da78bbfddf478be5bf8b30fc))
+* use path.parse instead of regex ([135b658](https://github.com/Anidetrix/rollup-plugin-styles/commit/135b65813cf88a159a00732c558b9a3424192083))
+
 # [3.8.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.7.1...v3.8.0) (2020-06-08)
 
 
