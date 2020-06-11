@@ -5,19 +5,22 @@ declare namespace sass {
 
   type Importer = (url: string, prev: string, done: (data: Data) => void) => Data | void;
 
-  interface Options {
-    fiber?: fibers.Fiber;
-    file?: string;
+  interface PublicOptions {
     data?: string;
     importer?: Importer | Importer[];
     includePaths?: string[];
-    indentedSyntax?: boolean;
     indentType?: "space" | "tab";
     indentWidth?: number;
     linefeed?: "cr" | "crlf" | "lf" | "lfcr";
+    outputStyle?: "compressed" | "expanded";
+  }
+
+  interface Options extends PublicOptions {
+    fiber?: fibers.Fiber;
+    file?: string;
+    indentedSyntax?: boolean;
     omitSourceMapUrl?: boolean;
     outFile?: string;
-    outputStyle?: "compressed" | "expanded";
     sourceMap?: boolean | string;
     sourceMapContents?: boolean;
     sourceMapEmbed?: boolean;

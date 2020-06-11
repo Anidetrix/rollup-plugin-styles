@@ -8,9 +8,12 @@ declare namespace stylus {
     basePath?: string;
   }
 
-  interface Options {
+  interface PublicOptions {
     imports?: string[];
     paths?: string[];
+  }
+
+  interface Options extends PublicOptions {
     filename?: string;
     sourcemap?: SourceMapOptions;
   }

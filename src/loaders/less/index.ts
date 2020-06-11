@@ -7,18 +7,22 @@ import importer from "./importer";
 /** Options for Less loader */
 // https://github.com/microsoft/TypeScript/issues/37901
 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-export interface LESSLoaderOptions extends Record<string, unknown>, less.Options {}
+export interface LESSLoaderOptions extends Record<string, unknown>, less.PublicOptions {}
 
 const loader: Loader<LESSLoaderOptions> = {
   name: "less",
   test: /\.less$/i,
   async process({ code, map }) {
+    const options = { ...this.options };
     const less = loadModule("less") as less.Less;
     if (!less) throw new Error("You need to install `less` package in order to process Less files");
 
+    const plugins = [importer];
+    if (options.plugins) plugins.push(...options.plugins);
+
     const res = await less.render(code, {
-      ...this.options,
-      plugins: [importer].concat(this.options.plugins ?? []),
+      ...options,
+      plugins,
       filename: this.id,
       sourceMap: { outputSourceFiles: true, sourceMapBasepath: path.dirname(this.id) },
     });

@@ -8,21 +8,25 @@ import { Loader } from "./types";
 /** Options for Stylus loader */
 // https://github.com/microsoft/TypeScript/issues/37901
 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-export interface StylusLoaderOptions extends Record<string, unknown>, stylus.Options {}
+export interface StylusLoaderOptions extends Record<string, unknown>, stylus.PublicOptions {}
 
 const loader: Loader<StylusLoaderOptions> = {
   name: "stylus",
   test: /\.(styl|stylus)$/i,
   async process({ code, map }) {
+    const options = { ...this.options };
     const stylus = loadModule("stylus") as stylus.Stylus;
     if (!stylus)
       throw new Error("You need to install `stylus` package in order to process Stylus files");
 
     const basePath = normalizePath(path.dirname(this.id));
 
-    const style = stylus(code, { ...this.options })
+    const paths = [`${basePath}/node_modules`, basePath];
+    if (options.paths) paths.push(...options.paths);
+
+    const style = stylus(code, options)
       .set("filename", this.id)
-      .set("paths", [`${basePath}/node_modules`, basePath].concat(this.options.paths ?? []))
+      .set("paths", paths)
       .set("sourcemap", { comment: false, basePath });
 
     const render = async (): Promise<string> =>

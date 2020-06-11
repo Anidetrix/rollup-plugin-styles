@@ -30,9 +30,7 @@ declare namespace less {
     sourceMapFileInline?: boolean;
   }
 
-  interface Options {
-    sourceMap?: SourceMapOption;
-    filename?: string;
+  interface PublicOptions {
     paths?: string[];
     lint?: boolean;
     plugins?: Plugin[];
@@ -52,6 +50,11 @@ declare namespace less {
     globalVars?: Record<string, string>;
     modifyVars?: Record<string, string>;
     syncImport?: boolean;
+  }
+
+  interface Options extends PublicOptions {
+    sourceMap?: SourceMapOption;
+    filename?: string;
   }
 
   interface RenderOutput {

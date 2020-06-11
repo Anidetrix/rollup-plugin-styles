@@ -7,7 +7,7 @@ import { importer, importerSync } from "./importer";
 /** Options for Sass loader */
 // https://github.com/microsoft/TypeScript/issues/37901
 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-export interface SASSLoaderOptions extends Record<string, unknown>, sass.Options {
+export interface SASSLoaderOptions extends Record<string, unknown>, sass.PublicOptions {
   /** Force Sass implementation */
   impl?: string;
   /** Forcefully enable/disable `fibers` */
@@ -25,6 +25,14 @@ const loader: Loader<SASSLoaderOptions> = {
     const useFibers = options.fibers ?? type === "sass";
     const fiber = useFibers ? (loadModule("fibers") as fibers.Fiber) : undefined;
     const sync = options.sync ?? (type !== "node-sass" && !fiber);
+    const importers = [sync ? importerSync : importer];
+
+    if (options.data) code = options.data + code;
+
+    if (options.importer)
+      Array.isArray(options.importer)
+        ? importers.push(...options.importer)
+        : importers.push(options.importer);
 
     const render = async (options: sass.Options): Promise<sass.Result> =>
       new Promise((resolve, reject) => {
@@ -49,12 +57,12 @@ const loader: Loader<SASSLoaderOptions> = {
     const res = await render({
       ...options,
       file: this.id,
-      data: (options.data ?? "") + code,
+      data: code,
       indentedSyntax: /\.sass$/i.test(this.id),
       sourceMap: this.id,
       omitSourceMapUrl: true,
       sourceMapContents: true,
-      importer: [sync ? importerSync : importer].concat(options.importer ?? []),
+      importer: importers,
       fiber,
     });
 
