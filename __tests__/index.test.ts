@@ -635,7 +635,7 @@ test("nested", async () => {
   const inSource = `${outDir}/this/is/nested/${map.sources[0]}`;
   await expect(fs.pathExists(inSource)).resolves.toBeTruthy();
   const source = await fs.readFile(inSource, "utf8");
-  expect(map.sourcesContent && map.sourcesContent[0]).toBe(source);
+  expect(map.sourcesContent?.[0]).toBe(source);
 });
 
 test("augment-chunk-hash", async () => {

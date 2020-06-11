@@ -178,7 +178,7 @@ export default (options: Options = {}): Plugin => {
 
       const getName = (chunk: OutputChunk): string => {
         if (opts.file) return path.basename(opts.file, path.extname(opts.file));
-        if (preserveModules) return path.basename(chunk.fileName, path.extname(chunk.fileName));
+        if (preserveModules) return chunk.fileName.replace(/\.[^./\\]+$/, "");
         return chunk.name;
       };
 
