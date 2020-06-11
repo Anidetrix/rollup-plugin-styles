@@ -138,6 +138,9 @@ export default (options: Options = {}): Plugin => {
       if (extracted.length === 0 || !(opts.dir || opts.file)) return;
 
       const dir = opts.dir ?? path.dirname(opts.file ?? "");
+      const chunks = Object.values(bundle).filter((c): c is OutputChunk => c.type === "chunk");
+      const emitted = preserveModules ? chunks : chunks.filter(c => c.isEntry || c.isDynamicEntry);
+      const emittedList: [string, string[]][] = [];
 
       const getExtractedData = async (name: string, ids: string[]): Promise<ExtractedData> => {
         const fileName =
@@ -207,41 +210,31 @@ export default (options: Options = {}): Plugin => {
         return ordered;
       };
 
-      const getEmitted = (): Map<string, string[]> => {
-        const emittedMap = new Map<string, string[]>();
-        const chunks = Object.values(bundle).filter((c): c is OutputChunk => c.type === "chunk");
-
-        const emitted = preserveModules
-          ? chunks
-          : chunks.filter(c => c.isEntry || c.isDynamicEntry);
-
-        if (typeof loaderOpts.extract === "string") {
-          const name = getName(chunks.find(e => e.isEntry) ?? chunks[0]);
-          const ids: string[] = [];
-          for (const chunk of emitted) ids.push(...getImports(chunk));
-          if (ids.length !== 0) emittedMap.set(name, ids);
-          return emittedMap;
-        }
-
+      if (typeof loaderOpts.extract === "string") {
+        const ids: string[] = [];
+        for (const chunk of emitted) ids.push(...getImports(chunk));
+        const name = getName(chunks.find(e => e.isEntry) ?? chunks[0]);
+        emittedList.push([name, ids]);
+      } else {
         const moved: string[] = [];
         const manual = chunks.filter(c => !c.facadeModuleId);
         for (const chunk of manual) {
-          const name = getName(chunk);
           const ids = getImports(chunk);
-          if (ids.length !== 0) emittedMap.set(name, ids);
+          if (ids.length === 0) continue;
           moved.push(...ids);
+          const name = getName(chunk);
+          emittedList.push([name, ids]);
         }
 
         for (const chunk of emitted) {
-          const name = getName(chunk);
           const ids = getImports(chunk).filter(id => !moved.includes(id));
-          if (ids.length !== 0) emittedMap.set(name, ids);
+          if (ids.length === 0) continue;
+          const name = getName(chunk);
+          emittedList.push([name, ids]);
         }
+      }
 
-        return emittedMap;
-      };
-
-      for await (const [name, ids] of getEmitted()) {
+      for await (const [name, ids] of emittedList) {
         const res = await getExtractedData(name, ids);
 
         if (typeof options.onExtract === "function") {
