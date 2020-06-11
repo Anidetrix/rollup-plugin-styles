@@ -1,5 +1,6 @@
-import "./third2.scss";
-import fourth2 from "./fourth2.scss";
+import "./thirdtwo.scss";
+import fourthtwo from "./fourthtwo.scss";
+import "./sub/index.js";
 
 (async () => {
   const first = await import("./first.scss");
@@ -8,4 +9,4 @@ import fourth2 from "./fourth2.scss";
   console.log(first, second, otherScript);
 })();
 
-console.log(fourth2);
+console.log(fourthtwo);

@@ -1,5 +1,6 @@
 import "./third.scss";
 import fourth from "./fourth.scss";
+import "./sub/index.js";
 
 (async () => {
   const first = await import("./first.scss");

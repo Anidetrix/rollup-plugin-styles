@@ -95,6 +95,29 @@ validateMany("basic", [
     ],
   },
   {
+    title: "resolvers-hash",
+    input: "resolvers/index.js",
+    options: {
+      mode: "extract",
+      alias: { "@": fixture("resolvers/features") },
+      url: { publicPath: "/pubpath", hash: true },
+    },
+    outputOpts: {
+      assetFileNames: "[name][extname]",
+    },
+    files: [
+      "assets/bg-086af782.png",
+      "assets/bg-bd25d3fd.png",
+      "assets/bg-cc57d19a.png",
+      "assets/bg.testing.regex-353515ad.png",
+      "assets/bg.testing.regex-59831cbf.png",
+      "assets/bg.testing.regex-e13f1639.png",
+      "assets/cat-2x-7a783e8c.png",
+      "assets/cat-ef753cf2.png",
+      "assets/cat-print-e4d012b8.png",
+    ],
+  },
+  {
     title: "resolvers-url-inline",
     input: "resolvers/index.js",
     options: {
@@ -504,8 +527,18 @@ validateMany("code-splitting", [
     inputOpts: { preserveModules: true },
   },
   {
+    title: "preserve-modules-multi-entry",
+    input: ["code-splitting/index.js", "code-splitting/indextwo.js"],
+    options: {
+      mode: "extract",
+      modules: true,
+      sourceMap: true,
+    },
+    inputOpts: { preserveModules: true },
+  },
+  {
     title: "multi-entry",
-    input: ["code-splitting/index.js", "code-splitting/index2.js"],
+    input: ["code-splitting/index.js", "code-splitting/indextwo.js"],
     options: {
       mode: "extract",
       modules: true,
@@ -514,7 +547,7 @@ validateMany("code-splitting", [
   },
   {
     title: "multi-entry-single",
-    input: ["code-splitting/index.js", "code-splitting/index2.js"],
+    input: ["code-splitting/index.js", "code-splitting/indextwo.js"],
     options: {
       mode: ["extract", "extracted.css"],
       modules: true,
@@ -523,7 +556,7 @@ validateMany("code-splitting", [
   },
   {
     title: "manual-chunks",
-    input: ["code-splitting/index.js", "code-splitting/index2.js"],
+    input: ["code-splitting/index.js", "code-splitting/indextwo.js"],
     options: {
       mode: "extract",
       modules: true,
@@ -540,7 +573,7 @@ validateMany("code-splitting", [
   },
   {
     title: "manual-chunks-only",
-    input: ["code-splitting/index.js", "code-splitting/index2.js"],
+    input: ["code-splitting/index.js", "code-splitting/indextwo.js"],
     options: {
       mode: "extract",
       modules: true,
@@ -557,7 +590,7 @@ validateMany("code-splitting", [
   },
   {
     title: "manual-chunks-single",
-    input: ["code-splitting/index.js", "code-splitting/index2.js"],
+    input: ["code-splitting/index.js", "code-splitting/indextwo.js"],
     options: {
       mode: ["extract", "extracted.css"],
       modules: true,
@@ -574,7 +607,7 @@ validateMany("code-splitting", [
   },
   {
     title: "manual-chunks-only-single",
-    input: ["code-splitting/index.js", "code-splitting/index2.js"],
+    input: ["code-splitting/index.js", "code-splitting/indextwo.js"],
     options: {
       mode: ["extract", "extracted.css"],
       modules: true,

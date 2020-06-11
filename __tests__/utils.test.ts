@@ -32,10 +32,6 @@ describe("load-module", () => {
   test("correct absolute path", () => {
     expect(loadModule(fixture("utils/fixture"))).toBe("this is fixture");
   });
-
-  test("correct path with custom basepath", () => {
-    expect(loadModule("fixture", fixture("utils"))).toBe("this is fixture");
-  });
 });
 
 describe("less", () => {
