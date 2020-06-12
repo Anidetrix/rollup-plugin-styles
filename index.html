@@ -123,7 +123,7 @@ yarn add rollup-plugin-styles --dev</code></pre>
 					<h2>Usage</h2>
 				</a>
 				<pre><code class="language-js"><span class="hljs-comment">// rollup.config.js</span>
-<span class="hljs-keyword">import</span> styles <span class="hljs-keyword">from</span> <span class="hljs-string">"rollup-plugin-styles"</span>;
+<span class="hljs-keyword">import</span> styles <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;rollup-plugin-styles&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
   <span class="hljs-attr">output</span>: {
@@ -131,18 +131,18 @@ yarn add rollup-plugin-styles --dev</code></pre>
     <span class="hljs-comment">// Note: using value below will put `.css` files near js,</span>
     <span class="hljs-comment">// but make sure to adjust `hash`, `assetDir` and `publicPath`</span>
     <span class="hljs-comment">// options for url handler accordingly.</span>
-    <span class="hljs-attr">assetFileNames</span>: <span class="hljs-string">"[name]-[hash][extname]"</span>,
+    <span class="hljs-attr">assetFileNames</span>: <span class="hljs-string">&quot;[name]-[hash][extname]&quot;</span>,
   },
   <span class="hljs-attr">plugins</span>: [styles()],
 };</code></pre>
 				<p>After that you can import CSS files in your code:</p>
-				<pre><code class="language-js"><span class="hljs-keyword">import</span> <span class="hljs-string">"./style.css"</span>;</code></pre>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> <span class="hljs-string">&quot;./style.css&quot;</span>;</code></pre>
 				<p>Default mode is <code>inject</code>, which means CSS is embedded inside JS and injected into <code>&lt;head&gt;</code> at runtime, with ability to pass options to CSS injector or even pass your own injector.</p>
 				<p>CSS is available as default export in <code>inject</code> and <code>extract</code> modes, but if <a href="https://github.com/css-modules/css-modules">CSS Modules</a> are enabled you need to use named <code>css</code> export.</p>
 				<pre><code class="language-js"><span class="hljs-comment">// Injects CSS, also available as `style` in this example</span>
-<span class="hljs-keyword">import</span> style <span class="hljs-keyword">from</span> <span class="hljs-string">"./style.css"</span>;
+<span class="hljs-keyword">import</span> style <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./style.css&quot;</span>;
 <span class="hljs-comment">// Using named export of CSS string</span>
-<span class="hljs-keyword">import</span> { css } <span class="hljs-keyword">from</span> <span class="hljs-string">"./style.css"</span>;</code></pre>
+<span class="hljs-keyword">import</span> { css } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;./style.css&quot;</span>;</code></pre>
 				<p>In <code>emit</code> mode none of the exports are available as CSS is purely processed and passed along the build pipeline, which is useful if you want to preprocess CSS before using it with CSS consuming plugins, e.g. <a href="https://github.com/bennypowers/rollup-plugin-lit-css">rollup-plugin-lit-css</a>.</p>
 				<p>PostCSS configuration files will be found and loaded automatically, but this behavior is configurable using <code>config</code> option.</p>
 				<a href="#importing-a-file" id="importing-a-file" style="color: inherit; text-decoration: none;">
@@ -152,57 +152,57 @@ yarn add rollup-plugin-styles --dev</code></pre>
 					<h4>CSS/Stylus</h4>
 				</a>
 				<pre><code class="language-css"><span class="hljs-comment">/* Import from `node_modules` */</span>
-<span class="hljs-keyword">@import</span> <span class="hljs-string">"bulma/css/bulma"</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;bulma/css/bulma&quot;</span>;
 <span class="hljs-comment">/* Local import */</span>
-<span class="hljs-keyword">@import</span> <span class="hljs-string">"./custom"</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;./custom&quot;</span>;
 <span class="hljs-comment">/* ...or (if no package named `custom` in `node_modules`) */</span>
-<span class="hljs-keyword">@import</span> <span class="hljs-string">"custom"</span>;</code></pre>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;custom&quot;</span>;</code></pre>
 				<a href="#sassless" id="sassless" style="color: inherit; text-decoration: none;">
 					<h4>Sass/Less</h4>
 				</a>
 				<p>You can prepend the path with <code>~</code> to resolve in <code>node_modules</code>:</p>
 				<pre><code class="language-scss"><span class="hljs-comment">// Import from `node_modules`</span>
-<span class="hljs-keyword">@import</span> <span class="hljs-string">"~bulma/css/bulma"</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;~bulma/css/bulma&quot;</span>;
 <span class="hljs-comment">// Local import</span>
-<span class="hljs-keyword">@import</span> <span class="hljs-string">"custom"</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;custom&quot;</span>;
 <span class="hljs-comment">// ...or</span>
-<span class="hljs-keyword">@import</span> <span class="hljs-string">"./custom"</span>;</code></pre>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;./custom&quot;</span>;</code></pre>
 				<p>Also note that partials are considered first, e.g.</p>
-				<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">"custom"</span>;</code></pre>
+				<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;custom&quot;</span>;</code></pre>
 				<p>Will look for <code>_custom</code> first (<em>with the approptiate extension(s)</em>), and then for <code>custom</code> if <code>_custom</code> doesn&#39;t exist.</p>
 				<a href="#css-injection" id="css-injection" style="color: inherit; text-decoration: none;">
 					<h3>CSS Injection</h3>
 				</a>
 				<pre><code class="language-js">styles({
-  <span class="hljs-attr">mode</span>: <span class="hljs-string">"inject"</span>, <span class="hljs-comment">// Unnecessary, set by default</span>
+  <span class="hljs-attr">mode</span>: <span class="hljs-string">&quot;inject&quot;</span>, <span class="hljs-comment">// Unnecessary, set by default</span>
   <span class="hljs-comment">// ...or with custom options for injector</span>
   <span class="hljs-attr">mode</span>: [
-    <span class="hljs-string">"inject"</span>,
-    { <span class="hljs-attr">container</span>: <span class="hljs-string">"body"</span>, <span class="hljs-attr">singleTag</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">prepend</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">attributes</span>: { <span class="hljs-attr">id</span>: <span class="hljs-string">"global"</span> } },
+    <span class="hljs-string">&quot;inject&quot;</span>,
+    { <span class="hljs-attr">container</span>: <span class="hljs-string">&quot;body&quot;</span>, <span class="hljs-attr">singleTag</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">prepend</span>: <span class="hljs-literal">true</span>, <span class="hljs-attr">attributes</span>: { <span class="hljs-attr">id</span>: <span class="hljs-string">&quot;global&quot;</span> } },
   ],
   <span class="hljs-comment">// ...or with custom injector</span>
-  <span class="hljs-attr">mode</span>: [<span class="hljs-string">"inject"</span>, (varname, id) =&gt; <span class="hljs-string">`console.log(<span class="hljs-subst">${varname}</span>,<span class="hljs-subst">${<span class="hljs-built_in">JSON</span>.stringify(id)}</span>)`</span>],
+  <span class="hljs-attr">mode</span>: [<span class="hljs-string">&quot;inject&quot;</span>, <span class="hljs-function">(<span class="hljs-params">varname, id</span>) =&gt;</span> <span class="hljs-string">`console.log(<span class="hljs-subst">${varname}</span>,<span class="hljs-subst">${<span class="hljs-built_in">JSON</span>.stringify(id)}</span>)`</span>],
 });</code></pre>
 				<a href="#css-extraction" id="css-extraction" style="color: inherit; text-decoration: none;">
 					<h3>CSS Extraction</h3>
 				</a>
 				<pre><code class="language-js">styles({
-  <span class="hljs-attr">mode</span>: <span class="hljs-string">"extract"</span>,
-  <span class="hljs-comment">// ... or with relative to output dir/output file's basedir (but not outside of it)</span>
-  <span class="hljs-attr">mode</span>: [<span class="hljs-string">"extract"</span>, <span class="hljs-string">"awesome-bundle.css"</span>],
+  <span class="hljs-attr">mode</span>: <span class="hljs-string">&quot;extract&quot;</span>,
+  <span class="hljs-comment">// ... or with relative to output dir/output file&#x27;s basedir (but not outside of it)</span>
+  <span class="hljs-attr">mode</span>: [<span class="hljs-string">&quot;extract&quot;</span>, <span class="hljs-string">&quot;awesome-bundle.css&quot;</span>],
 });</code></pre>
 				<a href="#emitting-processed-css" id="emitting-processed-css" style="color: inherit; text-decoration: none;">
 					<h3>Emitting processed CSS</h3>
 				</a>
 				<pre><code class="language-js"><span class="hljs-comment">// rollup.config.js</span>
-<span class="hljs-keyword">import</span> styles <span class="hljs-keyword">from</span> <span class="hljs-string">"rollup-plugin-styles"</span>;
+<span class="hljs-keyword">import</span> styles <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;rollup-plugin-styles&quot;</span>;
 
 <span class="hljs-comment">// Any plugin which consumes pure CSS</span>
-<span class="hljs-keyword">import</span> litcss <span class="hljs-keyword">from</span> <span class="hljs-string">"rollup-plugin-lit-css"</span>;
+<span class="hljs-keyword">import</span> litcss <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;rollup-plugin-lit-css&quot;</span>;
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
   <span class="hljs-attr">plugins</span>: [
-    styles({ <span class="hljs-attr">mode</span>: <span class="hljs-string">"emit"</span> }),
+    styles({ <span class="hljs-attr">mode</span>: <span class="hljs-string">&quot;emit&quot;</span> }),
 
     <span class="hljs-comment">// Make sure to list it after this one</span>
     litcss(),
@@ -220,7 +220,7 @@ yarn add rollup-plugin-styles --dev</code></pre>
   <span class="hljs-comment">// ...with custom regex</span>
   <span class="hljs-attr">autoModules</span>: <span class="hljs-regexp">/\.mod\.\S+$/</span>,
   <span class="hljs-comment">// ...or custom function</span>
-  autoModules: <span class="hljs-function"><span class="hljs-params">id</span> =&gt;</span> id.includes(<span class="hljs-string">".modular."</span>),
+  autoModules: <span class="hljs-function"><span class="hljs-params">id</span> =&gt;</span> id.includes(<span class="hljs-string">&quot;.modular.&quot;</span>),
 });</code></pre>
 				<a href="#with-sasslessstylus" id="with-sasslessstylus" style="color: inherit; text-decoration: none;">
 					<h3>With Sass/Less/Stylus</h3>
