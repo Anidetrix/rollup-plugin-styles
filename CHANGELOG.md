@@ -1,3 +1,10 @@
+## [3.8.3](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.8.2...v3.8.3) (2020-06-17)
+
+
+### Performance Improvements
+
+* **modules:** simpler internal implementation ([c1f92e1](https://github.com/Anidetrix/rollup-plugin-styles/commit/c1f92e1b0c942f25e25a6cdbf2d812bde281aec9))
+
 ## [3.8.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.8.1...v3.8.2) (2020-06-11)
 
 
