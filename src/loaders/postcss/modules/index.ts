@@ -26,8 +26,6 @@ export interface ModulesOptions {
    * @default "[name]_[local]__[hash:8]"
    */
   generateScopedName?: string | ((name: string, file: string, css: string) => string);
-  /** Function for resulting replacements extraction */
-  getReplacements?: (file: string, replacements: Record<string, string>, out?: string) => void;
 }
 
 export default (options: ModulesOptions): (postcss.Transformer | postcss.Processor)[] => {

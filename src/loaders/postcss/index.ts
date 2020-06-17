@@ -65,7 +65,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
     const plugins: (postcss.Transformer | postcss.Processor)[] = [];
     const autoModules = ensureAutoModules(options.autoModules, this.id);
     const supportModules = Boolean(options.modules || autoModules);
-    const modulesExports: Record<string, Record<string, string>> = {};
+    const modulesExports: Record<string, string> = {};
 
     const postcssOpts: PostCSSOptions = {
       ...config.options,
@@ -99,18 +99,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
           failOnWrongOrder: true,
           ...modulesOptions,
         }),
-        postcssICSS({
-          extensions: options.extensions,
-          getReplacements(file, replacements, out) {
-            modulesExports[file] = replacements;
-            if (
-              typeof options.modules === "object" &&
-              typeof options.modules.getReplacements === "function"
-            ) {
-              return options.modules.getReplacements(file, replacements, out);
-            }
-          },
-        }),
+        postcssICSS({ extensions: options.extensions }),
       );
     }
 
@@ -122,14 +111,21 @@ const loader: Loader<PostCSSLoaderOptions> = {
 
     const res = await postcss(plugins).process(code, postcssOpts);
 
-    for (const warning of res.warnings())
-      this.warn({ name: warning.plugin, message: warning.text });
-
-    const deps = res.messages.filter(msg => msg.type === "dependency");
-    for (const dep of deps) this.deps.add(normalizePath(dep.file));
-
-    const assets = res.messages.filter(msg => msg.type === "asset");
-    for (const asset of assets) this.assets.set(asset.to, asset.source);
+    for (const msg of res.messages)
+      switch (msg.type) {
+        case "warning":
+          this.warn({ name: msg.plugin, message: msg.text as string });
+          break;
+        case "icss":
+          Object.assign(modulesExports, msg.export as Record<string, string>);
+          break;
+        case "dependency":
+          this.deps.add(normalizePath(msg.file));
+          break;
+        case "asset":
+          this.assets.set(msg.to, msg.source);
+          break;
+      }
 
     map = mm((res.map?.toJSON() as unknown) as RawSourceMap)
       .resolve(path.dirname(postcssOpts.to))
@@ -149,26 +145,24 @@ const loader: Loader<PostCSSLoaderOptions> = {
 
     const output = [
       `const ${cssVarName} = ${JSON.stringify(res.css)}`,
-      `const ${modulesVarName} = ${JSON.stringify(modulesExports[this.id] ?? {})}`,
+      `const ${modulesVarName} = ${JSON.stringify(modulesExports)}`,
       `export const css = ${cssVarName}`,
       `export default ${supportModules ? modulesVarName : cssVarName}`,
     ];
 
     if (options.namedExports) {
-      const json = modulesExports[this.id];
-
       const getClassName =
         typeof options.namedExports === "function" ? options.namedExports : getClassNameDefault;
 
-      for (const name in json) {
+      for (const name in modulesExports) {
         const newName = getClassName(name);
 
         if (name !== newName)
           this.warn(`Exported \`${name}\` as \`${newName}\` in ${humanlizePath(this.id)}`);
 
-        if (!json[newName]) json[newName] = json[name];
+        if (!modulesExports[newName]) modulesExports[newName] = modulesExports[name];
 
-        output.push(`export const ${newName} = ${JSON.stringify(json[name])}`);
+        output.push(`export const ${newName} = ${JSON.stringify(modulesExports[name])}`);
       }
     }
 

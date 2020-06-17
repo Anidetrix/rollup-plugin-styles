@@ -26,7 +26,7 @@ const load: Load = async (url, file, extensions, processor, opts) => {
   const exports: Record<string, string> = {};
   for (const msg of messages) {
     if (msg.type !== "icss") continue;
-    Object.assign(exports, msg.exports as Record<string, string>);
+    Object.assign(exports, msg.export as Record<string, string>);
   }
 
   return exports;

@@ -67,7 +67,7 @@ export default (options: Options = {}): Plugin => {
     name: "styles",
 
     buildStart(opts) {
-      preserveModules = Boolean(opts.preserveModules);
+      preserveModules = opts.preserveModules;
     },
 
     async transform(code, id) {

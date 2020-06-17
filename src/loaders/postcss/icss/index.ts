@@ -1,6 +1,5 @@
 import postcss from "postcss";
 import { extractICSS, replaceSymbols, replaceValueSymbols } from "icss-utils";
-import { ModulesOptions } from "../modules";
 import loadDefault, { Load } from "./load";
 import resolve from "./resolve";
 
@@ -9,7 +8,6 @@ const extensionsDefault = [".css", ".pcss", ".postcss", ".sss"];
 
 export interface InteroperableCSSOptions {
   load?: Load;
-  getReplacements?: ModulesOptions["getReplacements"];
   extensions?: string[];
 }
 
@@ -38,15 +36,13 @@ const plugin: postcss.Plugin<InteroperableCSSOptions> = postcss.plugin(
 
     replaceSymbols(css, imports);
 
-    const exports: Record<string, string> = {};
     for (const [k, v] of Object.entries(icssExports)) {
-      exports[k] = replaceValueSymbols(v, imports);
+      res.messages.push({
+        plugin: name,
+        type: "icss",
+        export: { [k]: replaceValueSymbols(v, imports) },
+      });
     }
-
-    res.messages.push({ plugin: name, type: "icss", exports });
-
-    if (typeof options.getReplacements === "function")
-      options.getReplacements(css.source.input.file, exports, opts.to);
   },
 );
 
