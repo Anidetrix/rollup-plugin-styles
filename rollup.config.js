@@ -6,12 +6,12 @@ import commonjs from "@rollup/plugin-commonjs";
 import dts from "rollup-plugin-dts";
 import externals from "rollup-plugin-node-externals";
 import json from "@rollup/plugin-json";
+import replace from "@rollup/plugin-replace";
 import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
 
 import pkg from "./package.json";
 const extensions = [".ts", ".mjs", ".js", ".json"];
-const prod = process.env.NODE_ENV === "production";
 
 export default [
   // Bundle
@@ -23,6 +23,7 @@ export default [
     ],
     plugins: [
       externals({ deps: true }),
+      replace({ "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV) }),
       json(),
       resolve({ preferBuiltins: true, extensions }),
       commonjs(),
@@ -44,7 +45,7 @@ export default [
         configFile: false,
         presets: [["@babel/preset-env", { modules: false, targets: { ie: "8" } }]],
       }),
-      prod && terser({ output: { comments: false }, ie8: true, safari10: true }),
+      terser({ output: { comments: false }, ie8: true, safari10: true }),
     ],
   },
   // Declaration
