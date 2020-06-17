@@ -193,17 +193,6 @@ validateMany("modules", [
     options: { modules: true },
   },
   {
-    title: "inject-object",
-    input: "modules/index.js",
-    options: {
-      modules: {
-        getReplacements: () => {
-          /* noop */
-        },
-      },
-    },
-  },
-  {
     title: "generate-scoped-name",
     input: "modules-duplication/index.js",
     options: { modules: { generateScopedName: name => `${name}hacked` } },
