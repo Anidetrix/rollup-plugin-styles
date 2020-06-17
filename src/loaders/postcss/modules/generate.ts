@@ -7,18 +7,19 @@ import hasher from "../../../utils/hasher";
 import { hashRe } from "../common";
 
 export default (placeholder = "[name]_[local]__[hash:8]") => (
-  name: string,
+  local: string,
   file: string,
   css: string,
 ): string => {
-  const hash = hasher(`${path.basename(file)}:${css}`);
+  const { dir, name, base } = path.parse(file);
+  const hash = hasher(`${base}:${css}`);
   const match = hashRe.exec(placeholder);
   const hashLen = match && Number.parseInt(match[1]);
   return makeLegalIdentifier(
     placeholder
-      .replace("[dir]", path.basename(path.dirname(file)))
-      .replace("[name]", path.basename(file, path.extname(file)))
-      .replace("[local]", name)
+      .replace("[dir]", path.basename(dir))
+      .replace("[name]", name)
+      .replace("[local]", local)
       .replace(hashRe, hashLen ? hash.slice(0, hashLen) : hash),
   );
 };

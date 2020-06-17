@@ -123,11 +123,10 @@ export default (options: Options = {}): Plugin => {
       const hashable = extracted
         .filter(e => ids.includes(e.id))
         .sort((a, b) => ids.lastIndexOf(a.id) - ids.lastIndexOf(b.id))
-        .map(e => ({
-          ...e,
-          id: path.basename(e.id),
-          map: mm(e.map).relative(path.dirname(e.id)).toString(),
-        }));
+        .map(e => {
+          const { base, dir } = path.parse(e.id);
+          return { ...e, id: base, map: mm(e.map).relative(dir).toString() };
+        });
 
       if (hashable.length === 0) return;
 
@@ -137,7 +136,8 @@ export default (options: Options = {}): Plugin => {
     async generateBundle(opts, bundle) {
       if (extracted.length === 0 || !(opts.dir || opts.file)) return;
 
-      const dir = opts.dir ?? path.dirname(opts.file ?? "");
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      const dir = opts.dir ?? path.dirname(opts.file!);
       const chunks = Object.values(bundle).filter((c): c is OutputChunk => c.type === "chunk");
       const emitted = preserveModules ? chunks : chunks.filter(c => c.isEntry || c.isDynamicEntry);
       const emittedList: [string, string[]][] = [];
@@ -180,7 +180,7 @@ export default (options: Options = {}): Plugin => {
       };
 
       const getName = (chunk: OutputChunk): string => {
-        if (opts.file) return path.basename(opts.file, path.extname(opts.file));
+        if (opts.file) return path.parse(opts.file).name;
         if (preserveModules) {
           const { dir, name } = path.parse(chunk.fileName);
           return dir ? `${dir}/${name}` : name;

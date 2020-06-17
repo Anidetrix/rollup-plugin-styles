@@ -31,16 +31,13 @@ interface LoadersOptions {
 }
 
 export default class Loaders {
-  readonly #use: Map<string, Record<string, unknown>>;
-  readonly #test: (file: string) => boolean;
-  readonly #loaders = new Map<string, Loader>();
+  private readonly use: Map<string, Record<string, unknown>>;
+  private readonly test: (file: string) => boolean;
+  private readonly loaders = new Map<string, Loader>();
 
   constructor(options: LoadersOptions) {
-    this.#use = new Map(options.use.reverse());
-
-    this.#test = (file): boolean =>
-      options.extensions.some(ext => file.toLowerCase().endsWith(ext));
-
+    this.use = new Map(options.use.reverse());
+    this.test = (file): boolean => options.extensions.some(ext => file.toLowerCase().endsWith(ext));
     this.addLoader(postcssLoader);
     this.addLoader(sourcemapLoader);
     this.addLoader(sassLoader);
@@ -50,21 +47,21 @@ export default class Loaders {
   }
 
   addLoader<T extends Record<string, unknown>>(loader: Loader<T>): void {
-    if (!this.#use.has(loader.name)) return;
-    this.#loaders.set(loader.name, loader as Loader);
+    if (!this.use.has(loader.name)) return;
+    this.loaders.set(loader.name, loader as Loader);
   }
 
   isSupported(file: string): boolean {
-    if (this.#test(file)) return true;
-    for (const [, loader] of this.#loaders) {
+    if (this.test(file)) return true;
+    for (const [, loader] of this.loaders) {
       if (matchFile(file, loader.test)) return true;
     }
     return false;
   }
 
   async process(payload: Payload, context: LoaderContext): Promise<Payload> {
-    for await (const [name, options] of this.#use) {
-      const loader = this.#loaders.get(name);
+    for await (const [name, options] of this.use) {
+      const loader = this.loaders.get(name);
       if (!loader) continue;
       const ctx: LoaderContext = { ...context, options };
       if (loader.alwaysProcess || matchFile(ctx.id, loader.test)) {

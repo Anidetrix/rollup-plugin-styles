@@ -2,7 +2,6 @@ import path from "path";
 import { RawSourceMap } from "source-map";
 import { makeLegalIdentifier } from "@rollup/pluginutils";
 import postcss from "postcss";
-import postcssrc from "postcss-load-config";
 import cssnano from "cssnano";
 import { PostCSSLoaderOptions } from "../../types";
 import { humanlizePath, normalizePath } from "../../utils/path";
@@ -10,6 +9,7 @@ import { mm } from "../../utils/sourcemap";
 import resolveAsync from "../../utils/resolve-async";
 import safeId from "../../utils/safe-id";
 import { Loader } from "../types";
+import loadConfig from "./config";
 import postcssImport from "./import";
 import postcssUrl from "./url";
 import postcssModules from "./modules";
@@ -17,34 +17,13 @@ import postcssICSS from "./icss";
 import postcssNoop from "./noop";
 
 let injectorId: string;
+const testing = process.env.NODE_ENV === "test";
 const reservedWords = ["css"];
+
 function getClassNameDefault(name: string): string {
   const id = makeLegalIdentifier(name);
   if (reservedWords.includes(id)) return `_${id}`;
   return id;
-}
-
-type LoadedConfig = ReturnType<typeof postcssrc> extends PromiseLike<infer T> ? T : never;
-async function loadConfig(
-  id: string,
-  config: PostCSSLoaderOptions["config"],
-): Promise<Partial<LoadedConfig>> {
-  const configPath =
-    typeof config === "object" && config.path ? path.resolve(config.path) : path.dirname(id);
-
-  const context: Record<string, Record<string, unknown>> = {
-    file: {
-      extname: path.extname(id),
-      dirname: path.dirname(id),
-      basename: path.basename(id),
-    },
-    options: typeof config === "object" ? config.ctx ?? {} : {},
-  };
-
-  return postcssrc(context, configPath).catch(error => {
-    if (!/no postcss config found/i.test((error as Error).message)) throw error;
-    return {};
-  });
 }
 
 function ensureAutoModules(am: PostCSSLoaderOptions["autoModules"], id: string): boolean {
@@ -95,7 +74,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
       const modulesOptions = typeof options.modules === "object" ? options.modules : {};
       plugins.push(
         ...postcssModules({
-          generateScopedName: process.env.NODE_ENV === "test" ? "[name]_[local]" : undefined,
+          generateScopedName: testing ? "[name]_[local]" : undefined,
           failOnWrongOrder: true,
           ...modulesOptions,
         }),
@@ -116,12 +95,15 @@ const loader: Loader<PostCSSLoaderOptions> = {
         case "warning":
           this.warn({ name: msg.plugin, message: msg.text as string });
           break;
+
         case "icss":
           Object.assign(modulesExports, msg.export as Record<string, string>);
           break;
+
         case "dependency":
           this.deps.add(normalizePath(msg.file));
           break;
+
         case "asset":
           this.assets.set(msg.to, msg.source);
           break;
@@ -176,10 +158,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
 
         if (!injectorId) {
           injectorId = await resolveAsync("./inject-css", {
-            basedir: path.join(
-              process.env.NODE_ENV === "test" ? process.cwd() : __dirname,
-              "runtime",
-            ),
+            basedir: path.join(testing ? process.cwd() : __dirname, "runtime"),
           }).then(normalizePath);
         }
 

@@ -25,27 +25,27 @@ export const stripMap = (code: string): string =>
   code.replace(mapBlockRe, "").replace(mapLineRe, "");
 
 class MapModifier {
-  readonly #map?: RawSourceMap;
+  private readonly map?: RawSourceMap;
 
   constructor(map?: string | RawSourceMap) {
     if (typeof map === "string")
       try {
-        this.#map = JSON.parse(map) as RawSourceMap;
+        this.map = JSON.parse(map) as RawSourceMap;
       } catch {
         /* noop */
       }
-    else this.#map = map;
+    else this.map = map;
   }
 
   modify(f: (m: RawSourceMap) => void): this {
-    if (!this.#map) return this;
-    f(this.#map);
+    if (!this.map) return this;
+    f(this.map);
     return this;
   }
 
   modifySources(op: (source: string) => string): this {
-    if (!this.#map) return this;
-    if (this.#map.sources) this.#map.sources = this.#map.sources.map(s => op(s));
+    if (!this.map) return this;
+    if (this.map.sources) this.map.sources = this.map.sources.map(s => op(s));
     return this;
   }
 
@@ -65,17 +65,17 @@ class MapModifier {
   }
 
   toObject(): RawSourceMap | undefined {
-    return this.#map;
+    return this.map;
   }
 
   toString(): string | undefined {
-    if (!this.#map) return this.#map;
-    return JSON.stringify(this.#map);
+    if (!this.map) return this.map;
+    return JSON.stringify(this.map);
   }
 
   async toConsumer(): Promise<BasicSourceMapConsumer | undefined> {
-    if (!this.#map) return this.#map;
-    return new SourceMapConsumer(this.#map);
+    if (!this.map) return this.map;
+    return new SourceMapConsumer(this.map);
   }
 
   toCommentData(): string {
@@ -86,7 +86,7 @@ class MapModifier {
   }
 
   toCommentFile(fileName: string): string {
-    if (!this.#map) return "";
+    if (!this.map) return "";
     return `\n/*# sourceMappingURL=${fileName} */`;
   }
 }
