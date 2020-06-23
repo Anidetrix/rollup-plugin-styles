@@ -1,3 +1,22 @@
+# [3.9.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.8.2...v3.9.0) (2020-06-23)
+
+
+### Bug Fixes
+
+* very rare double code extraction ([d89a5fe](https://github.com/Anidetrix/rollup-plugin-styles/commit/d89a5feca9885159ef86b7a6c33f89b3bf3b130e))
+
+
+### Features
+
+* replace `postcss-load-config` with custom implementation ([50b19bb](https://github.com/Anidetrix/rollup-plugin-styles/commit/50b19bb409d00562cf90b9939bde65d3be42497f))
+* respect rollup's 2.18.0 option changes ([53072b0](https://github.com/Anidetrix/rollup-plugin-styles/commit/53072b0a17d1ee12ce8cea221e67102dad54553c))
+
+
+### Performance Improvements
+
+* misc optimizations ([df1d1ee](https://github.com/Anidetrix/rollup-plugin-styles/commit/df1d1ee3a9a0f2c44f47b4afaf9ad522fccb4471))
+* **modules:** simpler internal implementation ([c1f92e1](https://github.com/Anidetrix/rollup-plugin-styles/commit/c1f92e1b0c942f25e25a6cdbf2d812bde281aec9))
+
 ## [3.8.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.8.1...v3.8.2) (2020-06-11)
 
 
