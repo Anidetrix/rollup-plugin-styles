@@ -60,14 +60,14 @@ export default (options: Options = {}): Plugin => {
     extensions: loaderOpts.extensions,
   });
 
-  const extracted: Extracted[] = [];
+  let extracted: Extracted[] = [];
   let preserveModules: boolean;
 
   const plugin: Plugin = {
     name: "styles",
 
     buildStart(opts) {
-      preserveModules = opts.preserveModules;
+      preserveModules = Boolean(opts.preserveModules);
     },
 
     async transform(code, id) {
@@ -139,6 +139,9 @@ export default (options: Options = {}): Plugin => {
 
     async generateBundle(opts, bundle) {
       if (extracted.length === 0 || !(opts.dir || opts.file)) return;
+
+      // Respect rollup's 2.18.0 option changes
+      if (opts.preserveModules) preserveModules = opts.preserveModules;
 
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       const dir = opts.dir ?? path.dirname(opts.file!);
