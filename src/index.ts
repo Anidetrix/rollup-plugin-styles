@@ -102,7 +102,11 @@ export default (options: Options = {}): Plugin => {
       for (const [fileName, source] of ctx.assets)
         this.emitFile({ type: "asset", fileName, source });
 
-      if (res.extracted) extracted.push(res.extracted);
+      if (res.extracted) {
+        const { id } = res.extracted;
+        extracted = extracted.filter(e => e.id !== id);
+        extracted.push(res.extracted);
+      }
 
       return {
         code: res.code,
