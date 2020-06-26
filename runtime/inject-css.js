@@ -5,7 +5,7 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
@@ -14,13 +14,12 @@ var styleTags = [];
  */
 export default function (css, options) {
   if (!css || typeof document === "undefined") return;
-  if (typeof options === "undefined") options = {};
 
   var position = options.prepend === true ? "prepend" : "append";
-  var singleTag = typeof options.singleTag !== "undefined" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== "undefined"
+    typeof options.container === "string"
       ? document.querySelector(options.container)
       : document.getElementsByTagName("head")[0];
 
