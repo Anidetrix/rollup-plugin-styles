@@ -41,6 +41,8 @@ export interface PostCSSLoaderOptions extends Record<string, unknown> {
 
   /** @see {@link Options.to} */
   to: Options["to"];
+  /** @see {@link Options.dts} */
+  dts: NonNullable<Options["dts"]>;
   /** @see {@link Options.namedExports} */
   namedExports: NonNullable<Options["namedExports"]>;
   /** @see {@link Options.autoModules} */
@@ -93,6 +95,14 @@ export interface InjectOptions {
    * - ex.: `{"id":"global"}`
    */
   attributes?: Record<string, string>;
+  /**
+   * Makes injector treeshakeable,
+   * as it is only called when either classes are referenced directly,
+   * or `inject` function is called from the default export.
+   *
+   * Incompatible with `namedExports` option.
+   */
+  treeshakeable?: boolean;
 }
 
 /** `rollup-plugin-styles`'s full option list */
@@ -145,6 +155,11 @@ export interface Options {
     | ["emit"];
   /** `to` option for PostCSS, required for some plugins */
   to?: string;
+  /**
+   * Generate TypeScript declarations files for input style files
+   * @default false
+   */
+  dts?: boolean;
   /**
    * Enable/disable or pass options for CSS `@import` resolver
    * @default true

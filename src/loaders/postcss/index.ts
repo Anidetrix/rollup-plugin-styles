@@ -1,9 +1,10 @@
 import path from "path";
+import fs from "fs-extra";
 import { RawSourceMap } from "source-map";
 import { makeLegalIdentifier } from "@rollup/pluginutils";
 import postcss from "postcss";
 import cssnano from "cssnano";
-import { PostCSSLoaderOptions } from "../../types";
+import { PostCSSLoaderOptions, InjectOptions } from "../../types";
 import { humanlizePath, normalizePath } from "../../utils/path";
 import { mm } from "../../utils/sourcemap";
 import resolveAsync from "../../utils/resolve-async";
@@ -18,7 +19,9 @@ import postcssNoop from "./noop";
 
 let injectorId: string;
 const testing = process.env.NODE_ENV === "test";
-const reservedWords = ["css"];
+
+const cssVarName = "css";
+const reservedWords = [cssVarName];
 
 function getClassNameDefault(name: string): string {
   const id = makeLegalIdentifier(name);
@@ -121,16 +124,11 @@ const loader: Loader<PostCSSLoaderOptions> = {
 
     if (options.emit) return { code: res.css, map };
 
-    const saferId = (id: string): string => safeId(id, humanlizePath(this.id));
-    const cssVarName = saferId("css");
+    const saferId = (id: string): string => safeId(id, path.basename(this.id));
     const modulesVarName = saferId("modules");
 
-    const output = [
-      `const ${cssVarName} = ${JSON.stringify(res.css)}`,
-      `const ${modulesVarName} = ${JSON.stringify(modulesExports)}`,
-      `export const css = ${cssVarName}`,
-      `export default ${supportModules ? modulesVarName : cssVarName}`,
-    ];
+    const output = [`export const ${cssVarName} = ${JSON.stringify(res.css)};`];
+    const dts = [`export const ${cssVarName}: string;`];
 
     if (options.namedExports) {
       const getClassName =
@@ -142,9 +140,9 @@ const loader: Loader<PostCSSLoaderOptions> = {
         if (name !== newName)
           this.warn(`Exported \`${name}\` as \`${newName}\` in ${humanlizePath(this.id)}`);
 
-        if (!modulesExports[newName]) modulesExports[newName] = modulesExports[name];
-
-        output.push(`export const ${newName} = ${JSON.stringify(modulesExports[name])}`);
+        const fmt = JSON.stringify(modulesExports[name]);
+        output.push(`export const ${newName} = ${fmt};`);
+        if (options.dts) dts.push(`export const ${newName}: ${fmt};`);
       }
     }
 
@@ -154,27 +152,71 @@ const loader: Loader<PostCSSLoaderOptions> = {
       if (typeof options.inject === "function") {
         output.push(options.inject(cssVarName, this.id));
       } else {
-        const injectorVarName = saferId("injector");
+        const { treeshakeable, ...injectorOptions } =
+          typeof options.inject === "object" ? options.inject : ({} as InjectOptions);
+
+        const injectorName = saferId("injector");
+        const injectorCall = `${injectorName}(${cssVarName},${JSON.stringify(injectorOptions)});`;
 
         if (!injectorId) {
           injectorId = await resolveAsync("./inject-css", {
             basedir: path.join(testing ? process.cwd() : __dirname, "runtime"),
-          }).then(normalizePath);
+          })
+            .then(normalizePath)
+            .then(JSON.stringify);
         }
 
-        const injectorData =
-          typeof options.inject === "object" ? `,${JSON.stringify(options.inject)}` : "";
+        output.push(`import ${injectorName} from ${injectorId};`);
 
-        output.push(
-          `import ${injectorVarName} from '${injectorId}'`,
-          `${injectorVarName}(${cssVarName}${injectorData})`,
-        );
+        if (!treeshakeable)
+          output.push(`const ${modulesVarName} = ${JSON.stringify(modulesExports)};`, injectorCall);
+
+        if (treeshakeable) {
+          output.push("let injected = false;");
+          const injectorCallOnce = `if (!injected) { injected = true; ${injectorCall} }`;
+
+          if (modulesExports.inject) {
+            throw new Error(
+              "`inject` keyword is reserved when using `inject.treeshakeable` option",
+            );
+          }
+
+          let getters = "";
+          for (const [k, v] of Object.entries(modulesExports)) {
+            const name = JSON.stringify(k);
+            const value = JSON.stringify(v);
+            getters += `get ${name}() { ${injectorCallOnce} return ${value}; },\n`;
+          }
+
+          getters += `inject() { ${injectorCallOnce} },`;
+          output.push(`const ${modulesVarName} = {${getters}};`);
+        }
       }
     }
 
-    code = `${output.join(";\n")};`;
+    if (!options.inject)
+      output.push(`const ${modulesVarName} = ${JSON.stringify(modulesExports)};`);
 
-    return { code, map, extracted };
+    const defaultExport = `export default ${supportModules ? modulesVarName : cssVarName};`;
+    output.push(defaultExport);
+
+    if (options.dts && (await fs.pathExists(this.id))) {
+      if (supportModules)
+        dts.push(
+          `interface ModulesExports ${JSON.stringify(modulesExports)}`,
+
+          typeof options.inject === "object" && options.inject.treeshakeable
+            ? `interface ModulesExports {inject:()=>void}`
+            : "",
+
+          `declare const ${modulesVarName}: ModulesExports;`,
+        );
+
+      dts.push(defaultExport);
+      await fs.writeFile(`${this.id}.d.ts`, dts.filter(Boolean).join("\n"));
+    }
+
+    return { code: output.filter(Boolean).join("\n"), map, extracted };
   },
 };
 

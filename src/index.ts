@@ -39,11 +39,19 @@ export default (options: Options = {}): Plugin => {
     modules: inferOption(options.modules, false),
 
     to: options.to,
+    dts: options.dts ?? false,
     namedExports: options.namedExports ?? false,
     autoModules: options.autoModules ?? false,
     extensions: options.extensions ?? [".css", ".pcss", ".postcss", ".sss"],
     postcss: {},
   };
+
+  if (
+    typeof loaderOpts.inject === "object" &&
+    loaderOpts.inject.treeshakeable &&
+    loaderOpts.namedExports
+  )
+    throw new Error("`inject.treeshakeable` option is incompatible with `namedExports` option");
 
   if (options.parser) loaderOpts.postcss.parser = ensurePCSSOption(options.parser, "parser");
 

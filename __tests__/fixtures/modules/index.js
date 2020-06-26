@@ -1,5 +1,6 @@
 import style from "./style.css";
-import composed from "./composed.css";
+import "./composed.css";
 import composition2 from "./subdir/composition2.css";
 
-console.log(style.module, composed.composition, composition2.compositioned);
+if (composition2.inject) composition2.inject();
+else console.log(style.module, composition2.compositioned);
