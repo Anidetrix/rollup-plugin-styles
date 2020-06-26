@@ -4,7 +4,7 @@ import valueParser, { Node, ParsedValue } from "postcss-value-parser";
 import { mm } from "../../../utils/sourcemap";
 import { normalizePath, isAbsolutePath } from "../../../utils/path";
 import { firstExtRe, dataURIRe } from "../common";
-import resolveDefault, { UrlResolve } from "./resolve";
+import resolveDefault, { UrlResolve, UrlFile } from "./resolve";
 import generateName from "./generate";
 import { walkUrls, isDeclWithUrl } from "./utils";
 import inlineFile from "./inline";
@@ -81,7 +81,7 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
       url: string;
       decl: postcss.Declaration;
       parsed: ParsedValue;
-      basedir: string;
+      basedirs: Set<string>;
     }[] = [];
 
     const imported = res.messages
@@ -117,70 +117,76 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
           }
         }
 
+        const basedirs = new Set<string>();
+
         // Use PostCSS imports
-        if (decl.source?.input.file && imported.includes(decl.source.input.file)) {
-          const basedir = path.dirname(decl.source.input.file);
-          urlList.push({ node, url, decl, parsed, basedir });
-          return;
-        }
+        if (decl.source?.input.file && imported.includes(decl.source.input.file))
+          basedirs.add(path.dirname(decl.source.input.file));
 
         // Use SourceMap
         if (decl.source?.start) {
           const pos = decl.source.start;
           const realPos = map?.originalPositionFor(pos);
           const basedir = realPos?.source && path.dirname(realPos.source);
-          if (basedir) {
-            urlList.push({ node, url, decl, parsed, basedir });
-            return;
-          }
+          if (basedir) basedirs.add(path.normalize(basedir));
         }
 
         // Use current file
-        const basedir = path.dirname(file);
-        urlList.push({ node, url, decl, parsed, basedir });
+        basedirs.add(path.dirname(file));
+
+        urlList.push({ node, url, decl, parsed, basedirs });
       });
     });
 
     map?.destroy();
     const usedNames = new Map<string, string>();
 
-    for await (const { node, url, decl, parsed, basedir } of urlList) {
-      try {
-        const { source, from } = await resolve(url, basedir);
-
-        if (!(source instanceof Uint8Array) || typeof from !== "string") {
-          decl.warn(res, `Incorrectly resolved URL \`${url}\` in \`${decl.toString()}\``);
-          continue;
+    for await (const { node, url, decl, parsed, basedirs } of urlList) {
+      let resolved: UrlFile | undefined;
+      for await (const basedir of basedirs) {
+        try {
+          if (!resolved) resolved = await resolve(url, basedir);
+        } catch {
+          /* noop */
         }
-
-        res.messages.push({ plugin: name, type: "dependency", file: from });
-
-        if (inline) {
-          node.type = "string";
-          node.value = inlineFile(from, source);
-        } else {
-          const unsafeTo = normalizePath(generateName(placeholder, from, source));
-          let to = unsafeTo;
-
-          // Avoid file overrides
-          const hasExt = firstExtRe.test(unsafeTo);
-          for (let i = 1; usedNames.has(to) && usedNames.get(to) !== from; i++) {
-            to = hasExt ? unsafeTo.replace(firstExtRe, `${i}$1`) : `${unsafeTo}${i}`;
-          }
-
-          usedNames.set(to, from);
-
-          node.type = "string";
-          node.value = publicPath + (/[/\\]$/.test(publicPath) ? "" : "/") + path.basename(to);
-
-          to = normalizePath(assetDir, to);
-          res.messages.push({ plugin: name, type: "asset", to, source });
-        }
-
-        decl.value = parsed.toString();
-      } catch {
-        decl.warn(res, `Unresolved URL \`${url}\` in \`${decl.toString()}\``);
       }
+
+      if (!resolved) {
+        decl.warn(res, `Unresolved URL \`${url}\` in \`${decl.toString()}\``);
+        continue;
+      }
+
+      const { source, from } = resolved;
+      if (!(source instanceof Uint8Array) || typeof from !== "string") {
+        decl.warn(res, `Incorrectly resolved URL \`${url}\` in \`${decl.toString()}\``);
+        continue;
+      }
+
+      res.messages.push({ plugin: name, type: "dependency", file: from });
+
+      if (inline) {
+        node.type = "string";
+        node.value = inlineFile(from, source);
+      } else {
+        const unsafeTo = normalizePath(generateName(placeholder, from, source));
+        let to = unsafeTo;
+
+        // Avoid file overrides
+        const hasExt = firstExtRe.test(unsafeTo);
+        for (let i = 1; usedNames.has(to) && usedNames.get(to) !== from; i++) {
+          to = hasExt ? unsafeTo.replace(firstExtRe, `${i}$1`) : `${unsafeTo}${i}`;
+        }
+
+        usedNames.set(to, from);
+
+        node.type = "string";
+        node.value = publicPath + (/[/\\]$/.test(publicPath) ? "" : "/") + path.basename(to);
+
+        to = normalizePath(assetDir, to);
+        res.messages.push({ plugin: name, type: "asset", to, source });
+      }
+
+      decl.value = parsed.toString();
     }
   },
 );
