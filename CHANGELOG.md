@@ -1,3 +1,18 @@
+# [3.10.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.9.0...v3.10.0) (2020-06-26)
+
+
+### Bug Fixes
+
+* **extract:** missing parts of extracted file ([9afa9ac](https://github.com/Anidetrix/rollup-plugin-styles/commit/9afa9acf51da0a8ca2a86fa121c50a5b60648d58))
+* **runtime:** safer option check ([78a5922](https://github.com/Anidetrix/rollup-plugin-styles/commit/78a59228d4ce01b08570379158fb449bdf96d4a2))
+* **url:** consider all possible basedirs ([62353b2](https://github.com/Anidetrix/rollup-plugin-styles/commit/62353b28d3666be1f7fdf8d2c36ac998772092d7))
+
+
+### Features
+
+* .d.ts generation and treeshakeable injector options ([2990cb0](https://github.com/Anidetrix/rollup-plugin-styles/commit/2990cb0f9fa3621b4e3acc00bef1fc4d12d9035b))
+* **postcss:** support both object and array for plugin ([7ce53b9](https://github.com/Anidetrix/rollup-plugin-styles/commit/7ce53b96f3870947883ae4b79ba48da24e8c76fb))
+
 # [3.9.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.8.2...v3.9.0) (2020-06-23)
 
 
