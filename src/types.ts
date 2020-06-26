@@ -110,15 +110,17 @@ export interface Options {
    * A list of plugins for PostCSS,
    * which are used before plugins loaded from PostCSS config file, if any
    */
-  plugins?: (
-    | postcss.Transformer
-    | postcss.Processor
-    | string
-    | [string | postcss.Plugin<unknown>]
-    | [string | postcss.Plugin<unknown>, Record<string, unknown>]
-    | null
-    | undefined
-  )[];
+  plugins?:
+    | Record<string, unknown>
+    | (
+        | postcss.Transformer
+        | postcss.Processor
+        | string
+        | [string | postcss.Plugin<unknown>]
+        | [string | postcss.Plugin<unknown>, Record<string, unknown>]
+        | null
+        | undefined
+      )[];
   /**
    * Select mode for this plugin:
    * - `"inject"` *(default)* - Embeds CSS inside JS and injects it into `<head>` at runtime.
@@ -134,8 +136,10 @@ export interface Options {
    */
   mode?:
     | "inject"
+    | ["inject"]
     | ["inject", InjectOptions | ((varname: string, id: string) => string)]
     | "extract"
+    | ["extract"]
     | ["extract", string]
     | "emit"
     | ["emit"];

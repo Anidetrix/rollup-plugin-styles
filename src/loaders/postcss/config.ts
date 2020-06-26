@@ -11,7 +11,7 @@ interface Options {
 }
 
 interface Config extends Options {
-  plugins?: { [p: string]: Record<string, unknown> };
+  plugins?: { [p: string]: Record<string, unknown> } | (string | postcss.Plugin<unknown>)[];
 }
 
 interface Result {
@@ -33,7 +33,7 @@ export default async function (
 
   if (!found || found.isEmpty) return { plugins: [], options: {} };
 
-  const { plugins: _plugins, parser, syntax, stringifier } =
+  const { plugins, parser, syntax, stringifier } =
     typeof found.config === "function"
       ? found.config({
           cwd: process.cwd(),
@@ -43,7 +43,6 @@ export default async function (
         })
       : found.config;
 
-  const plugins = _plugins && Object.entries(_plugins);
   const result: Result = { plugins: ensurePCSSPlugins(plugins), options: {} };
   if (parser) result.options.parser = ensurePCSSOption(parser, "parser");
   if (syntax) result.options.syntax = ensurePCSSOption(syntax, "syntax");

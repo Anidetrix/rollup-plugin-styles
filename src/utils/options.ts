@@ -79,10 +79,11 @@ export function ensurePCSSPlugins(
   plugins: Options["plugins"],
 ): (postcss.Transformer | postcss.Processor)[] {
   if (typeof plugins === "undefined") return [];
-  else if (!Array.isArray(plugins)) throw new TypeError("`plugins` option must be an array!");
+  else if (typeof plugins !== "object")
+    throw new TypeError("`plugins` option must be an array or an object!");
 
   const ps: (postcss.Transformer | postcss.Processor)[] = [];
-  for (const p of plugins) {
+  for (const p of !Array.isArray(plugins) ? Object.entries(plugins) : plugins) {
     if (!p) continue;
 
     if (!Array.isArray(p)) {
