@@ -111,7 +111,7 @@ export default (options: Options = {}): Plugin => {
       return {
         code: res.code,
         map: (sourceMap ? res.map : undefined) ?? { mappings: "" as const },
-        moduleSideEffects: loaderOpts.extract ? true : null,
+        moduleSideEffects: res.extracted ? true : null,
       };
     },
 
@@ -143,9 +143,10 @@ export default (options: Options = {}): Plugin => {
       // Respect rollup's 2.18.0 option changes
       if (opts.preserveModules) preserveModules = opts.preserveModules;
 
-      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- either `file` or `dir` are always present
       const dir = opts.dir ?? path.dirname(opts.file!);
       const chunks = Object.values(bundle).filter((c): c is OutputChunk => c.type === "chunk");
+      const manual = chunks.filter(c => !c.facadeModuleId);
       const emitted = preserveModules ? chunks : chunks.filter(c => c.isEntry || c.isDynamicEntry);
       const emittedList: [string, string[]][] = [];
 
@@ -217,14 +218,22 @@ export default (options: Options = {}): Plugin => {
         return ordered;
       };
 
+      const moved: string[] = [];
       if (typeof loaderOpts.extract === "string") {
         const ids: string[] = [];
-        for (const chunk of emitted) ids.push(...getImports(chunk));
-        const name = getName(chunks.find(e => e.isEntry) ?? chunks[0]);
+
+        for (const chunk of manual) {
+          const chunkIds = getImports(chunk);
+          moved.push(...chunkIds);
+          ids.push(...chunkIds);
+        }
+
+        for (const chunk of emitted)
+          ids.push(...getImports(chunk).filter(id => !moved.includes(id)));
+
+        const name = getName(chunks[0]);
         emittedList.push([name, ids]);
       } else {
-        const moved: string[] = [];
-        const manual = chunks.filter(c => !c.facadeModuleId);
         for (const chunk of manual) {
           const ids = getImports(chunk);
           if (ids.length === 0) continue;
