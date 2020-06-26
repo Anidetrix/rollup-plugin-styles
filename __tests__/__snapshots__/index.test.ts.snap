@@ -6,7 +6,7 @@ exports[`basic parser-fail 1`] = `"Unable to load PostCSS parser \`walrus\`"`;
 
 exports[`basic plugin-fail 1`] = `"Unable to load PostCSS plugin \`pulverizer\`"`;
 
-exports[`basic plugin-type-fail 1`] = `"\`plugins\` option must be an array!"`;
+exports[`basic plugin-type-fail 1`] = `"\`plugins\` option must be an array or an object!"`;
 
 exports[`basic postcss-config: js 1`] = `
 "/** @type {HTMLElement[]} */
@@ -16,22 +16,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_a772e92e (css, options) {
+function injector_4a8cea7e (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -79,8 +78,8 @@ function injector_a772e92e (css, options) {
   }
 }
 
-const css_73424376 = \\"a {\\\\n  width: 30%;\\\\n  color: red\\\\n}\\\\n\\\\n.multiline,\\\\n.selector {\\\\n  box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000\\\\n}\\\\n\\";
-injector_a772e92e(css_73424376);
+const css = \\"a {\\\\n  width: 30%;\\\\n  color: red\\\\n}\\\\n\\\\n.multiline,\\\\n.selector {\\\\n  box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000\\\\n}\\\\n\\";
+injector_4a8cea7e(css,{});
 "
 `;
 
@@ -92,22 +91,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_10ba2831 (css, options) {
+function injector_4a8cea7e (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -155,8 +153,8 @@ function injector_10ba2831 (css, options) {
   }
 }
 
-const css_0b0f16fa = \\".subpartial {\\\\n  -webkit-box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000;\\\\n     -moz-box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000;\\\\n          box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000\\\\n}\\\\n\\\\n.partial {\\\\n    color: red\\\\n}\\\\n\\\\n.prefixed {\\\\n  display: -webkit-box;\\\\n  display: -webkit-flex;\\\\n  display: -moz-box;\\\\n  display: -ms-flexbox;\\\\n  display: flex\\\\n}\\\\n\\";
-injector_10ba2831(css_0b0f16fa);
+const css = \\".subpartial {\\\\n  -webkit-box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000;\\\\n     -moz-box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000;\\\\n          box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000\\\\n}\\\\n\\\\n.partial {\\\\n    color: red\\\\n}\\\\n\\\\n.prefixed {\\\\n  display: -webkit-box;\\\\n  display: -webkit-flex;\\\\n  display: -moz-box;\\\\n  display: -ms-flexbox;\\\\n  display: flex\\\\n}\\\\n\\";
+injector_4a8cea7e(css,{});
 "
 `;
 
@@ -282,22 +280,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_8aeabfb4 (css, options) {
+function injector_3b481dac (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -345,25 +342,25 @@ function injector_8aeabfb4 (css, options) {
   }
 }
 
-const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_8aeabfb4(css_a87c82eb);
+const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_3b481dac(css,{});
 
-const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_8aeabfb4(css_6e569e18);
+const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_3b481dac(css$1,{});
 
-const css_a00496d3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
-injector_8aeabfb4(css_a00496d3);
+const css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
+injector_3b481dac(css$2,{});
 
-const css_855b3ad0 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_8aeabfb4(css_855b3ad0);
+const css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_3b481dac(css$3,{});
 
-const css_31899cde = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
-injector_8aeabfb4(css_31899cde);
+const css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
+injector_3b481dac(css$4,{});
 
-const css_aee437ad = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
-injector_8aeabfb4(css_aee437ad);
+const css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
+injector_3b481dac(css$5,{});
 
-console.log(css_a87c82eb, css_6e569e18);
+console.log(css, css$1);
 "
 `;
 
@@ -375,22 +372,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_6d837214 (css, options) {
+function injector_c84cd8fc (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -438,8 +434,8 @@ function injector_6d837214 (css, options) {
   }
 }
 
-const css_147dacc9 = \\".style {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_6d837214(css_147dacc9);
+const css = \\".style {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_c84cd8fc(css,{});
 "
 `;
 
@@ -520,21 +516,20 @@ exports[`code-splitting manual-chunks: css 8`] = `
 `;
 
 exports[`code-splitting manual-chunks: js 1`] = `
-"const css_c80ea5b3 = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_9c526d97 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
-const css = css_c80ea5b3;
+"const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+const modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
-export default modules_9c526d97;
+export default modules_efa96bb5;
 export { css };
 "
 `;
 
 exports[`code-splitting manual-chunks: js 2`] = `
-"const modules_0858c0ee = {\\"fourth\\":\\"fourth_fourth\\"};
+"const modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
-const modules_efaf3560 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
+const modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
 
-export { modules_efaf3560 as a, modules_0858c0ee as m };
+export { modules_3ede29d3 as a, modules_d55e0e9b as m };
 "
 `;
 
@@ -544,37 +539,37 @@ exports[`code-splitting manual-chunks: js 3`] = `
 `;
 
 exports[`code-splitting manual-chunks: js 4`] = `
-"import { m as modules_0858c0ee } from './fourts-c61bf8f8.js';
+"import { m as modules_d55e0e9b } from './fourts-308dedf3.js';
 import './index-bb3ba0d0.js';
 
 (async () => {
-  const first = await import('./first-624745ec.js');
-  const second = await import('./second-48ba0f1d.js');
-  const otherScript = await import('./other-script-153f674c.js');
+  const first = await import('./first-e7f587fc.js');
+  const second = await import('./second-490e7403.js');
+  const otherScript = await import('./other-script-617064b7.js');
   console.log(first, second, otherScript);
 })();
 
-console.log(modules_0858c0ee);
+console.log(modules_d55e0e9b);
 "
 `;
 
 exports[`code-splitting manual-chunks: js 5`] = `
-"import { a as modules_efaf3560 } from './fourts-c61bf8f8.js';
+"import { a as modules_3ede29d3 } from './fourts-308dedf3.js';
 import './index-bb3ba0d0.js';
 
 (async () => {
-  const first = await import('./first-624745ec.js');
-  const second = await import('./second-48ba0f1d.js');
-  const otherScript = await import('./other-script-153f674c.js');
+  const first = await import('./first-e7f587fc.js');
+  const second = await import('./second-490e7403.js');
+  const otherScript = await import('./other-script-617064b7.js');
   console.log(first, second, otherScript);
 })();
 
-console.log(modules_efaf3560);
+console.log(modules_3ede29d3);
 "
 `;
 
 exports[`code-splitting manual-chunks: js 6`] = `
-"import './nondynamics-25535eaa.js';
+"import './nondynamics-1574a817.js';
 "
 `;
 
@@ -584,27 +579,26 @@ exports[`code-splitting manual-chunks: js 7`] = `
 `;
 
 exports[`code-splitting manual-chunks: js 8`] = `
-"const modules_f895f00f = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"const modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
-console.log(modules_f895f00f);
+console.log(modules_2539eb5b);
 "
 `;
 
 exports[`code-splitting manual-chunks: js 9`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-c33cf393.js');
+  const nestedScript = await import('./nested-script-c2d85145.js');
   console.log(nestedScript);
 })();
 "
 `;
 
 exports[`code-splitting manual-chunks: js 10`] = `
-"const css_80152599 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_7f4bc46a = {\\"second\\":\\"second_second\\"};
-const css = css_80152599;
+"const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+const modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
-export default modules_7f4bc46a;
+export default modules_7a038d99;
 export { css };
 "
 `;
@@ -683,17 +677,17 @@ exports[`code-splitting manual-chunks-only: css 4`] = `
 `;
 
 exports[`code-splitting manual-chunks-only: js 1`] = `
-"const modules_0858c0ee = {\\"fourth\\":\\"fourth_fourth\\"};
+"const modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
-const modules_efaf3560 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
+const modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
 
-export { modules_efaf3560 as a, modules_0858c0ee as m };
+export { modules_3ede29d3 as a, modules_d55e0e9b as m };
 "
 `;
 
 exports[`code-splitting manual-chunks-only: js 2`] = `
-"import { m as modules_0858c0ee, a as modules_efaf3560 } from './fourts-c61bf8f8.js';
-import './nondynamics-25535eaa.js';
+"import { m as modules_d55e0e9b, a as modules_3ede29d3 } from './fourts-308dedf3.js';
+import './nondynamics-1574a817.js';
 
 console.log(\\"sub\\");
 
@@ -704,7 +698,7 @@ console.log(\\"sub\\");
   console.log(first$1, second$1, otherScript$1);
 })();
 
-console.log(modules_0858c0ee);
+console.log(modules_d55e0e9b);
 
 (async () => {
   const first$1 = await Promise.resolve().then(function () { return first; });
@@ -713,26 +707,24 @@ console.log(modules_0858c0ee);
   console.log(first$1, second$1, otherScript$1);
 })();
 
-console.log(modules_efaf3560);
+console.log(modules_3ede29d3);
 
-const css_c80ea5b3 = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_9c526d97 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
-const css = css_c80ea5b3;
+const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+const modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 var first = /*#__PURE__*/Object.freeze({
   __proto__: null,
   css: css,
-  'default': modules_9c526d97
+  'default': modules_efa96bb5
 });
 
-const css_80152599 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_7f4bc46a = {\\"second\\":\\"second_second\\"};
-const css$1 = css_80152599;
+const css$1 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+const modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 var second = /*#__PURE__*/Object.freeze({
   __proto__: null,
   css: css$1,
-  'default': modules_7f4bc46a
+  'default': modules_7a038d99
 });
 
 (async () => {
@@ -758,16 +750,16 @@ var nestedScript = /*#__PURE__*/Object.freeze({
 `;
 
 exports[`code-splitting manual-chunks-only: js 3`] = `
-"import './fourts-c61bf8f8.js';
+"import './fourts-308dedf3.js';
 import './index.js';
-import './nondynamics-25535eaa.js';
+import './nondynamics-1574a817.js';
 "
 `;
 
 exports[`code-splitting manual-chunks-only: js 4`] = `
-"const modules_f895f00f = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"const modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
-console.log(modules_f895f00f);
+console.log(modules_2539eb5b);
 "
 `;
 
@@ -788,14 +780,20 @@ exports[`code-splitting manual-chunks-only-single: css 1`] = `
 ".third_third {
   color: maroon; }
 
-.fourth_fourth {
-  color: magenta; }
-
 .thirdtwo_thirdtwo {
   color: hotpink; }
 
+.fourth_fourth {
+  color: magenta; }
+
 .fourthtwo_fourthtwo {
   color: honeydew; }
+
+.nondynamic_nondynamic {
+  color: deepskyblue; }
+
+.nondynamic2_nondynamic2 {
+  color: deeppink; }
 
 .first_first_sub {
   color: black; }
@@ -815,27 +813,21 @@ exports[`code-splitting manual-chunks-only-single: css 1`] = `
 .nestedScript_nestedScript {
   color: rebeccapurple; }
 
-.nondynamic_nondynamic {
-  color: deepskyblue; }
-
-.nondynamic2_nondynamic2 {
-  color: deeppink; }
-
-/*# sourceMappingURL=extracted-4bda42a3.css.map */"
+/*# sourceMappingURL=extracted-37b8246d.css.map */"
 `;
 
 exports[`code-splitting manual-chunks-only-single: js 1`] = `
-"const modules_0858c0ee = {\\"fourth\\":\\"fourth_fourth\\"};
+"const modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
-const modules_efaf3560 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
+const modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
 
-export { modules_efaf3560 as a, modules_0858c0ee as m };
+export { modules_3ede29d3 as a, modules_d55e0e9b as m };
 "
 `;
 
 exports[`code-splitting manual-chunks-only-single: js 2`] = `
-"import { m as modules_0858c0ee, a as modules_efaf3560 } from './fourts-c61bf8f8.js';
-import './nondynamics-25535eaa.js';
+"import { m as modules_d55e0e9b, a as modules_3ede29d3 } from './fourts-308dedf3.js';
+import './nondynamics-1574a817.js';
 
 console.log(\\"sub\\");
 
@@ -846,7 +838,7 @@ console.log(\\"sub\\");
   console.log(first$1, second$1, otherScript$1);
 })();
 
-console.log(modules_0858c0ee);
+console.log(modules_d55e0e9b);
 
 (async () => {
   const first$1 = await Promise.resolve().then(function () { return first; });
@@ -855,26 +847,24 @@ console.log(modules_0858c0ee);
   console.log(first$1, second$1, otherScript$1);
 })();
 
-console.log(modules_efaf3560);
+console.log(modules_3ede29d3);
 
-const css_c80ea5b3 = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_9c526d97 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
-const css = css_c80ea5b3;
+const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+const modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 var first = /*#__PURE__*/Object.freeze({
   __proto__: null,
   css: css,
-  'default': modules_9c526d97
+  'default': modules_efa96bb5
 });
 
-const css_80152599 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_7f4bc46a = {\\"second\\":\\"second_second\\"};
-const css$1 = css_80152599;
+const css$1 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+const modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 var second = /*#__PURE__*/Object.freeze({
   __proto__: null,
   css: css$1,
-  'default': modules_7f4bc46a
+  'default': modules_7a038d99
 });
 
 (async () => {
@@ -900,16 +890,16 @@ var nestedScript = /*#__PURE__*/Object.freeze({
 `;
 
 exports[`code-splitting manual-chunks-only-single: js 3`] = `
-"import './fourts-c61bf8f8.js';
+"import './fourts-308dedf3.js';
 import './index.js';
-import './nondynamics-25535eaa.js';
+import './nondynamics-1574a817.js';
 "
 `;
 
 exports[`code-splitting manual-chunks-only-single: js 4`] = `
-"const modules_f895f00f = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"const modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
-console.log(modules_f895f00f);
+console.log(modules_2539eb5b);
 "
 `;
 
@@ -918,20 +908,26 @@ exports[`code-splitting manual-chunks-only-single: js 5`] = `
 "
 `;
 
-exports[`code-splitting manual-chunks-only-single: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/thirdtwo.scss\\",\\"../../../../code-splitting/fourthtwo.scss\\",\\"../../../../code-splitting/sub/first.scss\\",\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\",\\"../../../../code-splitting/second.scss\\",\\"../../../../code-splitting/other-script.scss\\",\\"../../../../code-splitting/nested-script.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA;;ACDhB;EACE,cAAc,EAAA;;ACDhB;EACE,eAAe,EAAA;;ACDjB;EACE,YAAY,EAAA;;ACDd;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA;;ACHZ;EACE,gBAAgB,EAAA;;ACDlB;EACE,YAAY,EAAA;;ACDd;EACE,oBAAoB,EAAA;;ACDtB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"extracted-4bda42a3.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".thirdtwo {\\\\n  color: hotpink;\\\\n}\\\\n\\",\\".fourthtwo {\\\\n  color: honeydew;\\\\n}\\\\n\\",\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\",\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\",\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\",\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\",\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting manual-chunks-only-single: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/thirdtwo.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/fourthtwo.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\",\\"../../../../code-splitting/sub/first.scss\\",\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\",\\"../../../../code-splitting/second.scss\\",\\"../../../../code-splitting/other-script.scss\\",\\"../../../../code-splitting/nested-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA;;ACDhB;EACE,cAAc,EAAA;;ACDhB;EACE,eAAe,EAAA;;ACDjB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA;;ACDjB;EACE,YAAY,EAAA;;ACDd;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA;;ACHZ;EACE,gBAAgB,EAAA;;ACDlB;EACE,YAAY,EAAA;;ACDd;EACE,oBAAoB,EAAA\\",\\"file\\":\\"extracted-37b8246d.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".thirdtwo {\\\\n  color: hotpink;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".fourthtwo {\\\\n  color: honeydew;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\",\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\",\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\",\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\",\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\",\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\"]}"`;
 
 exports[`code-splitting manual-chunks-single: css 1`] = `
 ".third_third {
   color: maroon; }
 
-.fourth_fourth {
-  color: magenta; }
-
 .thirdtwo_thirdtwo {
   color: hotpink; }
 
+.fourth_fourth {
+  color: magenta; }
+
 .fourthtwo_fourthtwo {
   color: honeydew; }
+
+.nondynamic_nondynamic {
+  color: deepskyblue; }
+
+.nondynamic2_nondynamic2 {
+  color: deeppink; }
 
 .first_first_sub {
   color: black; }
@@ -951,31 +947,24 @@ exports[`code-splitting manual-chunks-single: css 1`] = `
 .nestedScript_nestedScript {
   color: rebeccapurple; }
 
-.nondynamic_nondynamic {
-  color: deepskyblue; }
-
-.nondynamic2_nondynamic2 {
-  color: deeppink; }
-
-/*# sourceMappingURL=extracted-4bda42a3.css.map */"
+/*# sourceMappingURL=extracted-37b8246d.css.map */"
 `;
 
 exports[`code-splitting manual-chunks-single: js 1`] = `
-"const css_c80ea5b3 = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_9c526d97 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
-const css = css_c80ea5b3;
+"const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+const modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
-export default modules_9c526d97;
+export default modules_efa96bb5;
 export { css };
 "
 `;
 
 exports[`code-splitting manual-chunks-single: js 2`] = `
-"const modules_0858c0ee = {\\"fourth\\":\\"fourth_fourth\\"};
+"const modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
-const modules_efaf3560 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
+const modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
 
-export { modules_efaf3560 as a, modules_0858c0ee as m };
+export { modules_3ede29d3 as a, modules_d55e0e9b as m };
 "
 `;
 
@@ -985,37 +974,37 @@ exports[`code-splitting manual-chunks-single: js 3`] = `
 `;
 
 exports[`code-splitting manual-chunks-single: js 4`] = `
-"import { m as modules_0858c0ee } from './fourts-c61bf8f8.js';
+"import { m as modules_d55e0e9b } from './fourts-308dedf3.js';
 import './index-bb3ba0d0.js';
 
 (async () => {
-  const first = await import('./first-624745ec.js');
-  const second = await import('./second-48ba0f1d.js');
-  const otherScript = await import('./other-script-153f674c.js');
+  const first = await import('./first-e7f587fc.js');
+  const second = await import('./second-490e7403.js');
+  const otherScript = await import('./other-script-617064b7.js');
   console.log(first, second, otherScript);
 })();
 
-console.log(modules_0858c0ee);
+console.log(modules_d55e0e9b);
 "
 `;
 
 exports[`code-splitting manual-chunks-single: js 5`] = `
-"import { a as modules_efaf3560 } from './fourts-c61bf8f8.js';
+"import { a as modules_3ede29d3 } from './fourts-308dedf3.js';
 import './index-bb3ba0d0.js';
 
 (async () => {
-  const first = await import('./first-624745ec.js');
-  const second = await import('./second-48ba0f1d.js');
-  const otherScript = await import('./other-script-153f674c.js');
+  const first = await import('./first-e7f587fc.js');
+  const second = await import('./second-490e7403.js');
+  const otherScript = await import('./other-script-617064b7.js');
   console.log(first, second, otherScript);
 })();
 
-console.log(modules_efaf3560);
+console.log(modules_3ede29d3);
 "
 `;
 
 exports[`code-splitting manual-chunks-single: js 6`] = `
-"import './nondynamics-25535eaa.js';
+"import './nondynamics-1574a817.js';
 "
 `;
 
@@ -1025,27 +1014,26 @@ exports[`code-splitting manual-chunks-single: js 7`] = `
 `;
 
 exports[`code-splitting manual-chunks-single: js 8`] = `
-"const modules_f895f00f = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"const modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
-console.log(modules_f895f00f);
+console.log(modules_2539eb5b);
 "
 `;
 
 exports[`code-splitting manual-chunks-single: js 9`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-c33cf393.js');
+  const nestedScript = await import('./nested-script-c2d85145.js');
   console.log(nestedScript);
 })();
 "
 `;
 
 exports[`code-splitting manual-chunks-single: js 10`] = `
-"const css_80152599 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_7f4bc46a = {\\"second\\":\\"second_second\\"};
-const css = css_80152599;
+"const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+const modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
-export default modules_7f4bc46a;
+export default modules_7a038d99;
 export { css };
 "
 `;
@@ -1055,7 +1043,7 @@ exports[`code-splitting manual-chunks-single: js 11`] = `
 "
 `;
 
-exports[`code-splitting manual-chunks-single: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/thirdtwo.scss\\",\\"../../../../code-splitting/fourthtwo.scss\\",\\"../../../../code-splitting/sub/first.scss\\",\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\",\\"../../../../code-splitting/second.scss\\",\\"../../../../code-splitting/other-script.scss\\",\\"../../../../code-splitting/nested-script.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA;;ACDhB;EACE,cAAc,EAAA;;ACDhB;EACE,eAAe,EAAA;;ACDjB;EACE,YAAY,EAAA;;ACDd;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA;;ACHZ;EACE,gBAAgB,EAAA;;ACDlB;EACE,YAAY,EAAA;;ACDd;EACE,oBAAoB,EAAA;;ACDtB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"extracted-4bda42a3.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".thirdtwo {\\\\n  color: hotpink;\\\\n}\\\\n\\",\\".fourthtwo {\\\\n  color: honeydew;\\\\n}\\\\n\\",\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\",\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\",\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\",\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\",\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting manual-chunks-single: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/thirdtwo.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/fourthtwo.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\",\\"../../../../code-splitting/sub/first.scss\\",\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\",\\"../../../../code-splitting/second.scss\\",\\"../../../../code-splitting/other-script.scss\\",\\"../../../../code-splitting/nested-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA;;ACDhB;EACE,cAAc,EAAA;;ACDhB;EACE,eAAe,EAAA;;ACDjB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA;;ACDjB;EACE,YAAY,EAAA;;ACDd;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA;;ACHZ;EACE,gBAAgB,EAAA;;ACDlB;EACE,YAAY,EAAA;;ACDd;EACE,oBAAoB,EAAA\\",\\"file\\":\\"extracted-37b8246d.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".thirdtwo {\\\\n  color: hotpink;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".fourthtwo {\\\\n  color: honeydew;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\",\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\",\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\",\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\",\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\",\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\"]}"`;
 
 exports[`code-splitting multi-entry: css 1`] = `
 ".first_partial {
@@ -1122,11 +1110,10 @@ exports[`code-splitting multi-entry: css 7`] = `
 `;
 
 exports[`code-splitting multi-entry: js 1`] = `
-"const css_c80ea5b3 = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_9c526d97 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
-const css = css_c80ea5b3;
+"const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+const modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
-export default modules_9c526d97;
+export default modules_efa96bb5;
 export { css };
 "
 `;
@@ -1139,39 +1126,39 @@ exports[`code-splitting multi-entry: js 2`] = `
 exports[`code-splitting multi-entry: js 3`] = `
 "import './index-bb3ba0d0.js';
 
-const modules_0858c0ee = {\\"fourth\\":\\"fourth_fourth\\"};
+const modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
 (async () => {
-  const first = await import('./first-624745ec.js');
-  const second = await import('./second-48ba0f1d.js');
-  const otherScript = await import('./other-script-1f381f79.js');
+  const first = await import('./first-e7f587fc.js');
+  const second = await import('./second-490e7403.js');
+  const otherScript = await import('./other-script-1cf0e38d.js');
   console.log(first, second, otherScript);
 })();
 
-console.log(modules_0858c0ee);
+console.log(modules_d55e0e9b);
 "
 `;
 
 exports[`code-splitting multi-entry: js 4`] = `
 "import './index-bb3ba0d0.js';
 
-const modules_efaf3560 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
+const modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
 
 (async () => {
-  const first = await import('./first-624745ec.js');
-  const second = await import('./second-48ba0f1d.js');
-  const otherScript = await import('./other-script-1f381f79.js');
+  const first = await import('./first-e7f587fc.js');
+  const second = await import('./second-490e7403.js');
+  const otherScript = await import('./other-script-1cf0e38d.js');
   console.log(first, second, otherScript);
 })();
 
-console.log(modules_efaf3560);
+console.log(modules_3ede29d3);
 "
 `;
 
 exports[`code-splitting multi-entry: js 5`] = `
-"const modules_f895f00f = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"const modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
-console.log(modules_f895f00f);
+console.log(modules_2539eb5b);
 "
 `;
 
@@ -1183,18 +1170,17 @@ exports[`code-splitting multi-entry: js 6`] = `
 exports[`code-splitting multi-entry: js 7`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-50d1ed49.js');
+  const nestedScript = await import('./nested-script-a9bc1c77.js');
   console.log(nestedScript);
 })();
 "
 `;
 
 exports[`code-splitting multi-entry: js 8`] = `
-"const css_80152599 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_7f4bc46a = {\\"second\\":\\"second_second\\"};
-const css = css_80152599;
+"const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+const modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
-export default modules_7f4bc46a;
+export default modules_7a038d99;
 export { css };
 "
 `;
@@ -1214,7 +1200,10 @@ exports[`code-splitting multi-entry: map 6`] = `"{\\"version\\":3,\\"sources\\":
 exports[`code-splitting multi-entry: map 7`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/second.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB,EAAA\\",\\"file\\":\\"second-9b132bc0.css\\",\\"sourcesContent\\":[\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\"]}"`;
 
 exports[`code-splitting multi-entry-single: css 1`] = `
-".third_third {
+".first_first_sub {
+  color: black; }
+
+.third_third {
   color: maroon; }
 
 .fourth_fourth {
@@ -1225,9 +1214,6 @@ exports[`code-splitting multi-entry-single: css 1`] = `
 
 .fourthtwo_fourthtwo {
   color: honeydew; }
-
-.first_first_sub {
-  color: black; }
 
 .first_partial {
   color: rosybrown;
@@ -1250,15 +1236,14 @@ exports[`code-splitting multi-entry-single: css 1`] = `
 .nondynamic2_nondynamic2 {
   color: deeppink; }
 
-/*# sourceMappingURL=extracted-4bda42a3.css.map */"
+/*# sourceMappingURL=extracted-6190ebcf.css.map */"
 `;
 
 exports[`code-splitting multi-entry-single: js 1`] = `
-"const css_c80ea5b3 = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_9c526d97 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
-const css = css_c80ea5b3;
+"const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+const modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
-export default modules_9c526d97;
+export default modules_efa96bb5;
 export { css };
 "
 `;
@@ -1271,39 +1256,39 @@ exports[`code-splitting multi-entry-single: js 2`] = `
 exports[`code-splitting multi-entry-single: js 3`] = `
 "import './index-bb3ba0d0.js';
 
-const modules_0858c0ee = {\\"fourth\\":\\"fourth_fourth\\"};
+const modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
 (async () => {
-  const first = await import('./first-624745ec.js');
-  const second = await import('./second-48ba0f1d.js');
-  const otherScript = await import('./other-script-1f381f79.js');
+  const first = await import('./first-e7f587fc.js');
+  const second = await import('./second-490e7403.js');
+  const otherScript = await import('./other-script-1cf0e38d.js');
   console.log(first, second, otherScript);
 })();
 
-console.log(modules_0858c0ee);
+console.log(modules_d55e0e9b);
 "
 `;
 
 exports[`code-splitting multi-entry-single: js 4`] = `
 "import './index-bb3ba0d0.js';
 
-const modules_efaf3560 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
+const modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
 
 (async () => {
-  const first = await import('./first-624745ec.js');
-  const second = await import('./second-48ba0f1d.js');
-  const otherScript = await import('./other-script-1f381f79.js');
+  const first = await import('./first-e7f587fc.js');
+  const second = await import('./second-490e7403.js');
+  const otherScript = await import('./other-script-1cf0e38d.js');
   console.log(first, second, otherScript);
 })();
 
-console.log(modules_efaf3560);
+console.log(modules_3ede29d3);
 "
 `;
 
 exports[`code-splitting multi-entry-single: js 5`] = `
-"const modules_f895f00f = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"const modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
-console.log(modules_f895f00f);
+console.log(modules_2539eb5b);
 "
 `;
 
@@ -1315,23 +1300,22 @@ exports[`code-splitting multi-entry-single: js 6`] = `
 exports[`code-splitting multi-entry-single: js 7`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-50d1ed49.js');
+  const nestedScript = await import('./nested-script-a9bc1c77.js');
   console.log(nestedScript);
 })();
 "
 `;
 
 exports[`code-splitting multi-entry-single: js 8`] = `
-"const css_80152599 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_7f4bc46a = {\\"second\\":\\"second_second\\"};
-const css = css_80152599;
+"const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+const modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
-export default modules_7f4bc46a;
+export default modules_7a038d99;
 export { css };
 "
 `;
 
-exports[`code-splitting multi-entry-single: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/thirdtwo.scss\\",\\"../../../../code-splitting/fourthtwo.scss\\",\\"../../../../code-splitting/sub/first.scss\\",\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\",\\"../../../../code-splitting/second.scss\\",\\"../../../../code-splitting/other-script.scss\\",\\"../../../../code-splitting/nested-script.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA;;ACDhB;EACE,cAAc,EAAA;;ACDhB;EACE,eAAe,EAAA;;ACDjB;EACE,YAAY,EAAA;;ACDd;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA;;ACHZ;EACE,gBAAgB,EAAA;;ACDlB;EACE,YAAY,EAAA;;ACDd;EACE,oBAAoB,EAAA;;ACDtB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"extracted-4bda42a3.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".thirdtwo {\\\\n  color: hotpink;\\\\n}\\\\n\\",\\".fourthtwo {\\\\n  color: honeydew;\\\\n}\\\\n\\",\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\",\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\",\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\",\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\",\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting multi-entry-single: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/sub/first.scss\\",\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/thirdtwo.scss\\",\\"../../../../code-splitting/fourthtwo.scss\\",\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\",\\"../../../../code-splitting/second.scss\\",\\"../../../../code-splitting/other-script.scss\\",\\"../../../../code-splitting/nested-script.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAY,EAAA;;ACDd;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA;;ACDhB;EACE,cAAc,EAAA;;ACDhB;EACE,eAAe,EAAA;;ACDjB;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA;;ACHZ;EACE,gBAAgB,EAAA;;ACDlB;EACE,YAAY,EAAA;;ACDd;EACE,oBAAoB,EAAA;;ACDtB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"extracted-6190ebcf.css\\",\\"sourcesContent\\":[\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\",\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".thirdtwo {\\\\n  color: hotpink;\\\\n}\\\\n\\",\\".fourthtwo {\\\\n  color: honeydew;\\\\n}\\\\n\\",\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\",\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\",\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\",\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
 
 exports[`code-splitting preserve-modules: css 1`] = `
 ".first_partial {
@@ -1415,24 +1399,23 @@ exports[`code-splitting preserve-modules: css 9`] = `
 `;
 
 exports[`code-splitting preserve-modules: js 1`] = `
-"const css_c80ea5b3 = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_9c526d97 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
-const css = css_c80ea5b3;
+"const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+const modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
-export default modules_9c526d97;
+export default modules_efa96bb5;
 export { css };
 "
 `;
 
 exports[`code-splitting preserve-modules: js 2`] = `
-"const modules_0858c0ee = {\\"fourth\\":\\"fourth_fourth\\"};
+"const modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
-export default modules_0858c0ee;
+export default modules_d55e0e9b;
 "
 `;
 
 exports[`code-splitting preserve-modules: js 3`] = `
-"import modules_0858c0ee from './fourth.scss.js';
+"import modules_d55e0e9b from './fourth.scss.js';
 import './sub/index.js';
 
 (async () => {
@@ -1442,7 +1425,7 @@ import './sub/index.js';
   console.log(first, second, otherScript);
 })();
 
-console.log(modules_0858c0ee);
+console.log(modules_d55e0e9b);
 "
 `;
 
@@ -1457,16 +1440,16 @@ exports[`code-splitting preserve-modules: js 5`] = `
 `;
 
 exports[`code-splitting preserve-modules: js 6`] = `
-"import modules_f895f00f from './nondynamic2.scss.js';
+"import modules_2539eb5b from './nondynamic2.scss.js';
 
-console.log(modules_f895f00f);
+console.log(modules_2539eb5b);
 "
 `;
 
 exports[`code-splitting preserve-modules: js 7`] = `
-"const modules_f895f00f = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"const modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
-export default modules_f895f00f;
+export default modules_2539eb5b;
 "
 `;
 
@@ -1480,11 +1463,10 @@ exports[`code-splitting preserve-modules: js 8`] = `
 `;
 
 exports[`code-splitting preserve-modules: js 9`] = `
-"const css_80152599 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_7f4bc46a = {\\"second\\":\\"second_second\\"};
-const css = css_80152599;
+"const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+const modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
-export default modules_7f4bc46a;
+export default modules_7a038d99;
 export { css };
 "
 `;
@@ -1614,31 +1596,30 @@ exports[`code-splitting preserve-modules-multi-entry: css 11`] = `
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: js 1`] = `
-"const css_c80ea5b3 = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_9c526d97 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
-const css = css_c80ea5b3;
+"const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+const modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
-export default modules_9c526d97;
+export default modules_efa96bb5;
 export { css };
 "
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: js 2`] = `
-"const modules_0858c0ee = {\\"fourth\\":\\"fourth_fourth\\"};
+"const modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
-export default modules_0858c0ee;
+export default modules_d55e0e9b;
 "
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: js 3`] = `
-"const modules_efaf3560 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
+"const modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
 
-export default modules_efaf3560;
+export default modules_3ede29d3;
 "
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: js 4`] = `
-"import modules_0858c0ee from './fourth.scss.js';
+"import modules_d55e0e9b from './fourth.scss.js';
 import './sub/index.js';
 
 (async () => {
@@ -1648,13 +1629,13 @@ import './sub/index.js';
   console.log(first, second, otherScript);
 })();
 
-console.log(modules_0858c0ee);
+console.log(modules_d55e0e9b);
 "
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: js 5`] = `
 "import './sub/index.js';
-import modules_efaf3560 from './fourthtwo.scss.js';
+import modules_3ede29d3 from './fourthtwo.scss.js';
 
 (async () => {
   const first = await import('./first.scss.js');
@@ -1663,7 +1644,7 @@ import modules_efaf3560 from './fourthtwo.scss.js';
   console.log(first, second, otherScript);
 })();
 
-console.log(modules_efaf3560);
+console.log(modules_3ede29d3);
 "
 `;
 
@@ -1678,16 +1659,16 @@ exports[`code-splitting preserve-modules-multi-entry: js 7`] = `
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: js 8`] = `
-"import modules_f895f00f from './nondynamic2.scss.js';
+"import modules_2539eb5b from './nondynamic2.scss.js';
 
-console.log(modules_f895f00f);
+console.log(modules_2539eb5b);
 "
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: js 9`] = `
-"const modules_f895f00f = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"const modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
-export default modules_f895f00f;
+export default modules_2539eb5b;
 "
 `;
 
@@ -1701,11 +1682,10 @@ exports[`code-splitting preserve-modules-multi-entry: js 10`] = `
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: js 11`] = `
-"const css_80152599 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_7f4bc46a = {\\"second\\":\\"second_second\\"};
-const css = css_80152599;
+"const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+const modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
-export default modules_7f4bc46a;
+export default modules_7a038d99;
 export { css };
 "
 `;
@@ -1772,24 +1752,23 @@ exports[`code-splitting preserve-modules-single: css 1`] = `
 `;
 
 exports[`code-splitting preserve-modules-single: js 1`] = `
-"const css_c80ea5b3 = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_9c526d97 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
-const css = css_c80ea5b3;
+"const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+const modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
-export default modules_9c526d97;
+export default modules_efa96bb5;
 export { css };
 "
 `;
 
 exports[`code-splitting preserve-modules-single: js 2`] = `
-"const modules_0858c0ee = {\\"fourth\\":\\"fourth_fourth\\"};
+"const modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
-export default modules_0858c0ee;
+export default modules_d55e0e9b;
 "
 `;
 
 exports[`code-splitting preserve-modules-single: js 3`] = `
-"import modules_0858c0ee from './fourth.scss.js';
+"import modules_d55e0e9b from './fourth.scss.js';
 import './sub/index.js';
 
 (async () => {
@@ -1799,7 +1778,7 @@ import './sub/index.js';
   console.log(first, second, otherScript);
 })();
 
-console.log(modules_0858c0ee);
+console.log(modules_d55e0e9b);
 "
 `;
 
@@ -1814,16 +1793,16 @@ exports[`code-splitting preserve-modules-single: js 5`] = `
 `;
 
 exports[`code-splitting preserve-modules-single: js 6`] = `
-"import modules_f895f00f from './nondynamic2.scss.js';
+"import modules_2539eb5b from './nondynamic2.scss.js';
 
-console.log(modules_f895f00f);
+console.log(modules_2539eb5b);
 "
 `;
 
 exports[`code-splitting preserve-modules-single: js 7`] = `
-"const modules_f895f00f = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"const modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
-export default modules_f895f00f;
+export default modules_2539eb5b;
 "
 `;
 
@@ -1837,11 +1816,10 @@ exports[`code-splitting preserve-modules-single: js 8`] = `
 `;
 
 exports[`code-splitting preserve-modules-single: js 9`] = `
-"const css_80152599 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_7f4bc46a = {\\"second\\":\\"second_second\\"};
-const css = css_80152599;
+"const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+const modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
-export default modules_7f4bc46a;
+export default modules_7a038d99;
 export { css };
 "
 `;
@@ -1888,35 +1866,34 @@ exports[`code-splitting single: css 1`] = `
 `;
 
 exports[`code-splitting single: js 1`] = `
-"const css_c80ea5b3 = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_9c526d97 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
-const css = css_c80ea5b3;
+"const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+const modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
-export default modules_9c526d97;
+export default modules_efa96bb5;
 export { css };
 "
 `;
 
 exports[`code-splitting single: js 2`] = `
-"const modules_0858c0ee = {\\"fourth\\":\\"fourth_fourth\\"};
+"const modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
 console.log(\\"sub\\");
 
 (async () => {
-  const first = await import('./first-624745ec.js');
-  const second = await import('./second-48ba0f1d.js');
-  const otherScript = await import('./other-script-1f381f79.js');
+  const first = await import('./first-e7f587fc.js');
+  const second = await import('./second-490e7403.js');
+  const otherScript = await import('./other-script-1cf0e38d.js');
   console.log(first, second, otherScript);
 })();
 
-console.log(modules_0858c0ee);
+console.log(modules_d55e0e9b);
 "
 `;
 
 exports[`code-splitting single: js 3`] = `
-"const modules_f895f00f = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"const modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
-console.log(modules_f895f00f);
+console.log(modules_2539eb5b);
 "
 `;
 
@@ -1928,18 +1905,17 @@ exports[`code-splitting single: js 4`] = `
 exports[`code-splitting single: js 5`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-50d1ed49.js');
+  const nestedScript = await import('./nested-script-a9bc1c77.js');
   console.log(nestedScript);
 })();
 "
 `;
 
 exports[`code-splitting single: js 6`] = `
-"const css_80152599 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_7f4bc46a = {\\"second\\":\\"second_second\\"};
-const css = css_80152599;
+"const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+const modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
-export default modules_7f4bc46a;
+export default modules_7a038d99;
 export { css };
 "
 `;
@@ -1997,35 +1973,34 @@ exports[`code-splitting true: css 5`] = `
 `;
 
 exports[`code-splitting true: js 1`] = `
-"const css_c80ea5b3 = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_9c526d97 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
-const css = css_c80ea5b3;
+"const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+const modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
-export default modules_9c526d97;
+export default modules_efa96bb5;
 export { css };
 "
 `;
 
 exports[`code-splitting true: js 2`] = `
-"const modules_0858c0ee = {\\"fourth\\":\\"fourth_fourth\\"};
+"const modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
 console.log(\\"sub\\");
 
 (async () => {
-  const first = await import('./first-624745ec.js');
-  const second = await import('./second-48ba0f1d.js');
-  const otherScript = await import('./other-script-1f381f79.js');
+  const first = await import('./first-e7f587fc.js');
+  const second = await import('./second-490e7403.js');
+  const otherScript = await import('./other-script-1cf0e38d.js');
   console.log(first, second, otherScript);
 })();
 
-console.log(modules_0858c0ee);
+console.log(modules_d55e0e9b);
 "
 `;
 
 exports[`code-splitting true: js 3`] = `
-"const modules_f895f00f = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"const modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
-console.log(modules_f895f00f);
+console.log(modules_2539eb5b);
 "
 `;
 
@@ -2037,18 +2012,17 @@ exports[`code-splitting true: js 4`] = `
 exports[`code-splitting true: js 5`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-50d1ed49.js');
+  const nestedScript = await import('./nested-script-a9bc1c77.js');
   console.log(nestedScript);
 })();
 "
 `;
 
 exports[`code-splitting true: js 6`] = `
-"const css_80152599 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_7f4bc46a = {\\"second\\":\\"second_second\\"};
-const css = css_80152599;
+"const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+const modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
-export default modules_7f4bc46a;
+export default modules_7a038d99;
 export { css };
 "
 `;
@@ -2107,11 +2081,11 @@ exports[`extract custom-path: css 1`] = `
 `;
 
 exports[`extract custom-path: js 1`] = `
-"const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(css_a87c82eb, css_6e569e18);
+console.log(css, css$1);
 "
 `;
 
@@ -2146,11 +2120,11 @@ exports[`extract file: css 1`] = `
 `;
 
 exports[`extract file: js 1`] = `
-"const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(css_a87c82eb, css_6e569e18);
+console.log(css, css$1);
 "
 `;
 
@@ -2197,24 +2171,26 @@ exports[`extract preserve-modules: css 3`] = `
 `;
 
 exports[`extract preserve-modules: js 1`] = `
-"const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+"const css = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-export default css_6e569e18;
+export default css;
+export { css };
 "
 `;
 
 exports[`extract preserve-modules: js 2`] = `
-"const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-export default css_a87c82eb;
+export default css;
+export { css };
 "
 `;
 
 exports[`extract preserve-modules: js 3`] = `
-"import css_a87c82eb from './foo.css.js';
-import css_6e569e18 from './bar.css.js';
+"import { css } from './foo.css.js';
+import { css as css$1 } from './bar.css.js';
 
-console.log(css_a87c82eb, css_6e569e18);
+console.log(css, css$1);
 "
 `;
 
@@ -2253,11 +2229,11 @@ exports[`extract sourcemap-inline: css 1`] = `
 `;
 
 exports[`extract sourcemap-inline: js 1`] = `
-"const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(css_a87c82eb, css_6e569e18);
+console.log(css, css$1);
 "
 `;
 
@@ -2291,11 +2267,11 @@ exports[`extract sourcemap-true: css 1`] = `
 `;
 
 exports[`extract sourcemap-true: js 1`] = `
-"const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(css_a87c82eb, css_6e569e18);
+console.log(css, css$1);
 "
 `;
 
@@ -2330,34 +2306,34 @@ exports[`extract true: css 1`] = `
 `;
 
 exports[`extract true: js 1`] = `
-"const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(css_a87c82eb, css_6e569e18);
+console.log(css, css$1);
 "
 `;
 
 exports[`inject function: js 1`] = `
-"const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
-console.log(css_a87c82eb,\\"__tests__/fixtures/simple/foo.css\\");
+"const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+console.log(css,\\"__tests__/fixtures/simple/foo.css\\");
 
-const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
-console.log(css_6e569e18,\\"__tests__/fixtures/simple/bar.css\\");
+const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+console.log(css$1,\\"__tests__/fixtures/simple/bar.css\\");
 
-const css_a00496d3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
-console.log(css_a00496d3,\\"__tests__/fixtures/simple/style.styl\\");
+const css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
+console.log(css$2,\\"__tests__/fixtures/simple/style.styl\\");
 
-const css_855b3ad0 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
-console.log(css_855b3ad0,\\"__tests__/fixtures/simple/style.pcss\\");
+const css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
+console.log(css$3,\\"__tests__/fixtures/simple/style.pcss\\");
 
-const css_31899cde = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
-console.log(css_31899cde,\\"__tests__/fixtures/simple/style.sass\\");
+const css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
+console.log(css$4,\\"__tests__/fixtures/simple/style.sass\\");
 
-const css_aee437ad = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
-console.log(css_aee437ad,\\"__tests__/fixtures/simple/style.less\\");
+const css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
+console.log(css$5,\\"__tests__/fixtures/simple/style.less\\");
 
-console.log(css_a87c82eb, css_6e569e18);
+console.log(css, css$1);
 "
 `;
 
@@ -2369,22 +2345,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_8aeabfb4 (css, options) {
+function injector_3b481dac (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -2432,25 +2407,25 @@ function injector_8aeabfb4 (css, options) {
   }
 }
 
-const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_8aeabfb4(css_a87c82eb,{\\"prepend\\":true});
+const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_3b481dac(css,{\\"prepend\\":true});
 
-const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_8aeabfb4(css_6e569e18,{\\"prepend\\":true});
+const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_3b481dac(css$1,{\\"prepend\\":true});
 
-const css_a00496d3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
-injector_8aeabfb4(css_a00496d3,{\\"prepend\\":true});
+const css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
+injector_3b481dac(css$2,{\\"prepend\\":true});
 
-const css_855b3ad0 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_8aeabfb4(css_855b3ad0,{\\"prepend\\":true});
+const css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_3b481dac(css$3,{\\"prepend\\":true});
 
-const css_31899cde = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
-injector_8aeabfb4(css_31899cde,{\\"prepend\\":true});
+const css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
+injector_3b481dac(css$4,{\\"prepend\\":true});
 
-const css_aee437ad = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
-injector_8aeabfb4(css_aee437ad,{\\"prepend\\":true});
+const css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
+injector_3b481dac(css$5,{\\"prepend\\":true});
 
-console.log(css_a87c82eb, css_6e569e18);
+console.log(css, css$1);
 "
 `;
 
@@ -2462,22 +2437,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_e1c140db (css, options) {
+function injector_3b481dac (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -2525,8 +2499,8 @@ function injector_e1c140db (css, options) {
   }
 }
 
-const css_427c8846 = \\".d {\\\\n  color: red;\\\\n}\\\\n.a {\\\\n  color: royalblue;\\\\n}\\\\n.b {\\\\n  color: red;\\\\n}\\\\n.c {\\\\n  color: red;\\\\n}\\\\n.foo {\\\\n  color: royalblue;\\\\n}\\\\n/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */\\\\nhtml,\\\\nbody,\\\\np,\\\\nol,\\\\nul,\\\\nli,\\\\ndl,\\\\ndt,\\\\ndd,\\\\nblockquote,\\\\nfigure,\\\\nfieldset,\\\\nlegend,\\\\ntextarea,\\\\npre,\\\\niframe,\\\\nhr,\\\\nh1,\\\\nh2,\\\\nh3,\\\\nh4,\\\\nh5,\\\\nh6 {\\\\n  margin: 0;\\\\n  padding: 0;\\\\n}\\\\nh1,\\\\nh2,\\\\nh3,\\\\nh4,\\\\nh5,\\\\nh6 {\\\\n  font-size: 100%;\\\\n  font-weight: normal;\\\\n}\\\\nul {\\\\n  list-style: none;\\\\n}\\\\nbutton,\\\\ninput,\\\\nselect,\\\\ntextarea {\\\\n  margin: 0;\\\\n}\\\\nhtml {\\\\n  box-sizing: border-box;\\\\n}\\\\n*,\\\\n*::before,\\\\n*::after {\\\\n  box-sizing: inherit;\\\\n}\\\\nimg,\\\\nvideo {\\\\n  height: auto;\\\\n  max-width: 100%;\\\\n}\\\\niframe {\\\\n  border: 0;\\\\n}\\\\ntable {\\\\n  border-collapse: collapse;\\\\n  border-spacing: 0;\\\\n}\\\\ntd,\\\\nth {\\\\n  padding: 0;\\\\n}\\\\ntd:not([align]),\\\\nth:not([align]) {\\\\n  text-align: left;\\\\n}\\\\n\\";
-injector_e1c140db(css_427c8846);
+const css = \\".d {\\\\n  color: red;\\\\n}\\\\n.a {\\\\n  color: royalblue;\\\\n}\\\\n.b {\\\\n  color: red;\\\\n}\\\\n.c {\\\\n  color: red;\\\\n}\\\\n.foo {\\\\n  color: royalblue;\\\\n}\\\\n/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */\\\\nhtml,\\\\nbody,\\\\np,\\\\nol,\\\\nul,\\\\nli,\\\\ndl,\\\\ndt,\\\\ndd,\\\\nblockquote,\\\\nfigure,\\\\nfieldset,\\\\nlegend,\\\\ntextarea,\\\\npre,\\\\niframe,\\\\nhr,\\\\nh1,\\\\nh2,\\\\nh3,\\\\nh4,\\\\nh5,\\\\nh6 {\\\\n  margin: 0;\\\\n  padding: 0;\\\\n}\\\\nh1,\\\\nh2,\\\\nh3,\\\\nh4,\\\\nh5,\\\\nh6 {\\\\n  font-size: 100%;\\\\n  font-weight: normal;\\\\n}\\\\nul {\\\\n  list-style: none;\\\\n}\\\\nbutton,\\\\ninput,\\\\nselect,\\\\ntextarea {\\\\n  margin: 0;\\\\n}\\\\nhtml {\\\\n  box-sizing: border-box;\\\\n}\\\\n*,\\\\n*::before,\\\\n*::after {\\\\n  box-sizing: inherit;\\\\n}\\\\nimg,\\\\nvideo {\\\\n  height: auto;\\\\n  max-width: 100%;\\\\n}\\\\niframe {\\\\n  border: 0;\\\\n}\\\\ntable {\\\\n  border-collapse: collapse;\\\\n  border-spacing: 0;\\\\n}\\\\ntd,\\\\nth {\\\\n  padding: 0;\\\\n}\\\\ntd:not([align]),\\\\nth:not([align]) {\\\\n  text-align: left;\\\\n}\\\\n\\";
+injector_3b481dac(css,{});
 "
 `;
 
@@ -2569,11 +2543,11 @@ exports[`less sourcemap: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../..
 exports[`minimize extract: css 1`] = `".bar,.foo,.stylus{color:red}.stylus{background:red}.pcss,.sass{color:red}.sass{width:30%}.less{color:#6c94be}"`;
 
 exports[`minimize extract: js 1`] = `
-"const css_a87c82eb = \\".foo{color:red}\\";
+"const css = \\".foo{color:red}\\";
 
-const css_6e569e18 = \\".bar{color:red}\\";
+const css$1 = \\".bar{color:red}\\";
 
-console.log(css_a87c82eb, css_6e569e18);
+console.log(css, css$1);
 "
 `;
 
@@ -2583,11 +2557,11 @@ exports[`minimize extract-sourcemap-inline: css 1`] = `
 `;
 
 exports[`minimize extract-sourcemap-inline: js 1`] = `
-"const css_a87c82eb = \\".foo{color:red}\\";
+"const css = \\".foo{color:red}\\";
 
-const css_6e569e18 = \\".bar{color:red}\\";
+const css$1 = \\".bar{color:red}\\";
 
-console.log(css_a87c82eb, css_6e569e18);
+console.log(css, css$1);
 "
 `;
 
@@ -2597,11 +2571,11 @@ exports[`minimize extract-sourcemap-true: css 1`] = `
 `;
 
 exports[`minimize extract-sourcemap-true: js 1`] = `
-"const css_a87c82eb = \\".foo{color:red}\\";
+"const css = \\".foo{color:red}\\";
 
-const css_6e569e18 = \\".bar{color:red}\\";
+const css$1 = \\".bar{color:red}\\";
 
-console.log(css_a87c82eb, css_6e569e18);
+console.log(css, css$1);
 "
 `;
 
@@ -2615,22 +2589,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_8aeabfb4 (css, options) {
+function injector_3b481dac (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -2678,25 +2651,25 @@ function injector_8aeabfb4 (css, options) {
   }
 }
 
-const css_a87c82eb = \\".foo{color:red}\\";
-injector_8aeabfb4(css_a87c82eb);
+const css = \\".foo{color:red}\\";
+injector_3b481dac(css,{});
 
-const css_6e569e18 = \\".bar{color:red}\\";
-injector_8aeabfb4(css_6e569e18);
+const css$1 = \\".bar{color:red}\\";
+injector_3b481dac(css$1,{});
 
-const css_a00496d3 = \\".stylus{color:red;background:red}\\";
-injector_8aeabfb4(css_a00496d3);
+const css$2 = \\".stylus{color:red;background:red}\\";
+injector_3b481dac(css$2,{});
 
-const css_855b3ad0 = \\".pcss{color:red}\\";
-injector_8aeabfb4(css_855b3ad0);
+const css$3 = \\".pcss{color:red}\\";
+injector_3b481dac(css$3,{});
 
-const css_31899cde = \\".sass{width:30%;color:red}\\";
-injector_8aeabfb4(css_31899cde);
+const css$4 = \\".sass{width:30%;color:red}\\";
+injector_3b481dac(css$4,{});
 
-const css_aee437ad = \\".less{color:#6c94be}\\";
-injector_8aeabfb4(css_aee437ad);
+const css$5 = \\".less{color:#6c94be}\\";
+injector_3b481dac(css$5,{});
 
-console.log(css_a87c82eb, css_6e569e18);
+console.log(css, css$1);
 "
 `;
 
@@ -2708,22 +2681,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_717f9233 (css, options) {
+function injector_ed8d1646 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -2771,26 +2743,26 @@ function injector_717f9233 (css, options) {
   }
 }
 
-const css_7ffcb4b5 = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_717f9233(css_7ffcb4b5);
+const css = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_ed8d1646(css,{});
 
-const css_bea182d1 = \\".a_module_a {\\\\n  color: red;\\\\n}\\\\n\\";
-const modules_dc9297a5 = {\\"a\\":\\"a_module_a\\"};
-injector_717f9233(css_bea182d1);
+const css$1 = \\".a_module_a {\\\\n  color: red;\\\\n}\\\\n\\";
+const modules_bdb828b9 = {\\"a\\":\\"a_module_a\\"};
+injector_ed8d1646(css$1,{});
 
-const css_ab26163b = \\".b_module_b {\\\\n  color: red; }\\\\n\\";
-const modules_886afbbe = {\\"b\\":\\"b_module_b\\"};
-injector_717f9233(css_ab26163b);
+const css$2 = \\".b_module_b {\\\\n  color: red; }\\\\n\\";
+const modules_9fa995d6 = {\\"b\\":\\"b_module_b\\"};
+injector_ed8d1646(css$2,{});
 
-const css_a4ea8038 = \\".c_module_c {\\\\n  color: red;\\\\n}\\\\n\\";
-const modules_b45a4370 = {\\"c\\":\\"c_module_c\\"};
-injector_717f9233(css_a4ea8038);
+const css$3 = \\".c_module_c {\\\\n  color: red;\\\\n}\\\\n\\";
+const modules_2b321dac = {\\"c\\":\\"c_module_c\\"};
+injector_ed8d1646(css$3,{});
 
-const css_4e1fe5d3 = \\".d_module_d {\\\\n  color: #f00;\\\\n}\\\\n\\";
-const modules_14f9be16 = {\\"d\\":\\"d_module_d\\"};
-injector_717f9233(css_4e1fe5d3);
+const css$4 = \\".d_module_d {\\\\n  color: #f00;\\\\n}\\\\n\\";
+const modules_39901a8c = {\\"d\\":\\"d_module_d\\"};
+injector_ed8d1646(css$4,{});
 
-console.log(modules_dc9297a5, modules_886afbbe, modules_b45a4370, modules_14f9be16);
+console.log(modules_bdb828b9, modules_9fa995d6, modules_2b321dac, modules_39901a8c);
 "
 `;
 
@@ -2802,22 +2774,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_717f9233 (css, options) {
+function injector_ed8d1646 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -2865,23 +2836,23 @@ function injector_717f9233 (css, options) {
   }
 }
 
-const css_7ffcb4b5 = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_717f9233(css_7ffcb4b5);
+const css = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_ed8d1646(css,{});
 
-const css_bea182d1 = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_717f9233(css_bea182d1);
+const css$1 = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_ed8d1646(css$1,{});
 
-const css_ab26163b = \\".b {\\\\n  color: red; }\\\\n\\";
-injector_717f9233(css_ab26163b);
+const css$2 = \\".b {\\\\n  color: red; }\\\\n\\";
+injector_ed8d1646(css$2,{});
 
-const css_a4ea8038 = \\".c_module_c {\\\\n  color: red;\\\\n}\\\\n\\";
-const modules_b45a4370 = {\\"c\\":\\"c_module_c\\"};
-injector_717f9233(css_a4ea8038);
+const css$3 = \\".c_module_c {\\\\n  color: red;\\\\n}\\\\n\\";
+const modules_2b321dac = {\\"c\\":\\"c_module_c\\"};
+injector_ed8d1646(css$3,{});
 
-const css_4e1fe5d3 = \\".d {\\\\n  color: #f00;\\\\n}\\\\n\\";
-injector_717f9233(css_4e1fe5d3);
+const css$4 = \\".d {\\\\n  color: #f00;\\\\n}\\\\n\\";
+injector_ed8d1646(css$4,{});
 
-console.log(css_bea182d1, css_ab26163b, modules_b45a4370, css_4e1fe5d3);
+console.log(css$1, css$2, modules_2b321dac, css$4);
 "
 `;
 
@@ -2893,22 +2864,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_717f9233 (css, options) {
+function injector_ed8d1646 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -2956,22 +2926,22 @@ function injector_717f9233 (css, options) {
   }
 }
 
-const css_7ffcb4b5 = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_717f9233(css_7ffcb4b5);
+const css = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_ed8d1646(css,{});
 
-const css_bea182d1 = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_717f9233(css_bea182d1);
+const css$1 = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_ed8d1646(css$1,{});
 
-const css_ab26163b = \\".b {\\\\n  color: red; }\\\\n\\";
-injector_717f9233(css_ab26163b);
+const css$2 = \\".b {\\\\n  color: red; }\\\\n\\";
+injector_ed8d1646(css$2,{});
 
-const css_a4ea8038 = \\".c {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_717f9233(css_a4ea8038);
+const css$3 = \\".c {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_ed8d1646(css$3,{});
 
-const css_4e1fe5d3 = \\".d {\\\\n  color: #f00;\\\\n}\\\\n\\";
-injector_717f9233(css_4e1fe5d3);
+const css$4 = \\".d {\\\\n  color: #f00;\\\\n}\\\\n\\";
+injector_ed8d1646(css$4,{});
 
-console.log(css_bea182d1, css_ab26163b, css_a4ea8038, css_4e1fe5d3);
+console.log(css$1, css$2, css$3, css$4);
 "
 `;
 
@@ -2983,22 +2953,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_717f9233 (css, options) {
+function injector_ed8d1646 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -3046,23 +3015,23 @@ function injector_717f9233 (css, options) {
   }
 }
 
-const css_7ffcb4b5 = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_717f9233(css_7ffcb4b5);
+const css = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_ed8d1646(css,{});
 
-const css_bea182d1 = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_717f9233(css_bea182d1);
+const css$1 = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_ed8d1646(css$1,{});
 
-const css_ab26163b = \\".b {\\\\n  color: red; }\\\\n\\";
-injector_717f9233(css_ab26163b);
+const css$2 = \\".b {\\\\n  color: red; }\\\\n\\";
+injector_ed8d1646(css$2,{});
 
-const css_a4ea8038 = \\".c {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_717f9233(css_a4ea8038);
+const css$3 = \\".c {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_ed8d1646(css$3,{});
 
-const css_4e1fe5d3 = \\".d_module_d {\\\\n  color: #f00;\\\\n}\\\\n\\";
-const modules_14f9be16 = {\\"d\\":\\"d_module_d\\"};
-injector_717f9233(css_4e1fe5d3);
+const css$4 = \\".d_module_d {\\\\n  color: #f00;\\\\n}\\\\n\\";
+const modules_39901a8c = {\\"d\\":\\"d_module_d\\"};
+injector_ed8d1646(css$4,{});
 
-console.log(css_bea182d1, css_ab26163b, css_a4ea8038, modules_14f9be16);
+console.log(css$1, css$2, css$3, modules_39901a8c);
 "
 `;
 
@@ -3089,13 +3058,13 @@ exports[`modules duplication: css 1`] = `
 `;
 
 exports[`modules duplication: js 1`] = `
-"const modules_68a066f1 = {\\"test\\":\\"shared_test\\"};
+"const modules_fa509c68 = {\\"test\\":\\"shared_test\\"};
 
-const modules_385fa60f = {\\"foo\\":\\"foo_foo shared_test\\"};
+const modules_52530603 = {\\"foo\\":\\"foo_foo shared_test\\"};
 
-const modules_37b00a3b = {\\"bar\\":\\"bar_bar shared_test\\"};
+const modules_ad1fd3ff = {\\"bar\\":\\"bar_bar shared_test\\"};
 
-console.log(modules_68a066f1, modules_385fa60f, modules_37b00a3b);
+console.log(modules_fa509c68, modules_52530603, modules_ad1fd3ff);
 "
 `;
 
@@ -3124,13 +3093,12 @@ exports[`modules extract: css 1`] = `
 `;
 
 exports[`modules extract: js 1`] = `
-"const modules_06c16b9a = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
+"const modules_5a199c00 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
 
-const modules_c2f65cd3 = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
+const modules_354770d7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
 
-const modules_b033f21c = {\\"compositioned\\":\\"composition2_compositioned\\"};
-
-console.log(modules_06c16b9a.module, modules_c2f65cd3.composition, modules_b033f21c.compositioned);
+if (modules_354770d7.inject) modules_354770d7.inject();
+else console.log(modules_5a199c00.module, modules_354770d7.compositioned);
 "
 `;
 
@@ -3160,13 +3128,12 @@ exports[`modules extract-sourcemap-inline: css 1`] = `
 `;
 
 exports[`modules extract-sourcemap-inline: js 1`] = `
-"const modules_06c16b9a = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
+"const modules_5a199c00 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
 
-const modules_c2f65cd3 = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
+const modules_354770d7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
 
-const modules_b033f21c = {\\"compositioned\\":\\"composition2_compositioned\\"};
-
-console.log(modules_06c16b9a.module, modules_c2f65cd3.composition, modules_b033f21c.compositioned);
+if (modules_354770d7.inject) modules_354770d7.inject();
+else console.log(modules_5a199c00.module, modules_354770d7.compositioned);
 "
 `;
 
@@ -3196,13 +3163,12 @@ exports[`modules extract-sourcemap-true: css 1`] = `
 `;
 
 exports[`modules extract-sourcemap-true: js 1`] = `
-"const modules_06c16b9a = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
+"const modules_5a199c00 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
 
-const modules_c2f65cd3 = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
+const modules_354770d7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
 
-const modules_b033f21c = {\\"compositioned\\":\\"composition2_compositioned\\"};
-
-console.log(modules_06c16b9a.module, modules_c2f65cd3.composition, modules_b033f21c.compositioned);
+if (modules_354770d7.inject) modules_354770d7.inject();
+else console.log(modules_5a199c00.module, modules_354770d7.compositioned);
 "
 `;
 
@@ -3216,22 +3182,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_0177ae87 (css, options) {
+function injector_d0a569a1 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -3279,22 +3244,22 @@ function injector_0177ae87 (css, options) {
   }
 }
 
-const css_ba3888b2 = \\"html {\\\\n  --color-primary: green;\\\\n}\\\\n\\\\n.primaryhacked {\\\\n  color: green;\\\\n  color: var(--color-primary);\\\\n}\\\\n\\";
-injector_0177ae87(css_ba3888b2);
+const css = \\"html {\\\\n  --color-primary: green;\\\\n}\\\\n\\\\n.primaryhacked {\\\\n  color: green;\\\\n  color: var(--color-primary);\\\\n}\\\\n\\";
+injector_d0a569a1(css,{});
 
-const css_a0bc2a0c = \\".testhacked {\\\\n  content: \\\\\\"test\\\\\\";\\\\n}\\\\n\\";
-const modules_68a066f1 = {\\"test\\":\\"testhacked\\"};
-injector_0177ae87(css_a0bc2a0c);
+const css$1 = \\".testhacked {\\\\n  content: \\\\\\"test\\\\\\";\\\\n}\\\\n\\";
+const modules_fa509c68 = {\\"test\\":\\"testhacked\\"};
+injector_d0a569a1(css$1,{});
 
-const css_45c6c5ca = \\".foohacked {\\\\n}\\\\n\\";
-const modules_385fa60f = {\\"foo\\":\\"foohacked testhacked\\"};
-injector_0177ae87(css_45c6c5ca);
+const css$2 = \\".foohacked {\\\\n}\\\\n\\";
+const modules_52530603 = {\\"foo\\":\\"foohacked testhacked\\"};
+injector_d0a569a1(css$2,{});
 
-const css_3ee4b4fc = \\".barhacked {\\\\n}\\\\n\\";
-const modules_37b00a3b = {\\"bar\\":\\"barhacked testhacked\\"};
-injector_0177ae87(css_3ee4b4fc);
+const css$3 = \\".barhacked {\\\\n}\\\\n\\";
+const modules_ad1fd3ff = {\\"bar\\":\\"barhacked testhacked\\"};
+injector_d0a569a1(css$3,{});
 
-console.log(modules_68a066f1, modules_385fa60f, modules_37b00a3b);
+console.log(modules_fa509c68, modules_52530603, modules_ad1fd3ff);
 "
 `;
 
@@ -3306,22 +3271,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_86728f90 (css, options) {
+function injector_d9f9689a (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -3369,21 +3333,199 @@ function injector_86728f90 (css, options) {
   }
 }
 
-const css_6856db17 = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
-const modules_06c16b9a = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
-injector_86728f90(css_6856db17);
+const css = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
+const modules_5a199c00 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
+injector_d9f9689a(css,{});
 
-const css_99f8382e = \\"@media screen and (min-width: 900px) {\\\\n  .composed_composition {\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composed_composition {\\\\n  background-color: #BF4040;\\\\n}\\\\n\\";
-const modules_c2f65cd3 = {\\"primary\\":\\"#BF4040\\",\\"composition\\":\\"composed_composition composition2_compositioned\\"};
-injector_86728f90(css_99f8382e);
+const css$1 = \\"@media screen and (min-width: 900px) {\\\\n  .composed_composition {\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composed_composition {\\\\n  background-color: #BF4040;\\\\n}\\\\n\\";
+injector_d9f9689a(css$1,{});
 
-const css_1f7ddd56 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
-const modules_b033f21c = {\\"compositioned\\":\\"composition2_compositioned\\"};
-injector_86728f90(css_1f7ddd56);
+const css$2 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
+const modules_354770d7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
+injector_d9f9689a(css$2,{});
 
-console.log(modules_06c16b9a.module, modules_c2f65cd3.composition, modules_b033f21c.compositioned);
+if (modules_354770d7.inject) modules_354770d7.inject();
+else console.log(modules_5a199c00.module, modules_354770d7.compositioned);
 "
 `;
+
+exports[`modules inject-treeshakeable: js 1`] = `
+"/** @type {HTMLElement[]} */
+var containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+var styleTags = [];
+
+/**
+ * @param {string} css
+ * @param {object} options
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
+ * @returns {void}
+ */
+function injector_d9f9689a (css, options) {
+  if (!css || typeof document === \\"undefined\\") return;
+
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = options.singleTag === true;
+
+  var container =
+    typeof options.container === \\"string\\"
+      ? document.querySelector(options.container)
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
+    return styleTag;
+  }
+
+  /** @type {HTMLStyleElement} */
+  var styleTag;
+
+  if (singleTag) {
+    var id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.appendChild(document.createTextNode(css));
+  }
+}
+
+const css = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
+let injected = false;
+const modules_5a199c00 = {get \\"primary\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"#BF4040\\"; },
+get \\"secondary\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"#1F4F7F\\"; },
+get \\"module\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"style_module\\"; },
+get \\"module2\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"style_module2 composed_composition composition2_compositioned\\"; },
+inject() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } },};
+
+const css$1 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
+let injected$1 = false;
+const modules_354770d7 = {get \\"compositioned\\"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return \\"composition2_compositioned\\"; },
+inject() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } },};
+
+if (modules_354770d7.inject) modules_354770d7.inject();
+else console.log(modules_5a199c00.module, modules_354770d7.compositioned);
+"
+`;
+
+exports[`modules inject-treeshakeable-dts: js 1`] = `
+"/** @type {HTMLElement[]} */
+var containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+var styleTags = [];
+
+/**
+ * @param {string} css
+ * @param {object} options
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
+ * @returns {void}
+ */
+function injector_d9f9689a (css, options) {
+  if (!css || typeof document === \\"undefined\\") return;
+
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = options.singleTag === true;
+
+  var container =
+    typeof options.container === \\"string\\"
+      ? document.querySelector(options.container)
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
+    return styleTag;
+  }
+
+  /** @type {HTMLStyleElement} */
+  var styleTag;
+
+  if (singleTag) {
+    var id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.appendChild(document.createTextNode(css));
+  }
+}
+
+const css = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
+let injected = false;
+const modules_5a199c00 = {get \\"primary\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"#BF4040\\"; },
+get \\"secondary\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"#1F4F7F\\"; },
+get \\"module\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"style_module\\"; },
+get \\"module2\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"style_module2 composed_composition composition2_compositioned\\"; },
+inject() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } },};
+
+const css$1 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
+let injected$1 = false;
+const modules_354770d7 = {get \\"compositioned\\"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return \\"composition2_compositioned\\"; },
+inject() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } },};
+
+if (modules_354770d7.inject) modules_354770d7.inject();
+else console.log(modules_5a199c00.module, modules_354770d7.compositioned);
+"
+`;
+
+exports[`modules inject-treeshakeable-keyword-fail 1`] = `"\`inject\` keyword is reserved when using \`inject.treeshakeable\` option"`;
 
 exports[`modules named-exports: js 1`] = `
 "/** @type {HTMLElement[]} */
@@ -3393,22 +3535,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_1dfca575 (css, options) {
+function injector_c84cd8fc (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -3456,24 +3597,14 @@ function injector_1dfca575 (css, options) {
   }
 }
 
-const css_805c5fb0 = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\\\n.style_css {\\\\n  color: green;\\\\n}\\\\n\\";
-const modules_c5c61d93 = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"css\\":\\"style_css\\"};
-const css = css_805c5fb0;
-const valid = \\"style_valid\\";
-const _new = \\"style_new\\";
-const _css = \\"style_css\\";
-injector_1dfca575(css_805c5fb0);
+const css = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\\\n.style_css {\\\\n  color: green;\\\\n}\\\\n\\";
+const modules_5a199c00 = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"css\\":\\"style_css\\"};
+injector_c84cd8fc(css,{});
 
-var style = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  css: css,
-  'default': modules_c5c61d93,
-  valid: valid,
-  _new: _new,
-  _css: _css
-});
-
-console.log(style);
+console.log(css);
+for (const name of Object.values(modules_5a199c00)) {
+  console.log(name);
+}
 "
 `;
 
@@ -3485,22 +3616,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_1dfca575 (css, options) {
+function injector_c84cd8fc (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -3548,26 +3678,99 @@ function injector_1dfca575 (css, options) {
   }
 }
 
-const css_805c5fb0 = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\\\n.style_css {\\\\n  color: green;\\\\n}\\\\n\\";
-const modules_c5c61d93 = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"css\\":\\"style_css\\"};
-const css = css_805c5fb0;
-const validhacked = \\"style_valid\\";
-const newhacked = \\"style_new\\";
-const csshacked = \\"style_css\\";
-injector_1dfca575(css_805c5fb0);
+const css = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\\\n.style_css {\\\\n  color: green;\\\\n}\\\\n\\";
+const modules_5a199c00 = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"css\\":\\"style_css\\"};
+injector_c84cd8fc(css,{});
 
-var style = /*#__PURE__*/Object.freeze({
-  __proto__: null,
-  css: css,
-  'default': modules_c5c61d93,
-  validhacked: validhacked,
-  newhacked: newhacked,
-  csshacked: csshacked
-});
-
-console.log(style);
+console.log(css);
+for (const name of Object.values(modules_5a199c00)) {
+  console.log(name);
+}
 "
 `;
+
+exports[`modules named-exports-dts: js 1`] = `
+"/** @type {HTMLElement[]} */
+var containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+var styleTags = [];
+
+/**
+ * @param {string} css
+ * @param {object} options
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
+ * @returns {void}
+ */
+function injector_c84cd8fc (css, options) {
+  if (!css || typeof document === \\"undefined\\") return;
+
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = options.singleTag === true;
+
+  var container =
+    typeof options.container === \\"string\\"
+      ? document.querySelector(options.container)
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
+    return styleTag;
+  }
+
+  /** @type {HTMLStyleElement} */
+  var styleTag;
+
+  if (singleTag) {
+    var id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.appendChild(document.createTextNode(css));
+  }
+}
+
+const css = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\\\n.style_css {\\\\n  color: green;\\\\n}\\\\n\\";
+const modules_5a199c00 = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"css\\":\\"style_css\\"};
+injector_c84cd8fc(css,{});
+
+console.log(css);
+for (const name of Object.values(modules_5a199c00)) {
+  console.log(name);
+}
+"
+`;
+
+exports[`modules named-exports-treeshakeable-fail 1`] = `"\`inject.treeshakeable\` option is incompatible with \`namedExports\` option"`;
 
 exports[`multiple-instances already-processed: js 1`] = `
 "/** @type {HTMLElement[]} */
@@ -3577,22 +3780,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_14375eb8 (css, options) {
+function injector_8784c4d6 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -3640,13 +3842,12 @@ function injector_14375eb8 (css, options) {
   }
 }
 
-const css_3f173abc = \\".bar_less {\\\\n  color: magenta;\\\\n}\\\\n\\";
-const modules_0fe909db = {\\"less\\":\\"bar_less\\"};
-const css = css_3f173abc;
+const css = \\".bar_less {\\\\n  color: magenta;\\\\n}\\\\n\\";
 const less = \\"bar_less\\";
-injector_14375eb8(css_3f173abc);
+const modules_b74a0081 = {\\"less\\":\\"bar_less\\"};
+injector_8784c4d6(css,{});
 
-export default modules_0fe909db;
+export default modules_b74a0081;
 export { css, less };
 "
 `;
@@ -3659,22 +3860,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_7eff9fe8 (css, options) {
+function injector_006bd99c (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -3722,26 +3922,26 @@ function injector_7eff9fe8 (css, options) {
   }
 }
 
-const css_39967a1a = \\".style {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_7eff9fe8(css_39967a1a);
+const css = \\".style {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_006bd99c(css,{});
 
-const css_3f173abc = \\".less {\\\\n  color: magenta;\\\\n}\\\\n\\";
-injector_7eff9fe8(css_3f173abc);
+const css$1 = \\".less {\\\\n  color: magenta;\\\\n}\\\\n\\";
+injector_006bd99c(css$1,{});
 
-const css_01776caf = \\".mod_mod {\\\\n  color: royalblue;\\\\n}\\\\n\\";
-const modules_c3cfbd24 = {\\"mod\\":\\"mod_mod\\"};
-injector_7eff9fe8(css_01776caf);
+const css$2 = \\".mod_mod {\\\\n  color: royalblue;\\\\n}\\\\n\\";
+const modules_507361ee = {\\"mod\\":\\"mod_mod\\"};
+injector_006bd99c(css$2,{});
 
-console.log(modules_c3cfbd24);
+console.log(modules_507361ee);
 "
 `;
 
 exports[`on-extract-fn: js 1`] = `
-"const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(css_a87c82eb, css_6e569e18);
+console.log(css, css$1);
 "
 `;
 
@@ -3753,22 +3953,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_7d4ccedb (css, options) {
+function injector_f31f2858 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -3816,8 +4015,8 @@ function injector_7d4ccedb (css, options) {
   }
 }
 
-const css_d5e3885b = \\".data {\\\\n  color: red; }\\\\n\\";
-injector_7d4ccedb(css_d5e3885b);
+const css = \\".data {\\\\n  color: red; }\\\\n\\";
+injector_f31f2858(css,{});
 "
 `;
 
@@ -3829,22 +4028,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_de38afa6 (css, options) {
+function injector_ea22477b (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -3892,8 +4090,8 @@ function injector_de38afa6 (css, options) {
   }
 }
 
-const css_c2755970 = \\".style {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
-injector_de38afa6(css_c2755970);
+const css = \\".style {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
+injector_ea22477b(css,{});
 "
 `;
 
@@ -3905,22 +4103,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_948a9cfd (css, options) {
+function injector_f31f2858 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -3968,8 +4165,8 @@ function injector_948a9cfd (css, options) {
   }
 }
 
-const css_a77306c7 = \\".a {\\\\n  color: magenta; }\\\\n\\\\n.b {\\\\n  color: red; }\\\\n\\\\n.c {\\\\n  color: red; }\\\\n\\\\n.foo {\\\\n  color: royalblue; }\\\\n\\\\n/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */\\\\nhtml, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {\\\\n  margin: 0;\\\\n  padding: 0; }\\\\n\\\\nh1, h2, h3, h4, h5, h6 {\\\\n  font-size: 100%;\\\\n  font-weight: normal; }\\\\n\\\\nul {\\\\n  list-style: none; }\\\\n\\\\nbutton, input, select, textarea {\\\\n  margin: 0; }\\\\n\\\\nhtml {\\\\n  box-sizing: border-box; }\\\\n\\\\n*, *::before, *::after {\\\\n  box-sizing: inherit; }\\\\n\\\\nimg, video {\\\\n  height: auto;\\\\n  max-width: 100%; }\\\\n\\\\niframe {\\\\n  border: 0; }\\\\n\\\\ntable {\\\\n  border-collapse: collapse;\\\\n  border-spacing: 0; }\\\\n\\\\ntd, th {\\\\n  padding: 0; }\\\\n\\\\ntd:not([align]), th:not([align]) {\\\\n  text-align: left; }\\\\n\\";
-injector_948a9cfd(css_a77306c7);
+const css = \\".a {\\\\n  color: magenta; }\\\\n\\\\n.b {\\\\n  color: red; }\\\\n\\\\n.c {\\\\n  color: red; }\\\\n\\\\n.foo {\\\\n  color: royalblue; }\\\\n\\\\n/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */\\\\nhtml, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {\\\\n  margin: 0;\\\\n  padding: 0; }\\\\n\\\\nh1, h2, h3, h4, h5, h6 {\\\\n  font-size: 100%;\\\\n  font-weight: normal; }\\\\n\\\\nul {\\\\n  list-style: none; }\\\\n\\\\nbutton, input, select, textarea {\\\\n  margin: 0; }\\\\n\\\\nhtml {\\\\n  box-sizing: border-box; }\\\\n\\\\n*, *::before, *::after {\\\\n  box-sizing: inherit; }\\\\n\\\\nimg, video {\\\\n  height: auto;\\\\n  max-width: 100%; }\\\\n\\\\niframe {\\\\n  border: 0; }\\\\n\\\\ntable {\\\\n  border-collapse: collapse;\\\\n  border-spacing: 0; }\\\\n\\\\ntd, th {\\\\n  padding: 0; }\\\\n\\\\ntd:not([align]), th:not([align]) {\\\\n  text-align: left; }\\\\n\\";
+injector_f31f2858(css,{});
 "
 `;
 
@@ -3981,22 +4178,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_bc6501d3 (css, options) {
+function injector_f31f2858 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -4044,8 +4240,8 @@ function injector_bc6501d3 (css, options) {
   }
 }
 
-const css_dba73744 = \\".virtual {\\\\n  color: red; }\\\\n\\\\n.modularvirtual {\\\\n  color: blue; }\\\\n\\";
-injector_bc6501d3(css_dba73744);
+const css = \\".virtual {\\\\n  color: red; }\\\\n\\\\n.modularvirtual {\\\\n  color: blue; }\\\\n\\";
+injector_f31f2858(css,{});
 "
 `;
 
@@ -4057,22 +4253,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_bc6501d3 (css, options) {
+function injector_f31f2858 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -4120,8 +4315,8 @@ function injector_bc6501d3 (css, options) {
   }
 }
 
-const css_dba73744 = \\".virtual {\\\\n  color: red;\\\\n}\\\\n\\\\n.modularvirtual {\\\\n  color: blue;\\\\n}\\";
-injector_bc6501d3(css_dba73744);
+const css = \\".virtual {\\\\n  color: red;\\\\n}\\\\n\\\\n.modularvirtual {\\\\n  color: blue;\\\\n}\\";
+injector_f31f2858(css,{});
 "
 `;
 
@@ -4133,22 +4328,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_bc6501d3 (css, options) {
+function injector_f31f2858 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -4196,8 +4390,8 @@ function injector_bc6501d3 (css, options) {
   }
 }
 
-const css_dba73744 = \\".virtual {\\\\n  color: red;\\\\n}\\\\n\\\\n.modularvirtual {\\\\n  color: blue;\\\\n}\\";
-injector_bc6501d3(css_dba73744);
+const css = \\".virtual {\\\\n  color: red;\\\\n}\\\\n\\\\n.modularvirtual {\\\\n  color: blue;\\\\n}\\";
+injector_f31f2858(css,{});
 "
 `;
 
@@ -4209,22 +4403,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_bc6501d3 (css, options) {
+function injector_f31f2858 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -4272,8 +4465,8 @@ function injector_bc6501d3 (css, options) {
   }
 }
 
-const css_dba73744 = \\".virtual {\\\\n  color: red; }\\\\n\\\\n.modularvirtual {\\\\n  color: blue; }\\\\n\\";
-injector_bc6501d3(css_dba73744);
+const css = \\".virtual {\\\\n  color: red; }\\\\n\\\\n.modularvirtual {\\\\n  color: blue; }\\\\n\\";
+injector_f31f2858(css,{});
 "
 `;
 
@@ -4285,22 +4478,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_cc9f7d0d (css, options) {
+function injector_ea22477b (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -4348,11 +4540,11 @@ function injector_cc9f7d0d (css, options) {
   }
 }
 
-const css_022686dd = \\".style_someStyle {\\\\n  color: red; }\\\\n\\";
-const modules_c56d3964 = {\\"some-style\\":\\"style_someStyle\\"};
-injector_cc9f7d0d(css_022686dd);
+const css = \\".style_someStyle {\\\\n  color: red; }\\\\n\\";
+const modules_2fd447d3 = {\\"some-style\\":\\"style_someStyle\\"};
+injector_ea22477b(css,{});
 
-console.log(modules_c56d3964);
+console.log(modules_2fd447d3);
 "
 `;
 
@@ -4364,22 +4556,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_de38afa6 (css, options) {
+function injector_ea22477b (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -4427,8 +4618,8 @@ function injector_de38afa6 (css, options) {
   }
 }
 
-const css_c2755970 = \\".style {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zYXNzL3N0eWxlLnNhc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0VBQ1YsVUFBVSxFQUFBIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWxlIHtcbiAgd2lkdGg6IDMwJTtcbiAgY29sb3I6IHJlZDsgfVxuIl19 */\\";
-injector_de38afa6(css_c2755970);
+const css = \\".style {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zYXNzL3N0eWxlLnNhc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0VBQ1YsVUFBVSxFQUFBIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWxlIHtcbiAgd2lkdGg6IDMwJTtcbiAgY29sb3I6IHJlZDsgfVxuIl19 */\\";
+injector_ea22477b(css,{});
 "
 `;
 
@@ -4440,22 +4631,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_e6e31059 (css, options) {
+function injector_f31f2858 (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -4503,8 +4693,8 @@ function injector_e6e31059 (css, options) {
   }
 }
 
-const css_41ddbe0c = \\"/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */\\\\nhtml, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {\\\\n  margin: 0;\\\\n  padding: 0;\\\\n}\\\\n\\\\nh1, h2, h3, h4, h5, h6 {\\\\n  font-size: 100%;\\\\n  font-weight: normal;\\\\n}\\\\n\\\\nul {\\\\n  list-style: none;\\\\n}\\\\n\\\\nbutton, input, select, textarea {\\\\n  margin: 0;\\\\n}\\\\n\\\\nhtml {\\\\n  box-sizing: border-box;\\\\n}\\\\n\\\\n*, *::before, *::after {\\\\n  box-sizing: inherit;\\\\n}\\\\n\\\\nimg, video {\\\\n  height: auto;\\\\n  max-width: 100%;\\\\n}\\\\n\\\\niframe {\\\\n  border: 0;\\\\n}\\\\n\\\\ntable {\\\\n  border-collapse: collapse;\\\\n  border-spacing: 0;\\\\n}\\\\n\\\\ntd, th {\\\\n  padding: 0;\\\\n}\\\\n\\\\ntd:not([align]), th:not([align]) {\\\\n  text-align: left;\\\\n}\\\\n\\\\n.button {\\\\n  border-radius: 3px;\\\\n  padding: 8px;\\\\n}\\";
-injector_e6e31059(css_41ddbe0c);
+const css = \\"/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */\\\\nhtml, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {\\\\n  margin: 0;\\\\n  padding: 0;\\\\n}\\\\n\\\\nh1, h2, h3, h4, h5, h6 {\\\\n  font-size: 100%;\\\\n  font-weight: normal;\\\\n}\\\\n\\\\nul {\\\\n  list-style: none;\\\\n}\\\\n\\\\nbutton, input, select, textarea {\\\\n  margin: 0;\\\\n}\\\\n\\\\nhtml {\\\\n  box-sizing: border-box;\\\\n}\\\\n\\\\n*, *::before, *::after {\\\\n  box-sizing: inherit;\\\\n}\\\\n\\\\nimg, video {\\\\n  height: auto;\\\\n  max-width: 100%;\\\\n}\\\\n\\\\niframe {\\\\n  border: 0;\\\\n}\\\\n\\\\ntable {\\\\n  border-collapse: collapse;\\\\n  border-spacing: 0;\\\\n}\\\\n\\\\ntd, th {\\\\n  padding: 0;\\\\n}\\\\n\\\\ntd:not([align]), th:not([align]) {\\\\n  text-align: left;\\\\n}\\\\n\\\\n.button {\\\\n  border-radius: 3px;\\\\n  padding: 8px;\\\\n}\\";
+injector_f31f2858(css,{});
 "
 `;
 
@@ -4516,22 +4706,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_8aeabfb4 (css, options) {
+function injector_3b481dac (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -4579,25 +4768,25 @@ function injector_8aeabfb4 (css, options) {
   }
 }
 
-const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
-injector_8aeabfb4(css_a87c82eb);
+const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
+injector_3b481dac(css,{});
 
-const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
-injector_8aeabfb4(css_6e569e18);
+const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
+injector_3b481dac(css$1,{});
 
-const css_a00496d3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1c1xuICBjb2xvcjogcmVkXG4gIGJhY2tncm91bmQ6IEBjb2xvclxuIl19 */\\";
-injector_8aeabfb4(css_a00496d3);
+const css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1c1xuICBjb2xvcjogcmVkXG4gIGJhY2tncm91bmQ6IEBjb2xvclxuIl19 */\\";
+injector_3b481dac(css$2,{});
 
-const css_855b3ad0 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
-injector_8aeabfb4(css_855b3ad0);
+const css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
+injector_3b481dac(css$3,{});
 
-const css_31899cde = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIuc2FzcyB7XG4gIHdpZHRoOiAzMCU7XG4gIGNvbG9yOiByZWQ7IH1cbiJdfQ== */\\";
-injector_8aeabfb4(css_31899cde);
+const css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIuc2FzcyB7XG4gIHdpZHRoOiAzMCU7XG4gIGNvbG9yOiByZWQ7IH1cbiJdfQ== */\\";
+injector_3b481dac(css$4,{});
 
-const css_aee437ad = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiIsInNvdXJjZXNDb250ZW50IjpbIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */\\";
-injector_8aeabfb4(css_aee437ad);
+const css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiIsInNvdXJjZXNDb250ZW50IjpbIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */\\";
+injector_3b481dac(css$5,{});
 
-console.log(css_a87c82eb, css_6e569e18);
+console.log(css, css$1);
 "
 `;
 
@@ -4609,22 +4798,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_8aeabfb4 (css, options) {
+function injector_3b481dac (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -4672,25 +4860,25 @@ function injector_8aeabfb4 (css, options) {
   }
 }
 
-const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
-injector_8aeabfb4(css_a87c82eb);
+const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
+injector_3b481dac(css,{});
 
-const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
-injector_8aeabfb4(css_6e569e18);
+const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
+injector_3b481dac(css$1,{});
 
-const css_a00496d3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIn0= */\\";
-injector_8aeabfb4(css_a00496d3);
+const css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIn0= */\\";
+injector_3b481dac(css$2,{});
 
-const css_855b3ad0 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
-injector_8aeabfb4(css_855b3ad0);
+const css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
+injector_3b481dac(css$3,{});
 
-const css_31899cde = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEifQ== */\\";
-injector_8aeabfb4(css_31899cde);
+const css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEifQ== */\\";
+injector_3b481dac(css$4,{});
 
-const css_aee437ad = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiJ9 */\\";
-injector_8aeabfb4(css_aee437ad);
+const css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiJ9 */\\";
+injector_3b481dac(css$5,{});
 
-console.log(css_a87c82eb, css_6e569e18);
+console.log(css, css$1);
 "
 `;
 
@@ -4702,22 +4890,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_8aeabfb4 (css, options) {
+function injector_3b481dac (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -4765,25 +4952,25 @@ function injector_8aeabfb4 (css, options) {
   }
 }
 
-const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
-injector_8aeabfb4(css_a87c82eb);
+const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
+injector_3b481dac(css,{});
 
-const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
-injector_8aeabfb4(css_6e569e18);
+const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
+injector_3b481dac(css$1,{});
 
-const css_a00496d3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIn0= */\\";
-injector_8aeabfb4(css_a00496d3);
+const css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIn0= */\\";
+injector_3b481dac(css$2,{});
 
-const css_855b3ad0 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
-injector_8aeabfb4(css_855b3ad0);
+const css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
+injector_3b481dac(css$3,{});
 
-const css_31899cde = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEifQ== */\\";
-injector_8aeabfb4(css_31899cde);
+const css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEifQ== */\\";
+injector_3b481dac(css$4,{});
 
-const css_aee437ad = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiJ9 */\\";
-injector_8aeabfb4(css_aee437ad);
+const css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiJ9 */\\";
+injector_3b481dac(css$5,{});
 
-console.log(css_a87c82eb, css_6e569e18);
+console.log(css, css$1);
 "
 `;
 
@@ -4795,22 +4982,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_8aeabfb4 (css, options) {
+function injector_3b481dac (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -4858,25 +5044,25 @@ function injector_8aeabfb4 (css, options) {
   }
 }
 
-const css_a87c82eb = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
-injector_8aeabfb4(css_a87c82eb);
+const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
+injector_3b481dac(css,{});
 
-const css_6e569e18 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
-injector_8aeabfb4(css_6e569e18);
+const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
+injector_3b481dac(css$1,{});
 
-const css_a00496d3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1c1xuICBjb2xvcjogcmVkXG4gIGJhY2tncm91bmQ6IEBjb2xvclxuIl19 */\\";
-injector_8aeabfb4(css_a00496d3);
+const css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1c1xuICBjb2xvcjogcmVkXG4gIGJhY2tncm91bmQ6IEBjb2xvclxuIl19 */\\";
+injector_3b481dac(css$2,{});
 
-const css_855b3ad0 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
-injector_8aeabfb4(css_855b3ad0);
+const css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
+injector_3b481dac(css$3,{});
 
-const css_31899cde = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIuc2FzcyB7XG4gIHdpZHRoOiAzMCU7XG4gIGNvbG9yOiByZWQ7IH1cbiJdfQ== */\\";
-injector_8aeabfb4(css_31899cde);
+const css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIuc2FzcyB7XG4gIHdpZHRoOiAzMCU7XG4gIGNvbG9yOiByZWQ7IH1cbiJdfQ== */\\";
+injector_3b481dac(css$4,{});
 
-const css_aee437ad = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiIsInNvdXJjZXNDb250ZW50IjpbIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */\\";
-injector_8aeabfb4(css_aee437ad);
+const css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiIsInNvdXJjZXNDb250ZW50IjpbIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */\\";
+injector_3b481dac(css$5,{});
 
-console.log(css_a87c82eb, css_6e569e18);
+console.log(css, css$1);
 "
 `;
 
@@ -4888,22 +5074,21 @@ var styleTags = [];
 
 /**
  * @param {string} css
- * @param {object} [options={}]
+ * @param {object} options
  * @param {boolean} [options.prepend]
  * @param {boolean} [options.singleTag]
  * @param {string} [options.container]
  * @param {Record<string,string>} [options.attributes]
  * @returns {void}
  */
-function injector_1b197479 (css, options) {
+function injector_045adddd (css, options) {
   if (!css || typeof document === \\"undefined\\") return;
-  if (typeof options === \\"undefined\\") options = {};
 
   var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = typeof options.singleTag !== \\"undefined\\" ? options.singleTag : false;
+  var singleTag = options.singleTag === true;
 
   var container =
-    typeof options.container !== \\"undefined\\"
+    typeof options.container === \\"string\\"
       ? document.querySelector(options.container)
       : document.getElementsByTagName(\\"head\\")[0];
 
@@ -4951,8 +5136,8 @@ function injector_1b197479 (css, options) {
   }
 }
 
-const css_6a843908 = \\".a {\\\\n  color: #f0f;\\\\n}\\\\n.b {\\\\n  color: red;\\\\n}\\\\n.style .foo {\\\\n  color: #4169e1;\\\\n}\\\\n.style .foo .inner {\\\\n  color: #4169e1;\\\\n}\\\\n/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */\\\\nhtml,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}\\\\nh1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}\\\\nul{list-style:none}\\\\nbutton,input,select,textarea{margin:0}\\\\nhtml{box-sizing:border-box}\\\\n*,*::before,*::after{box-sizing:inherit}\\\\nimg,video{height:auto;max-width:100%}\\\\niframe{border:0}\\\\ntable{border-collapse:collapse;border-spacing:0}\\\\ntd,th{padding:0}\\\\ntd:not([align]),th:not([align]){text-align:left}\\\\n\\";
-injector_1b197479(css_6a843908);
+const css = \\".a {\\\\n  color: #f0f;\\\\n}\\\\n.b {\\\\n  color: red;\\\\n}\\\\n.style .foo {\\\\n  color: #4169e1;\\\\n}\\\\n.style .foo .inner {\\\\n  color: #4169e1;\\\\n}\\\\n/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */\\\\nhtml,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}\\\\nh1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}\\\\nul{list-style:none}\\\\nbutton,input,select,textarea{margin:0}\\\\nhtml{box-sizing:border-box}\\\\n*,*::before,*::after{box-sizing:inherit}\\\\nimg,video{height:auto;max-width:100%}\\\\niframe{border:0}\\\\ntable{border-collapse:collapse;border-spacing:0}\\\\ntd,th{padding:0}\\\\ntd:not([align]),th:not([align]){text-align:left}\\\\n\\";
+injector_045adddd(css,{});
 "
 `;
 

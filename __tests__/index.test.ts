@@ -193,6 +193,22 @@ validateMany("modules", [
     options: { modules: true },
   },
   {
+    title: "inject-treeshakeable",
+    input: "modules/index.js",
+    options: { mode: ["inject", { treeshakeable: true }], modules: true },
+  },
+  {
+    title: "inject-treeshakeable-keyword-fail",
+    shouldFail: true,
+    input: "keyword-fail/index.js",
+    options: { mode: ["inject", { treeshakeable: true }], modules: true },
+  },
+  {
+    title: "inject-treeshakeable-dts",
+    input: "modules/index.js",
+    options: { mode: ["inject", { treeshakeable: true }], modules: true, dts: true },
+  },
+  {
     title: "generate-scoped-name",
     input: "modules-duplication/index.js",
     options: { modules: { generateScopedName: name => `${name}hacked` } },
@@ -201,6 +217,17 @@ validateMany("modules", [
     title: "named-exports",
     input: "named-exports/index.js",
     options: { modules: true, namedExports: true },
+  },
+  {
+    title: "named-exports-treeshakeable-fail",
+    shouldFail: true,
+    input: "named-exports/index.js",
+    options: { mode: ["inject", { treeshakeable: true }], modules: true, namedExports: true },
+  },
+  {
+    title: "named-exports-dts",
+    input: "named-exports/index.js",
+    options: { modules: true, namedExports: true, dts: true },
   },
   {
     title: "named-exports-custom-class-name",
