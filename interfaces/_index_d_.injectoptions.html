@@ -93,6 +93,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_d_.injectoptions.html#container" class="tsd-kind-icon">container</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_d_.injectoptions.html#prepend" class="tsd-kind-icon">prepend</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_d_.injectoptions.html#singletag" class="tsd-kind-icon">single<wbr>Tag</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported"><a href="_index_d_.injectoptions.html#treeshakeable" class="tsd-kind-icon">treeshakeable</a></li>
 							</ul>
 						</section>
 					</div>
@@ -166,6 +167,21 @@
 						</dl>
 					</div>
 				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+					<a name="treeshakeable" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> treeshakeable</h3>
+					<div class="tsd-signature tsd-kind-icon">treeshakeable<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
+					<aside class="tsd-sources">
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Makes injector treeshakeable,
+								as it is only called when either classes are referenced directly,
+							or <code>inject</code> function is called from the default export.</p>
+						</div>
+						<p>Incompatible with <code>namedExports</code> option.</p>
+					</div>
+				</section>
 			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
@@ -224,6 +240,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
 								<a href="_index_d_.injectoptions.html#singletag" class="tsd-kind-icon">single<wbr>Tag</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-not-exported">
+								<a href="_index_d_.injectoptions.html#treeshakeable" class="tsd-kind-icon">treeshakeable</a>
 							</li>
 						</ul>
 					</li>
