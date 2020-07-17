@@ -127,8 +127,8 @@ const loader: Loader<PostCSSLoaderOptions> = {
     const saferId = (id: string): string => safeId(id, path.basename(this.id));
     const modulesVarName = saferId("modules");
 
-    const output = [`export const ${cssVarName} = ${JSON.stringify(res.css)};`];
-    const dts = [`export const ${cssVarName}: string;`];
+    const output = [`export var ${cssVarName} = ${JSON.stringify(res.css)};`];
+    const dts = [`export var ${cssVarName}: string;`];
 
     if (options.namedExports) {
       const getClassName =
@@ -141,8 +141,8 @@ const loader: Loader<PostCSSLoaderOptions> = {
           this.warn(`Exported \`${name}\` as \`${newName}\` in ${humanlizePath(this.id)}`);
 
         const fmt = JSON.stringify(modulesExports[name]);
-        output.push(`export const ${newName} = ${fmt};`);
-        if (options.dts) dts.push(`export const ${newName}: ${fmt};`);
+        output.push(`export var ${newName} = ${fmt};`);
+        if (options.dts) dts.push(`export var ${newName}: ${fmt};`);
       }
     }
 

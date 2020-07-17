@@ -78,7 +78,7 @@ function injector_4a8cea7e (css, options) {
   }
 }
 
-const css = \\"a {\\\\n  width: 30%;\\\\n  color: red\\\\n}\\\\n\\\\n.multiline,\\\\n.selector {\\\\n  box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000\\\\n}\\\\n\\";
+var css = \\"a {\\\\n  width: 30%;\\\\n  color: red\\\\n}\\\\n\\\\n.multiline,\\\\n.selector {\\\\n  box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000\\\\n}\\\\n\\";
 injector_4a8cea7e(css,{});
 "
 `;
@@ -153,7 +153,7 @@ function injector_4a8cea7e (css, options) {
   }
 }
 
-const css = \\".subpartial {\\\\n  -webkit-box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000;\\\\n     -moz-box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000;\\\\n          box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000\\\\n}\\\\n\\\\n.partial {\\\\n    color: red\\\\n}\\\\n\\\\n.prefixed {\\\\n  display: -webkit-box;\\\\n  display: -webkit-flex;\\\\n  display: -moz-box;\\\\n  display: -ms-flexbox;\\\\n  display: flex\\\\n}\\\\n\\";
+var css = \\".subpartial {\\\\n  -webkit-box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000;\\\\n     -moz-box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000;\\\\n          box-shadow: inset 0 2px 0px #dcffa6,\\\\n              0 2px 5px #000\\\\n}\\\\n\\\\n.partial {\\\\n    color: red\\\\n}\\\\n\\\\n.prefixed {\\\\n  display: -webkit-box;\\\\n  display: -webkit-flex;\\\\n  display: -moz-box;\\\\n  display: -ms-flexbox;\\\\n  display: flex\\\\n}\\\\n\\";
 injector_4a8cea7e(css,{});
 "
 `;
@@ -179,16 +179,18 @@ exports[`basic resolvers: css 1`] = `
 }
 .bar {
   background-image: url(\\"/pubpath/bg1.png\\");
-  background-image: url(\\"/pubpath/bg2.testing.regex.png\\"); }
+  background-image: url(\\"/pubpath/bg2.testing.regex.png\\");
+}
 
 .bar2 {
   color: magenta;
-  background-image: url(\\"https://via.placeholder.com/1920x1080\\"); }
+  background-image: url(\\"https://via.placeholder.com/1920x1080\\");
+}
 
 .ignore-data-uri {
   background-image: url(/pubpath/bg2.png);
-  background-image: url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkBAMAAACCzIhnAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiklEQVRYhe3QMQ6EIBAF0C+GSInF9mYTs+1ewRsQbmBlayysKefYO2asXbbYxvxHQj6ECQMAEREREf2NQ/fCtp5Zky6vtRMkSJEzhyISynWJnzH6Z8oQlzS7lEc/fLmmQUSvc16OrCPqRl1JePxQYo1ZSWVj9nxrrOb5esw+eXdvzTWfTERERHRXH4tWFZGswQ2yAAAAAElFTkSuQmCC\\"); }
-"
+  background-image: url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkBAMAAACCzIhnAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiklEQVRYhe3QMQ6EIBAF0C+GSInF9mYTs+1ewRsQbmBlayysKefYO2asXbbYxvxHQj6ECQMAEREREf2NQ/fCtp5Zky6vtRMkSJEzhyISynWJnzH6Z8oQlzS7lEc/fLmmQUSvc16OrCPqRl1JePxQYo1ZSWVj9nxrrOb5esw+eXdvzTWfTERERHRXH4tWFZGswQ2yAAAAAElFTkSuQmCC\\");
+}"
 `;
 
 exports[`basic resolvers: js 1`] = `
@@ -217,16 +219,18 @@ exports[`basic resolvers-hash: css 1`] = `
 }
 .bar {
   background-image: url(\\"/pubpath/bg-cc57d19a.png\\");
-  background-image: url(\\"/pubpath/bg.testing.regex-e13f1639.png\\"); }
+  background-image: url(\\"/pubpath/bg.testing.regex-e13f1639.png\\");
+}
 
 .bar2 {
   color: magenta;
-  background-image: url(\\"https://via.placeholder.com/1920x1080\\"); }
+  background-image: url(\\"https://via.placeholder.com/1920x1080\\");
+}
 
 .ignore-data-uri {
   background-image: url(/pubpath/bg-086af782.png);
-  background-image: url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkBAMAAACCzIhnAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiklEQVRYhe3QMQ6EIBAF0C+GSInF9mYTs+1ewRsQbmBlayysKefYO2asXbbYxvxHQj6ECQMAEREREf2NQ/fCtp5Zky6vtRMkSJEzhyISynWJnzH6Z8oQlzS7lEc/fLmmQUSvc16OrCPqRl1JePxQYo1ZSWVj9nxrrOb5esw+eXdvzTWfTERERHRXH4tWFZGswQ2yAAAAAElFTkSuQmCC\\"); }
-"
+  background-image: url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkBAMAAACCzIhnAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiklEQVRYhe3QMQ6EIBAF0C+GSInF9mYTs+1ewRsQbmBlayysKefYO2asXbbYxvxHQj6ECQMAEREREf2NQ/fCtp5Zky6vtRMkSJEzhyISynWJnzH6Z8oQlzS7lEc/fLmmQUSvc16OrCPqRl1JePxQYo1ZSWVj9nxrrOb5esw+eXdvzTWfTERERHRXH4tWFZGswQ2yAAAAAElFTkSuQmCC\\");
+}"
 `;
 
 exports[`basic resolvers-hash: js 1`] = `
@@ -255,16 +259,18 @@ exports[`basic resolvers-url-inline: css 1`] = `
 }
 .bar {
   background-image: url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkBAMAAACCzIhnAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiklEQVRYhe3QMQ6EIBAF0C+GSInF9mYTs+1ewRsQbmBlayysKefYO2asXbbYxvxHQj6ECQMAEREREf2NQ/fCtp5Zky6vtRMkSJEzhyISynWJnzH6Z8oQlzS7lEc/fLmmQUSvc16OrCPqRl1JePxQYo1ZSWVj9nxrrOb5esw+eXdvzTWfTERERHRXH4tWFZGswQ2yAAAAAElFTkSuQmCC\\");
-  background-image: url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAABlBAMAAACmUjD8AAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAi0lEQVRYhe3QoQ7CMBRG4b/bGipr8DMNFsEL7A2WifkpLEGgl2D62NwRmG2RJOcT7a04SXMlAAAA/LNGh5Mdn1n3m/pS0g7K4Tl857DmSyw1flHyaZFyN9rcjNNcbOQUFZ00XbfZvd+1TTj+0iTf7439rarJYd3/ZjuoamzX1jy683bZrssNAAAApBeYlQ7gQL3QgQAAAABJRU5ErkJggg==\\"); }
+  background-image: url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAABlBAMAAACmUjD8AAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAi0lEQVRYhe3QoQ7CMBRG4b/bGipr8DMNFsEL7A2WifkpLEGgl2D62NwRmG2RJOcT7a04SXMlAAAA/LNGh5Mdn1n3m/pS0g7K4Tl857DmSyw1flHyaZFyN9rcjNNcbOQUFZ00XbfZvd+1TTj+0iTf7439rarJYd3/ZjuoamzX1jy683bZrssNAAAApBeYlQ7gQL3QgQAAAABJRU5ErkJggg==\\");
+}
 
 .bar2 {
   color: magenta;
-  background-image: url(\\"https://via.placeholder.com/1920x1080\\"); }
+  background-image: url(\\"https://via.placeholder.com/1920x1080\\");
+}
 
 .ignore-data-uri {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGwAAABsBAMAAAB9SEr+AAAAG1BMVEXMzMyWlpacnJy3t7ejo6O+vr6qqqqxsbHFxcUT5ek+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAsklEQVRYhe3RMQuCQBjG8cek88YzFBo1SRwlHBqLhhrLvoC0uEaINZoFfe3OyNlbmnp+2zP8uRcFiIiIiIj+TiDicTjvB05FPtkPV5mqxSVd9MMpysgOhrOjSuRsqbOrSPUYNW30MMigFHzXB0ZZNyxYB9fgyC7zbhVg+99s+1qZZIkMmzvgfDJ95FQqk6wWVaoPbPNu6E+ysY1eE7Fc74BSnPXQP+DpNQYZEREREdHPvQFNvRay9sR69AAAAABJRU5ErkJggg==);
-  background-image: url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkBAMAAACCzIhnAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiklEQVRYhe3QMQ6EIBAF0C+GSInF9mYTs+1ewRsQbmBlayysKefYO2asXbbYxvxHQj6ECQMAEREREf2NQ/fCtp5Zky6vtRMkSJEzhyISynWJnzH6Z8oQlzS7lEc/fLmmQUSvc16OrCPqRl1JePxQYo1ZSWVj9nxrrOb5esw+eXdvzTWfTERERHRXH4tWFZGswQ2yAAAAAElFTkSuQmCC\\"); }
-"
+  background-image: url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkBAMAAACCzIhnAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiklEQVRYhe3QMQ6EIBAF0C+GSInF9mYTs+1ewRsQbmBlayysKefYO2asXbbYxvxHQj6ECQMAEREREf2NQ/fCtp5Zky6vtRMkSJEzhyISynWJnzH6Z8oQlzS7lEc/fLmmQUSvc16OrCPqRl1JePxQYo1ZSWVj9nxrrOb5esw+eXdvzTWfTERERHRXH4tWFZGswQ2yAAAAAElFTkSuQmCC\\");
+}"
 `;
 
 exports[`basic resolvers-url-inline: js 1`] = `
@@ -342,22 +348,22 @@ function injector_3b481dac (css, options) {
   }
 }
 
-const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_3b481dac(css,{});
 
-const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_3b481dac(css$1,{});
 
-const css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
+var css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
 injector_3b481dac(css$2,{});
 
-const css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
+var css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_3b481dac(css$3,{});
 
-const css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
+var css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red;\\\\n}\\";
 injector_3b481dac(css$4,{});
 
-const css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
+var css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
 injector_3b481dac(css$5,{});
 
 console.log(css, css$1);
@@ -434,7 +440,7 @@ function injector_c84cd8fc (css, options) {
   }
 }
 
-const css = \\".style {\\\\n  color: red;\\\\n}\\\\n\\";
+var css = \\".style {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_c84cd8fc(css,{});
 "
 `;
@@ -452,71 +458,71 @@ exports[`code-splitting manual-chunks: css 1`] = `
   color: rosybrown;
 }
 .first_first {
-  color: red; }
-
-/*# sourceMappingURL=first-67312563.css.map */"
+  color: red;
+}
+/*# sourceMappingURL=first-114c8ccb.css.map */"
 `;
 
 exports[`code-splitting manual-chunks: css 2`] = `
 ".fourth_fourth {
-  color: magenta; }
-
+  color: magenta;
+}
 .fourthtwo_fourthtwo {
-  color: honeydew; }
-
-/*# sourceMappingURL=fourts-a88ae25f.css.map */"
+  color: honeydew;
+}
+/*# sourceMappingURL=fourts-9e099864.css.map */"
 `;
 
 exports[`code-splitting manual-chunks: css 3`] = `
 ".first_first_sub {
-  color: black; }
-
-/*# sourceMappingURL=index-dec87cc1.css.map */"
+  color: black;
+}
+/*# sourceMappingURL=index-eac2bf99.css.map */"
 `;
 
 exports[`code-splitting manual-chunks: css 4`] = `
 ".nestedScript_nestedScript {
-  color: rebeccapurple; }
-
-/*# sourceMappingURL=nested-script-863b7bde.css.map */"
+  color: rebeccapurple;
+}
+/*# sourceMappingURL=nested-script-4420e5bf.css.map */"
 `;
 
 exports[`code-splitting manual-chunks: css 5`] = `
 ".nondynamic_nondynamic {
-  color: deepskyblue; }
-
+  color: deepskyblue;
+}
 .nondynamic2_nondynamic2 {
-  color: deeppink; }
-
-/*# sourceMappingURL=nondynamics-0b30d44e.css.map */"
+  color: deeppink;
+}
+/*# sourceMappingURL=nondynamics-7f9e1ba7.css.map */"
 `;
 
 exports[`code-splitting manual-chunks: css 6`] = `
 ".otherScript_otherScript {
-  color: wheat; }
-
-/*# sourceMappingURL=other-script-0b4c1d5a.css.map */"
+  color: wheat;
+}
+/*# sourceMappingURL=other-script-8618c69c.css.map */"
 `;
 
 exports[`code-splitting manual-chunks: css 7`] = `
 ".second_second {
-  color: royalblue; }
-
-/*# sourceMappingURL=second-9b132bc0.css.map */"
+  color: royalblue;
+}
+/*# sourceMappingURL=second-47b1938d.css.map */"
 `;
 
 exports[`code-splitting manual-chunks: css 8`] = `
 ".third_third {
-  color: maroon; }
-
+  color: maroon;
+}
 .thirdtwo_thirdtwo {
-  color: hotpink; }
-
-/*# sourceMappingURL=thirds-5aa59b6d.css.map */"
+  color: hotpink;
+}
+/*# sourceMappingURL=thirds-ef28db9f.css.map */"
 `;
 
 exports[`code-splitting manual-chunks: js 1`] = `
-"const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+"var css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red;\\\\n}\\";
 var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 export default modules_efa96bb5;
@@ -539,13 +545,13 @@ exports[`code-splitting manual-chunks: js 3`] = `
 `;
 
 exports[`code-splitting manual-chunks: js 4`] = `
-"import { m as modules_d55e0e9b } from './fourts-309ca5ed.js';
-import './index-bb3ba0d0.js';
+"import { m as modules_d55e0e9b } from './fourts-59f0f682.js';
+import './index-4b91022e.js';
 
 (async () => {
-  const first = await import('./first-c5b09b56.js');
-  const second = await import('./second-86e63d6c.js');
-  const otherScript = await import('./other-script-dfcd0135.js');
+  const first = await import('./first-31521213.js');
+  const second = await import('./second-df360e06.js');
+  const otherScript = await import('./other-script-e09b358c.js');
   console.log(first, second, otherScript);
 })();
 
@@ -554,13 +560,13 @@ console.log(modules_d55e0e9b);
 `;
 
 exports[`code-splitting manual-chunks: js 5`] = `
-"import { a as modules_3ede29d3 } from './fourts-309ca5ed.js';
-import './index-bb3ba0d0.js';
+"import { a as modules_3ede29d3 } from './fourts-59f0f682.js';
+import './index-4b91022e.js';
 
 (async () => {
-  const first = await import('./first-c5b09b56.js');
-  const second = await import('./second-86e63d6c.js');
-  const otherScript = await import('./other-script-dfcd0135.js');
+  const first = await import('./first-31521213.js');
+  const second = await import('./second-df360e06.js');
+  const otherScript = await import('./other-script-e09b358c.js');
   console.log(first, second, otherScript);
 })();
 
@@ -569,7 +575,7 @@ console.log(modules_3ede29d3);
 `;
 
 exports[`code-splitting manual-chunks: js 6`] = `
-"import './nondynamics-36d7f0a7.js';
+"import './nondynamics-4c8af959.js';
 "
 `;
 
@@ -588,14 +594,14 @@ console.log(modules_2539eb5b);
 exports[`code-splitting manual-chunks: js 9`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-a2367435.js');
+  const nestedScript = await import('./nested-script-92e5c9b5.js');
   console.log(nestedScript);
 })();
 "
 `;
 
 exports[`code-splitting manual-chunks: js 10`] = `
-"const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+"var css = \\".second_second {\\\\n  color: royalblue;\\\\n}\\";
 var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 export default modules_7a038d99;
@@ -608,72 +614,72 @@ exports[`code-splitting manual-chunks: js 11`] = `
 "
 `;
 
-exports[`code-splitting manual-chunks: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA\\",\\"file\\":\\"first-67312563.css\\",\\"sourcesContent\\":[\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting manual-chunks: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB;AAClB;ACAA;EACE,UAAA;AAAF\\",\\"file\\":\\"first-114c8ccb.css\\",\\"sourcesContent\\":[\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting manual-chunks: map 2`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/fourthtwo.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,cAAc,EAAA;;ACDhB;EACE,eAAe,EAAA\\",\\"file\\":\\"fourts-a88ae25f.css\\",\\"sourcesContent\\":[\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".fourthtwo {\\\\n  color: honeydew;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting manual-chunks: map 2`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/fourthtwo.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,cAAA;AACF;ACFA;EACE,eAAA;AACF\\",\\"file\\":\\"fourts-9e099864.css\\",\\"sourcesContent\\":[\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".fourthtwo {\\\\n  color: honeydew;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting manual-chunks: map 3`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/sub/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAY,EAAA\\",\\"file\\":\\"index-dec87cc1.css\\",\\"sourcesContent\\":[\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting manual-chunks: map 3`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/sub/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAA;AACF\\",\\"file\\":\\"index-eac2bf99.css\\",\\"sourcesContent\\":[\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting manual-chunks: map 4`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nested-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,oBAAoB,EAAA\\",\\"file\\":\\"nested-script-863b7bde.css\\",\\"sourcesContent\\":[\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting manual-chunks: map 4`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nested-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,oBAAA;AACF\\",\\"file\\":\\"nested-script-4420e5bf.css\\",\\"sourcesContent\\":[\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting manual-chunks: map 5`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"nondynamics-0b30d44e.css\\",\\"sourcesContent\\":[\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting manual-chunks: map 5`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,kBAAA;AACF;ACFA;EACE,eAAA;AACF\\",\\"file\\":\\"nondynamics-7f9e1ba7.css\\",\\"sourcesContent\\":[\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting manual-chunks: map 6`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/other-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAY,EAAA\\",\\"file\\":\\"other-script-0b4c1d5a.css\\",\\"sourcesContent\\":[\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting manual-chunks: map 6`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/other-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAA;AACF\\",\\"file\\":\\"other-script-8618c69c.css\\",\\"sourcesContent\\":[\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting manual-chunks: map 7`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/second.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB,EAAA\\",\\"file\\":\\"second-9b132bc0.css\\",\\"sourcesContent\\":[\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting manual-chunks: map 7`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/second.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAA;AACF\\",\\"file\\":\\"second-47b1938d.css\\",\\"sourcesContent\\":[\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting manual-chunks: map 8`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/thirdtwo.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA\\",\\"file\\":\\"thirds-5aa59b6d.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".thirdtwo {\\\\n  color: hotpink;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting manual-chunks: map 8`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/thirdtwo.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAA;AACF;ACFA;EACE,cAAA;AACF\\",\\"file\\":\\"thirds-ef28db9f.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".thirdtwo {\\\\n  color: hotpink;\\\\n}\\\\n\\"]}"`;
 
 exports[`code-splitting manual-chunks-only: css 1`] = `
 ".fourth_fourth {
-  color: magenta; }
-
+  color: magenta;
+}
 .fourthtwo_fourthtwo {
-  color: honeydew; }
-
-/*# sourceMappingURL=fourts-a88ae25f.css.map */"
+  color: honeydew;
+}
+/*# sourceMappingURL=fourts-9e099864.css.map */"
 `;
 
 exports[`code-splitting manual-chunks-only: css 2`] = `
 ".first_first_sub {
-  color: black; }
-
+  color: black;
+}
 .first_partial {
   color: rosybrown;
 }
 .first_first {
-  color: red; }
-
+  color: red;
+}
 .second_second {
-  color: royalblue; }
-
+  color: royalblue;
+}
 .otherScript_otherScript {
-  color: wheat; }
-
+  color: wheat;
+}
 .nestedScript_nestedScript {
-  color: rebeccapurple; }
-
-/*# sourceMappingURL=index-105d6cd8.css.map */"
+  color: rebeccapurple;
+}
+/*# sourceMappingURL=index-8a32c36c.css.map */"
 `;
 
 exports[`code-splitting manual-chunks-only: css 3`] = `
 ".nondynamic_nondynamic {
-  color: deepskyblue; }
-
+  color: deepskyblue;
+}
 .nondynamic2_nondynamic2 {
-  color: deeppink; }
-
-/*# sourceMappingURL=nondynamics-0b30d44e.css.map */"
+  color: deeppink;
+}
+/*# sourceMappingURL=nondynamics-7f9e1ba7.css.map */"
 `;
 
 exports[`code-splitting manual-chunks-only: css 4`] = `
 ".third_third {
-  color: maroon; }
-
+  color: maroon;
+}
 .thirdtwo_thirdtwo {
-  color: hotpink; }
-
-/*# sourceMappingURL=thirds-5aa59b6d.css.map */"
+  color: hotpink;
+}
+/*# sourceMappingURL=thirds-ef28db9f.css.map */"
 `;
 
 exports[`code-splitting manual-chunks-only: js 1`] = `
@@ -686,8 +692,8 @@ export { modules_3ede29d3 as a, modules_d55e0e9b as m };
 `;
 
 exports[`code-splitting manual-chunks-only: js 2`] = `
-"import { m as modules_d55e0e9b, a as modules_3ede29d3 } from './fourts-309ca5ed.js';
-import './nondynamics-36d7f0a7.js';
+"import { m as modules_d55e0e9b, a as modules_3ede29d3 } from './fourts-59f0f682.js';
+import './nondynamics-4c8af959.js';
 
 console.log(\\"sub\\");
 
@@ -709,7 +715,7 @@ console.log(modules_d55e0e9b);
 
 console.log(modules_3ede29d3);
 
-const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+var css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red;\\\\n}\\";
 var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 var first = /*#__PURE__*/Object.freeze({
@@ -718,7 +724,7 @@ var first = /*#__PURE__*/Object.freeze({
   'default': modules_efa96bb5
 });
 
-const css$1 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+var css$1 = \\".second_second {\\\\n  color: royalblue;\\\\n}\\";
 var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 var second = /*#__PURE__*/Object.freeze({
@@ -750,9 +756,9 @@ var nestedScript = /*#__PURE__*/Object.freeze({
 `;
 
 exports[`code-splitting manual-chunks-only: js 3`] = `
-"import './fourts-309ca5ed.js';
+"import './fourts-59f0f682.js';
 import './index.js';
-import './nondynamics-36d7f0a7.js';
+import './nondynamics-4c8af959.js';
 "
 `;
 
@@ -768,52 +774,52 @@ exports[`code-splitting manual-chunks-only: js 5`] = `
 "
 `;
 
-exports[`code-splitting manual-chunks-only: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/fourthtwo.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,cAAc,EAAA;;ACDhB;EACE,eAAe,EAAA\\",\\"file\\":\\"fourts-a88ae25f.css\\",\\"sourcesContent\\":[\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".fourthtwo {\\\\n  color: honeydew;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting manual-chunks-only: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/fourthtwo.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,cAAA;AACF;ACFA;EACE,eAAA;AACF\\",\\"file\\":\\"fourts-9e099864.css\\",\\"sourcesContent\\":[\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".fourthtwo {\\\\n  color: honeydew;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting manual-chunks-only: map 2`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/sub/first.scss\\",\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\",\\"../../../../code-splitting/second.scss\\",\\"../../../../code-splitting/other-script.scss\\",\\"../../../../code-splitting/nested-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAY,EAAA;;ACDd;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA;;ACHZ;EACE,gBAAgB,EAAA;;ACDlB;EACE,YAAY,EAAA;;ACDd;EACE,oBAAoB,EAAA\\",\\"file\\":\\"index-105d6cd8.css\\",\\"sourcesContent\\":[\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\",\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\",\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\",\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\",\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting manual-chunks-only: map 2`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/sub/first.scss\\",\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\",\\"../../../../code-splitting/second.scss\\",\\"../../../../code-splitting/other-script.scss\\",\\"../../../../code-splitting/nested-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAA;AACF;ACFA;EACE,gBAAgB;AAClB;ACAA;EACE,UAAA;AAAF;ACHA;EACE,gBAAA;AACF;ACFA;EACE,YAAA;AACF;ACFA;EACE,oBAAA;AACF\\",\\"file\\":\\"index-8a32c36c.css\\",\\"sourcesContent\\":[\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\",\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\",\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\",\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\",\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting manual-chunks-only: map 3`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"nondynamics-0b30d44e.css\\",\\"sourcesContent\\":[\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting manual-chunks-only: map 3`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,kBAAA;AACF;ACFA;EACE,eAAA;AACF\\",\\"file\\":\\"nondynamics-7f9e1ba7.css\\",\\"sourcesContent\\":[\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting manual-chunks-only: map 4`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/thirdtwo.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA\\",\\"file\\":\\"thirds-5aa59b6d.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".thirdtwo {\\\\n  color: hotpink;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting manual-chunks-only: map 4`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/thirdtwo.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAA;AACF;ACFA;EACE,cAAA;AACF\\",\\"file\\":\\"thirds-ef28db9f.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".thirdtwo {\\\\n  color: hotpink;\\\\n}\\\\n\\"]}"`;
 
 exports[`code-splitting manual-chunks-only-single: css 1`] = `
 ".third_third {
-  color: maroon; }
-
+  color: maroon;
+}
 .thirdtwo_thirdtwo {
-  color: hotpink; }
-
+  color: hotpink;
+}
 .fourth_fourth {
-  color: magenta; }
-
+  color: magenta;
+}
 .fourthtwo_fourthtwo {
-  color: honeydew; }
-
+  color: honeydew;
+}
 .nondynamic_nondynamic {
-  color: deepskyblue; }
-
+  color: deepskyblue;
+}
 .nondynamic2_nondynamic2 {
-  color: deeppink; }
-
+  color: deeppink;
+}
 .first_first_sub {
-  color: black; }
-
+  color: black;
+}
 .first_partial {
   color: rosybrown;
 }
 .first_first {
-  color: red; }
-
+  color: red;
+}
 .second_second {
-  color: royalblue; }
-
+  color: royalblue;
+}
 .otherScript_otherScript {
-  color: wheat; }
-
+  color: wheat;
+}
 .nestedScript_nestedScript {
-  color: rebeccapurple; }
-
-/*# sourceMappingURL=extracted-37b8246d.css.map */"
+  color: rebeccapurple;
+}
+/*# sourceMappingURL=extracted-f742fa7b.css.map */"
 `;
 
 exports[`code-splitting manual-chunks-only-single: js 1`] = `
@@ -826,8 +832,8 @@ export { modules_3ede29d3 as a, modules_d55e0e9b as m };
 `;
 
 exports[`code-splitting manual-chunks-only-single: js 2`] = `
-"import { m as modules_d55e0e9b, a as modules_3ede29d3 } from './fourts-309ca5ed.js';
-import './nondynamics-36d7f0a7.js';
+"import { m as modules_d55e0e9b, a as modules_3ede29d3 } from './fourts-59f0f682.js';
+import './nondynamics-4c8af959.js';
 
 console.log(\\"sub\\");
 
@@ -849,7 +855,7 @@ console.log(modules_d55e0e9b);
 
 console.log(modules_3ede29d3);
 
-const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+var css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red;\\\\n}\\";
 var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 var first = /*#__PURE__*/Object.freeze({
@@ -858,7 +864,7 @@ var first = /*#__PURE__*/Object.freeze({
   'default': modules_efa96bb5
 });
 
-const css$1 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+var css$1 = \\".second_second {\\\\n  color: royalblue;\\\\n}\\";
 var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 var second = /*#__PURE__*/Object.freeze({
@@ -890,9 +896,9 @@ var nestedScript = /*#__PURE__*/Object.freeze({
 `;
 
 exports[`code-splitting manual-chunks-only-single: js 3`] = `
-"import './fourts-309ca5ed.js';
+"import './fourts-59f0f682.js';
 import './index.js';
-import './nondynamics-36d7f0a7.js';
+import './nondynamics-4c8af959.js';
 "
 `;
 
@@ -908,50 +914,50 @@ exports[`code-splitting manual-chunks-only-single: js 5`] = `
 "
 `;
 
-exports[`code-splitting manual-chunks-only-single: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/thirdtwo.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/fourthtwo.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\",\\"../../../../code-splitting/sub/first.scss\\",\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\",\\"../../../../code-splitting/second.scss\\",\\"../../../../code-splitting/other-script.scss\\",\\"../../../../code-splitting/nested-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA;;ACDhB;EACE,cAAc,EAAA;;ACDhB;EACE,eAAe,EAAA;;ACDjB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA;;ACDjB;EACE,YAAY,EAAA;;ACDd;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA;;ACHZ;EACE,gBAAgB,EAAA;;ACDlB;EACE,YAAY,EAAA;;ACDd;EACE,oBAAoB,EAAA\\",\\"file\\":\\"extracted-37b8246d.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".thirdtwo {\\\\n  color: hotpink;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".fourthtwo {\\\\n  color: honeydew;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\",\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\",\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\",\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\",\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\",\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting manual-chunks-only-single: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/thirdtwo.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/fourthtwo.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\",\\"../../../../code-splitting/sub/first.scss\\",\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\",\\"../../../../code-splitting/second.scss\\",\\"../../../../code-splitting/other-script.scss\\",\\"../../../../code-splitting/nested-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAA;AACF;ACFA;EACE,cAAA;AACF;ACFA;EACE,cAAA;AACF;ACFA;EACE,eAAA;AACF;ACFA;EACE,kBAAA;AACF;ACFA;EACE,eAAA;AACF;ACFA;EACE,YAAA;AACF;ACFA;EACE,gBAAgB;AAClB;ACAA;EACE,UAAA;AAAF;ACHA;EACE,gBAAA;AACF;ACFA;EACE,YAAA;AACF;ACFA;EACE,oBAAA;AACF\\",\\"file\\":\\"extracted-f742fa7b.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".thirdtwo {\\\\n  color: hotpink;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".fourthtwo {\\\\n  color: honeydew;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\",\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\",\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\",\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\",\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\",\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\"]}"`;
 
 exports[`code-splitting manual-chunks-single: css 1`] = `
 ".third_third {
-  color: maroon; }
-
+  color: maroon;
+}
 .thirdtwo_thirdtwo {
-  color: hotpink; }
-
+  color: hotpink;
+}
 .fourth_fourth {
-  color: magenta; }
-
+  color: magenta;
+}
 .fourthtwo_fourthtwo {
-  color: honeydew; }
-
+  color: honeydew;
+}
 .nondynamic_nondynamic {
-  color: deepskyblue; }
-
+  color: deepskyblue;
+}
 .nondynamic2_nondynamic2 {
-  color: deeppink; }
-
+  color: deeppink;
+}
 .first_first_sub {
-  color: black; }
-
+  color: black;
+}
 .first_partial {
   color: rosybrown;
 }
 .first_first {
-  color: red; }
-
+  color: red;
+}
 .second_second {
-  color: royalblue; }
-
+  color: royalblue;
+}
 .otherScript_otherScript {
-  color: wheat; }
-
+  color: wheat;
+}
 .nestedScript_nestedScript {
-  color: rebeccapurple; }
-
-/*# sourceMappingURL=extracted-37b8246d.css.map */"
+  color: rebeccapurple;
+}
+/*# sourceMappingURL=extracted-f742fa7b.css.map */"
 `;
 
 exports[`code-splitting manual-chunks-single: js 1`] = `
-"const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+"var css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red;\\\\n}\\";
 var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 export default modules_efa96bb5;
@@ -974,13 +980,13 @@ exports[`code-splitting manual-chunks-single: js 3`] = `
 `;
 
 exports[`code-splitting manual-chunks-single: js 4`] = `
-"import { m as modules_d55e0e9b } from './fourts-309ca5ed.js';
-import './index-bb3ba0d0.js';
+"import { m as modules_d55e0e9b } from './fourts-59f0f682.js';
+import './index-4b91022e.js';
 
 (async () => {
-  const first = await import('./first-c5b09b56.js');
-  const second = await import('./second-86e63d6c.js');
-  const otherScript = await import('./other-script-dfcd0135.js');
+  const first = await import('./first-31521213.js');
+  const second = await import('./second-df360e06.js');
+  const otherScript = await import('./other-script-e09b358c.js');
   console.log(first, second, otherScript);
 })();
 
@@ -989,13 +995,13 @@ console.log(modules_d55e0e9b);
 `;
 
 exports[`code-splitting manual-chunks-single: js 5`] = `
-"import { a as modules_3ede29d3 } from './fourts-309ca5ed.js';
-import './index-bb3ba0d0.js';
+"import { a as modules_3ede29d3 } from './fourts-59f0f682.js';
+import './index-4b91022e.js';
 
 (async () => {
-  const first = await import('./first-c5b09b56.js');
-  const second = await import('./second-86e63d6c.js');
-  const otherScript = await import('./other-script-dfcd0135.js');
+  const first = await import('./first-31521213.js');
+  const second = await import('./second-df360e06.js');
+  const otherScript = await import('./other-script-e09b358c.js');
   console.log(first, second, otherScript);
 })();
 
@@ -1004,7 +1010,7 @@ console.log(modules_3ede29d3);
 `;
 
 exports[`code-splitting manual-chunks-single: js 6`] = `
-"import './nondynamics-36d7f0a7.js';
+"import './nondynamics-4c8af959.js';
 "
 `;
 
@@ -1023,14 +1029,14 @@ console.log(modules_2539eb5b);
 exports[`code-splitting manual-chunks-single: js 9`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-a2367435.js');
+  const nestedScript = await import('./nested-script-92e5c9b5.js');
   console.log(nestedScript);
 })();
 "
 `;
 
 exports[`code-splitting manual-chunks-single: js 10`] = `
-"const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+"var css = \\".second_second {\\\\n  color: royalblue;\\\\n}\\";
 var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 export default modules_7a038d99;
@@ -1043,74 +1049,74 @@ exports[`code-splitting manual-chunks-single: js 11`] = `
 "
 `;
 
-exports[`code-splitting manual-chunks-single: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/thirdtwo.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/fourthtwo.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\",\\"../../../../code-splitting/sub/first.scss\\",\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\",\\"../../../../code-splitting/second.scss\\",\\"../../../../code-splitting/other-script.scss\\",\\"../../../../code-splitting/nested-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA;;ACDhB;EACE,cAAc,EAAA;;ACDhB;EACE,eAAe,EAAA;;ACDjB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA;;ACDjB;EACE,YAAY,EAAA;;ACDd;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA;;ACHZ;EACE,gBAAgB,EAAA;;ACDlB;EACE,YAAY,EAAA;;ACDd;EACE,oBAAoB,EAAA\\",\\"file\\":\\"extracted-37b8246d.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".thirdtwo {\\\\n  color: hotpink;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".fourthtwo {\\\\n  color: honeydew;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\",\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\",\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\",\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\",\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\",\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting manual-chunks-single: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/thirdtwo.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/fourthtwo.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\",\\"../../../../code-splitting/sub/first.scss\\",\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\",\\"../../../../code-splitting/second.scss\\",\\"../../../../code-splitting/other-script.scss\\",\\"../../../../code-splitting/nested-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAA;AACF;ACFA;EACE,cAAA;AACF;ACFA;EACE,cAAA;AACF;ACFA;EACE,eAAA;AACF;ACFA;EACE,kBAAA;AACF;ACFA;EACE,eAAA;AACF;ACFA;EACE,YAAA;AACF;ACFA;EACE,gBAAgB;AAClB;ACAA;EACE,UAAA;AAAF;ACHA;EACE,gBAAA;AACF;ACFA;EACE,YAAA;AACF;ACFA;EACE,oBAAA;AACF\\",\\"file\\":\\"extracted-f742fa7b.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".thirdtwo {\\\\n  color: hotpink;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".fourthtwo {\\\\n  color: honeydew;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\",\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\",\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\",\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\",\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\",\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\"]}"`;
 
 exports[`code-splitting multi-entry: css 1`] = `
 ".first_partial {
   color: rosybrown;
 }
 .first_first {
-  color: red; }
-
-/*# sourceMappingURL=first-67312563.css.map */"
+  color: red;
+}
+/*# sourceMappingURL=first-114c8ccb.css.map */"
 `;
 
 exports[`code-splitting multi-entry: css 2`] = `
-".first_first_sub {
-  color: black; }
-
-/*# sourceMappingURL=index-dec87cc1.css.map */"
+".third_third {
+  color: maroon;
+}
+.fourth_fourth {
+  color: magenta;
+}
+/*# sourceMappingURL=index-0c92ec61.css.map */"
 `;
 
 exports[`code-splitting multi-entry: css 3`] = `
-".third_third {
-  color: maroon; }
-
-.fourth_fourth {
-  color: magenta; }
-
-/*# sourceMappingURL=index-fef2e800.css.map */"
+".first_first_sub {
+  color: black;
+}
+/*# sourceMappingURL=index-eac2bf99.css.map */"
 `;
 
 exports[`code-splitting multi-entry: css 4`] = `
 ".thirdtwo_thirdtwo {
-  color: hotpink; }
-
+  color: hotpink;
+}
 .fourthtwo_fourthtwo {
-  color: honeydew; }
-
-/*# sourceMappingURL=indextwo-1d1bf57d.css.map */"
+  color: honeydew;
+}
+/*# sourceMappingURL=indextwo-fbdeff9c.css.map */"
 `;
 
 exports[`code-splitting multi-entry: css 5`] = `
 ".nestedScript_nestedScript {
-  color: rebeccapurple; }
-
+  color: rebeccapurple;
+}
 .nondynamic_nondynamic {
-  color: deepskyblue; }
-
+  color: deepskyblue;
+}
 .nondynamic2_nondynamic2 {
-  color: deeppink; }
-
-/*# sourceMappingURL=nested-script-a24720a9.css.map */"
+  color: deeppink;
+}
+/*# sourceMappingURL=nested-script-9184ab06.css.map */"
 `;
 
 exports[`code-splitting multi-entry: css 6`] = `
 ".otherScript_otherScript {
-  color: wheat; }
-
-/*# sourceMappingURL=other-script-0b4c1d5a.css.map */"
+  color: wheat;
+}
+/*# sourceMappingURL=other-script-8618c69c.css.map */"
 `;
 
 exports[`code-splitting multi-entry: css 7`] = `
 ".second_second {
-  color: royalblue; }
-
-/*# sourceMappingURL=second-9b132bc0.css.map */"
+  color: royalblue;
+}
+/*# sourceMappingURL=second-47b1938d.css.map */"
 `;
 
 exports[`code-splitting multi-entry: js 1`] = `
-"const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+"var css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red;\\\\n}\\";
 var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 export default modules_efa96bb5;
@@ -1124,14 +1130,14 @@ exports[`code-splitting multi-entry: js 2`] = `
 `;
 
 exports[`code-splitting multi-entry: js 3`] = `
-"import './index-bb3ba0d0.js';
+"import './index-4b91022e.js';
 
 var modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
 (async () => {
-  const first = await import('./first-c5b09b56.js');
-  const second = await import('./second-86e63d6c.js');
-  const otherScript = await import('./other-script-98094377.js');
+  const first = await import('./first-31521213.js');
+  const second = await import('./second-df360e06.js');
+  const otherScript = await import('./other-script-2245da70.js');
   console.log(first, second, otherScript);
 })();
 
@@ -1140,14 +1146,14 @@ console.log(modules_d55e0e9b);
 `;
 
 exports[`code-splitting multi-entry: js 4`] = `
-"import './index-bb3ba0d0.js';
+"import './index-4b91022e.js';
 
 var modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
 
 (async () => {
-  const first = await import('./first-c5b09b56.js');
-  const second = await import('./second-86e63d6c.js');
-  const otherScript = await import('./other-script-98094377.js');
+  const first = await import('./first-31521213.js');
+  const second = await import('./second-df360e06.js');
+  const otherScript = await import('./other-script-2245da70.js');
   console.log(first, second, otherScript);
 })();
 
@@ -1170,14 +1176,14 @@ exports[`code-splitting multi-entry: js 6`] = `
 exports[`code-splitting multi-entry: js 7`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-0cc66e75.js');
+  const nestedScript = await import('./nested-script-fd10473b.js');
   console.log(nestedScript);
 })();
 "
 `;
 
 exports[`code-splitting multi-entry: js 8`] = `
-"const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+"var css = \\".second_second {\\\\n  color: royalblue;\\\\n}\\";
 var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 export default modules_7a038d99;
@@ -1185,62 +1191,62 @@ export { css };
 "
 `;
 
-exports[`code-splitting multi-entry: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA\\",\\"file\\":\\"first-67312563.css\\",\\"sourcesContent\\":[\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting multi-entry: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB;AAClB;ACAA;EACE,UAAA;AAAF\\",\\"file\\":\\"first-114c8ccb.css\\",\\"sourcesContent\\":[\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting multi-entry: map 2`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/sub/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAY,EAAA\\",\\"file\\":\\"index-dec87cc1.css\\",\\"sourcesContent\\":[\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting multi-entry: map 2`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/fourth.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAA;AACF;ACFA;EACE,cAAA;AACF\\",\\"file\\":\\"index-0c92ec61.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting multi-entry: map 3`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/fourth.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA\\",\\"file\\":\\"index-fef2e800.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting multi-entry: map 3`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/sub/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAA;AACF\\",\\"file\\":\\"index-eac2bf99.css\\",\\"sourcesContent\\":[\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting multi-entry: map 4`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/thirdtwo.scss\\",\\"../../../../code-splitting/fourthtwo.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,cAAc,EAAA;;ACDhB;EACE,eAAe,EAAA\\",\\"file\\":\\"indextwo-1d1bf57d.css\\",\\"sourcesContent\\":[\\".thirdtwo {\\\\n  color: hotpink;\\\\n}\\\\n\\",\\".fourthtwo {\\\\n  color: honeydew;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting multi-entry: map 4`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/thirdtwo.scss\\",\\"../../../../code-splitting/fourthtwo.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,cAAA;AACF;ACFA;EACE,eAAA;AACF\\",\\"file\\":\\"indextwo-fbdeff9c.css\\",\\"sourcesContent\\":[\\".thirdtwo {\\\\n  color: hotpink;\\\\n}\\\\n\\",\\".fourthtwo {\\\\n  color: honeydew;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting multi-entry: map 5`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nested-script.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,oBAAoB,EAAA;;ACDtB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"nested-script-a24720a9.css\\",\\"sourcesContent\\":[\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting multi-entry: map 5`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nested-script.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,oBAAA;AACF;ACFA;EACE,kBAAA;AACF;ACFA;EACE,eAAA;AACF\\",\\"file\\":\\"nested-script-9184ab06.css\\",\\"sourcesContent\\":[\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting multi-entry: map 6`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/other-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAY,EAAA\\",\\"file\\":\\"other-script-0b4c1d5a.css\\",\\"sourcesContent\\":[\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting multi-entry: map 6`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/other-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAA;AACF\\",\\"file\\":\\"other-script-8618c69c.css\\",\\"sourcesContent\\":[\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting multi-entry: map 7`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/second.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB,EAAA\\",\\"file\\":\\"second-9b132bc0.css\\",\\"sourcesContent\\":[\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting multi-entry: map 7`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/second.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAA;AACF\\",\\"file\\":\\"second-47b1938d.css\\",\\"sourcesContent\\":[\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\"]}"`;
 
 exports[`code-splitting multi-entry-single: css 1`] = `
 ".first_first_sub {
-  color: black; }
-
+  color: black;
+}
 .third_third {
-  color: maroon; }
-
+  color: maroon;
+}
 .fourth_fourth {
-  color: magenta; }
-
+  color: magenta;
+}
 .thirdtwo_thirdtwo {
-  color: hotpink; }
-
+  color: hotpink;
+}
 .fourthtwo_fourthtwo {
-  color: honeydew; }
-
+  color: honeydew;
+}
 .first_partial {
   color: rosybrown;
 }
 .first_first {
-  color: red; }
-
+  color: red;
+}
 .second_second {
-  color: royalblue; }
-
+  color: royalblue;
+}
 .otherScript_otherScript {
-  color: wheat; }
-
+  color: wheat;
+}
 .nestedScript_nestedScript {
-  color: rebeccapurple; }
-
+  color: rebeccapurple;
+}
 .nondynamic_nondynamic {
-  color: deepskyblue; }
-
+  color: deepskyblue;
+}
 .nondynamic2_nondynamic2 {
-  color: deeppink; }
-
-/*# sourceMappingURL=extracted-6190ebcf.css.map */"
+  color: deeppink;
+}
+/*# sourceMappingURL=extracted-e7bdd0b4.css.map */"
 `;
 
 exports[`code-splitting multi-entry-single: js 1`] = `
-"const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+"var css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red;\\\\n}\\";
 var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 export default modules_efa96bb5;
@@ -1254,14 +1260,14 @@ exports[`code-splitting multi-entry-single: js 2`] = `
 `;
 
 exports[`code-splitting multi-entry-single: js 3`] = `
-"import './index-bb3ba0d0.js';
+"import './index-4b91022e.js';
 
 var modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
 (async () => {
-  const first = await import('./first-c5b09b56.js');
-  const second = await import('./second-86e63d6c.js');
-  const otherScript = await import('./other-script-98094377.js');
+  const first = await import('./first-31521213.js');
+  const second = await import('./second-df360e06.js');
+  const otherScript = await import('./other-script-2245da70.js');
   console.log(first, second, otherScript);
 })();
 
@@ -1270,14 +1276,14 @@ console.log(modules_d55e0e9b);
 `;
 
 exports[`code-splitting multi-entry-single: js 4`] = `
-"import './index-bb3ba0d0.js';
+"import './index-4b91022e.js';
 
 var modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
 
 (async () => {
-  const first = await import('./first-c5b09b56.js');
-  const second = await import('./second-86e63d6c.js');
-  const otherScript = await import('./other-script-98094377.js');
+  const first = await import('./first-31521213.js');
+  const second = await import('./second-df360e06.js');
+  const otherScript = await import('./other-script-2245da70.js');
   console.log(first, second, otherScript);
 })();
 
@@ -1300,14 +1306,14 @@ exports[`code-splitting multi-entry-single: js 6`] = `
 exports[`code-splitting multi-entry-single: js 7`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-0cc66e75.js');
+  const nestedScript = await import('./nested-script-fd10473b.js');
   console.log(nestedScript);
 })();
 "
 `;
 
 exports[`code-splitting multi-entry-single: js 8`] = `
-"const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+"var css = \\".second_second {\\\\n  color: royalblue;\\\\n}\\";
 var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 export default modules_7a038d99;
@@ -1315,91 +1321,91 @@ export { css };
 "
 `;
 
-exports[`code-splitting multi-entry-single: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/sub/first.scss\\",\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/thirdtwo.scss\\",\\"../../../../code-splitting/fourthtwo.scss\\",\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\",\\"../../../../code-splitting/second.scss\\",\\"../../../../code-splitting/other-script.scss\\",\\"../../../../code-splitting/nested-script.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAY,EAAA;;ACDd;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA;;ACDhB;EACE,cAAc,EAAA;;ACDhB;EACE,eAAe,EAAA;;ACDjB;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA;;ACHZ;EACE,gBAAgB,EAAA;;ACDlB;EACE,YAAY,EAAA;;ACDd;EACE,oBAAoB,EAAA;;ACDtB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"extracted-6190ebcf.css\\",\\"sourcesContent\\":[\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\",\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".thirdtwo {\\\\n  color: hotpink;\\\\n}\\\\n\\",\\".fourthtwo {\\\\n  color: honeydew;\\\\n}\\\\n\\",\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\",\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\",\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\",\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting multi-entry-single: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/sub/first.scss\\",\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/thirdtwo.scss\\",\\"../../../../code-splitting/fourthtwo.scss\\",\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\",\\"../../../../code-splitting/second.scss\\",\\"../../../../code-splitting/other-script.scss\\",\\"../../../../code-splitting/nested-script.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAA;AACF;ACFA;EACE,aAAA;AACF;ACFA;EACE,cAAA;AACF;ACFA;EACE,cAAA;AACF;ACFA;EACE,eAAA;AACF;ACFA;EACE,gBAAgB;AAClB;ACAA;EACE,UAAA;AAAF;ACHA;EACE,gBAAA;AACF;ACFA;EACE,YAAA;AACF;ACFA;EACE,oBAAA;AACF;ACFA;EACE,kBAAA;AACF;ACFA;EACE,eAAA;AACF\\",\\"file\\":\\"extracted-e7bdd0b4.css\\",\\"sourcesContent\\":[\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\",\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".thirdtwo {\\\\n  color: hotpink;\\\\n}\\\\n\\",\\".fourthtwo {\\\\n  color: honeydew;\\\\n}\\\\n\\",\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\",\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\",\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\",\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
 
 exports[`code-splitting preserve-modules: css 1`] = `
 ".first_partial {
   color: rosybrown;
 }
 .first_first {
-  color: red; }
-
-/*# sourceMappingURL=first.scss-44b7acc6.css.map */"
+  color: red;
+}
+/*# sourceMappingURL=first.scss-09da2540.css.map */"
 `;
 
 exports[`code-splitting preserve-modules: css 2`] = `
 ".fourth_fourth {
-  color: magenta; }
-
-/*# sourceMappingURL=fourth.scss-d0bfc920.css.map */"
+  color: magenta;
+}
+/*# sourceMappingURL=fourth.scss-09e87fef.css.map */"
 `;
 
 exports[`code-splitting preserve-modules: css 3`] = `
 ".third_third {
-  color: maroon; }
-
+  color: maroon;
+}
 .fourth_fourth {
-  color: magenta; }
-
+  color: magenta;
+}
 .first_first_sub {
-  color: black; }
-
-/*# sourceMappingURL=index-c983ef02.css.map */"
+  color: black;
+}
+/*# sourceMappingURL=index-2eb1e4f1.css.map */"
 `;
 
 exports[`code-splitting preserve-modules: css 4`] = `
 ".nestedScript_nestedScript {
-  color: rebeccapurple; }
-
+  color: rebeccapurple;
+}
 .nondynamic_nondynamic {
-  color: deepskyblue; }
-
+  color: deepskyblue;
+}
 .nondynamic2_nondynamic2 {
-  color: deeppink; }
-
-/*# sourceMappingURL=nested-script-a24720a9.css.map */"
+  color: deeppink;
+}
+/*# sourceMappingURL=nested-script-9184ab06.css.map */"
 `;
 
 exports[`code-splitting preserve-modules: css 5`] = `
 ".nondynamic_nondynamic {
-  color: deepskyblue; }
-
+  color: deepskyblue;
+}
 .nondynamic2_nondynamic2 {
-  color: deeppink; }
-
-/*# sourceMappingURL=nondynamic-7bda63b1.css.map */"
+  color: deeppink;
+}
+/*# sourceMappingURL=nondynamic-c29646e1.css.map */"
 `;
 
 exports[`code-splitting preserve-modules: css 6`] = `
 ".nondynamic2_nondynamic2 {
-  color: deeppink; }
-
-/*# sourceMappingURL=nondynamic2.scss-4d122515.css.map */"
+  color: deeppink;
+}
+/*# sourceMappingURL=nondynamic2.scss-c5c99748.css.map */"
 `;
 
 exports[`code-splitting preserve-modules: css 7`] = `
 ".otherScript_otherScript {
-  color: wheat; }
-
-/*# sourceMappingURL=other-script-0b4c1d5a.css.map */"
+  color: wheat;
+}
+/*# sourceMappingURL=other-script-8618c69c.css.map */"
 `;
 
 exports[`code-splitting preserve-modules: css 8`] = `
 ".second_second {
-  color: royalblue; }
-
-/*# sourceMappingURL=second.scss-6cce06d4.css.map */"
+  color: royalblue;
+}
+/*# sourceMappingURL=second.scss-c8396680.css.map */"
 `;
 
 exports[`code-splitting preserve-modules: css 9`] = `
 ".first_first_sub {
-  color: black; }
-
-/*# sourceMappingURL=index-cfc5604f.css.map */"
+  color: black;
+}
+/*# sourceMappingURL=index-837475e5.css.map */"
 `;
 
 exports[`code-splitting preserve-modules: js 1`] = `
-"const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+"var css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red;\\\\n}\\";
 var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 export default modules_efa96bb5;
@@ -1463,7 +1469,7 @@ exports[`code-splitting preserve-modules: js 8`] = `
 `;
 
 exports[`code-splitting preserve-modules: js 9`] = `
-"const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+"var css = \\".second_second {\\\\n  color: royalblue;\\\\n}\\";
 var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 export default modules_7a038d99;
@@ -1476,127 +1482,127 @@ exports[`code-splitting preserve-modules: js 10`] = `
 "
 `;
 
-exports[`code-splitting preserve-modules: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA\\",\\"file\\":\\"first.scss-44b7acc6.css\\",\\"sourcesContent\\":[\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting preserve-modules: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB;AAClB;ACAA;EACE,UAAA;AAAF\\",\\"file\\":\\"first.scss-09da2540.css\\",\\"sourcesContent\\":[\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting preserve-modules: map 2`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/fourth.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,cAAc,EAAA\\",\\"file\\":\\"fourth.scss-d0bfc920.css\\",\\"sourcesContent\\":[\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting preserve-modules: map 2`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/fourth.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,cAAA;AACF\\",\\"file\\":\\"fourth.scss-09e87fef.css\\",\\"sourcesContent\\":[\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting preserve-modules: map 3`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/sub/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA;;ACDhB;EACE,YAAY,EAAA\\",\\"file\\":\\"index-c983ef02.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting preserve-modules: map 3`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/sub/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAA;AACF;ACFA;EACE,cAAA;AACF;ACFA;EACE,YAAA;AACF\\",\\"file\\":\\"index-2eb1e4f1.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting preserve-modules: map 4`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nested-script.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,oBAAoB,EAAA;;ACDtB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"nested-script-a24720a9.css\\",\\"sourcesContent\\":[\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting preserve-modules: map 4`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nested-script.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,oBAAA;AACF;ACFA;EACE,kBAAA;AACF;ACFA;EACE,eAAA;AACF\\",\\"file\\":\\"nested-script-9184ab06.css\\",\\"sourcesContent\\":[\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting preserve-modules: map 5`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"nondynamic-7bda63b1.css\\",\\"sourcesContent\\":[\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting preserve-modules: map 5`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,kBAAA;AACF;ACFA;EACE,eAAA;AACF\\",\\"file\\":\\"nondynamic-c29646e1.css\\",\\"sourcesContent\\":[\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting preserve-modules: map 6`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,eAAe,EAAA\\",\\"file\\":\\"nondynamic2.scss-4d122515.css\\",\\"sourcesContent\\":[\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting preserve-modules: map 6`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,eAAA;AACF\\",\\"file\\":\\"nondynamic2.scss-c5c99748.css\\",\\"sourcesContent\\":[\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting preserve-modules: map 7`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/other-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAY,EAAA\\",\\"file\\":\\"other-script-0b4c1d5a.css\\",\\"sourcesContent\\":[\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting preserve-modules: map 7`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/other-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAA;AACF\\",\\"file\\":\\"other-script-8618c69c.css\\",\\"sourcesContent\\":[\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting preserve-modules: map 8`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/second.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB,EAAA\\",\\"file\\":\\"second.scss-6cce06d4.css\\",\\"sourcesContent\\":[\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting preserve-modules: map 8`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/second.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAA;AACF\\",\\"file\\":\\"second.scss-c8396680.css\\",\\"sourcesContent\\":[\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting preserve-modules: map 9`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../../code-splitting/sub/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAY,EAAA\\",\\"file\\":\\"index-cfc5604f.css\\",\\"sourcesContent\\":[\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting preserve-modules: map 9`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../../code-splitting/sub/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAA;AACF\\",\\"file\\":\\"index-837475e5.css\\",\\"sourcesContent\\":[\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\"]}"`;
 
 exports[`code-splitting preserve-modules-multi-entry: css 1`] = `
 ".first_partial {
   color: rosybrown;
 }
 .first_first {
-  color: red; }
-
-/*# sourceMappingURL=first.scss-44b7acc6.css.map */"
+  color: red;
+}
+/*# sourceMappingURL=first.scss-09da2540.css.map */"
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: css 2`] = `
 ".fourth_fourth {
-  color: magenta; }
-
-/*# sourceMappingURL=fourth.scss-d0bfc920.css.map */"
+  color: magenta;
+}
+/*# sourceMappingURL=fourth.scss-09e87fef.css.map */"
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: css 3`] = `
 ".fourthtwo_fourthtwo {
-  color: honeydew; }
-
-/*# sourceMappingURL=fourthtwo.scss-587daccb.css.map */"
+  color: honeydew;
+}
+/*# sourceMappingURL=fourthtwo.scss-5126643f.css.map */"
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: css 4`] = `
 ".third_third {
-  color: maroon; }
-
+  color: maroon;
+}
 .fourth_fourth {
-  color: magenta; }
-
+  color: magenta;
+}
 .first_first_sub {
-  color: black; }
-
-/*# sourceMappingURL=index-c983ef02.css.map */"
+  color: black;
+}
+/*# sourceMappingURL=index-2eb1e4f1.css.map */"
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: css 5`] = `
 ".thirdtwo_thirdtwo {
-  color: hotpink; }
-
+  color: hotpink;
+}
 .fourthtwo_fourthtwo {
-  color: honeydew; }
-
+  color: honeydew;
+}
 .first_first_sub {
-  color: black; }
-
-/*# sourceMappingURL=indextwo-7d5c6a60.css.map */"
+  color: black;
+}
+/*# sourceMappingURL=indextwo-9ba01f4a.css.map */"
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: css 6`] = `
 ".nestedScript_nestedScript {
-  color: rebeccapurple; }
-
+  color: rebeccapurple;
+}
 .nondynamic_nondynamic {
-  color: deepskyblue; }
-
+  color: deepskyblue;
+}
 .nondynamic2_nondynamic2 {
-  color: deeppink; }
-
-/*# sourceMappingURL=nested-script-a24720a9.css.map */"
+  color: deeppink;
+}
+/*# sourceMappingURL=nested-script-9184ab06.css.map */"
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: css 7`] = `
 ".nondynamic_nondynamic {
-  color: deepskyblue; }
-
+  color: deepskyblue;
+}
 .nondynamic2_nondynamic2 {
-  color: deeppink; }
-
-/*# sourceMappingURL=nondynamic-7bda63b1.css.map */"
+  color: deeppink;
+}
+/*# sourceMappingURL=nondynamic-c29646e1.css.map */"
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: css 8`] = `
 ".nondynamic2_nondynamic2 {
-  color: deeppink; }
-
-/*# sourceMappingURL=nondynamic2.scss-4d122515.css.map */"
+  color: deeppink;
+}
+/*# sourceMappingURL=nondynamic2.scss-c5c99748.css.map */"
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: css 9`] = `
 ".otherScript_otherScript {
-  color: wheat; }
-
-/*# sourceMappingURL=other-script-0b4c1d5a.css.map */"
+  color: wheat;
+}
+/*# sourceMappingURL=other-script-8618c69c.css.map */"
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: css 10`] = `
 ".second_second {
-  color: royalblue; }
-
-/*# sourceMappingURL=second.scss-6cce06d4.css.map */"
+  color: royalblue;
+}
+/*# sourceMappingURL=second.scss-c8396680.css.map */"
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: css 11`] = `
 ".first_first_sub {
-  color: black; }
-
-/*# sourceMappingURL=index-cfc5604f.css.map */"
+  color: black;
+}
+/*# sourceMappingURL=index-837475e5.css.map */"
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: js 1`] = `
-"const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+"var css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red;\\\\n}\\";
 var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 export default modules_efa96bb5;
@@ -1682,7 +1688,7 @@ exports[`code-splitting preserve-modules-multi-entry: js 10`] = `
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: js 11`] = `
-"const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+"var css = \\".second_second {\\\\n  color: royalblue;\\\\n}\\";
 var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 export default modules_7a038d99;
@@ -1695,64 +1701,64 @@ exports[`code-splitting preserve-modules-multi-entry: js 12`] = `
 "
 `;
 
-exports[`code-splitting preserve-modules-multi-entry: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA\\",\\"file\\":\\"first.scss-44b7acc6.css\\",\\"sourcesContent\\":[\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting preserve-modules-multi-entry: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB;AAClB;ACAA;EACE,UAAA;AAAF\\",\\"file\\":\\"first.scss-09da2540.css\\",\\"sourcesContent\\":[\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting preserve-modules-multi-entry: map 2`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/fourth.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,cAAc,EAAA\\",\\"file\\":\\"fourth.scss-d0bfc920.css\\",\\"sourcesContent\\":[\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting preserve-modules-multi-entry: map 2`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/fourth.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,cAAA;AACF\\",\\"file\\":\\"fourth.scss-09e87fef.css\\",\\"sourcesContent\\":[\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting preserve-modules-multi-entry: map 3`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/fourthtwo.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,eAAe,EAAA\\",\\"file\\":\\"fourthtwo.scss-587daccb.css\\",\\"sourcesContent\\":[\\".fourthtwo {\\\\n  color: honeydew;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting preserve-modules-multi-entry: map 3`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/fourthtwo.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,eAAA;AACF\\",\\"file\\":\\"fourthtwo.scss-5126643f.css\\",\\"sourcesContent\\":[\\".fourthtwo {\\\\n  color: honeydew;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting preserve-modules-multi-entry: map 4`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/sub/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA;;ACDhB;EACE,YAAY,EAAA\\",\\"file\\":\\"index-c983ef02.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting preserve-modules-multi-entry: map 4`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/sub/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAA;AACF;ACFA;EACE,cAAA;AACF;ACFA;EACE,YAAA;AACF\\",\\"file\\":\\"index-2eb1e4f1.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting preserve-modules-multi-entry: map 5`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/thirdtwo.scss\\",\\"../../../../code-splitting/fourthtwo.scss\\",\\"../../../../code-splitting/sub/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,cAAc,EAAA;;ACDhB;EACE,eAAe,EAAA;;ACDjB;EACE,YAAY,EAAA\\",\\"file\\":\\"indextwo-7d5c6a60.css\\",\\"sourcesContent\\":[\\".thirdtwo {\\\\n  color: hotpink;\\\\n}\\\\n\\",\\".fourthtwo {\\\\n  color: honeydew;\\\\n}\\\\n\\",\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting preserve-modules-multi-entry: map 5`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/thirdtwo.scss\\",\\"../../../../code-splitting/fourthtwo.scss\\",\\"../../../../code-splitting/sub/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,cAAA;AACF;ACFA;EACE,eAAA;AACF;ACFA;EACE,YAAA;AACF\\",\\"file\\":\\"indextwo-9ba01f4a.css\\",\\"sourcesContent\\":[\\".thirdtwo {\\\\n  color: hotpink;\\\\n}\\\\n\\",\\".fourthtwo {\\\\n  color: honeydew;\\\\n}\\\\n\\",\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting preserve-modules-multi-entry: map 6`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nested-script.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,oBAAoB,EAAA;;ACDtB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"nested-script-a24720a9.css\\",\\"sourcesContent\\":[\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting preserve-modules-multi-entry: map 6`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nested-script.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,oBAAA;AACF;ACFA;EACE,kBAAA;AACF;ACFA;EACE,eAAA;AACF\\",\\"file\\":\\"nested-script-9184ab06.css\\",\\"sourcesContent\\":[\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting preserve-modules-multi-entry: map 7`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"nondynamic-7bda63b1.css\\",\\"sourcesContent\\":[\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting preserve-modules-multi-entry: map 7`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,kBAAA;AACF;ACFA;EACE,eAAA;AACF\\",\\"file\\":\\"nondynamic-c29646e1.css\\",\\"sourcesContent\\":[\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting preserve-modules-multi-entry: map 8`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,eAAe,EAAA\\",\\"file\\":\\"nondynamic2.scss-4d122515.css\\",\\"sourcesContent\\":[\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting preserve-modules-multi-entry: map 8`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,eAAA;AACF\\",\\"file\\":\\"nondynamic2.scss-c5c99748.css\\",\\"sourcesContent\\":[\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting preserve-modules-multi-entry: map 9`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/other-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAY,EAAA\\",\\"file\\":\\"other-script-0b4c1d5a.css\\",\\"sourcesContent\\":[\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting preserve-modules-multi-entry: map 9`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/other-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAA;AACF\\",\\"file\\":\\"other-script-8618c69c.css\\",\\"sourcesContent\\":[\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting preserve-modules-multi-entry: map 10`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/second.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB,EAAA\\",\\"file\\":\\"second.scss-6cce06d4.css\\",\\"sourcesContent\\":[\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting preserve-modules-multi-entry: map 10`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/second.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAA;AACF\\",\\"file\\":\\"second.scss-c8396680.css\\",\\"sourcesContent\\":[\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting preserve-modules-multi-entry: map 11`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../../code-splitting/sub/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAY,EAAA\\",\\"file\\":\\"index-cfc5604f.css\\",\\"sourcesContent\\":[\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting preserve-modules-multi-entry: map 11`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../../code-splitting/sub/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAA;AACF\\",\\"file\\":\\"index-837475e5.css\\",\\"sourcesContent\\":[\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\"]}"`;
 
 exports[`code-splitting preserve-modules-single: css 1`] = `
 ".third_third {
-  color: maroon; }
-
+  color: maroon;
+}
 .fourth_fourth {
-  color: magenta; }
-
+  color: magenta;
+}
 .first_first_sub {
-  color: black; }
-
+  color: black;
+}
 .first_partial {
   color: rosybrown;
 }
 .first_first {
-  color: red; }
-
+  color: red;
+}
 .second_second {
-  color: royalblue; }
-
+  color: royalblue;
+}
 .otherScript_otherScript {
-  color: wheat; }
-
+  color: wheat;
+}
 .nestedScript_nestedScript {
-  color: rebeccapurple; }
-
+  color: rebeccapurple;
+}
 .nondynamic_nondynamic {
-  color: deepskyblue; }
-
+  color: deepskyblue;
+}
 .nondynamic2_nondynamic2 {
-  color: deeppink; }
-
-/*# sourceMappingURL=extracted-c991a359.css.map */"
+  color: deeppink;
+}
+/*# sourceMappingURL=extracted-c300cb66.css.map */"
 `;
 
 exports[`code-splitting preserve-modules-single: js 1`] = `
-"const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+"var css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red;\\\\n}\\";
 var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 export default modules_efa96bb5;
@@ -1816,7 +1822,7 @@ exports[`code-splitting preserve-modules-single: js 8`] = `
 `;
 
 exports[`code-splitting preserve-modules-single: js 9`] = `
-"const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+"var css = \\".second_second {\\\\n  color: royalblue;\\\\n}\\";
 var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 export default modules_7a038d99;
@@ -1829,44 +1835,44 @@ exports[`code-splitting preserve-modules-single: js 10`] = `
 "
 `;
 
-exports[`code-splitting preserve-modules-single: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/sub/first.scss\\",\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\",\\"../../../../code-splitting/second.scss\\",\\"../../../../code-splitting/other-script.scss\\",\\"../../../../code-splitting/nested-script.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA;;ACDhB;EACE,YAAY,EAAA;;ACDd;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA;;ACHZ;EACE,gBAAgB,EAAA;;ACDlB;EACE,YAAY,EAAA;;ACDd;EACE,oBAAoB,EAAA;;ACDtB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"extracted-c991a359.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\",\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\",\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\",\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\",\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting preserve-modules-single: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/sub/first.scss\\",\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\",\\"../../../../code-splitting/second.scss\\",\\"../../../../code-splitting/other-script.scss\\",\\"../../../../code-splitting/nested-script.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAA;AACF;ACFA;EACE,cAAA;AACF;ACFA;EACE,YAAA;AACF;ACFA;EACE,gBAAgB;AAClB;ACAA;EACE,UAAA;AAAF;ACHA;EACE,gBAAA;AACF;ACFA;EACE,YAAA;AACF;ACFA;EACE,oBAAA;AACF;ACFA;EACE,kBAAA;AACF;ACFA;EACE,eAAA;AACF\\",\\"file\\":\\"extracted-c300cb66.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\",\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\",\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\",\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\",\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
 
 exports[`code-splitting single: css 1`] = `
 ".third_third {
-  color: maroon; }
-
+  color: maroon;
+}
 .fourth_fourth {
-  color: magenta; }
-
+  color: magenta;
+}
 .first_first_sub {
-  color: black; }
-
+  color: black;
+}
 .first_partial {
   color: rosybrown;
 }
 .first_first {
-  color: red; }
-
+  color: red;
+}
 .second_second {
-  color: royalblue; }
-
+  color: royalblue;
+}
 .otherScript_otherScript {
-  color: wheat; }
-
+  color: wheat;
+}
 .nestedScript_nestedScript {
-  color: rebeccapurple; }
-
+  color: rebeccapurple;
+}
 .nondynamic_nondynamic {
-  color: deepskyblue; }
-
+  color: deepskyblue;
+}
 .nondynamic2_nondynamic2 {
-  color: deeppink; }
-
-/*# sourceMappingURL=extracted-c991a359.css.map */"
+  color: deeppink;
+}
+/*# sourceMappingURL=extracted-c300cb66.css.map */"
 `;
 
 exports[`code-splitting single: js 1`] = `
-"const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+"var css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red;\\\\n}\\";
 var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 export default modules_efa96bb5;
@@ -1880,9 +1886,9 @@ exports[`code-splitting single: js 2`] = `
 console.log(\\"sub\\");
 
 (async () => {
-  const first = await import('./first-c5b09b56.js');
-  const second = await import('./second-86e63d6c.js');
-  const otherScript = await import('./other-script-98094377.js');
+  const first = await import('./first-31521213.js');
+  const second = await import('./second-df360e06.js');
+  const otherScript = await import('./other-script-2245da70.js');
   console.log(first, second, otherScript);
 })();
 
@@ -1905,14 +1911,14 @@ exports[`code-splitting single: js 4`] = `
 exports[`code-splitting single: js 5`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-0cc66e75.js');
+  const nestedScript = await import('./nested-script-fd10473b.js');
   console.log(nestedScript);
 })();
 "
 `;
 
 exports[`code-splitting single: js 6`] = `
-"const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+"var css = \\".second_second {\\\\n  color: royalblue;\\\\n}\\";
 var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 export default modules_7a038d99;
@@ -1920,60 +1926,60 @@ export { css };
 "
 `;
 
-exports[`code-splitting single: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/sub/first.scss\\",\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\",\\"../../../../code-splitting/second.scss\\",\\"../../../../code-splitting/other-script.scss\\",\\"../../../../code-splitting/nested-script.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA;;ACDhB;EACE,YAAY,EAAA;;ACDd;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA;;ACHZ;EACE,gBAAgB,EAAA;;ACDlB;EACE,YAAY,EAAA;;ACDd;EACE,oBAAoB,EAAA;;ACDtB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"extracted-c991a359.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\",\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\",\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\",\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\",\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting single: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/sub/first.scss\\",\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\",\\"../../../../code-splitting/second.scss\\",\\"../../../../code-splitting/other-script.scss\\",\\"../../../../code-splitting/nested-script.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAA;AACF;ACFA;EACE,cAAA;AACF;ACFA;EACE,YAAA;AACF;ACFA;EACE,gBAAgB;AAClB;ACAA;EACE,UAAA;AAAF;ACHA;EACE,gBAAA;AACF;ACFA;EACE,YAAA;AACF;ACFA;EACE,oBAAA;AACF;ACFA;EACE,kBAAA;AACF;ACFA;EACE,eAAA;AACF\\",\\"file\\":\\"extracted-c300cb66.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\",\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\",\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\",\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\",\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
 
 exports[`code-splitting true: css 1`] = `
 ".first_partial {
   color: rosybrown;
 }
 .first_first {
-  color: red; }
-
-/*# sourceMappingURL=first-67312563.css.map */"
+  color: red;
+}
+/*# sourceMappingURL=first-114c8ccb.css.map */"
 `;
 
 exports[`code-splitting true: css 2`] = `
 ".third_third {
-  color: maroon; }
-
+  color: maroon;
+}
 .fourth_fourth {
-  color: magenta; }
-
+  color: magenta;
+}
 .first_first_sub {
-  color: black; }
-
-/*# sourceMappingURL=index-c983ef02.css.map */"
+  color: black;
+}
+/*# sourceMappingURL=index-2eb1e4f1.css.map */"
 `;
 
 exports[`code-splitting true: css 3`] = `
 ".nestedScript_nestedScript {
-  color: rebeccapurple; }
-
+  color: rebeccapurple;
+}
 .nondynamic_nondynamic {
-  color: deepskyblue; }
-
+  color: deepskyblue;
+}
 .nondynamic2_nondynamic2 {
-  color: deeppink; }
-
-/*# sourceMappingURL=nested-script-a24720a9.css.map */"
+  color: deeppink;
+}
+/*# sourceMappingURL=nested-script-9184ab06.css.map */"
 `;
 
 exports[`code-splitting true: css 4`] = `
 ".otherScript_otherScript {
-  color: wheat; }
-
-/*# sourceMappingURL=other-script-0b4c1d5a.css.map */"
+  color: wheat;
+}
+/*# sourceMappingURL=other-script-8618c69c.css.map */"
 `;
 
 exports[`code-splitting true: css 5`] = `
 ".second_second {
-  color: royalblue; }
-
-/*# sourceMappingURL=second-9b132bc0.css.map */"
+  color: royalblue;
+}
+/*# sourceMappingURL=second-47b1938d.css.map */"
 `;
 
 exports[`code-splitting true: js 1`] = `
-"const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+"var css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red;\\\\n}\\";
 var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 export default modules_efa96bb5;
@@ -1987,9 +1993,9 @@ exports[`code-splitting true: js 2`] = `
 console.log(\\"sub\\");
 
 (async () => {
-  const first = await import('./first-c5b09b56.js');
-  const second = await import('./second-86e63d6c.js');
-  const otherScript = await import('./other-script-98094377.js');
+  const first = await import('./first-31521213.js');
+  const second = await import('./second-df360e06.js');
+  const otherScript = await import('./other-script-2245da70.js');
   console.log(first, second, otherScript);
 })();
 
@@ -2012,14 +2018,14 @@ exports[`code-splitting true: js 4`] = `
 exports[`code-splitting true: js 5`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-0cc66e75.js');
+  const nestedScript = await import('./nested-script-fd10473b.js');
   console.log(nestedScript);
 })();
 "
 `;
 
 exports[`code-splitting true: js 6`] = `
-"const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+"var css = \\".second_second {\\\\n  color: royalblue;\\\\n}\\";
 var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 export default modules_7a038d99;
@@ -2027,15 +2033,15 @@ export { css };
 "
 `;
 
-exports[`code-splitting true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB;AAClB;ACAA;EACE,UAAU,EAAA\\",\\"file\\":\\"first-67312563.css\\",\\"sourcesContent\\":[\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/partial.css\\",\\"../../../../code-splitting/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB;AAClB;ACAA;EACE,UAAA;AAAF\\",\\"file\\":\\"first-114c8ccb.css\\",\\"sourcesContent\\":[\\".partial {\\\\n  color: rosybrown;\\\\n}\\\\n\\",\\"@import \\\\\\"./partial.css\\\\\\";\\\\n\\\\n.first {\\\\n  color: red;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting true: map 2`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/sub/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAa,EAAA;;ACDf;EACE,cAAc,EAAA;;ACDhB;EACE,YAAY,EAAA\\",\\"file\\":\\"index-c983ef02.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting true: map 2`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/third.scss\\",\\"../../../../code-splitting/fourth.scss\\",\\"../../../../code-splitting/sub/first.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,aAAA;AACF;ACFA;EACE,cAAA;AACF;ACFA;EACE,YAAA;AACF\\",\\"file\\":\\"index-2eb1e4f1.css\\",\\"sourcesContent\\":[\\".third {\\\\n  color: maroon;\\\\n}\\\\n\\",\\".fourth {\\\\n  color: magenta;\\\\n}\\\\n\\",\\".first_sub {\\\\n  color: black;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting true: map 3`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nested-script.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,oBAAoB,EAAA;;ACDtB;EACE,kBAAkB,EAAA;;ACDpB;EACE,eAAe,EAAA\\",\\"file\\":\\"nested-script-a24720a9.css\\",\\"sourcesContent\\":[\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting true: map 3`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/nested-script.scss\\",\\"../../../../code-splitting/nondynamic.scss\\",\\"../../../../code-splitting/nondynamic2.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,oBAAA;AACF;ACFA;EACE,kBAAA;AACF;ACFA;EACE,eAAA;AACF\\",\\"file\\":\\"nested-script-9184ab06.css\\",\\"sourcesContent\\":[\\".nested-script {\\\\n  color: rebeccapurple;\\\\n}\\\\n\\",\\".nondynamic {\\\\n  color: deepskyblue;\\\\n}\\\\n\\",\\".nondynamic2 {\\\\n  color: deeppink;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting true: map 4`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/other-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAY,EAAA\\",\\"file\\":\\"other-script-0b4c1d5a.css\\",\\"sourcesContent\\":[\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting true: map 4`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/other-script.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,YAAA;AACF\\",\\"file\\":\\"other-script-8618c69c.css\\",\\"sourcesContent\\":[\\".other-script {\\\\n  color: wheat;\\\\n}\\\\n\\"]}"`;
 
-exports[`code-splitting true: map 5`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/second.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB,EAAA\\",\\"file\\":\\"second-9b132bc0.css\\",\\"sourcesContent\\":[\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\"]}"`;
+exports[`code-splitting true: map 5`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/second.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAA;AACF\\",\\"file\\":\\"second-47b1938d.css\\",\\"sourcesContent\\":[\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\"]}"`;
 
 exports[`emit true: js 1`] = `
 "import { css } from 'lit-element';
@@ -2071,25 +2077,25 @@ exports[`extract custom-path: css 1`] = `
 
 .sass {
   width: 30%;
-  color: red; }
-
+  color: red;
+}
 .less {
   color: #6c94be;
 }
 
-/*# sourceMappingURL=extracted-57b81765.css.map */"
+/*# sourceMappingURL=extracted-797ca4e4.css.map */"
 `;
 
 exports[`extract custom-path: js 1`] = `
-"const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
 console.log(css, css$1);
 "
 `;
 
-exports[`extract custom-path: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../../../simple/foo.css\\",\\"../../../../../../simple/bar.css\\",\\"../../../../../../simple/style.styl\\",\\"../../../../../../simple/style.pcss\\",\\"../../../../../../simple/style.sass\\",\\"../../../../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;AACZ;;ACFA;EACE,WAAO;EACP,gBAAY;AACd;;ACHA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;EACV,UAAU,EAAA;;ACCZ;EACE,cAAA;AAFF\\",\\"file\\":\\"extracted-57b81765.css\\",\\"sourcesContent\\":[\\".foo {\\\\n  color: red;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".stylus\\\\n  color: red\\\\n  background: @color\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
+exports[`extract custom-path: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../../../simple/foo.css\\",\\"../../../../../../simple/bar.css\\",\\"../../../../../../simple/style.styl\\",\\"../../../../../../simple/style.pcss\\",\\"../../../../../../simple/style.sass\\",\\"../../../../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;AACZ;;ACFA;EACE,WAAO;EACP,gBAAY;AACd;;ACHA;EACE,UAAU;AACZ;;ACFA;EACE,UAAA;EACA,UAAA;AACF;ACAA;EACE,cAAA;AAFF\\",\\"file\\":\\"extracted-797ca4e4.css\\",\\"sourcesContent\\":[\\".foo {\\\\n  color: red;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".stylus\\\\n  color: red\\\\n  background: @color\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass\\\\n  width: 30%\\\\n  color: red\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
 
 exports[`extract file: css 1`] = `
 ".foo {
@@ -2111,8 +2117,8 @@ exports[`extract file: css 1`] = `
 
 .sass {
   width: 30%;
-  color: red; }
-
+  color: red;
+}
 .less {
   color: #6c94be;
 }
@@ -2120,9 +2126,9 @@ exports[`extract file: css 1`] = `
 `;
 
 exports[`extract file: js 1`] = `
-"const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
 console.log(css, css$1);
 "
@@ -2162,8 +2168,8 @@ exports[`extract preserve-modules: css 3`] = `
 
 .sass {
   width: 30%;
-  color: red; }
-
+  color: red;
+}
 .less {
   color: #6c94be;
 }
@@ -2171,7 +2177,7 @@ exports[`extract preserve-modules: css 3`] = `
 `;
 
 exports[`extract preserve-modules: js 1`] = `
-"const css = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+"var css = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
 export default css;
 export { css };
@@ -2179,7 +2185,7 @@ export { css };
 `;
 
 exports[`extract preserve-modules: js 2`] = `
-"const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
 export default css;
 export { css };
@@ -2219,19 +2225,19 @@ exports[`extract sourcemap-inline: css 1`] = `
 
 .sass {
   width: 30%;
-  color: red; }
-
+  color: red;
+}
 .less {
   color: #6c94be;
 }
 
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3NpbXBsZS9mb28uY3NzIiwiLi4vLi4vLi4vLi4vc2ltcGxlL2Jhci5jc3MiLCIuLi8uLi8uLi8uLi9zaW1wbGUvc3R5bGUuc3R5bCIsIi4uLy4uLy4uLy4uL3NpbXBsZS9zdHlsZS5wY3NzIiwiLi4vLi4vLi4vLi4vc2ltcGxlL3N0eWxlLnNhc3MiLCIuLi8uLi8uLi8uLi9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWjs7QUNGQTtFQUNFLFVBQVU7QUFDWjs7QUNGQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkOztBQ0hBO0VBQ0UsVUFBVTtBQUNaOztBQ0ZBO0VBQ0UsVUFBVTtFQUNWLFVBQVUsRUFBQTs7QUNDWjtFQUNFLGNBQUE7QUFGRiIsImZpbGUiOiJpbmRleC03ZWM4MjkyNi5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZm9vIHtcbiAgY29sb3I6IHJlZDtcbn1cbiIsIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIiwiLnN0eWx1c1xuICBjb2xvcjogcmVkXG4gIGJhY2tncm91bmQ6IEBjb2xvclxuIiwiLnBjc3Mge1xuICBjb2xvcjogcmVkO1xufVxuIiwiLnNhc3Mge1xuICB3aWR0aDogMzAlO1xuICBjb2xvcjogcmVkOyB9XG4iLCJAbmljZS1ibHVlOiAjNWI4M2FkO1xuQGxpZ2h0LWJsdWU6IEBuaWNlLWJsdWUgKyAjMTExO1xuXG4ubGVzcyB7XG4gIGNvbG9yOiBAbGlnaHQtYmx1ZTtcbn1cbiJdfQ== */"
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3NpbXBsZS9mb28uY3NzIiwiLi4vLi4vLi4vLi4vc2ltcGxlL2Jhci5jc3MiLCIuLi8uLi8uLi8uLi9zaW1wbGUvc3R5bGUuc3R5bCIsIi4uLy4uLy4uLy4uL3NpbXBsZS9zdHlsZS5wY3NzIiwiLi4vLi4vLi4vLi4vc2ltcGxlL3N0eWxlLnNhc3MiLCIuLi8uLi8uLi8uLi9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWjs7QUNGQTtFQUNFLFVBQVU7QUFDWjs7QUNGQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkOztBQ0hBO0VBQ0UsVUFBVTtBQUNaOztBQ0ZBO0VBQ0UsVUFBQTtFQUNBLFVBQUE7QUFDRjtBQ0FBO0VBQ0UsY0FBQTtBQUZGIiwiZmlsZSI6ImluZGV4LWVmYzkzOGM4LmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIiwiLmJhciB7XG4gIGNvbG9yOiByZWQ7XG59XG4iLCIuc3R5bHVzXG4gIGNvbG9yOiByZWRcbiAgYmFja2dyb3VuZDogQGNvbG9yXG4iLCIucGNzcyB7XG4gIGNvbG9yOiByZWQ7XG59XG4iLCIuc2Fzc1xuICB3aWR0aDogMzAlXG4gIGNvbG9yOiByZWRcbiIsIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */"
 `;
 
 exports[`extract sourcemap-inline: js 1`] = `
-"const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
 console.log(css, css$1);
 "
@@ -2257,25 +2263,25 @@ exports[`extract sourcemap-true: css 1`] = `
 
 .sass {
   width: 30%;
-  color: red; }
-
+  color: red;
+}
 .less {
   color: #6c94be;
 }
 
-/*# sourceMappingURL=index-7ec82926.css.map */"
+/*# sourceMappingURL=index-efc938c8.css.map */"
 `;
 
 exports[`extract sourcemap-true: js 1`] = `
-"const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
 console.log(css, css$1);
 "
 `;
 
-exports[`extract sourcemap-true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../simple/foo.css\\",\\"../../../../simple/bar.css\\",\\"../../../../simple/style.styl\\",\\"../../../../simple/style.pcss\\",\\"../../../../simple/style.sass\\",\\"../../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;AACZ;;ACFA;EACE,WAAO;EACP,gBAAY;AACd;;ACHA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;EACV,UAAU,EAAA;;ACCZ;EACE,cAAA;AAFF\\",\\"file\\":\\"index-7ec82926.css\\",\\"sourcesContent\\":[\\".foo {\\\\n  color: red;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".stylus\\\\n  color: red\\\\n  background: @color\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
+exports[`extract sourcemap-true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../simple/foo.css\\",\\"../../../../simple/bar.css\\",\\"../../../../simple/style.styl\\",\\"../../../../simple/style.pcss\\",\\"../../../../simple/style.sass\\",\\"../../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;AACZ;;ACFA;EACE,WAAO;EACP,gBAAY;AACd;;ACHA;EACE,UAAU;AACZ;;ACFA;EACE,UAAA;EACA,UAAA;AACF;ACAA;EACE,cAAA;AAFF\\",\\"file\\":\\"index-efc938c8.css\\",\\"sourcesContent\\":[\\".foo {\\\\n  color: red;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".stylus\\\\n  color: red\\\\n  background: @color\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass\\\\n  width: 30%\\\\n  color: red\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
 
 exports[`extract true: css 1`] = `
 ".foo {
@@ -2297,8 +2303,8 @@ exports[`extract true: css 1`] = `
 
 .sass {
   width: 30%;
-  color: red; }
-
+  color: red;
+}
 .less {
   color: #6c94be;
 }
@@ -2306,31 +2312,31 @@ exports[`extract true: css 1`] = `
 `;
 
 exports[`extract true: js 1`] = `
-"const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
 console.log(css, css$1);
 "
 `;
 
 exports[`inject function: js 1`] = `
-"const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 console.log(css,\\"__tests__/fixtures/simple/foo.css\\");
 
-const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 console.log(css$1,\\"__tests__/fixtures/simple/bar.css\\");
 
-const css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
+var css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
 console.log(css$2,\\"__tests__/fixtures/simple/style.styl\\");
 
-const css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
+var css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
 console.log(css$3,\\"__tests__/fixtures/simple/style.pcss\\");
 
-const css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
+var css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red;\\\\n}\\";
 console.log(css$4,\\"__tests__/fixtures/simple/style.sass\\");
 
-const css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
+var css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
 console.log(css$5,\\"__tests__/fixtures/simple/style.less\\");
 
 console.log(css, css$1);
@@ -2407,22 +2413,22 @@ function injector_3b481dac (css, options) {
   }
 }
 
-const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_3b481dac(css,{\\"prepend\\":true});
 
-const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_3b481dac(css$1,{\\"prepend\\":true});
 
-const css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
+var css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
 injector_3b481dac(css$2,{\\"prepend\\":true});
 
-const css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
+var css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_3b481dac(css$3,{\\"prepend\\":true});
 
-const css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
+var css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red;\\\\n}\\";
 injector_3b481dac(css$4,{\\"prepend\\":true});
 
-const css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
+var css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
 injector_3b481dac(css$5,{\\"prepend\\":true});
 
 console.log(css, css$1);
@@ -2499,7 +2505,7 @@ function injector_3b481dac (css, options) {
   }
 }
 
-const css = \\".d {\\\\n  color: red;\\\\n}\\\\n.a {\\\\n  color: royalblue;\\\\n}\\\\n.b {\\\\n  color: red;\\\\n}\\\\n.c {\\\\n  color: red;\\\\n}\\\\n.foo {\\\\n  color: royalblue;\\\\n}\\\\n/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */\\\\nhtml,\\\\nbody,\\\\np,\\\\nol,\\\\nul,\\\\nli,\\\\ndl,\\\\ndt,\\\\ndd,\\\\nblockquote,\\\\nfigure,\\\\nfieldset,\\\\nlegend,\\\\ntextarea,\\\\npre,\\\\niframe,\\\\nhr,\\\\nh1,\\\\nh2,\\\\nh3,\\\\nh4,\\\\nh5,\\\\nh6 {\\\\n  margin: 0;\\\\n  padding: 0;\\\\n}\\\\nh1,\\\\nh2,\\\\nh3,\\\\nh4,\\\\nh5,\\\\nh6 {\\\\n  font-size: 100%;\\\\n  font-weight: normal;\\\\n}\\\\nul {\\\\n  list-style: none;\\\\n}\\\\nbutton,\\\\ninput,\\\\nselect,\\\\ntextarea {\\\\n  margin: 0;\\\\n}\\\\nhtml {\\\\n  box-sizing: border-box;\\\\n}\\\\n*,\\\\n*::before,\\\\n*::after {\\\\n  box-sizing: inherit;\\\\n}\\\\nimg,\\\\nvideo {\\\\n  height: auto;\\\\n  max-width: 100%;\\\\n}\\\\niframe {\\\\n  border: 0;\\\\n}\\\\ntable {\\\\n  border-collapse: collapse;\\\\n  border-spacing: 0;\\\\n}\\\\ntd,\\\\nth {\\\\n  padding: 0;\\\\n}\\\\ntd:not([align]),\\\\nth:not([align]) {\\\\n  text-align: left;\\\\n}\\\\n\\";
+var css = \\".d {\\\\n  color: red;\\\\n}\\\\n.a {\\\\n  color: royalblue;\\\\n}\\\\n.b {\\\\n  color: red;\\\\n}\\\\n.c {\\\\n  color: red;\\\\n}\\\\n.foo {\\\\n  color: royalblue;\\\\n}\\\\n/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */\\\\nhtml,\\\\nbody,\\\\np,\\\\nol,\\\\nul,\\\\nli,\\\\ndl,\\\\ndt,\\\\ndd,\\\\nblockquote,\\\\nfigure,\\\\nfieldset,\\\\nlegend,\\\\ntextarea,\\\\npre,\\\\niframe,\\\\nhr,\\\\nh1,\\\\nh2,\\\\nh3,\\\\nh4,\\\\nh5,\\\\nh6 {\\\\n  margin: 0;\\\\n  padding: 0;\\\\n}\\\\nh1,\\\\nh2,\\\\nh3,\\\\nh4,\\\\nh5,\\\\nh6 {\\\\n  font-size: 100%;\\\\n  font-weight: normal;\\\\n}\\\\nul {\\\\n  list-style: none;\\\\n}\\\\nbutton,\\\\ninput,\\\\nselect,\\\\ntextarea {\\\\n  margin: 0;\\\\n}\\\\nhtml {\\\\n  box-sizing: border-box;\\\\n}\\\\n*,\\\\n*::before,\\\\n*::after {\\\\n  box-sizing: inherit;\\\\n}\\\\nimg,\\\\nvideo {\\\\n  height: auto;\\\\n  max-width: 100%;\\\\n}\\\\niframe {\\\\n  border: 0;\\\\n}\\\\ntable {\\\\n  border-collapse: collapse;\\\\n  border-spacing: 0;\\\\n}\\\\ntd,\\\\nth {\\\\n  padding: 0;\\\\n}\\\\ntd:not([align]),\\\\nth:not([align]) {\\\\n  text-align: left;\\\\n}\\\\n\\";
 injector_3b481dac(css,{});
 "
 `;
@@ -2543,9 +2549,9 @@ exports[`less sourcemap: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../..
 exports[`minimize extract: css 1`] = `".bar,.foo,.stylus{color:red}.stylus{background:red}.pcss,.sass{color:red}.sass{width:30%}.less{color:#6c94be}"`;
 
 exports[`minimize extract: js 1`] = `
-"const css = \\".foo{color:red}\\";
+"var css = \\".foo{color:red}\\";
 
-const css$1 = \\".bar{color:red}\\";
+var css$1 = \\".bar{color:red}\\";
 
 console.log(css, css$1);
 "
@@ -2553,13 +2559,13 @@ console.log(css, css$1);
 
 exports[`minimize extract-sourcemap-inline: css 1`] = `
 ".bar,.foo,.stylus{color:red}.stylus{background:red}.pcss,.sass{color:red}.sass{width:30%}.less{color:#6c94be}
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3NpbXBsZS9zdHlsZS5zdHlsIiwiLi4vLi4vLi4vLi4vc2ltcGxlL2Jhci5jc3MiLCIuLi8uLi8uLi8uLi9zaW1wbGUvc3R5bGUuc2FzcyIsIi4uLy4uLy4uLy4uL3NpbXBsZS9zdHlsZS5wY3NzIiwiLi4vLi4vLi4vLi4vc2ltcGxlL3N0eWxlLmxlc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsa0JDQ0UsU0RFRixDQUhBLFFBRUUsY0FDRixDRUhBLFlDQ0UsU0RDVSxDQUZaLE1BQ0UsU0FDVSxDRUNaLE1BQ0UsYUFGRiIsImZpbGUiOiJpbmRleC04MDk1MTgzOC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc3R5bHVzXG4gIGNvbG9yOiByZWRcbiAgYmFja2dyb3VuZDogQGNvbG9yXG4iLCIuYmFyIHtcbiAgY29sb3I6IHJlZDtcbn1cbiIsIi5zYXNzIHtcbiAgd2lkdGg6IDMwJTtcbiAgY29sb3I6IHJlZDsgfVxuIiwiLnBjc3Mge1xuICBjb2xvcjogcmVkO1xufVxuIiwiQG5pY2UtYmx1ZTogIzViODNhZDtcbkBsaWdodC1ibHVlOiBAbmljZS1ibHVlICsgIzExMTtcblxuLmxlc3Mge1xuICBjb2xvcjogQGxpZ2h0LWJsdWU7XG59XG4iXX0= */"
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uLy4uLy4uL3NpbXBsZS9zdHlsZS5zdHlsIiwiLi4vLi4vLi4vLi4vc2ltcGxlL2Jhci5jc3MiLCIuLi8uLi8uLi8uLi9zaW1wbGUvc3R5bGUuc2FzcyIsIi4uLy4uLy4uLy4uL3NpbXBsZS9zdHlsZS5wY3NzIiwiLi4vLi4vLi4vLi4vc2ltcGxlL3N0eWxlLmxlc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsa0JDQ0UsU0RFRixDQUhBLFFBRUUsY0FDRixDRUhBLFlDQ0UsU0RFRixDQUhBLE1BQ0UsU0FFRixDRUFBLE1BQ0UsYUFGRiIsImZpbGUiOiJpbmRleC04MDk1MTgzOC5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc3R5bHVzXG4gIGNvbG9yOiByZWRcbiAgYmFja2dyb3VuZDogQGNvbG9yXG4iLCIuYmFyIHtcbiAgY29sb3I6IHJlZDtcbn1cbiIsIi5zYXNzXG4gIHdpZHRoOiAzMCVcbiAgY29sb3I6IHJlZFxuIiwiLnBjc3Mge1xuICBjb2xvcjogcmVkO1xufVxuIiwiQG5pY2UtYmx1ZTogIzViODNhZDtcbkBsaWdodC1ibHVlOiBAbmljZS1ibHVlICsgIzExMTtcblxuLmxlc3Mge1xuICBjb2xvcjogQGxpZ2h0LWJsdWU7XG59XG4iXX0= */"
 `;
 
 exports[`minimize extract-sourcemap-inline: js 1`] = `
-"const css = \\".foo{color:red}\\";
+"var css = \\".foo{color:red}\\";
 
-const css$1 = \\".bar{color:red}\\";
+var css$1 = \\".bar{color:red}\\";
 
 console.log(css, css$1);
 "
@@ -2571,15 +2577,15 @@ exports[`minimize extract-sourcemap-true: css 1`] = `
 `;
 
 exports[`minimize extract-sourcemap-true: js 1`] = `
-"const css = \\".foo{color:red}\\";
+"var css = \\".foo{color:red}\\";
 
-const css$1 = \\".bar{color:red}\\";
+var css$1 = \\".bar{color:red}\\";
 
 console.log(css, css$1);
 "
 `;
 
-exports[`minimize extract-sourcemap-true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../simple/style.styl\\",\\"../../../../simple/bar.css\\",\\"../../../../simple/style.sass\\",\\"../../../../simple/style.pcss\\",\\"../../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA,kBCCE,SDEF,CAHA,QAEE,cACF,CEHA,YCCE,SDCU,CAFZ,MACE,SACU,CECZ,MACE,aAFF\\",\\"file\\":\\"index-80951838.css\\",\\"sourcesContent\\":[\\".stylus\\\\n  color: red\\\\n  background: @color\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
+exports[`minimize extract-sourcemap-true: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../simple/style.styl\\",\\"../../../../simple/bar.css\\",\\"../../../../simple/style.sass\\",\\"../../../../simple/style.pcss\\",\\"../../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA,kBCCE,SDEF,CAHA,QAEE,cACF,CEHA,YCCE,SDEF,CAHA,MACE,SAEF,CEAA,MACE,aAFF\\",\\"file\\":\\"index-80951838.css\\",\\"sourcesContent\\":[\\".stylus\\\\n  color: red\\\\n  background: @color\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass\\\\n  width: 30%\\\\n  color: red\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
 
 exports[`minimize inject: js 1`] = `
 "/** @type {HTMLElement[]} */
@@ -2651,22 +2657,22 @@ function injector_3b481dac (css, options) {
   }
 }
 
-const css = \\".foo{color:red}\\";
+var css = \\".foo{color:red}\\";
 injector_3b481dac(css,{});
 
-const css$1 = \\".bar{color:red}\\";
+var css$1 = \\".bar{color:red}\\";
 injector_3b481dac(css$1,{});
 
-const css$2 = \\".stylus{color:red;background:red}\\";
+var css$2 = \\".stylus{color:red;background:red}\\";
 injector_3b481dac(css$2,{});
 
-const css$3 = \\".pcss{color:red}\\";
+var css$3 = \\".pcss{color:red}\\";
 injector_3b481dac(css$3,{});
 
-const css$4 = \\".sass{width:30%;color:red}\\";
+var css$4 = \\".sass{width:30%;color:red}\\";
 injector_3b481dac(css$4,{});
 
-const css$5 = \\".less{color:#6c94be}\\";
+var css$5 = \\".less{color:#6c94be}\\";
 injector_3b481dac(css$5,{});
 
 console.log(css, css$1);
@@ -2743,22 +2749,22 @@ function injector_ed8d1646 (css, options) {
   }
 }
 
-const css = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
+var css = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_ed8d1646(css,{});
 
-const css$1 = \\".a_module_a {\\\\n  color: red;\\\\n}\\\\n\\";
+var css$1 = \\".a_module_a {\\\\n  color: red;\\\\n}\\\\n\\";
 var modules_bdb828b9 = {\\"a\\":\\"a_module_a\\"};
 injector_ed8d1646(css$1,{});
 
-const css$2 = \\".b_module_b {\\\\n  color: red; }\\\\n\\";
+var css$2 = \\".b_module_b {\\\\n  color: red;\\\\n}\\";
 var modules_9fa995d6 = {\\"b\\":\\"b_module_b\\"};
 injector_ed8d1646(css$2,{});
 
-const css$3 = \\".c_module_c {\\\\n  color: red;\\\\n}\\\\n\\";
+var css$3 = \\".c_module_c {\\\\n  color: red;\\\\n}\\\\n\\";
 var modules_2b321dac = {\\"c\\":\\"c_module_c\\"};
 injector_ed8d1646(css$3,{});
 
-const css$4 = \\".d_module_d {\\\\n  color: #f00;\\\\n}\\\\n\\";
+var css$4 = \\".d_module_d {\\\\n  color: #f00;\\\\n}\\\\n\\";
 var modules_39901a8c = {\\"d\\":\\"d_module_d\\"};
 injector_ed8d1646(css$4,{});
 
@@ -2836,20 +2842,20 @@ function injector_ed8d1646 (css, options) {
   }
 }
 
-const css = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
+var css = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_ed8d1646(css,{});
 
-const css$1 = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
+var css$1 = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_ed8d1646(css$1,{});
 
-const css$2 = \\".b {\\\\n  color: red; }\\\\n\\";
+var css$2 = \\".b {\\\\n  color: red;\\\\n}\\";
 injector_ed8d1646(css$2,{});
 
-const css$3 = \\".c_module_c {\\\\n  color: red;\\\\n}\\\\n\\";
+var css$3 = \\".c_module_c {\\\\n  color: red;\\\\n}\\\\n\\";
 var modules_2b321dac = {\\"c\\":\\"c_module_c\\"};
 injector_ed8d1646(css$3,{});
 
-const css$4 = \\".d {\\\\n  color: #f00;\\\\n}\\\\n\\";
+var css$4 = \\".d {\\\\n  color: #f00;\\\\n}\\\\n\\";
 injector_ed8d1646(css$4,{});
 
 console.log(css$1, css$2, modules_2b321dac, css$4);
@@ -2926,19 +2932,19 @@ function injector_ed8d1646 (css, options) {
   }
 }
 
-const css = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
+var css = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_ed8d1646(css,{});
 
-const css$1 = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
+var css$1 = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_ed8d1646(css$1,{});
 
-const css$2 = \\".b {\\\\n  color: red; }\\\\n\\";
+var css$2 = \\".b {\\\\n  color: red;\\\\n}\\";
 injector_ed8d1646(css$2,{});
 
-const css$3 = \\".c {\\\\n  color: red;\\\\n}\\\\n\\";
+var css$3 = \\".c {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_ed8d1646(css$3,{});
 
-const css$4 = \\".d {\\\\n  color: #f00;\\\\n}\\\\n\\";
+var css$4 = \\".d {\\\\n  color: #f00;\\\\n}\\\\n\\";
 injector_ed8d1646(css$4,{});
 
 console.log(css$1, css$2, css$3, css$4);
@@ -3015,19 +3021,19 @@ function injector_ed8d1646 (css, options) {
   }
 }
 
-const css = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
+var css = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_ed8d1646(css,{});
 
-const css$1 = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
+var css$1 = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_ed8d1646(css$1,{});
 
-const css$2 = \\".b {\\\\n  color: red; }\\\\n\\";
+var css$2 = \\".b {\\\\n  color: red;\\\\n}\\";
 injector_ed8d1646(css$2,{});
 
-const css$3 = \\".c {\\\\n  color: red;\\\\n}\\\\n\\";
+var css$3 = \\".c {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_ed8d1646(css$3,{});
 
-const css$4 = \\".d_module_d {\\\\n  color: #f00;\\\\n}\\\\n\\";
+var css$4 = \\".d_module_d {\\\\n  color: #f00;\\\\n}\\\\n\\";
 var modules_39901a8c = {\\"d\\":\\"d_module_d\\"};
 injector_ed8d1646(css$4,{});
 
@@ -3244,18 +3250,18 @@ function injector_d0a569a1 (css, options) {
   }
 }
 
-const css = \\"html {\\\\n  --color-primary: green;\\\\n}\\\\n\\\\n.primaryhacked {\\\\n  color: green;\\\\n  color: var(--color-primary);\\\\n}\\\\n\\";
+var css = \\"html {\\\\n  --color-primary: green;\\\\n}\\\\n\\\\n.primaryhacked {\\\\n  color: green;\\\\n  color: var(--color-primary);\\\\n}\\\\n\\";
 injector_d0a569a1(css,{});
 
-const css$1 = \\".testhacked {\\\\n  content: \\\\\\"test\\\\\\";\\\\n}\\\\n\\";
+var css$1 = \\".testhacked {\\\\n  content: \\\\\\"test\\\\\\";\\\\n}\\\\n\\";
 var modules_fa509c68 = {\\"test\\":\\"testhacked\\"};
 injector_d0a569a1(css$1,{});
 
-const css$2 = \\".foohacked {\\\\n}\\\\n\\";
+var css$2 = \\".foohacked {\\\\n}\\\\n\\";
 var modules_52530603 = {\\"foo\\":\\"foohacked testhacked\\"};
 injector_d0a569a1(css$2,{});
 
-const css$3 = \\".barhacked {\\\\n}\\\\n\\";
+var css$3 = \\".barhacked {\\\\n}\\\\n\\";
 var modules_ad1fd3ff = {\\"bar\\":\\"barhacked testhacked\\"};
 injector_d0a569a1(css$3,{});
 
@@ -3333,14 +3339,14 @@ function injector_d9f9689a (css, options) {
   }
 }
 
-const css = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
+var css = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
 var modules_5a199c00 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
 injector_d9f9689a(css,{});
 
-const css$1 = \\"@media screen and (min-width: 900px) {\\\\n  .composed_composition {\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composed_composition {\\\\n  background-color: #BF4040;\\\\n}\\\\n\\";
+var css$1 = \\"@media screen and (min-width: 900px) {\\\\n  .composed_composition {\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composed_composition {\\\\n  background-color: #BF4040;\\\\n}\\\\n\\";
 injector_d9f9689a(css$1,{});
 
-const css$2 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
+var css$2 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
 var modules_354770d7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
 injector_d9f9689a(css$2,{});
 
@@ -3350,14 +3356,14 @@ else console.log(modules_5a199c00.module, modules_354770d7.compositioned);
 `;
 
 exports[`modules inject-fn: js 1`] = `
-"const css = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
+"var css = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
 console.log(css, true);
 var modules_5a199c00 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
 
-const css$1 = \\"@media screen and (min-width: 900px) {\\\\n  .composed_composition {\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composed_composition {\\\\n  background-color: #BF4040;\\\\n}\\\\n\\";
+var css$1 = \\"@media screen and (min-width: 900px) {\\\\n  .composed_composition {\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composed_composition {\\\\n  background-color: #BF4040;\\\\n}\\\\n\\";
 console.log(css$1, true);
 
-const css$2 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
+var css$2 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
 console.log(css$2, true);
 var modules_354770d7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
 
@@ -3436,7 +3442,7 @@ function injector_d9f9689a (css, options) {
   }
 }
 
-const css = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
+var css = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
 var injected = false;
 var modules_5a199c00 = {get \\"primary\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"#BF4040\\"; },
 get \\"secondary\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"#1F4F7F\\"; },
@@ -3444,7 +3450,7 @@ get \\"module\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{})
 get \\"module2\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"style_module2 composed_composition composition2_compositioned\\"; },
 inject() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } },};
 
-const css$1 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
+var css$1 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
 var injected$1 = false;
 var modules_354770d7 = {get \\"compositioned\\"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return \\"composition2_compositioned\\"; },
 inject() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } },};
@@ -3524,7 +3530,7 @@ function injector_d9f9689a (css, options) {
   }
 }
 
-const css = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
+var css = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
 var injected = false;
 var modules_5a199c00 = {get \\"primary\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"#BF4040\\"; },
 get \\"secondary\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"#1F4F7F\\"; },
@@ -3532,7 +3538,7 @@ get \\"module\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{})
 get \\"module2\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"style_module2 composed_composition composition2_compositioned\\"; },
 inject() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } },};
 
-const css$1 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
+var css$1 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
 var injected$1 = false;
 var modules_354770d7 = {get \\"compositioned\\"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return \\"composition2_compositioned\\"; },
 inject() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } },};
@@ -3614,7 +3620,7 @@ function injector_c84cd8fc (css, options) {
   }
 }
 
-const css = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\\\n.style_css {\\\\n  color: green;\\\\n}\\\\n\\";
+var css = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\\\n.style_css {\\\\n  color: green;\\\\n}\\\\n\\";
 var modules_5a199c00 = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"css\\":\\"style_css\\"};
 injector_c84cd8fc(css,{});
 
@@ -3695,7 +3701,7 @@ function injector_c84cd8fc (css, options) {
   }
 }
 
-const css = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\\\n.style_css {\\\\n  color: green;\\\\n}\\\\n\\";
+var css = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\\\n.style_css {\\\\n  color: green;\\\\n}\\\\n\\";
 var modules_5a199c00 = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"css\\":\\"style_css\\"};
 injector_c84cd8fc(css,{});
 
@@ -3776,7 +3782,7 @@ function injector_c84cd8fc (css, options) {
   }
 }
 
-const css = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\\\n.style_css {\\\\n  color: green;\\\\n}\\\\n\\";
+var css = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\\\n.style_css {\\\\n  color: green;\\\\n}\\\\n\\";
 var modules_5a199c00 = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"css\\":\\"style_css\\"};
 injector_c84cd8fc(css,{});
 
@@ -3859,8 +3865,8 @@ function injector_8784c4d6 (css, options) {
   }
 }
 
-const css = \\".bar_less {\\\\n  color: magenta;\\\\n}\\\\n\\";
-const less = \\"bar_less\\";
+var css = \\".bar_less {\\\\n  color: magenta;\\\\n}\\\\n\\";
+var less = \\"bar_less\\";
 var modules_b74a0081 = {\\"less\\":\\"bar_less\\"};
 injector_8784c4d6(css,{});
 
@@ -3939,13 +3945,13 @@ function injector_006bd99c (css, options) {
   }
 }
 
-const css = \\".style {\\\\n  color: red;\\\\n}\\\\n\\";
+var css = \\".style {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_006bd99c(css,{});
 
-const css$1 = \\".less {\\\\n  color: magenta;\\\\n}\\\\n\\";
+var css$1 = \\".less {\\\\n  color: magenta;\\\\n}\\\\n\\";
 injector_006bd99c(css$1,{});
 
-const css$2 = \\".mod_mod {\\\\n  color: royalblue;\\\\n}\\\\n\\";
+var css$2 = \\".mod_mod {\\\\n  color: royalblue;\\\\n}\\\\n\\";
 var modules_507361ee = {\\"mod\\":\\"mod_mod\\"};
 injector_006bd99c(css$2,{});
 
@@ -3954,9 +3960,9 @@ console.log(modules_507361ee);
 `;
 
 exports[`on-extract-fn: js 1`] = `
-"const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
 console.log(css, css$1);
 "
@@ -4032,7 +4038,7 @@ function injector_f31f2858 (css, options) {
   }
 }
 
-const css = \\".data {\\\\n  color: red; }\\\\n\\";
+var css = \\".data {\\\\n  color: red;\\\\n}\\";
 injector_f31f2858(css,{});
 "
 `;
@@ -4107,7 +4113,7 @@ function injector_ea22477b (css, options) {
   }
 }
 
-const css = \\".style {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
+var css = \\".style {\\\\n  width: 30%;\\\\n  color: red;\\\\n}\\";
 injector_ea22477b(css,{});
 "
 `;
@@ -4182,82 +4188,7 @@ function injector_f31f2858 (css, options) {
   }
 }
 
-const css = \\".a {\\\\n  color: magenta; }\\\\n\\\\n.b {\\\\n  color: red; }\\\\n\\\\n.c {\\\\n  color: red; }\\\\n\\\\n.foo {\\\\n  color: royalblue; }\\\\n\\\\n/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */\\\\nhtml, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {\\\\n  margin: 0;\\\\n  padding: 0; }\\\\n\\\\nh1, h2, h3, h4, h5, h6 {\\\\n  font-size: 100%;\\\\n  font-weight: normal; }\\\\n\\\\nul {\\\\n  list-style: none; }\\\\n\\\\nbutton, input, select, textarea {\\\\n  margin: 0; }\\\\n\\\\nhtml {\\\\n  box-sizing: border-box; }\\\\n\\\\n*, *::before, *::after {\\\\n  box-sizing: inherit; }\\\\n\\\\nimg, video {\\\\n  height: auto;\\\\n  max-width: 100%; }\\\\n\\\\niframe {\\\\n  border: 0; }\\\\n\\\\ntable {\\\\n  border-collapse: collapse;\\\\n  border-spacing: 0; }\\\\n\\\\ntd, th {\\\\n  padding: 0; }\\\\n\\\\ntd:not([align]), th:not([align]) {\\\\n  text-align: left; }\\\\n\\";
-injector_f31f2858(css,{});
-"
-`;
-
-exports[`sass importer: js 1`] = `
-"/** @type {HTMLElement[]} */
-var containers = [];
-/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
-var styleTags = [];
-
-/**
- * @param {string} css
- * @param {object} options
- * @param {boolean} [options.prepend]
- * @param {boolean} [options.singleTag]
- * @param {string} [options.container]
- * @param {Record<string,string>} [options.attributes]
- * @returns {void}
- */
-function injector_f31f2858 (css, options) {
-  if (!css || typeof document === \\"undefined\\") return;
-
-  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
-  var singleTag = options.singleTag === true;
-
-  var container =
-    typeof options.container === \\"string\\"
-      ? document.querySelector(options.container)
-      : document.getElementsByTagName(\\"head\\")[0];
-
-  function createStyleTag() {
-    var styleTag = document.createElement(\\"style\\");
-    styleTag.setAttribute(\\"type\\", \\"text/css\\");
-    if (options.attributes) {
-      var k = Object.keys(options.attributes);
-      for (var i = 0; i < k.length; i++) {
-        styleTag.setAttribute(k[i], options.attributes[k[i]]);
-      }
-    }
-    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
-    container.insertAdjacentElement(pos, styleTag);
-    return styleTag;
-  }
-
-  /** @type {HTMLStyleElement} */
-  var styleTag;
-
-  if (singleTag) {
-    var id = containers.indexOf(container);
-
-    if (id === -1) {
-      id = containers.push(container) - 1;
-      styleTags[id] = {};
-    }
-
-    if (styleTags[id] && styleTags[id][position]) {
-      styleTag = styleTags[id][position];
-    } else {
-      styleTag = styleTags[id][position] = createStyleTag();
-    }
-  } else {
-    styleTag = createStyleTag();
-  }
-
-  // strip potential UTF-8 BOM if css was read from a file
-  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
-
-  if (styleTag.styleSheet) {
-    styleTag.styleSheet.cssText += css;
-  } else {
-    styleTag.appendChild(document.createTextNode(css));
-  }
-}
-
-const css = \\".virtual {\\\\n  color: red; }\\\\n\\\\n.modularvirtual {\\\\n  color: blue; }\\\\n\\";
+var css = \\".a {\\\\n  color: magenta;\\\\n}\\\\n\\\\n.b {\\\\n  color: red;\\\\n}\\\\n\\\\n.c {\\\\n  color: red;\\\\n}\\\\n\\\\n.foo {\\\\n  color: royalblue;\\\\n}\\\\n\\\\n/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */\\\\nhtml, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {\\\\n  margin: 0;\\\\n  padding: 0;\\\\n}\\\\n\\\\nh1, h2, h3, h4, h5, h6 {\\\\n  font-size: 100%;\\\\n  font-weight: normal;\\\\n}\\\\n\\\\nul {\\\\n  list-style: none;\\\\n}\\\\n\\\\nbutton, input, select, textarea {\\\\n  margin: 0;\\\\n}\\\\n\\\\nhtml {\\\\n  box-sizing: border-box;\\\\n}\\\\n\\\\n*, *::before, *::after {\\\\n  box-sizing: inherit;\\\\n}\\\\n\\\\nimg, video {\\\\n  height: auto;\\\\n  max-width: 100%;\\\\n}\\\\n\\\\niframe {\\\\n  border: 0;\\\\n}\\\\n\\\\ntable {\\\\n  border-collapse: collapse;\\\\n  border-spacing: 0;\\\\n}\\\\n\\\\ntd, th {\\\\n  padding: 0;\\\\n}\\\\n\\\\ntd:not([align]), th:not([align]) {\\\\n  text-align: left;\\\\n}\\";
 injector_f31f2858(css,{});
 "
 `;
@@ -4332,7 +4263,7 @@ function injector_f31f2858 (css, options) {
   }
 }
 
-const css = \\".virtual {\\\\n  color: red;\\\\n}\\\\n\\\\n.modularvirtual {\\\\n  color: blue;\\\\n}\\";
+var css = \\".virtual {\\\\n  color: red;\\\\n}\\\\n\\\\n.modularvirtual {\\\\n  color: blue;\\\\n}\\";
 injector_f31f2858(css,{});
 "
 `;
@@ -4407,7 +4338,7 @@ function injector_f31f2858 (css, options) {
   }
 }
 
-const css = \\".virtual {\\\\n  color: red;\\\\n}\\\\n\\\\n.modularvirtual {\\\\n  color: blue;\\\\n}\\";
+var css = \\".virtual {\\\\n  color: red;\\\\n}\\\\n\\\\n.modularvirtual {\\\\n  color: blue;\\\\n}\\";
 injector_f31f2858(css,{});
 "
 `;
@@ -4482,7 +4413,7 @@ function injector_f31f2858 (css, options) {
   }
 }
 
-const css = \\".virtual {\\\\n  color: red; }\\\\n\\\\n.modularvirtual {\\\\n  color: blue; }\\\\n\\";
+var css = \\".virtual {\\\\n  color: red;\\\\n}\\\\n\\\\n.modularvirtual {\\\\n  color: blue;\\\\n}\\";
 injector_f31f2858(css,{});
 "
 `;
@@ -4557,7 +4488,7 @@ function injector_ea22477b (css, options) {
   }
 }
 
-const css = \\".style_someStyle {\\\\n  color: red; }\\\\n\\";
+var css = \\".style_someStyle {\\\\n  color: red;\\\\n}\\";
 var modules_2fd447d3 = {\\"some-style\\":\\"style_someStyle\\"};
 injector_ea22477b(css,{});
 
@@ -4635,7 +4566,7 @@ function injector_ea22477b (css, options) {
   }
 }
 
-const css = \\".style {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zYXNzL3N0eWxlLnNhc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0VBQ1YsVUFBVSxFQUFBIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWxlIHtcbiAgd2lkdGg6IDMwJTtcbiAgY29sb3I6IHJlZDsgfVxuIl19 */\\";
+var css = \\".style {\\\\n  width: 30%;\\\\n  color: red;\\\\n}\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zYXNzL3N0eWxlLnNhc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFBO0VBQ0EsVUFBQTtBQUNGIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWxlXG4gIHdpZHRoOiAzMCVcbiAgY29sb3I6IHJlZFxuIl19 */\\";
 injector_ea22477b(css,{});
 "
 `;
@@ -4710,7 +4641,7 @@ function injector_f31f2858 (css, options) {
   }
 }
 
-const css = \\"/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */\\\\nhtml, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {\\\\n  margin: 0;\\\\n  padding: 0;\\\\n}\\\\n\\\\nh1, h2, h3, h4, h5, h6 {\\\\n  font-size: 100%;\\\\n  font-weight: normal;\\\\n}\\\\n\\\\nul {\\\\n  list-style: none;\\\\n}\\\\n\\\\nbutton, input, select, textarea {\\\\n  margin: 0;\\\\n}\\\\n\\\\nhtml {\\\\n  box-sizing: border-box;\\\\n}\\\\n\\\\n*, *::before, *::after {\\\\n  box-sizing: inherit;\\\\n}\\\\n\\\\nimg, video {\\\\n  height: auto;\\\\n  max-width: 100%;\\\\n}\\\\n\\\\niframe {\\\\n  border: 0;\\\\n}\\\\n\\\\ntable {\\\\n  border-collapse: collapse;\\\\n  border-spacing: 0;\\\\n}\\\\n\\\\ntd, th {\\\\n  padding: 0;\\\\n}\\\\n\\\\ntd:not([align]), th:not([align]) {\\\\n  text-align: left;\\\\n}\\\\n\\\\n.button {\\\\n  border-radius: 3px;\\\\n  padding: 8px;\\\\n}\\";
+var css = \\"/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */\\\\nhtml, body, p, ol, ul, li, dl, dt, dd, blockquote, figure, fieldset, legend, textarea, pre, iframe, hr, h1, h2, h3, h4, h5, h6 {\\\\n  margin: 0;\\\\n  padding: 0;\\\\n}\\\\n\\\\nh1, h2, h3, h4, h5, h6 {\\\\n  font-size: 100%;\\\\n  font-weight: normal;\\\\n}\\\\n\\\\nul {\\\\n  list-style: none;\\\\n}\\\\n\\\\nbutton, input, select, textarea {\\\\n  margin: 0;\\\\n}\\\\n\\\\nhtml {\\\\n  box-sizing: border-box;\\\\n}\\\\n\\\\n*, *::before, *::after {\\\\n  box-sizing: inherit;\\\\n}\\\\n\\\\nimg, video {\\\\n  height: auto;\\\\n  max-width: 100%;\\\\n}\\\\n\\\\niframe {\\\\n  border: 0;\\\\n}\\\\n\\\\ntable {\\\\n  border-collapse: collapse;\\\\n  border-spacing: 0;\\\\n}\\\\n\\\\ntd, th {\\\\n  padding: 0;\\\\n}\\\\n\\\\ntd:not([align]), th:not([align]) {\\\\n  text-align: left;\\\\n}\\\\n\\\\n.button {\\\\n  border-radius: 3px;\\\\n  padding: 8px;\\\\n}\\";
 injector_f31f2858(css,{});
 "
 `;
@@ -4785,22 +4716,22 @@ function injector_3b481dac (css, options) {
   }
 }
 
-const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
+var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
 injector_3b481dac(css,{});
 
-const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
+var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
 injector_3b481dac(css$1,{});
 
-const css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1c1xuICBjb2xvcjogcmVkXG4gIGJhY2tncm91bmQ6IEBjb2xvclxuIl19 */\\";
+var css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1c1xuICBjb2xvcjogcmVkXG4gIGJhY2tncm91bmQ6IEBjb2xvclxuIl19 */\\";
 injector_3b481dac(css$2,{});
 
-const css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
+var css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
 injector_3b481dac(css$3,{});
 
-const css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIuc2FzcyB7XG4gIHdpZHRoOiAzMCU7XG4gIGNvbG9yOiByZWQ7IH1cbiJdfQ== */\\";
+var css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red;\\\\n}\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQUE7RUFDQSxVQUFBO0FBQ0YiLCJzb3VyY2VzQ29udGVudCI6WyIuc2Fzc1xuICB3aWR0aDogMzAlXG4gIGNvbG9yOiByZWRcbiJdfQ== */\\";
 injector_3b481dac(css$4,{});
 
-const css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiIsInNvdXJjZXNDb250ZW50IjpbIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */\\";
+var css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiIsInNvdXJjZXNDb250ZW50IjpbIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */\\";
 injector_3b481dac(css$5,{});
 
 console.log(css, css$1);
@@ -4877,22 +4808,22 @@ function injector_3b481dac (css, options) {
   }
 }
 
-const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
+var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
 injector_3b481dac(css,{});
 
-const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
+var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
 injector_3b481dac(css$1,{});
 
-const css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIn0= */\\";
+var css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIn0= */\\";
 injector_3b481dac(css$2,{});
 
-const css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
+var css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
 injector_3b481dac(css$3,{});
 
-const css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEifQ== */\\";
+var css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red;\\\\n}\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQUE7RUFDQSxVQUFBO0FBQ0YifQ== */\\";
 injector_3b481dac(css$4,{});
 
-const css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiJ9 */\\";
+var css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiJ9 */\\";
 injector_3b481dac(css$5,{});
 
 console.log(css, css$1);
@@ -4969,22 +4900,22 @@ function injector_3b481dac (css, options) {
   }
 }
 
-const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
+var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
 injector_3b481dac(css,{});
 
-const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
+var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
 injector_3b481dac(css$1,{});
 
-const css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIn0= */\\";
+var css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIn0= */\\";
 injector_3b481dac(css$2,{});
 
-const css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
+var css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
 injector_3b481dac(css$3,{});
 
-const css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEifQ== */\\";
+var css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red;\\\\n}\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQUE7RUFDQSxVQUFBO0FBQ0YifQ== */\\";
 injector_3b481dac(css$4,{});
 
-const css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiJ9 */\\";
+var css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiJ9 */\\";
 injector_3b481dac(css$5,{});
 
 console.log(css, css$1);
@@ -5061,22 +4992,22 @@ function injector_3b481dac (css, options) {
   }
 }
 
-const css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
+var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
 injector_3b481dac(css,{});
 
-const css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
+var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
 injector_3b481dac(css$1,{});
 
-const css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1c1xuICBjb2xvcjogcmVkXG4gIGJhY2tncm91bmQ6IEBjb2xvclxuIl19 */\\";
+var css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1c1xuICBjb2xvcjogcmVkXG4gIGJhY2tncm91bmQ6IEBjb2xvclxuIl19 */\\";
 injector_3b481dac(css$2,{});
 
-const css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
+var css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
 injector_3b481dac(css$3,{});
 
-const css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIuc2FzcyB7XG4gIHdpZHRoOiAzMCU7XG4gIGNvbG9yOiByZWQ7IH1cbiJdfQ== */\\";
+var css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red;\\\\n}\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQUE7RUFDQSxVQUFBO0FBQ0YiLCJzb3VyY2VzQ29udGVudCI6WyIuc2Fzc1xuICB3aWR0aDogMzAlXG4gIGNvbG9yOiByZWRcbiJdfQ== */\\";
 injector_3b481dac(css$4,{});
 
-const css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiIsInNvdXJjZXNDb250ZW50IjpbIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */\\";
+var css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiIsInNvdXJjZXNDb250ZW50IjpbIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */\\";
 injector_3b481dac(css$5,{});
 
 console.log(css, css$1);
@@ -5153,7 +5084,7 @@ function injector_045adddd (css, options) {
   }
 }
 
-const css = \\".a {\\\\n  color: #f0f;\\\\n}\\\\n.b {\\\\n  color: red;\\\\n}\\\\n.style .foo {\\\\n  color: #4169e1;\\\\n}\\\\n.style .foo .inner {\\\\n  color: #4169e1;\\\\n}\\\\n/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */\\\\nhtml,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}\\\\nh1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}\\\\nul{list-style:none}\\\\nbutton,input,select,textarea{margin:0}\\\\nhtml{box-sizing:border-box}\\\\n*,*::before,*::after{box-sizing:inherit}\\\\nimg,video{height:auto;max-width:100%}\\\\niframe{border:0}\\\\ntable{border-collapse:collapse;border-spacing:0}\\\\ntd,th{padding:0}\\\\ntd:not([align]),th:not([align]){text-align:left}\\\\n\\";
+var css = \\".a {\\\\n  color: #f0f;\\\\n}\\\\n.b {\\\\n  color: red;\\\\n}\\\\n.style .foo {\\\\n  color: #4169e1;\\\\n}\\\\n.style .foo .inner {\\\\n  color: #4169e1;\\\\n}\\\\n/*! minireset.css v0.0.6 | MIT License | github.com/jgthms/minireset.css */\\\\nhtml,body,p,ol,ul,li,dl,dt,dd,blockquote,figure,fieldset,legend,textarea,pre,iframe,hr,h1,h2,h3,h4,h5,h6{margin:0;padding:0}\\\\nh1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal}\\\\nul{list-style:none}\\\\nbutton,input,select,textarea{margin:0}\\\\nhtml{box-sizing:border-box}\\\\n*,*::before,*::after{box-sizing:inherit}\\\\nimg,video{height:auto;max-width:100%}\\\\niframe{border:0}\\\\ntable{border-collapse:collapse;border-spacing:0}\\\\ntd,th{padding:0}\\\\ntd:not([align]),th:not([align]){text-align:left}\\\\n\\";
 injector_045adddd(css,{});
 "
 `;
