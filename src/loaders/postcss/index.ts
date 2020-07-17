@@ -151,6 +151,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
     if (options.inject) {
       if (typeof options.inject === "function") {
         output.push(options.inject(cssVarName, this.id));
+        output.push(`var ${modulesVarName} = ${JSON.stringify(modulesExports)};`);
       } else {
         const { treeshakeable, ...injectorOptions } =
           typeof options.inject === "object" ? options.inject : ({} as InjectOptions);
@@ -169,10 +170,10 @@ const loader: Loader<PostCSSLoaderOptions> = {
         output.push(`import ${injectorName} from ${injectorId};`);
 
         if (!treeshakeable)
-          output.push(`const ${modulesVarName} = ${JSON.stringify(modulesExports)};`, injectorCall);
+          output.push(`var ${modulesVarName} = ${JSON.stringify(modulesExports)};`, injectorCall);
 
         if (treeshakeable) {
-          output.push("let injected = false;");
+          output.push("var injected = false;");
           const injectorCallOnce = `if (!injected) { injected = true; ${injectorCall} }`;
 
           if (modulesExports.inject) {
@@ -189,13 +190,12 @@ const loader: Loader<PostCSSLoaderOptions> = {
           }
 
           getters += `inject() { ${injectorCallOnce} },`;
-          output.push(`const ${modulesVarName} = {${getters}};`);
+          output.push(`var ${modulesVarName} = {${getters}};`);
         }
       }
     }
 
-    if (!options.inject)
-      output.push(`const ${modulesVarName} = ${JSON.stringify(modulesExports)};`);
+    if (!options.inject) output.push(`var ${modulesVarName} = ${JSON.stringify(modulesExports)};`);
 
     const defaultExport = `export default ${supportModules ? modulesVarName : cssVarName};`;
     output.push(defaultExport);
