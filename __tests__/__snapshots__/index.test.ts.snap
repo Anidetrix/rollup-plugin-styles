@@ -517,7 +517,7 @@ exports[`code-splitting manual-chunks: css 8`] = `
 
 exports[`code-splitting manual-chunks: js 1`] = `
 "const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
+var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 export default modules_efa96bb5;
 export { css };
@@ -525,9 +525,9 @@ export { css };
 `;
 
 exports[`code-splitting manual-chunks: js 2`] = `
-"const modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
+"var modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
-const modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
+var modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
 
 export { modules_3ede29d3 as a, modules_d55e0e9b as m };
 "
@@ -539,13 +539,13 @@ exports[`code-splitting manual-chunks: js 3`] = `
 `;
 
 exports[`code-splitting manual-chunks: js 4`] = `
-"import { m as modules_d55e0e9b } from './fourts-308dedf3.js';
+"import { m as modules_d55e0e9b } from './fourts-309ca5ed.js';
 import './index-bb3ba0d0.js';
 
 (async () => {
-  const first = await import('./first-e7f587fc.js');
-  const second = await import('./second-490e7403.js');
-  const otherScript = await import('./other-script-617064b7.js');
+  const first = await import('./first-c5b09b56.js');
+  const second = await import('./second-86e63d6c.js');
+  const otherScript = await import('./other-script-dfcd0135.js');
   console.log(first, second, otherScript);
 })();
 
@@ -554,13 +554,13 @@ console.log(modules_d55e0e9b);
 `;
 
 exports[`code-splitting manual-chunks: js 5`] = `
-"import { a as modules_3ede29d3 } from './fourts-308dedf3.js';
+"import { a as modules_3ede29d3 } from './fourts-309ca5ed.js';
 import './index-bb3ba0d0.js';
 
 (async () => {
-  const first = await import('./first-e7f587fc.js');
-  const second = await import('./second-490e7403.js');
-  const otherScript = await import('./other-script-617064b7.js');
+  const first = await import('./first-c5b09b56.js');
+  const second = await import('./second-86e63d6c.js');
+  const otherScript = await import('./other-script-dfcd0135.js');
   console.log(first, second, otherScript);
 })();
 
@@ -569,7 +569,7 @@ console.log(modules_3ede29d3);
 `;
 
 exports[`code-splitting manual-chunks: js 6`] = `
-"import './nondynamics-1574a817.js';
+"import './nondynamics-36d7f0a7.js';
 "
 `;
 
@@ -579,7 +579,7 @@ exports[`code-splitting manual-chunks: js 7`] = `
 `;
 
 exports[`code-splitting manual-chunks: js 8`] = `
-"const modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"var modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
 console.log(modules_2539eb5b);
 "
@@ -588,7 +588,7 @@ console.log(modules_2539eb5b);
 exports[`code-splitting manual-chunks: js 9`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-c2d85145.js');
+  const nestedScript = await import('./nested-script-a2367435.js');
   console.log(nestedScript);
 })();
 "
@@ -596,7 +596,7 @@ exports[`code-splitting manual-chunks: js 9`] = `
 
 exports[`code-splitting manual-chunks: js 10`] = `
 "const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_7a038d99 = {\\"second\\":\\"second_second\\"};
+var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 export default modules_7a038d99;
 export { css };
@@ -677,17 +677,17 @@ exports[`code-splitting manual-chunks-only: css 4`] = `
 `;
 
 exports[`code-splitting manual-chunks-only: js 1`] = `
-"const modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
+"var modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
-const modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
+var modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
 
 export { modules_3ede29d3 as a, modules_d55e0e9b as m };
 "
 `;
 
 exports[`code-splitting manual-chunks-only: js 2`] = `
-"import { m as modules_d55e0e9b, a as modules_3ede29d3 } from './fourts-308dedf3.js';
-import './nondynamics-1574a817.js';
+"import { m as modules_d55e0e9b, a as modules_3ede29d3 } from './fourts-309ca5ed.js';
+import './nondynamics-36d7f0a7.js';
 
 console.log(\\"sub\\");
 
@@ -710,7 +710,7 @@ console.log(modules_d55e0e9b);
 console.log(modules_3ede29d3);
 
 const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
+var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 var first = /*#__PURE__*/Object.freeze({
   __proto__: null,
@@ -719,7 +719,7 @@ var first = /*#__PURE__*/Object.freeze({
 });
 
 const css$1 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_7a038d99 = {\\"second\\":\\"second_second\\"};
+var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 var second = /*#__PURE__*/Object.freeze({
   __proto__: null,
@@ -750,14 +750,14 @@ var nestedScript = /*#__PURE__*/Object.freeze({
 `;
 
 exports[`code-splitting manual-chunks-only: js 3`] = `
-"import './fourts-308dedf3.js';
+"import './fourts-309ca5ed.js';
 import './index.js';
-import './nondynamics-1574a817.js';
+import './nondynamics-36d7f0a7.js';
 "
 `;
 
 exports[`code-splitting manual-chunks-only: js 4`] = `
-"const modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"var modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
 console.log(modules_2539eb5b);
 "
@@ -817,17 +817,17 @@ exports[`code-splitting manual-chunks-only-single: css 1`] = `
 `;
 
 exports[`code-splitting manual-chunks-only-single: js 1`] = `
-"const modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
+"var modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
-const modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
+var modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
 
 export { modules_3ede29d3 as a, modules_d55e0e9b as m };
 "
 `;
 
 exports[`code-splitting manual-chunks-only-single: js 2`] = `
-"import { m as modules_d55e0e9b, a as modules_3ede29d3 } from './fourts-308dedf3.js';
-import './nondynamics-1574a817.js';
+"import { m as modules_d55e0e9b, a as modules_3ede29d3 } from './fourts-309ca5ed.js';
+import './nondynamics-36d7f0a7.js';
 
 console.log(\\"sub\\");
 
@@ -850,7 +850,7 @@ console.log(modules_d55e0e9b);
 console.log(modules_3ede29d3);
 
 const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
+var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 var first = /*#__PURE__*/Object.freeze({
   __proto__: null,
@@ -859,7 +859,7 @@ var first = /*#__PURE__*/Object.freeze({
 });
 
 const css$1 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_7a038d99 = {\\"second\\":\\"second_second\\"};
+var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 var second = /*#__PURE__*/Object.freeze({
   __proto__: null,
@@ -890,14 +890,14 @@ var nestedScript = /*#__PURE__*/Object.freeze({
 `;
 
 exports[`code-splitting manual-chunks-only-single: js 3`] = `
-"import './fourts-308dedf3.js';
+"import './fourts-309ca5ed.js';
 import './index.js';
-import './nondynamics-1574a817.js';
+import './nondynamics-36d7f0a7.js';
 "
 `;
 
 exports[`code-splitting manual-chunks-only-single: js 4`] = `
-"const modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"var modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
 console.log(modules_2539eb5b);
 "
@@ -952,7 +952,7 @@ exports[`code-splitting manual-chunks-single: css 1`] = `
 
 exports[`code-splitting manual-chunks-single: js 1`] = `
 "const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
+var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 export default modules_efa96bb5;
 export { css };
@@ -960,9 +960,9 @@ export { css };
 `;
 
 exports[`code-splitting manual-chunks-single: js 2`] = `
-"const modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
+"var modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
-const modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
+var modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
 
 export { modules_3ede29d3 as a, modules_d55e0e9b as m };
 "
@@ -974,13 +974,13 @@ exports[`code-splitting manual-chunks-single: js 3`] = `
 `;
 
 exports[`code-splitting manual-chunks-single: js 4`] = `
-"import { m as modules_d55e0e9b } from './fourts-308dedf3.js';
+"import { m as modules_d55e0e9b } from './fourts-309ca5ed.js';
 import './index-bb3ba0d0.js';
 
 (async () => {
-  const first = await import('./first-e7f587fc.js');
-  const second = await import('./second-490e7403.js');
-  const otherScript = await import('./other-script-617064b7.js');
+  const first = await import('./first-c5b09b56.js');
+  const second = await import('./second-86e63d6c.js');
+  const otherScript = await import('./other-script-dfcd0135.js');
   console.log(first, second, otherScript);
 })();
 
@@ -989,13 +989,13 @@ console.log(modules_d55e0e9b);
 `;
 
 exports[`code-splitting manual-chunks-single: js 5`] = `
-"import { a as modules_3ede29d3 } from './fourts-308dedf3.js';
+"import { a as modules_3ede29d3 } from './fourts-309ca5ed.js';
 import './index-bb3ba0d0.js';
 
 (async () => {
-  const first = await import('./first-e7f587fc.js');
-  const second = await import('./second-490e7403.js');
-  const otherScript = await import('./other-script-617064b7.js');
+  const first = await import('./first-c5b09b56.js');
+  const second = await import('./second-86e63d6c.js');
+  const otherScript = await import('./other-script-dfcd0135.js');
   console.log(first, second, otherScript);
 })();
 
@@ -1004,7 +1004,7 @@ console.log(modules_3ede29d3);
 `;
 
 exports[`code-splitting manual-chunks-single: js 6`] = `
-"import './nondynamics-1574a817.js';
+"import './nondynamics-36d7f0a7.js';
 "
 `;
 
@@ -1014,7 +1014,7 @@ exports[`code-splitting manual-chunks-single: js 7`] = `
 `;
 
 exports[`code-splitting manual-chunks-single: js 8`] = `
-"const modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"var modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
 console.log(modules_2539eb5b);
 "
@@ -1023,7 +1023,7 @@ console.log(modules_2539eb5b);
 exports[`code-splitting manual-chunks-single: js 9`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-c2d85145.js');
+  const nestedScript = await import('./nested-script-a2367435.js');
   console.log(nestedScript);
 })();
 "
@@ -1031,7 +1031,7 @@ exports[`code-splitting manual-chunks-single: js 9`] = `
 
 exports[`code-splitting manual-chunks-single: js 10`] = `
 "const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_7a038d99 = {\\"second\\":\\"second_second\\"};
+var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 export default modules_7a038d99;
 export { css };
@@ -1111,7 +1111,7 @@ exports[`code-splitting multi-entry: css 7`] = `
 
 exports[`code-splitting multi-entry: js 1`] = `
 "const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
+var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 export default modules_efa96bb5;
 export { css };
@@ -1126,12 +1126,12 @@ exports[`code-splitting multi-entry: js 2`] = `
 exports[`code-splitting multi-entry: js 3`] = `
 "import './index-bb3ba0d0.js';
 
-const modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
+var modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
 (async () => {
-  const first = await import('./first-e7f587fc.js');
-  const second = await import('./second-490e7403.js');
-  const otherScript = await import('./other-script-1cf0e38d.js');
+  const first = await import('./first-c5b09b56.js');
+  const second = await import('./second-86e63d6c.js');
+  const otherScript = await import('./other-script-98094377.js');
   console.log(first, second, otherScript);
 })();
 
@@ -1142,12 +1142,12 @@ console.log(modules_d55e0e9b);
 exports[`code-splitting multi-entry: js 4`] = `
 "import './index-bb3ba0d0.js';
 
-const modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
+var modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
 
 (async () => {
-  const first = await import('./first-e7f587fc.js');
-  const second = await import('./second-490e7403.js');
-  const otherScript = await import('./other-script-1cf0e38d.js');
+  const first = await import('./first-c5b09b56.js');
+  const second = await import('./second-86e63d6c.js');
+  const otherScript = await import('./other-script-98094377.js');
   console.log(first, second, otherScript);
 })();
 
@@ -1156,7 +1156,7 @@ console.log(modules_3ede29d3);
 `;
 
 exports[`code-splitting multi-entry: js 5`] = `
-"const modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"var modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
 console.log(modules_2539eb5b);
 "
@@ -1170,7 +1170,7 @@ exports[`code-splitting multi-entry: js 6`] = `
 exports[`code-splitting multi-entry: js 7`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-a9bc1c77.js');
+  const nestedScript = await import('./nested-script-0cc66e75.js');
   console.log(nestedScript);
 })();
 "
@@ -1178,7 +1178,7 @@ exports[`code-splitting multi-entry: js 7`] = `
 
 exports[`code-splitting multi-entry: js 8`] = `
 "const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_7a038d99 = {\\"second\\":\\"second_second\\"};
+var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 export default modules_7a038d99;
 export { css };
@@ -1241,7 +1241,7 @@ exports[`code-splitting multi-entry-single: css 1`] = `
 
 exports[`code-splitting multi-entry-single: js 1`] = `
 "const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
+var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 export default modules_efa96bb5;
 export { css };
@@ -1256,12 +1256,12 @@ exports[`code-splitting multi-entry-single: js 2`] = `
 exports[`code-splitting multi-entry-single: js 3`] = `
 "import './index-bb3ba0d0.js';
 
-const modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
+var modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
 (async () => {
-  const first = await import('./first-e7f587fc.js');
-  const second = await import('./second-490e7403.js');
-  const otherScript = await import('./other-script-1cf0e38d.js');
+  const first = await import('./first-c5b09b56.js');
+  const second = await import('./second-86e63d6c.js');
+  const otherScript = await import('./other-script-98094377.js');
   console.log(first, second, otherScript);
 })();
 
@@ -1272,12 +1272,12 @@ console.log(modules_d55e0e9b);
 exports[`code-splitting multi-entry-single: js 4`] = `
 "import './index-bb3ba0d0.js';
 
-const modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
+var modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
 
 (async () => {
-  const first = await import('./first-e7f587fc.js');
-  const second = await import('./second-490e7403.js');
-  const otherScript = await import('./other-script-1cf0e38d.js');
+  const first = await import('./first-c5b09b56.js');
+  const second = await import('./second-86e63d6c.js');
+  const otherScript = await import('./other-script-98094377.js');
   console.log(first, second, otherScript);
 })();
 
@@ -1286,7 +1286,7 @@ console.log(modules_3ede29d3);
 `;
 
 exports[`code-splitting multi-entry-single: js 5`] = `
-"const modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"var modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
 console.log(modules_2539eb5b);
 "
@@ -1300,7 +1300,7 @@ exports[`code-splitting multi-entry-single: js 6`] = `
 exports[`code-splitting multi-entry-single: js 7`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-a9bc1c77.js');
+  const nestedScript = await import('./nested-script-0cc66e75.js');
   console.log(nestedScript);
 })();
 "
@@ -1308,7 +1308,7 @@ exports[`code-splitting multi-entry-single: js 7`] = `
 
 exports[`code-splitting multi-entry-single: js 8`] = `
 "const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_7a038d99 = {\\"second\\":\\"second_second\\"};
+var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 export default modules_7a038d99;
 export { css };
@@ -1400,7 +1400,7 @@ exports[`code-splitting preserve-modules: css 9`] = `
 
 exports[`code-splitting preserve-modules: js 1`] = `
 "const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
+var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 export default modules_efa96bb5;
 export { css };
@@ -1408,7 +1408,7 @@ export { css };
 `;
 
 exports[`code-splitting preserve-modules: js 2`] = `
-"const modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
+"var modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
 export default modules_d55e0e9b;
 "
@@ -1447,7 +1447,7 @@ console.log(modules_2539eb5b);
 `;
 
 exports[`code-splitting preserve-modules: js 7`] = `
-"const modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"var modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
 export default modules_2539eb5b;
 "
@@ -1464,7 +1464,7 @@ exports[`code-splitting preserve-modules: js 8`] = `
 
 exports[`code-splitting preserve-modules: js 9`] = `
 "const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_7a038d99 = {\\"second\\":\\"second_second\\"};
+var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 export default modules_7a038d99;
 export { css };
@@ -1597,7 +1597,7 @@ exports[`code-splitting preserve-modules-multi-entry: css 11`] = `
 
 exports[`code-splitting preserve-modules-multi-entry: js 1`] = `
 "const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
+var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 export default modules_efa96bb5;
 export { css };
@@ -1605,14 +1605,14 @@ export { css };
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: js 2`] = `
-"const modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
+"var modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
 export default modules_d55e0e9b;
 "
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: js 3`] = `
-"const modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
+"var modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
 
 export default modules_3ede29d3;
 "
@@ -1666,7 +1666,7 @@ console.log(modules_2539eb5b);
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: js 9`] = `
-"const modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"var modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
 export default modules_2539eb5b;
 "
@@ -1683,7 +1683,7 @@ exports[`code-splitting preserve-modules-multi-entry: js 10`] = `
 
 exports[`code-splitting preserve-modules-multi-entry: js 11`] = `
 "const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_7a038d99 = {\\"second\\":\\"second_second\\"};
+var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 export default modules_7a038d99;
 export { css };
@@ -1753,7 +1753,7 @@ exports[`code-splitting preserve-modules-single: css 1`] = `
 
 exports[`code-splitting preserve-modules-single: js 1`] = `
 "const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
+var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 export default modules_efa96bb5;
 export { css };
@@ -1761,7 +1761,7 @@ export { css };
 `;
 
 exports[`code-splitting preserve-modules-single: js 2`] = `
-"const modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
+"var modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
 export default modules_d55e0e9b;
 "
@@ -1800,7 +1800,7 @@ console.log(modules_2539eb5b);
 `;
 
 exports[`code-splitting preserve-modules-single: js 7`] = `
-"const modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"var modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
 export default modules_2539eb5b;
 "
@@ -1817,7 +1817,7 @@ exports[`code-splitting preserve-modules-single: js 8`] = `
 
 exports[`code-splitting preserve-modules-single: js 9`] = `
 "const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_7a038d99 = {\\"second\\":\\"second_second\\"};
+var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 export default modules_7a038d99;
 export { css };
@@ -1867,7 +1867,7 @@ exports[`code-splitting single: css 1`] = `
 
 exports[`code-splitting single: js 1`] = `
 "const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
+var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 export default modules_efa96bb5;
 export { css };
@@ -1875,14 +1875,14 @@ export { css };
 `;
 
 exports[`code-splitting single: js 2`] = `
-"const modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
+"var modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
 console.log(\\"sub\\");
 
 (async () => {
-  const first = await import('./first-e7f587fc.js');
-  const second = await import('./second-490e7403.js');
-  const otherScript = await import('./other-script-1cf0e38d.js');
+  const first = await import('./first-c5b09b56.js');
+  const second = await import('./second-86e63d6c.js');
+  const otherScript = await import('./other-script-98094377.js');
   console.log(first, second, otherScript);
 })();
 
@@ -1891,7 +1891,7 @@ console.log(modules_d55e0e9b);
 `;
 
 exports[`code-splitting single: js 3`] = `
-"const modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"var modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
 console.log(modules_2539eb5b);
 "
@@ -1905,7 +1905,7 @@ exports[`code-splitting single: js 4`] = `
 exports[`code-splitting single: js 5`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-a9bc1c77.js');
+  const nestedScript = await import('./nested-script-0cc66e75.js');
   console.log(nestedScript);
 })();
 "
@@ -1913,7 +1913,7 @@ exports[`code-splitting single: js 5`] = `
 
 exports[`code-splitting single: js 6`] = `
 "const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_7a038d99 = {\\"second\\":\\"second_second\\"};
+var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 export default modules_7a038d99;
 export { css };
@@ -1974,7 +1974,7 @@ exports[`code-splitting true: css 5`] = `
 
 exports[`code-splitting true: js 1`] = `
 "const css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
-const modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
+var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 export default modules_efa96bb5;
 export { css };
@@ -1982,14 +1982,14 @@ export { css };
 `;
 
 exports[`code-splitting true: js 2`] = `
-"const modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
+"var modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
 console.log(\\"sub\\");
 
 (async () => {
-  const first = await import('./first-e7f587fc.js');
-  const second = await import('./second-490e7403.js');
-  const otherScript = await import('./other-script-1cf0e38d.js');
+  const first = await import('./first-c5b09b56.js');
+  const second = await import('./second-86e63d6c.js');
+  const otherScript = await import('./other-script-98094377.js');
   console.log(first, second, otherScript);
 })();
 
@@ -1998,7 +1998,7 @@ console.log(modules_d55e0e9b);
 `;
 
 exports[`code-splitting true: js 3`] = `
-"const modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
+"var modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
 console.log(modules_2539eb5b);
 "
@@ -2012,7 +2012,7 @@ exports[`code-splitting true: js 4`] = `
 exports[`code-splitting true: js 5`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-a9bc1c77.js');
+  const nestedScript = await import('./nested-script-0cc66e75.js');
   console.log(nestedScript);
 })();
 "
@@ -2020,7 +2020,7 @@ exports[`code-splitting true: js 5`] = `
 
 exports[`code-splitting true: js 6`] = `
 "const css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
-const modules_7a038d99 = {\\"second\\":\\"second_second\\"};
+var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 export default modules_7a038d99;
 export { css };
@@ -2747,19 +2747,19 @@ const css = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_ed8d1646(css,{});
 
 const css$1 = \\".a_module_a {\\\\n  color: red;\\\\n}\\\\n\\";
-const modules_bdb828b9 = {\\"a\\":\\"a_module_a\\"};
+var modules_bdb828b9 = {\\"a\\":\\"a_module_a\\"};
 injector_ed8d1646(css$1,{});
 
 const css$2 = \\".b_module_b {\\\\n  color: red; }\\\\n\\";
-const modules_9fa995d6 = {\\"b\\":\\"b_module_b\\"};
+var modules_9fa995d6 = {\\"b\\":\\"b_module_b\\"};
 injector_ed8d1646(css$2,{});
 
 const css$3 = \\".c_module_c {\\\\n  color: red;\\\\n}\\\\n\\";
-const modules_2b321dac = {\\"c\\":\\"c_module_c\\"};
+var modules_2b321dac = {\\"c\\":\\"c_module_c\\"};
 injector_ed8d1646(css$3,{});
 
 const css$4 = \\".d_module_d {\\\\n  color: #f00;\\\\n}\\\\n\\";
-const modules_39901a8c = {\\"d\\":\\"d_module_d\\"};
+var modules_39901a8c = {\\"d\\":\\"d_module_d\\"};
 injector_ed8d1646(css$4,{});
 
 console.log(modules_bdb828b9, modules_9fa995d6, modules_2b321dac, modules_39901a8c);
@@ -2846,7 +2846,7 @@ const css$2 = \\".b {\\\\n  color: red; }\\\\n\\";
 injector_ed8d1646(css$2,{});
 
 const css$3 = \\".c_module_c {\\\\n  color: red;\\\\n}\\\\n\\";
-const modules_2b321dac = {\\"c\\":\\"c_module_c\\"};
+var modules_2b321dac = {\\"c\\":\\"c_module_c\\"};
 injector_ed8d1646(css$3,{});
 
 const css$4 = \\".d {\\\\n  color: #f00;\\\\n}\\\\n\\";
@@ -3028,7 +3028,7 @@ const css$3 = \\".c {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_ed8d1646(css$3,{});
 
 const css$4 = \\".d_module_d {\\\\n  color: #f00;\\\\n}\\\\n\\";
-const modules_39901a8c = {\\"d\\":\\"d_module_d\\"};
+var modules_39901a8c = {\\"d\\":\\"d_module_d\\"};
 injector_ed8d1646(css$4,{});
 
 console.log(css$1, css$2, css$3, modules_39901a8c);
@@ -3058,11 +3058,11 @@ exports[`modules duplication: css 1`] = `
 `;
 
 exports[`modules duplication: js 1`] = `
-"const modules_fa509c68 = {\\"test\\":\\"shared_test\\"};
+"var modules_fa509c68 = {\\"test\\":\\"shared_test\\"};
 
-const modules_52530603 = {\\"foo\\":\\"foo_foo shared_test\\"};
+var modules_52530603 = {\\"foo\\":\\"foo_foo shared_test\\"};
 
-const modules_ad1fd3ff = {\\"bar\\":\\"bar_bar shared_test\\"};
+var modules_ad1fd3ff = {\\"bar\\":\\"bar_bar shared_test\\"};
 
 console.log(modules_fa509c68, modules_52530603, modules_ad1fd3ff);
 "
@@ -3093,9 +3093,9 @@ exports[`modules extract: css 1`] = `
 `;
 
 exports[`modules extract: js 1`] = `
-"const modules_5a199c00 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
+"var modules_5a199c00 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
 
-const modules_354770d7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
+var modules_354770d7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
 
 if (modules_354770d7.inject) modules_354770d7.inject();
 else console.log(modules_5a199c00.module, modules_354770d7.compositioned);
@@ -3128,9 +3128,9 @@ exports[`modules extract-sourcemap-inline: css 1`] = `
 `;
 
 exports[`modules extract-sourcemap-inline: js 1`] = `
-"const modules_5a199c00 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
+"var modules_5a199c00 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
 
-const modules_354770d7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
+var modules_354770d7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
 
 if (modules_354770d7.inject) modules_354770d7.inject();
 else console.log(modules_5a199c00.module, modules_354770d7.compositioned);
@@ -3163,9 +3163,9 @@ exports[`modules extract-sourcemap-true: css 1`] = `
 `;
 
 exports[`modules extract-sourcemap-true: js 1`] = `
-"const modules_5a199c00 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
+"var modules_5a199c00 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
 
-const modules_354770d7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
+var modules_354770d7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
 
 if (modules_354770d7.inject) modules_354770d7.inject();
 else console.log(modules_5a199c00.module, modules_354770d7.compositioned);
@@ -3248,15 +3248,15 @@ const css = \\"html {\\\\n  --color-primary: green;\\\\n}\\\\n\\\\n.primaryhacke
 injector_d0a569a1(css,{});
 
 const css$1 = \\".testhacked {\\\\n  content: \\\\\\"test\\\\\\";\\\\n}\\\\n\\";
-const modules_fa509c68 = {\\"test\\":\\"testhacked\\"};
+var modules_fa509c68 = {\\"test\\":\\"testhacked\\"};
 injector_d0a569a1(css$1,{});
 
 const css$2 = \\".foohacked {\\\\n}\\\\n\\";
-const modules_52530603 = {\\"foo\\":\\"foohacked testhacked\\"};
+var modules_52530603 = {\\"foo\\":\\"foohacked testhacked\\"};
 injector_d0a569a1(css$2,{});
 
 const css$3 = \\".barhacked {\\\\n}\\\\n\\";
-const modules_ad1fd3ff = {\\"bar\\":\\"barhacked testhacked\\"};
+var modules_ad1fd3ff = {\\"bar\\":\\"barhacked testhacked\\"};
 injector_d0a569a1(css$3,{});
 
 console.log(modules_fa509c68, modules_52530603, modules_ad1fd3ff);
@@ -3334,15 +3334,32 @@ function injector_d9f9689a (css, options) {
 }
 
 const css = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
-const modules_5a199c00 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
+var modules_5a199c00 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
 injector_d9f9689a(css,{});
 
 const css$1 = \\"@media screen and (min-width: 900px) {\\\\n  .composed_composition {\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composed_composition {\\\\n  background-color: #BF4040;\\\\n}\\\\n\\";
 injector_d9f9689a(css$1,{});
 
 const css$2 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
-const modules_354770d7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
+var modules_354770d7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
 injector_d9f9689a(css$2,{});
+
+if (modules_354770d7.inject) modules_354770d7.inject();
+else console.log(modules_5a199c00.module, modules_354770d7.compositioned);
+"
+`;
+
+exports[`modules inject-fn: js 1`] = `
+"const css = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
+console.log(css, true);
+var modules_5a199c00 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
+
+const css$1 = \\"@media screen and (min-width: 900px) {\\\\n  .composed_composition {\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composed_composition {\\\\n  background-color: #BF4040;\\\\n}\\\\n\\";
+console.log(css$1, true);
+
+const css$2 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
+console.log(css$2, true);
+var modules_354770d7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
 
 if (modules_354770d7.inject) modules_354770d7.inject();
 else console.log(modules_5a199c00.module, modules_354770d7.compositioned);
@@ -3420,16 +3437,16 @@ function injector_d9f9689a (css, options) {
 }
 
 const css = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
-let injected = false;
-const modules_5a199c00 = {get \\"primary\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"#BF4040\\"; },
+var injected = false;
+var modules_5a199c00 = {get \\"primary\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"#BF4040\\"; },
 get \\"secondary\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"#1F4F7F\\"; },
 get \\"module\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"style_module\\"; },
 get \\"module2\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"style_module2 composed_composition composition2_compositioned\\"; },
 inject() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } },};
 
 const css$1 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
-let injected$1 = false;
-const modules_354770d7 = {get \\"compositioned\\"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return \\"composition2_compositioned\\"; },
+var injected$1 = false;
+var modules_354770d7 = {get \\"compositioned\\"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return \\"composition2_compositioned\\"; },
 inject() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } },};
 
 if (modules_354770d7.inject) modules_354770d7.inject();
@@ -3508,16 +3525,16 @@ function injector_d9f9689a (css, options) {
 }
 
 const css = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
-let injected = false;
-const modules_5a199c00 = {get \\"primary\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"#BF4040\\"; },
+var injected = false;
+var modules_5a199c00 = {get \\"primary\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"#BF4040\\"; },
 get \\"secondary\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"#1F4F7F\\"; },
 get \\"module\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"style_module\\"; },
 get \\"module2\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"style_module2 composed_composition composition2_compositioned\\"; },
 inject() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } },};
 
 const css$1 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
-let injected$1 = false;
-const modules_354770d7 = {get \\"compositioned\\"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return \\"composition2_compositioned\\"; },
+var injected$1 = false;
+var modules_354770d7 = {get \\"compositioned\\"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return \\"composition2_compositioned\\"; },
 inject() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } },};
 
 if (modules_354770d7.inject) modules_354770d7.inject();
@@ -3598,7 +3615,7 @@ function injector_c84cd8fc (css, options) {
 }
 
 const css = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\\\n.style_css {\\\\n  color: green;\\\\n}\\\\n\\";
-const modules_5a199c00 = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"css\\":\\"style_css\\"};
+var modules_5a199c00 = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"css\\":\\"style_css\\"};
 injector_c84cd8fc(css,{});
 
 console.log(css);
@@ -3679,7 +3696,7 @@ function injector_c84cd8fc (css, options) {
 }
 
 const css = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\\\n.style_css {\\\\n  color: green;\\\\n}\\\\n\\";
-const modules_5a199c00 = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"css\\":\\"style_css\\"};
+var modules_5a199c00 = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"css\\":\\"style_css\\"};
 injector_c84cd8fc(css,{});
 
 console.log(css);
@@ -3760,7 +3777,7 @@ function injector_c84cd8fc (css, options) {
 }
 
 const css = \\".style_valid {\\\\n  color: red;\\\\n}\\\\n\\\\n.style_new {\\\\n  color: blue;\\\\n}\\\\n\\\\n.style_css {\\\\n  color: green;\\\\n}\\\\n\\";
-const modules_5a199c00 = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"css\\":\\"style_css\\"};
+var modules_5a199c00 = {\\"valid\\":\\"style_valid\\",\\"new\\":\\"style_new\\",\\"css\\":\\"style_css\\"};
 injector_c84cd8fc(css,{});
 
 console.log(css);
@@ -3844,7 +3861,7 @@ function injector_8784c4d6 (css, options) {
 
 const css = \\".bar_less {\\\\n  color: magenta;\\\\n}\\\\n\\";
 const less = \\"bar_less\\";
-const modules_b74a0081 = {\\"less\\":\\"bar_less\\"};
+var modules_b74a0081 = {\\"less\\":\\"bar_less\\"};
 injector_8784c4d6(css,{});
 
 export default modules_b74a0081;
@@ -3929,7 +3946,7 @@ const css$1 = \\".less {\\\\n  color: magenta;\\\\n}\\\\n\\";
 injector_006bd99c(css$1,{});
 
 const css$2 = \\".mod_mod {\\\\n  color: royalblue;\\\\n}\\\\n\\";
-const modules_507361ee = {\\"mod\\":\\"mod_mod\\"};
+var modules_507361ee = {\\"mod\\":\\"mod_mod\\"};
 injector_006bd99c(css$2,{});
 
 console.log(modules_507361ee);
@@ -4541,7 +4558,7 @@ function injector_ea22477b (css, options) {
 }
 
 const css = \\".style_someStyle {\\\\n  color: red; }\\\\n\\";
-const modules_2fd447d3 = {\\"some-style\\":\\"style_someStyle\\"};
+var modules_2fd447d3 = {\\"some-style\\":\\"style_someStyle\\"};
 injector_ea22477b(css,{});
 
 console.log(modules_2fd447d3);

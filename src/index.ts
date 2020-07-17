@@ -294,6 +294,10 @@ export default (options: Options = {}): Plugin => {
         if (res.map && sourceMap) {
           const fileName = this.getFileName(cssFileId);
 
+          if (opts.assetFileNames && typeof opts.assetFileNames !== "string") {
+            throw new TypeError("`assetFileNames` must be a string.");
+          }
+
           const assetDir = opts.assetFileNames
             ? normalizePath(path.dirname(opts.assetFileNames))
             : "assets"; // Default for Rollup v2

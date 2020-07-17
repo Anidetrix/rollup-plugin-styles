@@ -193,6 +193,17 @@ validateMany("modules", [
     options: { modules: true },
   },
   {
+    title: "inject-fn",
+    input: "modules/index.js",
+    options: {
+      mode: [
+        "inject",
+        (varname, id) => `console.log(${varname}, ${JSON.stringify(typeof id === "string")})`,
+      ],
+      modules: true,
+    },
+  },
+  {
     title: "inject-treeshakeable",
     input: "modules/index.js",
     options: { mode: ["inject", { treeshakeable: true }], modules: true },
