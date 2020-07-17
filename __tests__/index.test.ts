@@ -196,7 +196,10 @@ validateMany("modules", [
     title: "inject-fn",
     input: "modules/index.js",
     options: {
-      mode: ["inject", (varname, id) => `console.log(${varname}, ${JSON.stringify(id)})`],
+      mode: [
+        "inject",
+        (varname, id) => `console.log(${varname}, ${JSON.stringify(typeof id === "string")})`,
+      ],
       modules: true,
     },
   },
