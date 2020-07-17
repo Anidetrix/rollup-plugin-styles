@@ -295,7 +295,7 @@ export default (options: Options = {}): Plugin => {
           const fileName = this.getFileName(cssFileId);
 
           const assetDir = opts.assetFileNames
-            ? normalizePath(path.dirname(opts.assetFileNames))
+            ? normalizePath(path.dirname(opts.assetFileNames as string)) // TODO
             : "assets"; // Default for Rollup v2
 
           const map = mm(res.map)
