@@ -201,7 +201,7 @@ export default (options: Options = {}): Plugin => {
           const { dir, name } = path.parse(chunk.fileName);
           return dir ? `${dir}/${name}` : name;
         }
-        return chunk.name;
+        return path.parse(chunk.fileName).name;
       };
 
       const getImports = (chunk: OutputChunk): string[] => {
