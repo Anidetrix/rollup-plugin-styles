@@ -156,7 +156,7 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
         continue;
       }
 
-      const { source, from } = resolved;
+      const { source, from, urlQuery } = resolved;
       if (!(source instanceof Uint8Array) || typeof from !== "string") {
         decl.warn(res, `Incorrectly resolved URL \`${url}\` in \`${decl.toString()}\``);
         continue;
@@ -180,7 +180,11 @@ const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
         usedNames.set(to, from);
 
         node.type = "string";
-        node.value = publicPath + (/[/\\]$/.test(publicPath) ? "" : "/") + path.basename(to);
+        node.value =
+          publicPath +
+          (/[/\\]$/.test(publicPath) ? "" : "/") +
+          path.basename(to) +
+          (urlQuery ?? "");
 
         to = normalizePath(assetDir, to);
         res.messages.push({ plugin: name, type: "asset", to, source });
