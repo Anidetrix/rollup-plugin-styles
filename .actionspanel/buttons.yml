@@ -1,4 +1,0 @@
-buttons:
-  - title: Release
-    action: "semantic-release"
-    description: Release new version
