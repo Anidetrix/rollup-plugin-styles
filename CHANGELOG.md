@@ -1,3 +1,10 @@
+## [3.10.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.10.0...v3.10.1) (2020-10-07)
+
+
+### Bug Fixes
+
+* correctly resolve file imports with query params ([#148](https://github.com/Anidetrix/rollup-plugin-styles/issues/148)) ([71bfe87](https://github.com/Anidetrix/rollup-plugin-styles/commit/71bfe875b96f1b7f240b2b8e334ad6385db56c79)), closes [#132](https://github.com/Anidetrix/rollup-plugin-styles/issues/132)
+
 # [3.10.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.9.0...v3.10.0) (2020-06-26)
 
 
