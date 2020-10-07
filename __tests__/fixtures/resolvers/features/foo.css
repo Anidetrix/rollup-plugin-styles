@@ -12,3 +12,7 @@
   );
   background-image: image-set("cat/cat.png" 1x);
 }
+
+.foo3 {
+  background-image: url("./bg.png?query");
+}
