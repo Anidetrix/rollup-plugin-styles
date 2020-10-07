@@ -1,4 +1,5 @@
 import fs from "fs-extra";
+import { ParseOptions, parseUrl, stringifyUrl } from "query-string";
 
 import resolveAsync from "../../../utils/resolve-async";
 
@@ -13,22 +14,19 @@ export interface UrlFile {
 }
 
 /** URL resolver */
-export type UrlResolve = (url: string, basedir: string) => Promise<UrlFile>;
+export type UrlResolve = (inputUrl: string, basedir: string) => Promise<UrlFile>;
 
-const resolve: UrlResolve = async (url, basedir) => {
+const resolve: UrlResolve = async (inputUrl, basedir) => {
   const options = { basedir };
   let from: string;
-  const urlWithQueryMatch = /([^?]*)(\?.*)/.exec(url);
-  let urlQuery = "";
-  if (urlWithQueryMatch) {
-    url = urlWithQueryMatch[1];
-    urlQuery = urlWithQueryMatch[2];
-  }
+  const parseOptions: ParseOptions = { parseFragmentIdentifier: true, sort: false, decode: false };
+  const { url, query, fragmentIdentifier } = parseUrl(inputUrl, parseOptions);
   try {
     from = await resolveAsync(url, options);
   } catch {
     from = await resolveAsync(`./${url}`, options);
   }
+  const urlQuery = stringifyUrl({ url: "", query, fragmentIdentifier }, parseOptions);
   return { from, source: await fs.readFile(from), urlQuery };
 };
 
