@@ -14,5 +14,5 @@
 }
 
 .foo3 {
-  background-image: url("./bg.png?query");
+  background-image: url("./bg.png?query#hash");
 }

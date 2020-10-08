@@ -179,7 +179,7 @@ exports[`basic resolvers: css 1`] = `
 }
 
 .foo3 {
-  background-image: url(\\"/pubpath/bg.png?query\\");
+  background-image: url(\\"/pubpath/bg.png?query#hash\\");
 }
 .bar {
   background-image: url(\\"/pubpath/bg1.png\\");
@@ -221,7 +221,7 @@ exports[`basic resolvers-hash: css 1`] = `
 }
 
 .foo3 {
-  background-image: url(\\"/pubpath/bg-bd25d3fd.png?query\\");
+  background-image: url(\\"/pubpath/bg-bd25d3fd.png?query#hash\\");
 }
 .bar {
   background-image: url(\\"/pubpath/bg-cc57d19a.png\\");

@@ -13,6 +13,7 @@ dependencies:
   postcss-modules-scope: 2.2.0
   postcss-modules-values: 3.0.0
   postcss-value-parser: 4.1.0
+  query-string: 6.13.5
   resolve: 1.17.0
   source-map: 0.7.3
   tslib: 2.0.2
@@ -3438,7 +3439,6 @@ packages:
     resolution:
       integrity: sha512-KaL7+6Fw6i5A2XSnsbhm/6B+NuEA7TZ4vqxnd5tXz9sbKtrN9Srj8ab4vKVdK8YAqZO9P1kg45Y6YLoduPf+kw==
   /decode-uri-component/0.2.0:
-    dev: true
     engines:
       node: '>=0.10'
     resolution:
@@ -7949,6 +7949,16 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-u7aTucqRXCMlFbIosaArYJBD2+s=
+  /query-string/6.13.5:
+    dependencies:
+      decode-uri-component: 0.2.0
+      split-on-first: 1.1.0
+      strict-uri-encode: 2.0.0
+    dev: false
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-svk3xg9qHR39P3JlHuD7g3nRnyay5mHbrPctEBDUxUkHRifPHXJDhBUycdCC0NBjXoDf44Gb+IsOZL1Uwn8M/Q==
   /quick-lru/4.0.1:
     dev: true
     engines:
@@ -8886,6 +8896,12 @@ packages:
     dev: true
     resolution:
       integrity: sha512-+orQK83kyMva3WyPf59k1+Y525csj5JejicWut55zeTWANuN17qSiSLUXWtzHeNWORSvT7GLDJ/E/XiIWoXBTw==
+  /split-on-first/1.1.0:
+    dev: false
+    engines:
+      node: '>=6'
+    resolution:
+      integrity: sha512-43ZssAJaMusuKWL8sKUBQXHWOpq8d6CfN/u1p4gUzfJkM05C8rxTmYrkIPTXapZpORA6LkkzcUulJ8FqA7Uudw==
   /split-string/3.1.0:
     dependencies:
       extend-shallow: 3.0.2
@@ -8978,6 +8994,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-J5siXfHVgrH1TmWt3UNS4Y+qBxM=
+  /strict-uri-encode/2.0.0:
+    dev: false
+    engines:
+      node: '>=4'
+    resolution:
+      integrity: sha1-ucczDHBChi9rFC3CdLvMWGbONUY=
   /string-argv/0.3.1:
     dev: true
     engines:
@@ -10142,6 +10164,7 @@ specifiers:
   postcss-modules-values: ^3.0.0
   postcss-value-parser: ^4.1.0
   prettier: ^2.0.5
+  query-string: ^6.13.5
   resolve: ^1.17.0
   rollup: ^2.18.0
   rollup-plugin-dts: ^1.4.7
