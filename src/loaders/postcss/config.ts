@@ -1,21 +1,21 @@
 import path from "path";
-import postcss from "postcss";
+import { Parser, Syntax, Stringifier, AcceptedPlugin, PluginCreator } from "postcss";
 import { cosmiconfig } from "cosmiconfig";
 import { PostCSSConfigLoaderOptions } from "../../types";
 import { ensurePCSSPlugins, ensurePCSSOption } from "../../utils/options";
 
 interface Options {
-  parser?: postcss.Parser;
-  syntax?: postcss.Syntax;
-  stringifier?: postcss.Stringifier;
+  parser?: Parser;
+  syntax?: Syntax;
+  stringifier?: Stringifier;
 }
 
 interface Config extends Options {
-  plugins?: { [p: string]: Record<string, unknown> } | (string | postcss.Plugin<unknown>)[];
+  plugins?: Record<string, Record<string, unknown>> | (string | PluginCreator<unknown>)[];
 }
 
 interface Result {
-  plugins: (postcss.Transformer | postcss.Processor)[];
+  plugins: AcceptedPlugin[];
   options: Options;
 }
 

@@ -1,5 +1,5 @@
 import path from "path";
-import postcss from "postcss";
+import { Declaration, PluginCreator } from "postcss";
 import valueParser, { Node, ParsedValue } from "postcss-value-parser";
 import { mm } from "../../../utils/sourcemap";
 import { normalizePath, isAbsolutePath } from "../../../utils/path";
@@ -56,143 +56,147 @@ export interface UrlOptions {
   alias?: Record<string, string>;
 }
 
-const plugin: postcss.Plugin<UrlOptions> = postcss.plugin(
-  name,
-  (options = {}) => async (css, res): Promise<void> => {
-    if (!css.source?.input.file) return;
+const plugin: PluginCreator<UrlOptions> = (options = {}) => {
+  const inline = options.inline ?? false;
+  const publicPath = options.publicPath ?? "./";
+  const assetDir = options.assetDir ?? ".";
+  const resolve = options.resolve ?? resolveDefault;
+  const alias = options.alias ?? {};
+  const placeholder =
+    options.hash ?? true
+      ? typeof options.hash === "string"
+        ? options.hash
+        : placeholderHashDefault
+      : placeholderNoHashDefault;
 
-    const inline = options.inline ?? false;
-    const publicPath = options.publicPath ?? "./";
-    const assetDir = options.assetDir ?? ".";
-    const resolve = options.resolve ?? resolveDefault;
-    const alias = options.alias ?? {};
-    const placeholder =
-      options.hash ?? true
-        ? typeof options.hash === "string"
-          ? options.hash
-          : placeholderHashDefault
-        : placeholderNoHashDefault;
+  return {
+    postcssPlugin: name,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    async Once(css, { result: res }) {
+      if (!css.source?.input.file) return;
 
-    const { file } = css.source.input;
-    const map = await mm(css.source.input.map?.text).resolve(path.dirname(file)).toConsumer();
+      const { file } = css.source.input;
+      const map = await mm(css.source.input.map?.text).resolve(path.dirname(file)).toConsumer();
 
-    const urlList: {
-      node: Node;
-      url: string;
-      decl: postcss.Declaration;
-      parsed: ParsedValue;
-      basedirs: Set<string>;
-    }[] = [];
+      const urlList: {
+        node: Node;
+        url: string;
+        decl: Declaration;
+        parsed: ParsedValue;
+        basedirs: Set<string>;
+      }[] = [];
 
-    const imported = res.messages
-      .filter(msg => msg.type === "dependency")
-      .map(msg => msg.file as string);
+      const imported = res.messages
+        .filter(msg => msg.type === "dependency")
+        .map(msg => msg.file as string);
 
-    css.walkDecls(decl => {
-      if (!isDeclWithUrl(decl)) return;
-      const parsed = valueParser(decl.value);
-      walkUrls(parsed, (url, node) => {
-        // Resolve aliases
-        for (const [from, to] of Object.entries(alias)) {
-          if (!url.startsWith(from)) continue;
-          url = normalizePath(to) + url.slice(from.length);
-        }
+      css.walkDecls(decl => {
+        if (!isDeclWithUrl(decl)) return;
+        const parsed = valueParser(decl.value);
+        walkUrls(parsed, (url, node) => {
+          // Resolve aliases
+          for (const [from, to] of Object.entries(alias)) {
+            if (!url.startsWith(from)) continue;
+            url = normalizePath(to) + url.slice(from.length);
+          }
 
-        // Empty URL
-        if (!node || url.length === 0) {
-          decl.warn(res, `Empty URL in \`${decl.toString()}\``);
-          return;
-        }
-
-        // Skip Data URI
-        if (dataURIRe.test(url)) return;
-
-        // Skip Web URLs
-        if (!isAbsolutePath(url)) {
-          try {
-            new URL(url);
+          // Empty URL
+          if (!node || url.length === 0) {
+            decl.warn(res, `Empty URL in \`${decl.toString()}\``);
             return;
+          }
+
+          // Skip Data URI
+          if (dataURIRe.test(url)) return;
+
+          // Skip Web URLs
+          if (!isAbsolutePath(url)) {
+            try {
+              new URL(url);
+              return;
+            } catch {
+              // Is not a Web URL, continuing
+            }
+          }
+
+          const basedirs = new Set<string>();
+
+          // Use PostCSS imports
+          if (decl.source?.input.file && imported.includes(decl.source.input.file))
+            basedirs.add(path.dirname(decl.source.input.file));
+
+          // Use SourceMap
+          if (decl.source?.start) {
+            const pos = decl.source.start;
+            const realPos = map?.originalPositionFor(pos);
+            const basedir = realPos?.source && path.dirname(realPos.source);
+            if (basedir) basedirs.add(path.normalize(basedir));
+          }
+
+          // Use current file
+          basedirs.add(path.dirname(file));
+
+          urlList.push({ node, url, decl, parsed, basedirs });
+        });
+      });
+
+      map?.destroy();
+      const usedNames = new Map<string, string>();
+
+      for await (const { node, url, decl, parsed, basedirs } of urlList) {
+        let resolved: UrlFile | undefined;
+        for await (const basedir of basedirs) {
+          try {
+            if (!resolved) resolved = await resolve(url, basedir);
           } catch {
-            // Is not a Web URL, continuing
+            /* noop */
           }
         }
 
-        const basedirs = new Set<string>();
-
-        // Use PostCSS imports
-        if (decl.source?.input.file && imported.includes(decl.source.input.file))
-          basedirs.add(path.dirname(decl.source.input.file));
-
-        // Use SourceMap
-        if (decl.source?.start) {
-          const pos = decl.source.start;
-          const realPos = map?.originalPositionFor(pos);
-          const basedir = realPos?.source && path.dirname(realPos.source);
-          if (basedir) basedirs.add(path.normalize(basedir));
+        if (!resolved) {
+          decl.warn(res, `Unresolved URL \`${url}\` in \`${decl.toString()}\``);
+          continue;
         }
 
-        // Use current file
-        basedirs.add(path.dirname(file));
-
-        urlList.push({ node, url, decl, parsed, basedirs });
-      });
-    });
-
-    map?.destroy();
-    const usedNames = new Map<string, string>();
-
-    for await (const { node, url, decl, parsed, basedirs } of urlList) {
-      let resolved: UrlFile | undefined;
-      for await (const basedir of basedirs) {
-        try {
-          if (!resolved) resolved = await resolve(url, basedir);
-        } catch {
-          /* noop */
-        }
-      }
-
-      if (!resolved) {
-        decl.warn(res, `Unresolved URL \`${url}\` in \`${decl.toString()}\``);
-        continue;
-      }
-
-      const { source, from, urlQuery } = resolved;
-      if (!(source instanceof Uint8Array) || typeof from !== "string") {
-        decl.warn(res, `Incorrectly resolved URL \`${url}\` in \`${decl.toString()}\``);
-        continue;
-      }
-
-      res.messages.push({ plugin: name, type: "dependency", file: from });
-
-      if (inline) {
-        node.type = "string";
-        node.value = inlineFile(from, source);
-      } else {
-        const unsafeTo = normalizePath(generateName(placeholder, from, source));
-        let to = unsafeTo;
-
-        // Avoid file overrides
-        const hasExt = firstExtRe.test(unsafeTo);
-        for (let i = 1; usedNames.has(to) && usedNames.get(to) !== from; i++) {
-          to = hasExt ? unsafeTo.replace(firstExtRe, `${i}$1`) : `${unsafeTo}${i}`;
+        const { source, from, urlQuery } = resolved;
+        if (!(source instanceof Uint8Array) || typeof from !== "string") {
+          decl.warn(res, `Incorrectly resolved URL \`${url}\` in \`${decl.toString()}\``);
+          continue;
         }
 
-        usedNames.set(to, from);
+        res.messages.push({ plugin: name, type: "dependency", file: from });
 
-        node.type = "string";
-        node.value =
-          publicPath +
-          (/[/\\]$/.test(publicPath) ? "" : "/") +
-          path.basename(to) +
-          (urlQuery ?? "");
+        if (inline) {
+          node.type = "string";
+          node.value = inlineFile(from, source);
+        } else {
+          const unsafeTo = normalizePath(generateName(placeholder, from, source));
+          let to = unsafeTo;
 
-        to = normalizePath(assetDir, to);
-        res.messages.push({ plugin: name, type: "asset", to, source });
+          // Avoid file overrides
+          const hasExt = firstExtRe.test(unsafeTo);
+          for (let i = 1; usedNames.has(to) && usedNames.get(to) !== from; i++) {
+            to = hasExt ? unsafeTo.replace(firstExtRe, `${i}$1`) : `${unsafeTo}${i}`;
+          }
+
+          usedNames.set(to, from);
+
+          node.type = "string";
+          node.value =
+            publicPath +
+            (/[/\\]$/.test(publicPath) ? "" : "/") +
+            path.basename(to) +
+            (urlQuery ?? "");
+
+          to = normalizePath(assetDir, to);
+          res.messages.push({ plugin: name, type: "asset", to, source });
+        }
+
+        decl.value = parsed.toString();
       }
+    },
+  };
+};
 
-      decl.value = parsed.toString();
-    }
-  },
-);
-
+plugin.postcss = true;
 export default plugin;

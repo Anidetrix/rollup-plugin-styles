@@ -1,10 +1,10 @@
-import postcss from "postcss";
+import { Declaration } from "postcss";
 import valueParser, { Node, ParsedValue } from "postcss-value-parser";
 
 const urlFuncRe = /^url$/i;
 const imageSetFuncRe = /^(?:-webkit-)?image-set$/i;
 
-export const isDeclWithUrl = (decl: postcss.Declaration): boolean =>
+export const isDeclWithUrl = (decl: Declaration): boolean =>
   /^(?:url|(?:-webkit-)?image-set)\(/i.test(decl.value);
 
 export const walkUrls = (

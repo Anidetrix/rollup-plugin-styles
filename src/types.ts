@@ -1,4 +1,4 @@
-import postcss from "postcss";
+import * as postcss from "postcss";
 import cssnano from "cssnano";
 import { ImportOptions } from "./loaders/postcss/import";
 import { UrlOptions } from "./loaders/postcss/url";
@@ -59,7 +59,7 @@ export interface PostCSSLoaderOptions extends Record<string, unknown> {
     /** @see {@link Options.stringifier} */
     stringifier?: postcss.Stringifier;
     /** @see {@link Options.plugins} */
-    plugins?: (postcss.Transformer | postcss.Processor)[];
+    plugins?: postcss.AcceptedPlugin[];
   };
 }
 
@@ -123,11 +123,10 @@ export interface Options {
   plugins?:
     | Record<string, unknown>
     | (
-        | postcss.Transformer
-        | postcss.Processor
+        | postcss.AcceptedPlugin
         | string
-        | [string | postcss.Plugin<unknown>]
-        | [string | postcss.Plugin<unknown>, Record<string, unknown>]
+        | [string | postcss.PluginCreator<unknown>]
+        | [string | postcss.PluginCreator<unknown>, Record<string, unknown>]
         | null
         | undefined
       )[];

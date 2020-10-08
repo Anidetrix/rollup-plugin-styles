@@ -2,7 +2,7 @@ import path from "path";
 import fs from "fs-extra";
 import { RawSourceMap } from "source-map";
 import { makeLegalIdentifier } from "@rollup/pluginutils";
-import postcss from "postcss";
+import postcss, { AcceptedPlugin, ProcessOptions } from "postcss";
 import cssnano from "cssnano";
 import { PostCSSLoaderOptions, InjectOptions } from "../../types";
 import { humanlizePath, normalizePath } from "../../utils/path";
@@ -36,7 +36,7 @@ function ensureAutoModules(am: PostCSSLoaderOptions["autoModules"], id: string):
 }
 
 type PostCSSOptions = PostCSSLoaderOptions["postcss"] &
-  Pick<Required<postcss.ProcessOptions>, "from" | "to" | "map">;
+  Pick<Required<ProcessOptions>, "from" | "to" | "map">;
 
 const loader: Loader<PostCSSLoaderOptions> = {
   name: "postcss",
@@ -44,7 +44,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
   async process({ code, map, extracted }) {
     const options = { ...this.options };
     const config = await loadConfig(this.id, options.config);
-    const plugins: (postcss.Transformer | postcss.Processor)[] = [];
+    const plugins: AcceptedPlugin[] = [];
     const autoModules = ensureAutoModules(options.autoModules, this.id);
     const supportModules = Boolean(options.modules || autoModules);
     const modulesExports: Record<string, string> = {};
@@ -85,8 +85,10 @@ const loader: Loader<PostCSSLoaderOptions> = {
       );
     }
 
-    if (options.minimize)
-      plugins.push(cssnano(typeof options.minimize === "object" ? options.minimize : {}));
+    if (options.minimize) {
+      const p = cssnano(typeof options.minimize === "object" ? options.minimize : {});
+      plugins.push(p as AcceptedPlugin);
+    }
 
     // Avoid PostCSS warning
     if (plugins.length === 0) plugins.push(postcssNoop);
@@ -118,7 +120,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
 
     if (!options.extract && this.sourceMap)
       res.css += mm(map)
-        .modify(map => void delete map.file)
+        .modify(map => void delete (map as Partial<RawSourceMap>).file)
         .relative()
         .toCommentData();
 

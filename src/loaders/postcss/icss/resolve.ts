@@ -1,4 +1,5 @@
-import postcss from "postcss";
+import { ProcessOptions } from "postcss";
+import Processor from "postcss/lib/processor";
 import { CSSImports } from "icss-utils";
 import { Load } from "./load";
 
@@ -7,8 +8,8 @@ export default async function (
   load: Load,
   file: string,
   extensions: string[],
-  processor: postcss.Processor,
-  opts?: postcss.ProcessOptions,
+  processor: Processor,
+  opts?: ProcessOptions,
 ): Promise<Record<string, string>> {
   const imports: Record<string, string> = {};
 

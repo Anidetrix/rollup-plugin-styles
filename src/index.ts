@@ -1,3 +1,4 @@
+/// <reference types="./shims/icss-utils" />
 /// <reference types="./shims/postcss-modules" />
 /// <reference types="./shims/fibers" />
 /// <reference types="./shims/sass" />
@@ -7,7 +8,7 @@
 import path from "path";
 import { Plugin, OutputChunk, OutputAsset } from "rollup";
 import { createFilter } from "@rollup/pluginutils";
-import postcss from "postcss";
+import postcss, { AcceptedPlugin } from "postcss";
 import cssnano from "cssnano";
 import { LoaderContext, Extracted } from "./loaders/types";
 import { ExtractedData, Options, PostCSSLoaderOptions } from "./types";
@@ -129,7 +130,7 @@ export default (options: Options = {}): Plugin => {
       const ids: string[] = [];
       for (const id of Object.keys(chunk.modules)) {
         const i = this.getModuleInfo(id);
-        ids.push(i.id, ...i.importedIds);
+        i && ids.push(i.id, ...i.importedIds);
       }
 
       const hashable = extracted
@@ -217,7 +218,8 @@ export default (options: Options = {}): Plugin => {
               if (traversed.includes(id) || !isIncluded(id)) continue;
               if (loaders.isSupported(id)) ordered.push(id);
               else traversed.push(id);
-              imports.push(...this.getModuleInfo(id).importedIds);
+              const i = this.getModuleInfo(id);
+              i && imports.push(...i.importedIds);
             }
             ids = imports;
           }
@@ -268,19 +270,21 @@ export default (options: Options = {}): Plugin => {
 
         // Perform minimization on the extracted file
         if (loaderOpts.minimize) {
-          const cssNanoOpts: cssnano.CssNanoOptions & postcss.ProcessOptions =
-            typeof loaderOpts.minimize === "object" ? loaderOpts.minimize : {};
+          const ps: AcceptedPlugin[] = [];
+          const p = cssnano(typeof loaderOpts.minimize === "object" ? loaderOpts.minimize : {});
+          ps.push(p as AcceptedPlugin);
 
-          cssNanoOpts.from = res.name;
-          cssNanoOpts.to = res.name;
-          cssNanoOpts.map = sourceMap && {
-            inline: false,
-            annotation: false,
-            sourcesContent: sourceMap.content,
-            prev: res.map,
-          };
+          const resMin = await postcss(ps).process(res.css, {
+            from: res.name,
+            to: res.name,
+            map: sourceMap && {
+              inline: false,
+              annotation: false,
+              sourcesContent: sourceMap.content,
+              prev: res.map,
+            },
+          });
 
-          const resMin = await cssnano.process(res.css, cssNanoOpts);
           res.css = resMin.css;
           res.map = resMin.map?.toString();
         }

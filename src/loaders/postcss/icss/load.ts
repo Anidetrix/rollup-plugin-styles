@@ -1,14 +1,15 @@
 import path from "path";
 import fs from "fs-extra";
-import postcss from "postcss";
+import { ProcessOptions } from "postcss";
+import Processor from "postcss/lib/processor";
 import resolveAsync from "../../../utils/resolve-async";
 
 export type Load = (
   url: string,
   file: string,
   extensions: string[],
-  processor: postcss.Processor,
-  opts?: postcss.ProcessOptions,
+  processor: Processor,
+  opts?: ProcessOptions,
 ) => Promise<Record<string, string>>;
 
 const load: Load = async (url, file, extensions, processor, opts) => {

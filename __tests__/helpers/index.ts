@@ -95,8 +95,10 @@ export interface TestData extends WriteData {
 
 export function validate(data: TestData): void {
   const options = data.options ?? {};
+  // eslint-disable-next-line jest/valid-title
   test(data.title, async () => {
     if (data.shouldFail) {
+      // eslint-disable-next-line jest/no-conditional-expect
       await expect(write(data)).rejects.toThrowErrorMatchingSnapshot();
       return;
     }
@@ -107,15 +109,20 @@ export function validate(data: TestData): void {
 
     const mode = inferModeOption(options.mode);
     if (mode.extract) {
+      // eslint-disable-next-line jest/no-conditional-expect
       await expect(res.isCss()).resolves.toBeTruthy();
+      // eslint-disable-next-line jest/no-conditional-expect
       for (const f of await res.css()) expect(f).toMatchSnapshot("css");
     }
 
     const sourceMap = inferSourceMapOption(options.sourceMap);
     if (sourceMap && !sourceMap.inline) {
+      // eslint-disable-next-line jest/no-conditional-expect
       await expect(res.isMap()).resolves.toBe(Boolean(mode.extract));
+      // eslint-disable-next-line jest/no-conditional-expect
       for (const f of await res.map()) expect(f).toMatchSnapshot("map");
     } else {
+      // eslint-disable-next-line jest/no-conditional-expect
       await expect(res.isMap()).resolves.toBeFalsy();
     }
 
@@ -124,6 +131,7 @@ export function validate(data: TestData): void {
 }
 
 export function validateMany(groupName: string, testDatas: TestData[]): void {
+  // eslint-disable-next-line jest/valid-title
   describe(groupName, () => {
     for (const testData of testDatas) {
       validate({ ...testData, outDir: path.join(groupName, testData.title) });

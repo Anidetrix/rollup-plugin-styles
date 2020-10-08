@@ -1,4 +1,4 @@
-import postcss from "postcss";
+import { AcceptedPlugin } from "postcss";
 import { LoaderContext } from "../loaders/types";
 import { Options, PostCSSLoaderOptions } from "../types";
 import loadModule from "./load-module";
@@ -75,14 +75,12 @@ export function ensurePCSSOption<T>(option: T | string, type: PCSSOption): T {
   return module as T;
 }
 
-export function ensurePCSSPlugins(
-  plugins: Options["plugins"],
-): (postcss.Transformer | postcss.Processor)[] {
+export function ensurePCSSPlugins(plugins: Options["plugins"]): AcceptedPlugin[] {
   if (typeof plugins === "undefined") return [];
   else if (typeof plugins !== "object")
     throw new TypeError("`plugins` option must be an array or an object!");
 
-  const ps: (postcss.Transformer | postcss.Processor)[] = [];
+  const ps: AcceptedPlugin[] = [];
   for (const p of !Array.isArray(plugins) ? Object.entries(plugins) : plugins) {
     if (!p) continue;
 
