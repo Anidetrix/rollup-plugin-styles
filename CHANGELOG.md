@@ -15,6 +15,17 @@
 
 * Revert "chore(release): 3.10.1 [skip ci]" ([dc16939](https://github.com/Anidetrix/rollup-plugin-styles/commit/dc169397897cda3e61119ed1c7895d8342942426))
 
+
+
+## [3.10.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.10.0...v3.10.1) (2020-10-07)
+
+
+### Bug Fixes
+
+* correctly resolve file imports with query params ([#148](https://github.com/Anidetrix/rollup-plugin-styles/issues/148)) ([71bfe87](https://github.com/Anidetrix/rollup-plugin-styles/commit/71bfe875b96f1b7f240b2b8e334ad6385db56c79)), closes [#132](https://github.com/Anidetrix/rollup-plugin-styles/issues/132)
+
+
+
 # [3.10.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.9.0...v3.10.0) (2020-06-26)
 
 
@@ -29,6 +40,8 @@
 
 * .d.ts generation and treeshakeable injector options ([2990cb0](https://github.com/Anidetrix/rollup-plugin-styles/commit/2990cb0f9fa3621b4e3acc00bef1fc4d12d9035b))
 * **postcss:** support both object and array for plugin ([7ce53b9](https://github.com/Anidetrix/rollup-plugin-styles/commit/7ce53b96f3870947883ae4b79ba48da24e8c76fb))
+
+
 
 # [3.9.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.8.2...v3.9.0) (2020-06-23)
 
@@ -49,6 +62,13 @@
 * misc optimizations ([df1d1ee](https://github.com/Anidetrix/rollup-plugin-styles/commit/df1d1ee3a9a0f2c44f47b4afaf9ad522fccb4471))
 * **modules:** simpler internal implementation ([c1f92e1](https://github.com/Anidetrix/rollup-plugin-styles/commit/c1f92e1b0c942f25e25a6cdbf2d812bde281aec9))
 
+
+### Reverts
+
+* Revert "chore(release): 3.8.3 [skip ci]" ([49b18ff](https://github.com/Anidetrix/rollup-plugin-styles/commit/49b18ffe95dacef74e5e280915fe44e0bbc77ed6))
+
+
+
 ## [3.8.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.8.1...v3.8.2) (2020-06-11)
 
 
@@ -63,6 +83,8 @@
 
 * tiny optimizations ([309e37b](https://github.com/Anidetrix/rollup-plugin-styles/commit/309e37b87dcaf4f0bb82c687697a5c4f1574982b))
 
+
+
 ## [3.8.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.8.0...v3.8.1) (2020-06-11)
 
 
@@ -70,6 +92,8 @@
 
 * fix overwrite style file in preserveModules mode ([2c13345](https://github.com/Anidetrix/rollup-plugin-styles/commit/2c13345b3e382976da78bbfddf478be5bf8b30fc))
 * use path.parse instead of regex ([135b658](https://github.com/Anidetrix/rollup-plugin-styles/commit/135b65813cf88a159a00732c558b9a3424192083))
+
+
 
 # [3.8.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.7.1...v3.8.0) (2020-06-08)
 
@@ -85,12 +109,16 @@
 * replace concat-with-sourcemaps with custom function ([a1b04d2](https://github.com/Anidetrix/rollup-plugin-styles/commit/a1b04d23e88652db5f894a2e994e587b95293cf0))
 * resolved modules caching ([7eab36d](https://github.com/Anidetrix/rollup-plugin-styles/commit/7eab36d30ffcf99df7ff9e4bddbb710ccca9aaf1))
 
+
+
 ## [3.7.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.7.0...v3.7.1) (2020-05-31)
 
 
 ### Bug Fixes
 
 * respect content option for minification ([59b3c07](https://github.com/Anidetrix/rollup-plugin-styles/commit/59b3c07c3d5d7c428aa2eab33d0e9b0c0295ab8d))
+
+
 
 # [3.7.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.6.1...v3.7.0) (2020-05-31)
 
@@ -99,12 +127,16 @@
 
 * option to disable `sourcesContent` in sourcemaps ([afc440b](https://github.com/Anidetrix/rollup-plugin-styles/commit/afc440b6cfba5f24ddf989f7c8bb8d44f02b7dce))
 
+
+
 ## [3.6.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.6.0...v3.6.1) (2020-05-27)
 
 
 ### Bug Fixes
 
 * respect programmatic manual chunks as well ([311e0dc](https://github.com/Anidetrix/rollup-plugin-styles/commit/311e0dcb4aae623e3bb62a873d55ba89210a1823))
+
+
 
 # [3.6.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.5.5...v3.6.0) (2020-05-27)
 
@@ -124,12 +156,16 @@
 
 * replace some sets with arrays ([2b7c28e](https://github.com/Anidetrix/rollup-plugin-styles/commit/2b7c28ee763b63e36e900389921b9bb19de1629f))
 
+
+
 ## [3.5.5](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.5.4...v3.5.5) (2020-05-23)
 
 
 ### Bug Fixes
 
 * **changelog:** repairs after github breakage ([b01e058](https://github.com/Anidetrix/rollup-plugin-styles/commit/b01e0588e493e7807de37b2a3b8b7a897735afa9))
+
+
 
 ## [3.5.4](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.5.3...v3.5.4) (2020-05-23)
 
@@ -909,3 +945,6 @@ As always, please consult documentation and API Reference for details
 
 
 ## 1.0.5 (2020-03-13)
+
+
+
