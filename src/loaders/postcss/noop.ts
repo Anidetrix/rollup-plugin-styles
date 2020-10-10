@@ -1,7 +1,5 @@
-import { TransformCallback } from "postcss";
-
-const noop: TransformCallback = () => {
-  /* noop */
-};
-
-export default noop;
+import { PluginCreator } from "postcss";
+const name = "styles-noop";
+const plugin: PluginCreator<unknown> = () => ({ postcssPlugin: name });
+plugin.postcss = true;
+export default plugin;
