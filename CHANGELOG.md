@@ -1,3 +1,20 @@
+# [3.11.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.10.1...v3.11.0) (2020-10-10)
+
+
+### Bug Fixes
+
+* infinite postcss loop ([c8cf892](https://github.com/Anidetrix/rollup-plugin-styles/commit/c8cf8927448d975e6f66e1186190bb908cce03fe))
+
+
+### Features
+
+* postcss 8 upgrade ([b9adee9](https://github.com/Anidetrix/rollup-plugin-styles/commit/b9adee9fd7d0deeb994dc20314d74dfba4b3ee37))
+
+
+### Reverts
+
+* Revert "chore(release): 3.10.1 [skip ci]" ([dc16939](https://github.com/Anidetrix/rollup-plugin-styles/commit/dc169397897cda3e61119ed1c7895d8342942426))
+
 # [3.10.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.9.0...v3.10.0) (2020-06-26)
 
 
