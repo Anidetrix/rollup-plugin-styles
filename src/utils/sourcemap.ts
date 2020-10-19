@@ -60,7 +60,7 @@ class MapModifier {
     return this.modifySources(source => {
       if (source === "<no source>") return source;
       if (isAbsolutePath(source)) return relativePath(dir, source);
-      else return normalizePath(source);
+      return normalizePath(source);
     });
   }
 
