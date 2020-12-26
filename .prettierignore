@@ -1,7 +1,6 @@
 /dist
 /tmp
 /.cache
-/.vscode
 /node_modules
 /coverage
 /docs
