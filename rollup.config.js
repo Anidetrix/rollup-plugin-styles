@@ -45,7 +45,7 @@ export default [
         configFile: false,
         presets: [["@babel/preset-env", { modules: false, targets: { ie: "8" } }]],
       }),
-      terser({ output: { comments: false }, ie8: true, safari10: true }),
+      terser({ format: { comments: false }, ie8: true, safari10: true }),
     ],
   },
   // Declaration
