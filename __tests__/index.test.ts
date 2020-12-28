@@ -480,8 +480,13 @@ validateMany("less", [
   },
   {
     title: "sourcemap",
-    input: "stylus-import/index.js",
+    input: "less-import/index.js",
     options: { mode: "extract", sourceMap: true },
+  },
+  {
+    title: "paths",
+    input: "less-paths/index.js",
+    options: { less: { paths: [fixture("less-paths/sub")] } },
   },
 ]);
 
