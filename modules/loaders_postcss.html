@@ -1,0 +1,138 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>loaders/postcss | rollup-plugin-styles</title>
+	<meta name="description" content="Documentation for rollup-plugin-styles">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+	<script async src="../assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">rollup-plugin-styles</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../modules.html">rollup-plugin-styles</a>
+				</li>
+				<li>
+					<a href="loaders_postcss.html">loaders/postcss</a>
+				</li>
+			</ul>
+			<h1>Module loaders/postcss</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Variables</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="loaders_postcss.html#default" class="tsd-kind-icon">default</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Variables</h2>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="default" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> default</h3>
+					<div class="tsd-signature tsd-kind-icon">default<span class="tsd-signature-symbol">:</span> <a href="../interfaces/loaders_types.loader.html" class="tsd-signature-type" data-tsd-kind="Interface">Loader</a><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/types.postcssloaderoptions.html" class="tsd-signature-type" data-tsd-kind="Interface">PostCSSLoaderOptions</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = {name: &quot;postcss&quot;,alwaysProcess: true,async process({ code, map, extracted }) {const options &#x3D; { ...this.options };const config &#x3D; await loadConfig(this.id, options.config);const plugins: AcceptedPlugin[] &#x3D; [];const autoModules &#x3D; ensureAutoModules(options.autoModules, this.id);const supportModules &#x3D; Boolean(options.modules || autoModules);const modulesExports: Record&lt;string, string&gt; &#x3D; {};const postcssOpts: PostCSSOptions &#x3D; {...config.options,...options.postcss,from: this.id,to: options.to ?? this.id,map: {inline: false,annotation: false,sourcesContent: this.sourceMap ? this.sourceMap.content : true,prev: mm(map).relative(path.dirname(this.id)).toObject(),},};delete postcssOpts.plugins;if (options.import)plugins.push(postcssImport({ extensions: options.extensions, ...options.import }));if (options.url) plugins.push(postcssUrl({ inline: Boolean(options.inject), ...options.url }));if (options.postcss.plugins) plugins.push(...options.postcss.plugins);if (config.plugins) plugins.push(...config.plugins);if (supportModules) {const modulesOptions &#x3D; typeof options.modules &#x3D;&#x3D;&#x3D; &quot;object&quot; ? options.modules : {};plugins.push(...postcssModules({generateScopedName: testing ? &quot;[name]_[local]&quot; : undefined,failOnWrongOrder: true,...modulesOptions,}),postcssICSS({ extensions: options.extensions }),);}if (options.minimize) {const p &#x3D; cssnano(typeof options.minimize &#x3D;&#x3D;&#x3D; &quot;object&quot; ? options.minimize : {});plugins.push(p as AcceptedPlugin);}// Avoid PostCSS warningif (plugins.length &#x3D;&#x3D;&#x3D; 0) plugins.push(postcssNoop);const res &#x3D; await postcss(plugins).process(code, postcssOpts);for (const msg of res.messages)switch (msg.type) {case &quot;warning&quot;:this.warn({ name: msg.plugin, message: msg.text as string });break;case &quot;icss&quot;:Object.assign(modulesExports, msg.export as Record&lt;string, string&gt;);break;case &quot;dependency&quot;:this.deps.add(normalizePath(msg.file));break;case &quot;asset&quot;:this.assets.set(msg.to, msg.source);break;}map &#x3D; mm((res.map?.toJSON() as unknown) as RawSourceMap).resolve(path.dirname(postcssOpts.to)).toString();if (!options.extract &amp;&amp; this.sourceMap)res.css +&#x3D; mm(map).modify(map &#x3D;&gt; void delete (map as Partial&lt;RawSourceMap&gt;).file).relative().toCommentData();if (options.emit) return { code: res.css, map };const saferId &#x3D; (id: string): string &#x3D;&gt; safeId(id, path.basename(this.id));const modulesVarName &#x3D; saferId(&quot;modules&quot;);const output &#x3D; [&#x60;export var ${cssVarName} &#x3D; ${JSON.stringify(res.css)};&#x60;];const dts &#x3D; [&#x60;export var ${cssVarName}: string;&#x60;];if (options.namedExports) {const getClassName &#x3D;typeof options.namedExports &#x3D;&#x3D;&#x3D; &quot;function&quot; ? options.namedExports : getClassNameDefault;for (const name in modulesExports) {const newName &#x3D; getClassName(name);if (name !&#x3D;&#x3D; newName)this.warn(&#x60;Exported \&#x60;${name}\&#x60; as \&#x60;${newName}\&#x60; in ${humanlizePath(this.id)}&#x60;);const fmt &#x3D; JSON.stringify(modulesExports[name]);output.push(&#x60;export var ${newName} &#x3D; ${fmt};&#x60;);if (options.dts) dts.push(&#x60;export var ${newName}: ${fmt};&#x60;);}}if (options.extract) extracted &#x3D; { id: this.id, css: res.css, map };if (options.inject) {if (typeof options.inject &#x3D;&#x3D;&#x3D; &quot;function&quot;) {output.push(options.inject(cssVarName, this.id));output.push(&#x60;var ${modulesVarName} &#x3D; ${JSON.stringify(modulesExports)};&#x60;);} else {const { treeshakeable, ...injectorOptions } &#x3D;typeof options.inject &#x3D;&#x3D;&#x3D; &quot;object&quot; ? options.inject : ({} as InjectOptions);const injectorName &#x3D; saferId(&quot;injector&quot;);const injectorCall &#x3D; &#x60;${injectorName}(${cssVarName},${JSON.stringify(injectorOptions)});&#x60;;if (!injectorId) {const opts &#x3D; { basedirs: [path.join(testing ? process.cwd() : __dirname, &quot;runtime&quot;)] };injectorId &#x3D; await resolveAsync([&quot;./inject-css&quot;], opts);injectorId &#x3D; &#x60;&quot;${normalizePath(injectorId)}&quot;&#x60;;}output.push(&#x60;import ${injectorName} from ${injectorId};&#x60;);if (!treeshakeable)output.push(&#x60;var ${modulesVarName} &#x3D; ${JSON.stringify(modulesExports)};&#x60;, injectorCall);if (treeshakeable) {output.push(&quot;var injected &#x3D; false;&quot;);const injectorCallOnce &#x3D; &#x60;if (!injected) { injected &#x3D; true; ${injectorCall} }&#x60;;if (modulesExports.inject) {throw new Error(&quot;&#x60;inject&#x60; keyword is reserved when using &#x60;inject.treeshakeable&#x60; option&quot;,);}let getters &#x3D; &quot;&quot;;for (const [k, v] of Object.entries(modulesExports)) {const name &#x3D; JSON.stringify(k);const value &#x3D; JSON.stringify(v);getters +&#x3D; &#x60;get ${name}() { ${injectorCallOnce} return ${value}; },\n&#x60;;}getters +&#x3D; &#x60;inject() { ${injectorCallOnce} },&#x60;;output.push(&#x60;var ${modulesVarName} &#x3D; {${getters}};&#x60;);}}}if (!options.inject) output.push(&#x60;var ${modulesVarName} &#x3D; ${JSON.stringify(modulesExports)};&#x60;);const defaultExport &#x3D; &#x60;export default ${supportModules ? modulesVarName : cssVarName};&#x60;;output.push(defaultExport);if (options.dts &amp;&amp; (await fs.pathExists(this.id))) {if (supportModules)dts.push(&#x60;interface ModulesExports ${JSON.stringify(modulesExports)}&#x60;,typeof options.inject &#x3D;&#x3D;&#x3D; &quot;object&quot; &amp;&amp; options.inject.treeshakeable? &#x60;interface ModulesExports {inject:()&#x3D;&gt;void}&#x60;: &quot;&quot;,&#x60;declare const ${modulesVarName}: ModulesExports;&#x60;,);dts.push(defaultExport);await fs.writeFile(&#x60;${this.id}.d.ts&#x60;, dts.filter(Boolean).join(&quot;\n&quot;));}return { code: output.filter(Boolean).join(&quot;\n&quot;), map, extracted };},}</span></div>
+					<aside class="tsd-sources">
+					</aside>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="../modules.html">Exports</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="loaders_postcss.html">loaders/postcss</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="loaders_postcss.html#default" class="tsd-kind-icon">default</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-namespace"><span class="tsd-kind-icon">Namespace</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

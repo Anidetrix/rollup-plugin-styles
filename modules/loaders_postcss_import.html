@@ -1,0 +1,158 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>loaders/postcss/import | rollup-plugin-styles</title>
+	<meta name="description" content="Documentation for rollup-plugin-styles">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../assets/css/main.css">
+	<script async src="../assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="../index.html" class="title">rollup-plugin-styles</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="../modules.html">rollup-plugin-styles</a>
+				</li>
+				<li>
+					<a href="loaders_postcss_import.html">loaders/postcss/import</a>
+				</li>
+			</ul>
+			<h1>Module loaders/postcss/import</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<section class="tsd-panel-group tsd-index-group">
+				<h2>Index</h2>
+				<section class="tsd-panel tsd-index-panel">
+					<div class="tsd-index-content">
+						<section class="tsd-index-section ">
+							<h3>Namespaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-namespace tsd-parent-kind-module"><a href="loaders_postcss_import.default.html" class="tsd-kind-icon">default</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Interfaces</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/loaders_postcss_import.importoptions.html" class="tsd-kind-icon">Import<wbr>Options</a></li>
+							</ul>
+						</section>
+						<section class="tsd-index-section ">
+							<h3>Variables</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-variable tsd-parent-kind-module"><a href="loaders_postcss_import.html#default-1" class="tsd-kind-icon">default</a></li>
+							</ul>
+						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group ">
+				<h2>Variables</h2>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-module">
+					<a name="default-1" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> default</h3>
+					<div class="tsd-signature tsd-kind-icon">default<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">PluginCreator</span><span class="tsd-signature-symbol">&lt;</span><a href="../interfaces/loaders_postcss_import.importoptions.html" class="tsd-signature-type" data-tsd-kind="Interface">ImportOptions</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = (options &#x3D; {}) &#x3D;&gt; {const resolve &#x3D; options.resolve ?? resolveDefault;const alias &#x3D; options.alias ?? {};const extensions &#x3D; options.extensions ?? extensionsDefault;return {postcssPlugin: name,// eslint-disable-next-line @typescript-eslint/naming-conventionasync Once(css, { result: res }) {if (!css.source?.input.file) return;const opts: Result[&quot;opts&quot;] &#x3D; { ...res.opts };delete opts.map;const { file } &#x3D; css.source.input;const importList: { rule: AtRule; url: string }[] &#x3D; [];const basedir &#x3D; path.dirname(file);css.walkAtRules(/^import$/i, rule &#x3D;&gt; {// Top level onlyif (rule.parent &amp;&amp; rule.parent.type !&#x3D;&#x3D; &quot;root&quot;) {rule.warn(res, &quot;&#x60;@import&#x60; should be top level&quot;);return;}// Child nodes should not existif (rule.nodes) {rule.warn(res, &quot;&#x60;@import&#x60; was not terminated correctly&quot;);return;}const [urlNode] &#x3D; valueParser(rule.params).nodes;// No URL detectedif (!urlNode || (urlNode.type !&#x3D;&#x3D; &quot;string&quot; &amp;&amp; urlNode.type !&#x3D;&#x3D; &quot;function&quot;)) {rule.warn(res, &#x60;No URL in \&#x60;${rule.toString()}\&#x60;&#x60;);return;}let url &#x3D; &quot;&quot;;if (urlNode.type &#x3D;&#x3D;&#x3D; &quot;string&quot;) {url &#x3D; urlNode.value;} else if (urlNode.type &#x3D;&#x3D;&#x3D; &quot;function&quot;) {// Invalid functionif (!/^url$/i.test(urlNode.value)) {rule.warn(res, &#x60;Invalid \&#x60;url\&#x60; function in \&#x60;${rule.toString()}\&#x60;&#x60;);return;}const isString &#x3D; urlNode.nodes[0]?.type &#x3D;&#x3D;&#x3D; &quot;string&quot;;url &#x3D; isString ? urlNode.nodes[0].value : valueParser.stringify(urlNode.nodes);}url &#x3D; url.replace(/^\s+|\s+$/g, &quot;&quot;);// Resolve aliasesfor (const [from, to] of Object.entries(alias)) {if (url !&#x3D;&#x3D; from &amp;&amp; !url.startsWith(&#x60;${from}/&#x60;)) continue;url &#x3D; normalizePath(to) + url.slice(from.length);}// Empty URLif (url.length &#x3D;&#x3D;&#x3D; 0) {rule.warn(res, &#x60;Empty URL in \&#x60;${rule.toString()}\&#x60;&#x60;);return;}// Skip Web URLsif (!isAbsolutePath(url)) {try {new URL(url);return;} catch {// Is not a Web URL, continuing}}importList.push({ rule, url });});for await (const { rule, url } of importList) {try {const { source, from } &#x3D; await resolve(url, basedir, extensions);if (!(source instanceof Uint8Array) || typeof from !&#x3D;&#x3D; &quot;string&quot;) {rule.warn(res, &#x60;Incorrectly resolved \&#x60;@import\&#x60; in \&#x60;${rule.toString()}\&#x60;&#x60;);continue;}if (normalizePath(from) &#x3D;&#x3D;&#x3D; normalizePath(file)) {rule.warn(res, &#x60;\&#x60;@import\&#x60; loop in \&#x60;${rule.toString()}\&#x60;&#x60;);continue;}const imported &#x3D; await postcss(plugin(options)).process(source, { ...opts, from });res.messages.push(...imported.messages, { plugin: name, type: &quot;dependency&quot;, file: from });if (!imported.root) rule.remove();else rule.replaceWith(imported.root);} catch {rule.warn(res, &#x60;Unresolved \&#x60;@import\&#x60; in \&#x60;${rule.toString()}\&#x60;&#x60;);}}},};}</span></div>
+					<aside class="tsd-sources">
+					</aside>
+				</section>
+			</section>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="../modules.html">Exports</a>
+					</li>
+					<li class="current tsd-kind-module">
+						<a href="loaders_postcss_import.html">loaders/postcss/import</a>
+						<ul>
+							<li class=" tsd-kind-namespace tsd-parent-kind-module">
+								<a href="loaders_postcss_import.default.html">default</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-module">
+						<a href="../interfaces/loaders_postcss_import.importoptions.html" class="tsd-kind-icon">Import<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
+						<a href="loaders_postcss_import.html#default-1" class="tsd-kind-icon">default</a>
+					</li>
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-namespace"><span class="tsd-kind-icon">Namespace</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>
