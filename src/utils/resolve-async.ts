@@ -54,5 +54,5 @@ export default async function (ids: string[], userOpts: ResolveOpts): Promise<st
   }
 
   const idsFmt = arrayFmt(ids);
-  throw new Error(`${options.caller} could not resolve ${idsFmt} `);
+  throw new Error(`${options.caller} could not resolve ${idsFmt}`);
 }

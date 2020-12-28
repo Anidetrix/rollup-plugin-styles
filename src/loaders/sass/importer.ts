@@ -13,7 +13,6 @@ export const importer: sass.Importer = (url, importer, done): void => {
   const moduleUrl = normalizeUrl(url);
   const partialUrl = getUrlOfPartial(moduleUrl);
   const options = { caller: "Sass importer", basedirs: [path.dirname(importer)], extensions };
-
   // Give precedence to importing a partial
   resolveAsync([partialUrl, moduleUrl], options).then(finalize).catch(next);
 };

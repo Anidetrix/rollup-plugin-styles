@@ -110,9 +110,9 @@ You can prepend the path with `~` to resolve in `node_modules`:
 // Import from `node_modules`
 @import "~bulma/css/bulma";
 // Local import
-@import "custom";
-// ...or
 @import "./custom";
+// ...or
+@import "custom";
 ```
 
 Also note that partials are considered first, e.g.
