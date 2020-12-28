@@ -164,9 +164,9 @@ yarn add rollup-plugin-styles --dev</code></pre>
 				<pre><code class="language-scss"><span class="hljs-comment">// Import from `node_modules`</span>
 <span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;~bulma/css/bulma&quot;</span>;
 <span class="hljs-comment">// Local import</span>
-<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;custom&quot;</span>;
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;./custom&quot;</span>;
 <span class="hljs-comment">// ...or</span>
-<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;./custom&quot;</span>;</code></pre>
+<span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;custom&quot;</span>;</code></pre>
 				<p>Also note that partials are considered first, e.g.</p>
 				<pre><code class="language-scss"><span class="hljs-keyword">@import</span> <span class="hljs-string">&quot;custom&quot;</span>;</code></pre>
 				<p>Will look for <code>_custom</code> first (<em>with the approptiate extension(s)</em>), and then for <code>custom</code> if <code>_custom</code> doesn&#39;t exist.</p>
