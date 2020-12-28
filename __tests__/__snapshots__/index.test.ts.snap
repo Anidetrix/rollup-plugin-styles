@@ -1,5 +1,10 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`basic empty: js 1`] = `
+"
+"
+`;
+
 exports[`basic mode-fail 1`] = `"Incorrect mode provided, allowed modes are \`inject\`, \`extract\` or \`emit\`"`;
 
 exports[`basic parser-fail 1`] = `"Unable to load PostCSS parser \`walrus\`"`;

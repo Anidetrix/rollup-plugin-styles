@@ -4,6 +4,7 @@
 /node_modules
 /coverage
 /docs
+/__tests__/fixtures/empty/empty.css
 /__tests__/fixtures/dist
 /__tests__/fixtures/**/*.d.ts
 /pnpm-lock.yaml

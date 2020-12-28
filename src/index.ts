@@ -82,6 +82,9 @@ export default (options: Options = {}): Plugin => {
     async transform(code, id) {
       if (!isIncluded(id) || !loaders.isSupported(id)) return null;
 
+      // Skip empty files
+      if (code.replace(/\s/g, "") === "") return null;
+
       // Check if file was already processed into JS
       // by other instance(s) of this or other plugin(s)
       try {
@@ -314,7 +317,7 @@ export default (options: Options = {}): Plugin => {
               // Compensate for possible nesting depending on `assetFileNames` value
               if (s === "<no source>") return s;
               if (assetDir.length <= 1) return s;
-              s = `../${s}`; // If it didnt return then there's definitely at least 1 level offset
+              s = `../${s}`; // ...then there's definitely at least 1 level offset
               for (const c of assetDir) if (c === "/") s = `../${s}`;
               return s;
             });

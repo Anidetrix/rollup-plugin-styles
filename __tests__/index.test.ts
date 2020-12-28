@@ -12,6 +12,10 @@ beforeAll(async () => fs.remove(fixture("dist")));
 
 validateMany("basic", [
   {
+    title: "empty",
+    input: "empty/index.js",
+  },
+  {
     title: "simple",
     input: "simple/index.js",
   },
