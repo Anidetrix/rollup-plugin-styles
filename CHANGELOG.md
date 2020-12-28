@@ -1,3 +1,20 @@
+# [3.12.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.11.0...v3.12.0) (2020-12-28)
+
+
+### Bug Fixes
+
+* resolving `url` outside of first order place ([c61f0ce](https://github.com/Anidetrix/rollup-plugin-styles/commit/c61f0ce56769673657b96a6a73685a456eeb3eec)), closes [#126](https://github.com/Anidetrix/rollup-plugin-styles/issues/126)
+* **less:** respect `paths` options ([a72ab4c](https://github.com/Anidetrix/rollup-plugin-styles/commit/a72ab4cee52b866bd901f296af14f4346fc89df2)), closes [#125](https://github.com/Anidetrix/rollup-plugin-styles/issues/125)
+* avoid partial names replacement when aliasing ([f5aa1e2](https://github.com/Anidetrix/rollup-plugin-styles/commit/f5aa1e254016bfc6c0695c5bff75424fd603a5d5))
+* **utils:** async resolve types ([08ae382](https://github.com/Anidetrix/rollup-plugin-styles/commit/08ae382212d51fec54e45610c50f3c3896ed99e2))
+
+
+### Features
+
+* silently skip empty files ([a34bdbf](https://github.com/Anidetrix/rollup-plugin-styles/commit/a34bdbf91a9d00db0c75ccc1a1ac87b9f985463a))
+* support functional assetFileNames ([91d4ca2](https://github.com/Anidetrix/rollup-plugin-styles/commit/91d4ca2e97059add53b56bc8473a088ed274ce81))
+* support web url and query strings inside [@import](https://github.com/import) ([bbff4e5](https://github.com/Anidetrix/rollup-plugin-styles/commit/bbff4e524bf1e162d9bb4a9808e31a9c72d29ccc)), closes [#140](https://github.com/Anidetrix/rollup-plugin-styles/issues/140)
+
 # [3.11.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.10.1...v3.11.0) (2020-10-10)
 
 
@@ -945,6 +962,3 @@ As always, please consult documentation and API Reference for details
 
 
 ## 1.0.5 (2020-03-13)
-
-
-
