@@ -1,6 +1,6 @@
 {
+  "entryPoints": ["src"],
   "out": "docs",
-  "includeDeclarations": true,
   "excludeExternals": true,
   "disableSources": true,
   "gitRevision": "master"

@@ -254,7 +254,7 @@ yarn add fibers --dev
 
 ## Configuration
 
-See [API Reference for `Options`](https://anidetrix.github.io/rollup-plugin-styles/interfaces/_dist_index_d_.options.html) for full list of available options.
+See [API Reference for `Options`](https://anidetrix.github.io/rollup-plugin-styles/interfaces/types.options.html) for full list of available options.
 
 ## Why
 
