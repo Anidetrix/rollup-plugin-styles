@@ -96,7 +96,7 @@ const plugin: PluginCreator<UrlOptions> = (options = {}) => {
         walkUrls(parsed, (url, node) => {
           // Resolve aliases
           for (const [from, to] of Object.entries(alias)) {
-            if (!url.startsWith(from)) continue;
+            if (url !== from && !url.startsWith(`${from}/`)) continue;
             url = normalizePath(to) + url.slice(from.length);
           }
 
