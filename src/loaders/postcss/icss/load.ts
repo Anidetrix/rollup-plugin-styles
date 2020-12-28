@@ -13,14 +13,8 @@ export type Load = (
 ) => Promise<Record<string, string>>;
 
 const load: Load = async (url, file, extensions, processor, opts) => {
-  let from: string;
-  const options = { basedir: path.dirname(file), extensions };
-  try {
-    from = await resolveAsync(url, options);
-  } catch {
-    from = await resolveAsync(`./${url}`, options);
-  }
-
+  const options = { caller: "ICSS loader", basedirs: [path.dirname(file)], extensions };
+  const from = await resolveAsync([url, `./${url}`], options);
   const source = await fs.readFile(from);
   const { messages } = await processor.process(source, { ...opts, from });
 

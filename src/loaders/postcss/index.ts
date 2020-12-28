@@ -162,11 +162,9 @@ const loader: Loader<PostCSSLoaderOptions> = {
         const injectorCall = `${injectorName}(${cssVarName},${JSON.stringify(injectorOptions)});`;
 
         if (!injectorId) {
-          injectorId = await resolveAsync("./inject-css", {
-            basedir: path.join(testing ? process.cwd() : __dirname, "runtime"),
-          })
-            .then(normalizePath)
-            .then(JSON.stringify);
+          const opts = { basedirs: [path.join(testing ? process.cwd() : __dirname, "runtime")] };
+          injectorId = await resolveAsync(["./inject-css"], opts);
+          injectorId = `"${normalizePath(injectorId)}"`;
         }
 
         output.push(`import ${injectorName} from ${injectorId};`);

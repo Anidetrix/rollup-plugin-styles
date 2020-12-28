@@ -17,15 +17,10 @@ export interface UrlFile {
 export type UrlResolve = (inputUrl: string, basedir: string) => Promise<UrlFile>;
 
 const resolve: UrlResolve = async (inputUrl, basedir) => {
-  const options = { basedir };
-  let from: string;
+  const options = { caller: "URL resolver", basedirs: [basedir] };
   const parseOptions: ParseOptions = { parseFragmentIdentifier: true, sort: false, decode: false };
   const { url, query, fragmentIdentifier } = parseUrl(inputUrl, parseOptions);
-  try {
-    from = await resolveAsync(url, options);
-  } catch {
-    from = await resolveAsync(`./${url}`, options);
-  }
+  const from = await resolveAsync([url, `./${url}`], options);
   const urlQuery = stringifyUrl({ url: "", query, fragmentIdentifier }, parseOptions);
   return { from, source: await fs.readFile(from), urlQuery };
 };

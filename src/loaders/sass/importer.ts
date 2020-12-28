@@ -12,14 +12,10 @@ export const importer: sass.Importer = (url, importer, done): void => {
   if (!isModule(url)) return next();
   const moduleUrl = normalizeUrl(url);
   const partialUrl = getUrlOfPartial(moduleUrl);
-  const options = { basedir: path.dirname(importer), extensions };
+  const options = { caller: "Sass importer", basedirs: [path.dirname(importer)], extensions };
 
   // Give precedence to importing a partial
-  resolveAsync(partialUrl, options)
-    .then(finalize)
-    .catch(() => {
-      resolveAsync(moduleUrl, options).then(finalize).catch(next);
-    });
+  resolveAsync([partialUrl, moduleUrl], options).then(finalize).catch(next);
 };
 
 const finalize = (id: string): sass.Data => ({ file: id.replace(/\.css$/i, "") });

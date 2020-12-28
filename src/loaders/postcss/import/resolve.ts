@@ -18,13 +18,8 @@ export type ImportResolve = (
 ) => Promise<ImportFile>;
 
 const resolve: ImportResolve = async (url, basedir, extensions) => {
-  const options = { basedir, extensions };
-  let from: string;
-  try {
-    from = await resolveAsync(url, options);
-  } catch {
-    from = await resolveAsync(`./${url}`, options);
-  }
+  const options = { caller: "@import resolver", basedirs: [basedir], extensions };
+  const from = await resolveAsync([url, `./${url}`], options);
   return { from, source: await fs.readFile(from) };
 };
 

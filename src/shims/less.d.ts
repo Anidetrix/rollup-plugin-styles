@@ -5,12 +5,12 @@ declare namespace less {
   }
 
   class AbstractFileManager {
-    supportsSync(filename: string, basedir: string): boolean;
+    supportsSync(filename: string, filedir: string): boolean;
   }
 
   interface FileManager extends AbstractFileManager {
-    supports(filename: string, basedir: string): boolean;
-    loadFile(filename: string, basedir: string): Promise<File>;
+    supports(filename: string, filedir: string): boolean;
+    loadFile(filename: string, filedir: string, opts: Options): Promise<File>;
   }
 
   class PluginManager {
