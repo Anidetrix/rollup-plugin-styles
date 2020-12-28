@@ -23,7 +23,6 @@ export const importerSync: sass.Importer = (url, importer): sass.Data => {
   const moduleUrl = normalizeUrl(url);
   const partialUrl = getUrlOfPartial(moduleUrl);
   const options = { basedir: path.dirname(importer), extensions };
-
   // Give precedence to importing a partial
   try {
     try {

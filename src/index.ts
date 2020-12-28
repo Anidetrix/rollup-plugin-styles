@@ -292,27 +292,21 @@ export default (options: Options = {}): Plugin => {
           res.map = resMin.map?.toString();
         }
 
-        const cssFileId = this.emitFile({
-          type: "asset",
-          name: res.name,
-          source: res.css,
-        });
+        const cssFile = { type: "asset" as const, name: res.name, source: res.css };
+        const cssFileId = this.emitFile(cssFile);
 
         if (res.map && sourceMap) {
           const fileName = this.getFileName(cssFileId);
 
-          if (opts.assetFileNames && typeof opts.assetFileNames !== "string") {
-            throw new TypeError("`assetFileNames` must be a string.");
-          }
-
-          const assetDir = opts.assetFileNames
-            ? normalizePath(path.dirname(opts.assetFileNames))
-            : "assets"; // Default for Rollup v2
+          const assetDir =
+            typeof opts.assetFileNames === "string"
+              ? normalizePath(path.dirname(opts.assetFileNames))
+              : typeof opts.assetFileNames === "function"
+              ? normalizePath(path.dirname(opts.assetFileNames(cssFile)))
+              : "assets"; // Default for Rollup v2
 
           const map = mm(res.map)
-            .modify(m => {
-              m.file = path.basename(fileName);
-            })
+            .modify(m => (m.file = path.basename(fileName)))
             .modifySources(s => {
               // Compensate for possible nesting depending on `assetFileNames` value
               if (s === "<no source>") return s;

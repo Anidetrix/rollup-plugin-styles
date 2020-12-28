@@ -365,6 +365,20 @@ validateMany("extract", [
     input: "simple/index.js",
     options: { mode: "extract", sourceMap: "inline" },
   },
+  {
+    title: "asset-file-names",
+    input: "simple/index.js",
+    outputOpts: {
+      assetFileNames({ name }) {
+        const p = "[name][extname]";
+        if (!name) return p;
+        if (name.endsWith(".css")) return `css/${p}`;
+        if (name.endsWith(".map")) return `map/${p}`;
+        return p;
+      },
+    },
+    options: { mode: "extract", sourceMap: true },
+  },
 ]);
 
 validateMany("inject", [

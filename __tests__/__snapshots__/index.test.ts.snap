@@ -2068,6 +2068,46 @@ exports[`extract absolute-path-fail 1`] = `
 which is __tests__/fixtures/dist/extract/absolute-path-fail"
 `;
 
+exports[`extract asset-file-names: css 1`] = `
+".foo {
+  color: red;
+}
+
+.bar {
+  color: red;
+}
+
+.stylus {
+  color: #f00;
+  background: #f00;
+}
+
+.pcss {
+  color: red;
+}
+
+.sass {
+  width: 30%;
+  color: red; }
+
+.less {
+  color: #6c94be;
+}
+
+/*# sourceMappingURL=index.css.map */"
+`;
+
+exports[`extract asset-file-names: js 1`] = `
+"var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+
+var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+
+console.log(css, css$1);
+"
+`;
+
+exports[`extract asset-file-names: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../simple/foo.css\\",\\"../../../../simple/bar.css\\",\\"../../../../simple/style.styl\\",\\"../../../../simple/style.pcss\\",\\"../../../../simple/style.sass\\",\\"../../../../simple/style.less\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;AACZ;;ACFA;EACE,WAAO;EACP,gBAAY;AACd;;ACHA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;EACV,UAAU,EAAA;;ACCZ;EACE,cAAA;AAFF\\",\\"file\\":\\"index.css\\",\\"sourcesContent\\":[\\".foo {\\\\n  color: red;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".stylus\\\\n  color: red\\\\n  background: @color\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
+
 exports[`extract custom-path: css 1`] = `
 ".foo {
   color: red;
