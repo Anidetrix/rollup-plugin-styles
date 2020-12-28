@@ -1,9 +1,7 @@
 import path from "path";
 import postcss, { PluginCreator, Result, AtRule } from "postcss";
 import valueParser from "postcss-value-parser";
-
-import { normalizePath } from "../../../utils/path";
-
+import { isAbsolutePath, normalizePath } from "../../../utils/path";
 import resolveDefault, { ImportResolve } from "./resolve";
 
 const name = "styles-import";
@@ -92,10 +90,20 @@ const plugin: PluginCreator<ImportOptions> = (options = {}) => {
           url = normalizePath(to) + url.slice(from.length);
         }
 
-        // Empty url
+        // Empty URL
         if (url.length === 0) {
           rule.warn(res, `Empty URL in \`${rule.toString()}\``);
           return;
+        }
+
+        // Skip Web URLs
+        if (!isAbsolutePath(url)) {
+          try {
+            new URL(url);
+            return;
+          } catch {
+            // Is not a Web URL, continuing
+          }
         }
 
         importList.push({ rule, url });

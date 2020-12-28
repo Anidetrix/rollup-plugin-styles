@@ -1,5 +1,7 @@
-@import "@/foo.css";
+@import url("@/foo.css#hash");
 @import "features2/bar";
+
+@import url("https://fonts.googleapis.com/css?family=Gudea:400,700");
 
 @font-face {
   font-family: "Demo";

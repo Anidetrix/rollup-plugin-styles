@@ -182,11 +182,8 @@ const plugin: PluginCreator<UrlOptions> = (options = {}) => {
           usedNames.set(to, from);
 
           node.type = "string";
-          node.value =
-            publicPath +
-            (/[/\\]$/.test(publicPath) ? "" : "/") +
-            path.basename(to) +
-            (urlQuery ?? "");
+          node.value = publicPath + (/[/\\]$/.test(publicPath) ? "" : "/") + path.basename(to);
+          if (urlQuery) node.value += urlQuery;
 
           to = normalizePath(assetDir, to);
           res.messages.push({ plugin: name, type: "asset", to, source });

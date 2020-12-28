@@ -186,6 +186,7 @@ exports[`basic resolvers: css 1`] = `
 .foo3 {
   background-image: url(\\"/pubpath/bg.png?query#hash\\");
 }
+@import url(\\"https://fonts.googleapis.com/css?family=Gudea:400,700\\");
 .bar {
   background-image: url(\\"/pubpath/bg1.png\\");
   background-image: url(\\"/pubpath/bg2.testing.regex.png\\"); }
@@ -234,6 +235,7 @@ exports[`basic resolvers-hash: css 1`] = `
 .foo3 {
   background-image: url(\\"/pubpath/bg-bd25d3fd.png?query#hash\\");
 }
+@import url(\\"https://fonts.googleapis.com/css?family=Gudea:400,700\\");
 .bar {
   background-image: url(\\"/pubpath/bg-cc57d19a.png\\");
   background-image: url(\\"/pubpath/bg.testing.regex-e13f1639.png\\"); }
@@ -282,6 +284,7 @@ exports[`basic resolvers-url-inline: css 1`] = `
 .foo3 {
   background-image: url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAABmBAMAAADL8flRAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAArUlEQVRYhe3QIQ+CUBTF8cPTB8RHsKMTqQQ/gMqmVRkj4+ZmZQRnNBD42F7Afp3N7fxIN/zH2wGIiIiI6J8ZBKk95NMRo23KdaYksz36oKtv47F14et59HdKY69I7AoX9PMMlTPnIrZOe5sHJ18Hc5fDeXKH2n+mpmzgLz6NPWmJNIlNNkA4NvK2ov6ikQ1kqWKYYdggVxNpgtREER6ygTyzbZaRugERERER/eYNUMwTiwsgIHkAAAAASUVORK5CYII=\\");
 }
+@import url(\\"https://fonts.googleapis.com/css?family=Gudea:400,700\\");
 .bar {
   background-image: url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkBAMAAACCzIhnAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiklEQVRYhe3QMQ6EIBAF0C+GSInF9mYTs+1ewRsQbmBlayysKefYO2asXbbYxvxHQj6ECQMAEREREf2NQ/fCtp5Zky6vtRMkSJEzhyISynWJnzH6Z8oQlzS7lEc/fLmmQUSvc16OrCPqRl1JePxQYo1ZSWVj9nxrrOb5esw+eXdvzTWfTERERHRXH4tWFZGswQ2yAAAAAElFTkSuQmCC\\");
   background-image: url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGUAAABlBAMAAACmUjD8AAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAi0lEQVRYhe3QoQ7CMBRG4b/bGipr8DMNFsEL7A2WifkpLEGgl2D62NwRmG2RJOcT7a04SXMlAAAA/LNGh5Mdn1n3m/pS0g7K4Tl857DmSyw1flHyaZFyN9rcjNNcbOQUFZ00XbfZvd+1TTj+0iTf7439rarJYd3/ZjuoamzX1jy683bZrssNAAAApBeYlQ7gQL3QgQAAAABJRU5ErkJggg==\\"); }

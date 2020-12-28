@@ -1,6 +1,5 @@
 import fs from "fs-extra";
-import { ParseOptions, parseUrl, stringifyUrl } from "query-string";
-
+import { parseUrl, stringifyUrl } from "query-string";
 import resolveAsync from "../../../utils/resolve-async";
 
 /** File resolved by URL resolver */
@@ -18,7 +17,7 @@ export type UrlResolve = (inputUrl: string, basedir: string) => Promise<UrlFile>
 
 const resolve: UrlResolve = async (inputUrl, basedir) => {
   const options = { caller: "URL resolver", basedirs: [basedir] };
-  const parseOptions: ParseOptions = { parseFragmentIdentifier: true, sort: false, decode: false };
+  const parseOptions = { parseFragmentIdentifier: true, sort: false as const, decode: false };
   const { url, query, fragmentIdentifier } = parseUrl(inputUrl, parseOptions);
   const from = await resolveAsync([url, `./${url}`], options);
   const urlQuery = stringifyUrl({ url: "", query, fragmentIdentifier }, parseOptions);
