@@ -5,7 +5,7 @@ const urlFuncRe = /^url$/i;
 const imageSetFuncRe = /^(?:-webkit-)?image-set$/i;
 
 export const isDeclWithUrl = (decl: Declaration): boolean =>
-  /^(?:url|(?:-webkit-)?image-set)\(/i.test(decl.value);
+  /(?:url|(?:-webkit-)?image-set)\(/i.test(decl.value);
 
 export const walkUrls = (
   parsed: ParsedValue,

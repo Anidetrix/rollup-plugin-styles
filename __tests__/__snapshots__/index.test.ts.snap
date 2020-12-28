@@ -194,6 +194,12 @@ exports[`basic resolvers: css 1`] = `
   color: magenta;
   background-image: url(\\"https://via.placeholder.com/1920x1080\\"); }
 
+@font-face {
+  font-family: \\"Demo\\";
+  font-style: normal;
+  font-weight: 400;
+  src: local(\\"Demo\\"), local(\\"Demo-Regular\\"), url(\\"/pubpath/Demo-webfont.woff\\") format(\\"woff\\"); }
+
 .ignore-data-uri {
   background-image: url(/pubpath/bg2.png);
   background-image: url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkBAMAAACCzIhnAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiklEQVRYhe3QMQ6EIBAF0C+GSInF9mYTs+1ewRsQbmBlayysKefYO2asXbbYxvxHQj6ECQMAEREREf2NQ/fCtp5Zky6vtRMkSJEzhyISynWJnzH6Z8oQlzS7lEc/fLmmQUSvc16OrCPqRl1JePxQYo1ZSWVj9nxrrOb5esw+eXdvzTWfTERERHRXH4tWFZGswQ2yAAAAAElFTkSuQmCC\\"); }
@@ -236,6 +242,12 @@ exports[`basic resolvers-hash: css 1`] = `
   color: magenta;
   background-image: url(\\"https://via.placeholder.com/1920x1080\\"); }
 
+@font-face {
+  font-family: \\"Demo\\";
+  font-style: normal;
+  font-weight: 400;
+  src: local(\\"Demo\\"), local(\\"Demo-Regular\\"), url(\\"/pubpath/Demo-webfont-423f69d5.woff\\") format(\\"woff\\"); }
+
 .ignore-data-uri {
   background-image: url(/pubpath/bg-086af782.png);
   background-image: url(\\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGQAAABkBAMAAACCzIhnAAAAG1BMVEXMzMyWlpacnJy+vr6jo6PFxcW3t7eqqqqxsbHbm8QuAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAiklEQVRYhe3QMQ6EIBAF0C+GSInF9mYTs+1ewRsQbmBlayysKefYO2asXbbYxvxHQj6ECQMAEREREf2NQ/fCtp5Zky6vtRMkSJEzhyISynWJnzH6Z8oQlzS7lEc/fLmmQUSvc16OrCPqRl1JePxQYo1ZSWVj9nxrrOb5esw+eXdvzTWfTERERHRXH4tWFZGswQ2yAAAAAElFTkSuQmCC\\"); }
@@ -277,6 +289,12 @@ exports[`basic resolvers-url-inline: css 1`] = `
 .bar2 {
   color: magenta;
   background-image: url(\\"https://via.placeholder.com/1920x1080\\"); }
+
+@font-face {
+  font-family: \\"Demo\\";
+  font-style: normal;
+  font-weight: 400;
+  src: local(\\"Demo\\"), local(\\"Demo-Regular\\"), url(\\"data:font/woff;base64,TmVxdWVwb3Jyb3F1aXNxdWFtZXN0cXVpZG9sb3JlbWlwc3VtcXVpYWRvbG9yc2l0YW1ldGNvbnNlY3RldHVyYWRpcGlzY2l2ZWxpdA==\\") format(\\"woff\\"); }
 
 .ignore-data-uri {
   background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGwAAABsBAMAAAB9SEr+AAAAG1BMVEXMzMyWlpacnJy3t7ejo6O+vr6qqqqxsbHFxcUT5ek+AAAACXBIWXMAAA7EAAAOxAGVKw4bAAAAsklEQVRYhe3RMQuCQBjG8cek88YzFBo1SRwlHBqLhhrLvoC0uEaINZoFfe3OyNlbmnp+2zP8uRcFiIiIiIj+TiDicTjvB05FPtkPV5mqxSVd9MMpysgOhrOjSuRsqbOrSPUYNW30MMigFHzXB0ZZNyxYB9fgyC7zbhVg+99s+1qZZIkMmzvgfDJ95FQqk6wWVaoPbPNu6E+ysY1eE7Fc74BSnPXQP+DpNQYZEREREdHPvQFNvRay9sR69AAAAABJRU5ErkJggg==);
