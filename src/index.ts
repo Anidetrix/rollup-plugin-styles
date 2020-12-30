@@ -1,10 +1,3 @@
-/// <reference types="./shims/icss-utils" />
-/// <reference types="./shims/postcss-modules" />
-/// <reference types="./shims/fibers" />
-/// <reference types="./shims/sass" />
-/// <reference types="./shims/less" />
-/// <reference types="./shims/stylus" />
-
 import path from "path";
 import { Plugin, OutputChunk, OutputAsset } from "rollup";
 import { createFilter } from "@rollup/pluginutils";

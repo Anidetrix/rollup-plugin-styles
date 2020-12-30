@@ -1,4 +1,5 @@
 /* eslint node/no-unsupported-features/es-syntax: ["error", { ignores: ["modules"] }] */
+import { readdirSync } from "fs-extra";
 
 import { terser } from "rollup-plugin-terser";
 import babel from "@rollup/plugin-babel";
@@ -52,6 +53,16 @@ export default [
   {
     input: "src/index.ts",
     output: { format: "es", file: pkg.types },
-    plugins: [externals({ deps: true }), dts({ respectExternal: true })],
+    plugins: [
+      externals({ deps: true }),
+      dts({ respectExternal: true }),
+      {
+        name: "shims",
+        banner: readdirSync(`${__dirname}/src/shims`)
+          .map(s => s.replace(/\.ts$/, "").replace(/\.d$/, ""))
+          .map(s => `/// <reference types="./shims/${s}" />`)
+          .join("\n"),
+      },
+    ],
   },
 ];
