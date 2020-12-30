@@ -1,3 +1,11 @@
+## [3.12.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.12.0...v3.12.1) (2020-12-30)
+
+
+### Bug Fixes
+
+* keep references inside declaration ([a6f9b35](https://github.com/Anidetrix/rollup-plugin-styles/commit/a6f9b35d12a6cbcfa4b2ac8e144806aee7a749a1)), closes [#159](https://github.com/Anidetrix/rollup-plugin-styles/issues/159)
+* postcss related types ([df78c78](https://github.com/Anidetrix/rollup-plugin-styles/commit/df78c78130239ada661f9a3908901fa17be09e57))
+
 # [3.12.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.11.0...v3.12.0) (2020-12-28)
 
 
