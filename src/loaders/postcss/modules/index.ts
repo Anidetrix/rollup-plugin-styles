@@ -1,4 +1,5 @@
 import { Plugin } from "postcss";
+import Processor from "postcss/lib/processor";
 import modulesValues from "postcss-modules-values";
 import localByDefault from "postcss-modules-local-by-default";
 import extractImports from "postcss-modules-extract-imports";
@@ -28,7 +29,7 @@ export interface ModulesOptions {
   generateScopedName?: string | ((name: string, file: string, css: string) => string);
 }
 
-export default (options: ModulesOptions): Plugin[] => {
+export default (options: ModulesOptions): (Plugin | Processor)[] => {
   const opts = {
     mode: "local" as const,
     ...options,
