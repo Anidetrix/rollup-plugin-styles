@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>loaders/postcss/modules | rollup-plugin-styles</title>
+	<title>Plugin | rollup-plugin-styles</title>
 	<meta name="description" content="Documentation for rollup-plugin-styles">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -53,30 +53,38 @@
 					<a href="../modules.html">rollup-plugin-styles</a>
 				</li>
 				<li>
-					<a href="loaders_postcss_modules.html">loaders/postcss/modules</a>
+					<a href="../modules/shims_less.html">shims/less</a>
+				</li>
+				<li>
+					<a href="../modules/shims_less.less.html">less</a>
+				</li>
+				<li>
+					<a href="shims_less.less.plugin.html">Plugin</a>
 				</li>
 			</ul>
-			<h1>Module loaders/postcss/modules</h1>
+			<h1>Interface Plugin</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
+			<section class="tsd-panel tsd-hierarchy">
+				<h3>Hierarchy</h3>
+				<ul class="tsd-hierarchy">
+					<li>
+						<span class="target">Plugin</span>
+					</li>
+				</ul>
+			</section>
 			<section class="tsd-panel-group tsd-index-group">
 				<h2>Index</h2>
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Interfaces</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/loaders_postcss_modules.modulesoptions.html" class="tsd-kind-icon">Modules<wbr>Options</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-module"><a href="loaders_postcss_modules.html#default" class="tsd-kind-icon">default</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="shims_less.less.plugin.html#install" class="tsd-kind-icon">install</a></li>
 							</ul>
 						</section>
 					</div>
@@ -84,28 +92,31 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-module">
-					<a name="default" class="tsd-anchor"></a>
-					<h3>default</h3>
-					<div class="tsd-signature tsd-kind-icon">default<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/loaders_postcss_modules.modulesoptions.html" class="tsd-signature-type" data-tsd-kind="Interface">ModulesOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">default</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Plugin</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="install" class="tsd-anchor"></a>
+					<h3>install</h3>
+					<div class="tsd-signature tsd-kind-icon">install<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span>less<span class="tsd-signature-symbol">: </span><a href="shims_less.less.less.html" class="tsd-signature-type" data-tsd-kind="Interface">Less</a>, pluginManager<span class="tsd-signature-symbol">: </span><a href="../classes/shims_less.less.pluginmanager.html" class="tsd-signature-type" data-tsd-kind="Class">PluginManager</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol"> =&gt; </span><span class="tsd-signature-type">void</span></div>
 					<aside class="tsd-sources">
 					</aside>
 					<div class="tsd-type-declaration">
 						<h4>Type declaration</h4>
 						<ul class="tsd-parameters">
 							<li class="tsd-parameter-signature">
-								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-module">
-									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>options<span class="tsd-signature-symbol">: </span><a href="../interfaces/loaders_postcss_modules.modulesoptions.html" class="tsd-signature-type" data-tsd-kind="Interface">ModulesOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">default</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Plugin</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></li>
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-interface">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>less<span class="tsd-signature-symbol">: </span><a href="shims_less.less.less.html" class="tsd-signature-type" data-tsd-kind="Interface">Less</a>, pluginManager<span class="tsd-signature-symbol">: </span><a href="../classes/shims_less.less.pluginmanager.html" class="tsd-signature-type" data-tsd-kind="Class">PluginManager</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 								</ul>
 								<ul class="tsd-descriptions">
 									<li class="tsd-description">
 										<h4 class="tsd-parameters-title">Parameters</h4>
 										<ul class="tsd-parameters">
 											<li>
-												<h5>options: <a href="../interfaces/loaders_postcss_modules.modulesoptions.html" class="tsd-signature-type" data-tsd-kind="Interface">ModulesOptions</a></h5>
+												<h5>less: <a href="shims_less.less.less.html" class="tsd-signature-type" data-tsd-kind="Interface">Less</a></h5>
+											</li>
+											<li>
+												<h5>pluginManager: <a href="../classes/shims_less.less.pluginmanager.html" class="tsd-signature-type" data-tsd-kind="Class">PluginManager</a></h5>
 											</li>
 										</ul>
-										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">default</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Plugin</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></h4>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
 									</li>
 								</ul>
 							</li>
@@ -121,17 +132,55 @@
 						<a href="../modules.html">Exports</a>
 					</li>
 					<li class="current tsd-kind-module">
-						<a href="loaders_postcss_modules.html">loaders/postcss/modules</a>
+						<a href="../modules/shims_less.html">shims/less</a>
+						<ul>
+							<li class="current tsd-kind-namespace tsd-parent-kind-module">
+								<a href="../modules/shims_less.less.html">less</a>
+							</li>
+						</ul>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="../interfaces/loaders_postcss_modules.modulesoptions.html" class="tsd-kind-icon">Modules<wbr>Options</a>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="../classes/shims_less.less.abstractfilemanager.html" class="tsd-kind-icon">Abstract<wbr>File<wbr>Manager</a>
 					</li>
-					<li class=" tsd-kind-property tsd-parent-kind-module">
-						<a href="loaders_postcss_modules.html#default" class="tsd-kind-icon">default</a>
+					<li class=" tsd-kind-class tsd-parent-kind-namespace">
+						<a href="../classes/shims_less.less.pluginmanager.html" class="tsd-kind-icon">Plugin<wbr>Manager</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="shims_less.less.file.html" class="tsd-kind-icon">File</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="shims_less.less.filemanager.html" class="tsd-kind-icon">File<wbr>Manager</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="shims_less.less.less.html" class="tsd-kind-icon">Less</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="shims_less.less.options.html" class="tsd-kind-icon">Options</a>
+					</li>
+				</ul>
+				<ul class="current">
+					<li class="current tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="shims_less.less.plugin.html" class="tsd-kind-icon">Plugin</a>
+						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="shims_less.less.plugin.html#install" class="tsd-kind-icon">install</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="shims_less.less.publicoptions.html" class="tsd-kind-icon">Public<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="shims_less.less.renderoutput.html" class="tsd-kind-icon">Render<wbr>Output</a>
+					</li>
+					<li class=" tsd-kind-interface tsd-parent-kind-namespace">
+						<a href="shims_less.less.sourcemapoption.html" class="tsd-kind-icon">Source<wbr>Map<wbr>Option</a>
 					</li>
 				</ul>
 			</nav>
@@ -152,6 +201,7 @@
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
 				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
