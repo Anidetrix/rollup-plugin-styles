@@ -1,3 +1,10 @@
+## [3.12.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.12.1...v3.12.2) (2021-01-11)
+
+
+### Bug Fixes
+
+* occasional wrong order in extract mode ([52cb377](https://github.com/Anidetrix/rollup-plugin-styles/commit/52cb3770250907f834f6b5019909d32522a33de3)), closes [#153](https://github.com/Anidetrix/rollup-plugin-styles/issues/153)
+
 ## [3.12.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.12.0...v3.12.1) (2020-12-30)
 
 
