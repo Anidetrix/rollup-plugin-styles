@@ -3,5 +3,5 @@
   "out": "docs",
   "excludeExternals": true,
   "disableSources": true,
-  "gitRevision": "master"
+  "gitRevision": "main"
 }

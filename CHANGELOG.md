@@ -5,6 +5,8 @@
 
 * occasional wrong order in extract mode ([52cb377](https://github.com/Anidetrix/rollup-plugin-styles/commit/52cb3770250907f834f6b5019909d32522a33de3)), closes [#153](https://github.com/Anidetrix/rollup-plugin-styles/issues/153)
 
+
+
 ## [3.12.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.12.0...v3.12.1) (2020-12-30)
 
 
@@ -12,6 +14,8 @@
 
 * keep references inside declaration ([a6f9b35](https://github.com/Anidetrix/rollup-plugin-styles/commit/a6f9b35d12a6cbcfa4b2ac8e144806aee7a749a1)), closes [#159](https://github.com/Anidetrix/rollup-plugin-styles/issues/159)
 * postcss related types ([df78c78](https://github.com/Anidetrix/rollup-plugin-styles/commit/df78c78130239ada661f9a3908901fa17be09e57))
+
+
 
 # [3.12.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.11.0...v3.12.0) (2020-12-28)
 
@@ -29,6 +33,8 @@
 * silently skip empty files ([a34bdbf](https://github.com/Anidetrix/rollup-plugin-styles/commit/a34bdbf91a9d00db0c75ccc1a1ac87b9f985463a))
 * support functional assetFileNames ([91d4ca2](https://github.com/Anidetrix/rollup-plugin-styles/commit/91d4ca2e97059add53b56bc8473a088ed274ce81))
 * support web url and query strings inside [@import](https://github.com/import) ([bbff4e5](https://github.com/Anidetrix/rollup-plugin-styles/commit/bbff4e524bf1e162d9bb4a9808e31a9c72d29ccc)), closes [#140](https://github.com/Anidetrix/rollup-plugin-styles/issues/140)
+
+
 
 # [3.11.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.10.1...v3.11.0) (2020-10-10)
 
@@ -977,3 +983,6 @@ As always, please consult documentation and API Reference for details
 
 
 ## 1.0.5 (2020-03-13)
+
+
+
