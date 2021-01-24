@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>utils/resolve-async | rollup-plugin-styles</title>
+	<title>utils/resolve | rollup-plugin-styles</title>
 	<meta name="description" content="Documentation for rollup-plugin-styles">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -53,10 +53,10 @@
 					<a href="../modules.html">rollup-plugin-styles</a>
 				</li>
 				<li>
-					<a href="utils_resolve_async.html">utils/resolve-async</a>
+					<a href="utils_resolve.html">utils/resolve</a>
 				</li>
 			</ul>
-			<h1>Module utils/resolve-async</h1>
+			<h1>Module utils/resolve</h1>
 		</div>
 	</div>
 </header>
@@ -70,13 +70,14 @@
 						<section class="tsd-index-section ">
 							<h3>Interfaces</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/utils_resolve_async.resolveopts.html" class="tsd-kind-icon">Resolve<wbr>Opts</a></li>
+								<li class="tsd-kind-interface tsd-parent-kind-module"><a href="../interfaces/utils_resolve.resolveopts.html" class="tsd-kind-icon">Resolve<wbr>Opts</a></li>
 							</ul>
 						</section>
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-function tsd-parent-kind-module"><a href="utils_resolve_async.html#default" class="tsd-kind-icon">default</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="utils_resolve.html#resolveasync" class="tsd-kind-icon">resolve<wbr>Async</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="utils_resolve.html#resolvesync" class="tsd-kind-icon">resolve<wbr>Sync</a></li>
 							</ul>
 						</section>
 					</div>
@@ -85,10 +86,10 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Functions</h2>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
-					<a name="default" class="tsd-anchor"></a>
-					<h3>default</h3>
+					<a name="resolveasync" class="tsd-anchor"></a>
+					<h3>resolve<wbr>Async</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">default<span class="tsd-signature-symbol">(</span>ids<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, userOpts<span class="tsd-signature-symbol">: </span><a href="../interfaces/utils_resolve_async.resolveopts.html" class="tsd-signature-type" data-tsd-kind="Interface">ResolveOpts</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">resolve<wbr>Async<span class="tsd-signature-symbol">(</span>ids<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, userOpts<span class="tsd-signature-symbol">: </span><a href="../interfaces/utils_resolve.resolveopts.html" class="tsd-signature-type" data-tsd-kind="Interface">ResolveOpts</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
@@ -100,10 +101,33 @@
 									<h5>ids: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
 								</li>
 								<li>
-									<h5>userOpts: <a href="../interfaces/utils_resolve_async.resolveopts.html" class="tsd-signature-type" data-tsd-kind="Interface">ResolveOpts</a></h5>
+									<h5>userOpts: <a href="../interfaces/utils_resolve.resolveopts.html" class="tsd-signature-type" data-tsd-kind="Interface">ResolveOpts</a></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="resolvesync" class="tsd-anchor"></a>
+					<h3>resolve<wbr>Sync</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">resolve<wbr>Sync<span class="tsd-signature-symbol">(</span>ids<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, userOpts<span class="tsd-signature-symbol">: </span><a href="../interfaces/utils_resolve.resolveopts.html" class="tsd-signature-type" data-tsd-kind="Interface">ResolveOpts</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>ids: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5>userOpts: <a href="../interfaces/utils_resolve.resolveopts.html" class="tsd-signature-type" data-tsd-kind="Interface">ResolveOpts</a></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -116,17 +140,20 @@
 						<a href="../modules.html">Exports</a>
 					</li>
 					<li class="current tsd-kind-module">
-						<a href="utils_resolve_async.html">utils/resolve-<wbr>async</a>
+						<a href="utils_resolve.html">utils/resolve</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="../interfaces/utils_resolve_async.resolveopts.html" class="tsd-kind-icon">Resolve<wbr>Opts</a>
+						<a href="../interfaces/utils_resolve.resolveopts.html" class="tsd-kind-icon">Resolve<wbr>Opts</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
-						<a href="utils_resolve_async.html#default" class="tsd-kind-icon">default</a>
+						<a href="utils_resolve.html#resolveasync" class="tsd-kind-icon">resolve<wbr>Async</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="utils_resolve.html#resolvesync" class="tsd-kind-icon">resolve<wbr>Sync</a>
 					</li>
 				</ul>
 			</nav>
