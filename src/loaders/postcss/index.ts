@@ -152,8 +152,10 @@ const loader: Loader<PostCSSLoaderOptions> = {
 
     if (options.inject) {
       if (typeof options.inject === "function") {
-        output.push(options.inject(cssVarName, this.id));
-        output.push(`var ${modulesVarName} = ${JSON.stringify(modulesExports)};`);
+        output.push(
+          options.inject(cssVarName, this.id),
+          `var ${modulesVarName} = ${JSON.stringify(modulesExports)};`,
+        );
       } else {
         const { treeshakeable, ...injectorOptions } =
           typeof options.inject === "object" ? options.inject : ({} as InjectOptions);

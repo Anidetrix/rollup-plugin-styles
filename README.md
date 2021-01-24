@@ -3,11 +3,9 @@
 [![npm version](https://img.shields.io/npm/v/rollup-plugin-styles)](https://www.npmjs.com/package/rollup-plugin-styles)
 [![monthly downloads count](https://img.shields.io/npm/dm/rollup-plugin-styles)](https://www.npmjs.com/package/rollup-plugin-styles)
 [![required rollup version](https://img.shields.io/npm/dependency-version/rollup-plugin-styles/peer/rollup)](https://www.npmjs.com/package/rollup)
-[![dependencies status](https://img.shields.io/david/Anidetrix/rollup-plugin-styles)](https://david-dm.org/Anidetrix/rollup-plugin-styles)
 [![build status](https://github.com/Anidetrix/rollup-plugin-styles/workflows/CI/badge.svg)](https://github.com/Anidetrix/rollup-plugin-styles/actions?query=workflow%3ACI)
 [![code coverage](https://codecov.io/gh/Anidetrix/rollup-plugin-styles/branch/main/graph/badge.svg)](https://codecov.io/gh/Anidetrix/rollup-plugin-styles)
 [![license](https://img.shields.io/github/license/Anidetrix/rollup-plugin-styles)](./LICENSE)
-[![libera manifesto](https://img.shields.io/badge/libera-manifesto-lightgrey.svg)](https://liberamanifesto.com)
 
 ### 🎨 Universal [Rollup](https://github.com/rollup/rollup) plugin for styles:
 

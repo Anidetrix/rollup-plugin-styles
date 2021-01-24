@@ -1672,8 +1672,8 @@ console.log(modules_d55e0e9b);
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: js 5`] = `
-"import './sub/index.js';
-import modules_3ede29d3 from './fourthtwo.scss.js';
+"import modules_3ede29d3 from './fourthtwo.scss.js';
+import './sub/index.js';
 
 (async () => {
   const first = await import('./first.scss.js');
