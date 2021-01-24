@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 import { resolveSync, ResolveOpts } from "./resolve";
 
 const loaded: Record<string, unknown> = {};

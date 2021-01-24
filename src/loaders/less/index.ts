@@ -5,8 +5,6 @@ import { Loader } from "../types";
 import importer from "./importer";
 
 /** Options for Less loader */
-// https://github.com/microsoft/TypeScript/issues/37901
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 export interface LESSLoaderOptions extends Record<string, unknown>, less.PublicOptions {}
 
 const loader: Loader<LESSLoaderOptions> = {

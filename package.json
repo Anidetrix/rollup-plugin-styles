@@ -39,7 +39,7 @@
     "postdocs": "shx cp .ghpages.yml docs/_config.yml",
     "docs:publish": "npm run docs && gh-pages -d docs",
     "prelint": "prettier -l --write .",
-    "lint": "eslint --ext .ts,.js --fix .",
+    "lint": "eslint --report-unused-disable-directives --ext .ts,.js --fix .",
     "prepublishOnly": "npm run build",
     "release": "semantic-release",
     "pretest": "npm run lint",

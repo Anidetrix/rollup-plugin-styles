@@ -6,8 +6,6 @@ import { normalizePath } from "../utils/path";
 import { Loader } from "./types";
 
 /** Options for Stylus loader */
-// https://github.com/microsoft/TypeScript/issues/37901
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 export interface StylusLoaderOptions extends Record<string, unknown>, stylus.PublicOptions {}
 
 const loader: Loader<StylusLoaderOptions> = {

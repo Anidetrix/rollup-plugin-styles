@@ -5,8 +5,6 @@ import loadSass from "./load";
 import { importer, importerSync } from "./importer";
 
 /** Options for Sass loader */
-// https://github.com/microsoft/TypeScript/issues/37901
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 export interface SASSLoaderOptions extends Record<string, unknown>, sass.PublicOptions {
   /** Force Sass implementation */
   impl?: string;
