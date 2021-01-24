@@ -1,3 +1,15 @@
+# [3.13.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.12.2...v3.13.0) (2021-01-24)
+
+
+### Bug Fixes
+
+* respect esm and styles for sync resolves ([0c51253](https://github.com/Anidetrix/rollup-plugin-styles/commit/0c512539963599ba71680d7b938e18c4519c9979))
+
+
+### Features
+
+* sourcemap transformation ([ed49328](https://github.com/Anidetrix/rollup-plugin-styles/commit/ed493281e59766a84374534a5832c39802579bd5)), closes [#160](https://github.com/Anidetrix/rollup-plugin-styles/issues/160)
+
 ## [3.12.2](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.12.1...v3.12.2) (2021-01-11)
 
 
@@ -983,6 +995,3 @@ As always, please consult documentation and API Reference for details
 
 
 ## 1.0.5 (2020-03-13)
-
-
-
