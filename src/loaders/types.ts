@@ -1,4 +1,5 @@
 import rollup from "rollup";
+import { RawSourceMap } from "source-map";
 
 /**
  * Loader
@@ -69,4 +70,6 @@ export interface SourceMapOptions {
    * @default true
    */
   content?: boolean;
+  /** Fuction for transforming final source map */
+  transform?: (map: RawSourceMap) => void;
 }

@@ -312,6 +312,8 @@ export default (options: Options = {}): Plugin => {
               return s;
             });
 
+          if (sourceMap.transform) map.modify(sourceMap.transform);
+
           if (sourceMap.inline) {
             (bundle[fileName] as OutputAsset).source += map.toCommentData();
           } else {

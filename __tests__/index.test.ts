@@ -306,6 +306,11 @@ validateMany("sourcemap", [
     options: { sourceMap: [true, { content: false }] },
   },
   {
+    title: "transform",
+    input: "simple/index.js",
+    options: { sourceMap: [true, { transform: m => (m.sources = ["virt"]) }] },
+  },
+  {
     title: "inline",
     input: "simple/index.js",
     options: { sourceMap: "inline" },
@@ -314,6 +319,11 @@ validateMany("sourcemap", [
     title: "inline-no-content",
     input: "simple/index.js",
     options: { sourceMap: ["inline", { content: false }] },
+  },
+  {
+    title: "inline-transform",
+    input: "simple/index.js",
+    options: { sourceMap: ["inline", { transform: m => (m.sources = ["virt"]) }] },
   },
 ]);
 
@@ -361,9 +371,19 @@ validateMany("extract", [
     options: { mode: "extract", sourceMap: true },
   },
   {
+    title: "sourcemap-transform",
+    input: "simple/index.js",
+    options: { mode: "extract", sourceMap: [true, { transform: m => (m.sources = ["virt"]) }] },
+  },
+  {
     title: "sourcemap-inline",
     input: "simple/index.js",
     options: { mode: "extract", sourceMap: "inline" },
+  },
+  {
+    title: "sourcemap-inline-transform",
+    input: "simple/index.js",
+    options: { mode: "extract", sourceMap: ["inline", { transform: m => (m.sources = ["virt"]) }] },
   },
   {
     title: "asset-file-names",
@@ -679,11 +699,20 @@ validateMany("emit", [
     title: "true",
     input: "emit/index.js",
     plugins: [
-      styles({
-        mode: "emit",
-        minimize: true,
-        plugins: [["autoprefixer", { overrideBrowserslist: ["> 0%"] }]],
-      }),
+      styles({ mode: "emit", plugins: [["autoprefixer", { overrideBrowserslist: ["> 0%"] }]] }),
+      litcss(),
+    ],
+  },
+  {
+    title: "sourcemap",
+    input: "emit/index.js",
+    plugins: [styles({ mode: "emit", sourceMap: true }), litcss()],
+  },
+  {
+    title: "sourcemap-transform",
+    input: "emit/index.js",
+    plugins: [
+      styles({ mode: "emit", sourceMap: [true, { transform: m => (m.sources = ["virt"]) }] }),
       litcss(),
     ],
   },

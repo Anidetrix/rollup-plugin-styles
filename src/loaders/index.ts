@@ -38,17 +38,15 @@ export default class Loaders {
   constructor(options: LoadersOptions) {
     this.use = new Map(options.use.reverse());
     this.test = (file): boolean => options.extensions.some(ext => file.toLowerCase().endsWith(ext));
-    this.addLoader(postcssLoader);
-    this.addLoader(sourcemapLoader);
-    this.addLoader(sassLoader);
-    this.addLoader(lessLoader);
-    this.addLoader(stylusLoader);
-    if (options.loaders) for (const loader of options.loaders) this.addLoader(loader);
+    this.add(postcssLoader, sourcemapLoader, sassLoader, lessLoader, stylusLoader);
+    if (options.loaders) this.add(...options.loaders);
   }
 
-  addLoader<T extends Record<string, unknown>>(loader: Loader<T>): void {
-    if (!this.use.has(loader.name)) return;
-    this.loaders.set(loader.name, loader as Loader);
+  add<T extends Record<string, unknown>>(...loaders: Loader<T>[]): void {
+    for (const loader of loaders) {
+      if (!this.use.has(loader.name)) continue;
+      this.loaders.set(loader.name, loader as Loader);
+    }
   }
 
   isSupported(file: string): boolean {

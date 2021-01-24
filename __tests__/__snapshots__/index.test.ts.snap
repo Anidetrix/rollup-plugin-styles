@@ -2075,10 +2075,43 @@ exports[`code-splitting true: map 4`] = `"{\\"version\\":3,\\"sources\\":[\\"../
 
 exports[`code-splitting true: map 5`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/second.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB,EAAA\\",\\"file\\":\\"second-9b132bc0.css\\",\\"sourcesContent\\":[\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\"]}"`;
 
+exports[`emit sourcemap: js 1`] = `
+"import { css } from 'lit-element';
+
+var style = css\`main {
+  display: flex;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9lbWl0L3N0eWxlLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQWE7QUFDZiIsInNvdXJjZXNDb250ZW50IjpbIm1haW4ge1xuICBkaXNwbGF5OiBmbGV4O1xufVxuIl19 */\`;
+
+console.log(style);
+"
+`;
+
+exports[`emit sourcemap-transform: js 1`] = `
+"import { css } from 'lit-element';
+
+var style = css\`main {
+  display: flex;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhO0FBQ2YiLCJzb3VyY2VzQ29udGVudCI6WyJtYWluIHtcbiAgZGlzcGxheTogZmxleDtcbn1cbiJdfQ== */\`;
+
+console.log(style);
+"
+`;
+
 exports[`emit true: js 1`] = `
 "import { css } from 'lit-element';
 
-var style = css\`main{display:-webkit-box;display:-webkit-flex;display:-moz-box;display:-ms-flexbox;display:flex}\`;
+var style = css\`main {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+\`;
 
 console.log(style);
 "
@@ -2314,6 +2347,84 @@ var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 console.log(css, css$1);
 "
 `;
+
+exports[`extract sourcemap-inline-transform: css 1`] = `
+".foo {
+  color: red;
+}
+
+.bar {
+  color: red;
+}
+
+.stylus {
+  color: #f00;
+  background: #f00;
+}
+
+.pcss {
+  color: red;
+}
+
+.sass {
+  width: 30%;
+  color: red; }
+
+.less {
+  color: #6c94be;
+}
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1o7O0FDRkE7RUFDRSxVQUFVO0FBQ1o7O0FDRkE7RUFDRSxXQUFPO0VBQ1AsZ0JBQVk7QUFDZDs7QUNIQTtFQUNFLFVBQVU7QUFDWjs7QUNGQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUE7O0FDQ1o7RUFDRSxjQUFBO0FBRkYiLCJmaWxlIjoiaW5kZXgtN2VjODI5MjYuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmZvbyB7XG4gIGNvbG9yOiByZWQ7XG59XG4iLCIuYmFyIHtcbiAgY29sb3I6IHJlZDtcbn1cbiIsIi5zdHlsdXNcbiAgY29sb3I6IHJlZFxuICBiYWNrZ3JvdW5kOiBAY29sb3JcbiIsIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiIsIi5zYXNzIHtcbiAgd2lkdGg6IDMwJTtcbiAgY29sb3I6IHJlZDsgfVxuIiwiQG5pY2UtYmx1ZTogIzViODNhZDtcbkBsaWdodC1ibHVlOiBAbmljZS1ibHVlICsgIzExMTtcblxuLmxlc3Mge1xuICBjb2xvcjogQGxpZ2h0LWJsdWU7XG59XG4iXX0= */"
+`;
+
+exports[`extract sourcemap-inline-transform: js 1`] = `
+"var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+
+var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+
+console.log(css, css$1);
+"
+`;
+
+exports[`extract sourcemap-transform: css 1`] = `
+".foo {
+  color: red;
+}
+
+.bar {
+  color: red;
+}
+
+.stylus {
+  color: #f00;
+  background: #f00;
+}
+
+.pcss {
+  color: red;
+}
+
+.sass {
+  width: 30%;
+  color: red; }
+
+.less {
+  color: #6c94be;
+}
+
+/*# sourceMappingURL=index-7ec82926.css.map */"
+`;
+
+exports[`extract sourcemap-transform: js 1`] = `
+"var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+
+var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+
+console.log(css, css$1);
+"
+`;
+
+exports[`extract sourcemap-transform: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"virt\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;AACZ;;ACFA;EACE,WAAO;EACP,gBAAY;AACd;;ACHA;EACE,UAAU;AACZ;;ACFA;EACE,UAAU;EACV,UAAU,EAAA;;ACCZ;EACE,cAAA;AAFF\\",\\"file\\":\\"index-7ec82926.css\\",\\"sourcesContent\\":[\\".foo {\\\\n  color: red;\\\\n}\\\\n\\",\\".bar {\\\\n  color: red;\\\\n}\\\\n\\",\\".stylus\\\\n  color: red\\\\n  background: @color\\\\n\\",\\".pcss {\\\\n  color: red;\\\\n}\\\\n\\",\\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\",\\"@nice-blue: #5b83ad;\\\\n@light-blue: @nice-blue + #111;\\\\n\\\\n.less {\\\\n  color: @light-blue;\\\\n}\\\\n\\"]}"`;
 
 exports[`extract sourcemap-true: css 1`] = `
 ".foo {
@@ -5116,6 +5227,98 @@ console.log(css, css$1);
 "
 `;
 
+exports[`sourcemap inline-transform: js 1`] = `
+"/** @type {HTMLElement[]} */
+var containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+var styleTags = [];
+
+/**
+ * @param {string} css
+ * @param {object} options
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
+ * @returns {void}
+ */
+function injector_3b481dac (css, options) {
+  if (!css || typeof document === \\"undefined\\") return;
+
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = options.singleTag === true;
+
+  var container =
+    typeof options.container === \\"string\\"
+      ? document.querySelector(options.container)
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
+    return styleTag;
+  }
+
+  /** @type {HTMLStyleElement} */
+  var styleTag;
+
+  if (singleTag) {
+    var id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.appendChild(document.createTextNode(css));
+  }
+}
+
+var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIuZm9vIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
+injector_3b481dac(css,{});
+
+var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIuYmFyIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
+injector_3b481dac(css$1,{});
+
+var css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxXQUFPO0VBQ1AsZ0JBQVk7QUFDZCIsInNvdXJjZXNDb250ZW50IjpbIi5zdHlsdXNcbiAgY29sb3I6IHJlZFxuICBiYWNrZ3JvdW5kOiBAY29sb3JcbiJdfQ== */\\";
+injector_3b481dac(css$2,{});
+
+var css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIucGNzcyB7XG4gIGNvbG9yOiByZWQ7XG59XG4iXX0= */\\";
+injector_3b481dac(css$3,{});
+
+var css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0VBQ1YsVUFBVSxFQUFBIiwic291cmNlc0NvbnRlbnQiOlsiLnNhc3Mge1xuICB3aWR0aDogMzAlO1xuICBjb2xvcjogcmVkOyB9XG4iXX0= */\\";
+injector_3b481dac(css$4,{});
+
+var css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBR0E7RUFDRSxjQUFBO0FBRkYiLCJzb3VyY2VzQ29udGVudCI6WyJAbmljZS1ibHVlOiAjNWI4M2FkO1xuQGxpZ2h0LWJsdWU6IEBuaWNlLWJsdWUgKyAjMTExO1xuXG4ubGVzcyB7XG4gIGNvbG9yOiBAbGlnaHQtYmx1ZTtcbn1cbiJdfQ== */\\";
+injector_3b481dac(css$5,{});
+
+console.log(css, css$1);
+"
+`;
+
 exports[`sourcemap no-content: js 1`] = `
 "/** @type {HTMLElement[]} */
 var containers = [];
@@ -5202,6 +5405,98 @@ var css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# source
 injector_3b481dac(css$4,{});
 
 var css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiJ9 */\\";
+injector_3b481dac(css$5,{});
+
+console.log(css, css$1);
+"
+`;
+
+exports[`sourcemap transform: js 1`] = `
+"/** @type {HTMLElement[]} */
+var containers = [];
+/** @type {{prepend:HTMLStyleElement,append:HTMLStyleElement}[]} */
+var styleTags = [];
+
+/**
+ * @param {string} css
+ * @param {object} options
+ * @param {boolean} [options.prepend]
+ * @param {boolean} [options.singleTag]
+ * @param {string} [options.container]
+ * @param {Record<string,string>} [options.attributes]
+ * @returns {void}
+ */
+function injector_3b481dac (css, options) {
+  if (!css || typeof document === \\"undefined\\") return;
+
+  var position = options.prepend === true ? \\"prepend\\" : \\"append\\";
+  var singleTag = options.singleTag === true;
+
+  var container =
+    typeof options.container === \\"string\\"
+      ? document.querySelector(options.container)
+      : document.getElementsByTagName(\\"head\\")[0];
+
+  function createStyleTag() {
+    var styleTag = document.createElement(\\"style\\");
+    styleTag.setAttribute(\\"type\\", \\"text/css\\");
+    if (options.attributes) {
+      var k = Object.keys(options.attributes);
+      for (var i = 0; i < k.length; i++) {
+        styleTag.setAttribute(k[i], options.attributes[k[i]]);
+      }
+    }
+    var pos = position === \\"prepend\\" ? \\"afterbegin\\" : \\"beforeend\\";
+    container.insertAdjacentElement(pos, styleTag);
+    return styleTag;
+  }
+
+  /** @type {HTMLStyleElement} */
+  var styleTag;
+
+  if (singleTag) {
+    var id = containers.indexOf(container);
+
+    if (id === -1) {
+      id = containers.push(container) - 1;
+      styleTags[id] = {};
+    }
+
+    if (styleTags[id] && styleTags[id][position]) {
+      styleTag = styleTags[id][position];
+    } else {
+      styleTag = styleTags[id][position] = createStyleTag();
+    }
+  } else {
+    styleTag = createStyleTag();
+  }
+
+  // strip potential UTF-8 BOM if css was read from a file
+  if (css.charCodeAt(0) === 0xfeff) css = css.substring(1);
+
+  if (styleTag.styleSheet) {
+    styleTag.styleSheet.cssText += css;
+  } else {
+    styleTag.appendChild(document.createTextNode(css));
+  }
+}
+
+var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIuZm9vIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
+injector_3b481dac(css,{});
+
+var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIuYmFyIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
+injector_3b481dac(css$1,{});
+
+var css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxXQUFPO0VBQ1AsZ0JBQVk7QUFDZCIsInNvdXJjZXNDb250ZW50IjpbIi5zdHlsdXNcbiAgY29sb3I6IHJlZFxuICBiYWNrZ3JvdW5kOiBAY29sb3JcbiJdfQ== */\\";
+injector_3b481dac(css$2,{});
+
+var css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIucGNzcyB7XG4gIGNvbG9yOiByZWQ7XG59XG4iXX0= */\\";
+injector_3b481dac(css$3,{});
+
+var css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0VBQ1YsVUFBVSxFQUFBIiwic291cmNlc0NvbnRlbnQiOlsiLnNhc3Mge1xuICB3aWR0aDogMzAlO1xuICBjb2xvcjogcmVkOyB9XG4iXX0= */\\";
+injector_3b481dac(css$4,{});
+
+var css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBR0E7RUFDRSxjQUFBO0FBRkYiLCJzb3VyY2VzQ29udGVudCI6WyJAbmljZS1ibHVlOiAjNWI4M2FkO1xuQGxpZ2h0LWJsdWU6IEBuaWNlLWJsdWUgKyAjMTExO1xuXG4ubGVzcyB7XG4gIGNvbG9yOiBAbGlnaHQtYmx1ZTtcbn1cbiJdfQ== */\\";
 injector_3b481dac(css$5,{});
 
 console.log(css, css$1);

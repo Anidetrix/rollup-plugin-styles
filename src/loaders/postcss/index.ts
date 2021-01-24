@@ -118,11 +118,16 @@ const loader: Loader<PostCSSLoaderOptions> = {
       .resolve(path.dirname(postcssOpts.to))
       .toString();
 
-    if (!options.extract && this.sourceMap)
-      res.css += mm(map)
+    if (!options.extract && this.sourceMap) {
+      const m = mm(map)
         .modify(map => void delete (map as Partial<RawSourceMap>).file)
-        .relative()
-        .toCommentData();
+        .relative();
+
+      if (this.sourceMap.transform) m.modify(this.sourceMap.transform);
+
+      map = m.toString();
+      res.css += m.toCommentData();
+    }
 
     if (options.emit) return { code: res.css, map };
 
