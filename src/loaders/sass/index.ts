@@ -43,14 +43,14 @@ const loader: Loader<SASSLoaderOptions> = {
     delete options.fibers;
     delete options.sync;
 
-    // node-sass won't produce source maps if the `data`
+    // node-sass won't produce sourcemaps if the `data`
     // option is used and `sourceMap` option is not a string.
     //
     // In case it is a string, `sourceMap` option
-    // should be a path where the source map is written.
+    // should be a path where the sourcemap is written.
     //
     // But since we're using the `data` option,
-    // the source map will not actually be written, but
+    // the sourcemap will not actually be written, but
     // all paths in sourcemap's sources will be relative to that path.
     const res = await render({
       ...options,
