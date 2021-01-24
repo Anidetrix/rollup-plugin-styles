@@ -1,4 +1,4 @@
-import resolver, { AsyncOpts } from "resolve";
+import resolver, { sync, AsyncOpts, SyncOpts } from "resolve";
 import arrayFmt from "./array-fmt";
 
 export interface ResolveOpts {
@@ -40,19 +40,39 @@ const defaultOpts: ResolveDefaultOpts = {
   },
 };
 
-const resolveAsync = async (id: string, options: AsyncOpts = {}): Promise<string | undefined> =>
+const resolverAsync = async (id: string, options: AsyncOpts = {}): Promise<string | undefined> =>
   new Promise(resolve => resolver(id, options, (_, res) => resolve(res)));
 
-export default async function (ids: string[], userOpts: ResolveOpts): Promise<string> {
+export async function resolveAsync(ids: string[], userOpts: ResolveOpts): Promise<string> {
   const options = { ...defaultOpts, ...userOpts };
   for await (const basedir of options.basedirs) {
     const opts = { ...options, basedir, basedirs: undefined, caller: undefined };
     for await (const id of ids) {
-      const resolved = await resolveAsync(id, opts);
+      const resolved = await resolverAsync(id, opts);
       if (resolved) return resolved;
     }
   }
 
-  const idsFmt = arrayFmt(ids);
-  throw new Error(`${options.caller} could not resolve ${idsFmt}`);
+  throw new Error(`${options.caller} could not resolve ${arrayFmt(ids)}`);
+}
+
+const resolverSync = (id: string, options: SyncOpts = {}): string | undefined => {
+  try {
+    return sync(id, options);
+  } catch {
+    return;
+  }
+};
+
+export function resolveSync(ids: string[], userOpts: ResolveOpts): string {
+  const options = { ...defaultOpts, ...userOpts };
+  for (const basedir of options.basedirs) {
+    const opts = { ...options, basedir, basedirs: undefined, caller: undefined };
+    for (const id of ids) {
+      const resolved = resolverSync(id, opts);
+      if (resolved) return resolved;
+    }
+  }
+
+  throw new Error(`${options.caller} could not resolve ${arrayFmt(ids)}`);
 }

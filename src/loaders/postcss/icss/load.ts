@@ -2,7 +2,7 @@ import path from "path";
 import fs from "fs-extra";
 import { ProcessOptions } from "postcss";
 import Processor from "postcss/lib/processor";
-import resolveAsync from "../../../utils/resolve-async";
+import { resolveAsync } from "../../../utils/resolve";
 
 export type Load = (
   url: string,

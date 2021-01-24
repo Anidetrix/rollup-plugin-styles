@@ -1,6 +1,6 @@
 import fs from "fs-extra";
 import { parseUrl } from "query-string";
-import resolveAsync from "../../../utils/resolve-async";
+import { resolveAsync } from "../../../utils/resolve";
 
 /** File resolved by `@import` resolver */
 export interface ImportFile {

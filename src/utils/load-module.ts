@@ -1,18 +1,22 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
-import { sync as resolveSync, SyncOpts } from "resolve";
+import { resolveSync, ResolveOpts } from "./resolve";
 
 const loaded: Record<string, unknown> = {};
-const options: SyncOpts = { basedir: process.cwd(), preserveSymlinks: false };
+
+const options: ResolveOpts = {
+  caller: "Module loader",
+  basedirs: [process.cwd()],
+  extensions: [".js", ".mjs", ".json"],
+  preserveSymlinks: false,
+  packageFilter: pkg => pkg,
+};
+
 export default function (moduleId: string): unknown {
   if (loaded[moduleId]) return loaded[moduleId];
   if (loaded[moduleId] === null) return;
 
   try {
-    try {
-      loaded[moduleId] = require(resolveSync(moduleId, options)) as unknown;
-    } catch {
-      loaded[moduleId] = require(resolveSync(`./${moduleId}`, options)) as unknown;
-    }
+    loaded[moduleId] = require(resolveSync([moduleId, `./${moduleId}`], options));
   } catch {
     loaded[moduleId] = null;
     return;

@@ -7,7 +7,7 @@ import cssnano from "cssnano";
 import { PostCSSLoaderOptions, InjectOptions } from "../../types";
 import { humanlizePath, normalizePath } from "../../utils/path";
 import { mm } from "../../utils/sourcemap";
-import resolveAsync from "../../utils/resolve-async";
+import { resolveAsync } from "../../utils/resolve";
 import safeId from "../../utils/safe-id";
 import { Loader } from "../types";
 import loadConfig from "./config";
