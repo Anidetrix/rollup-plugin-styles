@@ -1,3 +1,10 @@
+# [3.14.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.13.0...v3.14.0) (2021-01-25)
+
+
+### Features
+
+* pass resulting filename to sourcemap transformer when possible ([5570cf4](https://github.com/Anidetrix/rollup-plugin-styles/commit/5570cf43425277a6c0699021092812d022235cb5))
+
 # [3.13.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.12.2...v3.13.0) (2021-01-24)
 
 
