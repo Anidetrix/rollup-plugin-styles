@@ -71,5 +71,5 @@ export interface SourceMapOptions {
    */
   content?: boolean;
   /** Function for transforming resulting sourcemap */
-  transform?: (map: RawSourceMap) => void;
+  transform?: (map: RawSourceMap, name?: string) => void;
 }

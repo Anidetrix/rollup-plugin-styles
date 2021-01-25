@@ -312,18 +312,15 @@ export default (options: Options = {}): Plugin => {
               return s;
             });
 
-          if (sourceMap.transform) map.modify(sourceMap.transform);
-
           if (sourceMap.inline) {
+            map.modify(m => sourceMap.transform?.(m, normalizePath(dir, fileName)));
             (bundle[fileName] as OutputAsset).source += map.toCommentData();
           } else {
-            const mapFileId = this.emitFile({
-              type: "asset",
-              fileName: `${fileName}.map`,
-              source: map.toString(),
-            });
-            const mapFileName = path.basename(this.getFileName(mapFileId));
-            (bundle[fileName] as OutputAsset).source += map.toCommentFile(mapFileName);
+            const mapFileName = `${fileName}.map`;
+            map.modify(m => sourceMap.transform?.(m, normalizePath(dir, mapFileName)));
+            this.emitFile({ type: "asset", fileName: mapFileName, source: map.toString() });
+            const { base } = path.parse(mapFileName);
+            (bundle[fileName] as OutputAsset).source += map.toCommentFile(base);
           }
         }
       }
