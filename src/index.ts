@@ -115,7 +115,7 @@ export default (options: Options = {}): Plugin => {
 
       return {
         code: res.code,
-        map: (sourceMap ? res.map : undefined) ?? { mappings: "" as const },
+        map: sourceMap && res.map ? res.map : { mappings: "" as const },
         moduleSideEffects: res.extracted ? true : null,
       };
     },

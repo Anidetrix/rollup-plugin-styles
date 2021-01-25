@@ -49,7 +49,7 @@ class MapModifier {
     return this;
   }
 
-  resolve(dir: string): this {
+  resolve(dir = process.cwd()): this {
     return this.modifySources(source => {
       if (source === "<no source>") return source;
       return resolvePath(dir, source);

@@ -1475,7 +1475,7 @@ packages:
     dev: true
     resolution:
       integrity: sha512-X7yW/fpzF3uTAE+LbPD3HEeeU+/49o0V4kNA/yv8jQ3BDpFayv/osTOhY1y1mLXljW2bOJcOCSGZo4jFKPJ6Vw==
-  /@octokit/plugin-paginate-rest/2.8.0_@octokit+core@3.2.4:
+  /@octokit/plugin-paginate-rest/2.8.1_@octokit+core@3.2.4:
     dependencies:
       '@octokit/core': 3.2.4
       '@octokit/types': 6.5.0
@@ -1483,7 +1483,7 @@ packages:
     peerDependencies:
       '@octokit/core': '>=2'
     resolution:
-      integrity: sha512-HtuEQ2AYE4YFEBQN0iHmMsIvVucd5RsnwJmRKIsfAg1/ZeoMaU+jXMnTAZqIUEmcVJA27LjHUm3f1hxf8Fpdxw==
+      integrity: sha512-YGPZ+P5ffbVGs6uGAcg7E6FotumdSNTWQdtXm09K6KgSD0t17EA1kBCRLVsZ2nduExFdx20ux4KyL3/LzhvvCg==
   /@octokit/plugin-request-log/1.0.2_@octokit+core@3.2.4:
     dependencies:
       '@octokit/core': 3.2.4
@@ -1526,7 +1526,7 @@ packages:
   /@octokit/rest/18.0.14:
     dependencies:
       '@octokit/core': 3.2.4
-      '@octokit/plugin-paginate-rest': 2.8.0_@octokit+core@3.2.4
+      '@octokit/plugin-paginate-rest': 2.8.1_@octokit+core@3.2.4
       '@octokit/plugin-request-log': 1.0.2_@octokit+core@3.2.4
       '@octokit/plugin-rest-endpoint-methods': 4.8.0_@octokit+core@3.2.4
     dev: true
