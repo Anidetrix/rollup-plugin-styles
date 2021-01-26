@@ -6,6 +6,7 @@
 [![build status](https://github.com/Anidetrix/rollup-plugin-styles/workflows/CI/badge.svg)](https://github.com/Anidetrix/rollup-plugin-styles/actions?query=workflow%3ACI)
 [![code coverage](https://codecov.io/gh/Anidetrix/rollup-plugin-styles/branch/main/graph/badge.svg)](https://codecov.io/gh/Anidetrix/rollup-plugin-styles)
 [![license](https://img.shields.io/github/license/Anidetrix/rollup-plugin-styles)](./LICENSE)
+[![financial contributors](https://opencollective.com/rollup-plugin-styles/tiers/badge.svg)](https://opencollective.com/rollup-plugin-styles)
 
 ### 🎨 Universal [Rollup](https://github.com/rollup/rollup) plugin for styles:
 
