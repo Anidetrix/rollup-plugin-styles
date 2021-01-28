@@ -202,29 +202,29 @@ export default (options: Options = {}): Plugin => {
       };
 
       const getImports = (chunk: OutputChunk): string[] => {
-        const ordered: string[] = [];
+        const ids: string[] = [];
 
         for (const module of Object.keys(chunk.modules)) {
           const traversed: string[] = [];
-          let ids = [module];
+          let current = [module];
           do {
             const imports: string[] = [];
-            for (const id of ids) {
-              if (traversed.includes(id) || !isIncluded(id)) continue;
+            for (const id of current) {
+              if (traversed.includes(id)) continue;
               if (loaders.isSupported(id)) {
-                imports.push(id);
+                if (isIncluded(id)) imports.push(id);
                 continue;
               }
               traversed.push(id);
               const i = this.getModuleInfo(id);
               i && imports.push(...i.importedIds);
             }
-            ids = imports;
-          } while (ids.some(id => !loaders.isSupported(id)));
-          ordered.push(...ids);
+            current = imports;
+          } while (current.some(id => !loaders.isSupported(id)));
+          ids.push(...current);
         }
 
-        return ordered;
+        return ids;
       };
 
       const moved: string[] = [];
