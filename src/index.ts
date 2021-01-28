@@ -124,22 +124,34 @@ export default (options: Options = {}): Plugin => {
       if (extracted.length === 0) return;
 
       const ids: string[] = [];
-      for (const id of Object.keys(chunk.modules)) {
-        const i = this.getModuleInfo(id);
-        i && ids.push(i.id, ...i.importedIds);
+      for (const module of Object.keys(chunk.modules)) {
+        const traversed: string[] = [];
+        let current = [module];
+        do {
+          const imports: string[] = [];
+          for (const id of current) {
+            if (traversed.includes(id)) continue;
+            if (loaders.isSupported(id)) {
+              if (isIncluded(id)) imports.push(id);
+              continue;
+            }
+            traversed.push(id);
+            const i = this.getModuleInfo(id);
+            i && imports.push(...i.importedIds);
+          }
+          current = imports;
+        } while (current.some(id => !loaders.isSupported(id)));
+        ids.push(...current);
       }
 
       const hashable = extracted
         .filter(e => ids.includes(e.id))
         .sort((a, b) => ids.lastIndexOf(a.id) - ids.lastIndexOf(b.id))
-        .map(e => {
-          const { base, dir } = path.parse(e.id);
-          return { ...e, id: base, map: mm(e.map).relative(dir).toString() };
-        });
+        .map(e => `${path.basename(e.id)}:${e.css}`);
 
       if (hashable.length === 0) return;
 
-      return JSON.stringify(hashable);
+      return hashable.join(":");
     },
 
     async generateBundle(opts, bundle) {

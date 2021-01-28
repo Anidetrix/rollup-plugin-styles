@@ -577,13 +577,13 @@ exports[`code-splitting manual-chunks: js 3`] = `
 `;
 
 exports[`code-splitting manual-chunks: js 4`] = `
-"import { m as modules_d55e0e9b } from './fourts-309ca5ed.js';
-import './index-bb3ba0d0.js';
+"import { m as modules_d55e0e9b } from './fourts-ee6fab52.js';
+import './index-01e5c533.js';
 
 (async () => {
-  const first = await import('./first-5ef3cedc.js');
-  const second = await import('./second-da297dc5.js');
-  const otherScript = await import('./other-script-dfcd0135.js');
+  const first = await import('./first-5f8383da.js');
+  const second = await import('./second-43e90718.js');
+  const otherScript = await import('./other-script-9f836635.js');
   console.log(first, second, otherScript);
 })();
 
@@ -592,13 +592,13 @@ console.log(modules_d55e0e9b);
 `;
 
 exports[`code-splitting manual-chunks: js 5`] = `
-"import { a as modules_3ede29d3 } from './fourts-309ca5ed.js';
-import './index-bb3ba0d0.js';
+"import { a as modules_3ede29d3 } from './fourts-ee6fab52.js';
+import './index-01e5c533.js';
 
 (async () => {
-  const first = await import('./first-5ef3cedc.js');
-  const second = await import('./second-da297dc5.js');
-  const otherScript = await import('./other-script-dfcd0135.js');
+  const first = await import('./first-5f8383da.js');
+  const second = await import('./second-43e90718.js');
+  const otherScript = await import('./other-script-9f836635.js');
   console.log(first, second, otherScript);
 })();
 
@@ -607,7 +607,7 @@ console.log(modules_3ede29d3);
 `;
 
 exports[`code-splitting manual-chunks: js 6`] = `
-"import './nondynamics-36d7f0a7.js';
+"import './nondynamics-6e84e0d1.js';
 "
 `;
 
@@ -626,7 +626,7 @@ console.log(modules_2539eb5b);
 exports[`code-splitting manual-chunks: js 9`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-a2367435.js');
+  const nestedScript = await import('./nested-script-c58d3205.js');
   console.log(nestedScript);
 })();
 "
@@ -724,8 +724,8 @@ export { modules_3ede29d3 as a, modules_d55e0e9b as m };
 `;
 
 exports[`code-splitting manual-chunks-only: js 2`] = `
-"import { m as modules_d55e0e9b, a as modules_3ede29d3 } from './fourts-309ca5ed.js';
-import './nondynamics-36d7f0a7.js';
+"import { m as modules_d55e0e9b, a as modules_3ede29d3 } from './fourts-ee6fab52.js';
+import './nondynamics-6e84e0d1.js';
 
 console.log(\\"sub\\");
 
@@ -788,9 +788,9 @@ var nestedScript = /*#__PURE__*/Object.freeze({
 `;
 
 exports[`code-splitting manual-chunks-only: js 3`] = `
-"import './fourts-309ca5ed.js';
+"import './fourts-ee6fab52.js';
 import './index.js';
-import './nondynamics-36d7f0a7.js';
+import './nondynamics-6e84e0d1.js';
 "
 `;
 
@@ -864,8 +864,8 @@ export { modules_3ede29d3 as a, modules_d55e0e9b as m };
 `;
 
 exports[`code-splitting manual-chunks-only-single: js 2`] = `
-"import { m as modules_d55e0e9b, a as modules_3ede29d3 } from './fourts-309ca5ed.js';
-import './nondynamics-36d7f0a7.js';
+"import { m as modules_d55e0e9b, a as modules_3ede29d3 } from './fourts-ee6fab52.js';
+import './nondynamics-6e84e0d1.js';
 
 console.log(\\"sub\\");
 
@@ -928,9 +928,9 @@ var nestedScript = /*#__PURE__*/Object.freeze({
 `;
 
 exports[`code-splitting manual-chunks-only-single: js 3`] = `
-"import './fourts-309ca5ed.js';
+"import './fourts-ee6fab52.js';
 import './index.js';
-import './nondynamics-36d7f0a7.js';
+import './nondynamics-6e84e0d1.js';
 "
 `;
 
@@ -1012,13 +1012,13 @@ exports[`code-splitting manual-chunks-single: js 3`] = `
 `;
 
 exports[`code-splitting manual-chunks-single: js 4`] = `
-"import { m as modules_d55e0e9b } from './fourts-309ca5ed.js';
-import './index-bb3ba0d0.js';
+"import { m as modules_d55e0e9b } from './fourts-ee6fab52.js';
+import './index-01e5c533.js';
 
 (async () => {
-  const first = await import('./first-5ef3cedc.js');
-  const second = await import('./second-da297dc5.js');
-  const otherScript = await import('./other-script-dfcd0135.js');
+  const first = await import('./first-5f8383da.js');
+  const second = await import('./second-43e90718.js');
+  const otherScript = await import('./other-script-9f836635.js');
   console.log(first, second, otherScript);
 })();
 
@@ -1027,13 +1027,13 @@ console.log(modules_d55e0e9b);
 `;
 
 exports[`code-splitting manual-chunks-single: js 5`] = `
-"import { a as modules_3ede29d3 } from './fourts-309ca5ed.js';
-import './index-bb3ba0d0.js';
+"import { a as modules_3ede29d3 } from './fourts-ee6fab52.js';
+import './index-01e5c533.js';
 
 (async () => {
-  const first = await import('./first-5ef3cedc.js');
-  const second = await import('./second-da297dc5.js');
-  const otherScript = await import('./other-script-dfcd0135.js');
+  const first = await import('./first-5f8383da.js');
+  const second = await import('./second-43e90718.js');
+  const otherScript = await import('./other-script-9f836635.js');
   console.log(first, second, otherScript);
 })();
 
@@ -1042,7 +1042,7 @@ console.log(modules_3ede29d3);
 `;
 
 exports[`code-splitting manual-chunks-single: js 6`] = `
-"import './nondynamics-36d7f0a7.js';
+"import './nondynamics-6e84e0d1.js';
 "
 `;
 
@@ -1061,7 +1061,7 @@ console.log(modules_2539eb5b);
 exports[`code-splitting manual-chunks-single: js 9`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-a2367435.js');
+  const nestedScript = await import('./nested-script-c58d3205.js');
   console.log(nestedScript);
 })();
 "
@@ -1162,14 +1162,14 @@ exports[`code-splitting multi-entry: js 2`] = `
 `;
 
 exports[`code-splitting multi-entry: js 3`] = `
-"import './index-bb3ba0d0.js';
+"import './index-01e5c533.js';
 
 var modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
 (async () => {
-  const first = await import('./first-5ef3cedc.js');
-  const second = await import('./second-da297dc5.js');
-  const otherScript = await import('./other-script-98094377.js');
+  const first = await import('./first-5f8383da.js');
+  const second = await import('./second-43e90718.js');
+  const otherScript = await import('./other-script-a19f2750.js');
   console.log(first, second, otherScript);
 })();
 
@@ -1178,14 +1178,14 @@ console.log(modules_d55e0e9b);
 `;
 
 exports[`code-splitting multi-entry: js 4`] = `
-"import './index-bb3ba0d0.js';
+"import './index-01e5c533.js';
 
 var modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
 
 (async () => {
-  const first = await import('./first-5ef3cedc.js');
-  const second = await import('./second-da297dc5.js');
-  const otherScript = await import('./other-script-98094377.js');
+  const first = await import('./first-5f8383da.js');
+  const second = await import('./second-43e90718.js');
+  const otherScript = await import('./other-script-a19f2750.js');
   console.log(first, second, otherScript);
 })();
 
@@ -1208,7 +1208,7 @@ exports[`code-splitting multi-entry: js 6`] = `
 exports[`code-splitting multi-entry: js 7`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-0cc66e75.js');
+  const nestedScript = await import('./nested-script-bdf44697.js');
   console.log(nestedScript);
 })();
 "
@@ -1292,14 +1292,14 @@ exports[`code-splitting multi-entry-single: js 2`] = `
 `;
 
 exports[`code-splitting multi-entry-single: js 3`] = `
-"import './index-bb3ba0d0.js';
+"import './index-01e5c533.js';
 
 var modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
 (async () => {
-  const first = await import('./first-5ef3cedc.js');
-  const second = await import('./second-da297dc5.js');
-  const otherScript = await import('./other-script-98094377.js');
+  const first = await import('./first-5f8383da.js');
+  const second = await import('./second-43e90718.js');
+  const otherScript = await import('./other-script-a19f2750.js');
   console.log(first, second, otherScript);
 })();
 
@@ -1308,14 +1308,14 @@ console.log(modules_d55e0e9b);
 `;
 
 exports[`code-splitting multi-entry-single: js 4`] = `
-"import './index-bb3ba0d0.js';
+"import './index-01e5c533.js';
 
 var modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
 
 (async () => {
-  const first = await import('./first-5ef3cedc.js');
-  const second = await import('./second-da297dc5.js');
-  const otherScript = await import('./other-script-98094377.js');
+  const first = await import('./first-5f8383da.js');
+  const second = await import('./second-43e90718.js');
+  const otherScript = await import('./other-script-a19f2750.js');
   console.log(first, second, otherScript);
 })();
 
@@ -1338,7 +1338,7 @@ exports[`code-splitting multi-entry-single: js 6`] = `
 exports[`code-splitting multi-entry-single: js 7`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-0cc66e75.js');
+  const nestedScript = await import('./nested-script-bdf44697.js');
   console.log(nestedScript);
 })();
 "
@@ -1918,9 +1918,9 @@ exports[`code-splitting single: js 2`] = `
 console.log(\\"sub\\");
 
 (async () => {
-  const first = await import('./first-5ef3cedc.js');
-  const second = await import('./second-da297dc5.js');
-  const otherScript = await import('./other-script-98094377.js');
+  const first = await import('./first-5f8383da.js');
+  const second = await import('./second-43e90718.js');
+  const otherScript = await import('./other-script-a19f2750.js');
   console.log(first, second, otherScript);
 })();
 
@@ -1943,7 +1943,7 @@ exports[`code-splitting single: js 4`] = `
 exports[`code-splitting single: js 5`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-0cc66e75.js');
+  const nestedScript = await import('./nested-script-bdf44697.js');
   console.log(nestedScript);
 })();
 "
@@ -2025,9 +2025,9 @@ exports[`code-splitting true: js 2`] = `
 console.log(\\"sub\\");
 
 (async () => {
-  const first = await import('./first-5ef3cedc.js');
-  const second = await import('./second-da297dc5.js');
-  const otherScript = await import('./other-script-98094377.js');
+  const first = await import('./first-5f8383da.js');
+  const second = await import('./second-43e90718.js');
+  const otherScript = await import('./other-script-a19f2750.js');
   console.log(first, second, otherScript);
 })();
 
@@ -2050,7 +2050,7 @@ exports[`code-splitting true: js 4`] = `
 exports[`code-splitting true: js 5`] = `
 "(async () => {
   await import('./noncss-f3feb5ac.js');
-  const nestedScript = await import('./nested-script-0cc66e75.js');
+  const nestedScript = await import('./nested-script-bdf44697.js');
   console.log(nestedScript);
 })();
 "
