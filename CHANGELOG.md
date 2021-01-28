@@ -1,3 +1,11 @@
+## [3.14.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.14.0...v3.14.1) (2021-01-28)
+
+
+### Bug Fixes
+
+* filter out only related files ([0976e8f](https://github.com/Anidetrix/rollup-plugin-styles/commit/0976e8f196aba095cb3a1623b03cd7c2622e5365))
+* more reliable chunk hash augmentation ([91f9b8f](https://github.com/Anidetrix/rollup-plugin-styles/commit/91f9b8f66411ac44176ac3f32bbd3fd673151172)), closes [#143](https://github.com/Anidetrix/rollup-plugin-styles/issues/143)
+
 # [3.14.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.13.0...v3.14.0) (2021-01-25)
 
 
