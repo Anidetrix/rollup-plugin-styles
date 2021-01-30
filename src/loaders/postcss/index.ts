@@ -174,7 +174,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
           injectorId = `"${normalizePath(injectorId)}"`;
         }
 
-        output.push(`import ${injectorName} from ${injectorId};`);
+        output.unshift(`import ${injectorName} from ${injectorId};`);
 
         if (!treeshakeable)
           output.push(`var ${modulesVarName} = ${JSON.stringify(modulesExports)};`, injectorCall);
@@ -222,6 +222,8 @@ const loader: Loader<PostCSSLoaderOptions> = {
       dts.push(defaultExport);
       await fs.writeFile(`${this.id}.d.ts`, dts.filter(Boolean).join("\n"));
     }
+
+    console.log(output.filter(Boolean).join("\n"));
 
     return { code: output.filter(Boolean).join("\n"), map, extracted };
   },
