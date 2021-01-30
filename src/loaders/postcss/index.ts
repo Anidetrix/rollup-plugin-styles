@@ -223,8 +223,6 @@ const loader: Loader<PostCSSLoaderOptions> = {
       await fs.writeFile(`${this.id}.d.ts`, dts.filter(Boolean).join("\n"));
     }
 
-    console.log(output.filter(Boolean).join("\n"));
-
     return { code: output.filter(Boolean).join("\n"), map, extracted };
   },
 };
