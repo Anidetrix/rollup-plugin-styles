@@ -2980,13 +2980,13 @@ injector_3b481dac(css,{});
 var css$1 = \\".bar{color:red}\\";
 injector_3b481dac(css$1,{});
 
-var css$2 = \\".stylus{color:red;background:red}\\";
+var css$2 = \\".stylus{background:red;color:red}\\";
 injector_3b481dac(css$2,{});
 
 var css$3 = \\".pcss{color:red}\\";
 injector_3b481dac(css$3,{});
 
-var css$4 = \\".sass{width:30%;color:red}\\";
+var css$4 = \\".sass{color:red;width:30%}\\";
 injector_3b481dac(css$4,{});
 
 var css$5 = \\".less{color:#6c94be}\\";
