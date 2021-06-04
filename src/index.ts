@@ -125,17 +125,17 @@ export default (options: Options = {}): Plugin => {
 
       const ids: string[] = [];
       for (const module of Object.keys(chunk.modules)) {
-        const traversed: string[] = [];
+        const traversed: Set<string> = new Set();
         let current = [module];
         do {
           const imports: string[] = [];
           for (const id of current) {
-            if (traversed.includes(id)) continue;
+            if (traversed.has(id)) continue;
             if (loaders.isSupported(id)) {
               if (isIncluded(id)) imports.push(id);
               continue;
             }
-            traversed.push(id);
+            traversed.add(id);
             const i = this.getModuleInfo(id);
             i && imports.push(...i.importedIds);
           }
@@ -217,17 +217,17 @@ export default (options: Options = {}): Plugin => {
         const ids: string[] = [];
 
         for (const module of Object.keys(chunk.modules)) {
-          const traversed: string[] = [];
+          const traversed: Set<string> = new Set();
           let current = [module];
           do {
             const imports: string[] = [];
             for (const id of current) {
-              if (traversed.includes(id)) continue;
+              if (traversed.has(id)) continue;
               if (loaders.isSupported(id)) {
                 if (isIncluded(id)) imports.push(id);
                 continue;
               }
-              traversed.push(id);
+              traversed.add(id);
               const i = this.getModuleInfo(id);
               i && imports.push(...i.importedIds);
             }
