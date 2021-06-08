@@ -3765,12 +3765,12 @@ var modules_5a199c00 = {get \\"primary\\"() { if (!injected) { injected = true; 
 get \\"secondary\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"#1F4F7F\\"; },
 get \\"module\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"style_module\\"; },
 get \\"module2\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"style_module2 composed_composition composition2_compositioned\\"; },
-inject() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } },};
+inject: function inject() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } },};
 
 var css$1 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
 var injected$1 = false;
 var modules_354770d7 = {get \\"compositioned\\"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return \\"composition2_compositioned\\"; },
-inject() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } },};
+inject: function inject() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } },};
 
 if (modules_354770d7.inject) modules_354770d7.inject();
 else console.log(modules_5a199c00.module, modules_354770d7.compositioned);
@@ -3853,12 +3853,12 @@ var modules_5a199c00 = {get \\"primary\\"() { if (!injected) { injected = true; 
 get \\"secondary\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"#1F4F7F\\"; },
 get \\"module\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"style_module\\"; },
 get \\"module2\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"style_module2 composed_composition composition2_compositioned\\"; },
-inject() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } },};
+inject: function inject() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } },};
 
 var css$1 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
 var injected$1 = false;
 var modules_354770d7 = {get \\"compositioned\\"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return \\"composition2_compositioned\\"; },
-inject() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } },};
+inject: function inject() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } },};
 
 if (modules_354770d7.inject) modules_354770d7.inject();
 else console.log(modules_5a199c00.module, modules_354770d7.compositioned);
