@@ -18,7 +18,7 @@ export default (placeholder = "[name]_[local]__[hash:8]") => (
   return makeLegalIdentifier(
     placeholder
       .replace("[dir]", path.basename(dir))
-      .replace("[name]", name)
+      .replace("[name]", name.replace(/\.module$/, ""))
       .replace("[local]", local)
       .replace(hashRe, hashLen ? hash.slice(0, hashLen) : hash),
   );
