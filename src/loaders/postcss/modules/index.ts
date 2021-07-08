@@ -27,6 +27,14 @@ export interface ModulesOptions {
    * @default "[name]_[local]__[hash:8]"
    */
   generateScopedName?: string | ((name: string, file: string, css: string) => string);
+  /**
+   * Files to include for [CSS Modules](https://github.com/css-modules/css-modules)
+   * for files named `[name].module.[ext]`
+   * (e.g. `foo.module.css`, `bar.module.stylus`),
+   * or pass your own function or regular expression
+   * @default false
+   */
+  include?: import("../../../types").Options["autoModules"];
 }
 
 export default (options: ModulesOptions): (Plugin | Processor)[] => {
