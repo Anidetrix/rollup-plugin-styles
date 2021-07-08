@@ -33,7 +33,7 @@ function ensureAutoModules(
   am: PostCSSLoaderOptions["autoModules"] | undefined,
   id: string,
 ): boolean {
-  if (am === undefined) return false;
+  if (am === undefined) return true;
   if (typeof am === "function") return am(id);
   if (am instanceof RegExp) return am.test(id);
   return am && /\.module\.[A-Za-z]+$/.test(id);
