@@ -29,7 +29,11 @@ function getClassNameDefault(name: string): string {
   return id;
 }
 
-function ensureAutoModules(am: PostCSSLoaderOptions["autoModules"], id: string): boolean {
+function ensureAutoModules(
+  am: PostCSSLoaderOptions["autoModules"] | undefined,
+  id: string,
+): boolean {
+  if (am === undefined) return true;
   if (typeof am === "function") return am(id);
   if (am instanceof RegExp) return am.test(id);
   return am && /\.module\.[A-Za-z]+$/.test(id);
@@ -46,7 +50,9 @@ const loader: Loader<PostCSSLoaderOptions> = {
     const config = await loadConfig(this.id, options.config);
     const plugins: AcceptedPlugin[] = [];
     const autoModules = ensureAutoModules(options.autoModules, this.id);
-    const supportModules = Boolean(options.modules || autoModules);
+    const supportModules = Boolean(
+      (options.modules && ensureAutoModules(options.modules.include, this.id)) || autoModules,
+    );
     const modulesExports: Record<string, string> = {};
 
     const postcssOpts: PostCSSOptions = {
@@ -114,7 +120,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
           break;
       }
 
-    map = mm((res.map?.toJSON() as unknown) as RawSourceMap)
+    map = mm(res.map?.toJSON() as unknown as RawSourceMap)
       .resolve(path.dirname(postcssOpts.to))
       .toString();
 
