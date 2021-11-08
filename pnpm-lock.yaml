@@ -3149,7 +3149,7 @@ packages:
       css-what: 4.0.0
       domhandler: 4.1.0
       domutils: 2.5.2
-      nth-check: 2.0.0
+      nth-check: 2.0.1
     dev: false
     resolution:
       integrity: sha512-qmss1EihSuBNWNNhHjxzxSfJoFBM/lERB/Q4EnsJQQC62R2evJDW481091oAdOr9uh46/0n4nrg0It5cAnj1RA==
