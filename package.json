@@ -62,6 +62,7 @@
     "postcss-value-parser": "^4.1.0",
     "query-string": "^6.13.8",
     "resolve": "^1.19.0",
+    "resolve.exports": "^1.1.0",
     "source-map": "^0.7.3",
     "tslib": "^2.1.0"
   },
@@ -126,5 +127,6 @@
   },
   "engines": {
     "node": ">=10"
-  }
+  },
+  "packageManager": "pnpm@5.10.0"
 }
