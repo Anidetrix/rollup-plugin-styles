@@ -19,7 +19,8 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          npm install -g pnpm@5
+          npm install -g pnpm@6
+          pnpm config set enable-pre-post-scripts true
           pnpm i --frozen-lockfile
         env:
           HUSKY_SKIP_INSTALL: 1
@@ -31,7 +32,7 @@ jobs:
           CI: true
 
       - name: Submit Coverage to codecov.io
-        uses: codecov/codecov-action@v1
+        uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           fail_ci_if_error: true

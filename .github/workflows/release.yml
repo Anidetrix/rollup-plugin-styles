@@ -19,7 +19,8 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          npm install -g pnpm@5
+          npm install -g pnpm@6
+          pnpm config set enable-pre-post-scripts true
           pnpm i --frozen-lockfile
         env:
           HUSKY_SKIP_INSTALL: 1
