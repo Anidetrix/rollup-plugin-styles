@@ -4,7 +4,6 @@ module.exports = {
   root: true,
   extends: [
     "eslint:recommended",
-    "plugin:node/recommended-module",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:import/errors",
@@ -37,9 +36,12 @@ module.exports = {
     "prefer-template": "error",
     "sort-vars": "error",
     "unicorn/no-null": "off",
+    "unicorn/prefer-json-parse-buffer": "off",
+    "unicorn/prefer-module": "off",
+    "unicorn/prefer-node-protocol": "off",
     "unicorn/prefer-set-has": "off",
     "unicorn/prevent-abbreviations": "off",
     yoda: ["error", "never", { exceptRange: true }],
   },
-  settings: { "import/resolver": { node: { extensions } }, node: { tryExtensions: extensions } },
+  settings: { "import/resolver": { node: { extensions } } },
 };

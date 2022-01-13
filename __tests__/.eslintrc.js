@@ -1,8 +1,8 @@
-const path = require("path");
+const { resolve } = require("path");
 module.exports = {
   root: true,
   extends: [
-    path.resolve(__dirname, "..", "src", ".eslintrc.js"),
+    resolve(__dirname, "..", "src", ".eslintrc.js"),
     "plugin:jest/recommended",
     "plugin:jest/style",
   ],
