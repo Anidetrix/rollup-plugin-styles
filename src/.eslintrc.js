@@ -12,8 +12,6 @@ module.exports = {
     "plugin:import/typescript",
     "plugin:unicorn/recommended",
     "prettier",
-    "prettier/@typescript-eslint",
-    "prettier/unicorn",
   ],
   env: { node: true, browser: false, es6: true },
   parser: "@typescript-eslint/parser",

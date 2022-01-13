@@ -8,7 +8,6 @@ module.exports = {
     "plugin:import/warnings",
     "plugin:unicorn/recommended",
     "prettier",
-    "prettier/unicorn",
   ],
   env: { node: true, browser: false, es6: true },
   parserOptions: { sourceType: "module" },
