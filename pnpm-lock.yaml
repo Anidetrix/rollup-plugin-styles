@@ -39,6 +39,7 @@ specifiers:
   gh-pages: ^3.2.3
   husky: ^7.0.4
   icss-utils: ^5.1.0
+  is-ci: ^3.0.1
   jest: ^27.4.7
   less: ^4.1.2
   lint-staged: ^12.1.7
@@ -126,6 +127,7 @@ devDependencies:
   eslint-plugin-unicorn: 40.0.0_eslint@8.6.0
   gh-pages: 3.2.3
   husky: 7.0.4
+  is-ci: 3.0.1
   jest: 27.4.7
   less: 4.1.2
   lint-staged: 12.1.7
@@ -4889,6 +4891,13 @@ packages:
   /is-callable/1.2.4:
     resolution: {integrity: sha512-nsuwtxZfMX67Oryl9LCQ+upnC0Z0BgpwntpS89m1H/TLF0zNfzfLMV/9Wa/6MZsj0acpEjAO0KF1xT6ZdLl95w==}
     engines: {node: '>= 0.4'}
+    dev: true
+
+  /is-ci/3.0.1:
+    resolution: {integrity: sha512-ZYvCgrefwqoQ6yTyYUbQu64HsITZ3NfKX1lzaEYdkTDcfKzzCI/wthRRYKkdjHKFVgNiXKAKm65Zo1pk2as/QQ==}
+    hasBin: true
+    dependencies:
+      ci-info: 3.3.0
     dev: true
 
   /is-core-module/2.8.1:
