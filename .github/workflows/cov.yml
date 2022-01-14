@@ -23,7 +23,7 @@ jobs:
           pnpm config set enable-pre-post-scripts true
           pnpm i --frozen-lockfile
         env:
-          HUSKY_SKIP_INSTALL: 1
+          HUSKY: 0
           CI: true
 
       - name: Test /w Coverage

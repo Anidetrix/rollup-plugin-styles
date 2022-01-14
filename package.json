@@ -40,6 +40,7 @@
     "docs:publish": "npm run docs && gh-pages -d docs",
     "prelint": "prettier -l --write .",
     "lint": "eslint --report-unused-disable-directives --ext .ts,.js --fix .",
+    "prepare": "husky install",
     "prepublishOnly": "npm run build",
     "release": "semantic-release",
     "pretest": "npm run lint",
@@ -105,7 +106,7 @@
     "node-sass": "^7.0.1",
     "postcss-custom-properties": "^12.1.2",
     "prettier": "^2.5.1",
-    "rollup": "^2.63.0",
+    "rollup": "^2.64.0",
     "rollup-plugin-dts": "^4.1.0",
     "rollup-plugin-lit-css": "^3.2.1",
     "rollup-plugin-node-externals": "^3.1.2",
@@ -121,7 +122,7 @@
     "typescript": "^4.5.4"
   },
   "peerDependencies": {
-    "rollup": "^2.63.0"
+    "rollup": "^2.64.0"
   },
   "engines": {
     "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
