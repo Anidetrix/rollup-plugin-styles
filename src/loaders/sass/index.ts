@@ -1,4 +1,3 @@
-import loadModule from "../../utils/load-module";
 import { normalizePath } from "../../utils/path";
 import { Loader } from "../types";
 import loadSass from "./load";
@@ -8,8 +7,6 @@ import { importer, importerSync } from "./importer";
 export interface SASSLoaderOptions extends Record<string, unknown>, sass.PublicOptions {
   /** Force Sass implementation */
   impl?: string;
-  /** Forcefully enable/disable `fibers` */
-  fibers?: boolean;
   /** Forcefully enable/disable sync mode */
   sync?: boolean;
 }
@@ -20,9 +17,7 @@ const loader: Loader<SASSLoaderOptions> = {
   async process({ code, map }) {
     const options = { ...this.options };
     const [sass, type] = loadSass(options.impl);
-    const useFibers = options.fibers ?? type === "sass";
-    const fiber = useFibers ? (loadModule("fibers") as fibers.Fiber) : undefined;
-    const sync = options.sync ?? (type !== "node-sass" && !fiber);
+    const sync = options.sync ?? type !== "node-sass";
     const importers = [sync ? importerSync : importer];
 
     if (options.data) code = options.data + code;
@@ -40,7 +35,6 @@ const loader: Loader<SASSLoaderOptions> = {
 
     // Remove non-Sass options
     delete options.impl;
-    delete options.fibers;
     delete options.sync;
 
     // node-sass won't produce sourcemaps if the `data`
@@ -61,7 +55,6 @@ const loader: Loader<SASSLoaderOptions> = {
       omitSourceMapUrl: true,
       sourceMapContents: true,
       importer: importers,
-      fiber,
     });
 
     const deps = res.stats.includedFiles;

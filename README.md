@@ -32,7 +32,6 @@
   - [Emitting processed CSS](#emitting-processed-css)
   - [CSS Modules](#css-modules)
   - [With Sass/Less/Stylus](#with-sasslessstylus)
-  - [Sass and `fibers`](#sass-and-fibers)
 - [Configuration](#configuration)
 - [Why](#why)
 - [License](#license)
@@ -230,27 +229,6 @@ Install corresponding dependency:
 
 That's it, now you can import `.scss` `.sass` `.less` `.styl` `.stylus` files in your code.
 
-### Sass and `fibers`
-
-By default, when using `Dart Sass` implementation, `fibers` package will be loaded automatically if available, otherwise sync mode will be used for better performance.
-
-> When installed via npm, `Dart Sass` supports a JavaScript API that's fully compatible with `Node Sass` <...>, with support for both the render() and renderSync() functions. <...>
->
-> Note however that by default, **renderSync() is more than twice as fast as render()** due to the overhead of asynchronous callbacks. To avoid this performance hit, render() can use the `fibers` package to call asynchronous importers from the synchronous code path.
->
-> [Source](https://github.com/sass/dart-sass/blob/master/README.md#javascript-api)
-
-To install `fibers`:
-
-```bash
-# npm
-npm install -D fibers
-# pnpm
-pnpm add -D fibers
-# yarn
-yarn add fibers --dev
-```
-
 ## Configuration
 
 See [API Reference for `Options`](https://anidetrix.github.io/rollup-plugin-styles/interfaces/types.options.html) for full list of available options.
@@ -273,7 +251,7 @@ With that said, here is the basic list of things which differentiate this plugin
 - Proper sourcemaps, with included sources content by default
 - Respects `assetFileNames` for CSS file names
 - Respects sourcemaps from loaded files
-- Support for implementation and `fibers` forcing for Sass
+- Support for implementation for Sass
 - Support for partials and `~` in Less import statements
 - More smaller things that I forgot
 

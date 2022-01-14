@@ -1,5 +1,3 @@
-/// <reference types="./fibers" />
-
 declare namespace sass {
   type Data = { file: string } | { contents: string } | Error | null;
 
@@ -16,7 +14,6 @@ declare namespace sass {
   }
 
   interface Options extends PublicOptions {
-    fiber?: fibers.Fiber;
     file?: string;
     indentedSyntax?: boolean;
     omitSourceMapUrl?: boolean;
