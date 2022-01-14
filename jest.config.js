@@ -1,5 +1,11 @@
 const path = require("path");
-const modules = ["rollup-plugin-lit-css", path.join("@pwrs", "lit-css")];
+
+const modules = [
+  "rollup-plugin-lit-css",
+  path.join("@pwrs", "lit-css"),
+  "string-to-template-literal",
+];
+
 const modulesStr = modules.map(m => `.*${m}`).join("|");
 const transformIgnorePatterns = [path.join("node_modules", `(?!(${modulesStr})`, ")")];
 
