@@ -380,25 +380,25 @@ function injector_3b481dac (css, options) {
   }
 }
 
-var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_3b481dac(css,{});
-
-var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_3b481dac(css$1,{});
-
-var css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
-injector_3b481dac(css$2,{});
-
-var css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_3b481dac(css$3,{});
-
-var css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
-injector_3b481dac(css$4,{});
-
-var css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
+var css$5 = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_3b481dac(css$5,{});
 
-console.log(css, css$1);
+var css$4 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_3b481dac(css$4,{});
+
+var css$3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
+injector_3b481dac(css$3,{});
+
+var css$2 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_3b481dac(css$2,{});
+
+var css$1 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
+injector_3b481dac(css$1,{});
+
+var css = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
+injector_3b481dac(css,{});
+
+console.log(css$5, css$4);
 "
 `;
 
@@ -557,8 +557,7 @@ exports[`code-splitting manual-chunks: js 1`] = `
 "var css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
 var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
-export default modules_efa96bb5;
-export { css };
+export { css, modules_efa96bb5 as default };
 "
 `;
 
@@ -636,8 +635,7 @@ exports[`code-splitting manual-chunks: js 10`] = `
 "var css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
 var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
-export default modules_7a038d99;
-export { css };
+export { css, modules_7a038d99 as default };
 "
 `;
 
@@ -747,21 +745,21 @@ console.log(modules_d55e0e9b);
 
 console.log(modules_3ede29d3);
 
-var css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+var css$1 = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
 var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 var first = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  css: css,
+  css: css$1,
   'default': modules_efa96bb5
 });
 
-var css$1 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+var css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
 var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 var second = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  css: css$1,
+  css: css,
   'default': modules_7a038d99
 });
 
@@ -887,21 +885,21 @@ console.log(modules_d55e0e9b);
 
 console.log(modules_3ede29d3);
 
-var css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
+var css$1 = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
 var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
 var first = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  css: css,
+  css: css$1,
   'default': modules_efa96bb5
 });
 
-var css$1 = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
+var css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
 var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 var second = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  css: css$1,
+  css: css,
   'default': modules_7a038d99
 });
 
@@ -992,8 +990,7 @@ exports[`code-splitting manual-chunks-single: js 1`] = `
 "var css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
 var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
-export default modules_efa96bb5;
-export { css };
+export { css, modules_efa96bb5 as default };
 "
 `;
 
@@ -1071,8 +1068,7 @@ exports[`code-splitting manual-chunks-single: js 10`] = `
 "var css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
 var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
-export default modules_7a038d99;
-export { css };
+export { css, modules_7a038d99 as default };
 "
 `;
 
@@ -1151,8 +1147,7 @@ exports[`code-splitting multi-entry: js 1`] = `
 "var css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
 var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
-export default modules_efa96bb5;
-export { css };
+export { css, modules_efa96bb5 as default };
 "
 `;
 
@@ -1218,8 +1213,7 @@ exports[`code-splitting multi-entry: js 8`] = `
 "var css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
 var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
-export default modules_7a038d99;
-export { css };
+export { css, modules_7a038d99 as default };
 "
 `;
 
@@ -1281,8 +1275,7 @@ exports[`code-splitting multi-entry-single: js 1`] = `
 "var css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
 var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
-export default modules_efa96bb5;
-export { css };
+export { css, modules_efa96bb5 as default };
 "
 `;
 
@@ -1348,8 +1341,7 @@ exports[`code-splitting multi-entry-single: js 8`] = `
 "var css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
 var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
-export default modules_7a038d99;
-export { css };
+export { css, modules_7a038d99 as default };
 "
 `;
 
@@ -1440,15 +1432,14 @@ exports[`code-splitting preserve-modules: js 1`] = `
 "var css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
 var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
-export default modules_efa96bb5;
-export { css };
+export { css, modules_efa96bb5 as default };
 "
 `;
 
 exports[`code-splitting preserve-modules: js 2`] = `
 "var modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
-export default modules_d55e0e9b;
+export { modules_d55e0e9b as default };
 "
 `;
 
@@ -1487,7 +1478,7 @@ console.log(modules_2539eb5b);
 exports[`code-splitting preserve-modules: js 7`] = `
 "var modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
-export default modules_2539eb5b;
+export { modules_2539eb5b as default };
 "
 `;
 
@@ -1504,8 +1495,7 @@ exports[`code-splitting preserve-modules: js 9`] = `
 "var css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
 var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
-export default modules_7a038d99;
-export { css };
+export { css, modules_7a038d99 as default };
 "
 `;
 
@@ -1637,22 +1627,21 @@ exports[`code-splitting preserve-modules-multi-entry: js 1`] = `
 "var css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
 var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
-export default modules_efa96bb5;
-export { css };
+export { css, modules_efa96bb5 as default };
 "
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: js 2`] = `
 "var modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
-export default modules_d55e0e9b;
+export { modules_d55e0e9b as default };
 "
 `;
 
 exports[`code-splitting preserve-modules-multi-entry: js 3`] = `
 "var modules_3ede29d3 = {\\"fourthtwo\\":\\"fourthtwo_fourthtwo\\"};
 
-export default modules_3ede29d3;
+export { modules_3ede29d3 as default };
 "
 `;
 
@@ -1706,7 +1695,7 @@ console.log(modules_2539eb5b);
 exports[`code-splitting preserve-modules-multi-entry: js 9`] = `
 "var modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
-export default modules_2539eb5b;
+export { modules_2539eb5b as default };
 "
 `;
 
@@ -1723,8 +1712,7 @@ exports[`code-splitting preserve-modules-multi-entry: js 11`] = `
 "var css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
 var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
-export default modules_7a038d99;
-export { css };
+export { css, modules_7a038d99 as default };
 "
 `;
 
@@ -1793,15 +1781,14 @@ exports[`code-splitting preserve-modules-single: js 1`] = `
 "var css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
 var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
-export default modules_efa96bb5;
-export { css };
+export { css, modules_efa96bb5 as default };
 "
 `;
 
 exports[`code-splitting preserve-modules-single: js 2`] = `
 "var modules_d55e0e9b = {\\"fourth\\":\\"fourth_fourth\\"};
 
-export default modules_d55e0e9b;
+export { modules_d55e0e9b as default };
 "
 `;
 
@@ -1840,7 +1827,7 @@ console.log(modules_2539eb5b);
 exports[`code-splitting preserve-modules-single: js 7`] = `
 "var modules_2539eb5b = {\\"nondynamic2\\":\\"nondynamic2_nondynamic2\\"};
 
-export default modules_2539eb5b;
+export { modules_2539eb5b as default };
 "
 `;
 
@@ -1857,8 +1844,7 @@ exports[`code-splitting preserve-modules-single: js 9`] = `
 "var css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
 var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
-export default modules_7a038d99;
-export { css };
+export { css, modules_7a038d99 as default };
 "
 `;
 
@@ -1907,8 +1893,7 @@ exports[`code-splitting single: js 1`] = `
 "var css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
 var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
-export default modules_efa96bb5;
-export { css };
+export { css, modules_efa96bb5 as default };
 "
 `;
 
@@ -1953,8 +1938,7 @@ exports[`code-splitting single: js 6`] = `
 "var css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
 var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
-export default modules_7a038d99;
-export { css };
+export { css, modules_7a038d99 as default };
 "
 `;
 
@@ -2014,8 +1998,7 @@ exports[`code-splitting true: js 1`] = `
 "var css = \\".first_partial {\\\\n  color: rosybrown;\\\\n}\\\\n.first_first {\\\\n  color: red; }\\\\n\\";
 var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_first\\"};
 
-export default modules_efa96bb5;
-export { css };
+export { css, modules_efa96bb5 as default };
 "
 `;
 
@@ -2060,8 +2043,7 @@ exports[`code-splitting true: js 6`] = `
 "var css = \\".second_second {\\\\n  color: royalblue; }\\\\n\\";
 var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
-export default modules_7a038d99;
-export { css };
+export { css, modules_7a038d99 as default };
 "
 `;
 
@@ -2076,35 +2058,35 @@ exports[`code-splitting true: map 4`] = `"{\\"version\\":3,\\"sources\\":[\\"../
 exports[`code-splitting true: map 5`] = `"{\\"version\\":3,\\"sources\\":[\\"../../../../code-splitting/second.scss\\"],\\"names\\":[],\\"mappings\\":\\"AAAA;EACE,gBAAgB,EAAA\\",\\"file\\":\\"second-9b132bc0.css\\",\\"sourcesContent\\":[\\".second {\\\\n  color: royalblue;\\\\n}\\\\n\\"]}"`;
 
 exports[`emit sourcemap: js 1`] = `
-"import { css } from 'lit-element';
+"import { css } from 'lit';
 
-var style = css\`main {
+const styles = css\`main {
   display: flex;
 }
 
 /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9lbWl0L3N0eWxlLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGFBQWE7QUFDZiIsInNvdXJjZXNDb250ZW50IjpbIm1haW4ge1xuICBkaXNwbGF5OiBmbGV4O1xufVxuIl19 */\`;
 
-console.log(style);
+console.log(styles);
 "
 `;
 
 exports[`emit sourcemap-transform: js 1`] = `
-"import { css } from 'lit-element';
+"import { css } from 'lit';
 
-var style = css\`main {
+const styles = css\`main {
   display: flex;
 }
 
 /*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxhQUFhO0FBQ2YiLCJzb3VyY2VzQ29udGVudCI6WyJtYWluIHtcbiAgZGlzcGxheTogZmxleDtcbn1cbiJdfQ== */\`;
 
-console.log(style);
+console.log(styles);
 "
 `;
 
 exports[`emit true: js 1`] = `
-"import { css } from 'lit-element';
+"import { css } from 'lit';
 
-var style = css\`main {
+const styles = css\`main {
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -2113,7 +2095,7 @@ var style = css\`main {
 }
 \`;
 
-console.log(style);
+console.log(styles);
 "
 `;
 
@@ -2152,11 +2134,11 @@ exports[`extract asset-file-names: css 1`] = `
 `;
 
 exports[`extract asset-file-names: js 1`] = `
-"var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"var css$1 = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+var css = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(css, css$1);
+console.log(css$1, css);
 "
 `;
 
@@ -2192,11 +2174,11 @@ exports[`extract custom-path: css 1`] = `
 `;
 
 exports[`extract custom-path: js 1`] = `
-"var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"var css$1 = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+var css = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(css, css$1);
+console.log(css$1, css);
 "
 `;
 
@@ -2231,11 +2213,11 @@ exports[`extract file: css 1`] = `
 `;
 
 exports[`extract file: js 1`] = `
-"var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"var css$1 = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+var css = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(css, css$1);
+console.log(css$1, css);
 "
 `;
 
@@ -2284,16 +2266,14 @@ exports[`extract preserve-modules: css 3`] = `
 exports[`extract preserve-modules: js 1`] = `
 "var css = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-export default css;
-export { css };
+export { css, css as default };
 "
 `;
 
 exports[`extract preserve-modules: js 2`] = `
 "var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-export default css;
-export { css };
+export { css, css as default };
 "
 `;
 
@@ -2340,11 +2320,11 @@ exports[`extract sourcemap-inline: css 1`] = `
 `;
 
 exports[`extract sourcemap-inline: js 1`] = `
-"var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"var css$1 = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+var css = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(css, css$1);
+console.log(css$1, css);
 "
 `;
 
@@ -2378,11 +2358,11 @@ exports[`extract sourcemap-inline-transform: css 1`] = `
 `;
 
 exports[`extract sourcemap-inline-transform: js 1`] = `
-"var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"var css$1 = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+var css = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(css, css$1);
+console.log(css$1, css);
 "
 `;
 
@@ -2416,11 +2396,11 @@ exports[`extract sourcemap-transform: css 1`] = `
 `;
 
 exports[`extract sourcemap-transform: js 1`] = `
-"var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"var css$1 = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+var css = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(css, css$1);
+console.log(css$1, css);
 "
 `;
 
@@ -2456,11 +2436,11 @@ exports[`extract sourcemap-true: css 1`] = `
 `;
 
 exports[`extract sourcemap-true: js 1`] = `
-"var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"var css$1 = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+var css = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(css, css$1);
+console.log(css$1, css);
 "
 `;
 
@@ -2495,34 +2475,34 @@ exports[`extract true: css 1`] = `
 `;
 
 exports[`extract true: js 1`] = `
-"var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"var css$1 = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+var css = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(css, css$1);
+console.log(css$1, css);
 "
 `;
 
 exports[`inject function: js 1`] = `
-"var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
-console.log(css,\\"__tests__/fixtures/simple/foo.css\\");
+"var css$5 = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+console.log(css$5,\\"__tests__/fixtures/simple/foo.css\\");
 
-var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
-console.log(css$1,\\"__tests__/fixtures/simple/bar.css\\");
+var css$4 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+console.log(css$4,\\"__tests__/fixtures/simple/bar.css\\");
 
-var css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
-console.log(css$2,\\"__tests__/fixtures/simple/style.styl\\");
+var css$3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
+console.log(css$3,\\"__tests__/fixtures/simple/style.styl\\");
 
-var css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
-console.log(css$3,\\"__tests__/fixtures/simple/style.pcss\\");
+var css$2 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
+console.log(css$2,\\"__tests__/fixtures/simple/style.pcss\\");
 
-var css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
-console.log(css$4,\\"__tests__/fixtures/simple/style.sass\\");
+var css$1 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
+console.log(css$1,\\"__tests__/fixtures/simple/style.sass\\");
 
-var css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
-console.log(css$5,\\"__tests__/fixtures/simple/style.less\\");
+var css = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
+console.log(css,\\"__tests__/fixtures/simple/style.less\\");
 
-console.log(css, css$1);
+console.log(css$5, css$4);
 "
 `;
 
@@ -2596,25 +2576,25 @@ function injector_3b481dac (css, options) {
   }
 }
 
-var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_3b481dac(css,{\\"prepend\\":true});
-
-var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_3b481dac(css$1,{\\"prepend\\":true});
-
-var css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
-injector_3b481dac(css$2,{\\"prepend\\":true});
-
-var css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_3b481dac(css$3,{\\"prepend\\":true});
-
-var css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
-injector_3b481dac(css$4,{\\"prepend\\":true});
-
-var css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
+var css$5 = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 injector_3b481dac(css$5,{\\"prepend\\":true});
 
-console.log(css, css$1);
+var css$4 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_3b481dac(css$4,{\\"prepend\\":true});
+
+var css$3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\";
+injector_3b481dac(css$3,{\\"prepend\\":true});
+
+var css$2 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_3b481dac(css$2,{\\"prepend\\":true});
+
+var css$1 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\";
+injector_3b481dac(css$1,{\\"prepend\\":true});
+
+var css = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\";
+injector_3b481dac(css,{\\"prepend\\":true});
+
+console.log(css$5, css$4);
 "
 `;
 
@@ -2866,11 +2846,11 @@ exports[`less sourcemap: map 1`] = `"{\\"version\\":3,\\"sources\\":[\\"../../..
 exports[`minimize extract: css 1`] = `".bar,.foo,.stylus{color:red}.stylus{background:red}.pcss,.sass{color:red}.sass{width:30%}.less{color:#6c94be}"`;
 
 exports[`minimize extract: js 1`] = `
-"var css = \\".foo{color:red}\\";
+"var css$1 = \\".foo{color:red}\\";
 
-var css$1 = \\".bar{color:red}\\";
+var css = \\".bar{color:red}\\";
 
-console.log(css, css$1);
+console.log(css$1, css);
 "
 `;
 
@@ -2880,11 +2860,11 @@ exports[`minimize extract-sourcemap-inline: css 1`] = `
 `;
 
 exports[`minimize extract-sourcemap-inline: js 1`] = `
-"var css = \\".foo{color:red}\\";
+"var css$1 = \\".foo{color:red}\\";
 
-var css$1 = \\".bar{color:red}\\";
+var css = \\".bar{color:red}\\";
 
-console.log(css, css$1);
+console.log(css$1, css);
 "
 `;
 
@@ -2894,11 +2874,11 @@ exports[`minimize extract-sourcemap-true: css 1`] = `
 `;
 
 exports[`minimize extract-sourcemap-true: js 1`] = `
-"var css = \\".foo{color:red}\\";
+"var css$1 = \\".foo{color:red}\\";
 
-var css$1 = \\".bar{color:red}\\";
+var css = \\".bar{color:red}\\";
 
-console.log(css, css$1);
+console.log(css$1, css);
 "
 `;
 
@@ -2974,25 +2954,25 @@ function injector_3b481dac (css, options) {
   }
 }
 
-var css = \\".foo{color:red}\\";
-injector_3b481dac(css,{});
-
-var css$1 = \\".bar{color:red}\\";
-injector_3b481dac(css$1,{});
-
-var css$2 = \\".stylus{background:red;color:red}\\";
-injector_3b481dac(css$2,{});
-
-var css$3 = \\".pcss{color:red}\\";
-injector_3b481dac(css$3,{});
-
-var css$4 = \\".sass{color:red;width:30%}\\";
-injector_3b481dac(css$4,{});
-
-var css$5 = \\".less{color:#6c94be}\\";
+var css$5 = \\".foo{color:red}\\";
 injector_3b481dac(css$5,{});
 
-console.log(css, css$1);
+var css$4 = \\".bar{color:red}\\";
+injector_3b481dac(css$4,{});
+
+var css$3 = \\".stylus{background:red;color:red}\\";
+injector_3b481dac(css$3,{});
+
+var css$2 = \\".pcss{color:red}\\";
+injector_3b481dac(css$2,{});
+
+var css$1 = \\".sass{color:red;width:30%}\\";
+injector_3b481dac(css$1,{});
+
+var css = \\".less{color:#6c94be}\\";
+injector_3b481dac(css,{});
+
+console.log(css$5, css$4);
 "
 `;
 
@@ -3066,24 +3046,24 @@ function injector_ed8d1646 (css, options) {
   }
 }
 
-var css = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_ed8d1646(css,{});
+var css$4 = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_ed8d1646(css$4,{});
 
-var css$1 = \\".a_module_a {\\\\n  color: red;\\\\n}\\\\n\\";
+var css$3 = \\".a_module_a {\\\\n  color: red;\\\\n}\\\\n\\";
 var modules_bdb828b9 = {\\"a\\":\\"a_module_a\\"};
-injector_ed8d1646(css$1,{});
+injector_ed8d1646(css$3,{});
 
 var css$2 = \\".b_module_b {\\\\n  color: red; }\\\\n\\";
 var modules_9fa995d6 = {\\"b\\":\\"b_module_b\\"};
 injector_ed8d1646(css$2,{});
 
-var css$3 = \\".c_module_c {\\\\n  color: red;\\\\n}\\\\n\\";
+var css$1 = \\".c_module_c {\\\\n  color: red;\\\\n}\\\\n\\";
 var modules_2b321dac = {\\"c\\":\\"c_module_c\\"};
-injector_ed8d1646(css$3,{});
+injector_ed8d1646(css$1,{});
 
-var css$4 = \\".d_module_d {\\\\n  color: #f00;\\\\n}\\\\n\\";
+var css = \\".d_module_d {\\\\n  color: #f00;\\\\n}\\\\n\\";
 var modules_39901a8c = {\\"d\\":\\"d_module_d\\"};
-injector_ed8d1646(css$4,{});
+injector_ed8d1646(css,{});
 
 console.log(modules_bdb828b9, modules_9fa995d6, modules_2b321dac, modules_39901a8c);
 "
@@ -3159,23 +3139,23 @@ function injector_ed8d1646 (css, options) {
   }
 }
 
-var css = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_ed8d1646(css,{});
+var css$4 = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_ed8d1646(css$4,{});
 
-var css$1 = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_ed8d1646(css$1,{});
+var css$3 = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_ed8d1646(css$3,{});
 
 var css$2 = \\".b {\\\\n  color: red; }\\\\n\\";
 injector_ed8d1646(css$2,{});
 
-var css$3 = \\".c_module_c {\\\\n  color: red;\\\\n}\\\\n\\";
+var css$1 = \\".c_module_c {\\\\n  color: red;\\\\n}\\\\n\\";
 var modules_2b321dac = {\\"c\\":\\"c_module_c\\"};
-injector_ed8d1646(css$3,{});
+injector_ed8d1646(css$1,{});
 
-var css$4 = \\".d {\\\\n  color: #f00;\\\\n}\\\\n\\";
-injector_ed8d1646(css$4,{});
+var css = \\".d {\\\\n  color: #f00;\\\\n}\\\\n\\";
+injector_ed8d1646(css,{});
 
-console.log(css$1, css$2, modules_2b321dac, css$4);
+console.log(css$3, css$2, modules_2b321dac, css);
 "
 `;
 
@@ -3249,22 +3229,22 @@ function injector_ed8d1646 (css, options) {
   }
 }
 
-var css = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_ed8d1646(css,{});
+var css$4 = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_ed8d1646(css$4,{});
 
-var css$1 = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_ed8d1646(css$1,{});
+var css$3 = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_ed8d1646(css$3,{});
 
 var css$2 = \\".b {\\\\n  color: red; }\\\\n\\";
 injector_ed8d1646(css$2,{});
 
-var css$3 = \\".c {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_ed8d1646(css$3,{});
+var css$1 = \\".c {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_ed8d1646(css$1,{});
 
-var css$4 = \\".d {\\\\n  color: #f00;\\\\n}\\\\n\\";
-injector_ed8d1646(css$4,{});
+var css = \\".d {\\\\n  color: #f00;\\\\n}\\\\n\\";
+injector_ed8d1646(css,{});
 
-console.log(css$1, css$2, css$3, css$4);
+console.log(css$3, css$2, css$1, css);
 "
 `;
 
@@ -3338,23 +3318,23 @@ function injector_ed8d1646 (css, options) {
   }
 }
 
-var css = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_ed8d1646(css,{});
+var css$4 = \\".global {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_ed8d1646(css$4,{});
 
-var css$1 = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_ed8d1646(css$1,{});
+var css$3 = \\".a {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_ed8d1646(css$3,{});
 
 var css$2 = \\".b {\\\\n  color: red; }\\\\n\\";
 injector_ed8d1646(css$2,{});
 
-var css$3 = \\".c {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_ed8d1646(css$3,{});
+var css$1 = \\".c {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_ed8d1646(css$1,{});
 
-var css$4 = \\".d_module_d {\\\\n  color: #f00;\\\\n}\\\\n\\";
+var css = \\".d_module_d {\\\\n  color: #f00;\\\\n}\\\\n\\";
 var modules_39901a8c = {\\"d\\":\\"d_module_d\\"};
-injector_ed8d1646(css$4,{});
+injector_ed8d1646(css,{});
 
-console.log(css$1, css$2, css$3, modules_39901a8c);
+console.log(css$3, css$2, css$1, modules_39901a8c);
 "
 `;
 
@@ -3420,8 +3400,7 @@ exports[`modules extract: js 1`] = `
 
 var modules_354770d7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
 
-if (modules_354770d7.inject) modules_354770d7.inject();
-else console.log(modules_5a199c00.module, modules_354770d7.compositioned);
+console.log(modules_5a199c00.module, modules_354770d7.compositioned);
 "
 `;
 
@@ -3455,8 +3434,7 @@ exports[`modules extract-sourcemap-inline: js 1`] = `
 
 var modules_354770d7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
 
-if (modules_354770d7.inject) modules_354770d7.inject();
-else console.log(modules_5a199c00.module, modules_354770d7.compositioned);
+console.log(modules_5a199c00.module, modules_354770d7.compositioned);
 "
 `;
 
@@ -3490,8 +3468,7 @@ exports[`modules extract-sourcemap-true: js 1`] = `
 
 var modules_354770d7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
 
-if (modules_354770d7.inject) modules_354770d7.inject();
-else console.log(modules_5a199c00.module, modules_354770d7.compositioned);
+console.log(modules_5a199c00.module, modules_354770d7.compositioned);
 "
 `;
 
@@ -3567,20 +3544,20 @@ function injector_d0a569a1 (css, options) {
   }
 }
 
-var css = \\"html {\\\\n  --color-primary: green;\\\\n}\\\\n\\\\n.primaryhacked {\\\\n  color: green;\\\\n  color: var(--color-primary);\\\\n}\\\\n\\";
-injector_d0a569a1(css,{});
+var css$3 = \\"html {\\\\n  --color-primary: green;\\\\n}\\\\n\\\\n.primaryhacked {\\\\n  color: green;\\\\n  color: var(--color-primary);\\\\n}\\\\n\\";
+injector_d0a569a1(css$3,{});
 
-var css$1 = \\".testhacked {\\\\n  content: \\\\\\"test\\\\\\";\\\\n}\\\\n\\";
+var css$2 = \\".testhacked {\\\\n  content: \\\\\\"test\\\\\\";\\\\n}\\\\n\\";
 var modules_fa509c68 = {\\"test\\":\\"testhacked\\"};
-injector_d0a569a1(css$1,{});
-
-var css$2 = \\".foohacked {\\\\n}\\\\n\\";
-var modules_52530603 = {\\"foo\\":\\"foohacked testhacked\\"};
 injector_d0a569a1(css$2,{});
 
-var css$3 = \\".barhacked {\\\\n}\\\\n\\";
+var css$1 = \\".foohacked {\\\\n}\\\\n\\";
+var modules_52530603 = {\\"foo\\":\\"foohacked testhacked\\"};
+injector_d0a569a1(css$1,{});
+
+var css = \\".barhacked {\\\\n}\\\\n\\";
 var modules_ad1fd3ff = {\\"bar\\":\\"barhacked testhacked\\"};
-injector_d0a569a1(css$3,{});
+injector_d0a569a1(css,{});
 
 console.log(modules_fa509c68, modules_52530603, modules_ad1fd3ff);
 "
@@ -3656,36 +3633,34 @@ function injector_d9f9689a (css, options) {
   }
 }
 
-var css = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
+var css$2 = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
 var modules_5a199c00 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
-injector_d9f9689a(css,{});
+injector_d9f9689a(css$2,{});
 
 var css$1 = \\"@media screen and (min-width: 900px) {\\\\n  .composed_composition {\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composed_composition {\\\\n  background-color: #BF4040;\\\\n}\\\\n\\";
 injector_d9f9689a(css$1,{});
 
-var css$2 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
+var css = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
 var modules_354770d7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
-injector_d9f9689a(css$2,{});
+injector_d9f9689a(css,{});
 
-if (modules_354770d7.inject) modules_354770d7.inject();
-else console.log(modules_5a199c00.module, modules_354770d7.compositioned);
+console.log(modules_5a199c00.module, modules_354770d7.compositioned);
 "
 `;
 
 exports[`modules inject-fn: js 1`] = `
-"var css = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
-console.log(css, true);
+"var css$2 = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
+console.log(css$2, true);
 var modules_5a199c00 = {\\"primary\\":\\"#BF4040\\",\\"secondary\\":\\"#1F4F7F\\",\\"module\\":\\"style_module\\",\\"module2\\":\\"style_module2 composed_composition composition2_compositioned\\"};
 
 var css$1 = \\"@media screen and (min-width: 900px) {\\\\n  .composed_composition {\\\\n    background-color: aqua;\\\\n  }\\\\n}\\\\n\\\\n.composed_composition {\\\\n  background-color: #BF4040;\\\\n}\\\\n\\";
 console.log(css$1, true);
 
-var css$2 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
-console.log(css$2, true);
+var css = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
+console.log(css, true);
 var modules_354770d7 = {\\"compositioned\\":\\"composition2_compositioned\\"};
 
-if (modules_354770d7.inject) modules_354770d7.inject();
-else console.log(modules_5a199c00.module, modules_354770d7.compositioned);
+console.log(modules_5a199c00.module, modules_354770d7.compositioned);
 "
 `;
 
@@ -3759,18 +3734,18 @@ function injector_d9f9689a (css, options) {
   }
 }
 
-var css = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
-var injected = false;
-var modules_5a199c00 = {get \\"primary\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"#BF4040\\"; },
-get \\"secondary\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"#1F4F7F\\"; },
-get \\"module\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"style_module\\"; },
-get \\"module2\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"style_module2 composed_composition composition2_compositioned\\"; },
-inject() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } },};
-
-var css$1 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
+var css$1 = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
 var injected$1 = false;
-var modules_354770d7 = {get \\"compositioned\\"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return \\"composition2_compositioned\\"; },
+var modules_5a199c00 = {get \\"primary\\"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return \\"#BF4040\\"; },
+get \\"secondary\\"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return \\"#1F4F7F\\"; },
+get \\"module\\"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return \\"style_module\\"; },
+get \\"module2\\"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return \\"style_module2 composed_composition composition2_compositioned\\"; },
 inject() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } },};
+
+var css = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
+var injected = false;
+var modules_354770d7 = {get \\"compositioned\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"composition2_compositioned\\"; },
+inject() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } },};
 
 if (modules_354770d7.inject) modules_354770d7.inject();
 else console.log(modules_5a199c00.module, modules_354770d7.compositioned);
@@ -3847,18 +3822,18 @@ function injector_d9f9689a (css, options) {
   }
 }
 
-var css = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
-var injected = false;
-var modules_5a199c00 = {get \\"primary\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"#BF4040\\"; },
-get \\"secondary\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"#1F4F7F\\"; },
-get \\"module\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"style_module\\"; },
-get \\"module2\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"style_module2 composed_composition composition2_compositioned\\"; },
-inject() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } },};
-
-var css$1 = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
+var css$1 = \\".style_module {\\\\n  color: #1F4F7F;\\\\n}\\\\n\\\\n.style_module2 {\\\\n}\\\\n\\";
 var injected$1 = false;
-var modules_354770d7 = {get \\"compositioned\\"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return \\"composition2_compositioned\\"; },
+var modules_5a199c00 = {get \\"primary\\"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return \\"#BF4040\\"; },
+get \\"secondary\\"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return \\"#1F4F7F\\"; },
+get \\"module\\"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return \\"style_module\\"; },
+get \\"module2\\"() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } return \\"style_module2 composed_composition composition2_compositioned\\"; },
 inject() { if (!injected$1) { injected$1 = true; injector_d9f9689a(css$1,{}); } },};
+
+var css = \\".composition2_compositioned {\\\\n  width: 30%;\\\\n}\\\\n\\";
+var injected = false;
+var modules_354770d7 = {get \\"compositioned\\"() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } return \\"composition2_compositioned\\"; },
+inject() { if (!injected) { injected = true; injector_d9f9689a(css,{}); } },};
 
 if (modules_354770d7.inject) modules_354770d7.inject();
 else console.log(modules_5a199c00.module, modules_354770d7.compositioned);
@@ -4187,8 +4162,7 @@ var less = \\"bar_less\\";
 var modules_b74a0081 = {\\"less\\":\\"bar_less\\"};
 injector_8784c4d6(css,{});
 
-export default modules_b74a0081;
-export { css, less };
+export { css, modules_b74a0081 as default, less };
 "
 `;
 
@@ -4262,26 +4236,26 @@ function injector_006bd99c (css, options) {
   }
 }
 
-var css = \\".style {\\\\n  color: red;\\\\n}\\\\n\\";
-injector_006bd99c(css,{});
+var css$2 = \\".style {\\\\n  color: red;\\\\n}\\\\n\\";
+injector_006bd99c(css$2,{});
 
 var css$1 = \\".less {\\\\n  color: magenta;\\\\n}\\\\n\\";
 injector_006bd99c(css$1,{});
 
-var css$2 = \\".mod_mod {\\\\n  color: royalblue;\\\\n}\\\\n\\";
+var css = \\".mod_mod {\\\\n  color: royalblue;\\\\n}\\\\n\\";
 var modules_507361ee = {\\"mod\\":\\"mod_mod\\"};
-injector_006bd99c(css$2,{});
+injector_006bd99c(css,{});
 
 console.log(modules_507361ee);
 "
 `;
 
 exports[`on-extract-fn: js 1`] = `
-"var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
+"var css$1 = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\";
 
-var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
+var css = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\";
 
-console.log(css, css$1);
+console.log(css$1, css);
 "
 `;
 
@@ -5108,25 +5082,25 @@ function injector_3b481dac (css, options) {
   }
 }
 
-var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
-injector_3b481dac(css,{});
-
-var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
-injector_3b481dac(css$1,{});
-
-var css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1c1xuICBjb2xvcjogcmVkXG4gIGJhY2tncm91bmQ6IEBjb2xvclxuIl19 */\\";
-injector_3b481dac(css$2,{});
-
-var css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
-injector_3b481dac(css$3,{});
-
-var css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIuc2FzcyB7XG4gIHdpZHRoOiAzMCU7XG4gIGNvbG9yOiByZWQ7IH1cbiJdfQ== */\\";
-injector_3b481dac(css$4,{});
-
-var css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiIsInNvdXJjZXNDb250ZW50IjpbIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */\\";
+var css$5 = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
 injector_3b481dac(css$5,{});
 
-console.log(css, css$1);
+var css$4 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
+injector_3b481dac(css$4,{});
+
+var css$3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1c1xuICBjb2xvcjogcmVkXG4gIGJhY2tncm91bmQ6IEBjb2xvclxuIl19 */\\";
+injector_3b481dac(css$3,{});
+
+var css$2 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
+injector_3b481dac(css$2,{});
+
+var css$1 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIuc2FzcyB7XG4gIHdpZHRoOiAzMCU7XG4gIGNvbG9yOiByZWQ7IH1cbiJdfQ== */\\";
+injector_3b481dac(css$1,{});
+
+var css = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiIsInNvdXJjZXNDb250ZW50IjpbIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */\\";
+injector_3b481dac(css,{});
+
+console.log(css$5, css$4);
 "
 `;
 
@@ -5200,25 +5174,25 @@ function injector_3b481dac (css, options) {
   }
 }
 
-var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
-injector_3b481dac(css,{});
-
-var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
-injector_3b481dac(css$1,{});
-
-var css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIn0= */\\";
-injector_3b481dac(css$2,{});
-
-var css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
-injector_3b481dac(css$3,{});
-
-var css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEifQ== */\\";
-injector_3b481dac(css$4,{});
-
-var css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiJ9 */\\";
+var css$5 = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
 injector_3b481dac(css$5,{});
 
-console.log(css, css$1);
+var css$4 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
+injector_3b481dac(css$4,{});
+
+var css$3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIn0= */\\";
+injector_3b481dac(css$3,{});
+
+var css$2 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
+injector_3b481dac(css$2,{});
+
+var css$1 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEifQ== */\\";
+injector_3b481dac(css$1,{});
+
+var css = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiJ9 */\\";
+injector_3b481dac(css,{});
+
+console.log(css$5, css$4);
 "
 `;
 
@@ -5292,25 +5266,25 @@ function injector_3b481dac (css, options) {
   }
 }
 
-var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIuZm9vIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
-injector_3b481dac(css,{});
-
-var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIuYmFyIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
-injector_3b481dac(css$1,{});
-
-var css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxXQUFPO0VBQ1AsZ0JBQVk7QUFDZCIsInNvdXJjZXNDb250ZW50IjpbIi5zdHlsdXNcbiAgY29sb3I6IHJlZFxuICBiYWNrZ3JvdW5kOiBAY29sb3JcbiJdfQ== */\\";
-injector_3b481dac(css$2,{});
-
-var css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIucGNzcyB7XG4gIGNvbG9yOiByZWQ7XG59XG4iXX0= */\\";
-injector_3b481dac(css$3,{});
-
-var css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0VBQ1YsVUFBVSxFQUFBIiwic291cmNlc0NvbnRlbnQiOlsiLnNhc3Mge1xuICB3aWR0aDogMzAlO1xuICBjb2xvcjogcmVkOyB9XG4iXX0= */\\";
-injector_3b481dac(css$4,{});
-
-var css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBR0E7RUFDRSxjQUFBO0FBRkYiLCJzb3VyY2VzQ29udGVudCI6WyJAbmljZS1ibHVlOiAjNWI4M2FkO1xuQGxpZ2h0LWJsdWU6IEBuaWNlLWJsdWUgKyAjMTExO1xuXG4ubGVzcyB7XG4gIGNvbG9yOiBAbGlnaHQtYmx1ZTtcbn1cbiJdfQ== */\\";
+var css$5 = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIuZm9vIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
 injector_3b481dac(css$5,{});
 
-console.log(css, css$1);
+var css$4 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIuYmFyIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
+injector_3b481dac(css$4,{});
+
+var css$3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxXQUFPO0VBQ1AsZ0JBQVk7QUFDZCIsInNvdXJjZXNDb250ZW50IjpbIi5zdHlsdXNcbiAgY29sb3I6IHJlZFxuICBiYWNrZ3JvdW5kOiBAY29sb3JcbiJdfQ== */\\";
+injector_3b481dac(css$3,{});
+
+var css$2 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIucGNzcyB7XG4gIGNvbG9yOiByZWQ7XG59XG4iXX0= */\\";
+injector_3b481dac(css$2,{});
+
+var css$1 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0VBQ1YsVUFBVSxFQUFBIiwic291cmNlc0NvbnRlbnQiOlsiLnNhc3Mge1xuICB3aWR0aDogMzAlO1xuICBjb2xvcjogcmVkOyB9XG4iXX0= */\\";
+injector_3b481dac(css$1,{});
+
+var css = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBR0E7RUFDRSxjQUFBO0FBRkYiLCJzb3VyY2VzQ29udGVudCI6WyJAbmljZS1ibHVlOiAjNWI4M2FkO1xuQGxpZ2h0LWJsdWU6IEBuaWNlLWJsdWUgKyAjMTExO1xuXG4ubGVzcyB7XG4gIGNvbG9yOiBAbGlnaHQtYmx1ZTtcbn1cbiJdfQ== */\\";
+injector_3b481dac(css,{});
+
+console.log(css$5, css$4);
 "
 `;
 
@@ -5384,25 +5358,25 @@ function injector_3b481dac (css, options) {
   }
 }
 
-var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
-injector_3b481dac(css,{});
-
-var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
-injector_3b481dac(css$1,{});
-
-var css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIn0= */\\";
-injector_3b481dac(css$2,{});
-
-var css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
-injector_3b481dac(css$3,{});
-
-var css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEifQ== */\\";
-injector_3b481dac(css$4,{});
-
-var css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiJ9 */\\";
+var css$5 = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
 injector_3b481dac(css$5,{});
 
-console.log(css, css$1);
+var css$4 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
+injector_3b481dac(css$4,{});
+
+var css$3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIn0= */\\";
+injector_3b481dac(css$3,{});
+
+var css$2 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiJ9 */\\";
+injector_3b481dac(css$2,{});
+
+var css$1 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEifQ== */\\";
+injector_3b481dac(css$1,{});
+
+var css = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiJ9 */\\";
+injector_3b481dac(css,{});
+
+console.log(css$5, css$4);
 "
 `;
 
@@ -5476,25 +5450,25 @@ function injector_3b481dac (css, options) {
   }
 }
 
-var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIuZm9vIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
-injector_3b481dac(css,{});
-
-var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIuYmFyIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
-injector_3b481dac(css$1,{});
-
-var css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxXQUFPO0VBQ1AsZ0JBQVk7QUFDZCIsInNvdXJjZXNDb250ZW50IjpbIi5zdHlsdXNcbiAgY29sb3I6IHJlZFxuICBiYWNrZ3JvdW5kOiBAY29sb3JcbiJdfQ== */\\";
-injector_3b481dac(css$2,{});
-
-var css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIucGNzcyB7XG4gIGNvbG9yOiByZWQ7XG59XG4iXX0= */\\";
-injector_3b481dac(css$3,{});
-
-var css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0VBQ1YsVUFBVSxFQUFBIiwic291cmNlc0NvbnRlbnQiOlsiLnNhc3Mge1xuICB3aWR0aDogMzAlO1xuICBjb2xvcjogcmVkOyB9XG4iXX0= */\\";
-injector_3b481dac(css$4,{});
-
-var css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBR0E7RUFDRSxjQUFBO0FBRkYiLCJzb3VyY2VzQ29udGVudCI6WyJAbmljZS1ibHVlOiAjNWI4M2FkO1xuQGxpZ2h0LWJsdWU6IEBuaWNlLWJsdWUgKyAjMTExO1xuXG4ubGVzcyB7XG4gIGNvbG9yOiBAbGlnaHQtYmx1ZTtcbn1cbiJdfQ== */\\";
+var css$5 = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIuZm9vIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
 injector_3b481dac(css$5,{});
 
-console.log(css, css$1);
+var css$4 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIuYmFyIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
+injector_3b481dac(css$4,{});
+
+var css$3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxXQUFPO0VBQ1AsZ0JBQVk7QUFDZCIsInNvdXJjZXNDb250ZW50IjpbIi5zdHlsdXNcbiAgY29sb3I6IHJlZFxuICBiYWNrZ3JvdW5kOiBAY29sb3JcbiJdfQ== */\\";
+injector_3b481dac(css$3,{});
+
+var css$2 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0FBQ1oiLCJzb3VyY2VzQ29udGVudCI6WyIucGNzcyB7XG4gIGNvbG9yOiByZWQ7XG59XG4iXX0= */\\";
+injector_3b481dac(css$2,{});
+
+var css$1 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRSxVQUFVO0VBQ1YsVUFBVSxFQUFBIiwic291cmNlc0NvbnRlbnQiOlsiLnNhc3Mge1xuICB3aWR0aDogMzAlO1xuICBjb2xvcjogcmVkOyB9XG4iXX0= */\\";
+injector_3b481dac(css$1,{});
+
+var css = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInZpcnQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBR0E7RUFDRSxjQUFBO0FBRkYiLCJzb3VyY2VzQ29udGVudCI6WyJAbmljZS1ibHVlOiAjNWI4M2FkO1xuQGxpZ2h0LWJsdWU6IEBuaWNlLWJsdWUgKyAjMTExO1xuXG4ubGVzcyB7XG4gIGNvbG9yOiBAbGlnaHQtYmx1ZTtcbn1cbiJdfQ== */\\";
+injector_3b481dac(css,{});
+
+console.log(css$5, css$4);
 "
 `;
 
@@ -5568,25 +5542,25 @@ function injector_3b481dac (css, options) {
   }
 }
 
-var css = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
-injector_3b481dac(css,{});
-
-var css$1 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
-injector_3b481dac(css$1,{});
-
-var css$2 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1c1xuICBjb2xvcjogcmVkXG4gIGJhY2tncm91bmQ6IEBjb2xvclxuIl19 */\\";
-injector_3b481dac(css$2,{});
-
-var css$3 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
-injector_3b481dac(css$3,{});
-
-var css$4 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIuc2FzcyB7XG4gIHdpZHRoOiAzMCU7XG4gIGNvbG9yOiByZWQ7IH1cbiJdfQ== */\\";
-injector_3b481dac(css$4,{});
-
-var css$5 = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiIsInNvdXJjZXNDb250ZW50IjpbIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */\\";
+var css$5 = \\".foo {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvZm9vLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5mb28ge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
 injector_3b481dac(css$5,{});
 
-console.log(css, css$1);
+var css$4 = \\".bar {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvYmFyLmNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5iYXIge1xuICBjb2xvcjogcmVkO1xufVxuIl19 */\\";
+injector_3b481dac(css$4,{});
+
+var css$3 = \\".stylus {\\\\n  color: #f00;\\\\n  background: #f00;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc3R5bCJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFdBQU87RUFDUCxnQkFBWTtBQUNkIiwic291cmNlc0NvbnRlbnQiOlsiLnN0eWx1c1xuICBjb2xvcjogcmVkXG4gIGJhY2tncm91bmQ6IEBjb2xvclxuIl19 */\\";
+injector_3b481dac(css$3,{});
+
+var css$2 = \\".pcss {\\\\n  color: red;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUucGNzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7QUFDWiIsInNvdXJjZXNDb250ZW50IjpbIi5wY3NzIHtcbiAgY29sb3I6IHJlZDtcbn1cbiJdfQ== */\\";
+injector_3b481dac(css$2,{});
+
+var css$1 = \\".sass {\\\\n  width: 30%;\\\\n  color: red; }\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUuc2FzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLFVBQVU7RUFDVixVQUFVLEVBQUEiLCJzb3VyY2VzQ29udGVudCI6WyIuc2FzcyB7XG4gIHdpZHRoOiAzMCU7XG4gIGNvbG9yOiByZWQ7IH1cbiJdfQ== */\\";
+injector_3b481dac(css$1,{});
+
+var css = \\".less {\\\\n  color: #6c94be;\\\\n}\\\\n\\\\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIl9fdGVzdHNfXy9maXh0dXJlcy9zaW1wbGUvc3R5bGUubGVzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFHQTtFQUNFLGNBQUE7QUFGRiIsInNvdXJjZXNDb250ZW50IjpbIkBuaWNlLWJsdWU6ICM1YjgzYWQ7XG5AbGlnaHQtYmx1ZTogQG5pY2UtYmx1ZSArICMxMTE7XG5cbi5sZXNzIHtcbiAgY29sb3I6IEBsaWdodC1ibHVlO1xufVxuIl19 */\\";
+injector_3b481dac(css,{});
+
+console.log(css$5, css$4);
 "
 `;
 
