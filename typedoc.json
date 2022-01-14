@@ -1,7 +1,10 @@
 {
   "entryPoints": ["src"],
+  "entryPointStrategy": "expand",
   "out": "docs",
   "excludeExternals": true,
   "disableSources": true,
-  "gitRevision": "main"
+  "gitRevision": "main",
+  "githubPages": true,
+  "internalNamespace": "Non-exported"
 }
