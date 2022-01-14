@@ -1,8 +1,14 @@
+const path = require("path");
+const modules = ["rollup-plugin-lit-css"];
+const modulesStr = modules.map(m => `.*${m}`).join("|");
+const transformIgnorePatterns = [path.join("node_modules", `(?!(${modulesStr})`, ")")];
+
+/** @type {import('ts-jest').InitialOptionsTsJest} */
 module.exports = {
   testEnvironment: "node",
-  testRunner: "jest-circus/runner",
-  transform: { "^.+\\.tsx?$": "ts-jest" },
-  globals: { "ts-jest": { tsconfig: { target: "es6" } } },
+  transform: { "^.+\\.tsx?$": "ts-jest", "^.+\\.jsx?$": "babel-jest" },
+  transformIgnorePatterns,
+  globals: { "ts-jest": { tsconfig: { target: "es6", module: "commonjs" } } },
   testMatch: ["<rootDir>/__tests__/*.(spec|test).[jt]s?(x)"],
   setupFilesAfterEnv: ["<rootDir>/__tests__/setup.ts"],
   collectCoverageFrom: [

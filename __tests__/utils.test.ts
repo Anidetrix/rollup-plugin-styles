@@ -38,7 +38,7 @@ describe("less", () => {
   test("not found", async () => {
     const loaders = new Loaders({ use: [["less", {}]], loaders: [], extensions: [""] });
     await expect(
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument,@typescript-eslint/no-explicit-any
       loaders.process({ code: "" }, { id: "file.less" } as any),
     ).rejects.toThrowErrorMatchingSnapshot();
   });
@@ -48,7 +48,7 @@ describe("stylus", () => {
   test("not found", async () => {
     const loaders = new Loaders({ use: [["stylus", {}]], loaders: [], extensions: [""] });
     await expect(
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument,@typescript-eslint/no-explicit-any
       loaders.process({ code: "" }, { id: "file.styl" } as any),
     ).rejects.toThrowErrorMatchingSnapshot();
   });
@@ -56,8 +56,7 @@ describe("stylus", () => {
 
 describe("load-sass", () => {
   test("wrong implementation", () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    expect(() => loadSass("swass" as any)).toThrowErrorMatchingSnapshot();
+    expect(() => loadSass("swass")).toThrowErrorMatchingSnapshot();
   });
 
   test("not found", () => {

@@ -1,8 +1,7 @@
-/* eslint node/no-unsupported-features/es-syntax: ["error", { ignores: ["modules"] }] */
 import { readdirSync } from "fs-extra";
 
 import { terser } from "rollup-plugin-terser";
-import babel from "@rollup/plugin-babel";
+import { babel } from "@rollup/plugin-babel";
 import commonjs from "@rollup/plugin-commonjs";
 import dts from "rollup-plugin-dts";
 import externals from "rollup-plugin-node-externals";

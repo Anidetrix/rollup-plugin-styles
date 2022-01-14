@@ -1,10 +1,10 @@
 import fs from "fs-extra";
 import { rollup } from "rollup";
-import { RawSourceMap } from "source-map";
+import { RawSourceMap } from "source-map-js";
 
 import styles from "../src";
 import { humanlizePath } from "../src/utils/path";
-import litcss from "rollup-plugin-lit-css";
+import { litCss } from "rollup-plugin-lit-css";
 
 import { fixture, validateMany, write } from "./helpers";
 
@@ -700,20 +700,20 @@ validateMany("emit", [
     input: "emit/index.js",
     plugins: [
       styles({ mode: "emit", plugins: [["autoprefixer", { overrideBrowserslist: ["> 0%"] }]] }),
-      litcss(),
+      litCss(),
     ],
   },
   {
     title: "sourcemap",
     input: "emit/index.js",
-    plugins: [styles({ mode: "emit", sourceMap: true }), litcss()],
+    plugins: [styles({ mode: "emit", sourceMap: true }), litCss()],
   },
   {
     title: "sourcemap-transform",
     input: "emit/index.js",
     plugins: [
       styles({ mode: "emit", sourceMap: [true, { transform: m => (m.sources = ["virt"]) }] }),
-      litcss(),
+      litCss(),
     ],
   },
 ]);
