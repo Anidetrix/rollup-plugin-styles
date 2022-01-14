@@ -1,7 +1,7 @@
 import path from "path";
 import { Plugin, OutputChunk, OutputAsset } from "rollup";
 import { createFilter } from "@rollup/pluginutils";
-import postcss, { AcceptedPlugin } from "postcss";
+import { Processor } from "postcss";
 import cssnano from "cssnano";
 import { LoaderContext, Extracted } from "./loaders/types";
 import { ExtractedData, Options, PostCSSLoaderOptions } from "./types";
@@ -281,11 +281,10 @@ export default (options: Options = {}): Plugin => {
 
         // Perform minimization on the extracted file
         if (loaderOpts.minimize) {
-          const ps: AcceptedPlugin[] = [];
-          const p = cssnano(typeof loaderOpts.minimize === "object" ? loaderOpts.minimize : {});
-          ps.push(p as AcceptedPlugin);
+          const cssnanoOpts = typeof loaderOpts.minimize === "object" ? loaderOpts.minimize : {};
+          const minifier = cssnano(cssnanoOpts) as Processor;
 
-          const resMin = await postcss(ps).process(res.css, {
+          const resMin = await minifier.process(res.css, {
             from: res.name,
             to: res.name,
             map: sourceMap && {

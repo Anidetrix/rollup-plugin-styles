@@ -86,8 +86,8 @@ const loader: Loader<PostCSSLoaderOptions> = {
     }
 
     if (options.minimize) {
-      const p = cssnano(typeof options.minimize === "object" ? options.minimize : {});
-      plugins.push(p as AcceptedPlugin);
+      const cssnanoOpts = typeof options.minimize === "object" ? options.minimize : {};
+      plugins.push(cssnano(cssnanoOpts));
     }
 
     // Avoid PostCSS warning
