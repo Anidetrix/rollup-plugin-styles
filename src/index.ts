@@ -63,14 +63,9 @@ export default (options: Options = {}): Plugin => {
   });
 
   let extracted: Extracted[] = [];
-  let preserveModules: boolean;
 
   const plugin: Plugin = {
     name: "styles",
-
-    buildStart(opts) {
-      preserveModules = Boolean(opts.preserveModules);
-    },
 
     async transform(code, id) {
       if (!isIncluded(id) || !loaders.isSupported(id)) return null;
@@ -157,14 +152,14 @@ export default (options: Options = {}): Plugin => {
     async generateBundle(opts, bundle) {
       if (extracted.length === 0 || !(opts.dir || opts.file)) return;
 
-      // Respect rollup's 2.18.0 option changes
-      if (opts.preserveModules) preserveModules = opts.preserveModules;
-
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion -- either `file` or `dir` are always present
       const dir = opts.dir ?? path.dirname(opts.file!);
       const chunks = Object.values(bundle).filter((c): c is OutputChunk => c.type === "chunk");
       const manual = chunks.filter(c => !c.facadeModuleId);
-      const emitted = preserveModules ? chunks : chunks.filter(c => c.isEntry || c.isDynamicEntry);
+      const emitted = opts.preserveModules
+        ? chunks
+        : chunks.filter(c => c.isEntry || c.isDynamicEntry);
+
       const emittedList: [string, string[]][] = [];
 
       const getExtractedData = async (name: string, ids: string[]): Promise<ExtractedData> => {
@@ -206,7 +201,7 @@ export default (options: Options = {}): Plugin => {
 
       const getName = (chunk: OutputChunk): string => {
         if (opts.file) return path.parse(opts.file).name;
-        if (preserveModules) {
+        if (opts.preserveModules) {
           const { dir, name } = path.parse(chunk.fileName);
           return dir ? `${dir}/${name}` : name;
         }
