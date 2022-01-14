@@ -1,6 +1,6 @@
 import path from "path";
 import fs from "fs-extra";
-import { RawSourceMap } from "source-map";
+import { RawSourceMap } from "source-map-js";
 import { makeLegalIdentifier } from "@rollup/pluginutils";
 import postcss, { AcceptedPlugin, ProcessOptions } from "postcss";
 import cssnano from "cssnano";
@@ -106,17 +106,15 @@ const loader: Loader<PostCSSLoaderOptions> = {
           break;
 
         case "dependency":
-          this.deps.add(normalizePath(msg.file));
+          this.deps.add(normalizePath(msg.file as string));
           break;
 
         case "asset":
-          this.assets.set(msg.to, msg.source);
+          this.assets.set(msg.to as string, msg.source as Uint8Array);
           break;
       }
 
-    map = mm((res.map?.toJSON() as unknown) as RawSourceMap)
-      .resolve(path.dirname(postcssOpts.to))
-      .toString();
+    map = mm(res.map?.toJSON()).resolve(path.dirname(postcssOpts.to)).toString();
 
     if (!options.extract && this.sourceMap) {
       const m = mm(map)

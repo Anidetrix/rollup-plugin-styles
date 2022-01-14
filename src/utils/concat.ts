@@ -1,10 +1,10 @@
-import { SourceMapGenerator, RawSourceMap } from "source-map";
+import { SourceMapGenerator } from "source-map-js";
 import { Extracted } from "../loaders/types";
 import { mm } from "./sourcemap";
 
 interface Concatenated {
   css: string;
-  map: RawSourceMap;
+  map: SourceMapGenerator;
 }
 
 export default async function (extracted: Extracted[]): Promise<Concatenated> {
@@ -14,8 +14,12 @@ export default async function (extracted: Extracted[]): Promise<Concatenated> {
 
   for await (const { css, map } of extracted) {
     content.push(css);
+    const _map = mm(map);
 
-    const consumer = await mm(map).toConsumer();
+    const data = _map.toObject();
+    if (!data) continue;
+
+    const consumer = _map.toConsumer();
     if (!consumer) continue;
 
     consumer.eachMapping(m =>
@@ -27,18 +31,18 @@ export default async function (extracted: Extracted[]): Promise<Concatenated> {
       }),
     );
 
-    if (consumer.sourcesContent) {
-      for (let i = 0; i < consumer.sources.length; i++) {
-        sm.setSourceContent(consumer.sources[i], consumer.sourcesContent[i]);
+    if (data.sourcesContent) {
+      for (const source of data.sources) {
+        const content = consumer.sourceContentFor(source, true);
+        sm.setSourceContent(source, content);
       }
     }
 
-    consumer.destroy();
     offset += css.split("\n").length;
   }
 
   return {
     css: content.join("\n"),
-    map: sm.toJSON(),
+    map: sm,
   };
 }

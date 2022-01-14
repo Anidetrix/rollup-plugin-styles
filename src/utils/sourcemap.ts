@@ -1,6 +1,6 @@
 import path from "path";
 import fs from "fs-extra";
-import { RawSourceMap, SourceMapConsumer, BasicSourceMapConsumer } from "source-map";
+import { RawSourceMap, SourceMapConsumer } from "source-map-js";
 import { dataURIRe } from "../loaders/postcss/common";
 import { isAbsolutePath, relativePath, resolvePath, normalizePath } from "./path";
 
@@ -73,7 +73,7 @@ class MapModifier {
     return JSON.stringify(this.map);
   }
 
-  async toConsumer(): Promise<BasicSourceMapConsumer | undefined> {
+  toConsumer(): SourceMapConsumer | undefined {
     if (!this.map) return this.map;
     return new SourceMapConsumer(this.map);
   }

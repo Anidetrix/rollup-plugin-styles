@@ -1,5 +1,5 @@
-import rollup from "rollup";
-import { RawSourceMap } from "source-map";
+import * as rollup from "rollup";
+import { RawSourceMap } from "source-map-js";
 
 /**
  * Loader

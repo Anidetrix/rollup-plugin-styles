@@ -198,7 +198,7 @@ export default (options: Options = {}): Plugin => {
         return {
           name: fileName,
           css: res.css,
-          map: mm(res.map)
+          map: mm(res.map.toString())
             .relative(path.dirname(path.resolve(dir, fileName)))
             .toString(),
         };
