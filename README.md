@@ -251,7 +251,7 @@ With that said, here is the basic list of things which differentiate this plugin
 - Proper sourcemaps, with included sources content by default
 - Respects `assetFileNames` for CSS file names
 - Respects sourcemaps from loaded files
-- Support for implementation for Sass
+- Support for implementation forcing for Sass
 - Support for partials and `~` in Less import statements
 - More smaller things that I forgot
 
