@@ -1,3 +1,30 @@
+# [4.0.0](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.14.1...v4.0.0) (2022-01-14)
+
+
+### Bug Fixes
+
+* **code generation:** imports should precede exports ([814ccdb](https://github.com/Anidetrix/rollup-plugin-styles/commit/814ccdbfea44bbd9c706b7a2a70ed91959ce3031))
+* remove debugging log ([e09ac09](https://github.com/Anidetrix/rollup-plugin-styles/commit/e09ac0927053ffba52410e1d36b6b1c74ae63155))
+* **sass!:** remove `fibers` support ([8992356](https://github.com/Anidetrix/rollup-plugin-styles/commit/89923569df14090710263e0d6285d64aef16c1ba))
+
+
+### Features
+
+* **cssnano!:** v5 ([5d6ccc1](https://github.com/Anidetrix/rollup-plugin-styles/commit/5d6ccc1ecbd310ecbb299ea46debc2ce931acb4d))
+* **node:** drop v10 ([5786615](https://github.com/Anidetrix/rollup-plugin-styles/commit/57866150e92c0decf16eeb336608227de47e03eb))
+
+
+### Performance Improvements
+
+* removed deprecated rollup API ([46b73e6](https://github.com/Anidetrix/rollup-plugin-styles/commit/46b73e65ecc2c672bed317c1011ed50322c8c07b))
+* **sourcemap:** switch to `source-map-js` ([0488634](https://github.com/Anidetrix/rollup-plugin-styles/commit/04886348dc71a43c91f4eec2e49cd0e5aadc0895))
+* Use Set to optimize performance ([b402687](https://github.com/Anidetrix/rollup-plugin-styles/commit/b40268744b57faf85b2e1a37b417f00be7ec6123))
+
+
+### BREAKING CHANGES
+
+* **node:** Now support v12.20.0 and up
+
 ## [3.14.1](https://github.com/Anidetrix/rollup-plugin-styles/compare/v3.14.0...v3.14.1) (2021-01-28)
 
 
