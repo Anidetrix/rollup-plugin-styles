@@ -23,7 +23,6 @@ jobs:
           pnpm config set enable-pre-post-scripts true
           pnpm i --frozen-lockfile
         env:
-          husky_skip_init: 1
           CI: true
 
       - name: Release

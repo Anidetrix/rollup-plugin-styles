@@ -2,4 +2,4 @@
 . "$(dirname "$0")/_/husky.sh"
 
 pnpm t -- --no-cache
-pnpm lint-staged
+pnpm exec -- lint-staged
