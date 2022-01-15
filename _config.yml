@@ -1,6 +1,0 @@
-theme: jekyll-theme-cayman
-include:
-  - "*.html"
-  - "_*.html"
-  - "_*_.html"
-  - "_*_.*.html"
