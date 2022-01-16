@@ -1,5 +1,4 @@
 import resolver, { sync, AsyncOpts, SyncOpts } from "resolve";
-import { legacy as resolveLegacy, resolve as resolveExports } from "resolve.exports";
 import arrayFmt from "./array-fmt";
 
 export interface ResolveOpts {
@@ -29,36 +28,16 @@ interface Package {
   style?: string;
 }
 
-interface PackageFilterResolveOpts {
-  fields?: string[];
-  conditions?: string[];
-}
-
-export function createPackageFilter({
-  fields = ["style", "module", "main"],
-  conditions = ["style"],
-}: PackageFilterResolveOpts = {}): (pkg: Package, pkgfile: string) => Package {
-  return (pkg: Package) => {
-    try {
-      pkg.main = resolveLegacy(pkg, { fields }) as string;
-    } catch {
-      /* ignore packageFilter resolution errors */
-    }
-    try {
-      pkg.main = resolveExports(pkg, ".", { conditions, unsafe: true }) as string;
-    } catch {
-      /* ignore packageFilter resolution errors */
-    }
-    return pkg;
-  };
-}
-
 const defaultOpts: ResolveDefaultOpts = {
   caller: "Resolver",
   basedirs: [__dirname],
   extensions: [".mjs", ".js", ".json"],
   preserveSymlinks: true,
-  packageFilter: createPackageFilter(),
+  packageFilter(pkg) {
+    if (pkg.module) pkg.main = pkg.module;
+    if (pkg.style) pkg.main = pkg.style;
+    return pkg;
+  },
 };
 
 const resolverAsync = async (id: string, options: AsyncOpts = {}): Promise<string | undefined> =>
