@@ -17,7 +17,7 @@ const extensions = [".ts", ".mjs", ".js", ".cjs", ".json"];
 const config = [
   // Bundle
   {
-    input: "src/index.ts",
+    input: "./src/index.ts",
     output: [
       { format: "cjs", file: pkg.exports.require, exports: "default" },
       { format: "es", file: pkg.exports.import, exports: "default" },
@@ -37,8 +37,8 @@ const config = [
   },
   // Injector
   {
-    input: "runtime/inject-css.js",
-    output: { format: "es", file: "dist/runtime/inject-css.js" },
+    input: "./runtime/inject-css.js",
+    output: { format: "es", file: "./dist/runtime/inject-css.js" },
     plugins: [
       externals({ deps: true }),
       json(),
@@ -54,7 +54,7 @@ const config = [
   },
   // Declaration
   {
-    input: "src/index.ts",
+    input: "./src/index.ts",
     output: { format: "es", file: pkg.types },
     plugins: [
       externals({ deps: true }),
