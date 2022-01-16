@@ -13,17 +13,21 @@ import typescript from "@rollup/plugin-typescript";
 import pkg from "./package.json";
 const extensions = [".ts", ".mjs", ".js", ".json"];
 
-export default [
+/** @type {import('rollup').RollupOptions[]} */
+const config = [
   // Bundle
   {
     input: "src/index.ts",
     output: [
-      { format: "cjs", file: pkg.main },
-      { format: "es", file: pkg.module },
+      { format: "cjs", file: pkg.main, exports: "default" },
+      { format: "es", file: pkg.module, exports: "default" },
     ],
     plugins: [
       externals({ deps: true }),
-      replace({ "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV) }),
+      replace({
+        preventAssignment: true,
+        "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
+      }),
       json(),
       resolve({ preferBuiltins: true, extensions }),
       commonjs(),
@@ -65,3 +69,5 @@ export default [
     ],
   },
 ];
+
+export default config;
