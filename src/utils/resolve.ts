@@ -6,7 +6,7 @@ export interface ResolveOpts {
   caller?: string;
   /** directories to begin resolving from (defaults to `[__dirname]`) */
   basedirs?: string[];
-  /** array of file extensions to search in order (defaults to `[".mjs", ".js", ".json"]`) */
+  /** array of file extensions to search in order (defaults to `[".mjs", ".js", ".cjs", ".json"]`) */
   extensions?: string | ReadonlyArray<string>;
   /** don't resolve `basedirs` to real path before resolving. (defaults to `true`) */
   preserveSymlinks?: boolean;
@@ -31,7 +31,7 @@ interface Package {
 const defaultOpts: ResolveDefaultOpts = {
   caller: "Resolver",
   basedirs: [__dirname],
-  extensions: [".mjs", ".js", ".json"],
+  extensions: [".mjs", ".js", ".cjs", ".json"],
   preserveSymlinks: true,
   packageFilter(pkg) {
     if (pkg.module) pkg.main = pkg.module;

@@ -11,7 +11,7 @@ import resolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
 
 import pkg from "./package.json";
-const extensions = [".ts", ".mjs", ".js", ".json"];
+const extensions = [".ts", ".mjs", ".js", ".cjs", ".json"];
 
 /** @type {import('rollup').RollupOptions[]} */
 const config = [

@@ -1,4 +1,4 @@
-const extensions = [".mjs", ".js", ".json"];
+const extensions = [".mjs", ".js", ".cjs", ".json"];
 module.exports = {
   root: true,
   extends: [

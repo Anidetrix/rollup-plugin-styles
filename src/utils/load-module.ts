@@ -5,7 +5,7 @@ const loaded: Record<string, unknown> = {};
 const options: ResolveOpts = {
   caller: "Module loader",
   basedirs: [process.cwd()],
-  extensions: [".js", ".mjs", ".json"],
+  extensions: [".cjs", ".js", ".mjs", ".json"],
   preserveSymlinks: false,
   packageFilter: pkg => pkg,
 };
