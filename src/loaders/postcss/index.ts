@@ -194,7 +194,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
             getters += `get ${name}() { ${injectorCallOnce} return ${value}; },\n`;
           }
 
-          getters += `inject() { ${injectorCallOnce} },`;
+          getters += `inject: function inject() { ${injectorCallOnce} },`;
           output.push(`var ${modulesVarName} = {${getters}};`);
         }
       }
