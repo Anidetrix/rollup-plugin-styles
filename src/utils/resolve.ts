@@ -33,7 +33,7 @@ interface PackageFilterBuilderOpts {
 
 type PackageFilterBuilderFn = (opts?: PackageFilterBuilderOpts) => PackageFilterFn;
 
-export const packageFilterBuiler: PackageFilterBuilderFn = (opts = {}) => {
+export const packageFilterBuilder: PackageFilterBuilderFn = (opts = {}) => {
   const conditions = opts.conditions ?? ["style", "import", "require"];
   const fields = opts.fields ?? ["style", "module", "main"];
   return pkg => {
@@ -68,7 +68,7 @@ const defaultOpts: ResolveDefaultOpts = {
   basedirs: [__dirname],
   extensions: [".mjs", ".js", ".cjs", ".json"],
   preserveSymlinks: true,
-  packageFilter: packageFilterBuiler(),
+  packageFilter: packageFilterBuilder(),
 };
 
 const resolverAsync = async (id: string, options: AsyncOpts = {}): Promise<string | undefined> =>

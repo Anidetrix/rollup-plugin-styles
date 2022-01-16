@@ -1,5 +1,5 @@
 import path from "path";
-import { packageFilterBuiler, resolveAsync, resolveSync } from "../../utils/resolve";
+import { packageFilterBuilder, resolveAsync, resolveSync } from "../../utils/resolve";
 import { getUrlOfPartial, isModule, normalizeUrl } from "../../utils/url";
 
 const extensions = [".scss", ".sass", ".css"];
@@ -16,7 +16,7 @@ export const importer: sass.Importer = (url, importer, done): void => {
     caller: "Sass importer",
     basedirs: [path.dirname(importer)],
     extensions,
-    packageFilter: packageFilterBuiler({ conditions }),
+    packageFilter: packageFilterBuilder({ conditions }),
   };
   // Give precedence to importing a partial
   resolveAsync([partialUrl, moduleUrl], options).then(finalize).catch(next);
@@ -31,7 +31,7 @@ export const importerSync: sass.Importer = (url, importer): sass.Data => {
     caller: "Sass importer",
     basedirs: [path.dirname(importer)],
     extensions,
-    packageFilter: packageFilterBuiler({ conditions }),
+    packageFilter: packageFilterBuilder({ conditions }),
   };
   // Give precedence to importing a partial
   try {
