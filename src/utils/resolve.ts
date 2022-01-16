@@ -1,5 +1,9 @@
 import resolver, { sync, AsyncOpts, SyncOpts } from "resolve";
+import { resolve as resolveExports, legacy as resolveFields } from "resolve.exports";
 import arrayFmt from "./array-fmt";
+
+type Package = { main: string; [field: string]: unknown };
+type PackageFilterFn = (pkg: Package, pkgfile: string) => Package;
 
 export interface ResolveOpts {
   /** name of the caller for error message (default to `Resolver`) */
@@ -11,7 +15,7 @@ export interface ResolveOpts {
   /** don't resolve `basedirs` to real path before resolving. (defaults to `true`) */
   preserveSymlinks?: boolean;
   /** transform the parsed `package.json` contents before looking at the "main" field */
-  packageFilter?: (pkg: Package, pkgfile: string) => Package;
+  packageFilter?: PackageFilterFn;
 }
 
 interface ResolveDefaultOpts {
@@ -19,25 +23,52 @@ interface ResolveDefaultOpts {
   basedirs: ReadonlyArray<string>;
   extensions: ReadonlyArray<string>;
   preserveSymlinks: boolean;
-  packageFilter: (pkg: Package, pkgfile: string) => Package;
+  packageFilter: PackageFilterFn;
 }
 
-interface Package {
-  main: string;
-  module?: string;
-  style?: string;
+interface PackageFilterBuilderOpts {
+  fields?: string[];
+  conditions?: string[];
 }
+
+type PackageFilterBuilderFn = (opts?: PackageFilterBuilderOpts) => PackageFilterFn;
+
+export const packageFilterBuiler: PackageFilterBuilderFn = (opts = {}) => {
+  const conditions = opts.conditions ?? ["style", "import", "require"];
+  const fields = opts.fields ?? ["style", "module", "main"];
+  return pkg => {
+    // Check `exports` fields
+    try {
+      const resolvedExport = resolveExports(pkg, ".", { conditions, unsafe: true });
+      if (typeof resolvedExport === "string") {
+        pkg.main = resolvedExport;
+        return pkg;
+      }
+    } catch {
+      /* noop */
+    }
+
+    // Check independent fields
+    try {
+      const resolvedField = resolveFields(pkg, { fields, browser: false });
+      if (typeof resolvedField === "string") {
+        pkg.main = resolvedField;
+        return pkg;
+      }
+    } catch {
+      /* noop */
+    }
+
+    return pkg;
+  };
+};
 
 const defaultOpts: ResolveDefaultOpts = {
   caller: "Resolver",
   basedirs: [__dirname],
   extensions: [".mjs", ".js", ".cjs", ".json"],
   preserveSymlinks: true,
-  packageFilter(pkg) {
-    if (pkg.module) pkg.main = pkg.module;
-    if (pkg.style) pkg.main = pkg.style;
-    return pkg;
-  },
+  packageFilter: packageFilterBuiler(),
 };
 
 const resolverAsync = async (id: string, options: AsyncOpts = {}): Promise<string | undefined> =>
