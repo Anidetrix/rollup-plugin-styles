@@ -1,7 +1,7 @@
 import loadModule from "../../utils/load-module";
 import arrayFmt from "../../utils/array-fmt";
 
-const ids = ["node-sass", "sass"];
+const ids = ["sass", "node-sass"];
 const idsFmt = arrayFmt(ids);
 export default function (impl?: string): [sass.Sass, string] {
   // Loading provided implementation

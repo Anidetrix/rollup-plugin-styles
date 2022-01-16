@@ -461,6 +461,7 @@ validateMany("sass", [
     input: "sass-importer/index.js",
     options: {
       sass: {
+        sync: false,
         importer(url, _, done): void {
           if (url === "~modularvirtualimport") done({ contents: ".modularvirtual{color:blue}" });
           else done({ contents: ".virtual{color:red}" });
@@ -469,11 +470,11 @@ validateMany("sass", [
     },
   },
   {
-    title: "importer-dart",
+    title: "importer-node",
     input: "sass-importer/index.js",
     options: {
       sass: {
-        impl: "sass",
+        impl: "node-sass",
         sync: false,
         importer(url, _, done): void {
           if (url === "~modularvirtualimport") done({ contents: ".modularvirtual{color:blue}" });
@@ -496,11 +497,11 @@ validateMany("sass", [
     },
   },
   {
-    title: "importer-dart-sync",
+    title: "importer-sync-node",
     input: "sass-importer/index.js",
     options: {
       sass: {
-        impl: "sass",
+        impl: "node-sass",
         sync: true,
         importer(url): sass.Data {
           if (url === "~modularvirtualimport") return { contents: ".modularvirtual{color:blue}" };

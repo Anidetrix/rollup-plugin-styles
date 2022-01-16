@@ -185,16 +185,7 @@ styles({
 
 Install corresponding dependency:
 
-- For `Sass` support install `node-sass` or `sass`:
-
-  ```bash
-  # npm
-  npm install -D node-sass
-  # pnpm
-  pnpm add -D node-sass
-  # yarn
-  yarn add node-sass --dev
-  ```
+- For `Sass` support install `sass` or `node-sass`:
 
   ```bash
   # npm
@@ -203,6 +194,15 @@ Install corresponding dependency:
   pnpm add -D sass
   # yarn
   yarn add sass --dev
+  ```
+
+  ```bash
+  # npm
+  npm install -D node-sass
+  # pnpm
+  pnpm add -D node-sass
+  # yarn
+  yarn add node-sass --dev
   ```
 
 - For `Less` support install `less`:
