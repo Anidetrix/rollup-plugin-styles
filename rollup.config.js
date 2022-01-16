@@ -19,8 +19,8 @@ const config = [
   {
     input: "src/index.ts",
     output: [
-      { format: "cjs", file: pkg.main, exports: "default" },
-      { format: "es", file: pkg.module, exports: "default" },
+      { format: "cjs", file: pkg.exports.require, exports: "default" },
+      { format: "es", file: pkg.exports.import, exports: "default" },
     ],
     plugins: [
       externals({ deps: true }),
