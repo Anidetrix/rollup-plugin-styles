@@ -231,7 +231,7 @@ That's it, now you can import `.scss` `.sass` `.less` `.styl` `.stylus` files in
 
 ## Configuration
 
-See [API Reference for `Options`](https://anidetrix.github.io/rollup-plugin-styles/interfaces/types.options.html) for full list of available options.
+See [API Reference for `Options`](https://anidetrix.github.io/rollup-plugin-styles/interfaces/types.Options.html) for full list of available options.
 
 ## Why
 
