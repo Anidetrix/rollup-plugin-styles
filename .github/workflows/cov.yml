@@ -21,9 +21,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: "16"
+          cache: "pnpm"
 
       - name: Install dependencies
         run: |
+          pnpm -v
           pnpm config set enable-pre-post-scripts true
           pnpm i --frozen-lockfile
         env:

@@ -25,6 +25,7 @@ jobs:
 
       - name: Install dependencies
         run: |
+          pnpm -v
           pnpm config set enable-pre-post-scripts true
           pnpm i --frozen-lockfile
         env:
