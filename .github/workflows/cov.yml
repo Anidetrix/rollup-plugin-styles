@@ -7,31 +7,34 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Code Checkout
+      - name: Code checkout
         uses: actions/checkout@v2
         with:
           fetch-depth: 0
 
-      - name: Setup Node.js
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 6
+
+      - name: Setup node
         uses: actions/setup-node@v2
         with:
           node-version: "16"
-          cache: "pnpm"
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: |
-          npm install -g pnpm@6
           pnpm config set enable-pre-post-scripts true
           pnpm i --frozen-lockfile
         env:
           CI: true
 
-      - name: Test /w Coverage
+      - name: Test /w coverage
         run: pnpm t -- --coverage
         env:
           CI: true
 
-      - name: Submit Coverage to codecov.io
+      - name: Submit coverage to codecov.io
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
