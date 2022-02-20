@@ -119,7 +119,7 @@ Also note that partials are considered first, e.g.
 @import "custom";
 ```
 
-Will look for `_custom` first (_with the approptiate extension(s)_), and then for `custom` if `_custom` doesn't exist.
+Will look for `_custom` first (_with the appropriate extension(s)_), and then for `custom` if `_custom` doesn't exist.
 
 ### CSS Injection
 
