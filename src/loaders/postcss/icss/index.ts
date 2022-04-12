@@ -44,6 +44,14 @@ const plugin: PluginCreator<InteroperableCSSOptions> = (options = {}) => {
           export: { [k]: replaceValueSymbols(v, imports) },
         });
       }
+
+      for (const key of Object.keys(icssImports)) {
+        res.messages.push({
+          plugin: name,
+          type: "icss-dependency",
+          import: key,
+        });
+      }
     },
   };
 };

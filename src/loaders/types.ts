@@ -61,6 +61,8 @@ export interface Payload {
   map?: string;
   /** Extracted data */
   extracted?: Extracted;
+  /** Additional metadata exposed to other Rollup plugins */
+  meta?: rollup.CustomPluginOptions;
 }
 
 /** Options for sourcemaps */

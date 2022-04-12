@@ -35,6 +35,11 @@ function ensureAutoModules(am: PostCSSLoaderOptions["autoModules"], id: string):
   return am && /\.module\.[A-Za-z]+$/.test(id);
 }
 
+export type PostCSSMeta = {
+  icssDependencies: Array<string>;
+  moduleContents: string;
+};
+
 type PostCSSOptions = PostCSSLoaderOptions["postcss"] &
   Pick<Required<ProcessOptions>, "from" | "to" | "map">;
 
@@ -48,6 +53,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
     const autoModules = ensureAutoModules(options.autoModules, this.id);
     const supportModules = Boolean(options.modules || autoModules);
     const modulesExports: Record<string, string> = {};
+    const icssDependencies: Array<string> = [];
 
     const postcssOpts: PostCSSOptions = {
       ...config.options,
@@ -105,6 +111,10 @@ const loader: Loader<PostCSSLoaderOptions> = {
           Object.assign(modulesExports, msg.export as Record<string, string>);
           break;
 
+        case "icss-dependency":
+          icssDependencies.push(msg.import as string);
+          break;
+
         case "dependency":
           this.deps.add(normalizePath(msg.file as string));
           break;
@@ -126,8 +136,6 @@ const loader: Loader<PostCSSLoaderOptions> = {
       map = m.toString();
       res.css += m.toCommentData();
     }
-
-    if (options.emit) return { code: res.css, map };
 
     const saferId = (id: string): string => safeId(id, path.basename(this.id));
     const modulesVarName = saferId("modules");
@@ -221,7 +229,14 @@ const loader: Loader<PostCSSLoaderOptions> = {
       await fs.writeFile(`${this.id}.d.ts`, dts.filter(Boolean).join("\n"));
     }
 
-    return { code: output.filter(Boolean).join("\n"), map, extracted };
+    const outputString = output.filter(Boolean).join("\n");
+
+    if (options.emit) {
+      const meta: PostCSSMeta = { moduleContents: outputString, icssDependencies };
+      return { code: res.css, map, meta };
+    }
+
+    return { code: outputString, map, extracted };
   },
 };
 
