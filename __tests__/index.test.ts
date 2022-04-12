@@ -7,6 +7,7 @@ import { humanlizePath } from "../src/utils/path";
 import { litCss } from "rollup-plugin-lit-css";
 
 import { fixture, validateMany, write } from "./helpers";
+import { PostCSSMeta } from "../src/loaders/postcss";
 
 beforeAll(async () => fs.remove(fixture("dist")));
 
@@ -715,6 +716,25 @@ validateMany("emit", [
     plugins: [
       styles({ mode: "emit", sourceMap: [true, { transform: m => (m.sources = ["virt"]) }] }),
       litCss(),
+    ],
+  },
+  {
+    title: "meta",
+    input: "emit-with-modules/index.js",
+    plugins: [
+      styles({ mode: "emit", modules: true }),
+      {
+        name: "expose-styles-meta",
+        transform(_code, id) {
+          const stylesMeta = this.getModuleInfo(id)?.meta.styles as PostCSSMeta | undefined;
+          if (stylesMeta) {
+            const { icssDependencies = [], moduleContents = "" } = stylesMeta;
+            return `export var deps = ${JSON.stringify(icssDependencies)};\n${moduleContents}`;
+          }
+
+          return;
+        },
+      },
     ],
   },
 ]);

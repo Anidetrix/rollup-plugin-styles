@@ -1,0 +1,4 @@
+.main {
+  display: flex;
+  composes: bold from "./shared.css";
+}
