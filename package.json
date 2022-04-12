@@ -52,7 +52,7 @@
   "dependencies": {
     "@rollup/pluginutils": "^4.1.2",
     "cosmiconfig": "^7.0.1",
-    "cssnano": "^5.0.16",
+    "cssnano": "^5.1.7",
     "fs-extra": "^10.0.0",
     "icss-utils": "^5.1.0",
     "mime-types": "^2.1.34",

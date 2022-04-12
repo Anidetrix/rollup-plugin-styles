@@ -200,7 +200,7 @@ export interface Options {
    * [cssnano](https://github.com/cssnano/cssnano)
    * @default false
    */
-  minimize?: boolean | cssnano.CssNanoOptions;
+  minimize?: boolean | cssnano.Options;
   /**
    * Enable/disable or configure sourcemaps
    * @default false
