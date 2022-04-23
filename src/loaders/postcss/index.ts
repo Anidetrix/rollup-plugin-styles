@@ -132,8 +132,9 @@ const loader: Loader<PostCSSLoaderOptions> = {
     const saferId = (id: string): string => safeId(id, path.basename(this.id));
     const modulesVarName = saferId("modules");
 
-    const output = [`export var ${cssVarName} = ${JSON.stringify(res.css)};`];
-    const dts = [`export var ${cssVarName}: string;`];
+    const output = [`var ${cssVarName} = ${JSON.stringify(res.css)};`];
+    const dts = [`var ${cssVarName}: string;`];
+    const outputExports = [cssVarName];
 
     if (options.namedExports) {
       const getClassName =
@@ -146,8 +147,9 @@ const loader: Loader<PostCSSLoaderOptions> = {
           this.warn(`Exported \`${name}\` as \`${newName}\` in ${humanlizePath(this.id)}`);
 
         const fmt = JSON.stringify(modulesExports[name]);
-        output.push(`export var ${newName} = ${fmt};`);
-        if (options.dts) dts.push(`export var ${newName}: ${fmt};`);
+        output.push(`var ${newName} = ${fmt};`);
+        if (options.dts) dts.push(`var ${newName}: ${fmt};`);
+        outputExports.push(newName);
       }
     }
 
@@ -203,7 +205,8 @@ const loader: Loader<PostCSSLoaderOptions> = {
     if (!options.inject) output.push(`var ${modulesVarName} = ${JSON.stringify(modulesExports)};`);
 
     const defaultExport = `export default ${supportModules ? modulesVarName : cssVarName};`;
-    output.push(defaultExport);
+    const namedExport = `export {\n  ${outputExports.filter(Boolean).join(",\n  ")}\n};`;
+    output.push(defaultExport, namedExport);
 
     if (options.dts && (await fs.pathExists(this.id))) {
       if (supportModules)
@@ -217,7 +220,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
           `declare const ${modulesVarName}: ModulesExports;`,
         );
 
-      dts.push(defaultExport);
+      dts.push(defaultExport, namedExport);
       await fs.writeFile(`${this.id}.d.ts`, dts.filter(Boolean).join("\n"));
     }
 

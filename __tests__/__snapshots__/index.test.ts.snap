@@ -756,8 +756,8 @@ var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_f
 
 var first = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  css: css$1,
-  'default': modules_efa96bb5
+  'default': modules_efa96bb5,
+  css: css$1
 });
 
 var css = \\".second_second {\\\\n  color: royalblue;\\\\n}\\";
@@ -765,8 +765,8 @@ var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 var second = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  css: css,
-  'default': modules_7a038d99
+  'default': modules_7a038d99,
+  css: css
 });
 
 (async () => {
@@ -896,8 +896,8 @@ var modules_efa96bb5 = {\\"partial\\":\\"first_partial\\",\\"first\\":\\"first_f
 
 var first = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  css: css$1,
-  'default': modules_efa96bb5
+  'default': modules_efa96bb5,
+  css: css$1
 });
 
 var css = \\".second_second {\\\\n  color: royalblue;\\\\n}\\";
@@ -905,8 +905,8 @@ var modules_7a038d99 = {\\"second\\":\\"second_second\\"};
 
 var second = /*#__PURE__*/Object.freeze({
   __proto__: null,
-  css: css,
-  'default': modules_7a038d99
+  'default': modules_7a038d99,
+  css: css
 });
 
 (async () => {
@@ -2284,8 +2284,8 @@ export { css, css as default };
 `;
 
 exports[`extract preserve-modules: js 3`] = `
-"import { css } from './foo.css.js';
-import { css as css$1 } from './bar.css.js';
+"import css from './foo.css.js';
+import css$1 from './bar.css.js';
 
 console.log(css, css$1);
 "
