@@ -294,7 +294,12 @@ export default (options: Options = {}): Plugin => {
           res.map = resMin.map?.toString();
         }
 
-        const cssFile = { type: "asset" as const, name: res.name, source: res.css };
+        const cssFile = {
+          type: "asset" as const,
+          fileName: res.name,
+          name: res.name,
+          source: res.css,
+        };
         const cssFileId = this.emitFile(cssFile);
 
         if (res.map && sourceMap) {
