@@ -24,13 +24,13 @@ export interface UrlOptions {
    * Public Path for URLs in CSS files
    * @default "./"
    */
-  publicPath?: string | ((original: string, resolved: string) => string);
+  publicPath?: string | ((original: string, resolved: string, file: string) => string);
   /**
    * Directory path for outputted CSS assets,
    * which is not included into resulting URL
    * @default "."
    */
-  assetDir?: string | ((original: string, resolved: string) => string);
+  assetDir?: string | ((original: string, resolved: string, file: string) => string);
   /**
    * Enable/disable name generation with hash for outputted CSS assets
    * or provide your own placeholder with the following blocks:
@@ -190,12 +190,12 @@ const plugin: PluginCreator<UrlOptions> = (options = {}) => {
           node.type = "string";
           node.value =
             typeof publicPath === "function"
-              ? publicPath(node.value, resolvedPublicPath)
+              ? publicPath(node.value, resolvedPublicPath, file)
               : resolvedPublicPath;
 
           if (urlQuery) node.value += urlQuery;
           to = normalizePath(typeof assetDir === "string" ? assetDir : defaultAssetDir, to);
-          to = typeof assetDir === "function" ? assetDir(from, to) : to;
+          to = typeof assetDir === "function" ? assetDir(from, to, file) : to;
 
           res.messages.push({ plugin: name, type: "asset", to, source });
         }
