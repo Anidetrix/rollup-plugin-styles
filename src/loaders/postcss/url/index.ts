@@ -24,13 +24,13 @@ export interface UrlOptions {
    * Public Path for URLs in CSS files
    * @default "./"
    */
-  publicPath?: string;
+  publicPath?: string | ((original: string, resolved: string, file: string) => string);
   /**
    * Directory path for outputted CSS assets,
    * which is not included into resulting URL
    * @default "."
    */
-  assetDir?: string;
+  assetDir?: string | ((original: string, resolved: string, file: string) => string);
   /**
    * Enable/disable name generation with hash for outputted CSS assets
    * or provide your own placeholder with the following blocks:
@@ -57,9 +57,11 @@ export interface UrlOptions {
 }
 
 const plugin: PluginCreator<UrlOptions> = (options = {}) => {
+  const defaultpublicPath = "./";
+  const defaultAssetDir = ".";
   const inline = options.inline ?? false;
-  const publicPath = options.publicPath ?? "./";
-  const assetDir = options.assetDir ?? ".";
+  const publicPath = options.publicPath ?? defaultpublicPath;
+  const assetDir = options.assetDir ?? defaultAssetDir;
   const resolve = options.resolve ?? resolveDefault;
   const alias = options.alias ?? {};
   const placeholder =
@@ -180,11 +182,21 @@ const plugin: PluginCreator<UrlOptions> = (options = {}) => {
 
           usedNames.set(to, from);
 
-          node.type = "string";
-          node.value = publicPath + (/[/\\]$/.test(publicPath) ? "" : "/") + path.basename(to);
-          if (urlQuery) node.value += urlQuery;
+          const resolvedPublicPath =
+            typeof publicPath === "string"
+              ? publicPath + (/[/\\]$/.test(publicPath) ? "" : "/") + path.basename(to)
+              : `${defaultpublicPath}${path.basename(to)}`;
 
-          to = normalizePath(assetDir, to);
+          node.type = "string";
+          node.value =
+            typeof publicPath === "function"
+              ? publicPath(node.value, resolvedPublicPath, file)
+              : resolvedPublicPath;
+
+          if (urlQuery) node.value += urlQuery;
+          to = normalizePath(typeof assetDir === "string" ? assetDir : defaultAssetDir, to);
+          to = typeof assetDir === "function" ? assetDir(from, to, file) : to;
+
           res.messages.push({ plugin: name, type: "asset", to, source });
         }
 
