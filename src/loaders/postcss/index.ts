@@ -156,7 +156,7 @@ const loader: Loader<PostCSSLoaderOptions> = {
     if (options.inject) {
       if (typeof options.inject === "function") {
         output.push(
-          options.inject(cssVarName, this.id),
+          options.inject(cssVarName, this.id, output),
           `var ${modulesVarName} = ${JSON.stringify(modulesExports)};`,
         );
       } else {
