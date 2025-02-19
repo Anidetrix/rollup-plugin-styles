@@ -109,6 +109,11 @@ const plugin: PluginCreator<UrlOptions> = (options = {}) => {
           // Skip Data URI
           if (dataURIRe.test(url)) return;
 
+          // Skip protocol-relative Web URLs
+          if (/^\/\//.test(url)) {
+            return;
+          }
+
           // Skip Web URLs
           if (!isAbsolutePath(url)) {
             try {

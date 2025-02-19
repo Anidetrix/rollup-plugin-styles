@@ -96,6 +96,11 @@ const plugin: PluginCreator<ImportOptions> = (options = {}) => {
           return;
         }
 
+        // Skip protocol-relative Web URLs
+        if (/^\/\//.test(url)) {
+          return;
+        }
+
         // Skip Web URLs
         if (!isAbsolutePath(url)) {
           try {
